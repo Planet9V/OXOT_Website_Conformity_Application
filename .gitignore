@@ -36,7 +36,8 @@ pnpm-debug.log*
 *.obj
 attached_assets/
 assets/oxot-uploads/
-artifacts/conformity/public/sources/cra-supplier-cooling-readiness.pdf
+# The source-library documents are content the app serves — always tracked.
+!artifacts/conformity/public/sources/*.pdf
 test-models.js
 test-*.js
 

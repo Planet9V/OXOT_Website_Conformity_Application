@@ -54,6 +54,16 @@ your `.env`.
   covers it while the container runs, but email sending still needs SMTP
   credentials configured in the admin settings.
 
+## Deployment standard
+
+The conformity application always runs with **its own PostgreSQL database
+(with the pgvector extension) and its own web service** — never sharing a
+database with another application. Sharing a database breaks the schema push
+(drizzle-kit raises interactive conflict prompts against foreign tables) and
+risks destructive changes to the other application's data. The Railway boot
+script enforces this by creating the database named in `DATABASE_URL` when it
+does not exist; locally, docker-compose provisions a dedicated `db` service.
+
 ## Site content lifecycle (keeping the seed current)
 
 Site content (CMS pages + sections, navigation, site settings) is seeded from
