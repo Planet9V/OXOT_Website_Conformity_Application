@@ -9,6 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { PageHeader } from '@/components/page-header';
 import {
   BookOpen,
   FileText,
@@ -137,26 +138,20 @@ export default function KnowledgeHubPage() {
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 space-y-12">
-      <div className="max-w-2xl">
-        <Badge variant="secondary" className="mb-3">
-          Members
-        </Badge>
-        <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
-          Knowledge Hub
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          The reference library behind your conformance work: regulation guidance, artifact
-          templates, and workbench how-tos — organized by regulation track.
-        </p>
-        <div className="mt-5">
+      <PageHeader
+        kicker="MEMBER REFERENCE LIBRARY"
+        title="Knowledge Hub"
+        icon={BookOpen}
+        description="The reference library behind your conformance work: regulation guidance, artifact templates, and workbench how-tos, organized by regulation track. The live catalogue links render directly from the workbench, so requirement counts and mappings are never out of date. Member guides are grouped by the regulation they serve, with platform-wide guides at the end."
+        actions={
           <Button asChild>
             <a href="/conformity/">
               Open Workbench
               <ExternalLink className="ml-2 h-4 w-4" aria-hidden="true" />
             </a>
           </Button>
-        </div>
-      </div>
+        }
+      />
 
       {/* Live catalogue reference — rendered from the workbench, never duplicated */}
       <section aria-labelledby="catalogue-heading">

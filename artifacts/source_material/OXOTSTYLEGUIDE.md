@@ -633,3 +633,39 @@ const mono  = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400","500","700"],
 | ship English-only copy | `nl` and `en`, always |
 | trust an overflow measurement at 375px | look at the screenshot |
 | use a drop shadow for depth on navy | inset top highlight + ambient shadow |
+
+---
+
+## 13. The standard page header
+
+Every content page — on the workbench and the public site alike — opens with the same three-part header:
+
+```html
+<header class="mb-10 border-b border-border pb-8">
+  <span class="oxot-kicker block mb-2">CRA ARTICLE 14 · VULNERABILITY HANDLING &amp; INCIDENT REPORTING</span>
+  <h1 class="font-display font-normal tracking-tight flex items-center gap-3">
+    <Icon class="w-8 h-8 text-primary" /> Page Title
+  </h1>
+  <p class="mt-4 max-w-3xl text-muted-foreground leading-relaxed">Three to five sentences…</p>
+</header>
+```
+
+| part | spec |
+|---|---|
+| **Kicker** | `.oxot-kicker` (§3.5) — ≤8 words. On statutory pages it anchors to the governing article of the final text (Regulation (EU) 2024/2847 numbering), e.g. `CRA ARTICLE 32 · DIGITAL PRODUCT CONFORMITY ASSESSMENT`. |
+| **Icon** | One lucide icon, `text-primary`, sized to the title (`w-6 h-6` beside 3xl–4xl titles, `w-8 h-8` beside 4xl–5xl). Chosen to represent the page's content; stable per page. |
+| **Title** | Serif (`--font-display`), weight 400, `tracking-tight`. |
+| **Description** | 3–5 well-written sentences in the sans face, `--muted-foreground`, `max-w-3xl`. It must tell a first-time reader what the page contains and when to use it — not repeat the title. |
+| **Actions** | Page-level buttons sit to the right of the text block (`flex-wrap justify-between`). |
+| **Rule** | The header closes with `border-b border-border pb-8`; content starts below it. |
+
+Implementation: `PageHeader` component (oxot-web) for hand-built pages; CMS article pages carry `kicker`, `description` and `icon` in the article section data, which round-trips through the content snapshot. The home page and campaign heroes are exempt — they keep their hero treatment.
+
+## 14. Long-form pages: the sticky left TOC
+
+Any page whose body has **three or more H2 headings** renders a table of contents:
+
+- **≥768px (`md`)** — a left sidebar (`w-48`) that is `sticky` below the nav (`top-24`). Scroll-spy highlights the active section (orange left rule + full-strength text); clicking an entry smooth-scrolls the canvas to the heading (`scroll-mt-24` on targets keeps them clear of the sticky nav). The sidebar label is the kicker-adjacent mono style: `ON THIS PAGE` / `OP DEZE PAGINA`.
+- **<768px** — the TOC collapses into a sticky "On this page" disclosure bar above the article.
+
+The TOC is derived from the rendered markdown's H2s — never hand-maintained — so CMS edits update it automatically.

@@ -7,6 +7,8 @@ import {
 } from '@workspace/api-client-react';
 import { Link } from 'wouter';
 import { ConformityShell } from '@/components/layout/conformity-shell';
+import { PageHeader } from '@/components/page-header';
+import { ListChecks } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Input } from '@/components/ui/input';
@@ -54,10 +56,12 @@ export default function ConformityRequirements() {
     <ConformityShell>
       <div className="max-w-[1400px] space-y-6">
 
-        <div>
-          <h2 className="text-2xl font-display font-bold mb-1">Requirements Explorer</h2>
-          <p className="text-muted-foreground text-sm">Search and filter across all framework obligations.</p>
-        </div>
+        <PageHeader
+          kicker="CROSS-REGULATORY OBLIGATIONS & TECHNICAL REQUIREMENTS"
+          title="Requirements Explorer"
+          icon={ListChecks}
+          description="Every extracted obligation across the loaded regulation tracks, rendered live from the workbench catalogue. Filter by regulation, functional theme or obligation type, and search the full requirement text and reference codes. Each row opens the requirement's detail page with its statutory source and cross-regulation mappings. This is the same catalogue that assessments instantiate their checklists from."
+        />
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row gap-3 bg-muted/30 p-4 rounded-xl border border-border">

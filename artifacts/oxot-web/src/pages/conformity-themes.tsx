@@ -1,5 +1,7 @@
 import { useListThemes } from '@workspace/api-client-react';
 import { ConformityShell } from '@/components/layout/conformity-shell';
+import { PageHeader } from '@/components/page-header';
+import { Layers } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { regBgStyle } from '@/lib/reg-colors';
@@ -28,12 +30,12 @@ export default function ConformityThemes() {
   return (
     <ConformityShell>
       <div className="max-w-4xl space-y-8">
-        <div>
-          <h2 className="text-2xl font-display font-bold mb-1">Cross-cutting Themes</h2>
-          <p className="text-muted-foreground text-sm">
-            Functional domains shared across multiple regulatory frameworks.
-          </p>
-        </div>
+        <PageHeader
+          kicker="FUNCTIONAL COMPLIANCE DOMAINS"
+          title="Cross-cutting Themes"
+          icon={Layers}
+          description="Cross-cutting functional domains — such as vulnerability handling, secure updates and incident reporting — that recur across multiple regulations. Each theme shows how its requirements distribute over the loaded frameworks, exposing where one control can satisfy several statutory clauses. Themes are the backbone of the evidence-reuse model: satisfy the domain once, cite it everywhere."
+        />
 
         <div className="space-y-5">
           {themes.map((item) => (
