@@ -14,14 +14,14 @@ type SourceDoc = {
 };
 
 // Ordered groups so regulation-indexed sources are surfaced first, general last.
-const GROUPS: { key: string | null; label: string; accent: string }[] = [
-  { key: "cra", label: "Cyber Resilience Act", accent: "text-blue-600 dark:text-blue-400" },
-  { key: "ai_act", label: "EU AI Act", accent: "text-violet-600 dark:text-violet-400" },
-  { key: "machinery", label: "Machinery Regulation", accent: "text-orange-600 dark:text-orange-400" },
-  { key: "iec_62443", label: "IEC 62443", accent: "text-teal-600 dark:text-teal-400" },
-  { key: "nis2", label: "NIS2 Directive", accent: "text-emerald-600 dark:text-emerald-400" },
-  { key: "ts_50701", label: "TS 50701", accent: "text-rose-600 dark:text-rose-400" },
-  { key: null, label: "General", accent: "text-muted-foreground" },
+const GROUPS: { key: string | null; label: string }[] = [
+  { key: "cra", label: "Cyber Resilience Act" },
+  { key: "ai_act", label: "EU AI Act" },
+  { key: "machinery", label: "Machinery Regulation" },
+  { key: "iec_62443", label: "IEC 62443" },
+  { key: "nis2", label: "NIS2 Directive" },
+  { key: "ts_50701", label: "TS 50701" },
+  { key: null, label: "General" },
 ];
 
 function DocCard({ doc }: { doc: SourceDoc }) {
@@ -36,7 +36,7 @@ function DocCard({ doc }: { doc: SourceDoc }) {
             {doc.kind}
           </Badge>
         </div>
-        <CardTitle className="text-lg leading-tight line-clamp-2" title={doc.title}>
+        <CardTitle className="text-lg font-serif font-normal leading-tight line-clamp-2" title={doc.title}>
           {doc.title}
         </CardTitle>
       </CardHeader>
@@ -51,7 +51,7 @@ function DocCard({ doc }: { doc: SourceDoc }) {
           href={doc.url}
           target="_blank"
           rel="noreferrer"
-          className="w-full flex items-center justify-center gap-2 text-sm font-medium bg-primary/5 hover:bg-primary/10 text-primary py-2 px-4 transition-colors border border-primary/20"
+          className="w-full flex items-center justify-center gap-2 text-sm font-medium bg-primary/5 hover:bg-primary/10 text-primary-ink py-2 px-4 rounded-md transition-colors border border-primary/20"
         >
           {doc.url.endsWith(".pdf") ? (
             <><Download className="w-4 h-4" /> Download PDF</>
@@ -99,11 +99,11 @@ export default function Sources() {
         if (groupDocs.length === 0) return null;
         return (
           <section key={group.label} className="space-y-4">
-            <div className="flex items-center gap-3 border-b border-border pb-2">
-              <h2 className={`text-sm font-bold uppercase tracking-wider ${group.accent}`}>
+            <div className="flex items-baseline gap-3 border-b border-border pb-2">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 {group.label}
               </h2>
-              <span className="text-xs font-mono text-muted-foreground">
+              <span className="text-xs font-mono text-muted-foreground/70">
                 {groupDocs.length} {groupDocs.length === 1 ? "document" : "documents"}
               </span>
             </div>

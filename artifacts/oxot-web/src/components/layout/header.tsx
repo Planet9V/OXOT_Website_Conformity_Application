@@ -74,30 +74,6 @@ function PanelItem({ item, onNavigate }: { item: DropItem; onNavigate?: () => vo
   );
 }
 
-// ─── Flag SVGs ──────────────────────────────────────────────────────────────────
-function FlagEN({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className={className}>
-      <clipPath id="flag-t"><path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z"/></clipPath>
-      <path d="M0,0 v30 h60 v-30 z" fill="#00247d"/>
-      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
-      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#flag-t)" stroke="#cf142b" strokeWidth="4"/>
-      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
-      <path d="M30,0 v30 M0,15 h60" stroke="#cf142b" strokeWidth="6"/>
-    </svg>
-  );
-}
-
-function FlagNL({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6" className={className}>
-      <path fill="#21468B" d="M0 0h9v6H0z"/>
-      <path fill="#FFF" d="M0 0h9v4H0z"/>
-      <path fill="#AE1C28" d="M0 0h9v2H0z"/>
-    </svg>
-  );
-}
-
 // ─── Language switcher widget ───────────────────────────────────────────────────
 // `unavailableLocale` is the language the CURRENT page has no translation for.
 // Its flag is disabled so a reader on an English-only page can't toggle to Dutch
@@ -114,23 +90,26 @@ function LanguageSwitcher({
   const enUnavailable = unavailableLocale === 'en';
   const nlUnavailable = unavailableLocale === 'nl';
   return (
-    <div role="group" aria-label="Language" className="flex items-center gap-1 rounded-md border border-border/60 p-0.5">
+    <div
+      role="group"
+      aria-label="Language / Taal"
+      className="inline-flex items-center gap-0.5 rounded-md border border-border/70 bg-background/60 p-0.5"
+    >
       <button
         onClick={() => setLocale('en')}
         disabled={enUnavailable}
         title={enUnavailable ? 'Not available in English' : 'English'}
         aria-pressed={locale === 'en'}
         aria-disabled={enUnavailable || undefined}
-        className={`rounded p-1 transition-all ${
+        className={`rounded-[5px] px-1.5 py-0.5 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
           locale === 'en'
-            ? 'bg-muted shadow-sm'
+            ? 'bg-primary/15 text-primary'
             : enUnavailable
-              ? 'opacity-30 cursor-not-allowed'
-              : 'opacity-50 hover:opacity-80'
+              ? 'text-foreground/30 cursor-not-allowed'
+              : 'text-foreground/55 hover:text-foreground'
         }`}
       >
-        <FlagEN className="w-6 h-auto rounded-[2px] overflow-hidden block" aria-hidden="true" />
-        <span className="sr-only">English</span>
+        EN<span className="sr-only"> — English</span>
       </button>
       <button
         onClick={() => setLocale('nl')}
@@ -138,16 +117,15 @@ function LanguageSwitcher({
         title={nlUnavailable ? 'Niet beschikbaar in het Nederlands' : 'Nederlands'}
         aria-pressed={locale === 'nl'}
         aria-disabled={nlUnavailable || undefined}
-        className={`rounded p-1 transition-all ${
+        className={`rounded-[5px] px-1.5 py-0.5 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
           locale === 'nl'
-            ? 'bg-muted shadow-sm'
+            ? 'bg-primary/15 text-primary'
             : nlUnavailable
-              ? 'opacity-30 cursor-not-allowed'
-              : 'opacity-50 hover:opacity-80'
+              ? 'text-foreground/30 cursor-not-allowed'
+              : 'text-foreground/55 hover:text-foreground'
         }`}
       >
-        <FlagNL className="w-6 h-auto rounded-[2px] overflow-hidden block" aria-hidden="true" />
-        <span className="sr-only">Nederlands</span>
+        NL<span className="sr-only"> — Nederlands</span>
       </button>
     </div>
   );
@@ -238,14 +216,16 @@ export function Header() {
       <div className="container mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-              <span className="text-white font-display font-bold text-lg leading-none">O</span>
-            </div>
-            {/* Wordmark visible at all sizes */}
-            <span className="font-display font-bold text-xl tracking-tight">
-              {settings?.siteName || 'OXOT'}
-            </span>
+          <Link
+            href="/"
+            aria-label="OXOT — home"
+            className="select-none font-sans text-[15px] font-semibold tracking-[0.28em] text-foreground no-underline"
+          >
+            {(settings?.siteName || 'OXOT').toUpperCase() === 'OXOT' ? (
+              <>O<span className="text-primary">X</span>OT</>
+            ) : (
+              settings?.siteName
+            )}
           </Link>
 
           {/* Desktop nav — Radix NavigationMenu */}
@@ -376,13 +356,12 @@ export function Header() {
         <SheetContent side="right" className="flex flex-col w-[85vw] max-w-sm p-0">
           {/* Sheet header */}
           <SheetHeader className="px-5 pt-6 pb-4 border-b">
-            <SheetTitle className="flex items-center gap-2 text-left">
-              <div className="w-7 h-7 bg-primary rounded-sm flex items-center justify-center">
-                <span className="text-white font-display font-bold text-base leading-none">O</span>
-              </div>
-              <span className="font-display font-bold text-lg tracking-tight">
-                {settings?.siteName || 'OXOT'}
-              </span>
+            <SheetTitle className="text-left select-none font-sans text-[15px] font-semibold tracking-[0.28em] text-foreground">
+              {(settings?.siteName || 'OXOT').toUpperCase() === 'OXOT' ? (
+                <>O<span className="text-primary">X</span>OT</>
+              ) : (
+                settings?.siteName
+              )}
             </SheetTitle>
           </SheetHeader>
 

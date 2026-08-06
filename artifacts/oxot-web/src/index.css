@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -77,8 +77,8 @@
 
 /* LIGHT MODE */
 :root {
-  --app-font-sans: 'Geist', sans-serif;
-  --app-font-display: 'Outfit', 'Geist', 'Inter', system-ui, sans-serif;
+  --app-font-sans: 'Instrument Sans', system-ui, sans-serif;
+  --app-font-display: 'Newsreader', Georgia, 'Palatino Linotype', serif;
   --radius: 0.5rem;
 
   --button-outline: rgba(0, 0, 0, 0.1);
@@ -256,6 +256,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+    /* Newsreader ships 300–500 only; block faux-bold so `font-bold` headings
+       render at the serif's true medium weight (OXOT styleguide §3). */
+    font-synthesis: none;
+    text-wrap: balance;
   }
 }
 
