@@ -33,6 +33,9 @@ server {
         charset utf-8;
         types { text/plain md txt; application/pdf pdf; }
         default_type application/octet-stream;
+        # SPA routes under /sources (e.g. the in-app document viewer) fall
+        # through to the app; only real files are served from this location.
+        try_files $uri @conformity_fallback;
     }
 
     location /conformity/ {
