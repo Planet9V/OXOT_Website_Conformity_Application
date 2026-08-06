@@ -71,7 +71,7 @@ router.use((req, res, next): void => {
     next();
     return;
   }
-  if (getSession(req)?.role === "demo") {
+  if (getSession(req)?.role === "demo" && process.env["DEMO_READONLY"] === "true") {
     res.status(403).json({ error: "The demo workspace is read-only." });
     return;
   }

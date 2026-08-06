@@ -116,25 +116,34 @@ export function barChart(opts: { bars: Bar[]; width?: number; valueSuffix?: stri
 }
 
 export function distributionChart(opts: {
-  counts: { label: string; count: number; color: string }[];
+  columns: { label: string; value: number; color?: string }[];
   width?: number;
 }): string {
   const width = opts.width ?? 580;
-  const height = 40;
-  const total = opts.counts.reduce((sum, c) => sum + Math.max(0, c.count), 0);
+  const height = 48;
+  const total = opts.columns.reduce((sum, c) => sum + Math.max(0, c.value), 0);
   if (total <= 0) return "";
 
   let x = 0;
-  const rects = opts.counts
+  const rects = opts.columns
     .map((c) => {
-      const w = (c.count / total) * width;
-      const rect = `<rect x="${fmt(x)}" y="0" width="${fmt(w)}" height="20" fill="${c.color}"/>`;
+      const w = (Math.max(0, c.value) / total) * width;
+      const rect = `<rect x="${fmt(x)}" y="0" width="${fmt(w)}" height="20" fill="${c.color ?? CHART_ACCENT}"/>`;
       x += w;
       return rect;
     })
     .join("");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="Distribution bar">${rects}</svg>`;
+  const legendStep = width / opts.columns.length;
+  const legend = opts.columns
+    .map(
+      (c, i) =>
+        `<circle cx="${fmt(i * legendStep + 5)}" cy="37" r="5" fill="${c.color ?? CHART_ACCENT}"/>` +
+        `<text x="${fmt(i * legendStep + 14)}" y="41" ${FONT} font-size="11" font-weight="600" fill="${CHART_INK}">${escapeXml(c.label)} — ${fmt(c.value)}</text>`,
+    )
+    .join("");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="Distribution bar">${rects}${legend}</svg>`;
 }
 
 /** Likelihood x impact heatmap of open risk counts. rows[0] = highest band. */
@@ -179,24 +188,28 @@ export function riskMatrix(opts: { rows: number[][]; rowLabels: string[]; colLab
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-label="Risk matrix">${colHeaders}${cells.join("")}</svg>`;
 }
 
-export type TimelineItem = { label: string; dateISO: string; status: "done" | "overdue" | "pending" };
+export type TimelineItem = { label: string; date: Date; kind: "done" | "due" | "overdue" };
 
-export function timelineChart(opts: { items: TimelineItem[]; width?: number }): string {
+export function timelineChart(opts: { items: TimelineItem[]; start: Date; end: Date; width?: number }): string {
   const width = opts.width ?? 580;
-  const height = 70;
-  const n = opts.items.length;
-  if (n === 0) return "";
-  const step = n > 1 ? (width - 40) / (n - 1) : width / 2;
+  const height = 84;
+  if (opts.items.length === 0) return "";
+  const t0 = opts.start.getTime();
+  const span = Math.max(1, opts.end.getTime() - t0);
 
   const line = `<line x1="20" y1="30" x2="${width - 20}" y2="30" stroke="${CHART_GRID}" stroke-width="3"/>`;
   const nodes = opts.items
     .map((it, i) => {
-      const x = 20 + i * step;
-      const color = it.status === "done" ? CHART_OK : it.status === "overdue" ? CHART_BAD : CHART_MUTED;
+      const ratio = Math.min(1, Math.max(0, (it.date.getTime() - t0) / span));
+      const x = 20 + ratio * (width - 40);
+      const color = it.kind === "done" ? CHART_OK : it.kind === "overdue" ? CHART_BAD : CHART_ACCENT;
+      // Alternate label rows so date-clustered deadlines stay legible.
+      const labelY = i % 2 === 0 ? 50 : 64;
+      const dateY = labelY + 12;
       return (
-        `<circle cx="${x}" cy="30" r="7" fill="${color}"/>` +
-        `<text x="${x}" y="50" ${FONT} font-size="10" font-weight="600" fill="${CHART_INK}" text-anchor="middle">${escapeXml(it.label)}</text>` +
-        `<text x="${x}" y="62" ${FONT} font-size="9" fill="${CHART_MUTED}" text-anchor="middle">${escapeXml(it.dateISO.slice(0, 10))}</text>`
+        `<circle cx="${fmt(x)}" cy="30" r="7" fill="${color}"/>` +
+        `<text x="${fmt(x)}" y="${labelY}" ${FONT} font-size="10" font-weight="600" fill="${CHART_INK}" text-anchor="middle">${escapeXml(it.label)}</text>` +
+        `<text x="${fmt(x)}" y="${dateY}" ${FONT} font-size="9" fill="${CHART_MUTED}" text-anchor="middle">${escapeXml(it.date.toISOString().slice(0, 10))}</text>`
       );
     })
     .join("");

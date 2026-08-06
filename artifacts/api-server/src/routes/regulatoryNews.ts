@@ -69,7 +69,7 @@ The Commission also established transition rules for legacy hardware revisions, 
   },
 ];
 
-router.get("/api/regulatory-news", async (req, res) => {
+router.get("/regulatory-news", async (req, res) => {
   try {
     const forceRefresh = req.query.refresh === "true";
 

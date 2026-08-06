@@ -69,7 +69,7 @@ async function loadMemberRow(memberId: number): Promise<ConformityMemberRow | nu
  * an explanation instead of a confusing generic error.
  */
 function rejectNonMember(session: Session, res: Response): void {
-  if (session.role === "demo") {
+  if (session.role === "demo" && process.env["DEMO_READONLY"] === "true") {
     res.status(403).json({ error: "The demo workspace is read-only." });
     return;
   }
