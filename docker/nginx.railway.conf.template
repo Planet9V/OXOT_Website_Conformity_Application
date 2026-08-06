@@ -1,7 +1,7 @@
 # nginx config for the single-container Railway deployment (see the
 # `railway` Dockerfile stage). docker/railway-start.sh substitutes __PORT__
 # with Railway's injected $PORT at boot; the API runs in the same container
-# on 127.0.0.1:8080. Path routing mirrors docker/nginx.conf.
+# on 127.0.0.1:__API_PORT__. Path routing mirrors docker/nginx.conf.
 server {
     listen __PORT__;
     server_name _;
@@ -16,7 +16,7 @@ server {
     absolute_redirect off;
 
     location /api/ {
-        proxy_pass http://127.0.0.1:8080/api/;
+        proxy_pass http://127.0.0.1:__API_PORT__/api/;
         proxy_http_version 1.1;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
