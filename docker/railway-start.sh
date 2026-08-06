@@ -24,16 +24,37 @@ sed -e "s/__PORT__/${NGINX_PORT}/" -e "s/__API_PORT__/${API_PORT}/" \
   /etc/nginx/templates/railway.conf.template \
   > /etc/nginx/conf.d/railway.conf
 
-echo "[railway-start] ensuring pgvector extension…"
+echo "[railway-start] ensuring database and pgvector extension…"
 (cd /app/lib/db && node -e "
 const { Client } = require('pg');
+const target = process.env.DATABASE_URL;
 (async () => {
-  const c = new Client({ connectionString: process.env.DATABASE_URL });
+  // The app must own a dedicated database: pushing the schema into a
+  // database shared with another application makes drizzle-kit raise
+  // interactive rename prompts (fatal without a TTY) and risks destructive
+  // changes to foreign tables. Create the named database if it is missing.
+  const probe = new Client({ connectionString: target });
+  try {
+    await probe.connect();
+    await probe.end();
+  } catch (e) {
+    if (e.code !== '3D000') throw e; // 3D000 = database does not exist
+    const admin = new URL(target);
+    const dbName = decodeURIComponent(admin.pathname.slice(1));
+    admin.pathname = '/postgres';
+    if (!/^[A-Za-z_][A-Za-z0-9_-]*\$/.test(dbName)) throw new Error('unsafe database name: ' + dbName);
+    const a = new Client({ connectionString: admin.toString() });
+    await a.connect();
+    await a.query('CREATE DATABASE \"' + dbName + '\"');
+    await a.end();
+    console.log('[railway-start] created database ' + dbName);
+  }
+  const c = new Client({ connectionString: target });
   await c.connect();
   await c.query('CREATE EXTENSION IF NOT EXISTS vector');
   await c.end();
   console.log('[railway-start] pgvector extension present');
-})().catch((e) => { console.error('[railway-start] pgvector extension failed:', e.message); process.exit(1); });
+})().catch((e) => { console.error('[railway-start] database bootstrap failed:', e.message); process.exit(1); });
 ")
 
 echo "[railway-start] pushing database schema…"
