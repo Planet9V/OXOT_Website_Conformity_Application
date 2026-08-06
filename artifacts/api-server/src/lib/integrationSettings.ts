@@ -92,24 +92,28 @@ export interface MaskedIntegrationSettings {
 
 // ---------- Server-side getters (with secrets) ----------
 
+// getAppSettings() returns null when the app_settings row has never been
+// created (e.g. a deployment that seeds reference + content but not the base
+// settings row). These getters must degrade to empty config, never throw —
+// otherwise unrelated features (like the portfolio command center) 500.
 export async function getEmailConfig(): Promise<EmailConfig> {
   const row = await getAppSettings();
-  return row.emailConfig ?? {};
+  return row?.emailConfig ?? {};
 }
 
 export async function getLinkedinConfig(): Promise<LinkedinConfig> {
   const row = await getAppSettings();
-  return row.linkedinConfig ?? {};
+  return row?.linkedinConfig ?? {};
 }
 
 export async function getXConfig(): Promise<XConfig> {
   const row = await getAppSettings();
-  return row.xConfig ?? {};
+  return row?.xConfig ?? {};
 }
 
 export async function getConformityAlertsConfig(): Promise<ConformityAlertsConfig> {
   const row = await getAppSettings();
-  return row.conformityAlertsConfig ?? {};
+  return row?.conformityAlertsConfig ?? {};
 }
 
 // ---------- Masking ----------
