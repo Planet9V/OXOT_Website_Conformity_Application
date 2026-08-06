@@ -12,6 +12,8 @@
     "seed:demo": "node ./build.seedDemo.mjs && node --enable-source-maps ./dist/seedDemo.mjs",
     "seed:content": "node ./build.seedContent.mjs && node --enable-source-maps ./dist/seedContent.mjs",
     "seed:customer-site": "node ./build.seedCustomerSite.mjs && node --enable-source-maps ./dist/seedCustomerSite.mjs",
+    "seed:site": "node ./build.seedSiteSnapshot.mjs && node --enable-source-maps ./dist/seedSiteSnapshot.mjs",
+    "content:export": "node ./build.exportSiteContent.mjs && node --enable-source-maps ./dist/exportSiteContent.mjs",
     "alerts:run": "node ./build.alerts.mjs && node --enable-source-maps ./dist/runConformityAlerts.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run"
