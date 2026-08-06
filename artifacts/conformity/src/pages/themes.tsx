@@ -32,39 +32,45 @@ export default function Themes() {
 
       <div className="space-y-6">
         {themes.map((item) => (
-          <Card key={item.theme.id} className="rounded-md overflow-hidden">
-            <CardHeader className="bg-muted/30 border-b border-border pb-4">
-              <div className="flex justify-between items-start">
+          <Card key={item.theme.id} className="rounded-md">
+            <CardHeader className="pb-4">
+              <div className="flex justify-between items-start gap-4">
                 <div>
-                  <CardTitle className="text-xl mb-1">{item.theme.name}</CardTitle>
+                  <CardTitle className="text-xl font-serif font-normal mb-1">{item.theme.name}</CardTitle>
                   <CardDescription>{item.theme.description}</CardDescription>
                 </div>
-                <Badge variant="secondary" className="font-mono text-sm rounded-md">
-                  {item.totalRequirements} Reqs
-                </Badge>
+                <span className="shrink-0 font-mono text-xs text-muted-foreground uppercase tracking-wider pt-1.5">
+                  {item.totalRequirements} reqs
+                </span>
               </div>
             </CardHeader>
-            <CardContent className="p-0">
-              <div className="flex h-12 w-full relative group">
+            <CardContent className="pt-0 space-y-3">
+              <div className="flex h-2 w-full rounded-full overflow-hidden bg-muted">
                 {item.coverage.map((cov) => {
                   const percentage = Math.round((cov.requirementCount / item.totalRequirements) * 100);
                   if (percentage === 0) return null;
-                  
                   return (
-                    <div 
-                      key={cov.regulationKey} 
-                      className={`h-full ${getRegColor(cov.regulationKey)} relative transition-all duration-300 hover:opacity-90 flex items-center justify-center`}
+                    <div
+                      key={cov.regulationKey}
+                      className={`h-full ${getRegColor(cov.regulationKey)}`}
                       style={{ width: `${percentage}%` }}
                       title={`${cov.regulationShortName}: ${cov.requirementCount} requirements`}
-                    >
-                      {percentage > 10 && (
-                        <span className="text-xs font-bold font-mono tracking-tighter mix-blend-overlay text-white opacity-80">
-                          {cov.regulationShortName} ({cov.requirementCount})
-                        </span>
-                      )}
-                    </div>
+                    />
                   );
                 })}
+              </div>
+              <div className="flex flex-wrap gap-x-5 gap-y-1.5">
+                {item.coverage
+                  .filter((cov) => cov.requirementCount > 0)
+                  .map((cov) => (
+                    <span
+                      key={cov.regulationKey}
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground"
+                    >
+                      <span className={`h-2 w-2 rounded-full ${getRegColor(cov.regulationKey)}`} />
+                      {cov.regulationShortName} — {cov.requirementCount}
+                    </span>
+                  ))}
               </div>
             </CardContent>
           </Card>

@@ -28,13 +28,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
           
           <div className="col-span-1 md:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2 group inline-flex">
-              <div className="w-6 h-6 bg-primary rounded-sm flex items-center justify-center">
-                <span className="text-white font-display font-bold text-sm leading-none">O</span>
-              </div>
-              <span className="font-display font-bold text-lg tracking-tight">
-                {settings?.siteName || 'OXOT'}
-              </span>
+            <Link
+              href="/"
+              aria-label="OXOT — home"
+              className="inline-flex select-none font-sans text-lg font-semibold tracking-[0.3em] text-foreground no-underline"
+            >
+              {(settings?.siteName || 'OXOT').toUpperCase() === 'OXOT' ? (
+                <span>O<span className="text-primary">X</span>OT</span>
+              ) : (
+                <span>{settings?.siteName}</span>
+              )}
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm">
               {settings?.description || 'Operational eXcellence in Operational Technology.'}

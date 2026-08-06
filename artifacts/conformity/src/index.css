@@ -21,6 +21,7 @@
   --color-popover-border: hsl(var(--popover-border));
 
   --color-primary: hsl(var(--primary));
+  --color-primary-ink: hsl(var(--primary-ink));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-border: var(--primary-border);
 
@@ -111,6 +112,8 @@
 
   /* Dutch Orange */
   --primary: 28 90% 55%;
+  /* AA-contrast orange for small text on light surfaces (OXOT styleguide §2.3) */
+  --primary-ink: 28 100% 33%;
   --primary-foreground: 0 0% 100%;
 
   /* Steel blue */
@@ -198,6 +201,8 @@
   --popover-border: 220 15% 15%;
 
   --primary: 28 90% 55%;
+  /* Lighter orange for small text on dark surfaces (OXOT styleguide §2.3) */
+  --primary-ink: 28 100% 62%;
   --primary-foreground: 0 0% 100%;
 
   --secondary: 215 30% 45%;
