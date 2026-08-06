@@ -24,7 +24,6 @@ import {
   Briefcase,
   Building,
   Key,
-  Copy,
   UserCheck,
   Lock,
 } from "lucide-react";
@@ -424,11 +423,6 @@ function ActiveToggle({ member }: { member: any }) {
 function MemberRow({ member }: { member: any }) {
   const [editOpen, setEditOpen] = useState(false);
 
-  const copyPassword = (pwd: string) => {
-    navigator.clipboard.writeText(pwd || "Password123!");
-    toast.success("Copied password to clipboard!");
-  };
-
   return (
     <TableRow className={member.active ? "" : "opacity-60"}>
       <TableCell className="p-3">
@@ -458,16 +452,14 @@ function MemberRow({ member }: { member: any }) {
       </TableCell>
 
       <TableCell className="p-3">
-        <button
-          type="button"
-          onClick={() => copyPassword(member.plainPassword)}
-          className="flex items-center gap-1 font-mono text-[11px] bg-muted/60 hover:bg-muted px-2 py-1 rounded border border-border/40 text-muted-foreground hover:text-foreground transition-colors"
-          title="Click to copy demo password"
+        <span
+          className="inline-flex items-center gap-1.5 font-mono text-[11px] bg-muted/40 px-2 py-1 rounded border border-border/40 text-muted-foreground/50 select-none cursor-not-allowed"
+          title="Sign-in is disabled in the demo. Real deployments provision each team member their own credentials."
         >
-          <Lock className="h-3 w-3 text-amber-400 shrink-0" />
-          <span>{member.plainPassword || "Password123!"}</span>
-          <Copy className="h-2.5 w-2.5 shrink-0" />
-        </button>
+          <Lock className="h-3 w-3 shrink-0 opacity-50" />
+          <span className="tracking-[0.15em]">••••••••</span>
+          <span className="text-[9px] uppercase tracking-wider opacity-70">disabled</span>
+        </span>
       </TableCell>
 
       <TableCell className="p-3">
@@ -594,7 +586,7 @@ export default function Team() {
                 <th className="p-3">Position &amp; Dept</th>
                 <th className="p-3">Email &amp; Telephone</th>
                 <th className="p-3">Organization &amp; Mandate</th>
-                <th className="p-3">Demo Password</th>
+                <th className="p-3">Sign-in</th>
                 <th className="p-3">Status</th>
                 <th className="p-3 text-right">Actions</th>
               </tr>

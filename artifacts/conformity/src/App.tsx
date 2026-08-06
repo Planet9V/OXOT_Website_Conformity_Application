@@ -97,95 +97,72 @@ const queryClient = new QueryClient({
 });
 
 // The reference library + execution workbench live inside the app shell (header,
-// nav, footer). The demo front door (/welcome, /demo) renders full-bleed.
+// nav, footer). The whole shell is gated: reaching any /conformity/* route
+// challenges for sign-in first, and the login overlay hides everything beneath
+// it until authenticated. The public front doors (/welcome, /demo, /security,
+// /auditor-portal) live outside this shell in Router() and stay open.
 function ShellRoutes() {
   return (
-    <AppShell>
-      <Switch>
-        <Route path="/" component={Dashboard} />
-        <Route path="/overview">
-          <AuthGate>
-            <Overview />
-          </AuthGate>
-        </Route>
-        <Route path="/regulations" component={Regulations} />
-        <Route path="/regulations/:key" component={RegulationDetail} />
-        <Route path="/themes" component={Themes} />
-        <Route path="/requirements" component={Requirements} />
-        <Route path="/requirements/:id" component={RequirementDetail} />
-        <Route path="/mappings" component={Mappings} />
-        <Route path="/sources" component={Sources} />
-        <Route path="/sources/view/:filename" component={SourceViewer} />
-        <Route path="/products">
-          <ErrorBoundary>
-            <Products />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/products/:id">
-          <ErrorBoundary>
-            <ProductDetail />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/assessments/:id">
-          <AuthGate>
-            <Assessment />
-          </AuthGate>
-        </Route>
-        <Route path="/flows">
-          <AuthGate>
-            <Flows />
-          </AuthGate>
-        </Route>
-        <Route path="/reports/:id">
-          <AuthGate>
-            <ReportWorkspace />
-          </AuthGate>
-        </Route>
-        <Route path="/reports">
-          <AuthGate>
-            <Reports />
-          </AuthGate>
-        </Route>
-        <Route path="/profile">
-          <AuthGate>
-            <Profile />
-          </AuthGate>
-        </Route>
-        <Route path="/psirt">
-          <ErrorBoundary>
-            <Psirt />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/psirt/*">
-          <ErrorBoundary>
-            <Psirt />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/product-portfolio">
-          <ErrorBoundary>
-            <ProductPortfolioPage />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/product-portfolio/*">
-          <ErrorBoundary>
-            <ProductPortfolioPage />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/team">
-          <AuthGate>
-            <Team />
-          </AuthGate>
-        </Route>
-        <Route>
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center justify-center">
-            <h2 className="text-2xl font-bold mb-2">404 — Page not found</h2>
-            <p className="text-muted-foreground">
-              The requested page does not exist in the conformity workbench.
-            </p>
-          </div>
-        </Route>
-      </Switch>
-    </AppShell>
+    <AuthGate>
+      <AppShell>
+        <Switch>
+          <Route path="/" component={Dashboard} />
+          <Route path="/overview" component={Overview} />
+          <Route path="/regulations" component={Regulations} />
+          <Route path="/regulations/:key" component={RegulationDetail} />
+          <Route path="/themes" component={Themes} />
+          <Route path="/requirements" component={Requirements} />
+          <Route path="/requirements/:id" component={RequirementDetail} />
+          <Route path="/mappings" component={Mappings} />
+          <Route path="/sources" component={Sources} />
+          <Route path="/sources/view/:filename" component={SourceViewer} />
+          <Route path="/products">
+            <ErrorBoundary>
+              <Products />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/products/:id">
+            <ErrorBoundary>
+              <ProductDetail />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/assessments/:id" component={Assessment} />
+          <Route path="/flows" component={Flows} />
+          <Route path="/reports/:id" component={ReportWorkspace} />
+          <Route path="/reports" component={Reports} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/psirt">
+            <ErrorBoundary>
+              <Psirt />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/psirt/*">
+            <ErrorBoundary>
+              <Psirt />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/product-portfolio">
+            <ErrorBoundary>
+              <ProductPortfolioPage />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/product-portfolio/*">
+            <ErrorBoundary>
+              <ProductPortfolioPage />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/team" component={Team} />
+          <Route>
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center justify-center">
+              <h2 className="text-2xl font-bold mb-2">404 — Page not found</h2>
+              <p className="text-muted-foreground">
+                The requested page does not exist in the conformity workbench.
+              </p>
+            </div>
+          </Route>
+        </Switch>
+      </AppShell>
+    </AuthGate>
   );
 }
 

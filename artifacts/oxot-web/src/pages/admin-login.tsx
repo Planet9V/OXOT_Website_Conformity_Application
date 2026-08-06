@@ -14,7 +14,7 @@ import {
   FormLabel, 
   FormMessage 
 } from '@/components/ui/form';
-import { ShieldAlert, Loader2, Sparkles, KeyRound } from 'lucide-react';
+import { ShieldAlert, Loader2 } from 'lucide-react';
 import { useQueryClient } from '@tanstack/react-query';
 
 const loginSchema = z.object({
@@ -67,20 +67,6 @@ export default function AdminLogin() {
     loginMutation.mutate({ data });
   };
 
-  const handleQuickDemoLogin = () => {
-    form.setValue('username', 'oxotdemo');
-    form.setValue('password', 'oxot2026$');
-    setErrorMsg(null);
-    loginMutation.mutate({ data: { username: 'oxotdemo', password: 'oxot2026$' } });
-  };
-
-  const handleQuickAdminLogin = () => {
-    form.setValue('username', 'admin');
-    form.setValue('password', 'admin');
-    setErrorMsg(null);
-    loginMutation.mutate({ data: { username: 'admin', password: 'admin' } });
-  };
-
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 selection:bg-cyan-500/30">
       <div className="w-full max-w-md bg-slate-900/80 border border-slate-800 shadow-2xl rounded-2xl overflow-hidden backdrop-blur-xl">
@@ -97,39 +83,6 @@ export default function AdminLogin() {
         </div>
 
         <div className="p-8 space-y-6">
-          {/* Quick Sign-In Preset Buttons */}
-          <div className="space-y-2">
-            <div className="text-xs font-mono uppercase tracking-wider text-slate-400">One-Click Quick Sign In</div>
-            <div className="grid grid-cols-2 gap-3">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleQuickAdminLogin}
-                disabled={loginMutation.isPending}
-                className="border-cyan-500/30 bg-cyan-950/30 text-cyan-300 hover:bg-cyan-900/40 text-xs font-semibold rounded-xl"
-              >
-                <KeyRound className="w-3.5 h-3.5 mr-1.5" />
-                Admin (admin/admin)
-              </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handleQuickDemoLogin}
-                disabled={loginMutation.isPending}
-                className="border-indigo-500/30 bg-indigo-950/30 text-indigo-300 hover:bg-indigo-900/40 text-xs font-semibold rounded-xl"
-              >
-                <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                Demo Sandbox
-              </Button>
-            </div>
-          </div>
-
-          <div className="relative flex items-center justify-center my-4">
-            <div className="w-full border-t border-slate-800" />
-            <span className="absolute bg-slate-900 px-3 text-[11px] font-mono text-slate-500 uppercase">Or Manual Credentials</span>
-          </div>
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               {errorMsg && (
@@ -146,7 +99,7 @@ export default function AdminLogin() {
                   <FormItem>
                     <FormLabel className="text-slate-300 text-xs font-medium">Username</FormLabel>
                     <FormControl>
-                      <Input placeholder="admin" className="bg-slate-950 border-slate-800 text-slate-100 rounded-xl" {...field} />
+                      <Input placeholder="Username" className="bg-slate-950 border-slate-800 text-slate-100 rounded-xl" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
