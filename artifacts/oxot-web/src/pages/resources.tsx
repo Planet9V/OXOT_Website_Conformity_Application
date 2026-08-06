@@ -17,7 +17,7 @@ const COLLATERAL = [
 ];
 
 const REFERENCE = [
-  { icon: BookOpen, name: 'CRA Primer', body: 'A plain-language walk through the Cyber Resilience Act.', href: '/cra' },
+  { icon: BookOpen, name: 'CRA Primer', body: 'A plain-language walk through the Cyber Resilience Act.', href: '/cra-primer' },
   { icon: Newspaper, name: 'Regulatory news', body: 'A live corpus of CRA developments, refreshed daily.', href: '/news' },
   { icon: Library, name: 'Knowledge hub', body: 'Guides and analysis on getting products conformity-ready.', href: '/knowledge' },
   { icon: FileText, name: 'Source library', body: 'The primary legislation and technical annexes behind the requirements.', href: '/conformity-platform/sources' },
