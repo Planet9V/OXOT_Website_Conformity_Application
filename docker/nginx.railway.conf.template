@@ -1,0 +1,55 @@
+# nginx config for the single-container Railway deployment (see the
+# `railway` Dockerfile stage). docker/railway-start.sh substitutes __PORT__
+# with Railway's injected $PORT at boot; the API runs in the same container
+# on 127.0.0.1:8080. Path routing mirrors docker/nginx.conf.
+server {
+    listen __PORT__;
+    server_name _;
+
+    client_max_body_size 50m;
+
+    access_log /dev/stdout;
+    error_log /dev/stderr;
+
+    # Relative redirects: the container listens on Railway's injected port
+    # behind its edge proxy, so absolute redirects would leak the wrong host.
+    absolute_redirect off;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:8080/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        # The conformity assistant streams SSE — don't buffer API responses.
+        proxy_buffering off;
+        proxy_read_timeout 300s;
+    }
+
+    location /conformity/ {
+        alias /usr/share/nginx/html/conformity/;
+        index index.html;
+        # No $uri/ probe: real directories in the build (e.g. sources/) would
+        # 301-redirect SPA routes like /conformity/sources to a 403 dir listing.
+        try_files $uri @conformity_fallback;
+    }
+
+    location @conformity_fallback {
+        rewrite ^ /conformity/index.html last;
+    }
+
+    location /conformity-briefing/ {
+        alias /usr/share/nginx/html/conformity-briefing/;
+        index index.html;
+        try_files $uri @briefing_fallback;
+    }
+
+    location @briefing_fallback {
+        rewrite ^ /conformity-briefing/index.html last;
+    }
+
+    location / {
+        root /usr/share/nginx/html/oxot;
+        try_files $uri $uri/ /index.html;
+    }
+}
