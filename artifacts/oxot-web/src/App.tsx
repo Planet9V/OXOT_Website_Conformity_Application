@@ -35,6 +35,7 @@ import AdminNewsletter from '@/pages/admin-newsletter';
 import AdminSettings from '@/pages/admin-settings';
 import AdminIntegrations from '@/pages/admin-integrations';
 import KnowledgeHubPage from '@/pages/knowledge-hub';
+import RegulatoryNewsPage from '@/pages/regulatory-news';
 import CompetitorsPage from '@/pages/competitors-page';
 import TrustCenterPage from '@/pages/trust-center-page';
 import NewsletterConfirm from '@/pages/newsletter-confirm';
@@ -83,6 +84,9 @@ function PublicRoutes() {
       {/* Frameworks section — registered before /:slug so /frameworks isn't swallowed */}
       <Route path="/knowledge">
         {() => <PublicRoute component={KnowledgeHubPage} />}
+      </Route>
+      <Route path="/news">
+        {() => <PublicRoute component={RegulatoryNewsPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}

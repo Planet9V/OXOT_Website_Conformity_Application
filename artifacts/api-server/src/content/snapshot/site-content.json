@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-08-06T16:15:44.582Z",
+  "exportedAt": "2026-08-06T21:46:58.816Z",
   "siteSettings": [
     {
       "locale": "en",
@@ -891,243 +891,245 @@
           "type": "hero",
           "sortOrder": 0,
           "data": {
-            "title": "Four regulations. One evidence system.",
+            "title": "Run CRA conformity as an operation, not a fire drill.",
             "bullets": [
-              "Overlap mapped once, reused everywhere",
-              "Audit-ready evidence, always current",
-              "Engineers stay in their tools"
+              "Evidence you already own",
+              "Clocks that don't surprise you",
+              "A defensible Annex IV file"
             ],
-            "eyebrow": "Compliance, engineered",
-            "subtitle": "OXOT unifies the Cyber Resilience Act, the AI Act, the Machinery Regulation and IEC 62443 into a single, living source of conformity evidence — so your teams prove compliance instead of chasing it.",
+            "eyebrow": "CRA · Regulation (EU) 2024/2847",
+            "subtitle": "OXOT holds every product with digital elements in one workbench — a guided compliance journey per product, statutory Article 14 clocks running live, and Annex IV technical files generated from evidence you already hold. Blockers are ranked before they cost you the CE mark.",
             "primaryCta": {
-              "href": "/services",
-              "label": "Explore the platform"
+              "href": "/contact",
+              "label": "Book a walkthrough"
             },
             "secondaryCta": {
-              "href": "/approach",
-              "label": "See our approach"
+              "href": "/conformity/",
+              "label": "Open the workbench"
             }
           }
         },
         {
-          "type": "logo_wall",
-          "sortOrder": 1,
-          "data": {
-            "logos": [
-              {
-                "name": "Cyber Resilience Act"
-              },
-              {
-                "name": "EU AI Act"
-              },
-              {
-                "name": "Machinery Regulation 2023/1230"
-              },
-              {
-                "name": "IEC 62443"
-              },
-              {
-                "name": "NIS2 Directive"
-              },
-              {
-                "name": "Radio Equipment Directive"
-              }
-            ],
-            "title": "Built for the regulations reshaping industrial products"
-          }
-        },
-        {
           "type": "stat_band",
-          "sortOrder": 2,
+          "sortOrder": 1,
           "data": {
             "stats": [
               {
-                "label": "regulations",
-                "value": "4-in-1",
-                "sublabel": "mapped to one control set"
+                "label": "Reporting obligations enforceable",
+                "value": "11 Sep 2026",
+                "sublabel": "Article 14 · 24h / 72h / 14-day"
               },
               {
-                "label": "less duplicate work",
-                "value": "70%",
-                "sublabel": "across overlapping requirements"
+                "label": "Full application",
+                "value": "11 Dec 2027",
+                "sublabel": "All essential requirements · CE mark"
               },
               {
-                "label": "not quarters",
-                "value": "Weeks",
-                "sublabel": "to an audit-ready dossier"
-              },
-              {
-                "label": "traceable",
-                "value": "100%",
-                "sublabel": "every claim linked to evidence"
+                "label": "Maximum penalty",
+                "value": "€15M · 2.5%",
+                "sublabel": "or of global annual turnover"
               }
             ]
           }
         },
         {
           "type": "feature_grid",
-          "sortOrder": 3,
+          "sortOrder": 2,
           "data": {
-            "title": "Everything a conformity dossier needs, in one place",
-            "eyebrow": "The platform",
+            "title": "The CRA turns product work into a paperwork emergency.",
+            "eyebrow": "Why teams stall",
             "features": [
               {
-                "icon": "Library",
-                "title": "Unified control library",
-                "description": "One requirement model spanning CRA, AI Act, Machinery and IEC 62443 — mapped, deduplicated and versioned."
+                "icon": "Files",
+                "title": "Evidence lives everywhere",
+                "description": "Spreadsheets, tickets and engineers' laptops. Nothing is assessment-ready when the auditor asks."
               },
               {
-                "icon": "FileCheck",
-                "title": "Living evidence",
-                "description": "Link tickets, tests, SBOMs and design docs to controls. Evidence updates as your product does."
+                "icon": "Timer",
+                "title": "Clocks start without warning",
+                "description": "Article 14 gives 24 hours for early warning and 72 for detailed notification — from the moment of awareness."
               },
               {
-                "icon": "ScanSearch",
-                "title": "Gap detection",
-                "description": "See exactly which obligations are covered, partial or open — per product, per regulation, in real time."
+                "icon": "Boxes",
+                "title": "One portfolio, many classes",
+                "description": "Default, Class I and Class II each take a different route. Getting it wrong costs you the CE mark."
+              }
+            ]
+          }
+        },
+        {
+          "type": "two_column",
+          "sortOrder": 3,
+          "data": {
+            "cta": {
+              "href": "/conformity/",
+              "label": "Open the workbench"
+            },
+            "body": "Register each product once, then walk the eight-step journey: scope, classify, route, requirements, evidence, close gaps, documentation, ready for review. The readiness grade, the Article 14 clocks and the blocker list are always current — because they're computed from your live records, not a status deck.",
+            "title": "One workbench holds the whole statutory record.",
+            "eyebrow": "The product",
+            "imageAlt": "OXOT Conformity workbench — a product dossier showing the eight-step compliance journey, readiness grade and open blockers",
+            "imageUrl": "/workbench-dossier.png"
+          }
+        },
+        {
+          "type": "feature_grid",
+          "sortOrder": 4,
+          "data": {
+            "title": "Six modules, one statutory record.",
+            "eyebrow": "What's inside",
+            "features": [
+              {
+                "icon": "LayoutDashboard",
+                "title": "Operations & Triage",
+                "description": "Every assessment ranked by priority. An executive intervention board surfaces blocked requirements, overdue deadlines and live incidents in one queue."
               },
               {
-                "icon": "FileOutput",
-                "title": "Audit-ready export",
-                "description": "Generate a structured technical file and declaration of conformity your notified body can actually follow."
+                "icon": "FileText",
+                "title": "Product Dossiers",
+                "description": "A registered record per product — type, version, manufacturer, EU authorised representative, intended use — with an eight-step journey and evidence attached."
               },
               {
                 "icon": "ShieldAlert",
-                "title": "Risk & threat modeling",
-                "description": "Structured risk assessments aligned to IEC 62443 and the AI Act, reusable across product lines."
+                "title": "PSIRT Workbench",
+                "description": "Vulnerability surveillance connecting live intake, supplier scans, CISA KEV / CBOM correlation, VEX exploitability analysis and ISO 29147 advisory authoring."
               },
               {
-                "icon": "Users",
-                "title": "Expert in the loop",
-                "description": "OXOT consultants review your dossier and coach your team — the platform never leaves you alone with the hard calls."
+                "icon": "AlarmClock",
+                "title": "Article 14 Clocks",
+                "description": "24-hour early warning, 72-hour detailed notification and 14-day final report, filed through a direct interface to the ENISA Single Reporting Platform."
+              },
+              {
+                "icon": "Archive",
+                "title": "Evidence & BOM Vault",
+                "description": "A product-isolated repository for specifications, vulnerability reports, architecture and certificates — held to the Article 10(7) ten-year retention duty."
+              },
+              {
+                "icon": "FileCheck2",
+                "title": "Reports",
+                "description": "Conformity assessment reports in full and board editions, compiled deterministically from live records and frozen at generation time. Exports to PDF."
               }
-            ],
-            "subtitle": "Stop maintaining four parallel spreadsheets. OXOT models the shared reality underneath every regulation and keeps it current as your product evolves."
-          }
-        },
-        {
-          "type": "two_column",
-          "sortOrder": 4,
-          "data": {
-            "cta": {
-              "href": "/approach",
-              "label": "See how we fix it"
-            },
-            "body": "CRA wants secure-by-design evidence. IEC 62443 wants the same, in its own language. The Machinery Regulation adds safety. The AI Act adds risk management. Most teams answer each one separately — and pay for the same work four times.",
-            "title": "The regulations overlap. Your tooling doesn't.",
-            "bullets": [
-              "Duplicate requirements re-documented per framework",
-              "Evidence that goes stale the moment code ships",
-              "No single view of what is actually covered"
-            ],
-            "eyebrow": "The problem",
-            "reverse": false
-          }
-        },
-        {
-          "type": "two_column",
-          "sortOrder": 5,
-          "data": {
-            "cta": {
-              "href": "/services",
-              "label": "Explore services"
-            },
-            "body": "OXOT maps every obligation to a shared control once, then wires those controls to the evidence your teams already produce. Compliance stops being a project and becomes a property of how you work.",
-            "title": "Prove conformity as a by-product of building",
-            "bullets": [
-              "One control satisfies many regulations",
-              "Engineers contribute evidence without leaving their tools",
-              "Leadership sees conformity status at a glance"
-            ],
-            "eyebrow": "The shift",
-            "reverse": true
-          }
-        },
-        {
-          "type": "comparison_table",
-          "sortOrder": 6,
-          "data": {
-            "rows": [
-              {
-                "label": "Requirement mapping",
-                "values": [
-                  "Repeated per regulation",
-                  true
-                ]
-              },
-              {
-                "label": "Evidence freshness",
-                "values": [
-                  "Manual, drifts quickly",
-                  true
-                ]
-              },
-              {
-                "label": "Cross-regulation reuse",
-                "values": [
-                  false,
-                  true
-                ]
-              },
-              {
-                "label": "Audit preparation",
-                "values": [
-                  "Quarter-long scramble",
-                  true
-                ]
-              },
-              {
-                "label": "Expert guidance",
-                "values": [
-                  "Ad-hoc consultants",
-                  true
-                ]
-              },
-              {
-                "label": "Real-time coverage view",
-                "values": [
-                  false,
-                  true
-                ]
-              }
-            ],
-            "title": "One system versus four silos",
-            "columns": [
-              "Four separate efforts",
-              "OXOT unified system"
-            ],
-            "eyebrow": "Why OXOT",
-            "subtitle": "What changes when overlapping regulations share a single evidence backbone."
+            ]
           }
         },
         {
           "type": "steps",
-          "sortOrder": 7,
+          "sortOrder": 5,
           "data": {
             "steps": [
               {
                 "title": "Scope",
                 "number": "01",
-                "description": "We map your products to the regulations that apply and the controls they share."
+                "description": "Confirm the CRA applies and record the Article behind every answer."
               },
               {
-                "title": "Connect",
+                "title": "Classify",
                 "number": "02",
-                "description": "Evidence sources — tests, SBOMs, risk assessments — are wired into the control model."
+                "description": "Determine the product class — default, Important Class I or II."
+              },
+              {
+                "title": "Route",
+                "number": "03",
+                "description": "Select the conformity assessment route the class requires."
+              },
+              {
+                "title": "Requirements",
+                "number": "04",
+                "description": "Instantiate the Annex I requirement checklist for that route."
+              },
+              {
+                "title": "Evidence",
+                "number": "05",
+                "description": "Attach the tests, SBOMs and documents that satisfy each requirement."
               },
               {
                 "title": "Close gaps",
-                "number": "03",
-                "description": "OXOT surfaces what's open; our experts help you close it efficiently."
+                "number": "06",
+                "description": "Resolve every blocker — nothing left that caps the readiness grade."
               },
               {
-                "title": "Sustain",
-                "number": "04",
-                "description": "The dossier stays current automatically, ready for audit at any moment."
+                "title": "Documentation",
+                "number": "07",
+                "description": "Complete the generated Annex IV technical file."
+              },
+              {
+                "title": "Ready for review",
+                "number": "08",
+                "description": "Grade meets the bar with no blockers or open incidents."
               }
             ],
-            "title": "From scattered documents to a living dossier",
-            "eyebrow": "How it works"
+            "title": "From scoping to a defensible Declaration of Conformity.",
+            "eyebrow": "The eight-step compliance journey"
+          }
+        },
+        {
+          "type": "logo_wall",
+          "sortOrder": 6,
+          "data": {
+            "logos": [
+              {
+                "name": "ENISA Single Reporting Platform"
+              },
+              {
+                "name": "Member State CSIRT nodes"
+              },
+              {
+                "name": "CISA KEV"
+              },
+              {
+                "name": "SBOM / HBOM / CBOM"
+              },
+              {
+                "name": "ISO/IEC 29147 & 30111"
+              },
+              {
+                "name": "VEX"
+              },
+              {
+                "name": "Annex I · III · IV"
+              }
+            ],
+            "title": "Built on the regulation · interoperates with"
+          }
+        },
+        {
+          "type": "feature_grid",
+          "sortOrder": 7,
+          "data": {
+            "title": "Wherever you sit in the supply chain, the CRA finds you.",
+            "eyebrow": "Who it's for",
+            "features": [
+              {
+                "icon": "Factory",
+                "title": "Manufacturers",
+                "description": "You carry the core duties — secure-by-design, vulnerability handling, the SBOM and the CE mark. This is your system of record."
+              },
+              {
+                "icon": "Cpu",
+                "title": "OEMs & sub-assemblers",
+                "description": "Your components become someone's product. Prove your part conforms, once, and hand over defensible evidence."
+              },
+              {
+                "icon": "Truck",
+                "title": "Importers & distributors",
+                "description": "You must verify the manufacturer's conformity before you place a product. See it at a glance, per product."
+              },
+              {
+                "icon": "Wrench",
+                "title": "System integrators",
+                "description": "Substantially modify a product and you inherit manufacturer obligations. Track what you changed and what it now requires."
+              },
+              {
+                "icon": "Building2",
+                "title": "Owner / operators",
+                "description": "Under NIS2 you answer for what you run. Hold your suppliers' CRA evidence beside your own operational record."
+              },
+              {
+                "icon": "UserCheck",
+                "title": "Authorised representatives",
+                "description": "Act for a non-EU manufacturer with the technical file and the reporting duties in one auditable place."
+              }
+            ]
           }
         },
         {
@@ -1135,7 +1137,7 @@
           "sortOrder": 8,
           "data": {
             "role": "Industrial automation vendor",
-            "quote": "We used to treat every regulation as a separate fire drill. With OXOT the evidence writes itself once and answers all of them.",
+            "quote": "We used to treat the CRA as a fire drill every quarter. Now the evidence writes itself once and the Article 14 clock is running before we even open a ticket.",
             "author": "Head of Product Security"
           }
         },
@@ -1145,39 +1147,39 @@
           "data": {
             "items": [
               {
-                "answer": "The Cyber Resilience Act, the EU AI Act, the Machinery Regulation (2023/1230) and IEC 62443, with adjacent frameworks like NIS2 mapped in.",
-                "question": "Which regulations does OXOT cover?"
+                "answer": "Reporting obligations are enforceable from 11 September 2026; full application — all essential requirements and CE marking — from 11 December 2027. The detection and reporting machinery has to be running well before the product deadline.",
+                "question": "When do the CRA obligations actually bite?"
               },
               {
-                "answer": "Both. The platform maintains your evidence; OXOT experts review dossiers and guide your team through the hard decisions.",
-                "question": "Is this software or consulting?"
+                "answer": "Almost any product with digital elements that connects to a device or network is in scope. The workbench walks the scoping questions and records the Article each answer depends on.",
+                "question": "Does my product even fall under the CRA?"
               },
               {
-                "answer": "Minimally. Evidence is pulled from the systems they already use, so contribution happens in the flow of their work.",
-                "question": "Do our engineers have to learn a new tool?"
+                "answer": "No — it's most of the evidence. OXOT maps your existing 62443 work and SBOMs straight onto CRA requirements, so prior work becomes CRA evidence.",
+                "question": "We already do IEC 62443 / hold SBOMs. Is that wasted?"
               },
               {
-                "answer": "Most teams reach an audit-ready dossier in weeks rather than quarters, because overlapping work is only done once.",
-                "question": "How quickly can we be audit-ready?"
+                "answer": "No. OXOT is the operations system that produces and holds the evidence. Classification and conformity route are determined per product against the current text of the Regulation and any harmonised standards.",
+                "question": "Is this legal advice?"
               }
             ],
-            "title": "What teams ask before starting",
-            "eyebrow": "Questions"
+            "title": "What teams ask us first.",
+            "eyebrow": "Before you start"
           }
         },
         {
           "type": "cta",
           "sortOrder": 10,
           "data": {
-            "title": "See your conformity status in one view",
-            "subtitle": "Book a walkthrough and we'll map your products to the regulations that matter.",
+            "title": "See your own portfolio in the workbench.",
+            "subtitle": "A 45-minute walkthrough covers classification, the evidence you already hold, and what a defensible Annex IV file looks like for your products.",
             "primaryCta": {
               "href": "/contact",
-              "label": "Talk to OXOT"
+              "label": "Book a walkthrough"
             },
             "secondaryCta": {
-              "href": "/services",
-              "label": "Explore services"
+              "href": "/conformity/",
+              "label": "Open the workbench"
             }
           }
         }

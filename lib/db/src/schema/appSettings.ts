@@ -106,6 +106,22 @@ export type ConformityAlertsConfig = {
   maxReminders?: number;
 };
 
+/**
+ * Scheduled regeneration of the live CRA regulatory-news corpus. A daily
+ * in-process timer runs the LLM web search at `hourLocal` in `timezone` when
+ * `enabled`, appending new articles to the cache. `lastRunAt` guards against
+ * double-runs across the day.
+ */
+export type RegulatoryNewsConfig = {
+  enabled?: boolean;
+  /** Local hour of day to run (0–23). Default 7. */
+  hourLocal?: number;
+  /** IANA timezone the hour is interpreted in. Default America/Chicago (CST/CDT). */
+  timezone?: string;
+  /** ISO timestamp of the last successful scheduled run. */
+  lastRunAt?: string;
+};
+
 export const appSettingsTable = pgTable("app_settings", {
   id: serial("id").primaryKey(),
   llmConfig: jsonb("llm_config").$type<LlmConfig>().notNull().default({}),
@@ -114,6 +130,10 @@ export const appSettingsTable = pgTable("app_settings", {
   xConfig: jsonb("x_config").$type<XConfig>().notNull().default({}),
   conformityAlertsConfig: jsonb("conformity_alerts_config")
     .$type<ConformityAlertsConfig>()
+    .notNull()
+    .default({}),
+  regulatoryNewsConfig: jsonb("regulatory_news_config")
+    .$type<RegulatoryNewsConfig>()
     .notNull()
     .default({}),
   updatedAt: timestamp("updated_at", { withTimezone: true })

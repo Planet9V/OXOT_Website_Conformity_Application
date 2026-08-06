@@ -6,6 +6,7 @@ import {
   type LinkedinConfig,
   type XConfig,
   type ConformityAlertsConfig,
+  type RegulatoryNewsConfig,
   type IntegrationHealth,
 } from "@workspace/db";
 import { eq, sql } from "drizzle-orm";
@@ -114,6 +115,25 @@ export async function getXConfig(): Promise<XConfig> {
 export async function getConformityAlertsConfig(): Promise<ConformityAlertsConfig> {
   const row = await getAppSettings();
   return row?.conformityAlertsConfig ?? {};
+}
+
+export async function getRegulatoryNewsConfig(): Promise<RegulatoryNewsConfig> {
+  const row = await getAppSettings();
+  return row?.regulatoryNewsConfig ?? {};
+}
+
+/** Merge-update the regulatory-news schedule config, creating the row if absent. */
+export async function updateRegulatoryNewsConfig(
+  patch: Partial<RegulatoryNewsConfig>,
+): Promise<RegulatoryNewsConfig> {
+  const row = await getAppSettings();
+  const merged: RegulatoryNewsConfig = { ...(row?.regulatoryNewsConfig ?? {}), ...patch };
+  if (row) {
+    await db.update(appSettingsTable).set({ regulatoryNewsConfig: merged }).where(eq(appSettingsTable.id, row.id));
+  } else {
+    await db.insert(appSettingsTable).values({ regulatoryNewsConfig: merged });
+  }
+  return merged;
 }
 
 // ---------- Masking ----------

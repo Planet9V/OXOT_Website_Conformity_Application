@@ -119,6 +119,126 @@ function KnowledgeIndexCard({ enabled }: { enabled: boolean }) {
   );
 }
 
+interface NewsSchedule {
+  enabled: boolean;
+  hourLocal: number;
+  timezone: string;
+  lastRunAt: string | null;
+}
+
+function NewsSchedulerCard() {
+  const [cfg, setCfg] = useState<NewsSchedule | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [running, setRunning] = useState(false);
+
+  const load = () =>
+    fetch("/api/admin/settings/regulatory-news")
+      .then((r) => r.json())
+      .then(setCfg)
+      .catch(() => {});
+  useEffect(() => {
+    load();
+  }, []);
+
+  const save = async (patch: Partial<NewsSchedule>) => {
+    setSaving(true);
+    try {
+      const r = await fetch("/api/admin/settings/regulatory-news", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(patch),
+      });
+      const next = await r.json();
+      setCfg(next);
+      toast({ title: "Schedule updated" });
+    } catch {
+      toast({ title: "Could not save schedule", variant: "destructive" });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const runNow = async () => {
+    setRunning(true);
+    try {
+      const r = await fetch("/api/admin/settings/regulatory-news/run", { method: "POST" });
+      const res = await r.json();
+      toast({
+        title: res.ok ? `Added ${res.inserted} new article(s)` : `Run failed: ${res.reason ?? "unknown"}`,
+        variant: res.ok ? undefined : "destructive",
+      });
+      load();
+    } catch {
+      toast({ title: "Run failed", variant: "destructive" });
+    } finally {
+      setRunning(false);
+    }
+  };
+
+  return (
+    <div className="rounded-xl border bg-card p-5 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="space-y-1">
+          <h3 className="font-display font-semibold text-foreground flex items-center gap-2">
+            <Database className="h-4 w-4 text-primary" /> CRA regulatory-news schedule
+          </h3>
+          <p className="text-sm text-muted-foreground max-w-xl">
+            Runs the live web search and appends new CRA articles to the news corpus once per day. Uses the
+            <span className="font-mono"> Web &amp; Vulnerability Search</span> model above.
+          </p>
+        </div>
+        <Button variant="outline" size="sm" onClick={runNow} disabled={running} className="gap-1.5">
+          {running ? "Running…" : "Run now"}
+        </Button>
+      </div>
+
+      {!cfg ? (
+        <Skeleton className="h-10 w-full mt-4 rounded-lg" />
+      ) : (
+        <div className="mt-4 flex flex-wrap items-end gap-4">
+          <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+            <input
+              type="checkbox"
+              checked={cfg.enabled}
+              disabled={saving}
+              onChange={(e) => save({ enabled: e.target.checked })}
+              className="h-4 w-4 accent-primary"
+            />
+            {cfg.enabled ? "Enabled" : "Disabled"}
+          </label>
+          <div className="space-y-1">
+            <Label className="text-xs">Hour (local)</Label>
+            <Input
+              type="number"
+              min={0}
+              max={23}
+              value={cfg.hourLocal}
+              disabled={saving}
+              onChange={(e) => setCfg({ ...cfg, hourLocal: Number(e.target.value) })}
+              onBlur={(e) => save({ hourLocal: Number(e.target.value) })}
+              className="h-9 w-20"
+            />
+          </div>
+          <div className="space-y-1">
+            <Label className="text-xs">Timezone</Label>
+            <Input
+              value={cfg.timezone}
+              disabled={saving}
+              onChange={(e) => setCfg({ ...cfg, timezone: e.target.value })}
+              onBlur={(e) => save({ timezone: e.target.value })}
+              className="h-9 w-48 font-mono text-xs"
+            />
+          </div>
+          <div className="text-xs text-muted-foreground">
+            Last run:{" "}
+            {cfg.lastRunAt ? new Date(cfg.lastRunAt).toLocaleString() : "never"}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const ROLES: { key: string; role: string; label: string; help: string }[] = [
   { key: "chatModel", role: "chat", label: "Assistant Chat & Reasoning", help: "DeepSeek R1 reasoning model for CRA gap analysis and audit guidance." },
   { key: "briefModel", role: "brief", label: "Wizard & Executive Briefs", help: "Executive summary, landing page copy, and CRA brief generation." },
@@ -271,6 +391,7 @@ export default function AdminAi() {
       ) : (
         <div className="space-y-6">
           <KnowledgeIndexCard enabled={authenticated} />
+          <NewsSchedulerCard />
 
           {/* OpenRouter Key Card */}
           <div className="rounded-xl border bg-card p-5 shadow-sm">

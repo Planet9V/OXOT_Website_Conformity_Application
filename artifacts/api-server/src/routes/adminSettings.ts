@@ -25,9 +25,12 @@ import {
   getLinkedinConfig,
   recordIntegrationHealth,
   recordIntegrationEvent,
+  getRegulatoryNewsConfig,
+  updateRegulatoryNewsConfig,
 } from "../lib/integrationSettings";
 import { verifyXConnection, verifyLinkedinConnection } from "../lib/social";
 import { runConformityAlertScan } from "../lib/conformityAlertScan";
+import { generateRegulatoryNews } from "../lib/regulatoryNewsGenerator";
 import { sendEmail } from "../lib/mailer";
 import { logger } from "../lib/logger";
 
@@ -224,6 +227,47 @@ router.put("/admin/settings/conformity-alerts", requireAdmin, async (req, res) =
 router.post("/admin/settings/conformity-alerts/run", requireAdmin, async (_req, res) => {
   const result = await runConformityAlertScan();
   res.json(RunConformityAlertsCheckResponse.parse(result));
+});
+
+// ── Regulatory-news scheduler ────────────────────────────────────────────────
+router.get("/admin/settings/regulatory-news", requireAdmin, async (_req, res) => {
+  const cfg = await getRegulatoryNewsConfig();
+  res.json({
+    enabled: cfg.enabled ?? false,
+    hourLocal: Number.isInteger(cfg.hourLocal) ? cfg.hourLocal : 7,
+    timezone: cfg.timezone || "America/Chicago",
+    lastRunAt: cfg.lastRunAt ?? null,
+  });
+});
+
+router.put("/admin/settings/regulatory-news", requireAdmin, async (req, res) => {
+  const { enabled, hourLocal, timezone } = req.body ?? {};
+  const patch: Record<string, unknown> = {};
+  if (typeof enabled === "boolean") patch.enabled = enabled;
+  if (Number.isInteger(hourLocal) && hourLocal >= 0 && hourLocal <= 23) patch.hourLocal = hourLocal;
+  if (typeof timezone === "string" && timezone.trim()) {
+    try {
+      // Reject an invalid IANA zone before persisting it.
+      new Intl.DateTimeFormat("en-CA", { timeZone: timezone });
+      patch.timezone = timezone.trim();
+    } catch {
+      res.status(400).json({ error: `Unknown timezone: ${timezone}` });
+      return;
+    }
+  }
+  const cfg = await updateRegulatoryNewsConfig(patch);
+  res.json({
+    enabled: cfg.enabled ?? false,
+    hourLocal: Number.isInteger(cfg.hourLocal) ? cfg.hourLocal : 7,
+    timezone: cfg.timezone || "America/Chicago",
+    lastRunAt: cfg.lastRunAt ?? null,
+  });
+});
+
+// Manual trigger: run the CRA news search + generation right now (dedup by title).
+router.post("/admin/settings/regulatory-news/run", requireAdmin, async (_req, res) => {
+  const result = await generateRegulatoryNews();
+  res.json(result);
 });
 
 // Live test ping endpoint for verifying assigned OpenRouter models

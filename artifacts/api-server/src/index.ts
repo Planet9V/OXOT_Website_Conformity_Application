@@ -3,6 +3,7 @@ import { logger } from "./lib/logger";
 import { runDueScheduledSends } from "./lib/newsletter";
 import { runLinkedinExpiryScan } from "./lib/linkedinExpiryScan";
 import { runConformityAlertScan } from "./lib/conformityAlertScan";
+import { runRegulatoryNewsSchedule } from "./lib/regulatoryNewsGenerator";
 import { runConformityBootstrap } from "./lib/conformityBootstrap";
 
 const rawPort = process.env["PORT"];
@@ -95,4 +96,22 @@ app.listen(port, (err) => {
         alertScanBusy = false;
       });
   }, 60_000);
+
+  // Daily regeneration of the live CRA regulatory-news corpus. The runner is
+  // timezone-aware and guarded by lastRunAt in app_settings, so a 5-minute
+  // tick fires the LLM search once per day at the configured local hour
+  // (default 07:00 America/Chicago) only when the admin has enabled it.
+  let newsScheduleBusy = false;
+  setInterval(() => {
+    if (newsScheduleBusy) return;
+    newsScheduleBusy = true;
+    runRegulatoryNewsSchedule()
+      .then((r) => {
+        if (r.ran) logger.info(r, "Regulatory news scheduled run");
+      })
+      .catch((err) => logger.error({ err }, "Regulatory news schedule failed"))
+      .finally(() => {
+        newsScheduleBusy = false;
+      });
+  }, 5 * 60_000);
 });
