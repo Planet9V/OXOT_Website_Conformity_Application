@@ -49,3 +49,25 @@ COPY --from=build /app/artifacts/oxot-web/dist/public /usr/share/nginx/html/oxot
 COPY --from=build /app/artifacts/conformity/dist/public /usr/share/nginx/html/conformity
 COPY --from=build /app/artifacts/conformity-briefing/dist/public /usr/share/nginx/html/conformity-briefing
 EXPOSE 80
+
+# ---------------------------------------------------------------------------
+# railway — single-container deployment for Railway (built as the FINAL stage
+# on purpose: Railway builds a Dockerfile's last stage, while local
+# docker-compose pins the named stages above and never touches this one).
+# nginx serves the static frontends on Railway's injected $PORT and proxies
+# /api to the bundled API on 127.0.0.1:8080; docker/railway-start.sh pushes
+# the schema and runs the guarded seeds before starting both.
+FROM build AS railway
+ENV NODE_ENV=production
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends nginx \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -f /etc/nginx/sites-enabled/default
+RUN mkdir -p /usr/share/nginx/html /etc/nginx/templates \
+ && cp -r /app/artifacts/oxot-web/dist/public /usr/share/nginx/html/oxot \
+ && cp -r /app/artifacts/conformity/dist/public /usr/share/nginx/html/conformity \
+ && cp -r /app/artifacts/conformity-briefing/dist/public /usr/share/nginx/html/conformity-briefing
+COPY docker/nginx.railway.conf.template /etc/nginx/templates/railway.conf.template
+COPY docker/railway-start.sh /usr/local/bin/railway-start.sh
+RUN chmod +x /usr/local/bin/railway-start.sh
+CMD ["/usr/local/bin/railway-start.sh"]
