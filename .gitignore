@@ -49,3 +49,7 @@ Thumbs.db
 # Coverage and test artifacts
 coverage/
 .vitest/
+
+# Local browser-automation session artifacts and ad-hoc verification screenshots
+.playwright-mcp/
+/*.png
