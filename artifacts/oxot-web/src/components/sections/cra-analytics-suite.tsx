@@ -195,7 +195,7 @@ export function CraAnalyticsSuite() {
     {
       name: "Technical File",
       value: liveData?.overallReadinessPct ? Math.min(100, liveData.overallReadinessPct + 2) : currentProduct.technicalFilePct,
-      fill: "#6366f1",
+      fill: "hsl(var(--primary))",
     },
     {
       name: "Vulnerabilities",
@@ -223,7 +223,7 @@ export function CraAnalyticsSuite() {
               Regulation (EU) 2024/2847
             </Badge>
           </div>
-          <h2 className="text-xl font-display font-bold text-foreground">
+          <h2 className="text-xl font-display font-normal text-foreground">
             EU Cyber Resilience Act (CRA) Status &amp; Product Drill-Down
           </h2>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -256,7 +256,7 @@ export function CraAnalyticsSuite() {
               variant={priorityFilter === "important" ? "secondary" : "ghost"}
               size="sm"
               onClick={() => setPriorityFilter("important")}
-              className="h-7 text-xs px-2.5 rounded-lg font-medium text-indigo-400"
+              className="h-7 text-xs px-2.5 rounded-lg font-medium text-primary"
             >
               Class I
             </Button>
@@ -286,7 +286,7 @@ export function CraAnalyticsSuite() {
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm flex items-center justify-between">
           <div>
             <span className="text-xs font-mono font-semibold text-muted-foreground uppercase">CRA Score</span>
-            <div className="text-3xl font-display font-extrabold text-foreground mt-1">
+            <div className="text-3xl font-display font-medium text-foreground mt-1">
               {currentProduct.overallScore}%
             </div>
             <span className="text-[11px] text-emerald-500 font-medium font-mono">Target &gt;80% Compliant</span>
@@ -299,12 +299,12 @@ export function CraAnalyticsSuite() {
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm flex items-center justify-between">
           <div>
             <span className="text-xs font-mono font-semibold text-muted-foreground uppercase">Technical File</span>
-            <div className="text-3xl font-display font-extrabold text-indigo-400 mt-1">
+            <div className="text-3xl font-display font-medium text-primary mt-1">
               {currentProduct.technicalFilePct}%
             </div>
             <span className="text-[11px] text-muted-foreground font-mono">Annex IV Documentation</span>
           </div>
-          <div className="rounded-xl bg-indigo-500/10 p-3 text-indigo-400">
+          <div className="rounded-xl bg-primary/10 p-3 text-primary">
             <Layers className="h-6 w-6" />
           </div>
         </div>
@@ -312,7 +312,7 @@ export function CraAnalyticsSuite() {
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm flex items-center justify-between">
           <div>
             <span className="text-xs font-mono font-semibold text-muted-foreground uppercase">Vulnerability Clock</span>
-            <div className="text-3xl font-display font-extrabold text-emerald-400 mt-1">
+            <div className="text-3xl font-display font-medium text-emerald-400 mt-1">
               {currentProduct.vulnerabilityReadinessPct}%
             </div>
             <span className="text-[11px] text-emerald-500 font-mono">24-hr Article 14 Ready</span>
@@ -325,7 +325,7 @@ export function CraAnalyticsSuite() {
         <div className="rounded-2xl border border-border bg-card p-4 shadow-sm flex items-center justify-between">
           <div>
             <span className="text-xs font-mono font-semibold text-muted-foreground uppercase">Test Verification</span>
-            <div className="text-3xl font-display font-extrabold text-amber-400 mt-1">
+            <div className="text-3xl font-display font-medium text-amber-400 mt-1">
               {currentProduct.testCoveragePct}%
             </div>
             <span className="text-[11px] text-amber-500 font-mono">Annex I Rule Coverage</span>
@@ -344,7 +344,7 @@ export function CraAnalyticsSuite() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-lg font-display font-bold text-foreground flex items-center gap-2">
+                <h3 className="text-lg font-display font-normal text-foreground flex items-center gap-2">
                   <BarChart3 className="h-5 w-5 text-primary" />
                   CRA Annex I Essential Requirements Status
                 </h3>
@@ -360,14 +360,14 @@ export function CraAnalyticsSuite() {
             <div className="h-72 w-full pt-2">
               <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart data={chartData}>
-                  <XAxis dataKey="domain" stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                  <YAxis stroke="#475569" tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                  <XAxis dataKey="domain" stroke="hsl(var(--muted-foreground))" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }} />
+                  <YAxis stroke="hsl(var(--muted-foreground))" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }} />
                   <RechartsTooltip
                     contentStyle={{
-                      backgroundColor: "#0f172a",
-                      borderColor: "#334155",
+                      backgroundColor: "hsl(var(--popover))",
+                      borderColor: "hsl(var(--border))",
                       borderRadius: 12,
-                      color: "#fff",
+                      color: "hsl(var(--popover-foreground))",
                       fontSize: 12,
                     }}
                   />
@@ -375,7 +375,7 @@ export function CraAnalyticsSuite() {
                   <Bar dataKey="compliant" name="Compliant" stackId="a" fill="#10b981" radius={[0, 0, 0, 0]} />
                   <Bar dataKey="inProgress" name="In Progress" stackId="a" fill="#f59e0b" radius={[0, 0, 0, 0]} />
                   <Bar dataKey="blocked" name="Blocked / Gap" stackId="a" fill="#ef4444" radius={[4, 4, 0, 0]} />
-                  <Line type="monotone" dataKey="target" name="Target Target" stroke="#6366f1" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="target" name="Target Target" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 4 }} />
                 </ComposedChart>
               </ResponsiveContainer>
             </div>
@@ -394,8 +394,8 @@ export function CraAnalyticsSuite() {
         {/* CRA Readiness Radial Gauge Panel */}
         <div className="rounded-3xl border border-border bg-card p-6 shadow-xl flex flex-col justify-between">
           <div>
-            <h3 className="text-lg font-display font-bold text-foreground mb-1 flex items-center gap-2">
-              <PieChart className="h-5 w-5 text-indigo-400" />
+            <h3 className="text-lg font-display font-normal text-foreground mb-1 flex items-center gap-2">
+              <PieChart className="h-5 w-5 text-primary" />
               CRA Readiness Gauge
             </h3>
             <p className="text-xs text-muted-foreground mb-4">
@@ -422,17 +422,17 @@ export function CraAnalyticsSuite() {
                   />
                   <RechartsTooltip
                     contentStyle={{
-                      backgroundColor: "#0f172a",
-                      borderColor: "#334155",
+                      backgroundColor: "hsl(var(--popover))",
+                      borderColor: "hsl(var(--border))",
                       borderRadius: 12,
-                      color: "#fff",
+                      color: "hsl(var(--popover-foreground))",
                       fontSize: 12,
                     }}
                   />
                 </RadialBarChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 pointer-events-none">
-                <span className="text-3xl font-display font-extrabold text-foreground">
+                <span className="text-3xl font-display font-medium text-foreground">
                   {overallReadiness}%
                 </span>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase">CRA Posture</span>
@@ -443,7 +443,7 @@ export function CraAnalyticsSuite() {
           <div className="space-y-2 pt-2 border-t text-xs">
             <div className="flex justify-between items-center">
               <span className="flex items-center gap-1.5 text-muted-foreground">
-                <span className="h-2.5 w-2.5 rounded-full bg-indigo-500" /> Technical File (Annex IV)
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" /> Technical File (Annex IV)
               </span>
               <span className="font-mono font-bold text-foreground">{currentProduct.technicalFilePct}%</span>
             </div>
@@ -472,8 +472,8 @@ export function CraAnalyticsSuite() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-lg font-display font-bold text-foreground flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-indigo-400" />
+                <h3 className="text-lg font-display font-normal text-foreground flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-primary" />
                   Product Release Version Compliance Trending
                 </h3>
                 <p className="text-xs text-muted-foreground">
@@ -497,14 +497,14 @@ export function CraAnalyticsSuite() {
                     ]
                   }
                 >
-                  <XAxis dataKey="version" stroke="#94a3b8" tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                  <YAxis domain={[40, 100]} stroke="#475569" tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                  <XAxis dataKey="version" stroke="hsl(var(--muted-foreground))" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }} />
+                  <YAxis domain={[40, 100]} stroke="hsl(var(--muted-foreground))" tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }} />
                   <RechartsTooltip
                     contentStyle={{
-                      backgroundColor: "#0f172a",
-                      borderColor: "#334155",
+                      backgroundColor: "hsl(var(--popover))",
+                      borderColor: "hsl(var(--border))",
                       borderRadius: 12,
-                      color: "#fff",
+                      color: "hsl(var(--popover-foreground))",
                       fontSize: 12,
                     }}
                   />
@@ -512,9 +512,9 @@ export function CraAnalyticsSuite() {
                     type="monotone"
                     dataKey="score"
                     name="CRA Readiness %"
-                    stroke="#818cf8"
+                    stroke="hsl(var(--primary))"
                     strokeWidth={3}
-                    dot={{ r: 6, fill: "#6366f1", strokeWidth: 2 }}
+                    dot={{ r: 6, fill: "hsl(var(--primary))", strokeWidth: 2 }}
                     activeDot={{ r: 8 }}
                   />
                 </LineChart>
@@ -533,7 +533,7 @@ export function CraAnalyticsSuite() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-lg font-display font-bold text-foreground flex items-center gap-2">
+                <h3 className="text-lg font-display font-normal text-foreground flex items-center gap-2">
                   <Radio className="h-5 w-5 text-red-400 animate-pulse" />
                   PSIRT Incident Sequence &amp; Article 14 Clock
                 </h3>

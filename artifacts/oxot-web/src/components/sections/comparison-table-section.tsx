@@ -20,11 +20,11 @@ export function ComparisonTableSection({ data }: { data: ComparisonTableSectionD
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           {data.eyebrow && (
-            <span className="text-primary font-medium tracking-wide text-sm uppercase mb-3 block">
+            <span className="oxot-kicker mb-3 block">
               {data.eyebrow}
             </span>
           )}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-normal tracking-tight mb-6">
             {data.title}
           </h2>
           {data.subtitle && (
@@ -43,13 +43,13 @@ export function ComparisonTableSection({ data }: { data: ComparisonTableSectionD
           <div className="min-w-[800px] border rounded-2xl bg-card shadow-sm overflow-hidden">
             <div className="grid" style={{ gridTemplateColumns: `2fr repeat(${data.columns.length}, 1fr)` }}>
               {/* Header */}
-              <div className="p-6 font-display font-semibold text-lg border-b border-r bg-muted/30">
+              <div className="p-6 font-display font-medium text-lg border-b border-r bg-muted/30">
                 Features
               </div>
               {data.columns.map((col, i) => (
                 <div 
                   key={i} 
-                  className={`p-6 font-display font-semibold text-lg border-b text-center ${i === data.columns.length - 1 ? '' : 'border-r'} ${i === 0 ? 'bg-primary/5 text-primary' : 'bg-muted/30'}`}
+                  className={`p-6 font-display font-medium text-lg border-b text-center ${i === data.columns.length - 1 ? '' : 'border-r'} ${i === 0 ? 'bg-primary/5 text-primary' : 'bg-muted/30'}`}
                 >
                   {col}
                 </div>

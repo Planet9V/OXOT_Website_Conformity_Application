@@ -21,6 +21,7 @@
   --color-popover-border: hsl(var(--popover-border));
 
   --color-primary: hsl(var(--primary));
+  --color-primary-ink: hsl(var(--primary-ink));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-border: var(--primary-border);
 
@@ -64,6 +65,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-e1: var(--elev-1);
+  --shadow-e2: var(--elev-2);
+  --shadow-e3: var(--elev-3);
 
   --shadow-2xs: var(--shadow-2xs);
   --shadow-xs: var(--shadow-xs);
@@ -112,11 +117,18 @@
 
   /* Dutch Orange */
   --primary: 28 90% 55%;
+  /* AA-contrast orange for small text on light surfaces (OXOT styleguide §2.3) */
+  --primary-ink: 28 100% 33%;
   --primary-foreground: 0 0% 100%;
 
   /* Subtle muted highlight (Steel blue) */
   --secondary: 215 30% 40%;
   --secondary-foreground: 0 0% 100%;
+
+  /* Elevation (OXOT styleguide §5) — warm ink-tinted shadows on light */
+  --elev-1: 0 1px 2px hsl(212 51% 11% / 0.04), 0 1px 1px hsl(212 51% 11% / 0.03);
+  --elev-2: 0 4px 12px hsl(212 51% 11% / 0.06), 0 2px 4px hsl(212 51% 11% / 0.04);
+  --elev-3: 0 12px 32px hsl(212 51% 11% / 0.10), 0 4px 10px hsl(212 51% 11% / 0.05);
 
   --muted: 24 10% 94%;
   --muted-foreground: 220 10% 40%;
@@ -165,6 +177,14 @@
 }
 
 .dark {
+  /* Lighter orange for small text on dark surfaces (OXOT styleguide §2.3) */
+  --primary-ink: 28 100% 62%;
+
+  /* Elevation on navy: inset top highlight + ambient shadow (styleguide §5) */
+  --elev-1: inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 2px hsl(0 0% 0% / 0.30);
+  --elev-2: inset 0 1px 0 hsl(0 0% 100% / 0.05), 0 6px 16px hsl(0 0% 0% / 0.38);
+  --elev-3: inset 0 1px 0 hsl(0 0% 100% / 0.06), 0 16px 40px hsl(0 0% 0% / 0.45);
+
   --button-outline: rgba(255, 255, 255, 0.1);
   --badge-outline: rgba(255, 255, 255, 0.05);
   --opaque-button-border-intensity: 9;
@@ -328,5 +348,38 @@
   .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
+  }
+}
+
+/* ── OXOT styleguide signature utilities ─────────────────────────────────── */
+
+/* Wide-tracked orange uppercase eyebrow (§3.5). */
+.oxot-kicker {
+  font-family: var(--app-font-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: hsl(var(--primary));
+}
+
+/* Primary CTA lift (§6.2 #8) — compositor-only, mirrored on focus. */
+.cta-lift {
+  transition:
+    transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.cta-lift:hover,
+.cta-lift:focus-visible {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-lift,
+  .cta-lift:hover,
+  .cta-lift:focus-visible {
+    transition-duration: 0.01ms;
+    transform: none;
   }
 }

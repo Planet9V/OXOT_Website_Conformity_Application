@@ -18,11 +18,11 @@ export function StepsSection({ data }: { data: StepsSectionData }) {
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-3xl mb-16">
           {data.eyebrow && (
-            <span className="text-primary font-medium tracking-wide text-sm uppercase mb-3 block">
+            <span className="oxot-kicker mb-3 block">
               {data.eyebrow}
             </span>
           )}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-normal tracking-tight mb-6">
             {data.title}
           </h2>
         </div>
@@ -40,11 +40,11 @@ export function StepsSection({ data }: { data: StepsSectionData }) {
               transition={{ duration: 0.5, delay: i * 0.2 }}
               className="relative"
             >
-              <div className="w-16 h-16 rounded-full bg-card border-2 border-primary text-primary font-display font-bold text-2xl flex items-center justify-center mb-6 shadow-lg mx-auto md:mx-0">
+              <div className="w-16 h-16 rounded-full bg-card border-2 border-primary text-primary font-display font-normal text-2xl flex items-center justify-center mb-6 shadow-lg mx-auto md:mx-0">
                 {step.number}
               </div>
               <div className="text-center md:text-left">
-                <h3 className="text-xl font-display font-semibold mb-3">
+                <h3 className="text-xl font-display font-medium mb-3">
                   {step.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">

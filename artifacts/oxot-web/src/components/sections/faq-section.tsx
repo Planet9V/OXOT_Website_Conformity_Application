@@ -23,11 +23,11 @@ export function FaqSection({ data }: { data: FaqSectionData }) {
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">
         <div className="text-center mb-16">
           {data.eyebrow && (
-            <span className="text-primary font-medium tracking-wide text-sm uppercase mb-3 block">
+            <span className="oxot-kicker mb-3 block">
               {data.eyebrow}
             </span>
           )}
-          <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-display font-normal tracking-tight">
             {data.title}
           </h2>
         </div>

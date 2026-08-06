@@ -27,7 +27,7 @@ export function LogoWallSection({ data }: { data: LogoWallSectionData }) {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="text-lg md:text-xl font-display font-bold text-foreground/80 hover:text-foreground select-none"
+              className="text-lg md:text-xl font-display font-normal text-foreground/80 hover:text-foreground select-none"
             >
               {logo.name}
             </motion.div>
