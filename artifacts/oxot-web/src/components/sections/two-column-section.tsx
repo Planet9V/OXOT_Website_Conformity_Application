@@ -27,11 +27,11 @@ export function TwoColumnSection({ data }: { data: TwoColumnSectionData }) {
             className="w-full lg:w-1/2 space-y-6"
           >
             {data.eyebrow && (
-              <span className="text-primary font-medium tracking-wide text-sm uppercase block">
+              <span className="oxot-kicker block">
                 {data.eyebrow}
               </span>
             )}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight text-foreground">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-normal tracking-tight text-foreground">
               {data.title}
             </h2>
             <div className="prose prose-lg dark:prose-invert prose-p:text-muted-foreground text-foreground max-w-none">

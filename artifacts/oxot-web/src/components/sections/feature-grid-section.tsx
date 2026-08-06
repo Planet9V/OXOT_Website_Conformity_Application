@@ -18,11 +18,11 @@ export function FeatureGridSection({ data }: { data: FeatureGridSectionData }) {
       <div className="container mx-auto px-4 md:px-8">
         <div className="max-w-3xl mx-auto text-center mb-16">
           {data.eyebrow && (
-            <span className="text-primary font-medium tracking-wide text-sm uppercase mb-3 block">
+            <span className="oxot-kicker mb-3 block">
               {data.eyebrow}
             </span>
           )}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-normal tracking-tight mb-6">
             {data.title}
           </h2>
           {data.subtitle && (
@@ -49,7 +49,7 @@ export function FeatureGridSection({ data }: { data: FeatureGridSectionData }) {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <IconComponent className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-3">
+                <h3 className="text-xl font-display font-medium mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">

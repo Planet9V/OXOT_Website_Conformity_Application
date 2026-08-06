@@ -24,7 +24,7 @@ export function StatBandSection({ data }: { data: StatBandSectionData }) {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="flex flex-col items-center justify-center text-center px-4"
             >
-              <div className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-2">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-display font-medium text-foreground mb-2">
                 {stat.value}
               </div>
               <div className="text-sm md:text-base font-medium text-primary">

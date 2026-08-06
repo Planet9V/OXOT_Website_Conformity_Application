@@ -109,7 +109,7 @@ export function LiveRegulatoryNewsFeed() {
                 {modelUsed}
               </Badge>
             </div>
-            <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-foreground flex items-center gap-2">
+            <h2 className="text-2xl md:text-3xl font-display font-normal tracking-tight text-foreground flex items-center gap-2">
               <Newspaper className="h-6 w-6 text-primary" /> EU CRA &amp; Cyber Resilience News Feed
             </h2>
             <p className="text-sm text-muted-foreground mt-1">

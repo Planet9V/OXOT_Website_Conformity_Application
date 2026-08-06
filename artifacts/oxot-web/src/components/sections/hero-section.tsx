@@ -41,7 +41,7 @@ export function HeroSection({ data }: { data: HeroSectionData }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight text-foreground leading-[1.1] mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-display font-normal tracking-tight text-foreground leading-[1.1] mb-6"
           >
             {data.title}
           </motion.h1>
@@ -62,7 +62,7 @@ export function HeroSection({ data }: { data: HeroSectionData }) {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             {data.primaryCta && (
-              <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full text-base shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+              <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 rounded-full text-base shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all cta-lift">
                 <Link href={data.primaryCta.href}>
                   {data.primaryCta.label} <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
