@@ -14,6 +14,7 @@ import Requirements from './pages/requirements';
 import RequirementDetail from './pages/requirement-detail';
 import Mappings from './pages/mappings';
 import Sources from './pages/sources';
+import SourceViewer from './pages/source-viewer';
 import Products from './pages/products';
 import ProductDetail from './pages/product-detail';
 import Assessment from './pages/assessment';
@@ -114,6 +115,7 @@ function ShellRoutes() {
         <Route path="/requirements/:id" component={RequirementDetail} />
         <Route path="/mappings" component={Mappings} />
         <Route path="/sources" component={Sources} />
+        <Route path="/sources/view/:filename" component={SourceViewer} />
         <Route path="/products">
           <ErrorBoundary>
             <Products />
