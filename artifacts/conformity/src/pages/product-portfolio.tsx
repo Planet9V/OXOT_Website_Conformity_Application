@@ -443,43 +443,43 @@ export function ProductPortfolioPage() {
   };
 
   return (
-    <div className="space-y-8 pb-12">
-      {/* Top Hero Banner */}
-      <div className="relative rounded-2xl border border-border bg-card p-6 sm:p-8 text-card-foreground shadow-sm overflow-hidden">
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground">
-              Product Portfolio &amp; Enterprise Customer Operations
-            </h1>
-
-            <p className="text-sm text-muted-foreground leading-relaxed font-sans">
-              Comprehensive product catalog lifecycle tracking, version changelogs, CISA Critical Infrastructure sector deployments, customer fleet management, mass CSV/MD data imports, and statutory PSIRT incident emergency notifications.
-            </p>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Button
-              type="button"
-              onClick={() => setAiDrawerOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs gap-2 shadow-sm cta-lift"
-            >
-              <Bot className="h-4 w-4" /> Ask AI Portfolio Assistant
-            </Button>
-
-            <Button
-              type="button"
-              onClick={() => setPdfModalOpen(true)}
-              variant="outline"
-              className="border-border text-foreground hover:bg-muted font-medium text-xs gap-2 cta-lift"
-            >
-              <Printer className="h-4 w-4 text-primary" /> Export Executive PDF
-            </Button>
-          </div>
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-8 pb-12">
+      {/* Page header */}
+      <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-6">
+        <div>
+          <span className="oxot-kicker block mb-1">CRA ARTICLE 13 · PORTFOLIO LIFECYCLE &amp; CUSTOMER OPERATIONS</span>
+          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
+            <Boxes className="w-6 h-6 text-primary shrink-0" /> Product Portfolio &amp; Enterprise Customer Operations
+          </h1>
+          <p className="text-sm text-muted-foreground mt-1 max-w-3xl leading-relaxed font-sans">
+            Comprehensive product catalog lifecycle tracking, version changelogs, CISA Critical Infrastructure sector deployments, customer fleet management, mass CSV/MD data imports, and statutory PSIRT incident emergency notifications.
+          </p>
         </div>
 
-        {/* High-Density Top Metric Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-border">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <Button
+            type="button"
+            onClick={() => setAiDrawerOpen(true)}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs gap-2 shadow-sm cta-lift"
+          >
+            <Bot className="h-4 w-4" /> Ask AI Portfolio Assistant
+          </Button>
+
+          <Button
+            type="button"
+            onClick={() => setPdfModalOpen(true)}
+            variant="outline"
+            className="border-border text-foreground hover:bg-muted font-medium text-xs gap-2 cta-lift"
+          >
+            <Printer className="h-4 w-4 text-primary" /> Export Executive PDF
+          </Button>
+        </div>
+      </div>
+
+      {/* High-Density Top Metric Bar */}
+      <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="flex items-center gap-3.5 bg-background p-3.5 rounded-xl border border-border">
             <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
               <Boxes className="h-5 w-5" />

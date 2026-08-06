@@ -21,7 +21,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-20 border-t border-border bg-card/40 font-sans">
-      <div className="max-w-6xl mx-auto px-6 py-14 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_auto] gap-10">
           {/* Column 1: Brand */}
           <div className="space-y-4">
@@ -154,7 +154,7 @@ export function SiteFooter() {
       </div>
 
       {/* Bar 1 — Positioning + Legal */}
-      <div className="border-t border-border/80 max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-sans">
+      <div className="border-t border-border/80 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-sans">
         <p className="max-w-2xl text-center sm:text-left">
           OXOT turns overlapping EU regulations into a single, living evidence system — so your teams ship compliant products without drowning in paperwork.
         </p>
@@ -168,7 +168,7 @@ export function SiteFooter() {
       </div>
 
       {/* Bar 2 — Copyright */}
-      <div className="border-t border-border/60 max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-sans">
+      <div className="border-t border-border/60 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-sans">
         <p>© {new Date().getFullYear()} OXOT. All rights reserved.</p>
         <p className="font-serif">
           O<span className="text-primary font-sans font-semibold">X</span>OT — Operational e<span className="text-primary font-sans font-semibold">X</span>cellence in Operational Technology
