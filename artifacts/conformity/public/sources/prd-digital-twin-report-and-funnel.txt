@@ -1,0 +1,315 @@
+Product Requirements Document: AI-Powered Digital Twin Annual Report Platform
+Version: 1.0
+Date: 2024-08-09
+Status: Draft
+Author: Technical Product Management
+1. Introduction
+This document outlines the product requirements for the AI-Powered Digital Twin Annual Report Platform. It serves as the definitive guide for stakeholders, designers, and developers, defining the product's purpose, features, and intended user experience. The platform aims to address the challenges faced by executives and investors when analyzing traditional annual reports by transforming them into interactive, intelligent digital assets.
+ * 1.1. Product Vision & Purpose
+   * Vision: To revolutionize how executives and investors engage with annual reports, transforming static documents into dynamic, interactive, and intelligent digital assets.
+   * Purpose: To build a clean, modern Software-as-a-Service (SaaS) web application that leverages Artificial Intelligence (AI), specifically Google's Gemini models , to convert traditional annual reports into interactive "digital twins." This platform will enable deeper analysis, facilitate faster insights through intelligent chat-based exploration, and provide novel lead generation capabilities integrated directly with report content.
+   * Problem Definition / User Needs: C-level executives, directors, and investors frequently grapple with significant inefficiencies when consuming annual reports. Key challenges include information overload stemming from the length and density of these documents , severe time constraints limiting in-depth analysis , and the inherent difficulty in extracting truly actionable, strategic insights from static PDF formats. Traditional reports lack interactivity, making comparative analysis and specific data point retrieval cumbersome. This platform directly addresses these needs by providing enhanced clarity through visualization, improved efficiency via AI-driven interaction, and greater strategic value derived from faster, more targeted analysis. The combination of interactive data representation  and AI-powered conversational querying [Query] offers a fundamentally improved method for engaging with report data, allowing users to bypass manual searching and directly ask pertinent questions, thus mitigating information overload and time scarcity.
+ * 1.2. High-Level Goals (SMART)
+   In line with the SMART principle , the primary goals for this product are:
+   * Analysis Time Reduction: Reduce the average time spent by target users (C-level, Directors, Investors) on annual report analysis by 50% within six months following the official product launch. (Specific, Measurable, Achievable, Relevant, Time-bound).
+   * User Engagement Growth: Increase user engagement, measured by the frequency and duration of interactions with digital twins and the AI chat feature, by 30% quarter-over-quarter for the first year of operation. (Specific, Measurable, Achievable, Relevant, Time-bound).
+   * User Satisfaction: Achieve a Net Promoter Score (NPS) of 40 or higher among paying subscribers (Basic and Advanced tiers) within 12 months post-launch. (Specific, Measurable, Achievable, Relevant, Time-bound).
+   * Lead Generation Effectiveness: Generate a minimum of X qualified leads per month through the integrated funnel page feature within nine months post-launch. (Specific, Measurable, Achievable, Relevant, Time-bound).
+   * Monetization Success: Achieve a free-to-paid user conversion rate of Y% within the first six months post-launch. (Specific, Measurable, Achievable, Relevant, Time-bound).
+ * 1.3. Product Positioning
+   The platform is positioned as a premium, AI-driven analysis tool specifically designed for C-level executives, director-level managers, and investors who require efficient and insightful engagement with annual reports. Its key differentiators are:
+   * The transformation of static reports into interactive, visually engaging digital twins.
+   * Advanced AI chat capabilities powered by Gemini, allowing natural language querying across multiple scopes: single reports, the user's entire report library, and the external web via Tavily Search integration.
+   * Integrated lead generation functionality, enabling users to leverage report content as marketing assets [Query].
+     This positioning targets users seeking a competitive edge through faster, deeper understanding of company performance and market context, moving beyond basic document viewing to intelligent data interaction.
+2. User Personas & Use Cases
+Understanding the target users and their specific needs is crucial for designing an effective product.
+ * 2.1. User Personas
+   * Persona 1: Chloe - Chief Executive Officer (CEO)
+     * Needs: Requires rapid access to high-level strategic summaries, identification of key performance indicators (KPIs), emerging trends, potential risks, and competitive intelligence (potentially gathered via Tavily web search). Focuses on overall company growth, productivity enhancements, and operational efficiency.
+     * Pain Points: Experiences significant time pressure, struggles with the volume of information in traditional reports, and needs highly reliable data to inform critical strategic decisions. Limited visibility into operational details can be a concern.
+     * How Product Helps: Provides interactive dashboards within the digital twin for quick strategic overviews. The AI chat allows asking direct, high-level questions like, "Summarize the key risks identified in the Management Discussion section," or "Compare our Q4 revenue growth trend to recent market reports about Competitor Y."
+   * Persona 2: David - Chief Financial Officer (CFO)
+     * Needs: Requires detailed, accurate financial data analysis capabilities, verification of figures, tracking profitability metrics, analyzing costs, and ensuring compliance information is accessible.
+     * Pain Points: Spends excessive time manually analyzing reports , faces challenges in ensuring data accuracy extracted from PDFs, and deals with forecasting complexities.
+     * How Product Helps: The digital twin accurately visualizes financial tables and data points. The AI chat enables specific financial queries, such as, "What was the year-over-year growth percentage for net income?" or "Extract all references to capital expenditure amounts." The AI report generation feature can provide summaries or specific data cuts for export.
+   * Persona 3: Isabella - Investor Relations Director
+     * Needs: Needs to communicate company performance clearly and effectively to investors, identify key narrative points, compare performance across reporting periods, and understand external market perception (leveraging Tavily).
+     * Pain Points: Faces the challenge of making dense financial reports understandable and engaging for an investor audience , who themselves suffer from information overload. Needs to anticipate and answer investor questions efficiently.
+     * How Product Helps: Enables the creation of shareable, interactive views of reports (potentially using funnel pages without the lead capture form). The AI chat allows rapid retrieval of answers to likely investor questions. The industry report curation feature (Tier 2/Advanced) facilitates peer comparisons.
+   * Persona 4: Michael - Marketing Director (utilizing Funnel Pages)
+     * Needs: Focused on generating high-quality B2B leads, using company insights as compelling thought leadership content, and measuring the effectiveness of lead generation campaigns.
+     * Pain Points: Difficulty in creating engaging lead magnets that capture qualified prospects, inefficiency in the lead qualification process, and demonstrating clear ROI on content marketing efforts.
+     * How Product Helps: Allows specific digital twin reports to be repurposed as high-value content assets on dedicated funnel pages. The integrated AI chat on these pages can engage visitors and automatically qualify leads based on conversation context.
+   * Persona 5: Alex - Platform Administrator
+     * Needs: Responsible for managing user accounts and subscriptions, importing and managing annual reports, configuring AI import prompts, overseeing funnel page creation and lead data, and monitoring overall platform health and security.
+     * Pain Points: Ensuring the platform operates smoothly for all users, managing diverse user roles and permissions effectively, maintaining optimal AI model configurations for data extraction accuracy, and handling security aspects.
+     * How Product Helps: Provides a comprehensive administrative panel offering centralized control over all management tasks, including user management, report lifecycle, AI prompt tuning, funnel page setup, and system configuration.
+ * 2.2. Use Cases / User Stories
+   These user stories illustrate key interactions with the platform, derived from the query and standard PRD practices :
+   * UC1: Importing a Financial Report: As Alex (Admin), I want to upload a PDF annual financial report via the admin panel so that the system can initiate the conversion process into an interactive digital twin.
+   * UC2: Configuring Import Prompt: As Alex (Admin), I want to navigate to the AI configuration section, select the "Financial Report" type, view the current Gemini 2.5 Pro prompt, and modify it to better extract specific table structures, so that data extraction accuracy for future financial reports is improved.
+   * UC3: Viewing Digital Twin: As Chloe (CEO), I want to open the digital twin page for the company's most recent annual report from my dashboard so that I can quickly review key financial highlights, performance trends via interactive charts, and read the executive summary section.
+   * UC4: Chatting with a Single Report: As David (CFO), I want to use the chat interface available on the 2023 Annual Report digital twin page and ask, "What is the total Research & Development expenditure listed in this report?" so that I can obtain the specific figure without manually scanning the document.
+   * UC5: Chatting Across User Reports: As Isabella (IR Director), I want to use the chat interface, set the scope to 'My Reports', and ask, "Compare the reported revenue growth rate across all saved reports from 2021, 2022, and 2023," so that I can analyze multi-year performance trends efficiently.
+   * UC6: Chatting with External Context: As Chloe (CEO), I want to use the chat interface, set the scope to 'All Reports + Web Search', and ask, "How does our Q4 reported net profit margin compare to recent industry news regarding Competitor X's performance?" (triggering a Tavily search) so that I can gain external market context relevant to our internal report data.
+   * UC7: Subscribing to Basic Tier: As David (CFO), currently on the Free tier, I want to navigate to the subscription management page, select the 'Basic' tier, and complete the payment process using the integrated Stripe checkout form, so that I can save more than the 3-report limit imposed by the free plan.
+   * UC8: Accessing Curated Industry Reports: As Isabella (IR Director), an 'Advanced' tier subscriber, I want to browse the 'Curated Reports' section, filter by the 'Technology' industry tag, and access the digital twins of recent competitor reports so that I can perform effective benchmarking against industry peers.
+   * UC9: Generating a Funnel Page: As Alex (Admin), I want to select the 2023 Sustainability Report digital twin, choose the option to create a funnel page, configure the lead capture form fields (Name, Company Email, Job Title), and activate the page with a unique URL, so that the marketing team can use it in their upcoming ESG campaign.
+   * UC10: Interacting with Funnel Page Chat: As Michael (Marketing Director), reviewing leads from the ESG funnel page, I want to view the full transcript of a prospect's interaction with the AI chat, specifically where they asked about the company's carbon reduction targets, so that I can understand their specific interest and tailor the sales follow-up.
+   * UC11: Managing Users: As Alex (Admin), I want to access the User Management section, search for a specific user by email, view their details including their 'Basic' subscription tier, and use the 'Deactivate' function so that I can revoke platform access for a former employee.
+   * UC12: Generating AI Export Report: As David (CFO), while viewing the Q3 Financial Report digital twin, I want to use the AI chat/export feature to request, "Generate a summary report of key financial ratios (Current Ratio, Debt-to-Equity, Net Profit Margin) from this report, exported as a CSV file," so that I can easily import these calculated ratios into our internal financial modeling spreadsheet.
+3. Product Features & Requirements
+This section details the specific functional requirements for each component of the platform.
+ * 3.1. Landing Page
+   * REQ-LP-001: The landing page must clearly and concisely articulate the core value proposition: transforming static annual reports into interactive, AI-powered digital twins to enable faster, deeper insights for executives and investors. This message should immediately address the primary pain points of time scarcity and information overload.
+   * REQ-LP-002: Visually showcase key platform features through high-quality mockups or interactive demos, including a preview of an interactive digital twin report, the AI chat interface in action, examples of supported report types (Financial, ESG, etc.), and a mention of the lead generation funnel capability.
+   * REQ-LP-003: Present the three subscription tiers (Free, Basic, Advanced) with clear, easily comparable lists of included features and limitations for each tier. Pricing must be transparent.
+   * REQ-LP-004: Include prominent and clear Call-to-Actions (CTAs) strategically placed on the page, such as "Sign Up for Free Trial," "Explore Features," "View Pricing Plans," or "Request a Demo".
+   * REQ-LP-005: The overall design aesthetic must be modern, professional, clean, and trustworthy, reflecting the premium nature of the product and appealing to a sophisticated C-level and investor audience.
+ * 3.2. Annual Report Import & Digital Twin Creation
+   * REQ-IMP-001: The admin panel must provide a secure interface for uploading annual report files. The primary supported format for initial release is PDF [Query]. Consideration should be given to handling potential variations within the PDF format (e.g., text-based vs. image-based elements).
+   * REQ-IMP-002: The system must utilize the Google Gemini 2.5 Pro API for processing uploaded PDF documents. This leverages its native multimodal capabilities to understand text, layout, images, charts, and tables directly from the PDF structure. This approach is chosen over traditional OCR and parsing pipelines due to its potential for higher accuracy with complex layouts and integrated visual elements.
+   * REQ-IMP-003: For PDF files exceeding 20MB, the system must utilize the Gemini File API for upload and processing to accommodate large reports.
+   * REQ-IMP-004: Implement a mechanism within the admin panel allowing administrators to define and manage distinct report types (e.g., "Annual Financial Report," "ESG Report," "Cybersecurity Trend Report"). Each report type must be associated with a specific Gemini 2.5 Pro prompt.
+   * REQ-IMP-005: The Gemini prompts associated with each report type must be editable by administrators via a text interface in the admin panel. This allows tuning the AI's data extraction process for optimal accuracy based on the typical structure and content of each report type. Changes to prompts should be logged. The ability for administrators to modify these prompts provides a crucial feedback loop to improve data quality over time without requiring engineering intervention, addressing the inherent variability in LLM extraction performance  and the diversity of report formats.
+   * REQ-IMP-006: The Gemini-powered conversion process must aim to extract: key textual sections (e.g., executive summary, MD&A, risk factors), numerical data points, tables (preserving structure where possible), and potentially interpret data from charts and graphs using Gemini's vision capabilities.
+   * REQ-IMP-007: Extracted information must be stored in a structured, queryable format (e.g., relational database, JSON objects) that facilitates both the rendering of the interactive digital twin page and efficient retrieval by the AI chat functionality.
+   * REQ-IMP-008: The admin interface must display the processing status for each uploaded report (e.g., Queued, Processing, Completed, Failed with error details) to provide visibility into the import pipeline.
+   * Table: Report Type & Gemini Prompt Configuration (Admin Panel Feature)
+| Report Type Name | Description | Associated Gemini Prompt (Editable Text Area) | Last Modified Date | Modified By |
+|---|---|---|---|---|
+| Annual Financial Report | Standard annual financial disclosure document. | [Default prompt optimized for financials] | 2024-08-09 | Alex (Admin) |
+| ESG/Sustainability Report | Report detailing environmental, social, governance |  | 2024-08-09 | Alex (Admin) |
+| Cybersecurity Trend Report | Analysis of cybersecurity landscape/incidents. | [Default prompt optimized for trends/risks] | 2024-08-09 | Alex (Admin) |
+| Add New Type... |  |  |  |  |
+This table provides a centralized management point for the core AI conversion logic , essential for admins to maintain and optimize the import process for different document styles as requested.
+ * 3.3. Digital Twin Report Page
+   * REQ-DTP-001: Each successfully processed annual report must generate a digital twin accessible via a unique, persistent URL [Query].
+   * REQ-DTP-002: The user interface for the digital twin page must be modern, clean, highly interactive, and professionally styled to meet the expectations of executive users. Emphasis should be on clarity and ease of navigation through potentially dense information.
+   * REQ-DTP-003: Utilize a suitable React-based charting library (e.g., Recharts, Plotly.js, ApexCharts) capable of rendering interactive financial and business charts (line, bar, pie, potentially area charts) based on the extracted data. Interactivity should include hover-over data points for details and potential zooming/panning. The choice of library should balance ease of use, customization, and performance.
+   * REQ-DTP-004: The page must display all significant data captured during the Gemini conversion process, logically organized, potentially mirroring the structure of the original report (e.g., using tabs or collapsible sections for Financials, MD&A, Risks, ESG Metrics) [Query].
+   * REQ-DTP-005: Implement interactive elements beyond charts, such as data table sorting/filtering, date range selectors for time-series data, and clickable cross-references if identifiable during import. The goal is to transform the static report into an explorable data environment , directly countering the limitations of traditional PDFs  and addressing information overload.
+   * REQ-DTP-006: Ensure the page layout is responsive and usable on standard desktop and tablet screen sizes. Mobile viewing is a lower priority for the initial release but should not be completely broken.
+ * 3.4. AI Chat Interface (Gemini Powered)
+   * REQ-AIC-001: Implement a clean, intuitive, and responsive chat interface integrated within the application. It should be easily accessible from digital twin pages and potentially from a main dashboard view [Query].
+   * REQ-AIC-002: Utilize a suitable Gemini model (e.g., Gemini 1.5 Pro for complex reasoning, Gemini 1.5 Flash for faster responses, depending on performance/cost trade-offs) as the backend engine for processing chat queries and generating responses.
+   * REQ-AIC-003: Implement three distinct, user-selectable query scopes:
+     * Local Report Scope: The AI answers questions based solely on the structured data and text extracted from the currently viewed digital twin report [Query].
+     * User Reports Scope: The AI answers questions by referencing the data across all digital twin reports accessible to the currently logged-in user (e.g., reports they have uploaded or saved) [Query].
+     * All Reports + Web Scope: The AI answers questions by combining information from accessible reports with real-time, relevant information retrieved from the web using the Tavily Search API.
+   * REQ-AIC-004: The chat interface must clearly display the currently active scope and provide an easy mechanism for the user to switch between available scopes (based on their subscription tier).
+   * REQ-AIC-005: Integrate securely with the Tavily Search API, passing user queries (potentially refined for search) to Tavily when the 'All Reports + Web' scope is active. Configure Tavily API calls with appropriate parameters (e.g., query, search_depth, max_results, potentially topic or include_domains for focused searches).
+   * REQ-AIC-006: AI-generated responses must clearly cite their sources. For information from reports, cite the specific report and potentially the section/page number (if extractable). For information from Tavily, cite the source URL provided by the Tavily API response. This transparency is crucial for building user trust in the AI's outputs, especially for a C-level audience making decisions based on this information.
+   * REQ-AIC-007: Employ robust prompt engineering strategies for Gemini to handle the context switching between scopes, ensure factual grounding in the provided sources (reports or Tavily results), and generate accurate, relevant answers. The multi-scope capability transforms the tool into a powerful research assistant, providing context vital for strategic analysis  that goes beyond the confines of a single document.
+ * 3.5. User Accounts & Subscription Management (Stripe Integration)
+   * REQ-UAM-001: Implement secure user registration using email/password. Consider optional social logins (e.g., Google, LinkedIn) for convenience, particularly relevant for B2B users. Implement standard password recovery mechanisms.
+   * REQ-UAM-002: Define and implement three distinct subscription tiers: Free, Basic, and Advanced [Query].
+   * REQ-UAM-003: Integrate with the Stripe API for handling all subscription payments, including initial checkout for upgrades, recurring billing cycles (monthly and potentially discounted annual options), and managing payment methods.
+   * REQ-UAM-004: Leverage Stripe Billing features where appropriate. Consider using Stripe Checkout for a streamlined and secure payment experience. Explore the Stripe Customer Portal to allow users to self-manage their subscriptions (upgrade, downgrade, cancel, update payment methods) directly, reducing administrative overhead.
+   * REQ-UAM-005: Provide a user dashboard or settings area where logged-in users can view their current subscription tier, see usage against any limits (e.g., number of saved reports), access billing history, manage their profile information (name, email, password), and access the Stripe Customer Portal if implemented.
+   * REQ-UAM-006: The system backend must securely store the mapping between internal user accounts and corresponding Stripe Customer IDs and Subscription IDs to manage access rights and billing status.
+ * 3.6. Feature Gating & Tier-Specific Functionality
+   * REQ-FG-001: Implement robust feature gating logic within the application backend and frontend to restrict or enable access to specific functionalities based on the user's active Stripe subscription tier (Free, Basic, Advanced).
+   * REQ-FG-002: Define and enforce the following access rules and limits per tier (specific limits TBD, examples given):
+     * Saving Reports: Free: Limit 3; Basic: Limit 50; Advanced: Unlimited.
+     * AI Report Generation (Export): Free: Not Available; Basic: Available (e.g., CSV format); Advanced: Available (e.g., CSV, PDF formats).
+     * Industry Report Curation: Free: Not Available; Basic: Not Available; Advanced: Full Access.
+     * AI Chat Scopes: Free: Local Report Only; Basic: Local Report + User Reports; Advanced: Local Report + User Reports + All Reports + Tavily Web Search.
+     * Funnel Page Creation: Free: Not Available; Basic: Not Available; Advanced: Available (e.g., limit 5 active funnels).
+   * REQ-FG-003: The user interface must clearly communicate feature unavailability to users on lower tiers when they attempt to access a gated feature. Provide clear visual cues and pathways (e.g., "Upgrade to Advanced to access Industry Reports") to encourage upgrades.
+   * Table: Feature Access by Subscription Tier
+| Feature | Free Tier | Basic Tier | Advanced Tier | Notes |
+|---|---|---|---|---|
+| Report Import (PDF) | Yes | Yes | Yes |  |
+| Digital Twin View | Yes | Yes | Yes |  |
+| Save Reports | Up to 3 | Up to 50 | Unlimited | Limit on concurrently saved/accessible reports. |
+| Chat Scope: Local Report | Yes | Yes | Yes | Q&A based on the currently viewed report. |
+| Chat Scope: User Reports | No | Yes | Yes | Q&A across all reports saved/accessible by the user. |
+| Chat Scope: All Reports + Tavily | No | No | Yes | Q&A using reports + external web search via Tavily. |
+| AI Export Generation | No | Yes (CSV) | Yes (CSV, PDF) | AI generates summaries/data exports from a digital twin. |
+| Industry Report Curation Access | No | No | Yes | Access reports curated by admins, filterable by industry. |
+| Funnel Page Creation | No | No | Yes (Up to 5) | Ability to turn digital twin pages into lead capture funnels. |
+| Standard Support | Yes (Community) | Yes (Email) | Yes (Priority) | Level of customer support access. |
+| Admin Panel Access | N/A | N/A | N/A | Separate permissions; not tied directly to user subscription tiers. |
+This table clarifies the value progression across tiers , guiding both development and marketing efforts. The specific limits and feature availability provide strong incentives for users to upgrade to paid tiers, particularly for advanced AI capabilities and industry context which are high-value for the target audience.
+ * 3.7. Funnel Page Generation
+   * REQ-FP-001: The admin panel must include functionality allowing designated administrators to select an existing digital twin report and mark it to be served as a standalone "funnel page" [Query].
+   * REQ-FP-002: Each generated funnel page must have a unique, shareable URL, potentially allowing for some customization (e.g., vanity slug) by the admin.
+   * REQ-FP-003: Funnel pages must prominently feature a configurable lead capture form. Admins must be able to define the required fields (e.g., First Name, Last Name, Business Email, Company Name, Job Title, Optional Message). Form submissions must be securely captured.
+   * REQ-FP-004: Integrate a dedicated AI chat interface (powered by Gemini) onto each funnel page. This chat instance should be specifically configured (via a distinct system prompt managed in the admin panel) to engage visitors, answer questions primarily based on the content of the specific report featured on the page, and subtly guide qualified prospects towards submitting the lead form. This AI acts as an initial qualification layer.
+   * REQ-FP-005: Captured lead data (form submissions and potentially chat transcripts indicating intent) must be stored securely and be accessible to administrators via the admin panel, likely with options to view leads per funnel page and export the data (e.g., as CSV) [Query].
+   * REQ-FP-006: Provide basic customization options for funnel pages if they are intended to be sponsored, such as adding a sponsor logo or custom header/footer text.
+   * This feature distinctively leverages the core product asset (the interactive digital twin) as a high-value B2B lead magnet. The addition of AI chat provides immediate, context-aware engagement and qualification, potentially leading to higher conversion rates than static landing pages.
+ * 3.8. Admin Panel
+   * REQ-ADM-001: Implement a secure administrative interface accessible only to authenticated users with designated administrative roles. Employ Role-Based Access Control (RBAC) to manage permissions.
+   * REQ-ADM-002: User Management: Provide capabilities to view a list of all registered users, search/filter users (by email, name, subscription tier), view individual user details (profile info, subscription status, potentially usage metrics), assign/modify user roles (if multiple admin roles exist), activate/deactivate user accounts, and potentially manually manage subscriptions (e.g., apply coupons, extend trials).
+   * REQ-ADM-003: Annual Report Management: Allow admins to upload new PDF reports, view the list of all imported reports with their current status (Uploaded, Processing, Ready, Failed), link to the generated digital twin page, manage report metadata (e.g., assign report type, add tags like industry), and delete reports/digital twins [Query].
+   * REQ-ADM-004: AI Prompt Configuration: Provide a dedicated section for managing the Gemini 2.5 Pro prompts used for report conversion. Admins must be able to select a report type (Financial, ESG, etc.) and view/edit the associated prompt in a text editor. Implement version control or history tracking for prompt changes to allow rollbacks. This is a critical control point for maintaining and improving the quality of the core digital twin generation process.
+   * REQ-ADM-005: Funnel Page Management: Allow admins to select a 'Ready' digital twin report and designate it as a funnel page. Provide interface to configure the lead capture form fields, view/manage the associated AI chat prompt for the funnel page, view captured leads per funnel page (with export functionality), and activate/deactivate funnel pages [Query].
+   * REQ-ADM-06: System Configuration: Provide a secure area to manage essential system settings and API keys, including Stripe API keys (secret and publishable), Tavily Search API key, and Google Gemini API key. Potentially include settings for default chat behaviors or notification settings.
+   * REQ-ADM-007: Audit Log: Implement an audit log that records significant actions performed within the admin panel, such as user creation/deactivation, role changes, report deletion, AI prompt modification, and funnel page creation/deletion. Logs should include timestamp, admin user, action performed, and target object (e.g., user ID, report ID).
+   * REQ-ADM-008 (Recommended): SaaS Metrics Dashboard: Include a dashboard section displaying key business KPIs visually. This should provide admins and stakeholders with a quick overview of platform health directly within the admin tool.
+   * Table: Admin Roles & Permissions
+| Admin Action | Super Admin | Content Admin | Sales/Marketing Admin | Notes |
+|---|---|---|---|---|
+| Manage Users (All) | ✓ | 𐄂 | 𐄂 | Create, edit, deactivate all users, assign roles. |
+| Manage Reports (Upload, Delete) | ✓ | ✓ | 𐄂 | Uploading new reports, managing metadata, deleting. |
+| Edit AI Prompts | ✓ | 𐄂 | 𐄂 | Modifying Gemini prompts for conversion. High impact. |
+| Manage Funnel Pages (Create/Conf) | ✓ | ✓ | ✓ | Creating funnels, configuring forms, enabling/disabling. |
+| View/Export Funnel Leads | ✓ | 𐄂 | ✓ | Accessing captured lead data. |
+| Manage Billing/System Config | ✓ | 𐄂 | 𐄂 | Managing API keys, Stripe settings. Highest privilege. |
+| View SaaS Metrics Dashboard | ✓ | ✓ | ✓ | Access to business performance overview. |
+| View Audit Log | ✓ | 𐄂 | 𐄂 | Access to system action logs. |
+This RBAC structure  ensures appropriate access levels, enhancing security and operational efficiency.
+*   Table: Key SaaS Metrics Dashboard (Admin Panel View)
+| Metric Component | Visualization Type | Data Source(s) | Update Frequency | Purpose |
+|---|---|---|---|---|
+| Monthly Recurring Rev (MRR) | Line Chart (Trend) | Stripe Billing Data | Daily/Real-time | Track revenue growth and stability. |
+| Active Users (MAU) | Line Chart (Trend) | Application Usage Logs | Daily | Monitor user base engagement and growth. |
+| Customer Churn Rate (Logo) | Gauge / KPI Card | User/Subscription Data | Monthly | Measure customer attrition. |
+| LTV:CAC Ratio | KPI Card | Stripe Data, Marketing Costs | Monthly/Quarterly | Assess long-term profitability of customer acquisition. |
+| Leads Generated (Funnels) | Bar Chart / Number | Funnel Page Lead Capture Data | Daily/Real-time | Track effectiveness of lead generation features [Derived]. |
+| Free-to-Paid Conversion Rate | KPI Card | User/Subscription Data | Monthly | Monitor monetization effectiveness. |
+Provides crucial at-a-glance visibility into business health  for administrators and stakeholders. The careful design of the admin panel is paramount due to the critical functions it controls, including user access, billing configurations, and the core AI behavior via prompt management. Usability and security must be top priorities.
+4. Design & User Experience (UX)
+The design and user experience are critical for adoption and satisfaction, especially given the target audience of busy executives and investors.
+ * 4.1. High-Level Design Principles
+   * Modern & Clean: Employ a professional, minimalist aesthetic that prioritizes data clarity and avoids visual clutter. The look and feel should align with modern enterprise software standards.
+   * Intuitive & Efficient: Navigation must be straightforward, with a clear information hierarchy. Common tasks should require minimal steps. The design must respect the user's time and facilitate rapid understanding.
+   * Interactive & Engaging: Data visualizations must be dynamic, allowing users to explore data through interactions like hovering, zooming, and filtering. The chat interface should feel responsive and conversational.
+   * Trustworthy & Accurate: The design must visually convey reliability and precision. Data visualizations need to be clearly labeled and accurately represent the underlying source data. AI responses require clear attribution to build user confidence.
+   * Responsive: While primarily designed for desktop use, the application must maintain full functionality and readability on standard tablet resolutions. Mobile optimization is secondary for V1.
+ * 4.2. Wireframes/Mockups
+   Detailed wireframes and high-fidelity mockups illustrating the layout, navigation, and key UI components for all major user flows will be developed by the design team and linked here upon completion. This includes :
+   * Landing Page
+   * User Dashboard (showing saved reports, subscription status)
+   * Digital Twin Report Page (including chart interactions, section navigation)
+   * AI Chat Interface (showing scope selection, responses with citations)
+   * Subscription Selection & Stripe Checkout Flow
+   * Admin Panel (User Management, Report Management, AI Prompt Editor, Funnel Config, Metrics Dashboard)
+ * 4.3. Accessibility Considerations
+   The application should strive to meet Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. Key considerations include sufficient color contrast ratios, keyboard navigability for all interactive elements, appropriate ARIA attributes for screen readers, and logical focus order, particularly for data tables and forms.
+ * The user experience must actively combat the 'information overload' pain point identified in the target audience  by presenting complex data in an intuitive, interactive, and easily digestible manner. A premium feel is essential to resonate with discerning executive users , ensuring the interface facilitates quick comprehension  and builds trust in the presented information.
+5. Technical Considerations
+This section outlines key technical requirements, recommendations, and constraints.
+ * 5.1. Technology Stack (Recommendations)
+   * Frontend: React. Chosen due to its strong ecosystem for building interactive UIs, component-based architecture, and the availability of mature data visualization libraries (e.g., Recharts, Plotly.js, ApexCharts) suitable for dashboard-like interfaces.
+   * Backend: Node.js (with Express/NestJS), Python (with Django/Flask), or Go. The choice depends on team expertise, performance requirements, and ecosystem preferences. Python offers strong data handling and AI integration libraries. Node.js provides a unified JavaScript ecosystem with React. Go offers high performance.
+   * AI Processing: Google Gemini API. Specifically Gemini 2.5 Pro for the initial PDF import/conversion due to its advanced document understanding capabilities. Gemini 1.5 Pro or 1.5 Flash may be considered for the chat interface based on cost/latency needs for different scopes.
+   * External Search: Tavily Search API. Integrated for the "All Reports + Web" chat scope.
+   * Billing & Subscriptions: Stripe API (Stripe Billing, Checkout, Customer Portal).
+   * Database: PostgreSQL is recommended due to its robustness, support for structured data, JSON handling capabilities, and scalability.
+ * 5.2. Data Handling & Security
+   * REQ-SEC-001: User credentials (passwords) must be securely hashed using industry-standard algorithms (e.g., bcrypt). API keys (Stripe, Tavily, Gemini) must be stored securely (e.g., encrypted configuration, secrets management service) and never exposed client-side. Sensitive data within reports must be encrypted at rest and all communication must use TLS/SSL encryption (HTTPS).
+   * REQ-SEC-002: If adopting a multi-tenant architecture in the future, strict data isolation between tenants must be enforced at the database and application level to prevent data leakage. Initial design should consider potential future multi-tenancy needs.
+   * REQ-SEC-003: Ensure compliance with relevant data privacy regulations (e.g., GDPR, CCPA) concerning the handling of user personal data and potentially sensitive information contained within uploaded annual reports. Provide necessary user controls for data access and deletion requests.
+   * REQ-SEC-004: Implement secure file upload handling for PDFs, including validation of file types and potentially scanning for malware before processing with the Gemini API. Leverage the temporary, secure storage provided by the Gemini File API for large files.
+ * 5.3. Scalability & Performance Requirements
+   * REQ-SP-001: The application architecture must be designed to handle a growing number of concurrent users interacting with potentially large digital twin datasets and the AI chat interface.
+   * REQ-SP-002: Define and monitor Service Level Objectives (SLOs) for critical operations. Examples: PDF import processing time (target < 1 minute per report average), AI chat response latency (< 5 seconds P95 for local scope, < 10 seconds P95 for scopes involving Tavily), Digital Twin page load time (< 3 seconds P95). Monitor external API latencies (Gemini, Tavily).
+   * REQ-SP-003: The PDF import process must efficiently handle large files using asynchronous processing and the Gemini File API. Be mindful of Gemini API rate limits and quotas; implement appropriate error handling and retry logic.
+   * REQ-SP-004: Database queries, especially those supporting the multi-report chat scope, must be optimized for performance using appropriate indexing and query design.
+ * 5.4. Assumptions 
+   * Input annual reports are primarily digitally generated PDFs with selectable text and reasonably standard layouts. While Gemini offers vision capabilities , performance may degrade significantly with low-quality scans or highly unconventional formatting. Known Gemini limitations regarding precise spatial reasoning in PDFs and potential hallucinations with handwritten text are deemed acceptable for V1.
+   * The third-party APIs (Gemini, Tavily, Stripe) will maintain reasonable uptime, performance, and stable interfaces.
+   * End-users will have access to modern web browsers and stable internet connectivity suitable for interactive web applications.
+   * Platform administrators will possess the necessary technical aptitude to understand the implications of modifying AI prompts and will use the feature responsibly to improve data extraction quality.
+ * 5.5. Constraints 
+   * External API Dependency: The platform's core functionality is heavily reliant on the availability and performance of Google Gemini, Tavily Search, and Stripe APIs. Outages, breaking changes, or significant policy/pricing shifts in these external services pose a direct risk to the platform's operation.
+   * AI Accuracy Limitations: The accuracy of data extraction via Gemini and the relevance/factuality of AI chat responses are inherently probabilistic. Performance depends on the underlying Gemini model capabilities, the quality of the input documents, and the effectiveness of the engineered prompts. 100% accuracy cannot be guaranteed.
+   * Operational Costs: Usage of Gemini API (especially for large document processing and complex chat queries) and Tavily Search API will incur ongoing operational costs that scale with usage. Cost management and optimization strategies are essential for profitability. Stripe also has transaction fees.
+ * The heavy reliance on external APIs necessitates robust error handling, monitoring, and potentially fallback strategies. Managing the variable costs associated with AI API calls will be a critical factor in determining sustainable pricing tiers and ensuring profitability.
+6. Release Criteria & Success Metrics
+Defining clear criteria for release and metrics for ongoing success ensures alignment and allows for data-driven product evolution.
+ * 6.1. Definition of Done for Key Features (MVP Release)
+   * Report Import & Conversion: An administrator can successfully upload a standard financial PDF report, select the "Financial Report" type, trigger the Gemini 2.5 Pro conversion process, see the status update to "Ready," and confirm that core financial data (key statements, tables) is populated in the backend storage.
+   * Digital Twin Page Rendering: A logged-in user can navigate to the digital twin page for a successfully processed report, and the page renders displaying key sections and at least two interactive charts (e.g., revenue trend, expense breakdown) accurately reflecting the extracted data.
+   * AI Chat (Local Scope): A user can open the chat interface on a digital twin page, ask at least three distinct questions pertaining only to that report's content (e.g., "What was net income?", "List key risks mentioned"), and receive relevant, factually grounded answers derived solely from that report.
+   * Subscription & Basic Gating: A new user can successfully sign up for the Free tier. A free user can initiate the upgrade process to the Basic tier, complete payment via the Stripe checkout flow, and have their account status updated. Post-upgrade, the user can successfully save more than the free tier limit of reports (e.g., save a 4th report).
+   * Admin Panel (Core Functionality): An administrator can log in securely, view the list of registered users, view the list of imported reports and their statuses, and access the system configuration area to view (initially, not necessarily edit) API keys.
+ * 6.2. Key Performance Indicators (KPIs) for Success
+   Success will be measured continuously post-launch using the following KPIs, aligned with standard SaaS practices :
+   * Table: Success Metrics & Targets
+| Metric Category | KPI Name | Calculation/Definition | Target (6 Months Post-Launch) | Data Source(s) |
+|---|---|---|---|---|
+| User Engagement | Monthly Active Users (MAU) | Number of unique users logging in and performing a meaningful action (view report, chat query) within a calendar month. | Increase by 20% QoQ | Application Logs |
+|  | Feature Adoption Rate (Chat) | % of MAU using the AI chat feature at least once per month. | > 40% | Application Logs |
+|  | Avg. Session Duration | Average time spent per user session. | > 10 minutes | Application Logs / Web Analytics |
+| Monetization | MRR Growth Rate | Month-over-Month percentage increase in Monthly Recurring Revenue. | > 15% | Stripe Billing Data |
+|  | Free-to-Paid Conversion Rate | % of free users converting to any paid tier within 30 days of signup. | > 5% | User/Subscription Data, Stripe |
+|  | Customer Lifetime Value (CLTV) | Average total revenue generated per customer over their entire lifespan with the product. | > $YYYY | Stripe Billing Data, Churn Data |
+| Acquisition & Retention | Customer Acquisition Cost (CAC) | Total sales & marketing spend / Number of new paying customers acquired in a period. | < $XXXX | Marketing Spend Data, Stripe |
+|  | LTV:CAC Ratio | Ratio of Customer Lifetime Value to Customer Acquisition Cost. | > 3:1 | Calculated from CLTV & CAC |
+|  | Customer Churn Rate (Logo) | % of paying customers who cancel their subscription in a given month. | < 5% | User/Subscription Data, Stripe |
+| User Satisfaction | Net Promoter Score (NPS) | Score based on user responses to "How likely are you to recommend..." question (0-10 scale). | > 40 | In-app Surveys / Email Surveys |
+| Lead Generation | Leads Generated (Funnel) | Total number of qualified leads captured via funnel page forms per month. | > ZZZ per month | Funnel Page Lead Capture Data |
+|  | Funnel Page Conversion Rate | % of funnel page visitors who submit the lead form. | > 10% | Web Analytics, Lead Capture Data |
+| Platform Performance | Report Import Success Rate | % of uploaded PDFs successfully processed into digital twins without critical errors. | > 98% | Import Process Logs |
+|  | P95 AI Chat Response Time | 95th percentile latency for AI chat responses (Local Scope). | < 5 seconds | Application Performance Monitoring (APM) |
+|  | System Uptime | Percentage of time the application is operational and accessible. | > 99.9% | Infrastructure Monitoring Tools |
+Tracking these metrics provides a comprehensive view of product performance, user satisfaction, and business viability. Success is defined not just by feature completion but by the measurable value delivered to users, leading to engagement, monetization, and retention.
+7. Future Considerations / Open Questions
+This PRD focuses on the initial product launch (MVP+). Future development will be guided by user feedback, market analysis, and evolving technological capabilities.
+ * 7.1. Potential Future Enhancements
+   * Expanded Format Support: Add support for importing reports in formats beyond PDF, such as Microsoft Word (DOCX) or HTML web pages.
+   * Advanced AI Insights: Introduce more sophisticated AI-driven analysis, like automated anomaly detection within financial data, sentiment analysis of qualitative sections, or predictive insights based on historical report trends.
+   * Collaboration Features: Enable teams within a subscribing organization to share access to reports, add annotations, and collaborate on analysis within the platform.
+   * API & Integrations: Develop a public API to allow integration with other enterprise systems (e.g., CRMs like Salesforce, BI tools like Tableau/Power BI, financial planning software).
+   * Enhanced Visualizations: Offer a wider range of chart types and more customization options for data visualization within the digital twin.
+   * Broader Report Type Support: Expand the AI import capabilities and prompts to handle additional document types relevant to the target audience, such as market research reports, legal filings (e.g., 10-Ks beyond the annual report itself), or detailed competitor analyses.
+   * Mobile Application: Develop native mobile applications (iOS/Android) for on-the-go access to reports and chat features.
+   * AI Model Updates: Regularly evaluate and potentially integrate newer versions of Gemini or other advanced AI models as they become available to improve extraction accuracy and chat capabilities.
+ * 7.2. Open Questions 
+   The following questions require further discussion, research, or decision-making before or during development:
+   * Free Tier Limits: What are the specific, optimal limits for the Free tier regarding the number of saved reports, number of chat queries per month, or other usage metrics to encourage upgrades without hindering initial adoption?
+   * Tier Differentiation: Beyond report saving limits, industry curation, and chat scopes, what other specific features or usage caps will differentiate the Basic and Advanced tiers to justify the price difference? (e.g., number of funnel pages, export formats, priority support levels, API access in the future?).
+   * Funnel Page Customization: What level of branding customization (logos, colors, text) is necessary for sponsored funnel pages? Which lead form fields are essential versus optional?
+   * AI Export Feature Details: What specific types of AI-generated reports should be exportable (e.g., ratio summaries, trend analysis, risk summaries)? What export formats beyond CSV are required (PDF, DOCX)? How is the request initiated (via chat, dedicated button)?
+   * Industry Curation Scope: Which specific industries should be prioritized for the initial launch of the report curation feature in the Advanced tier? How will reports be sourced and tagged for curation?
+   * API Latency SLOs: What are the precise, acceptable P95 latency targets for AI chat responses, particularly for the scopes involving multiple reports or external Tavily calls?
+   * Import Failure Handling: What is the desired fallback behavior when Gemini fails to process a complex or corrupted PDF? Should it notify the admin, attempt a basic text-only extraction, or simply mark as failed?
+   * Data Retention Policies: What are the policies for retaining user data, uploaded reports, and generated digital twins, especially for inactive or cancelled accounts?
+ * Acknowledging these future possibilities and open questions helps manage the scope of the initial release effectively while providing a roadmap for future iterations. Addressing the open questions through stakeholder discussions and user research will be crucial for refining the product strategy.
+8. Conclusion
+The AI-Powered Digital Twin Annual Report Platform represents a significant opportunity to address unmet needs in the executive and investor communities. By leveraging advanced AI like Google Gemini for document understanding and chat, integrating real-time web context via Tavily, and providing interactive data visualizations, the platform aims to transform the cumbersome process of annual report analysis into an efficient, insightful, and valuable experience. The tiered subscription model, powered by Stripe, provides a clear path to monetization, while the unique funnel page feature offers a novel B2B lead generation channel.
+Successful execution requires careful attention to user experience design tailored for a discerning audience, robust technical implementation managing dependencies on external APIs, and continuous refinement based on user feedback and performance metrics. The administrative capabilities, particularly the user-modifiable AI prompts, are key to maintaining data quality and adapting the platform to diverse report structures. By focusing on solving the core pain points of information overload and time scarcity, this platform has the potential to become an indispensable tool for strategic decision-making.
+Appendix
+ * Glossary / Explanation of Terms:
+   * AI: Artificial Intelligence
+   * API: Application Programming Interface
+   * ARR: Annual Recurring Revenue
+   * CAC: Customer Acquisition Cost
+   * CLTV / LTV: Customer Lifetime Value
+   * CMDB: Configuration Management Database
+   * CRM: Customer Relationship Management
+   * CSV: Comma-Separated Values
+   * CTA: Call-to-Action
+   * DAU: Daily Active Users
+   * Digital Twin: An interactive, digital representation of a physical asset or document (in this case, an annual report).
+   * ESG: Environmental, Social, and Governance
+   * Gemini: Google's family of multimodal AI models.
+   * GDPR: General Data Protection Regulation
+   * KPI: Key Performance Indicator
+   * LLM: Large Language Model
+   * MAU: Monthly Active Users
+   * MRR: Monthly Recurring Revenue
+   * MVP: Minimum Viable Product
+   * NPS: Net Promoter Score
+   * OCR: Optical Character Recognition
+   * PDF: Portable Document Format
+   * PRD: Product Requirements Document
+   * PQL: Product-Qualified Lead
+   * RBAC: Role-Based Access Control
+   * SaaS: Software-as-a-Service
+   * SDK: Software Development Kit
+   * SLO: Service Level Objective
+   * SMART: Specific, Measurable, Achievable, Relevant, Time-bound
+   * SSO: Single Sign-On
+   * Tavily: A search API optimized for AI agents.
+   * TBD: To Be Determined
+   * UI: User Interface
+   * UX: User Experience
+   * WAU: Weekly Active Users
+   * WCAG: Web Content Accessibility Guidelines
+ * Referenced Documents: (Placeholder for links to wireframes, mockups, detailed technical specifications, market research)

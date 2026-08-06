@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/conformity/"
+title = "OXOT Conformity"
+version = "1.0.0"
+id = "artifacts/conformity"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/conformity/" ]
+localPort = 24629
+
+[services.development]
+run = "pnpm --filter @workspace/conformity run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/conformity", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/conformity/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24629"
+BASE_PATH = "/conformity/"

@@ -1,0 +1,8 @@
+# Docker Compose Development Override
+# Enables live backend hot-reloading for api-server source files.
+
+services:
+  api:
+    volumes:
+      - ./artifacts/api-server/src:/app/artifacts/api-server/src:ro
+      - ./lib:/app/lib:ro

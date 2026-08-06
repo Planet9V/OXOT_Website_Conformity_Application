@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "ui-theme-designer@claude-plugins-official": true,
+    "superpowers-lab@superpowers-marketplace": true
+  }
+}

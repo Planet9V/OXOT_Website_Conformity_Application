@@ -1,0 +1,14 @@
+{
+  "version": "2.35.0",
+  "phase": "Operations & Maintenance",
+  "status": "healthy",
+  "docker": {
+    "host_port": 8088,
+    "services_count": 5,
+    "services_healthy": 5
+  },
+  "metrics": {
+    "tasks_completed": 4,
+    "tasks_pending": 0
+  }
+}

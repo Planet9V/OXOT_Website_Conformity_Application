@@ -1,0 +1,233 @@
+import { useEffect } from 'react';
+import { Link } from 'wouter';
+import {
+  useGetAdminSession,
+  getGetAdminSessionQueryKey,
+  useListPages,
+  getListPagesQueryKey,
+} from '@workspace/api-client-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import {
+  BookOpen,
+  FileText,
+  ListTree,
+  Lock,
+  ArrowRight,
+  Grid3x3,
+  Scale,
+  ExternalLink,
+} from 'lucide-react';
+import { useSeo } from '@/hooks/use-seo';
+
+// Display names for regulation tracks, keyed by the conformity catalogue's
+// natural regulation keys. Unknown keys fall back to the raw key so future
+// tracks appear without a frontend change.
+const REGULATION_LABELS: Record<string, string> = {
+  cra: 'Cyber Resilience Act',
+  ai_act: 'EU AI Act',
+  machinery: 'Machinery Regulation',
+  iec_62443: 'IEC 62443',
+  nis2: 'NIS2 Directive',
+  red: 'Radio Equipment Directive',
+  gdpr: 'GDPR',
+  cer: 'CER Directive',
+};
+
+const CROSS_CUTTING = '__cross';
+
+export default function KnowledgeHubPage() {
+  // The Knowledge Hub and its member guides are English-only. When reached
+  // through the /nl mount, escape to the canonical root-level URL so every
+  // relative link resolves against English routes instead of 404ing under /nl.
+  const nlMounted =
+    typeof window !== 'undefined' && window.location.pathname.startsWith('/nl/');
+  useEffect(() => {
+    if (nlMounted) window.location.replace('/knowledge');
+  }, [nlMounted]);
+
+  useSeo({
+    title: 'Knowledge Hub',
+    description: 'Member reference library: regulation guidance, templates, and workbench how-tos.',
+    noindex: true,
+  });
+
+  const { data: session, isLoading: sessionLoading } = useGetAdminSession({
+    query: { queryKey: getGetAdminSessionQueryKey(), retry: false },
+  });
+
+  const authenticated = session?.authenticated === true;
+
+  // The server already filters this list by the caller's visibility tier;
+  // members see public + members pages, so selecting visibility === "members"
+  // here yields exactly the gated Knowledge Hub shelves.
+  const { data: pages = [] } = useListPages('en', {
+    query: { queryKey: getListPagesQueryKey('en'), enabled: authenticated },
+  });
+
+  if (sessionLoading) {
+    return (
+      <div className="container mx-auto px-4 md:px-8 py-24 text-center text-muted-foreground">
+        Loading…
+      </div>
+    );
+  }
+
+  if (!authenticated) {
+    return (
+      <div className="container mx-auto px-4 md:px-8 py-24 max-w-lg">
+        <Card>
+          <CardHeader className="text-center">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
+              <Lock className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
+            </div>
+            <CardTitle>Knowledge Hub is for members</CardTitle>
+            <CardDescription>
+              Sign in to access the full regulatory reference library, artifact templates, and
+              workbench guides for this deployment.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center">
+            <Button asChild>
+              <Link href="/admin/login">Sign in</Link>
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  const memberPages = pages.filter((p) => p.visibility === 'members');
+  const groups = new Map<string, typeof memberPages>();
+  for (const page of memberPages) {
+    const keys = page.regulationKeys.length > 0 ? page.regulationKeys : [CROSS_CUTTING];
+    for (const key of keys) {
+      const list = groups.get(key) ?? [];
+      list.push(page);
+      groups.set(key, list);
+    }
+  }
+  // Regulation tracks first (stable order), cross-cutting last.
+  const orderedKeys = [
+    ...[...groups.keys()].filter((k) => k !== CROSS_CUTTING).sort(),
+    ...(groups.has(CROSS_CUTTING) ? [CROSS_CUTTING] : []),
+  ];
+
+  const catalogueLinks = [
+    {
+      href: '/conformity-platform/requirements',
+      icon: ListTree,
+      title: 'Requirement catalogue',
+      description: 'Every requirement, rendered live from the workbench catalogue.',
+    },
+    {
+      href: '/conformity-platform/regulations',
+      icon: Scale,
+      title: 'Regulations',
+      description: 'The regulation tracks loaded on this deployment.',
+    },
+    {
+      href: '/conformity-platform/matrix',
+      icon: Grid3x3,
+      title: 'Cross-regulation matrix',
+      description: 'How requirements map across regulations — evidence reuse at a glance.',
+    },
+  ];
+
+  return (
+    <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 space-y-12">
+      <div className="max-w-2xl">
+        <Badge variant="secondary" className="mb-3">
+          Members
+        </Badge>
+        <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-3">
+          Knowledge Hub
+        </h1>
+        <p className="text-muted-foreground text-lg">
+          The reference library behind your conformance work: regulation guidance, artifact
+          templates, and workbench how-tos — organized by regulation track.
+        </p>
+        <div className="mt-5">
+          <Button asChild>
+            <a href="/conformity/">
+              Open Workbench
+              <ExternalLink className="ml-2 h-4 w-4" aria-hidden="true" />
+            </a>
+          </Button>
+        </div>
+      </div>
+
+      {/* Live catalogue reference — rendered from the workbench, never duplicated */}
+      <section aria-labelledby="catalogue-heading">
+        <h2 id="catalogue-heading" className="font-display text-xl font-semibold mb-4">
+          Live catalogue reference
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {catalogueLinks.map((item) => (
+            <a key={item.href} href={item.href} className="group">
+              <Card className="h-full transition-colors group-hover:border-primary/50">
+                <CardHeader>
+                  <item.icon className="h-5 w-5 text-primary mb-1" aria-hidden="true" />
+                  <CardTitle className="text-base flex items-center gap-2">
+                    {item.title}
+                    <ArrowRight
+                      className="h-4 w-4 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0"
+                      aria-hidden="true"
+                    />
+                  </CardTitle>
+                  <CardDescription>{item.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Member guides grouped by regulation track */}
+      {orderedKeys.map((key) => (
+        <section key={key} aria-labelledby={`track-${key}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <h2 id={`track-${key}`} className="font-display text-xl font-semibold">
+              {key === CROSS_CUTTING
+                ? 'Platform guides'
+                : (REGULATION_LABELS[key] ?? key.toUpperCase())}
+            </h2>
+            {key !== CROSS_CUTTING && <Badge variant="outline">{key}</Badge>}
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Plain <a>: hub pages are English-only, so escape any /nl
+                router nesting and always land on the root-level slug. */}
+            {(groups.get(key) ?? []).map((page) => (
+              <a key={page.id} href={`/${page.slug}`} className="group">
+                <Card className="h-full transition-colors group-hover:border-primary/50">
+                  <CardHeader>
+                    {key === CROSS_CUTTING ? (
+                      <BookOpen className="h-5 w-5 text-primary mb-1" aria-hidden="true" />
+                    ) : (
+                      <FileText className="h-5 w-5 text-primary mb-1" aria-hidden="true" />
+                    )}
+                    <CardTitle className="text-base flex items-center gap-2">
+                      {page.title}
+                      <ArrowRight
+                        className="h-4 w-4 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0"
+                        aria-hidden="true"
+                      />
+                    </CardTitle>
+                    {page.excerpt && <CardDescription>{page.excerpt}</CardDescription>}
+                  </CardHeader>
+                </Card>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {memberPages.length === 0 && (
+        <p className="text-muted-foreground">
+          No member guides have been published on this deployment yet.
+        </p>
+      )}
+    </div>
+  );
+}

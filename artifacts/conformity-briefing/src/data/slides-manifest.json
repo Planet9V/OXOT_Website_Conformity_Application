@@ -1,0 +1,50 @@
+[
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567801",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide1Cover.tsx",
+    "title": "Cover — The EU Regulatory Compliance Workbench",
+    "description": "Title slide with hero image, product tagline, and key platform stats",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567802",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide2Challenge.tsx",
+    "title": "The Regulatory Pressure",
+    "description": "Four concurrent EU frameworks — CRA, AI Act, NIS2, Machinery — with requirement counts and also-tracked standards",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567803",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide3Capabilities.tsx",
+    "title": "Platform Capabilities",
+    "description": "Four capability modules: assessment workbench, BOM analysis, incident management, cross-regulation mapping",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567804",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide4Numbers.tsx",
+    "title": "Live Coverage — Portfolio View",
+    "description": "KPI stats plus regulation volume table and live dashboard screenshot",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567805",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide5Reports.tsx",
+    "title": "Executive Reporting Suite",
+    "description": "Three report formats, AI-drafted prose, frozen snapshots, portfolio rollup, print export",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567806",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide6Close.tsx",
+    "title": "Next Steps",
+    "description": "Dark closing slide with demo → pilot → report next-step CTA",
+    "speakerNotes": ""
+  }
+]

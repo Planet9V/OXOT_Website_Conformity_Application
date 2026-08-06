@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/conformity-briefing/"
+title = "OXOT Conformity Briefing"
+description = "Executive briefing deck for OXOT Conformity — EU multi-regulation compliance workbench"
+version = "1.0.0"
+id = "artifacts/conformity-briefing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/conformity-briefing/" ]
+localPort = 23384
+
+[services.development]
+run = "pnpm --filter @workspace/conformity-briefing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/conformity-briefing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/conformity-briefing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23384"
+BASE_PATH = "/conformity-briefing/"

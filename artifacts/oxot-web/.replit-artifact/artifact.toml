@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "OXOT"
+version = "1.0.0"
+id = "artifacts/oxot-web"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24464
+
+[services.development]
+run = "pnpm --filter @workspace/oxot-web run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/oxot-web", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/oxot-web/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24464"
+BASE_PATH = "/"
