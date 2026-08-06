@@ -14,6 +14,15 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+/** Long-form reference guides on the main site (wiki-style article with TOC). */
+const ARTICLE_SLUGS: Record<string, string> = {
+  cra: "cra",
+  ai_act: "ai-act",
+  machinery: "machine-act",
+  iec_62443: "iec-62443",
+  nis2: "nis2",
+};
+
 export default function Regulations() {
   const { data: regulations, isLoading, isError } = useListRegulations();
   const [selectedRegKey, setSelectedRegKey] = useState<string | null>(null);
@@ -137,6 +146,12 @@ export default function Regulations() {
                   </a>
                 )}
                 <Link
+                  href={`/regulations/${reg.key}`}
+                  className="inline-flex items-center gap-1 font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Details
+                </Link>
+                <Link
                   href={`/requirements?regulation=${reg.key}`}
                   className="inline-flex items-center gap-1 font-medium text-primary hover:text-primary-ink transition-colors"
                 >
@@ -228,11 +243,25 @@ export default function Regulations() {
                 <div />
               )}
 
-              <Link href={`/requirements?regulation=${selectedReg.key}`} className="w-full sm:w-auto">
-                <Button size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg cta-lift">
-                  <BookOpen className="w-3.5 h-3.5" /> Explore Mapped Controls
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
+                {ARTICLE_SLUGS[selectedReg.key] && (
+                  <a href={`/${ARTICLE_SLUGS[selectedReg.key]}`} className="w-full sm:w-auto">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg">
+                      <BookOpen className="w-3.5 h-3.5" /> Full Guide
+                    </Button>
+                  </a>
+                )}
+                <Link href={`/regulations/${selectedReg.key}`} className="w-full sm:w-auto">
+                  <Button variant="secondary" size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg">
+                    View Details <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                </Link>
+                <Link href={`/requirements?regulation=${selectedReg.key}`} className="w-full sm:w-auto">
+                  <Button size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg cta-lift">
+                    <BookOpen className="w-3.5 h-3.5" /> Explore Mapped Controls
+                  </Button>
+                </Link>
+              </div>
             </div>
           </DialogContent>
         )}

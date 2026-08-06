@@ -32,6 +32,7 @@ import { FlowRunnerPanel } from "@/components/conformity/flow-runner-panel";
 import { ProvenancePanel } from "@/components/conformity/provenance-panel";
 import { ReportsPanel } from "@/components/conformity/reports-panel";
 import { NextActions } from "@/components/conformity/next-actions";
+import { Wizard } from "@/components/conformity/wizard";
 import { AssistantDock } from "@/components/conformity/assistant-dock";
 import { ArrowLeft, ArrowRight, CheckCircle2, Compass, AlertOctagon } from "lucide-react";
 
@@ -336,6 +337,9 @@ export default function Assessment() {
           <TabsTrigger value="actions" className="rounded-md" data-testid="tab-next-actions">
             Next actions
           </TabsTrigger>
+          <TabsTrigger value="wizard" className="rounded-md" data-testid="tab-wizard">
+            Wizard
+          </TabsTrigger>
           <TabsTrigger value="gaps" className="rounded-md">
             Gap assessment
           </TabsTrigger>
@@ -364,6 +368,10 @@ export default function Assessment() {
 
         <TabsContent value="actions">
           <NextActions assessmentId={id} onNavigateTab={(t) => setTab(t)} />
+        </TabsContent>
+
+        <TabsContent value="wizard">
+          {flow ? <Wizard detail={detail} flow={flow} onGoToGaps={() => setTab("gaps")} /> : null}
         </TabsContent>
 
         <TabsContent value="gaps">
