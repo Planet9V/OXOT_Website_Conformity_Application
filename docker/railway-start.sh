@@ -17,6 +17,18 @@ NGINX_PORT="${PORT:-80}"
 sed "s/__PORT__/${NGINX_PORT}/" /etc/nginx/templates/railway.conf.template \
   > /etc/nginx/conf.d/railway.conf
 
+echo "[railway-start] ensuring pgvector extension…"
+(cd /app/lib/db && node -e "
+const { Client } = require('pg');
+(async () => {
+  const c = new Client({ connectionString: process.env.DATABASE_URL });
+  await c.connect();
+  await c.query('CREATE EXTENSION IF NOT EXISTS vector');
+  await c.end();
+  console.log('[railway-start] pgvector extension present');
+})().catch((e) => { console.error('[railway-start] pgvector extension failed:', e.message); process.exit(1); });
+")
+
 echo "[railway-start] pushing database schema…"
 pnpm --filter @workspace/db run push-force
 
