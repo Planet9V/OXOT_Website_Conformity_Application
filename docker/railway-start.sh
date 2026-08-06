@@ -13,8 +13,15 @@
 #   4. Start the API and nginx; exit when either dies so Railway restarts us.
 set -euo pipefail
 
-NGINX_PORT="${PORT:-80}"
-sed "s/__PORT__/${NGINX_PORT}/" /etc/nginx/templates/railway.conf.template \
+NGINX_PORT="${PORT:-8080}"
+# The API must never share nginx's port (the base image bakes PORT=8080 and
+# Railway may inject the same value) — bump the internal API port on clash.
+API_PORT=8080
+if [ "${NGINX_PORT}" = "${API_PORT}" ]; then
+  API_PORT=8081
+fi
+sed -e "s/__PORT__/${NGINX_PORT}/" -e "s/__API_PORT__/${API_PORT}/" \
+  /etc/nginx/templates/railway.conf.template \
   > /etc/nginx/conf.d/railway.conf
 
 echo "[railway-start] ensuring pgvector extension…"
@@ -40,8 +47,8 @@ pnpm --filter @workspace/api-server run seed:conformity \
 pnpm --filter @workspace/api-server run seed:demo \
   || echo "[railway-start] seed:demo failed (continuing)"
 
-echo "[railway-start] starting API on 127.0.0.1:8080 and nginx on :${NGINX_PORT}"
-PORT=8080 node --enable-source-maps artifacts/api-server/dist/index.mjs &
+echo "[railway-start] starting API on 127.0.0.1:${API_PORT} and nginx on :${NGINX_PORT}"
+PORT="${API_PORT}" node --enable-source-maps artifacts/api-server/dist/index.mjs &
 nginx -g 'daemon off;' &
 
 # Surface whichever process exits first; ON_FAILURE restart policy takes over.
