@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { desc } from "drizzle-orm";
-import { db, regulatoryNewsCacheTable, type InsertRegulatoryNewsCache } from "@workspace/db";
-import { getLlmConfig, getDbOpenRouterApiKey, resolveGenerationModel } from "../lib/models";
+import { type InsertRegulatoryNewsCache } from "@workspace/db";
+import { getDbOpenRouterApiKey } from "../lib/models";
+import { generateRegulatoryNews, listRegulatoryNews } from "../lib/regulatoryNewsGenerator";
 import { logger } from "../lib/logger";
 
 const router = Router();
@@ -70,168 +70,34 @@ The Commission also established transition rules for legacy hardware revisions, 
 ];
 
 router.get("/regulatory-news", async (req, res) => {
+  const limit = Math.min(Math.max(Number(req.query.limit) || 6, 1), 200);
   try {
     const forceRefresh = req.query.refresh === "true";
 
-    // 1. Query existing cached items from DB
-    const existing = await db
-      .select()
-      .from(regulatoryNewsCacheTable)
-      .orderBy(desc(regulatoryNewsCacheTable.publishedAt))
-      .limit(6);
-
-    // If cache has items and no force refresh requested, return existing cache
+    const existing = await listRegulatoryNews(limit);
     if (!forceRefresh && existing.length > 0) {
-      res.json({
-        source: "database_cache",
-        modelUsed: existing[0]?.modelUsed || "perplexity/sonar-pro",
-        items: existing,
-      });
+      res.json({ source: "database_cache", modelUsed: existing[0]?.modelUsed || "perplexity/sonar-pro", items: existing });
       return;
     }
 
-    // 2. Resolve configured searchModel dynamically from Postgres DB llm_config
-    const llmConfig = await getLlmConfig(false);
-    const searchModel = resolveGenerationModel(llmConfig, "searchModel") || "perplexity/sonar-pro";
     const apiKey = await getDbOpenRouterApiKey();
-
     if (!apiKey) {
-      res.json({
-        source: "fallback",
-        modelUsed: searchModel,
-        items: existing.length > 0 ? existing : FALLBACK_NEWS_ITEMS,
-      });
+      res.json({ source: "fallback", modelUsed: "perplexity/sonar-pro", items: existing.length > 0 ? existing : FALLBACK_NEWS_ITEMS });
       return;
     }
 
-    // 3. Craft OpenRouter Perplexity request according to official payload schema
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-
-    try {
-      const openrouterRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://oxot.ai",
-          "X-Title": "OXOT Conformity Application",
-        },
-        signal: controller.signal,
-        body: JSON.stringify({
-          model: searchModel.includes("/") ? searchModel : `perplexity/${searchModel}`,
-          messages: [
-            {
-              role: "user",
-              content: [
-                {
-                  type: "text",
-                  text: "Search live web for the 4 most recent, factual news items on EU Cyber Resilience Act (CRA) enforcement, ENISA technical guidelines, or CISA KEV advisories. Return strictly a JSON array of objects with keys: title, summary, fullArticle, complianceImpact, source, category, url, citations. Ensure fullArticle is a comprehensive 3-paragraph statutory analysis, complianceImpact gives key takeaways for manufacturers, and url is a valid HTTPS source link.",
-                },
-              ],
-            },
-          ],
-          max_tokens: 1800,
-          temperature: 0.2,
-        }),
-      });
-
-      clearTimeout(timeoutId);
-
-      if (!openrouterRes.ok) {
-        logger.warn({ status: openrouterRes.status }, "OpenRouter news request returned non-200 status");
-        res.json({
-          source: "database_cache_fallback",
-          modelUsed: searchModel,
-          items: existing.length > 0 ? existing : FALLBACK_NEWS_ITEMS,
-        });
-        return;
-      }
-
-      const data: any = await openrouterRes.json();
-      const content = data.choices?.[0]?.message?.content || "";
-      const citations = data.citations || data.choices?.[0]?.message?.citations || [];
-
-      // Clean markdown code blocks and extract JSON
-      let cleanedContent = content.replace(/```json/gi, "").replace(/```/g, "").trim();
-      
-      let parsedItems: InsertRegulatoryNewsCache[] = [];
-      try {
-        const jsonStart = cleanedContent.indexOf("[");
-        const jsonEnd = cleanedContent.lastIndexOf("]");
-        if (jsonStart !== -1 && jsonEnd !== -1) {
-          const jsonStr = cleanedContent.substring(jsonStart, jsonEnd + 1);
-          const rawParsed = JSON.parse(jsonStr);
-
-          parsedItems = rawParsed.map((item: any, index: number) => {
-            const itemUrl =
-              item.url && item.url.startsWith("http")
-                ? item.url
-                : citations[index] || "https://eur-lex.europa.eu";
-
-            const citationList = Array.isArray(item.citations)
-              ? item.citations
-              : citations.length > 0
-              ? citations
-              : [itemUrl];
-
-            return {
-              title: String(item.title || "EU CRA Compliance Update").replace(/\[\d+\]/g, "").trim(),
-              summary: String(item.summary || "Latest regulatory compliance update.").replace(/\[\d+\]/g, "").trim(),
-              fullArticle: String(item.fullArticle || item.summary || "").replace(/\[\d+\]/g, "").trim(),
-              complianceImpact: String(item.complianceImpact || "Review Annex I compliance readiness.").replace(/\[\d+\]/g, "").trim(),
-              citations: JSON.stringify(citationList),
-              source: String(item.source || "ENISA / OpenRouter Search").trim(),
-              category: String(item.category || "EU CRA").trim(),
-              url: itemUrl,
-              modelUsed: searchModel,
-            };
-          });
-        }
-      } catch (parseErr) {
-        logger.warn({ parseErr, content }, "Failed to parse JSON from OpenRouter Perplexity news response");
-      }
-
-      if (parsedItems.length === 0) {
-        parsedItems = FALLBACK_NEWS_ITEMS;
-      }
-
-      // Persist newly fetched news items to Postgres DB
-      const now = new Date();
-      for (const item of parsedItems) {
-        await db.insert(regulatoryNewsCacheTable).values({
-          ...item,
-          publishedAt: now,
-        });
-      }
-
-      const updatedDb = await db
-        .select()
-        .from(regulatoryNewsCacheTable)
-        .orderBy(desc(regulatoryNewsCacheTable.publishedAt))
-        .limit(6);
-
-      res.json({
-        source: "openrouter_live",
-        modelUsed: searchModel,
-        items: updatedDb.length > 0 ? updatedDb : parsedItems,
-      });
-    } catch (fetchErr) {
-      clearTimeout(timeoutId);
-      logger.error({ fetchErr }, "OpenRouter news fetch failed or timed out");
-      res.json({
-        source: "database_cache_fallback",
-        modelUsed: searchModel,
-        items: existing.length > 0 ? existing : FALLBACK_NEWS_ITEMS,
-      });
-    }
+    const result = await generateRegulatoryNews();
+    const items = await listRegulatoryNews(limit);
+    res.json({
+      source: result.ok ? "openrouter_live" : "database_cache_fallback",
+      modelUsed: result.model,
+      inserted: result.inserted,
+      items: items.length > 0 ? items : FALLBACK_NEWS_ITEMS,
+    });
   } catch (err: any) {
     logger.error({ err }, "Regulatory news endpoint error");
-    res.json({
-      source: "fallback_emergency",
-      modelUsed: "perplexity/sonar-pro",
-      items: FALLBACK_NEWS_ITEMS,
-    });
+    const items = await listRegulatoryNews(limit).catch(() => []);
+    res.json({ source: "fallback_emergency", modelUsed: "perplexity/sonar-pro", items: items.length > 0 ? items : FALLBACK_NEWS_ITEMS });
   }
 });
 

@@ -11,6 +11,9 @@ export interface TwoColumnSectionData {
   bullets?: string[];
   cta?: { label: string; href: string };
   reverse?: boolean;
+  /** Optional real screenshot; when set it replaces the abstract graphic. */
+  imageUrl?: string;
+  imageAlt?: string;
 }
 
 export function TwoColumnSection({ data }: { data: TwoColumnSectionData }) {
@@ -70,7 +73,17 @@ export function TwoColumnSection({ data }: { data: TwoColumnSectionData }) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-full lg:w-1/2"
           >
-            {/* Abstract engineered graphic representation */}
+            {data.imageUrl ? (
+              <div className="relative rounded-2xl overflow-hidden border border-border shadow-e3">
+                <img
+                  src={data.imageUrl}
+                  alt={data.imageAlt ?? data.title}
+                  className="w-full h-auto block"
+                  loading="lazy"
+                />
+              </div>
+            ) : (
+            /* Abstract engineered graphic representation */
             <div className="relative aspect-square max-w-md mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl transform rotate-3" />
               <div className="absolute inset-0 bg-card border border-border shadow-xl rounded-3xl transform -rotate-3 transition-transform hover:rotate-0 duration-500 overflow-hidden flex flex-col">
@@ -96,6 +109,7 @@ export function TwoColumnSection({ data }: { data: TwoColumnSectionData }) {
                 </div>
               </div>
             </div>
+            )}
           </motion.div>
           
         </div>

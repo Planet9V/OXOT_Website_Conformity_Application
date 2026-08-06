@@ -56,7 +56,7 @@ function isUniqueViolation(err: unknown): boolean {
 }
 
 // Public or session GET for PSIRT canvas & dropdowns
-router.get("/team", async (_req, res): Promise<void> => {
+router.get("/team", requireAuth, async (_req, res): Promise<void> => {
   try {
     const rows = await db
       .select()
@@ -68,7 +68,7 @@ router.get("/team", async (_req, res): Promise<void> => {
   }
 });
 
-router.get("/admin/team", async (_req, res): Promise<void> => {
+router.get("/admin/team", requireAuth, async (_req, res): Promise<void> => {
   try {
     const rows = await db
       .select()
@@ -80,7 +80,7 @@ router.get("/admin/team", async (_req, res): Promise<void> => {
   }
 });
 
-router.post("/admin/team", async (req, res): Promise<void> => {
+router.post("/admin/team", requireAuth, async (req, res): Promise<void> => {
   const {
     username: rawUsername,
     displayName: rawDisplayName,
@@ -165,7 +165,7 @@ router.post("/admin/team", async (req, res): Promise<void> => {
   }
 });
 
-router.patch("/admin/team/:id", async (req, res): Promise<void> => {
+router.patch("/admin/team/:id", requireAuth, async (req, res): Promise<void> => {
   try {
     const id = parseInt(req.params.id, 10);
     const body = req.body;

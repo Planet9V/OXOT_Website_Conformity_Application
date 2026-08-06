@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "wouter";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  Newspaper,
-  RefreshCw,
-  ExternalLink,
-  ShieldAlert,
-  Zap,
-  Globe,
-  Radio,
-} from "lucide-react";
+import { Globe, Radio, ArrowRight } from "lucide-react";
 
 export interface NewsItem {
   id?: number;
@@ -65,120 +57,91 @@ const FALLBACK_NEWS: NewsItem[] = [
 export function LiveRegulatoryNewsFeed() {
   const [items, setItems] = useState<NewsItem[]>(FALLBACK_NEWS);
   const [loading, setLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
-  const [modelUsed, setModelUsed] = useState<string>("perplexity/sonar-pro");
-
-  const fetchNews = async (forceRefresh = false) => {
-    if (forceRefresh) setRefreshing(true);
-    else setLoading(true);
-
-    try {
-      const url = forceRefresh ? "/api/regulatory-news?refresh=true" : "/api/regulatory-news";
-      const res = await fetch(url);
-      const data = await res.json();
-
-      if (res.ok && data.items && data.items.length > 0) {
-        setItems(data.items);
-        if (data.modelUsed) setModelUsed(data.modelUsed);
-      } else {
-        setItems(FALLBACK_NEWS);
-      }
-    } catch (_err) {
-      setItems(FALLBACK_NEWS);
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
-  };
 
   useEffect(() => {
-    fetchNews(false);
+    let alive = true;
+    setLoading(true);
+    fetch("/api/regulatory-news?limit=3")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!alive) return;
+        if (data?.items && data.items.length > 0) setItems(data.items);
+        else setItems(FALLBACK_NEWS);
+      })
+      .catch(() => {
+        if (alive) setItems(FALLBACK_NEWS);
+      })
+      .finally(() => {
+        if (alive) setLoading(false);
+      });
+    return () => {
+      alive = false;
+    };
   }, []);
 
-  return (
-    <section className="w-full py-12 bg-muted/20 border-y my-8">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <Badge variant="default" className="gap-1 bg-amber-500 hover:bg-amber-600 text-black font-semibold">
-                <Radio className="h-3.5 w-3.5 animate-pulse" /> Live Regulatory Intelligence
-              </Badge>
-              <Badge variant="outline" className="text-xs font-mono">
-                <Zap className="h-3 w-3 text-amber-500 mr-1" />
-                {modelUsed}
-              </Badge>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-display font-normal tracking-tight text-foreground flex items-center gap-2">
-              <Newspaper className="h-6 w-6 text-primary" /> EU CRA &amp; Cyber Resilience News Feed
-            </h2>
-            <p className="text-sm text-muted-foreground mt-1">
-              Real-time ENISA guidelines, Article 10 technical standards, and vulnerability disclosure updates powered by OpenRouter.
-            </p>
-          </div>
+  const top3 = items.slice(0, 3);
 
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => fetchNews(true)}
-            disabled={refreshing || loading}
-            className="h-9 gap-1.5 font-medium self-start md:self-auto bg-background"
+  return (
+    <section className="w-full py-10 bg-muted/20 border-y">
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+        {/* Compact header row: live badge + one-line heading + "see all" */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-5">
+          <Badge variant="default" className="gap-1.5 bg-amber-500 hover:bg-amber-500 text-black font-semibold shrink-0">
+            <Radio className="h-3.5 w-3.5 animate-pulse" /> Live CRA intel
+          </Badge>
+          <span className="font-display text-base md:text-lg text-foreground">
+            Latest from ENISA, the Commission &amp; CISA
+          </span>
+          <Link
+            href="/news"
+            className="ml-auto text-sm font-medium text-primary hover:underline flex items-center gap-1"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} />
-            {refreshing ? "Updating Live Feed…" : "Refresh News Feed"}
-          </Button>
+            See all regulatory news <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Skeleton className="h-44 w-full rounded-xl" />
-            <Skeleton className="h-44 w-full rounded-xl" />
-            <Skeleton className="h-44 w-full rounded-xl" />
-            <Skeleton className="h-44 w-full rounded-xl" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <Skeleton className="h-24 w-full rounded-lg" />
+            <Skeleton className="h-24 w-full rounded-lg" />
+            <Skeleton className="h-24 w-full rounded-lg" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {items.map((item, idx) => (
-              <div
-                key={item.id || idx}
-                className="rounded-xl border bg-card p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
-              >
-                <div className="space-y-2.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <Badge variant="secondary" className="text-xs font-mono">
-                      {item.category || "EU CRA"}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground flex items-center gap-1 font-mono">
-                      <Globe className="h-3 w-3 text-primary" /> {item.source}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {top3.map((item, idx) => {
+              const inner = (
+                <>
+                  <div className="text-[10px] font-mono uppercase tracking-wide text-muted-foreground flex items-center gap-1.5">
+                    <Globe className="h-3 w-3 text-primary" />
+                    <span className="truncate">{item.source}</span>
+                    <span className="text-muted-foreground/60">·</span>
+                    <span className="whitespace-nowrap">
+                      {item.publishedAt
+                        ? new Date(item.publishedAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })
+                        : "Live"}
                     </span>
                   </div>
-
-                  <h3 className="font-semibold text-base text-foreground leading-snug">
+                  <p className="mt-1.5 text-sm font-medium text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                     {item.title}
-                  </h3>
-
-                  <p className="text-xs text-muted-foreground line-clamp-3 leading-relaxed">
-                    {item.summary}
                   </p>
+                </>
+              );
+              return item.url ? (
+                <a
+                  key={item.id || idx}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group rounded-lg border bg-card px-4 py-3 hover:border-primary/50 transition-colors"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <div key={item.id || idx} className="group rounded-lg border bg-card px-4 py-3">
+                  {inner}
                 </div>
-
-                <div className="mt-4 pt-3 border-t flex items-center justify-between text-xs text-muted-foreground font-mono">
-                  <span>
-                    {item.publishedAt ? new Date(item.publishedAt).toLocaleDateString() : "Live update"}
-                  </span>
-                  {item.url && (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline flex items-center gap-1 font-sans font-medium"
-                    >
-                      Read Source <ExternalLink className="h-3 w-3" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
