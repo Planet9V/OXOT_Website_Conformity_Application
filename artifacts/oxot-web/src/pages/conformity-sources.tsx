@@ -2,7 +2,8 @@ import { useListSourceDocuments } from '@workspace/api-client-react';
 import { ConformityShell } from '@/components/layout/conformity-shell';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
-import { Download, FileText, ExternalLink } from 'lucide-react';
+import { Link } from 'wouter';
+import { Download, FileText, ExternalLink, BookOpen } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 
 type SourceDoc = {
@@ -45,18 +46,27 @@ function DocCard({ doc }: { doc: SourceDoc }) {
         </div>
       </div>
       <div className="border-t border-border p-4">
-        <a
-          href={doc.url}
-          target="_blank"
-          rel="noreferrer"
-          className="w-full flex items-center justify-center gap-2 text-sm font-medium bg-primary/5 hover:bg-primary/10 text-primary py-2 px-4 rounded-lg transition-colors border border-primary/20 group-hover:border-primary/40"
-        >
-          {doc.url.endsWith('.pdf') ? (
-            <><Download className="w-4 h-4" /> Download PDF</>
-          ) : (
-            <><ExternalLink className="w-4 h-4" /> Open Source</>
-          )}
-        </a>
+        {/\.(md|txt)$/i.test(doc.filename) ? (
+          <Link
+            href={`/conformity-platform/sources/view/${encodeURIComponent(doc.filename)}`}
+            className="w-full flex items-center justify-center gap-2 text-sm font-medium bg-primary/5 hover:bg-primary/10 text-primary py-2 px-4 rounded-lg transition-colors border border-primary/20 group-hover:border-primary/40"
+          >
+            <BookOpen className="w-4 h-4" /> Read Document
+          </Link>
+        ) : (
+          <a
+            href={doc.url}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full flex items-center justify-center gap-2 text-sm font-medium bg-primary/5 hover:bg-primary/10 text-primary py-2 px-4 rounded-lg transition-colors border border-primary/20 group-hover:border-primary/40"
+          >
+            {doc.url.endsWith('.pdf') ? (
+              <><Download className="w-4 h-4" /> Open PDF</>
+            ) : (
+              <><ExternalLink className="w-4 h-4" /> Open Source</>
+            )}
+          </a>
+        )}
       </div>
     </div>
   );

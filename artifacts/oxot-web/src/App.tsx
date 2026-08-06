@@ -21,6 +21,7 @@ import ConformityRequirementDetail from '@/pages/conformity-requirement-detail';
 import ConformityThemes from '@/pages/conformity-themes';
 import ConformityMappings from '@/pages/conformity-mappings';
 import ConformitySources from '@/pages/conformity-sources';
+import ConformitySourceViewer from '@/pages/conformity-source-viewer';
 import AdminLogin from '@/pages/admin-login';
 import AdminDashboard from '@/pages/admin-dashboard';
 import AdminLeads from '@/pages/admin-leads';
@@ -171,6 +172,9 @@ function PublicRoutes() {
       </Route>
       <Route path="/conformity-platform/matrix">
         {() => <PublicRoute component={ConformityMappings} />}
+      </Route>
+      <Route path="/conformity-platform/sources/view/:filename">
+        {() => <PublicRoute component={ConformitySourceViewer} />}
       </Route>
       <Route path="/conformity-platform/sources">
         {() => <PublicRoute component={ConformitySources} />}
