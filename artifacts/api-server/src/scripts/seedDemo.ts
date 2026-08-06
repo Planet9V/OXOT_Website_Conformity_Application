@@ -110,13 +110,57 @@ const STATUS_CYCLE = [
 // are stored as member USERNAMES, never display names.
 const DEMO_MEMBERS = [
   {
+    username: "jim",
+    displayName: "Jim",
+    position: "CRA Executive Director & Compliance Lead",
+    email: "jim@oxot.nl",
+    telephone: "+31 (0)20 555 0101",
+    department: "Executive Management & Product Compliance",
+    organization: "OXOT B.V.",
+    roleResponsibility: "Lead Assessor, CRA Strategy & Statutory Sign-off",
+    plainPassword: "Password123!",
+  },
+  {
+    username: "jill",
+    displayName: "Jill",
+    position: "Head of Vulnerability Management & PSIRT",
+    email: "jill@oxot.nl",
+    telephone: "+31 (0)20 555 0102",
+    department: "Cybersecurity & PSIRT Triage",
+    organization: "OXOT B.V.",
+    roleResponsibility: "PSIRT Commander, ISO 29147 / 30111 Lead & 24h Incident SLA Manager",
+    plainPassword: "Password123!",
+  },
+  {
+    username: "jack",
+    displayName: "Jack",
+    position: "Principal OT/ICS Cybersecurity Architect",
+    email: "jack@oxot.nl",
+    telephone: "+31 (0)20 555 0103",
+    department: "OT Architecture & Security Engineering",
+    organization: "OXOT B.V.",
+    roleResponsibility: "IEC 62443-4-2 Technical Verification & Secure Boot Architect",
+    plainPassword: "Password123!",
+  },
+  {
+    username: "nancy",
+    displayName: "Nancy",
+    position: "Senior Regulatory Auditor & Technical File Manager",
+    email: "nancy@oxot.nl",
+    telephone: "+31 (0)20 555 0104",
+    department: "Regulatory Quality & Audit Vault",
+    organization: "OXOT B.V.",
+    roleResponsibility: "Notified Body Audit Dossier Sealing & Statutory Article 10 Evidence Verification",
+    plainPassword: "Password123!",
+  },
+  {
     username: "priya.shah",
     displayName: "Priya Shah",
     position: "Chief Security Officer & PSIRT Lead",
-    email: "priya.shah@oxot.eu",
+    email: "priya.shah@oxot.nl",
     telephone: "+31 (0)20 555 0191",
     department: "Cybersecurity & Incident Response",
-    organization: "OXOT Engineering B.V.",
+    organization: "OXOT B.V.",
     roleResponsibility: "CRA Article 14 Lead Assessor & Emergency PSIRT Incident Commander",
     plainPassword: "Password123!",
   },
@@ -124,10 +168,10 @@ const DEMO_MEMBERS = [
     username: "marco.bianchi",
     displayName: "Marco Bianchi",
     position: "Senior Firmware Architect",
-    email: "marco.bianchi@oxot.eu",
+    email: "marco.bianchi@oxot.nl",
     telephone: "+31 (0)20 555 0192",
     department: "Embedded Systems & Hardware",
-    organization: "OXOT Engineering B.V.",
+    organization: "OXOT B.V.",
     roleResponsibility: "Secure Boot, Microcontroller Cryptography & Hardware Security Modules",
     plainPassword: "Password123!",
   },
@@ -135,10 +179,10 @@ const DEMO_MEMBERS = [
     username: "lena.novak",
     displayName: "Lena Novak",
     position: "Regulatory Compliance Lead",
-    email: "lena.novak@oxot.eu",
+    email: "lena.novak@oxot.nl",
     telephone: "+31 (0)20 555 0193",
     department: "Legal & Regulatory Affairs",
-    organization: "OXOT Engineering B.V.",
+    organization: "OXOT B.V.",
     roleResponsibility: "EU Declaration of Conformity & Notified Body Audit Liaison",
     plainPassword: "Password123!",
   },
@@ -265,6 +309,41 @@ const DEMO_SBOM = {
   ],
 };
 
+export async function seedDemoMembers(targetDb: any = db): Promise<void> {
+  for (const m of DEMO_MEMBERS) {
+    await targetDb
+      .insert(conformityMembersTable)
+      .values({
+        username: m.username,
+        displayName: m.displayName,
+        position: m.position,
+        email: m.email,
+        telephone: m.telephone,
+        department: m.department,
+        organization: m.organization,
+        roleResponsibility: m.roleResponsibility,
+        plainPassword: m.plainPassword,
+        passwordHash: hashPassword(m.plainPassword),
+        active: true,
+      })
+      .onConflictDoUpdate({
+        target: conformityMembersTable.username,
+        set: {
+          displayName: m.displayName,
+          position: m.position,
+          email: m.email,
+          telephone: m.telephone,
+          department: m.department,
+          organization: m.organization,
+          roleResponsibility: m.roleResponsibility,
+          plainPassword: m.plainPassword,
+          passwordHash: hashPassword(m.plainPassword),
+          active: true,
+        },
+      });
+  }
+}
+
 export async function seedDemo(): Promise<void> {
   // Parse the demo SBOM and compute its findings up-front, OUTSIDE the DB
   // transaction: crypto-agility heuristics are offline/deterministic, while OSV
@@ -294,42 +373,7 @@ export async function seedDemo(): Promise<void> {
     }
 
     // --- Named demo team members (assignable assessors) ---
-    // Passwords are random and unguessable: these accounts exist to demo
-    // assignment + audit attribution. The admin resets a password from the
-    // Team page to actually sign in as one. Upsert (never delete): their
-    // usernames are referenced by owner fields and ledger actors.
-    for (const m of DEMO_MEMBERS) {
-      await tx
-        .insert(conformityMembersTable)
-        .values({
-          username: m.username,
-          displayName: m.displayName,
-          position: m.position,
-          email: m.email,
-          telephone: m.telephone,
-          department: m.department,
-          organization: m.organization,
-          roleResponsibility: m.roleResponsibility,
-          plainPassword: m.plainPassword,
-          passwordHash: hashPassword(m.plainPassword),
-          active: true,
-        })
-        .onConflictDoUpdate({
-          target: conformityMembersTable.username,
-          set: {
-            displayName: m.displayName,
-            position: m.position,
-            email: m.email,
-            telephone: m.telephone,
-            department: m.department,
-            organization: m.organization,
-            roleResponsibility: m.roleResponsibility,
-            plainPassword: m.plainPassword,
-            passwordHash: hashPassword(m.plainPassword),
-            active: true,
-          },
-        });
-    }
+    await seedDemoMembers(tx);
     // A transaction shares one connection, so queries must run sequentially.
     const themes = await tx.select().from(conformityThemesTable);
     const routes = await tx

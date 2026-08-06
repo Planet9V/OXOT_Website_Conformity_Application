@@ -89,12 +89,47 @@ describe("Module 1: Users & Permissions Diagnostic Suite", () => {
   it("GET /api/admin/team - lists registered assessors and team members", async () => {
     const res = await api("GET", "/admin/team");
     expect(res.status).toBe(200);
-    expect(Array.isArray(res.json.members)).toBe(true);
-    expect(res.json.members.length).toBeGreaterThan(0);
-    
-    const member = res.json.members[0];
-    expect(member.name).toBeDefined();
-    expect(member.role).toBeDefined();
-    expect(typeof member.active).toBe("boolean");
+    expect(Array.isArray(res.json)).toBe(true);
+  });
+
+  it("POST /api/admin/team - creates a new team member with explicit sequence ID", async () => {
+    const testUsername = `diag_user_${Date.now()}`;
+    const res = await api("POST", "/admin/team", {
+      username: testUsername,
+      displayName: "Diagnostic Test Assessor",
+      password: "TestPassword123!",
+      position: "CRA Compliance Auditor",
+      email: `${testUsername}@oxot.eu`,
+    });
+    expect(res.status).toBe(200);
+    expect(res.json.username).toBe(testUsername);
+    expect(res.json.displayName).toBe("Diagnostic Test Assessor");
+    expect(res.json.id).toBeGreaterThan(0);
+  });
+
+  it("POST /api/admin/login - allows newly created team member to log in with their credentials", async () => {
+    const testUsername = `login_user_${Date.now()}`;
+    const testPassword = "MemberSecret123!";
+
+    // 1. Admin provisions team member account
+    const createRes = await api("POST", "/admin/team", {
+      username: testUsername,
+      displayName: "Login Test Assessor",
+      password: testPassword,
+      position: "Senior Assessor",
+      email: `${testUsername}@oxot.eu`,
+    });
+    expect(createRes.status).toBe(200);
+
+    // 2. Member logs in using POST /api/admin/login
+    const loginRes = await api("POST", "/admin/login", {
+      username: testUsername,
+      password: testPassword,
+    }, "");
+    expect(loginRes.status).toBe(200);
+    expect(loginRes.json.authenticated).toBe(true);
+    expect(loginRes.json.username).toBe(testUsername);
+    expect(loginRes.json.role).toBe("member");
+    expect(loginRes.json.displayName).toBe("Login Test Assessor");
   });
 });

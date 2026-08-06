@@ -1,4 +1,4 @@
-import { openai, CHAT_MODEL } from "./llm";
+import { getOpenAIClient, CHAT_MODEL } from "./llm";
 import { BRAND_CONTEXT } from "./aiContent";
 import { CitationRegistry, validateMarkers } from "./reportCitations";
 import type { ReportCitation } from "@workspace/db";
@@ -79,6 +79,7 @@ export async function draftSection(
   spec: AiSectionSpec,
 ): Promise<{ contentMd: string; note?: string }> {
   const { system, user } = buildSectionPrompt(ctx, spec);
+  const openai = await getOpenAIClient();
   const response = await openai.chat.completions.create({
     model: CHAT_MODEL,
     messages: [
