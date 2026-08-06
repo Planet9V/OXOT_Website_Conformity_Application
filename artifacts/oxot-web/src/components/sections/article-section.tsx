@@ -3,7 +3,17 @@ import remarkGfm from 'remark-gfm';
 import { remarkAlert } from 'remark-github-blockquote-alert';
 import 'remark-github-blockquote-alert/alert.css';
 import { Link } from 'wouter';
-import { List, ChevronDown } from 'lucide-react';
+import {
+  List,
+  ChevronDown,
+  Scale,
+  ShieldCheck,
+  Cpu,
+  FileText,
+  ListChecks,
+  BookOpen,
+  Building2,
+} from 'lucide-react';
 import { type ReactElement, type ReactNode, isValidElement, useState, useEffect } from 'react';
 import DOMPurify from 'dompurify';
 import { RichText, safeHref } from '@/components/rich-text';
@@ -18,7 +28,25 @@ export interface ArticleSectionData {
   excerpt?: string;
   /** Optional page title rendered as the article H1. */
   title?: string;
+  /** Orange eyebrow line above the title (OXOT page-header standard, ≤8 words). */
+  kicker?: string;
+  /** 3–5 sentence page description rendered under the title. */
+  description?: string;
+  /** Icon key for the title icon — see HEADER_ICONS. */
+  icon?: string;
 }
+
+/** Title icons for the standard page header, keyed by a stable name stored in
+ * the section data so the choice round-trips through the content snapshot. */
+const HEADER_ICONS: Record<string, typeof BookOpen> = {
+  scale: Scale,
+  shield: ShieldCheck,
+  cpu: Cpu,
+  file: FileText,
+  list: ListChecks,
+  book: BookOpen,
+  building: Building2,
+};
 
 // The canonical heading-slug helpers live in ./article-headings and are the
 // single source of truth for both the TOC hrefs and the rendered <h2 id>s.
@@ -403,7 +431,12 @@ function buildComponents(headings: { id: string; label: string }[]): Components 
 }
 
 export function ArticleSection({ data }: { data: ArticleSectionData }) {
-  const { markdown, excerpt, title } = data;
+  const { markdown, excerpt, title, kicker, description, icon } = data;
+  // The standard OXOT page header (kicker · icon+title · description) engages
+  // as soon as a page carries the new fields; legacy pages keep the old
+  // in-column title + lede so nothing breaks before content is migrated.
+  const hasHeader = Boolean(kicker || description);
+  const HeaderIcon = hasHeader && icon ? (HEADER_ICONS[icon] ?? BookOpen) : null;
   const { locale } = useLocale();
 
   // Parse H2 headings for the TOC (same canonical, de-duplicated ids the body uses).
@@ -414,7 +447,13 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
 
   const scrollToHeading = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Smooth scrolling over multi-thousand-pixel jumps is slow and easily
+    // cancelled in Chrome, leaving readers stranded mid-article. Jump
+    // instantly for long distances; stay smooth for nearby sections.
+    const distance = Math.abs(el.getBoundingClientRect().top);
+    el.scrollIntoView({ behavior: distance > 2500 ? 'auto' : 'smooth', block: 'start' });
   };
 
   useEffect(() => {
@@ -439,7 +478,7 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
   const articleBody = (
     <article className={cn(showToc ? 'flex-1 min-w-0' : 'mx-auto max-w-3xl')}>
       {showToc && (
-        <div className="lg:hidden sticky top-16 z-30 -mx-4 mb-8 px-4 md:-mx-8 md:px-8">
+        <div className="md:hidden sticky top-16 z-30 -mx-4 mb-8 px-4">
           <div className="overflow-hidden rounded-xl border border-border bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/80">
             <button
               type="button"
@@ -484,12 +523,12 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
           </div>
         </div>
       )}
-      {title && (
-        <h1 className="mb-6 font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+      {!hasHeader && title && (
+        <h1 className="mb-6 font-display text-4xl font-normal tracking-tight text-foreground md:text-5xl">
           {title}
         </h1>
       )}
-      {excerpt && (
+      {!hasHeader && excerpt && (
         <p className="mb-10 border-l-2 border-primary/40 pl-4 text-lg text-muted-foreground md:text-xl">
           {excerpt}
         </p>
@@ -504,14 +543,26 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
 
   return (
     <section className="w-full py-16 md:py-24">
-      <div
-        className={cn(
-          'container mx-auto px-4 md:px-8',
-          showToc && 'flex gap-12 lg:gap-16 items-start',
+      <div className="container mx-auto px-4 md:px-8">
+        {hasHeader && (
+          <header className="mb-10 border-b border-border pb-8">
+            {kicker && <span className="oxot-kicker block mb-2">{kicker}</span>}
+            <h1 className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground flex items-center gap-3">
+              {HeaderIcon && <HeaderIcon className="w-8 h-8 text-primary shrink-0" aria-hidden="true" />}
+              {title}
+            </h1>
+            {description && (
+              <p className="mt-4 max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground">
+                {description}
+              </p>
+            )}
+          </header>
         )}
-      >
+        {/* No items-start: the aside must stretch to the row's full height or
+            its sticky TOC has no track to travel and scrolls away. */}
+        <div className={cn(showToc && 'flex gap-12 lg:gap-16')}>
         {showToc && (
-          <aside className="hidden lg:block w-48 flex-shrink-0">
+          <aside className="hidden md:block w-48 flex-shrink-0">
             <div className="sticky top-24">
               <p className="flex items-center gap-1.5 text-xs font-semibold tracking-[0.12em] uppercase text-muted-foreground mb-4">
                 <span className="inline-block w-3 h-px bg-primary" />
@@ -541,6 +592,7 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
           </aside>
         )}
         {articleBody}
+        </div>
       </div>
     </section>
   );

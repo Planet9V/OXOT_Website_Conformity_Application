@@ -1,5 +1,7 @@
 import { useGetMappingMatrix } from '@workspace/api-client-react';
 import { ConformityShell } from '@/components/layout/conformity-shell';
+import { PageHeader } from '@/components/page-header';
+import { Grid3x3 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
@@ -30,12 +32,12 @@ export default function ConformityMappings() {
   return (
     <ConformityShell>
       <div className="max-w-[1400px] space-y-8">
-        <div>
-          <h2 className="text-2xl font-display font-bold mb-1">Cross-Regulation Matrix</h2>
-          <p className="text-muted-foreground text-sm">
-            The "one control, many clauses" view across themes.
-          </p>
-        </div>
+        <PageHeader
+          kicker="ONE CONTROL, MANY CLAUSES"
+          title="Cross-Regulation Matrix"
+          icon={Grid3x3}
+          description="The cross-regulation matrix shows where a single control satisfies clauses in several frameworks at once. Rows are functional themes; columns are the loaded regulations; each cell counts the mapped requirements. Dense rows are the highest-leverage places to invest in shared, reusable evidence."
+        />
 
         <div className="rounded-xl border border-border bg-card overflow-auto shadow-sm">
           <Table className="relative w-full">

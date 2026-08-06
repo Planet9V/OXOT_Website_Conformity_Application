@@ -3,6 +3,7 @@ import { ConformityShell } from '@/components/layout/conformity-shell';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Download, FileText, ExternalLink } from 'lucide-react';
+import { PageHeader } from '@/components/page-header';
 
 type SourceDoc = {
   title: string;
@@ -87,12 +88,12 @@ export default function ConformitySources() {
   return (
     <ConformityShell>
       <div className="max-w-6xl space-y-10">
-        <div>
-          <h2 className="text-2xl font-display font-bold mb-1">Source Library</h2>
-          <p className="text-muted-foreground text-sm">
-            Underlying regulatory research, annexes, and supporting material — indexed by regulation for reference.
-          </p>
-        </div>
+        <PageHeader
+          kicker="PRIMARY LEGISLATIVE & TECHNICAL SOURCE LIBRARY"
+          title="Source Library"
+          icon={FileText}
+          description="The underlying research, annexes and primary-source material behind the requirement catalogue, indexed by regulation. Field guides summarise each framework in plain language, while research notes and worked examples document how obligations were extracted and classified. Open any document directly in the browser, or download the PDF originals."
+        />
 
         {GROUPS.map((group) => {
           const groupDocs = docs.filter((d) => d.regulationKey === group.key);

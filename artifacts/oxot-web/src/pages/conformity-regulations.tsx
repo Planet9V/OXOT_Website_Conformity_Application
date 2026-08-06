@@ -1,5 +1,7 @@
 import { useListRegulations } from '@workspace/api-client-react';
 import { ConformityShell } from '@/components/layout/conformity-shell';
+import { PageHeader } from '@/components/page-header';
+import { Scale } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'wouter';
@@ -30,10 +32,12 @@ export default function ConformityRegulations() {
   return (
     <ConformityShell>
       <div className="max-w-6xl space-y-8">
-        <div>
-          <h2 className="text-2xl font-display font-bold mb-1">Regulations</h2>
-          <p className="text-muted-foreground text-sm">Frameworks mapped in the current conformity scope.</p>
-        </div>
+        <PageHeader
+          kicker="EU & INTERNATIONAL REGULATORY FRAMEWORKS"
+          title="Regulations"
+          icon={Scale}
+          description="The regulation tracks loaded in this deployment's conformity scope, from the Cyber Resilience Act to IEC 62443. Each framework is decomposed into its statutory requirements and mapped into a single shared control catalogue. Use a card to explore a regulation's product classes, conformity routes and extracted obligations. Counts reflect the live requirement catalogue that drives the workbench."
+        />
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
           {regulations.map((reg) => (
