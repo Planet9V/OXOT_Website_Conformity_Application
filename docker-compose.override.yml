@@ -6,3 +6,10 @@ services:
     volumes:
       - ./artifacts/api-server/src:/app/artifacts/api-server/src:ro
       - ./lib:/app/lib:ro
+
+  # Mount live schema source so `migrate` always pushes the current schema,
+  # even when its image is stale (only web/api get rebuilt routinely).
+  migrate:
+    volumes:
+      - ./lib/db/src:/app/lib/db/src:ro
+      - ./lib/db/drizzle.config.ts:/app/lib/db/drizzle.config.ts:ro
