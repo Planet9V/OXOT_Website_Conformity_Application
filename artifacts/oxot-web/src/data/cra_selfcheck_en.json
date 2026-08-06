@@ -1,0 +1,288 @@
+{
+  "title": "CRA Classification Self-Check",
+  "intro": "Six questions, about two minutes. You'll get an indicative CRA classification, your route to the CE marking, your specific gaps and a readiness score — grounded in the regulation, not a vendor pitch. Then submit it to OXOT for a human review and a call.",
+  "disclaimer": "This is an indicative read, not a legal determination. OXOT confirms your classification with you in the intake. Grounded in Regulation (EU) 2024/2847 (the Cyber Resilience Act) and Commission Implementing Regulation (EU) 2025/2392, which fixes the technical scope of Important (Annex III) and Critical (Annex IV) products.",
+  "scarcityNote": "2026 reality: zero notified bodies · Class I self-assessment needs harmonised standards or common specifications (none yet; ~Q2 2027) · designation takes 12–18 months. The queue forms before the doors open.",
+  "progress": "Question {n} of {total}",
+  "continue": "Continue",
+  "insightLabel": "What this means",
+  "deadlineLabel": "days to 11 Dec 2027",
+  "nav": { "back": "Back", "restart": "Start over", "seeResult": "See my result", "selectAll": "Select all that apply" },
+  "encouragement": ["Let's start.", "Good.", "Halfway there.", "Nearly done.", "One more after this.", "Last question."],
+  "questions": [
+    {
+      "id": "position", "type": "single", "label": "Which best describes you?",
+      "options": [
+        { "value": "manufacturer", "label": "Product manufacturer", "insight": "As the manufacturer you carry the full weight of the CRA — the Annex VII technical file, the CE marking, and from 11 Sep 2026 a 24-hour early warning for actively exploited vulnerabilities." },
+        { "value": "oem", "label": "OEM — multiple product groups", "insight": "The portfolio math is unforgiving: at 16–24 weeks per product type-examination, a large catalogue doesn't fit before 11 Dec 2027. Module H (one audited quality-management system) is usually the only way through — and it takes 8–14 months to stand up." },
+        { "value": "integrator", "label": "Integrator / systems integrator", "insight": "Watch Article 22: a substantial modification — your own firmware, changed security properties — makes YOU the manufacturer of the modified product. Configuring is fine; building is not. Most integrators can't yet say which side of that line their projects sit on." },
+        { "value": "reseller", "label": "Distributor / reseller", "insight": "From 11 Dec 2027 you may only offer CRA-compliant products, and you must verify the CE marking and declaration of conformity on each. Rebrand a line, and Article 21 makes you its manufacturer — full technical file included." },
+        { "value": "operator", "label": "Owner / operator (procurement)", "insight": "Your practical CRA exposure isn't your own compliance — it's your suppliers'. NIS2 already asks your estate for state-of-the-art; the CRA raises the bar on every product entering it. 2026 is the year to test suppliers, while you can still switch." }
+      ]
+    },
+    {
+      "id": "hasDigital", "type": "single", "label": "Does your product include software, or connect to a network or another device?",
+      "options": [
+        { "value": "yes", "label": "Yes", "insight": "Then you're in scope. The CRA covers all 'products with digital elements' — anything with software or a direct or indirect logical/physical connection to a device or network." },
+        { "value": "no", "label": "No", "insight": "You may be out of scope — the CRA covers products with digital elements. But 'likely out' is not 'certainly out', and a wrong call here is expensive; confirm it." },
+        { "value": "unsure", "label": "Not sure", "insight": "If it has any software or connectivity, assume in-scope until proven otherwise — the definition is deliberately broad, and it reaches components, not just finished products." }
+      ]
+    },
+    {
+      "id": "category", "type": "single", "label": "Which comes closest to your product?",
+      "options": [
+        { "value": "default", "label": "A general product with digital elements (e.g. a connected sensor or appliance)", "insight": "Default products self-assess (Module A) — but 'self-assess' still means a full Annex VII technical file, an SBOM and a vulnerability-handling process, all audit-ready by the deadline." },
+        { "value": "classI", "label": "A security-relevant function (password/identity manager, VPN, firewall, network management, SIEM, boot manager)", "insight": "Class I can self-assess only against harmonised standards or common specifications (Art. 32(2)) — and neither exists yet (expected ~Q2 2027). Until one lands the self-route is shut; the alternative runs through a notified body, of which zero are designated today." },
+        { "value": "classII", "label": "A core security or OT component (HSM, secure element, industrial firewall, PLC/RTU/DCS, safety controller, smart-meter gateway)", "insight": "Class II requires third-party assessment outright — Module B+C or a full Module H quality-management system. There is no self-assessment route, and capacity — not effort — is the binding constraint." },
+        { "value": "critical", "label": "A critical component (smart meter, smartcard, hardware device with a security box, used by essential entities)", "insight": "Critical products face mandatory third-party assessment and may require European cybersecurity certification — the tightest and longest route. Classification and capacity planning should start immediately." },
+        { "value": "unsure", "label": "Not sure", "insight": "Classification is the single highest-leverage decision under the CRA — it sets your entire route. Getting a confident read is exactly what the 45-minute intake does, live." }
+      ]
+    },
+    {
+      "id": "becomesManufacturer", "type": "bool", "label": "Do you rebrand, substantially modify, or add your own firmware to another vendor's product?",
+      "options": [
+        { "value": "yes", "label": "Yes", "insight": "That likely reclassifies you as the manufacturer under Articles 21/22 — with the full technical file, a PSIRT/vulnerability-handling process, and the reporting duties that follow. This is the trap most integrators and distributors miss." },
+        { "value": "no", "label": "No", "insight": "Good — pure configuration and distribution keep you out of manufacturer status. But keep the line bright: the moment you change security properties, the obligations move to you." }
+      ]
+    },
+    {
+      "id": "euMarket", "type": "bool", "label": "Are the products placed on the EU market (directly or via distributors)?",
+      "options": [
+        { "value": "yes", "label": "Yes", "insight": "EU market access is now conditional on CRA conformity — after 11 Dec 2027 a non-compliant product cannot be placed on, or made available in, the EU market. The clock is already running." },
+        { "value": "no", "label": "No / not yet", "insight": "If you sell into the EU indirectly — via distributors or as a component in someone else's product — the obligations still reach you. Worth confirming your real exposure." }
+      ]
+    },
+    {
+      "id": "evidence", "type": "multi", "label": "Which do you already have, per product? (this sets your gaps)",
+      "options": [
+        { "value": "sbom", "label": "SBOM (software bill of materials)" },
+        { "value": "risk", "label": "Risk assessment (Annex I)" },
+        { "value": "cvd", "label": "CVD / PSIRT — vulnerability-handling process" },
+        { "value": "sdl", "label": "Secure-development docs (SDL)" },
+        { "value": "cert", "label": "ISO 9001/27001 or IEC 62443 certificate" },
+        { "value": "cert_progress", "label": "Certification in progress (IEC 62443 / ISO 27001)" },
+        { "value": "none", "label": "None of these yet" }
+      ]
+    }
+  ],
+  "resultTitle": "Your indicative CRA read",
+  "readiness": {
+    "label": "CRA readiness",
+    "outOf": "/ 100",
+    "bands": {
+      "on_track": { "title": "On track", "note": "You hold the core artifacts. The work now is routing and sequencing against the deadline." },
+      "behind": { "title": "Behind", "note": "You're missing a core artifact. Recoverable — but the queue for third-party capacity is forming now." },
+      "at_risk": { "title": "At risk", "note": "Gaps plus a route that can't self-assess today. This is the profile that runs out of runway before 11 Dec 2027." }
+    }
+  },
+  "gaps": {
+    "label": "Your gaps",
+    "noneLabel": "Core artifacts in place",
+    "none": "You already hold the SBOM, risk assessment and vulnerability-handling process — the review is about routing and sequencing, not starting from zero.",
+    "items": {
+      "sbom": "No SBOM yet — it's the foundation of the Annex VII file and the first thing an assessor asks for.",
+      "risk": "No risk assessment — Annex I requires it, and it drives the whole security design and your residual-risk case.",
+      "cvd": "No coordinated vulnerability disclosure / PSIRT — mandatory, and it's what turns 24-hour incident reporting from panic into process."
+    }
+  },
+  "results": {
+    "CLASS_I": {
+      "headline": "Likely Important, Class I — and the self-assessment door is currently closed.",
+      "body": "Class I products can't self-certify until harmonised CRA standards are designated (expected ~Q2 2027). Every external route runs through a notified body — and today zero are designated. The wall is fixed at 11 December 2027. The queue is forming now.",
+      "route": "Route: third-party assessment — self-assessment needs harmonised standards or common specifications (Art. 32(2)); neither exists yet."
+    },
+    "CLASS_II": {
+      "headline": "Likely Important, Class II — third-party assessment is mandatory.",
+      "body": "Class II products require conformity assessment by a notified body — Module B+C, or a full Module H quality-management system. With effectively zero bodies designated in 2026, capacity, not effort, is your binding constraint.",
+      "route": "Route: Module B+C or Module H (third-party)."
+    },
+    "CRITICAL": {
+      "headline": "Likely Critical — the tightest route, and possibly EU certification.",
+      "body": "Critical products face mandatory third-party assessment and may require European cybersecurity certification. Classification and capacity planning should start immediately — this is the longest path to the CE marking.",
+      "route": "Route: third-party assessment (+ possible EU certification)."
+    },
+    "DEFAULT": {
+      "headline": "Likely a default product with digital elements.",
+      "body": "You can self-assess (Module A) in principle — but you still owe a full Annex VII technical file, an SBOM and a vulnerability-handling process, all audit-ready by 11 December 2027. 'Self-assess' is not 'do less'.",
+      "route": "Route: self-assessment (Module A) — the technical file is still required."
+    },
+    "NEEDS_REVIEW": {
+      "headline": "Your class needs a proper read.",
+      "body": "From these answers we can't place your product with confidence — which is common, and exactly what the 45-minute intake resolves, live, with an OT engineer.",
+      "route": "Route: to be determined at intake."
+    },
+    "OUT_OF_SCOPE_LIKELY": {
+      "headline": "Likely out of scope — but confirm it.",
+      "body": "The CRA covers products with digital elements. If none of yours have software or connectivity, you may be out of scope — but 'likely' is not 'certainly', and a wrong call here is expensive.",
+      "route": "Route: confirm scope."
+    }
+  },
+  "nowActions": {
+    "now_sbom": "Produce an SBOM for your top product line — it unblocks everything else.",
+    "now_risk": "Build the Annex I risk assessment — it drives the security design.",
+    "now_reserve_slot": "Reserve a Conformity Assessment Body slot before the queue forms.",
+    "now_annex_vii": "Assemble the Annex VII technical file — you have the pieces; now make it assessable.",
+    "confirm_scope": "Confirm scope on your top products before anything else."
+  },
+  "nowLabel": "Your NOW",
+  "manufacturerWarning": "Because you rebrand or substantially modify another vendor's product, the CRA likely makes YOU its manufacturer (Art. 21/22) — with the full technical file and reporting duties that follow.",
+  "penaltyNote": "Annex I sets the bar: 13 product-security properties (Part I) and 8 vulnerability-handling processes (Part II) — each one evidenced in the Annex VII technical file.",
+  "review": {
+    "title": "Submit your read for a human review — and a call",
+    "body": "Send us this result and OXOT reviews it, confirms your classification, chooses your route and estimates the effort — live, in a free 45-minute intake. You keep all three answers whether or not we work together.",
+    "bullets": [
+      "Your classification, confirmed by an OT engineer — not a checklist",
+      "Your route to the CE marking (Module A / B+C / H), chosen for your portfolio",
+      "An effort and timeline estimate against 11 December 2027",
+      "A reserved Conformity Assessment Body slot, if your route needs one"
+    ],
+    "reassurance": "Free · 45 minutes · proposal with NDA & MSA within 2 working days.",
+    "form": {
+      "name": "Name", "namePh": "Your name",
+      "email": "Work email", "emailPh": "you@company.com",
+      "company": "Organisation", "companyPh": "Company",
+      "role": "Role", "rolePh": "e.g. Head of Product Security",
+      "blocker": "Your most pressing CRA question (optional)", "blockerPh": "In one sentence, what most needs answering?",
+      "submit": "Submit for review + book a call", "submitting": "Submitting…",
+      "errName": "Please enter your name.", "errEmail": "Please enter a valid work email.",
+      "errGeneric": "Something went wrong — please try again.", "errRate": "Too many submissions — please try again in a minute."
+    },
+    "success": {
+      "heading": "We've got it.",
+      "body": "Vincent will personally review your read and reach out within 2 working days to book your 45-minute intake. Your indicative classification, route and gaps are above — keep them.",
+      "scheduleHeading": "Prefer to grab a time now?",
+      "scheduleFallback": "We'll email you a link to schedule."
+    }
+  },
+  "v2": {
+    "roleQuestion": {
+      "label": "Which chair do you sit in?",
+      "options": [
+        { "value": "psirt", "label": "PSIRT / vulnerability management" },
+        { "value": "compliance", "label": "Compliance / regulatory affairs" },
+        { "value": "ciso", "label": "CISO / security leadership" },
+        { "value": "engineering", "label": "Engineering / product security" },
+        { "value": "other", "label": "Other" }
+      ]
+    },
+    "portfolioQuestion": {
+      "label": "How many products would need a CE mark by 11 Dec 2027?",
+      "options": [
+        { "value": "p1", "label": "Just one" },
+        { "value": "p2_10", "label": "2–10 products" },
+        { "value": "p11_50", "label": "11–50 products" },
+        { "value": "p50plus", "label": "50+ products", "insight": "100 products × 16–24 weeks does not fit before Dec 2027; Module H takes 8–14 months — it has to start now." }
+      ]
+    },
+    "deployQuestion": {
+      "label": "Where does this product typically end up?",
+      "options": [
+        { "value": "nis2_essential", "label": "An NIS2-essential entity (energy, water, health, transport)" },
+        { "value": "general", "label": "General commercial or consumer use" },
+        { "value": "unsure", "label": "Not sure" }
+      ]
+    },
+    "evidenceLivingQuestion": {
+      "label": "When a component changes, what happens to your evidence?",
+      "options": [
+        { "value": "model", "label": "It updates automatically from a live model" },
+        { "value": "manual", "label": "Someone manually updates the paperwork" },
+        { "value": "stale", "label": "It goes stale until the next audit" }
+      ]
+    },
+    "deltaLabels": {
+      "missing_sbom": "No SBOM — −22 points",
+      "missing_risk": "No Annex I risk assessment — −22 points",
+      "missing_cvd": "No CVD / PSIRT process — −22 points",
+      "hard_route": "Route requires third-party assessment — −14 points",
+      "eu_market": "Already on the EU market — −4 points",
+      "cert": "ISO 27001 / IEC 62443 certificate — +12 points",
+      "cert_progress": "Certification in progress — +6 points",
+      "sdl": "Secure-development (SDL) documentation — +6 points",
+      "queue": "Notified-body queue penalty — −8 points"
+    },
+    "s7Callout": {
+      "text": "A Siemens S7-1500 in an energy utility = Class II. The same device in a food packaging plant = likely Class I.",
+      "source": "Reg (EU) 2024/2847, Art. 6 & Annex III"
+    },
+    "reportingClock": "Your first hard date is not Dec 2027 — it is 11 September 2026: 24h early warning, 72h notification, 14d final report to ENISA.",
+    "programmeStrip": "Classify → Test → File. From about €20K. Phase 1 typically 2–4 weeks per product. Vincent replies within 2 days.",
+    "roleHeaders": {
+      "psirt": "Built around your PSIRT queue: vulnerability handling, the 24h/72h/14d clock, and what to automate first.",
+      "compliance": "Built around your compliance programme: the technical file, the route, and the evidence an auditor asks for first.",
+      "ciso": "Built around your security roadmap: where the CRA raises the bar over NIS2, and what to budget for capacity.",
+      "engineering": "Built around your backlog: SBOM tooling, SDL evidence, and what blocks a type-examination.",
+      "other": "Built around your CRA programme: classification, route, and the gaps that decide your timeline."
+    },
+    "runway": {
+      "title": "Can you make the wall?",
+      "startLabel": "If you start",
+      "annotations": [
+        "Serial testing: 16–24 weeks per product, one after another.",
+        "Module H parallelises the queue — one audited quality system covers the whole portfolio, but takes 8–14 months to stand up."
+      ],
+      "overshootLabel": "weeks short of 11 Dec 2027",
+      "fitsLabel": "Fits before 11 Dec 2027"
+    },
+    "gapClosure": {
+      "sbom": {
+        "title": "Start your SBOM",
+        "body": "The foundation of the Annex VII technical file, and the first thing an assessor asks for. Start here and the rest of the evidence chain has something to hang on.",
+        "href": "/cra-check"
+      },
+      "risk": {
+        "title": "Build your Annex I risk assessment",
+        "body": "Drives the whole security design and your residual-risk case — mandatory, not optional, for every product with digital elements.",
+        "href": "/cra-check"
+      },
+      "cvd": {
+        "title": "Stand up CVD / PSIRT",
+        "body": "Turns the 24-hour early-warning duty from panic into process — build it before you need it, not during an incident.",
+        "href": "/cra-check"
+      }
+    },
+    "evidenceLivingClose": {
+      "model": "Your evidence updates itself — that's the profile a notified body moves through fastest.",
+      "manual": "Manual updates hold for now, but they don't scale to a 50-product portfolio under audit pressure.",
+      "stale": "Stale evidence is the single most common reason a technical file fails review — fix this before anything else."
+    },
+    "teaser": {
+      "title": "Are you CRA-ready?",
+      "q1": {
+        "label": "Where do you sit in the value chain?",
+        "options": [
+          { "value": "manufacturer", "label": "Product manufacturer" },
+          { "value": "oem", "label": "OEM — multiple product groups" },
+          { "value": "integrator", "label": "Integrator / systems integrator" },
+          { "value": "reseller", "label": "Distributor / reseller" },
+          { "value": "operator", "label": "Owner / operator (procurement)" }
+        ]
+      },
+      "q2": {
+        "label": "Do you know your product's CRA class?",
+        "options": [
+          { "value": "default", "label": "Default (~90% of products)" },
+          { "value": "classI", "label": "Class I" },
+          { "value": "classII", "label": "Class II" },
+          { "value": "unsure", "label": "No idea" }
+        ]
+      },
+      "q3": {
+        "label": "Do you have a machine-readable SBOM (SPDX/CycloneDX) today?",
+        "yes": "Yes",
+        "no": "No",
+        "noHint": "ENISA, June 2026: only 35% of SMEs do."
+      },
+      "verdictScope": "Likely in scope.",
+      "verdictRoute": {
+        "default": "Default products self-assess (Module A) — but the Annex VII technical file is still required.",
+        "classI": "Class I: self-assessment needs harmonised standards or common specifications (Art. 32(2)); neither has landed (~Q2 2027) — the route runs through a notified body, and today zero are designated.",
+        "classII": "Class II: the mandatory third-party route — Module B+C or a full Module H quality-management system, via a notified body. There is no self-assessment option.",
+        "unsure": "Your class is the highest-leverage decision under the CRA — the full check pins it down in about two minutes."
+      },
+      "verdictSbomGap": "65% of SMEs share your SBOM gap (ENISA, June 2026).",
+      "verdictSbomOk": "Your SBOM is the foundation of the Annex VII file — you're ahead of most.",
+      "cta": "Get your class, route and readiness score — 2 minutes"
+    }
+  }
+}

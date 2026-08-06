@@ -37,6 +37,7 @@ import AdminSettings from '@/pages/admin-settings';
 import AdminIntegrations from '@/pages/admin-integrations';
 import KnowledgeHubPage from '@/pages/knowledge-hub';
 import RegulatoryNewsPage from '@/pages/regulatory-news';
+import CraCheckPage from '@/pages/cra-check';
 import CompetitorsPage from '@/pages/competitors-page';
 import TrustCenterPage from '@/pages/trust-center-page';
 import NewsletterConfirm from '@/pages/newsletter-confirm';
@@ -88,6 +89,9 @@ function PublicRoutes() {
       </Route>
       <Route path="/news">
         {() => <PublicRoute component={RegulatoryNewsPage} />}
+      </Route>
+      <Route path="/cra-check">
+        {() => <PublicRoute component={CraCheckPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}
