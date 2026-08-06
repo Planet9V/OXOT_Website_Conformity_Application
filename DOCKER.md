@@ -54,6 +54,36 @@ your `.env`.
   covers it while the container runs, but email sending still needs SMTP
   credentials configured in the admin settings.
 
+## Site content lifecycle (keeping the seed current)
+
+Site content (CMS pages + sections, navigation, site settings) is seeded from
+a versioned snapshot: `artifacts/api-server/src/content/snapshot/site-content.json`.
+
+- **On every deploy** the `seed` service runs `seed:site`, which restores the
+  snapshot **only when the database has no pages** (fresh deployment). On a
+  live database it is a no-op, so admin edits are never clobbered by
+  `docker compose up`.
+- **After editing content in the CMS admin**, export the live database back
+  into the snapshot and commit it — this is how admin edits become part of
+  the seed:
+
+  ```bash
+  docker compose run --rm content-export
+  git add artifacts/api-server/src/content/snapshot/site-content.json
+  git commit -m "Content: export CMS edits to seed snapshot"
+  ```
+
+- **To force a database back to the snapshot** (e.g. reset a demo):
+
+  ```bash
+  docker compose run --rm -e FORCE_SITE_SEED=true seed \
+    pnpm --filter @workspace/api-server run seed:site
+  ```
+
+The legacy scripts (`seed`, `seed:content`, `seed:customer-site`) remain for
+bootstrapping a brand-new deployment that has no snapshot yet; once content
+exists, `content-export` supersedes them as the source of truth.
+
 ## Useful commands
 
 ```bash
@@ -61,4 +91,5 @@ docker compose up -d --build      # run in background
 docker compose logs -f api        # follow API logs (bootstrap/seed messages)
 docker compose down               # stop (keeps database volume)
 docker compose down -v            # stop AND wipe the local database
+docker compose run --rm content-export   # export live CMS content to the seed snapshot
 ```

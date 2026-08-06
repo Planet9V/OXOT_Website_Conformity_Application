@@ -42,6 +42,7 @@ services:
       - sh
       - -c
       - >-
+        pnpm --filter @workspace/api-server run seed:site &&
         pnpm --filter @workspace/api-server run seed:conformity &&
         pnpm --filter @workspace/api-server run seed:demo
     environment:
@@ -51,6 +52,27 @@ services:
     depends_on:
       migrate:
         condition: service_completed_successfully
+    restart: "no"
+
+  # On-demand (profile "tools"): exports the LIVE site content (pages, nav,
+  # settings) from the database back into the versioned snapshot at
+  # artifacts/api-server/src/content/snapshot/site-content.json, so admin CMS
+  # edits become part of the seed. Run after editing content, then commit:
+  #   docker compose run --rm content-export
+  content-export:
+    build:
+      context: .
+      target: build
+    platform: linux/amd64
+    profiles: ["tools"]
+    command: ["pnpm", "--filter", "@workspace/api-server", "run", "content:export"]
+    environment:
+      DATABASE_URL: postgres://oxot:${POSTGRES_PASSWORD:-oxot}@db:5432/oxot
+    volumes:
+      - ./artifacts/api-server/src/content:/app/artifacts/api-server/src/content
+    depends_on:
+      db:
+        condition: service_healthy
     restart: "no"
 
   api:
