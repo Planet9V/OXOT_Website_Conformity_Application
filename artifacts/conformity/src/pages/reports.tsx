@@ -29,11 +29,13 @@ export default function Reports() {
   const assessmentReports = reports.filter((r) => r.scope === "assessment");
 
   return (
-    <div className="px-4 py-8 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8" data-testid="reports-page">
+    <div className="px-4 py-8 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8" data-testid="reports-page">
       <header className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-border pb-6">
         <div>
-          <span className="oxot-kicker block mb-1">CRA EXECUTIVE BRIEFINGS &amp; TECHNICAL REPORTS</span>
-          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground">Reports</h1>
+          <span className="oxot-kicker block mb-1">CRA ANNEX VII · EXECUTIVE BRIEFINGS &amp; TECHNICAL REPORTS</span>
+          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
+            <FileText className="w-6 h-6 text-primary shrink-0" /> Reports
+          </h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-2xl font-sans">
             Executive documents generated from frozen data snapshots — portfolio rollups across every product, and
             per-assessment briefings, full reports and readouts. Each stays exactly as generated; finalise to lock.

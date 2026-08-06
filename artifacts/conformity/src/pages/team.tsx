@@ -570,8 +570,9 @@ export default function Team() {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-6">
         <div>
+          <span className="oxot-kicker block mb-1">CRA ARTICLE 13 · NAMED ASSESSOR ACCOUNTABILITY</span>
           <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
-            <Users className="w-6 h-6 text-primary" /> Assessor Team &amp; Credentials Directory
+            <Users className="w-6 h-6 text-primary shrink-0" /> Assessor Team &amp; Credentials Directory
           </h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl font-sans">
             Named assessor accounts, organizational responsibilities, contact details, and authentication passwords. All team members can sign in and be assigned PSIRT incident blocks or CRA gap remediations.

@@ -103,39 +103,39 @@ export default function PsirtPage() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 p-4 sm:p-6 lg:p-8">
-      {/* Executive Command Header - Aligned to OXOT Styleguide */}
-      <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 lg:p-8 shadow-sm text-card-foreground">
-        <div className="relative z-10">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="space-y-2">
-              <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground">
-                PSIRT &amp; Vulnerability Handling Workbench
-              </h1>
-              <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed font-sans">
-                Complete statutory vulnerability surveillance engine connecting live intake, OpenRouter Perplexity supplier scans, CISA KEV CBOM correlation, ENISA 24h/72h reporting, and ISO 29147 advisory authoring.
-              </p>
-            </div>
+      {/* Page header */}
+      <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-6">
+        <div>
+          <span className="oxot-kicker block mb-1">CRA ARTICLE 14 · VULNERABILITY HANDLING &amp; INCIDENT REPORTING</span>
+          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
+            <ShieldAlert className="w-6 h-6 text-primary shrink-0" /> PSIRT &amp; Vulnerability Handling Workbench
+          </h1>
+          <p className="text-sm text-muted-foreground mt-1 max-w-3xl leading-relaxed font-sans">
+            Complete statutory vulnerability surveillance engine connecting live intake, OpenRouter Perplexity supplier scans, CISA KEV CBOM correlation, ENISA 24h/72h reporting, and ISO 29147 advisory authoring.
+          </p>
+        </div>
 
-            {/* Statutory Clocks & Quick Action */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-              <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-center">
-                <span className="text-[10px] font-mono font-bold uppercase text-destructive block tracking-wider">
-                  Article 14(1) 24h Clock
-                </span>
-                <span className="text-lg font-mono font-extrabold text-destructive">09h 14m 22s</span>
-              </div>
-              <Button
-                type="button"
-                onClick={() => handleLaunchEnisaForm("early_warning")}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs gap-1.5 shadow-sm h-full px-5 py-3 rounded-lg cta-lift"
-              >
-                <Flame className="h-4 w-4" /> File ENISA 24h Warning
-              </Button>
-            </div>
+        {/* Statutory Clocks & Quick Action */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+          <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-center">
+            <span className="text-[10px] font-mono font-bold uppercase text-destructive block tracking-wider">
+              Article 14(1) 24h Clock
+            </span>
+            <span className="text-lg font-mono font-extrabold text-destructive">09h 14m 22s</span>
           </div>
+          <Button
+            type="button"
+            onClick={() => handleLaunchEnisaForm("early_warning")}
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs gap-1.5 shadow-sm h-full px-5 py-3 rounded-lg cta-lift"
+          >
+            <Flame className="h-4 w-4" /> File ENISA 24h Warning
+          </Button>
+        </div>
+      </div>
 
-          {/* Executive Severity & Metrics Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 pt-6 border-t border-border">
+      {/* Executive Severity & Metrics Grid */}
+      <div className="rounded-2xl border border-border bg-card p-6 lg:p-8 shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="space-y-2">
               <span className="text-xs font-mono font-bold uppercase text-muted-foreground tracking-wider block">
                 Incident Severity Distribution
@@ -195,7 +195,6 @@ export default function PsirtPage() {
               </Button>
             </div>
           </div>
-        </div>
       </div>
 
       {/* AI Automated Alert & Intake Recommendation Banner */}

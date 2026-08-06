@@ -28,7 +28,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { formatDate } from "@/lib/utils";
-import { Plus, Boxes, ArrowRight } from "lucide-react";
+import { Plus, Boxes, Package, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
 function CreateProductDialog() {
@@ -144,11 +144,13 @@ export default function Products() {
   const { data: products, isLoading, isError } = useListConformityProducts();
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto space-y-6">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
       <div className="flex items-start justify-between gap-4 border-b border-border pb-6">
         <div>
-          <span className="oxot-kicker block mb-1">CRA ARTICLE 10 · DIGITAL PRODUCT CONFORMITY ASSESSMENT</span>
-          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground">Products</h1>
+          <span className="oxot-kicker block mb-1">CRA ARTICLE 32 · DIGITAL PRODUCT CONFORMITY ASSESSMENT</span>
+          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
+            <Package className="w-6 h-6 text-primary shrink-0" /> Products
+          </h1>
           <p className="text-sm text-muted-foreground mt-1 font-sans">
             Manage products with digital elements and run their statutory conformity assessments.
           </p>
