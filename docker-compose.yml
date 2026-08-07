@@ -49,6 +49,12 @@ services:
       DATABASE_URL: postgres://oxot:${POSTGRES_PASSWORD:-oxot}@db:5432/oxot
       # Optional — lets the seed generate assistant embeddings:
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      # Skips pino's dev-only pino-pretty transport. That transport spawns a
+      # worker thread at a package-relative path, which esbuild's bundling
+      # breaks (dist/lib/worker.js does not exist) — MODULE_NOT_FOUND crash.
+      # These are one-shot batch scripts with no interactive terminal to
+      # pretty-print for, so plain logs are correct here regardless.
+      NODE_ENV: production
     depends_on:
       migrate:
         condition: service_completed_successfully
@@ -68,6 +74,9 @@ services:
     command: ["pnpm", "--filter", "@workspace/api-server", "run", "content:export"]
     environment:
       DATABASE_URL: postgres://oxot:${POSTGRES_PASSWORD:-oxot}@db:5432/oxot
+      # See the seed service's NODE_ENV comment: avoids pino-pretty's broken
+      # bundled worker-thread path.
+      NODE_ENV: production
     volumes:
       - ./artifacts/api-server/src/content:/app/artifacts/api-server/src/content
     depends_on:
