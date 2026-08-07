@@ -1,4 +1,5 @@
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import {
   Boxes,
   Compass,
@@ -13,6 +14,7 @@ import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { JsonLd } from '@/components/json-ld';
 import { useLocale } from '@/providers/locale-provider';
+import { revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -161,13 +163,17 @@ export default function ProductPage() {
         {t.modules.map((m, i) => {
           const Icon = MODULE_ICONS[i];
           return (
-            <div key={m.name} className="rounded-2xl border border-border bg-card p-6 shadow-e1">
+            <motion.div
+              key={m.name}
+              className="rounded-2xl border border-border bg-card p-6 shadow-e1"
+              {...revealVariants(i)}
+            >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <Icon className="h-5 w-5 text-primary" />
               </div>
               <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground">{m.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.body}</p>
-            </div>
+            </motion.div>
           );
         })}
       </div>
@@ -180,11 +186,15 @@ export default function ProductPage() {
         </h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.journey.map(([step, body], i) => (
-            <div key={step} className="rounded-xl border border-border bg-card p-5">
+            <motion.div
+              key={step}
+              className="rounded-xl border border-border bg-card p-5"
+              {...revealVariants(i)}
+            >
               <span className="font-mono text-xs text-primary-ink">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-1 font-display text-base font-normal tracking-tight text-foreground">{step}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{body}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
