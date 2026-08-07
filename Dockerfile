@@ -26,7 +26,7 @@ RUN pnpm install --frozen-lockfile
 # then the API bundle and the three static frontends. BASE_PATH must match
 # the nginx routing below.
 # Force complete cache invalidation across all multi-stage targets
-RUN echo "Rebuild trigger: 2026-08-06-dutch-i18n-v5-newsletter-hidden"
+RUN echo "Rebuild trigger: 2026-08-06-dutch-i18n-v6-news-feed-widget"
 RUN pnpm run typecheck:libs \
  && pnpm --filter @workspace/api-server run build \
  && BASE_PATH=/ pnpm --filter @workspace/oxot-web run build \

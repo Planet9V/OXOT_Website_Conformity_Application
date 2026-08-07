@@ -3,6 +3,17 @@ import { Link } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Globe, Radio, ArrowRight } from "lucide-react";
+import { useLocale } from "@/providers/locale-provider";
+
+// Localised static chrome (nl-NL professional register). Machine-assisted —
+// flag Dutch strings for a native reviewer before go-live. The news items
+// themselves (title/summary/source, live or FALLBACK_NEWS) are treated as
+// API-sourced content and intentionally left untranslated, matching the
+// regulatory-news page.
+const copy = {
+  en: { badge: "Live CRA intel", heading: "Latest from ENISA, the Commission & CISA", seeAll: "See all regulatory news", live: "Live" },
+  nl: { badge: "Live CRA-informatie", heading: "Laatste nieuws van ENISA, de Commissie & CISA", seeAll: "Alle regelgevingsnieuws bekijken", live: "Live" },
+} as const;
 
 export interface NewsItem {
   id?: number;
@@ -55,6 +66,8 @@ const FALLBACK_NEWS: NewsItem[] = [
 ];
 
 export function LiveRegulatoryNewsFeed() {
+  const { locale } = useLocale();
+  const t = copy[locale];
   const [items, setItems] = useState<NewsItem[]>(FALLBACK_NEWS);
   const [loading, setLoading] = useState(false);
 
@@ -87,16 +100,16 @@ export function LiveRegulatoryNewsFeed() {
         {/* Compact header row: live badge + one-line heading + "see all" */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-5">
           <Badge variant="default" className="gap-1.5 bg-amber-500 hover:bg-amber-500 text-black font-semibold shrink-0">
-            <Radio className="h-3.5 w-3.5 animate-pulse" /> Live CRA intel
+            <Radio className="h-3.5 w-3.5 animate-pulse" /> {t.badge}
           </Badge>
           <span className="font-display text-base md:text-lg text-foreground">
-            Latest from ENISA, the Commission &amp; CISA
+            {t.heading}
           </span>
           <Link
             href="/news"
             className="ml-auto text-sm font-medium text-primary-ink hover:underline flex items-center gap-1"
           >
-            See all regulatory news <ArrowRight className="h-3.5 w-3.5" />
+            {t.seeAll} <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
@@ -118,7 +131,7 @@ export function LiveRegulatoryNewsFeed() {
                     <span className="whitespace-nowrap">
                       {item.publishedAt
                         ? new Date(item.publishedAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })
-                        : "Live"}
+                        : t.live}
                     </span>
                   </div>
                   <p className="mt-1.5 text-sm font-medium text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
