@@ -5,6 +5,10 @@ import { NewsletterSignup } from '@/components/newsletter-signup';
 import { SocialFeed } from '@/components/social-feed';
 import { useCookieConsentSettings } from '@/components/cookie-consent';
 
+// Newsletter signup is disabled site-wide for now (product decision, not a
+// bug) — flip back to true to re-enable; the component/copy stay intact.
+const SHOW_NEWSLETTER = false;
+
 // Localised footer chrome (nl-NL professional register). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
@@ -83,10 +87,12 @@ export function Footer() {
                 {settings.contactEmail}
               </a>
             )}
-            <div className="pt-2">
-              <h4 className="font-display font-semibold mb-2 text-sm">{t.newsletter}</h4>
-              <NewsletterSignup source="footer" />
-            </div>
+            {SHOW_NEWSLETTER && (
+              <div className="pt-2">
+                <h4 className="font-display font-semibold mb-2 text-sm">{t.newsletter}</h4>
+                <NewsletterSignup source="footer" />
+              </div>
+            )}
           </div>
 
           <div className="space-y-4">
