@@ -23,8 +23,8 @@ export function PageHeader({
     <header className="mb-10 border-b border-border pb-8 flex flex-wrap items-start justify-between gap-4">
       <div>
         <span className="oxot-kicker block mb-2">{kicker}</span>
-        <h1 className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground flex items-center gap-3">
-          {Icon && <Icon className="w-8 h-8 text-primary shrink-0" aria-hidden="true" />}
+        <h1 className="oxot-h1 text-foreground flex items-center gap-3">
+          {Icon && <Icon className="w-6 h-6 text-primary shrink-0" aria-hidden="true" />}
           {title}
         </h1>
         <p className="mt-4 max-w-3xl text-base md:text-lg leading-relaxed text-muted-foreground">
