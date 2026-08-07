@@ -139,7 +139,7 @@ export default function FrameworkDetailPage() {
   if (!reg) {
     return (
       <div className="pt-32 pb-24 container mx-auto px-4 md:px-8 text-center">
-        <h1 className="text-3xl font-display font-bold mb-4">{t.notFound}</h1>
+        <h1 className="oxot-h1 mb-4">{t.notFound}</h1>
         <Link href="/frameworks" className="text-primary hover:underline">
           {t.backToFrameworks}
         </Link>

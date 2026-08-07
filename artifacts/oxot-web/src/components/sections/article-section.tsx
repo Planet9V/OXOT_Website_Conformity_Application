@@ -524,7 +524,7 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
         </div>
       )}
       {!hasHeader && title && (
-        <h1 className="mb-6 font-display text-4xl font-normal tracking-tight text-foreground md:text-5xl">
+        <h1 className="oxot-h1 mb-6 text-foreground">
           {title}
         </h1>
       )}
@@ -547,8 +547,8 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
         {hasHeader && (
           <header className="mb-10 border-b border-border pb-8">
             {kicker && <span className="oxot-kicker block mb-2">{kicker}</span>}
-            <h1 className="font-display text-4xl md:text-5xl font-normal tracking-tight text-foreground flex items-center gap-3">
-              {HeaderIcon && <HeaderIcon className="w-8 h-8 text-primary shrink-0" aria-hidden="true" />}
+            <h1 className="oxot-h1 text-foreground flex items-center gap-3">
+              {HeaderIcon && <HeaderIcon className="w-6 h-6 text-primary shrink-0" aria-hidden="true" />}
               {title}
             </h1>
             {description && (
