@@ -38,8 +38,8 @@ Open **http://localhost:8088**. The first run builds all apps in the `build` sta
 |---|---|---|
 | **db** | Postgres 16 + pgvector (`pgvector/pgvector:pg16`) | Database `oxot`, user `oxot`, password from `POSTGRES_PASSWORD` (default `oxot`). Data persists in the `pgdata` volume. |
 | **migrate** | Applies the Drizzle schema to the DB | Runs once, waits for `db` healthy, then exits. Applies additive schema changes (e.g. new columns). |
-| **seed** | Seeds content into an empty DB | Runs after `migrate`, then exits. Restores the CMS snapshot when the DB is empty. |
-| **content-export** | Exports live DB content → snapshot | Run on demand (`docker compose run --rm content-export`), not part of the default `up`. |
+| **seed** | Seeds content into an empty DB | Runs after `migrate`, then exits. Restores the CMS snapshot when the DB is empty. Runs with `NODE_ENV=production` — avoids a `MODULE_NOT_FOUND` crash from pino's dev-only `pino-pretty` transport (its worker-thread path breaks under esbuild bundling); harmless for these non-interactive one-shot scripts. |
+| **content-export** | Exports live DB content → snapshot | Run on demand (`docker compose run --rm content-export`), not part of the default `up`. Also runs with `NODE_ENV=production`, same reason as `seed`. |
 | **api** | The Express API | Built from the `api` stage; serves `/api`. Depends on `seed` completing. |
 | **web** | nginx serving the three SPAs + proxying `/api` | Built from the `web` stage. **Published on `8088:80`.** |
 
@@ -55,7 +55,11 @@ The `build`, `api`, and `web` targets all derive from the Dockerfile's `build` s
   ```
   Then commit the updated `site-content.json`. See [How-to](08-how-to.md#edit-cms-content-and-capture-it-as-a-durable-seed).
 
-There are additional seed scripts in `artifacts/api-server` (`seed`, `seed:conformity`, `seed:demo`, `seed:content`, `seed:site`) for specific data sets.
+There are additional seed scripts in `artifacts/api-server` (`seed`, `seed:conformity`, `seed:demo`, `seed:content`, `seed:site`, `content:export`) for specific data sets, plus `seed:customer-site` — seeds the limited per-customer frontend (public CRA primer + 3 gated Knowledge Hub member pages, in **both** English and Dutch). It is not part of the default `docker compose up` flow and must be run explicitly:
+```bash
+docker compose run --rm seed sh -c "pnpm --filter @workspace/api-server run seed:customer-site"
+```
+Idempotent — matches and replaces rows on `(slug, locale)`. After seeding, run `content-export` (above) to capture the result into the committed snapshot so it survives future rebuilds.
 
 ## Verifying the stack
 
@@ -79,6 +83,8 @@ docker compose exec -T db psql -U oxot -d oxot -c \
 ```
 
 Then verify visually in a browser (or the Chrome plugin) against `http://localhost:8088`.
+
+> **SPA shell caching:** `docker/nginx.conf` and `docker/nginx.railway.conf.template` serve `index.html` with `Cache-Control: no-cache` for all three SPA locations (`/`, `/conformity/`, `/conformity-briefing/`). Hashed `/assets/*.js` still cache normally (content-addressed). This means a rebuilt image is picked up immediately on the next load — no hard-refresh needed, and no stale-shell 404s on newly added routes.
 
 ## Common commands
 

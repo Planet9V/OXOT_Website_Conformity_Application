@@ -59,11 +59,11 @@ The three frontends are independent Vite builds emitting static assets; nginx se
 
 ## Technology stack
 
-**Frontend:** TypeScript · React 19 · Vite · **wouter** (routing) · **TanStack Query** (data) · **Tailwind CSS v4** (CSS-variable tokens, no `tailwind.config.js`) · **shadcn/ui** + Radix · lucide-react (icons) · react-markdown.
+**Frontend:** TypeScript · React 19 · Vite · **wouter** (routing) · **TanStack Query** (data) · **Tailwind CSS v4** (CSS-variable tokens, no `tailwind.config.js`) · **shadcn/ui** + Radix · lucide-react (icons) · react-markdown · a locale layer for `oxot-web` (nested `/nl` wouter router + `LocaleProvider`/`useLocale()`, module-level `copy = { en, nl }` objects per page — see [Sitemap](02-sitemap.md)).
 
 **Backend:** **Express 5** · **Drizzle ORM** · **PostgreSQL 16 + pgvector** (`pgvector/pgvector:pg16`) · **esbuild** (bundles `src/index.ts` → `dist/index.mjs`) · **pino** (logging) · **@react-pdf/renderer** (the readiness-check PDF).
 
-**AI:** **OpenRouter** provides the LLM features — regulatory-news generation, report narratives, the conformity assistant, and embeddings. Model IDs and the API key are configured via environment / the admin AI settings.
+**AI:** **OpenRouter** provides the LLM features — regulatory-news generation, report narratives, the conformity assistant, and embeddings (`qwen/qwen3-embedding-8b`, requested at `dimensions: 1536` to match the `vector(1536)` pgvector columns). Model IDs and the API key are configured via environment / the admin AI settings.
 
 **Infra:** **Docker** (multi-stage) · **nginx** (static serving + API reverse proxy) · **Railway** (single-container production).
 

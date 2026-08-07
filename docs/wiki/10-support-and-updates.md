@@ -18,6 +18,7 @@ Operating the platform: routine maintenance, how to update safely, and a trouble
 - **Regulatory news.** Runs daily via an in-process scheduler. Confirm it's enabled and check `lastRunAt` under `/admin/ai`. It needs a valid `OPENROUTER_API_KEY`.
 - **Sessions & auth.** Sessions are signed with `SESSION_SECRET`. Rotating it invalidates all sessions (everyone must re-sign-in).
 - **Health.** `GET /api/health` (or the health router) is a cheap liveness check; the public funnel routes returning 200 and `POST /api/lead` accepting a test payload confirm the front-to-back path.
+- **Per-customer Dutch member content.** The 3 gated Knowledge Hub member pages are seeded in Dutch via `pnpm --filter @workspace/api-server run seed:customer-site` (idempotent, matches on `(slug, locale)`). This is separate from the main `content:export`/`seed:site` snapshot cycle — it does **not** run automatically in `railway-start.sh` or the default `docker compose up`, and must be run explicitly for a per-customer deployment, then captured via `content:export` to be durable (see [Installation — Docker](06-installation-docker.md#seeds-and-content-export)).
 
 ## Updating the application
 
@@ -64,6 +65,8 @@ Real issues seen in this codebase and their fixes. Search here before diagnosing
 | CMS content reverts after a rebuild | Edited the running DB but not the snapshot; or seed regenerated it | Capture into the snapshot (`content-export`) and commit; for marketing copy, prefer a static page. |
 | A date renders as "0 December 2027" to crawlers | A count-up animation on a fixed date | Don't animate dates — render them statically. |
 | `/api/conformity/portfolio` returns 401 | It's auth-gated | Expected without a session — not a bug. Sign in. |
+| After a deploy/rebuild, a new route 404s on hard-load even though the build succeeded | nginx cached the old `index.html` shell, which referenced a stale hashed bundle | Fixed: `docker/nginx.conf` / `docker/nginx.railway.conf.template` send `Cache-Control: no-cache` on the SPA `index.html` for all three locations, so clients always revalidate; hashed `/assets/*.js` still cache normally. |
+| A bad/removed page slug shows a generic "Content unavailable" instead of the 404 page | The default TanStack Query retry policy retried the (deterministic, never-retryable) 404 and got stuck mid-retry, so `error` never settled | Fixed: the `QueryClient` in `App.tsx` skips retries on 4xx client errors; `slug-page.tsx`'s `error.status === 404` check now actually runs. |
 
 ## Where to look when something breaks
 

@@ -4,6 +4,7 @@ Task-oriented recipes for the things people actually do in this codebase. Each i
 
 ## Contents
 - [Add a page to the sales funnel](#add-a-page-to-the-sales-funnel)
+- [Add Dutch copy to a public page](#add-dutch-copy-to-a-public-page)
 - [Edit CMS content and capture it as a durable seed](#edit-cms-content-and-capture-it-as-a-durable-seed)
 - [Add a collateral PDF to /resources](#add-a-collateral-pdf-to-resources)
 - [Change the daily regulatory-news generation](#change-the-daily-regulatory-news-generation)
@@ -17,6 +18,18 @@ Task-oriented recipes for the things people actually do in this codebase. Each i
 ## Add a page to the sales funnel
 
 See [Developer guide → add a funnel page](03-developer-guide.md#recipe-add-a-funnel-page-static). In short: a new `src/pages/*.tsx`, a route in `App.tsx`, optionally an entry in `FUNNEL_NAV`, then `docker compose build web`. The page is static — no CMS, durable across rebuilds.
+
+## Add Dutch copy to a public page
+
+Every localized `oxot-web` page follows the same pattern — no new infrastructure needed, just copy.
+
+1. In the page file, add a module-level `const copy = { en: {...}, nl: {...} } as const;` holding every visible string. Follow `home.tsx` as the reference implementation.
+2. In the component: `const { locale } = useLocale(); const t = copy[locale];`, then reference `t.*` in JSX instead of literal strings.
+3. Use the terms already agreed in `docs/plans/dutch-i18n/glossary.md` (formal *u* register, sentence case) — don't re-derive translations for terms already covered there.
+4. Leave API/DB-sourced content (regulatory news items, framework/regulation records, trust-center product data) untranslated — that's the established convention across every localized page — and add a short comment noting why.
+5. `docker compose build web && docker compose up -d`, then check both `/<page>` and `/nl/<page>` in the browser.
+
+For the 3 gated Knowledge Hub member pages specifically (CMS-backed, not static `copy` objects), see [seed:customer-site](10-support-and-updates.md) instead — they're seeded into the database, not compiled into the bundle.
 
 ## Edit CMS content and capture it as a durable seed
 
