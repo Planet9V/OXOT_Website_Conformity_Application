@@ -1,9 +1,11 @@
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import { Library, Download, Newspaper, BookOpen, FileText, Scale, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
+import { revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -125,12 +127,13 @@ export default function ResourcesPage() {
       <p className="oxot-kicker">{t.downloadKicker}</p>
       <div className="mt-3 grid gap-5 sm:grid-cols-2">
         {t.collateral.map((c, i) => (
-          <a
+          <motion.a
             key={c.name}
             href={COLLATERAL_HREFS[i]}
             target="_blank"
             rel="noreferrer"
             className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-6 shadow-e1 transition-colors hover:border-primary"
+            {...revealVariants(i)}
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
               <Download className="h-5 w-5 text-primary" />
@@ -142,7 +145,7 @@ export default function ResourcesPage() {
               <p className="mt-1 text-sm text-muted-foreground">{c.body}</p>
               <span className="mt-2 inline-block text-xs font-medium text-primary-ink">{t.pdfNote}</span>
             </div>
-          </a>
+          </motion.a>
         ))}
       </div>
 
@@ -152,19 +155,20 @@ export default function ResourcesPage() {
         {t.reference.map((r, i) => {
           const { icon: Icon, href } = REFERENCE_META[i];
           return (
-            <Link
-              key={r.name}
-              href={href}
-              className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
-            >
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                <Icon className="h-5 w-5 text-primary" />
-              </div>
-              <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground group-hover:text-primary">
-                {r.name}
-              </h3>
-              <p className="mt-1 text-sm text-muted-foreground">{r.body}</p>
-            </Link>
+            <motion.div key={r.name} {...revealVariants(i)}>
+              <Link
+                href={href}
+                className="group block rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <Icon className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground group-hover:text-primary">
+                  {r.name}
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">{r.body}</p>
+              </Link>
+            </motion.div>
           );
         })}
       </div>
