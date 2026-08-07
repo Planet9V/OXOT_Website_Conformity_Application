@@ -1152,6 +1152,7 @@ router.patch(
  */
 router.get(
   "/conformity/boms/:bomId/hierarchy",
+  requireAuth,
   async (req, res): Promise<void> => {
     try {
       const bomId = Number(req.params.bomId);
@@ -1188,6 +1189,7 @@ router.get(
  */
 router.get(
   "/conformity/boms/:bomId/cbom-audit",
+  requireAuth,
   async (req, res): Promise<void> => {
     try {
       const bomId = Number(req.params.bomId);
@@ -1230,6 +1232,7 @@ router.get(
  */
 router.post(
   "/conformity/boms/compare",
+  requireAuth,
   async (req, res): Promise<void> => {
     try {
       const baseBomId = Number(req.body.baseBomId);

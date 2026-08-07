@@ -920,7 +920,7 @@ router.post("/conformity/products", requireAuth, async (req, res): Promise<void>
   res.json(CreateConformityProductResponse.parse(toProductDto(row!)));
 });
 
-router.post("/conformity/products/quick-start", async (req, res): Promise<void> => {
+router.post("/conformity/products/quick-start", requireAuth, async (req, res): Promise<void> => {
   try {
     const name = (req.body.name as string) || "My Industrial Device";
     const productType = (req.body.productType as string) || "industrial_device";
@@ -978,7 +978,7 @@ router.post("/conformity/products/quick-start", async (req, res): Promise<void> 
 /**
  * GET /api/conformity/products/:id/revisions — Product Version Lifecycle & Statutory Timers
  */
-router.get("/conformity/products/:id/revisions", async (req, res): Promise<void> => {
+router.get("/conformity/products/:id/revisions", requireAuth, async (req, res): Promise<void> => {
   try {
     const productId = Number(req.params.id);
     if (!productId) {
@@ -1018,7 +1018,7 @@ router.get("/conformity/products/:id/revisions", async (req, res): Promise<void>
   }
 });
 
-router.get("/conformity/products/:id", async (req, res): Promise<void> => {
+router.get("/conformity/products/:id", requireAuth, async (req, res): Promise<void> => {
   const { id } = GetConformityProductParams.parse(req.params);
   const product = await loadProduct(id);
   if (!product) {
@@ -1038,7 +1038,7 @@ router.get("/conformity/products/:id", async (req, res): Promise<void> => {
   );
 });
 
-router.put("/conformity/products/:id", async (req, res): Promise<void> => {
+router.put("/conformity/products/:id", requireAuth, async (req, res): Promise<void> => {
   const { id } = UpdateConformityProductParams.parse(req.params);
   const body = UpdateConformityProductBody.parse(req.body);
   const existing = await loadProduct(id);
@@ -1078,7 +1078,7 @@ router.put("/conformity/products/:id", async (req, res): Promise<void> => {
   res.json(UpdateConformityProductResponse.parse(toProductDto(row!)));
 });
 
-router.delete("/conformity/products/:id", async (req, res): Promise<void> => {
+router.delete("/conformity/products/:id", requireAuth, async (req, res): Promise<void> => {
   const { id } = DeleteConformityProductParams.parse(req.params);
   const existing = await loadProduct(id);
   if (!existing) {
