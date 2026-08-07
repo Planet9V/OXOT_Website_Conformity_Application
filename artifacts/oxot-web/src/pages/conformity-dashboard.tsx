@@ -672,7 +672,7 @@ export default function ConformityDashboard() {
                       {d.label}
                     </div>
                     <div className="text-xs text-muted-foreground font-mono mt-0.5">
-                      {d.regulationName}
+                      {d.regulationKey?.replace(/_/g, ' ').toUpperCase()}
                     </div>
                   </div>
                 ))}
