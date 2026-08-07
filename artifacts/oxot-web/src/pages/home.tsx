@@ -9,6 +9,8 @@ import {
   ServerCog,
 } from 'lucide-react';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
+import { JsonLd } from '@/components/json-ld';
 import { LiveRegulatoryNewsFeed } from '@/components/sections/live-regulatory-news-feed';
 
 const STALLS = [
@@ -53,14 +55,27 @@ const PERSONAS = [
 ];
 
 export default function CraHomePage() {
-  useSeo({
-    title: 'OXOT Conformance Platform — run CRA conformity as an operation',
-    description:
-      'Every product with digital elements in one workbench: a guided compliance journey per product, statutory Article 14 clocks running live, Annex VII technical files generated from your own evidence.',
-  });
+  useSeo(
+    pageSeo('/', {
+      title: 'OXOT Conformance Platform — run CRA conformity as an operation',
+      description:
+        'Every product with digital elements in one workbench: a guided compliance journey per product, statutory Article 14 clocks running live, Annex VII technical files generated from your own evidence.',
+    }),
+  );
 
   return (
     <div className="w-full">
+      <JsonLd
+        id="ld-organization"
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'OXOT Conformance Platform',
+          description:
+            'Single-tenant platform to run EU Cyber Resilience Act (CRA) conformity as an operation.',
+          url: typeof window !== 'undefined' ? window.location.origin : undefined,
+        }}
+      />
       {/* Hero */}
       <section className="border-b border-border bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container mx-auto px-4 md:px-8 py-20 md:py-28 max-w-4xl text-center">

@@ -362,6 +362,8 @@ export function CraSelfCheck({
     }
     return (
       <div ref={topRef} className="space-y-4">
+        {/* Screen-reader section heading so the result cards (h3) don't skip a level under the page h1 */}
+        <h2 className="sr-only">Your indicative CRA readiness result</h2>
         {/* Role-toned header */}
         <p className="px-1 text-sm font-medium leading-relaxed text-foreground">{copy.v2.roleHeaders[roleKey]}</p>
 

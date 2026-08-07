@@ -6,6 +6,18 @@ import { absoluteWebUrl } from "../lib/publicUrl";
 
 const router: IRouter = Router();
 
+// Static React SPA funnel routes (not CMS-backed pages). They must appear in the
+// sitemap so crawlers can discover them — the CMS-page query below never sees them.
+const STATIC_FUNNEL_ROUTES = [
+  "/",
+  "/product",
+  "/pricing",
+  "/deployment",
+  "/resources",
+  "/cra-check",
+  "/demo",
+];
+
 // --- Helpers ---------------------------------------------------------------
 
 function xmlEscape(value: string): string {
@@ -69,7 +81,15 @@ router.get("/seo/sitemap.xml", async (_req, res): Promise<void> => {
   try {
     const pages = await publishedIndexablePages();
 
-    const urls = pages
+    // Static funnel routes first (always present), then CMS pages, deduped by loc.
+    const staticLocs = STATIC_FUNNEL_ROUTES.map((p) => absoluteWebUrl(p));
+    const staticSet = new Set(staticLocs);
+    const staticUrls = staticLocs
+      .map((loc) => `  <url>\n    <loc>${xmlEscape(loc)}</loc>\n  </url>`)
+      .join("\n");
+
+    const cmsUrls = pages
+      .filter((page) => !staticSet.has(canonicalForPage(page)))
       .map((page) => {
         const loc = xmlEscape(canonicalForPage(page));
         const lastmod = page.updatedAt.toISOString();
@@ -77,7 +97,8 @@ router.get("/seo/sitemap.xml", async (_req, res): Promise<void> => {
       })
       .join("\n");
 
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+    const body = [staticUrls, cmsUrls].filter(Boolean).join("\n");
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
 
     res.type("application/xml").send(xml);
   } catch (err) {

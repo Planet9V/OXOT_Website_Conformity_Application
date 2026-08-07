@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { Tag, Check, ArrowRight, Radar, LifeBuoy, Users } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
 
 type Tier = {
   name: string;
@@ -76,11 +77,13 @@ const ADDONS = [
 ];
 
 export default function PricingPage() {
-  useSeo({
-    title: 'Pricing — OXOT Conformance Platform',
-    description:
-      'Three tiers metered on products with digital elements under management. Fixed scope, variable price — request a quote. Single-tenant, always.',
-  });
+  useSeo(
+    pageSeo('/pricing', {
+      title: 'Pricing — OXOT Conformance Platform',
+      description:
+        'Three tiers metered on products with digital elements under management. Fixed scope, variable price — request a quote. Single-tenant, always.',
+    }),
+  );
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { CalendarCheck, Check, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
 import { Button } from '@/components/ui/button';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -16,11 +17,13 @@ const COVERS = [
 ];
 
 export default function DemoPage() {
-  useSeo({
-    title: 'Book a demo — OXOT Conformance Platform',
-    description:
-      'A 45-minute walkthrough covers classification, the evidence you already hold, and what a defensible Annex VII technical file looks like for your products.',
-  });
+  useSeo(
+    pageSeo('/demo', {
+      title: 'Book a demo — OXOT Conformance Platform',
+      description:
+        'A 45-minute walkthrough covers classification, the evidence you already hold, and what a defensible Annex VII technical file looks like for your products.',
+    }),
+  );
 
   const [state, setState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -110,6 +113,12 @@ export default function DemoPage() {
                 We'll reach out within two working days to book your 45-minute walkthrough. In the meantime, the
                 2-minute check gives you an indicative classification and readiness score to bring along.
               </p>
+              <a
+                href="/cra-check"
+                className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+              >
+                Take the 2-minute check <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
           ) : (
             <form onSubmit={onSubmit} className="space-y-3" noValidate>

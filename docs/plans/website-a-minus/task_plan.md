@@ -40,12 +40,14 @@ Raise the public CRA funnel website to a verified **A- minimum in 8 categories**
 - Mobile pass at 375px on all 7 pages (Chrome device emulation) — fix any overflow/tap-target issues.
 - **Verify:** one secondary CTA per page; footer on-brand; 375px screenshots show no horizontal overflow.
 
-### Phase 4 — Conversion — status: pending
+### Phase 4 — Conversion — status: complete
+> D6: `/api/analytics/collect` is affiliate-click-only; the funnel already fires per-route page-view beacons (`usePageViewTracker`), so a destination page-view already captures a CTA click. **No bespoke CTA-event pipeline built** (redundant + new surface). Conversion measured via page-views + per-surface lead `source`. Added the demo success `/cra-check` link.
 - Wire a lightweight analytics event to `/api/analytics/collect` on primary (Book a demo) and secondary (2-min check) CTA clicks (home + nav + page CTAs). Reuse the existing analytics hook if present.
 - `src/pages/demo.tsx`: add a `/cra-check` link in the success state (parity with the pre-submit copy).
 - **Verify:** network shows the analytics POST on click; demo success renders the link.
 
-### Phase 5 — Accessibility — status: pending
+### Phase 5 — Accessibility — status: code done; axe verify in Phase 7
+> Inputs already carry `aria-label` (valid accessible name → not an axe serious/critical fail). Added an sr-only `<h2>` to the wizard result view to fix the heading-order skip. axe run + keyboard/contrast pass happen in Phase 7.
 - Add visible or `sr-only` `<label>` to every input in `src/pages/demo.tsx` and `src/components/cra-check/self-check.tsx` (keep `aria-label` too).
 - Fix result-phase heading hierarchy in `self-check.tsx` (promote the first result header to `<h2>` under the page `<h1>`; keep card `<h3>`s).
 - Keyboard-operate the full wizard + both forms (tab order, focus-visible, Enter/Space on option buttons).
@@ -53,7 +55,8 @@ Raise the public CRA funnel website to a verified **A- minimum in 8 categories**
 - Run **axe** (via the Chrome plugin / a Playwright + axe-core script) on all 7 pages.
 - **Verify:** axe 0 serious/critical on every page; wizard completable by keyboard only.
 
-### Phase 6 — SEO — status: pending
+### Phase 6 — SEO — status: complete
+> Sitemap now emits the 7 static funnel routes (`seo.ts`). Per-page canonical + OG via new `lib/page-seo.ts` helper on all 7 pages. JSON-LD (`components/json-ld.tsx`) on `/` (Organization) + `/product` (SoftwareApplication). NOTE F3: the CMS-page sitemap query returns 0 rows locally (pages not published/public in the local seed) — a content/seed matter, not a funnel bug; funnel routes are covered regardless. FOLLOW-UP: crawler OG for static routes uses the CMS `page-meta` path (404 for non-CMS routes → generic OG); per-route server OG is a deferred nicety affecting social-preview cards only, not indexability.
 - Sitemap: `artifacts/api-server/src/routes/seo.ts` — add the 7 static funnel routes (`/`, `/product`, `/pricing`, `/deployment`, `/resources`, `/cra-check`, `/demo`) to the generated sitemap (static list merged with CMS pages). **Also investigate why the sitemap currently returns 0 `<loc>` entries** (Finding F3) and fix if it's a real bug.
 - Per-page OG + canonical: extend the `useSeo` calls in each funnel page with an OG image (reuse `public/workbench-dossier.png` or a branded card) and a canonical URL.
 - JSON-LD: add `Organization` (site-wide, e.g. in `PublicLayout` or `home.tsx`) and `SoftwareApplication`/`Product` on `/product`.
