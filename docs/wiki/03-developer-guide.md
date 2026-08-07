@@ -73,9 +73,10 @@ Because local Vite builds don't run on non-linux hosts, verify like this:
 ## Recipe: add a funnel page (static)
 
 1. Create `artifacts/oxot-web/src/pages/<name>.tsx`. Use `PageHeader`, styleguide tokens, and a `Book a demo` CTA to `/demo`.
-2. Register the route in `artifacts/oxot-web/src/App.tsx` (inside `PublicRoutes`, before the `/:slug` catch-all): wrap it in `PublicRoute`.
-3. If it should appear in the header, add it to `FUNNEL_NAV` in `artifacts/oxot-web/src/components/layout/header.tsx` (static array — no CMS).
-4. `docker compose build web && docker compose up -d`, then check the page in the browser.
+2. Register the route in `artifacts/oxot-web/src/App.tsx` (inside `PublicRoutes`, before the `/:slug` catch-all): wrap it in `PublicRoute`. Because `PublicRoutes` is mounted at both `/` and (nested) `/nl`, the page is automatically reachable at `/nl/<name>` too.
+3. **If the page should be localized**, follow the pattern already used by every other page: a module-level `const copy = { en: {...}, nl: {...} } as const;` holding every visible string, consumed via `const { locale } = useLocale(); const t = copy[locale];`. Approved Dutch terminology lives in `docs/plans/dutch-i18n/glossary.md` — reuse it rather than re-translating terms ad hoc. Content sourced from an API/DB is left untranslated by convention (commented as such), not force-translated.
+4. If it should appear in the header/footer nav, add its `href` to `FUNNEL_NAV` in `header.tsx` (an `{href}[]` array — hrefs only) **and** its display label to `header.tsx`'s own `copy.en.nav[]` / `copy.nl.nav[]` arrays (same index), plus the matching entry in `footer.tsx`'s `copy` object if it belongs in the footer too.
+5. `docker compose build web && docker compose up -d`, then check the page in the browser (both `/<name>` and `/nl/<name>` if localized).
 
 No CMS row, no seed — the page is durable by construction.
 
@@ -96,4 +97,4 @@ No CMS row, no seed — the page is durable by construction.
 
 ## Recipe: change the site navigation
 
-The public header nav is **static** (`FUNNEL_NAV` in `header.tsx`) — edit the array and rebuild. The workbench and admin navs are their own components. The legacy CMS-driven navigation table still exists but no longer drives the public header (see [Architecture](01-architecture.md)).
+The public header nav is **static**: `FUNNEL_NAV` in `header.tsx` holds the `href`s (an `{href}[]` array, no labels), and the visible labels live in that same file's locale `copy.en.nav[]` / `copy.nl.nav[]` arrays, matched by index — edit both and rebuild. `footer.tsx` mirrors the same pattern independently. The workbench and admin navs are their own components. The legacy CMS-driven navigation table still exists but no longer drives the public header (see [Architecture](01-architecture.md)).

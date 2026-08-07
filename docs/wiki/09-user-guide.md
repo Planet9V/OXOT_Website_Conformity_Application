@@ -15,6 +15,8 @@ For the people who *use* the product rather than build it: prospective buyers on
 
 The public site is a focused funnel. Every page has one primary call to action — **Book a demo** — and one secondary hook, the free **2-minute check**.
 
+The site is available in **English and Dutch** — use the **EN | NL** toggle in the header. Dutch URLs live under `/nl/...` (e.g. `/nl/pricing`); switching language keeps you on the equivalent page. The 2-minute check's questionnaire and the gated Knowledge Hub member guides are also available in Dutch.
+
 | Page | What you'll find |
 |---|---|
 | **Home** (`/`) | What the platform is, who it's for, and the CRA statutory clock (11 Dec 2027 full application; reporting obligations enforceable from 11 Sep 2026). |

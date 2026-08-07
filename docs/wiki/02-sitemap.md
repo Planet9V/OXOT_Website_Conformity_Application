@@ -75,7 +75,9 @@ Rendered under both `/conformity/*` and `/conformity-platform/*`:
 | `/:slug` | catch-all **CMS-driven** page (registered last before 404) |
 | *(fallback)* | `not-found` (404) |
 
-> Every funnel / reference / other public route is also reachable under `/nl/...` via the nested Dutch router. The funnel pages currently ship English content (Dutch deferred).
+> Every funnel / reference / other public route is also reachable under `/nl/...` via the nested Dutch router (`<Route path="/nl" nest>` in `App.tsx`). Pages render locale-specific copy via `useLocale()` and a per-page, module-level `copy = { en, nl }` object — home, product, pricing, deployment, resources, cra-check, demo, knowledge-hub, frameworks (index/matrix/detail), regulatory-news, compare, trust-center, slug-page, and not-found are all localized this way, along with the shared header/footer/newsletter/social-feed components. Terminology is governed by `docs/plans/dutch-i18n/glossary.md` (machine-assisted nl-NL, formal *u* register — flagged for native review before go-live). The EN | NL switcher lives in the header (`LocaleToggle` in `artifacts/oxot-web/src/components/layout/header.tsx`).
+>
+> The 3 gated Knowledge Hub member pages get their Dutch content from a separate path — `pnpm --filter @workspace/api-server run seed:customer-site` — not the main `content:export`/`seed:site` snapshot cycle (see [Support & Updates](10-support-and-updates.md)).
 
 ---
 
