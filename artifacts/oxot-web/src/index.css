@@ -86,6 +86,14 @@
   --app-font-display: 'Newsreader', Georgia, 'Palatino Linotype', serif;
   --radius: 0.5rem;
 
+  /* Motion system (OXOT styleguide §6) — the brand easing curve and timing
+     scale, same values for both themes. Mirrored in JS as EASE in lib/motion.ts
+     so a CSS hover and a Framer Motion panel share one curve. */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-1: 150ms; /* colour, small state changes */
+  --dur-2: 250ms; /* movement, reveals, panels */
+  --dur-3: 400ms; /* large or staged transitions */
+
   --button-outline: rgba(0, 0, 0, 0.1);
   --badge-outline: rgba(0, 0, 0, 0.05);
   --opaque-button-border-intensity: -8;
@@ -382,4 +390,14 @@
     transition-duration: 0.01ms;
     transform: none;
   }
+}
+
+/* Glass surface (§6.5) — token-based, works in both themes. Opt-in per
+   section for translucent layering over imagery/gradients; not a base style
+   and not applied anywhere by default. */
+.oxot-glass {
+  background-color: color-mix(in srgb, hsl(var(--card)) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, hsl(var(--border)) 60%, transparent);
 }

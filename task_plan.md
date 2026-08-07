@@ -1,65 +1,86 @@
-# Master Task Plan: OXOT Application Long-Term Operational Roadmap
+# Task Plan — Framer Motion on the 7 Funnel Pages
 
-## Executive Goal
-Transform OXOT into the definitive **EU Industrial AI & Cyber Compliance Orchestrator**, providing end-to-end statutory compliance management across CRA (2024/2847), AI Act (2024/1689), Machinery Regulation (2023/1230), and IEC 62443-4-1/4-2 for industrial OEMs, hardware vendors, and Notified Bodies.
+## Goal
+Bring the codebase's existing Framer Motion pattern (see `findings.md`) to the 7 static funnel pages (`home`, `product`, `pricing`, `deployment`, `resources`, `cra-check`, `demo`) that currently have zero motion. **Non-negotiable constraint from the user: do not break functionality or code.** No new dependency, no new pattern, no touching form/wizard internals, no changing any string/data/logic — motion props added to existing container elements only.
 
-## User Review Required
-> [!IMPORTANT]
-> - **Enhanced Technical Implementation Plan Created**: [**`implementation_plan.md`**](file:///Users/jimmcknney/.gemini/antigravity-ide/brain/608e9a04-d21c-48f8-baa4-d35ed86ad08c/implementation_plan.md).
-> - **Awaiting User Approval**: Holistic Analytics, Recharts Drill-Down Dashboards, and Annex VII ZIP Generator ready for execution upon review.
+## Karpathy discipline applied to this plan
+- **Minimum code**: reuse the two existing motion shapes verbatim (entrance + scroll-reveal). No new animation variants invented.
+- **Surgical**: each page is its own task, its own commit, its own verification. Never batch multiple pages into one change before checking the first worked.
+- **Zero collateral damage**: motion wrapping changes an element's tag (`div`→`motion.div`) and adds 3-4 props (`initial`, `animate`/`whileInView`, `viewport`, `transition`). It never changes children, text, `className`, `href`, `key`, event handlers, or component logic.
+- **No speculative scope**: `cra-check.tsx`'s wizard internals (`components/cra-check/self-check.tsx`) are explicitly OUT of scope — only the static page chrome around it is touched.
 
----
+## Phases
 
-## Complete Multi-Phase Execution Roadmap
+### Phase 0 — Setup (this phase)
+- [x] Design audit already identified the gap and graded it (prior session turn).
+- [x] `findings.md` — documented the existing pattern, the risk inventory, and the verification method.
+- [x] `task_plan.md` (this file).
+- [ ] `progress.md` — session log, created next.
+- [ ] **User reviews and approves this plan** before any code is touched. In particular: sign off (or reject) the proposed `MotionConfig reducedMotion="user"` companion step (see findings.md) — it's the one part of this plan that touches a file (`App.tsx`) outside the 7 target pages.
 
-### Phase 1: Research & Positioning (COMPLETED)
-- [x] Query competitor landscape (Cybellum, Finite State, OneKey, Vanta, Drata, ArmorCode).
-- [x] Apply `/marketing-council` perspectives (Dunford positioning, Godin smallest viable audience, Ogilvy direct-response proof, Hormozi value equation).
-- [x] Generate 5-Round Adversarial Multi-Agent Debate transcript (`multi_agent_adversarial_debates.md`).
-- [x] Generate Competitive Landscape Matrix (`competitive_analysis_matrix.md`).
+### Phase 0.5 — Reconcile styleguide with reality, add shared tokens (NEW — inserted per user request)
+Full brief: `docs/plans/motion-and-glass-styleguide/prompt.md`. Summary: the documented motion system in `OXOTSTYLEGUIDE.md` §6 (shared `EASE` curve, `--dur-1/2/3` tokens) was never implemented — the 11 existing motion files all use plain `duration: 0.5` with no custom easing. Rather than add an 8th ad-hoc variant across the 7 funnel pages, this phase:
+- [x] **DONE** (prior turn): `MotionConfig reducedMotion="user"` in `App.tsx` — approved, implemented, verified, merged (PR #37, commit `e3e8403`).
+- [ ] Add `--ease-brand`/`--dur-1/2/3` CSS tokens to `index.css` (additive only).
+- [ ] Add `lib/motion.ts` exporting `EASE`, `entranceVariants()`, `revealVariants()` — reuses `duration: 0.5` (matches existing 11 files) + the documented brand curve, so timing stays visually consistent with what's already shipped while the easing now matches spec.
+- [ ] Add `.oxot-glass` utility (token-based: `--card`/`--border` via `color-mix`, works in both themes) — additive only, opt-in, not applied anywhere by default.
+- [ ] Update `OXOTSTYLEGUIDE.md` §6 to state what's actually true post-implementation (timing correction, new §6.5 for glass).
+- [ ] **Verify no regression to the 3 existing glass pages + 11 existing motion pages** before touching any funnel page: `/conformity` dashboard, `/trust`, `/admin/login`, `/frameworks` — pixel-identical to before.
+- Phases 1–7 below then import from `lib/motion.ts` instead of hand-writing the variant objects inline per page.
 
-### Phase 2: Competitor Page Web Implementation (COMPLETED)
-- [x] Create React page component `artifacts/oxot-web/src/pages/competitors-page.tsx`.
-- [x] Register `/compare` route in `artifacts/oxot-web/src/App.tsx`.
-- [x] Add "Competitor Matrix" link to site navigation header ([`header-panels.ts`](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/artifacts/oxot-web/src/components/layout/header-panels.ts)).
-- [x] Rebuild `web` service container in Docker (`docker compose up -d --build web`).
+### Phase 1 — home.tsx
+- Add entrance motion (hero-style, `initial`/`animate`, staggered delay) to: kicker, `<h1>`, subtitle, CTA button row — mirrors `hero-section.tsx` exactly.
+- Add scroll-reveal motion (`whileInView`, `viewport={{once:true}}`) to each mapped grid: `STALLS`/`t.stalls` cards, `PILLARS`/`t.pillars` cards, `PERSONAS`/`t.personas` cards — mirrors `feature-grid-section.tsx` exactly, staggered by index.
+- Leave the `LiveRegulatoryNewsFeed` component, `JsonLd`, and the statutory-clock banner **untouched** — they're separate components/sections not part of this task, and the news feed already has its own async-loading behavior that shouldn't be perturbed.
+- **Verify**: `docker compose build web && docker compose up -d`. Chrome: load `/` and `/nl` in both light and dark mode; confirm hero fades/slides in, grids reveal on scroll once (not on every scroll up/down); click "Book a demo" and "Take the 2-minute check" CTAs — confirm they still navigate correctly; confirm all text is still exactly what it was (spot-check a few `t.*` strings against the pre-change screenshot).
+- **Commit** this page alone. Do not proceed to Phase 2 until this is verified working.
 
-### Phase 3: Core Application Enhancements (COMPLETED)
-- [x] Connect Public ROI Calculator inputs on `oxot-web` directly into logged-in `conformity` product assessment (ICE-1: Added `POST /api/conformity/products/quick-start`).
-- [x] Render interactive Recharts compliance radar in Workbench (`/conformity/`) (ICE-2: Implemented `MultiRegulationRadarChart`).
-- [x] Add public product trust center route (`/conformity/public/products/:id/trust-center`) (ICE-3: Implemented `GET /api/conformity/public/products/:id/trust-center`).
+### Phase 2 — product.tsx
+- Entrance motion on `PageHeader` (kicker/title/description) if it's a natural above-the-fold block; scroll-reveal on the 6 module cards and the 8-step journey list, staggered by index — same shapes as Phase 1.
+- **Verify** identically to Phase 1 (build, Chrome, both locales, both themes, click through to `/pricing` link if present, confirm no visual/text regression).
+- **Commit** this page alone.
 
----
+### Phase 3 — pricing.tsx
+- Scroll-reveal on the 3 tier cards (staggered) and the add-ons cards. Leave the "Most chosen" badge, feature checklists, and all pricing/currency text completely untouched — only the card container gets motion.
+- **Verify**: build, Chrome, both locales/themes, confirm "Request a quote" / tier CTAs still navigate, confirm feature lists inside cards render in full (no clipped/hidden content from a mis-set `initial` opacity that never resolves).
+- **Commit** this page alone.
 
-### Phase 4: Notified Body Audit Workspace & Module B/C & H Collaboration (COMPLETED)
-- [x] Build Notified Body Guest Auditor portal (`/conformity/auditor-portal`).
-- [x] Implement RFI (Request For Information) and Non-Conformity finding tracking ledger.
-- [x] Generate structured Annex VII Technical Documentation Export Pack for TÜV / DNV / Bureau Veritas.
-- [x] Add digital signature verification for EU Declarations of Conformity (DoC).
+### Phase 4 — deployment.tsx
+- Scroll-reveal on the 3 deployment-option cards and the "island-mode" feature list.
+- **Verify**: build, Chrome, both locales/themes.
+- **Commit** this page alone.
 
-### Phase 5: Continuous Post-Market Surveillance, 6-Type xBOM & Automated VEX Engine
-- [ ] Integrate 6-Format CycloneDX 1.5/1.6 xBOM (SBOM, HBOM, CBOM, SaaSBOM, DBOM, AI-BOM).
-- [ ] Implement Hierarchical Multi-Tier OEM Supply Chain Lineage Tree (Tier 1/2/3 assemblies).
-- [ ] Deploy 6 Multi-Agent Evaluation Intelligence agents (Cryptographic PQC scoring, EOL chipsets).
-- [ ] Integrate real-time CISA Known Exploited Vulnerabilities (KEV) & NVD feed ingestion.
-- [ ] Build OpenVEX & CycloneDX VEX JSON exporter (`/api/conformity/assessments/:id/vex`).
-- [ ] Build automated Article 14 ENISA Single Reporting Platform (SRP) dispatch webhook generator.
-- [ ] Implement live Slack/Teams alert notifications for 24h early warning SLA timers.
+### Phase 5 — resources.tsx
+- Scroll-reveal on the 2 download cards and the 5 reference cards.
+- **Verify**: build, Chrome, both locales/themes. **Extra check**: click a download card — confirm the PDF link (`target="_blank"`) still opens correctly; motion wrapping a link's parent must not intercept the click or change `href` propagation.
+- **Commit** this page alone.
 
-### Phase 6: E2E Playwright Automation & Quality Gate Enforcement
-- [ ] Write E2E Playwright test scripts covering `/`, `/compare`, `/conformity/`, and `/conformity-briefing/`.
-- [ ] Conduct Lighthouse performance audits for Core Web Vitals (LCP < 1.2s, INP < 100ms).
-- [ ] Integrate automated visual regression testing for dark-mode glassmorphic components.
+### Phase 6 — cra-check.tsx (highest risk — read findings.md's risk inventory again before starting)
+- Entrance/scroll-reveal motion ONLY on: the `PageHeader` block, and the final "Ready to go deeper?" CTA card.
+- **Do not add any motion prop to `<CraSelfCheck>` or pass any new prop into it.** The wizard's own internal transitions are out of scope.
+- **Verify**: build, Chrome, both locales/themes. **Extra check, non-negotiable**: run through the actual questionnaire — answer several questions, use the "Terug" (back) button, confirm the wizard still advances/retreats correctly and the progress bar still updates. This is the one page where "looks fine" is not sufficient verification — must interact with the real flow.
+- **Commit** this page alone.
 
-### Phase 7: Enterprise Multi-Tenancy & Stripe Monetization Engine
-- [ ] Implement multi-tenant Organization workspace isolation (`organization_id`).
-- [ ] Integrate Stripe subscription billing tiers (Free Assessment, Pro OEM, Enterprise Notified Body).
-- [ ] Implement SAML 2.0 / OIDC Single Sign-On for enterprise CISO authentication.
+### Phase 7 — demo.tsx (second-highest risk)
+- Entrance motion on `PageHeader` and the "what the walkthrough covers" bullet list. Scroll-reveal (or entrance, if above the fold) on the form's outer card container only.
+- **Do not wrap individual `<input>`/`<textarea>` elements.** Do not add or change any `key` on the form or its fields. Do not touch the `useState`, `onSubmit`, or API-call logic.
+- **Verify**: build, Chrome, both locales/themes. **Extra check, non-negotiable**: actually fill out the form (name/email/company/role/blocker) and submit it against the local API — confirm the success state still renders, confirm no dropped keystrokes or lost focus while typing (this is exactly what would happen if a motion wrapper accidentally remounted an input).
+- **Commit** this page alone.
 
----
+### Phase 8 — Optional companion: `prefers-reduced-motion` support
+- Only if approved in Phase 0 sign-off. One-line addition: wrap the app in `<MotionConfig reducedMotion="user">` in `App.tsx` (import from `framer-motion`). This makes both the new 7 pages *and* the existing 11 files respect the OS accessibility setting, with no per-file changes anywhere.
+- **Verify**: build, Chrome — toggle "Reduce motion" in OS/browser dev-tools emulation, confirm animations are suppressed but content still renders (nothing stays permanently at `opacity: 0`).
+- **Commit** alone, separate from any page-content commit.
 
-## Errors Encountered & Resolution Ledger
-| Error | Phase | Attempt | Resolution |
-| :--- | :--- | :--- | :--- |
-| `pnpm not found` in host shell | Phase 2 | 1 | Used `docker compose up -d --build web` which has pnpm in container environment. |
-| Sourcemap error warnings in Vite build | Phase 3 | 1 | Non-fatal rollup warnings; build completed cleanly and output valid bundle chunks. |
+### Phase 9 — Final full-site regression sweep
+- All 7 pages, both locales, both themes, one pass, using the same regression-sweep method as the rest of this session (curl for 200s, Chrome for visual + interaction spot-checks).
+- Confirm nothing outside the 7 target files (+ optionally `App.tsx` for Phase 8) shows up in `git diff --stat`.
+- PR, merge to `main` — same pattern as every other change this session (feature branch → PR → squash-merge → sync).
+
+## Decision log
+- **Reuse existing pattern vs. invent new one**: reuse. The codebase already has a working, consistent motion language in 11 files; introducing a second one would be inconsistent and unnecessary scope.
+- **One page per phase/commit vs. all 7 at once**: one at a time. The user's explicit "be careful" instruction and the presence of two genuinely stateful pages (cra-check wizard, demo form) make a single bad wrapper in one page hard to isolate if bundled with six others.
+- **`prefers-reduced-motion`**: proposed as an optional, separately-approved phase — it's a real, valuable a11y fix and nearly free to add, but it touches `App.tsx` (outside the 7-page scope the user named), so it needs explicit sign-off rather than being silently bundled in.
+
+## Errors Encountered
+*(none yet — populated during execution)*

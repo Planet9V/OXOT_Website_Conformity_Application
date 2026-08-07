@@ -250,14 +250,15 @@ Movement is what separates a professional site from a competent one, and OXOT's 
 ### 6.1 The primitives
 
 ```css
---ease-out:    cubic-bezier(0.22, 1, 0.36, 1);   /* the brand curve */
---ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+--ease-brand: cubic-bezier(0.22, 1, 0.36, 1);   /* the brand curve */
 --dur-1: 150ms;   /* colour, small state changes */
 --dur-2: 250ms;   /* movement, reveals, panels */
 --dur-3: 400ms;   /* large or staged transitions */
 ```
 
-`cubic-bezier(0.22, 1, 0.36, 1)` is exposed to Tailwind as `ease-brand` and to Framer Motion as `EASE = [0.22, 1, 0.36, 1]`. **The CSS and the JS are the same curve** — that is deliberate, and it is why a CSS hover and a Framer panel feel like the same system.
+Defined in `artifacts/oxot-web/src/index.css` (`:root`), and mirrored in JS as `EASE = [0.22, 1, 0.36, 1]` in `artifacts/oxot-web/src/lib/motion.ts`'s `entranceVariants()`/`revealVariants()` helpers. **The CSS and the JS are the same curve** — that is deliberate, and it is why a CSS hover and a Framer panel feel like the same system.
+
+> `--dur-1/2/3` are defined as tokens but not yet wired into every effect below — several existing CSS transitions (e.g. `.cta-lift`) still hardcode the curve as a literal rather than `var(--ease-brand)`, and the JS helpers use a flat `0.5s`/`500ms` duration rather than `--dur-2`/`--dur-3`, to stay visually identical to motion already shipped across 11 files before this token system existed. Treat the tokens as the target for new work, not yet a retrofit of everything old.
 
 The curve overshoots toward its endpoint and decelerates hard. Things arrive quickly and settle; nothing drifts.
 
@@ -285,7 +286,7 @@ The curve overshoots toward its endpoint and decelerates hard. Things arrive qui
 ### 6.3 The rules
 
 - **Compositor-only.** Animate `transform` and `opacity`. Never `width`, `height`, `top` or `left` — except accordion height, where there is no alternative.
-- **Colour is 150ms. Movement is 200–250ms. Reveals are 600ms.** Nothing else.
+- **Colour is 150ms. Movement is 200–250ms. Reveals are 600ms.** Nothing else. *(Target rule. `lib/motion.ts`'s current `entranceVariants()`/`revealVariants()` helpers use `500ms` — matching the 11 pages animated before this rule was formalized — rather than the `250ms`/`600ms` this rule states. New work should follow this rule where it doesn't conflict with matching already-shipped pages; reconciling the two is a separate, not-yet-scheduled pass.)*
 - **Hover changes must have a focus equivalent.** `.cta-lift` fires on `:focus-visible` for exactly this reason.
 - **Anything auto-updating for more than 5 seconds needs a pause control** (WCAG 2.2.2). The rotating hero has a real `<button>` with `aria-pressed`, and it also pauses on hover and on `focusin`.
 - **Style the control.** A pause button with no border renders as a stray grey word between the headline and the paragraph — technically visible, technically hittable, and read as a caption. Give controls a border, padding and a focus ring.
@@ -306,6 +307,22 @@ A global guard, plus per-component handling:
 ```
 
 Framer components check `useReducedMotion()` and drop their `initial`/`exit` states. Anything that auto-advances stops advancing entirely — and its pause control is hidden, because there is then nothing to pause.
+
+App-wide, this is also enforced once via `<MotionConfig reducedMotion="user">` wrapping the whole app in `App.tsx` — every `motion.*` component automatically honours the OS setting without needing its own `useReducedMotion()` check.
+
+### 6.5 Glass surfaces
+
+`.oxot-glass` (`index.css`) is a translucent layering treatment for content that sits over imagery or a gradient — a card floating on the hero's background blur, for example. It is **opt-in per section, not a base style**, and it's token-based so it works in both themes without a dark-mode override:
+
+```css
+.oxot-glass {
+  background-color: color-mix(in srgb, hsl(var(--card)) 70%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, hsl(var(--border)) 60%, transparent);
+}
+```
+
+Use it where something is genuinely showing through — not as a decorative default on ordinary cards, which already have `.oxot-kicker`/§9.2's plain `bg-card` treatment. A few gated/workbench surfaces (the conformity dashboard, the trust center, the admin login) already use a glass-like translucency, but with raw Tailwind literals (`bg-slate-900/80`, `bg-[#030712]`) outside the shared colour tokens — those predate `.oxot-glass` and are left as-is; new glass surfaces on the public site should use the token-based class above instead.
 
 ---
 
