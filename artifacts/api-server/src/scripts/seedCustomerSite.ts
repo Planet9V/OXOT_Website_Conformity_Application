@@ -12,7 +12,11 @@
  *
  * All seeded pages are noindex (per-customer deployments must not compete in
  * search). The English header/footer nav is rebuilt to the limited set; the
- * Dutch locale is left untouched (customer deployments are English-first).
+ * Dutch nav is left untouched (the public marketing nav already covers Dutch).
+ * The 3 MEMBERS-tier pages are also seeded in Dutch (locale "nl", same slugs)
+ * so /nl/knowledge shows real content instead of the empty state; the PUBLIC
+ * tier stays English-only here (its Dutch equivalents, if any, come from the
+ * main site-content snapshot, not this script).
  *
  * Idempotent — pages are matched on (slug, locale) and fully replaced.
  * Run with: pnpm --filter @workspace/api-server run seed:customer-site
@@ -290,6 +294,131 @@ For anything else, ask the assistant — it knows both this material and your li
   },
 ];
 
+// --- Dutch member pages: translated equivalents of the 3 Knowledge Hub
+// shelves above (cra-article-guide, cra-templates, workbench-how-to), seeded
+// under locale "nl" so /nl/knowledge shows real content instead of the empty
+// state. Same slugs as their English counterparts (unique on slug+locale) so
+// Knowledge Hub links (which fetch by the active locale) resolve identically.
+// Machine-assisted professional Dutch ("u") — flag for a native reviewer
+// before go-live, per docs/plans/dutch-i18n/glossary.md.
+const NL_MEMBER_PAGES: SeedPage[] = [
+  {
+    slug: "cra-article-guide",
+    title: "CRA Artikel-voor-Artikel Gids",
+    seoTitle: "CRA-artikelgids | Leden",
+    seoDescription: "Artikelsgewijze richtlijnen om aan de Cyber Resilience Act te voldoen.",
+    excerpt:
+      "Wat elk CRA-artikel en elke bijlage werkelijk van u vraagt, in de volgorde waarin u ze tegenkomt tijdens een beoordeling.",
+    visibility: "members",
+    regulationKeys: ["cra"],
+    markdown: `## De CRA lezen zoals een beoordelaar dat doet
+
+### Artikel 13 — Verplichtingen van fabrikanten
+
+Het hart van de verordening. Belangrijkste leden:
+
+- **13(1)–(3):** breng alleen producten op de markt die zijn ontworpen, ontwikkeld en geproduceerd conform Bijlage I, deel I, onderbouwd met een gedocumenteerde risicobeoordeling die actueel wordt gehouden.
+- **13(5):** de risicobeoordeling maakt *deel uit van de technische documentatie* — het is geen intern nevendocument.
+- **13(6):** betracht passende zorgvuldigheid bij het integreren van componenten van derden — hier komen uw SBOM en meldingsplichten richting leveranciers om de hoek kijken.
+- **13(8):** bepaal en verklaar de ondersteuningsperiode (doorgaans ten minste vijf jaar).
+
+### Artikel 14 — Melding
+
+Twee afzonderlijke trajecten, elk met zijn eigen klok:
+
+1. **Actief misbruikte kwetsbaarheid** → vroegtijdige waarschuwing 24 u → melding 72 u → eindverslag **14 dagen nadat een oplossing beschikbaar is**.
+2. **Ernstig incident** → vroegtijdige waarschuwing 24 u → melding 72 u → eindverslag **één maand na de melding**.
+
+Het platform start beide klokken automatisch zodra u een incident opent.
+
+### Bijlage I, deel I — Essentiële vereisten
+
+Standaard veilige configuratie, bescherming van vertrouwelijkheid en integriteit, beperking van het aanvalsoppervlak, weerbaarheid tegen denial-of-service, logging en de mogelijkheid tot veilig bijwerken. Elke vereiste is gekoppeld aan een of meer beoordelingsvragen in uw werkruimte.
+
+### Bijlage I, deel II — Omgaan met kwetsbaarheden
+
+SBOM, gecoördineerd meldingsbeleid, regelmatige tests, verspreiding van beveiligingsupdates zonder vertraging en kosteloos.
+
+### Bijlagen V–VIII — Conformiteit aantonen
+
+De EU-conformiteitsverklaring (V), de conformiteitsbeoordelingsprocedures (VIII) en de inhoud van de technische documentatie (VII) — allemaal gegenereerd door dit platform vanuit uw actieve werkruimte.
+
+Voor de onderliggende wettekst van een vereiste opent u de vereiste in de [workbench-catalogus](/knowledge/requirements).`,
+  },
+  {
+    slug: "cra-templates",
+    title: "Sjablonen & Voorbeelden van Artefacten",
+    seoTitle: "CRA-sjablonen & voorbeelden | Leden",
+    seoDescription: "Uitgewerkte voorbeelden en sjablonen voor elk CRA-artefact dat dit platform genereert.",
+    excerpt:
+      "Elk artefact dat het platform genereert, met een uitgewerkt voorbeeld uit de demo-beoordeling, zodat u weet hoe goed eruitziet.",
+    visibility: "members",
+    regulationKeys: ["cra"],
+    markdown: `## Hoe goed eruitziet
+
+Deze implementatie wordt geleverd met een volledig uitgewerkte demobeoordeling. Gebruik de output ervan als referentievoorbeeld voor uw eigen dossier:
+
+### Technisch documentatiepakket
+
+Open de rapportwerkruimte van de demobeoordeling en exporteer het technische documentatierapport. Let op hoe elke sectie bewijsstukken citeert — uw eigen pakket moet dezelfde citatiedichtheid bereiken.
+
+### EU-conformiteitsverklaring
+
+Het sjabloon voor de conformiteitsverklaring wordt gegenereerd vanuit de beoordeling zodra de conformiteitsroute is gekozen. De demo toont een voltooide zelfbeoordelingsverklaring (Module A).
+
+### SBOM
+
+Het demoproduct bevat een ingelezen CycloneDX-SBOM. Exporteer deze vanuit het BOM-tabblad om het verwachte formaat, de componentidentiteiten (purl) en de kwetsbaarheidsannotaties te zien.
+
+### Artikel 14-incidentrapporten
+
+De demo bevat een opgelost incident met de volledige rapportketen — vroegtijdige waarschuwing, melding en eindverslag — met het detailniveau dat elke fase vereist.
+
+### Risicobeoordelingsdossier
+
+Elke beantwoorde vereiste in de demo heeft een beoordeelde score met gekoppeld bewijs; samen vormen zij de gedocumenteerde risicobeoordeling die Artikel 13(5) verplicht stelt in het technisch dossier.
+
+> **Tip:** vraag de assistent "laat mij een voorbeeld van X zien" — deze is geïndexeerd over dit materiaal en de actieve werkruimte.`,
+  },
+  {
+    slug: "workbench-how-to",
+    title: "Workbench Handleidingen",
+    seoTitle: "Workbench-handleidingen | Leden",
+    seoDescription: "Stapsgewijze handleidingen voor de dagelijkse conformiteitswerkstromen in de workbench.",
+    excerpt:
+      "Stapsgewijze handleidingen voor de werkstromen die u het vaakst gebruikt: beoordelingen, SBOM-uploads, incidenten en rapporten.",
+    visibility: "members",
+    regulationKeys: [],
+    markdown: `## De vier werkstromen die u het vaakst gebruikt
+
+### Een beoordeling uitvoeren
+
+1. Maak een product aan en start vervolgens een beoordeling ervoor.
+2. Doorloop de vereisten thema voor thema; elk antwoord krijgt een score **en** gekoppeld bewijs.
+3. Het overzicht toont voortgang (hoever u bent) apart van score (hoe goed) — "gereed" vereist beide.
+
+### Een BOM uploaden en monitoren
+
+1. Upload in het BOM-tabblad van de beoordeling een CycloneDX- of SPDX-bestand.
+2. De pijplijn verwerkt componenten en matcht bekende kwetsbaarheden.
+3. Houd het paneel **meldingshiaten Artikel 13(6)** in de gaten — kwetsbaarheden bij leveranciers waarover u mogelijk moet melden.
+
+### Een incident afhandelen
+
+1. Open een incident vanuit een kwetsbaarheidsbevinding (of rechtstreeks).
+2. De Artikel 14-klokken starten automatisch — deadlines voor vroegtijdige waarschuwing, melding en eindverslag verschijnen met waarschuwingsmails voorafgaand aan elke deadline.
+3. Volg de status via onderzoek → gemitigeerd → opgelost; de deadline voor het eindverslag volgt het juiste wettelijke traject voor het type incident.
+
+### Rapporten genereren
+
+1. Kies in de rapportwerkruimte een formaat (managementsamenvatting, beoordelingsrapport, technische documentatie).
+2. Rapporten bevriezen een momentopname — latere wijzigingen in de werkruimte veranderen een uitgegeven rapport nooit stilzwijgend.
+3. Elke door AI opgestelde sectie bevat citatiemarkeringen die terugverwijzen naar het bevroren bewijs; bewerk vrijelijk, citaten worden bij opslaan opnieuw gevalideerd.
+
+Voor al het overige kunt u de assistent raadplegen — deze kent zowel dit materiaal als uw actieve werkruimte.`,
+  },
+];
+
 // Limited English navigation for the customer deployment.
 const HEADER_NAV = [
   { label: "CRA Primer", href: "/cra-primer" },
@@ -335,6 +464,41 @@ async function seed() {
     log(`Seeded ${page.visibility} page: ${page.slug}`);
   }
 
+  // Dutch equivalents of the members-tier Knowledge Hub shelves (see
+  // NL_MEMBER_PAGES above). Matched on (slug, locale="nl"), same idempotent
+  // replace pattern as the English loop.
+  for (const page of NL_MEMBER_PAGES) {
+    await db.transaction(async (tx) => {
+      await tx
+        .delete(pagesTable)
+        .where(and(eq(pagesTable.slug, page.slug), eq(pagesTable.locale, "nl")));
+
+      const [row] = await tx
+        .insert(pagesTable)
+        .values({
+          slug: page.slug,
+          serviceKey: page.slug,
+          locale: "nl",
+          title: page.title,
+          seoTitle: page.seoTitle,
+          seoDescription: page.seoDescription,
+          noindex: true,
+          visibility: page.visibility,
+          regulationKeys: page.regulationKeys,
+          status: "published",
+        })
+        .returning({ id: pagesTable.id });
+
+      await tx.insert(pageSectionsTable).values({
+        pageId: row.id,
+        type: "article",
+        sortOrder: 0,
+        data: { title: page.title, excerpt: page.excerpt, markdown: page.markdown },
+      });
+    });
+    log(`Seeded ${page.visibility} page (nl): ${page.slug}`);
+  }
+
   // Mark ALL pages noindex: a per-customer deployment must not be indexed.
   await db.update(pagesTable).set({ noindex: true });
   log("Set noindex on all pages (per-customer deployment).");
@@ -363,12 +527,16 @@ async function seed() {
   });
   log("Rebuilt limited English navigation.");
 
-  // Sanity check: everything we just wrote is retrievable.
+  // Sanity check: everything we just wrote is retrievable. Dutch pages share
+  // slugs with their English counterparts (unique per slug+locale), so the
+  // expected count is English rows + Dutch rows, not just distinct slugs.
+  const allSlugs = [...PAGES.map((p) => p.slug), ...NL_MEMBER_PAGES.map((p) => p.slug)];
   const seeded = await db
-    .select({ slug: pagesTable.slug, visibility: pagesTable.visibility })
+    .select({ slug: pagesTable.slug, locale: pagesTable.locale, visibility: pagesTable.visibility })
     .from(pagesTable)
-    .where(inArray(pagesTable.slug, PAGES.map((p) => p.slug)));
-  log(`Verified ${seeded.length}/${PAGES.length} seeded pages present.`);
+    .where(inArray(pagesTable.slug, allSlugs));
+  const expected = PAGES.length + NL_MEMBER_PAGES.length;
+  log(`Verified ${seeded.length}/${expected} seeded page rows present (en + nl).`);
 }
 
 import { reindexContent } from "../lib/rag";
