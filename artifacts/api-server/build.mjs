@@ -29,6 +29,11 @@ async function buildAll() {
     // - use path traversal to read files (e.g. @google-cloud/secret-manager loads sibling .proto files)
     external: [
       "*.node",
+      // @react-pdf/renderer pulls fontkit + a wasm yoga-layout that esbuild
+      // can't bundle cleanly; keep it (and its react peer) in node_modules,
+      // which the api/railway runtime stages ship in full.
+      "@react-pdf/renderer",
+      "react",
       "sharp",
       "better-sqlite3",
       "sqlite3",

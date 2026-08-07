@@ -8,7 +8,6 @@ import { ThemeProvider } from '@/providers/theme-provider';
 import { LocaleProvider } from '@/providers/locale-provider';
 
 // Pages
-import HomePage from '@/pages/home-page';
 import SlugPage from '@/pages/slug-page';
 import FrameworksPage from '@/pages/frameworks-page';
 import FrameworkDetailPage from '@/pages/framework-detail-page';
@@ -37,6 +36,13 @@ import AdminSettings from '@/pages/admin-settings';
 import AdminIntegrations from '@/pages/admin-integrations';
 import KnowledgeHubPage from '@/pages/knowledge-hub';
 import RegulatoryNewsPage from '@/pages/regulatory-news';
+import CraCheckPage from '@/pages/cra-check';
+import CraHomePage from '@/pages/home';
+import DemoPage from '@/pages/demo';
+import PricingPage from '@/pages/pricing';
+import ProductPage from '@/pages/product';
+import DeploymentPage from '@/pages/deployment';
+import ResourcesPage from '@/pages/resources';
 import CompetitorsPage from '@/pages/competitors-page';
 import TrustCenterPage from '@/pages/trust-center-page';
 import NewsletterConfirm from '@/pages/newsletter-confirm';
@@ -79,7 +85,24 @@ function PublicRoutes() {
         {() => <PublicRoute component={TrustCenterPage} />}
       </Route>
       <Route path="/">
-        {() => <PublicRoute component={HomePage} />}
+        {() => <PublicRoute component={CraHomePage} />}
+      </Route>
+
+      {/* CRA sales funnel — static routes, no CMS dependency (durable across rebuilds) */}
+      <Route path="/product">
+        {() => <PublicRoute component={ProductPage} />}
+      </Route>
+      <Route path="/pricing">
+        {() => <PublicRoute component={PricingPage} />}
+      </Route>
+      <Route path="/deployment">
+        {() => <PublicRoute component={DeploymentPage} />}
+      </Route>
+      <Route path="/resources">
+        {() => <PublicRoute component={ResourcesPage} />}
+      </Route>
+      <Route path="/demo">
+        {() => <PublicRoute component={DemoPage} />}
       </Route>
 
       {/* Frameworks section — registered before /:slug so /frameworks isn't swallowed */}
@@ -88,6 +111,9 @@ function PublicRoutes() {
       </Route>
       <Route path="/news">
         {() => <PublicRoute component={RegulatoryNewsPage} />}
+      </Route>
+      <Route path="/cra-check">
+        {() => <PublicRoute component={CraCheckPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}

@@ -34,12 +34,14 @@ import { conformityIntelligenceRouter } from "./conformityIntelligence";
 import { auditorRouter } from "./conformityAuditor";
 
 import regulatoryNewsRouter from "./regulatoryNews";
+import conformitySelfcheckRouter from "./conformitySelfcheck";
 import { productPortfolioRouter } from "./productPortfolio";
 
 const router: IRouter = Router();
 
 router.use("/portfolio", productPortfolioRouter);
 router.use(regulatoryNewsRouter);
+router.use(conformitySelfcheckRouter);
 router.use(healthRouter);
 router.use(seoRouter);
 router.use(siteRouter);

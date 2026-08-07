@@ -17,6 +17,11 @@ export const leadsTable = pgTable("leads", {
   email: text("email").notNull(),
   company: text("company"),
   message: text("message"),
+  // CRA-intake attribution: the buyer segment (manufacturer/oem/…) and the
+  // capture surface (e.g. "cra_selfcheck"). Nullable — chat-captured leads set
+  // neither. Additive columns; no migration beyond the boot schema push.
+  segment: text("segment"),
+  source: text("source"),
   locale: text("locale").notNull().default("en"),
   status: text("status").notNull().default("new"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
