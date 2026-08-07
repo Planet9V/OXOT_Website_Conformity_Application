@@ -27,6 +27,10 @@ const copy = {
         name: 'Sales sheet',
         body: 'The offer in one page: what the CRA Conformance Application does, and who it is for.',
       },
+      {
+        name: 'Demo access guide',
+        body: 'How to sign into the live demo workspace and what to look at first — no account setup required.',
+      },
     ],
     pdfNote: 'PDF · opens in a new tab',
     referenceKicker: 'Reference',
@@ -60,6 +64,10 @@ const copy = {
         name: 'Verkoopblad',
         body: 'Het aanbod op één pagina: wat de CRA Conformance-applicatie doet en voor wie het bedoeld is.',
       },
+      {
+        name: 'Demotoegang-gids',
+        body: 'Hoe u inlogt op de live demo-werkruimte en waar u het eerst naar kijkt — geen account nodig.',
+      },
     ],
     pdfNote: 'PDF · opent in een nieuw tabblad',
     referenceKicker: 'Naslag',
@@ -81,6 +89,7 @@ const copy = {
 const COLLATERAL_HREFS = [
   '/collateral/OXOT-CRA-Conformance-Spec-Sheet.pdf',
   '/collateral/OXOT-CRA-Conformance-Sales-Sheet.pdf',
+  '/collateral/OXOT-CRA-Demo-Access-Guide.pdf',
 ];
 
 // Non-translatable, position-indexed: icon component + link target.
