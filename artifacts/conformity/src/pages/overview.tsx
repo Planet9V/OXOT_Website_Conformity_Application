@@ -71,7 +71,7 @@ export default function Overview() {
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <Badge className="rounded-md bg-reg-cra text-white font-mono text-[10px]">
+                  <Badge className="rounded-md bg-reg-cra text-primary-foreground font-mono text-[10px]">
                     {assessment.regulationKey.toUpperCase()}
                   </Badge>
                   <Badge variant="outline" className="rounded-md">

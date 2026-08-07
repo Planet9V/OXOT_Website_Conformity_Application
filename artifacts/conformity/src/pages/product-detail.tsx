@@ -52,7 +52,7 @@ function InfoRow({ label, value, onEdit }: { label: string; value?: string | nul
           <button
             type="button"
             onClick={onEdit}
-            className="text-xs text-primary hover:underline inline-flex items-center gap-1 opacity-70 hover:opacity-100"
+            className="text-xs text-primary-ink hover:underline inline-flex items-center gap-1 opacity-70 hover:opacity-100"
           >
             <Pencil className="w-3 h-3" /> Edit
           </button>
@@ -265,7 +265,7 @@ export default function ProductDetail() {
       <Card className="rounded-2xl border-2 border-primary/40 bg-card p-6 shadow-md relative overflow-hidden">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1.5 max-w-2xl">
-            <span className="oxot-kicker flex items-center gap-1.5 text-primary">
+            <span className="oxot-kicker flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-primary" /> CRA CONFORMITY ASSESSMENT WIZARD
             </span>
             <h3 className="text-xl font-serif font-normal text-foreground">
@@ -274,7 +274,7 @@ export default function ProductDetail() {
                 : "Active CRA Conformity Execution Workbench"}
             </h3>
             <p className="text-xs text-muted-foreground font-sans leading-relaxed">
-              Step through the guided 4-stage wizard: Scope Determination $\rightarrow$ Standards Route Selection $\rightarrow$ xBOM Vulnerability Analysis $\rightarrow$ Statutory Declaration of Conformity.
+              Step through the guided 4-stage wizard: Scope Determination → Standards Route Selection → xBOM Vulnerability Analysis → Statutory Declaration of Conformity.
             </p>
           </div>
 
@@ -334,7 +334,7 @@ export default function ProductDetail() {
                 <CardContent className="p-4 flex items-center justify-between gap-4">
                   <Link href={`/assessments/${a.id}`} className="flex-1 min-w-0 group">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <Badge className="rounded-md bg-reg-cra text-white font-mono text-[10px]">
+                      <Badge className="rounded-md bg-reg-cra text-primary-foreground font-mono text-[10px]">
                         {a.regulationKey.toUpperCase()}
                       </Badge>
                       <Badge variant="outline" className="rounded-md">

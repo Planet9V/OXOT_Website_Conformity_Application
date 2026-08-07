@@ -134,7 +134,7 @@ export function SiteFooter() {
                 type="button"
                 onClick={() => setLang("en")}
                 className={`rounded-[5px] px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
-                  lang === "en" ? "bg-primary/15 text-primary font-bold" : "text-foreground/55 hover:text-foreground"
+                  lang === "en" ? "bg-primary/15 text-primary-ink font-bold" : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 EN
@@ -143,7 +143,7 @@ export function SiteFooter() {
                 type="button"
                 onClick={() => setLang("nl")}
                 className={`rounded-[5px] px-2 py-0.5 text-xs font-semibold uppercase tracking-[0.08em] transition-colors ${
-                  lang === "nl" ? "bg-primary/15 text-primary font-bold" : "text-foreground/55 hover:text-foreground"
+                  lang === "nl" ? "bg-primary/15 text-primary-ink font-bold" : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 NL

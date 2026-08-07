@@ -323,13 +323,13 @@ export function PsirtCanvas({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1.5">
-                <Badge variant="outline" className="bg-orange-500/10 text-orange-400 border-orange-500/30 font-mono text-xs gap-1">
+                <Badge variant="outline" className="bg-orange-500/10 text-primary-ink border-orange-500/30 font-mono text-xs gap-1">
                   <Zap className="h-3.5 w-3.5 text-orange-400" /> ISO 30111 / CRA Art. 14 Incident Canvas
                 </Badge>
                 <Badge variant="secondary" className="font-mono text-xs">
                   Active Execution Graph ({steps.length} Steps)
                 </Badge>
-                <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 font-mono text-xs">
+                <Badge variant="outline" className="bg-emerald-500/10 text-emerald-700 border-emerald-500/30 font-mono text-xs">
                   Saved &amp; Persistent
                 </Badge>
               </div>
@@ -368,7 +368,7 @@ export function PsirtCanvas({
                 type="button"
                 variant="outline"
                 onClick={() => onLaunchForm?.("early_warning")}
-                className="font-bold text-xs gap-1.5 border-orange-500/40 text-orange-400 hover:bg-orange-500/10"
+                className="font-bold text-xs gap-1.5 border-orange-500/40 text-primary-ink hover:bg-orange-500/10"
               >
                 <Flame className="h-4 w-4" /> Open ENISA 24h Filing Form
               </Button>
@@ -441,7 +441,7 @@ export function PsirtCanvas({
                         toast.info(`Triggered action: ${step.actionLabel}`);
                       }
                     }}
-                    className="w-full h-7 text-[11px] font-sans font-semibold text-orange-400 bg-orange-500/10 hover:bg-orange-500/20 hover:text-orange-300 gap-1 mt-2"
+                    className="w-full h-7 text-[11px] font-sans font-semibold text-primary-ink bg-orange-500/10 hover:bg-orange-500/20 hover:text-orange-300 gap-1 mt-2"
                   >
                     {step.actionLabel} <ChevronRight className="h-3 w-3" />
                   </Button>
@@ -465,7 +465,7 @@ export function PsirtCanvas({
                         {selectedStep.title}
                       </h3>
                     </div>
-                    <Badge variant="outline" className="font-mono text-xs text-orange-400 border-orange-500/30">
+                    <Badge variant="outline" className="font-mono text-xs text-primary-ink border-orange-500/30">
                       Owner: {selectedStep.assignee}
                     </Badge>
                   </div>
@@ -530,7 +530,7 @@ export function PsirtCanvas({
                         toast.info(`Executing step action: ${selectedStep.actionLabel}`);
                       }
                     }}
-                    className="h-8 bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs gap-1.5 shadow"
+                    className="h-8 bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold text-xs gap-1.5 shadow"
                   >
                     <Sparkles className="h-3.5 w-3.5" /> Execute {selectedStep.actionLabel}
                   </Button>
@@ -589,7 +589,7 @@ export function PsirtCanvas({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 font-mono text-xs gap-1">
+                <Badge variant="outline" className="bg-primary/10 text-primary-ink border-primary/20 font-mono text-xs gap-1">
                   <Building2 className="h-3.5 w-3.5" /> Deployment Customer Directory
                 </Badge>
                 <Badge variant="secondary" className="font-mono text-xs">
@@ -620,7 +620,7 @@ export function PsirtCanvas({
                   <p className="text-xs text-muted-foreground flex items-center gap-2 font-mono">
                     <span>Contact: {cust.contactName}</span>
                     <span>•</span>
-                    <span className="flex items-center gap-1 text-primary">
+                    <span className="flex items-center gap-1 text-primary-ink">
                       <Mail className="h-3 w-3" /> {cust.email}
                     </span>
                   </p>
@@ -628,11 +628,11 @@ export function PsirtCanvas({
 
                 <div className="flex items-center gap-2 self-start md:self-auto">
                   {cust.notified ? (
-                    <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 font-mono text-xs">
+                    <Badge variant="outline" className="bg-emerald-500/10 text-emerald-700 border-emerald-500/30 font-mono text-xs">
                       Notified ({cust.notifiedAt})
                     </Badge>
                   ) : (
-                    <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/30 font-mono text-xs">
+                    <Badge variant="outline" className="bg-amber-500/10 text-amber-700 border-amber-500/30 font-mono text-xs">
                       Notification Pending
                     </Badge>
                   )}
@@ -643,7 +643,7 @@ export function PsirtCanvas({
                     size="sm"
                     onClick={() => handleGenerateAiNotice(cust)}
                     disabled={aiGenerating}
-                    className="h-8 gap-1 text-xs font-mono border-orange-500/30 text-orange-400 hover:bg-orange-500/10"
+                    className="h-8 gap-1 text-xs font-mono border-orange-500/30 text-primary-ink hover:bg-orange-500/10"
                   >
                     <Bot className="h-3.5 w-3.5" /> AI Generate Advisory
                   </Button>
@@ -697,7 +697,7 @@ export function PsirtCanvas({
                 toast.success("AI Customer Advisory signed and queued for dispatch!");
                 setCustomerModalOpen(false);
               }}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold"
+              className="bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold"
             >
               Confirm &amp; Send to Customer
             </Button>
@@ -721,7 +721,7 @@ export function PsirtCanvas({
               <Button
                 type="button"
                 onClick={handleAddStepNode}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs gap-1.5 shadow-md self-start sm:self-auto"
+                className="bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold text-xs gap-1.5 shadow-md self-start sm:self-auto"
               >
                 <Plus className="h-4 w-4" /> Add Process Block
               </Button>
@@ -878,7 +878,7 @@ export function PsirtCanvas({
                           updated[activeEditIndex]!.sla = e.target.value;
                           setEditingSteps(updated);
                         }}
-                        className="font-mono text-xs text-orange-400 font-bold"
+                        className="font-mono text-xs text-primary-ink font-bold"
                       />
                     </div>
 
@@ -948,7 +948,7 @@ export function PsirtCanvas({
               </Button>
               <Button
                 onClick={handleSaveAndDeployWorkflow}
-                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold gap-1.5 shadow-lg shadow-orange-500/20"
+                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-primary-foreground font-extrabold gap-1.5 shadow-lg shadow-orange-500/20"
               >
                 <Save className="h-4 w-4" /> Save &amp; Deploy Workflow to Canvas
               </Button>

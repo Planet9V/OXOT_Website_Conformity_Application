@@ -109,7 +109,8 @@ interface ProductItem {
   totalDeployedQuantity: number;
   outdatedDeploymentsCount: number;
   isUserCreated?: boolean;
-  userProductId?: number;
+  userProductId?: number | null;
+  assessmentId?: number | null;
 }
 
 interface CustomerItem {
@@ -141,6 +142,50 @@ interface CustomerItem {
 
 export function ProductPortfolioPage() {
   const [, setLocation] = useLocation();
+
+  // Resolve where a portfolio card should go. A catalog product may have a real
+  // linked conformity assessment (assessmentId) or product (userProductId); if
+  // it has neither, we START one via quick-start rather than navigating to a
+  // bogus id (the old `prod.id || 1` fallback caused "Assessment not found").
+  const mapClassification = (craClass?: string) =>
+    craClass && craClass.includes("II") ? "important_class_2" : "important_class_1";
+  const mapProductType = (category?: string) =>
+    category?.toLowerCase().includes("hardware") ? "hardware_with_software" : "industrial_device";
+
+  async function createConformityFor(prod: ProductItem): Promise<{ assessmentId?: number; productId?: number } | null> {
+    try {
+      const res = await fetch("/api/conformity/products/quick-start", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          name: prod.name,
+          productType: mapProductType(prod.category),
+          description: prod.description,
+          classification: mapClassification(prod.craClass),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) return { assessmentId: data.assessmentId, productId: data.productId };
+    } catch {
+      /* fall through to no-op below */
+    }
+    return null;
+  }
+
+  async function openWorkspace(prod: ProductItem) {
+    if (prod.assessmentId) return setLocation(`/assessments/${prod.assessmentId}`);
+    if (prod.userProductId) return setLocation(`/products/${prod.userProductId}`);
+    const created = await createConformityFor(prod);
+    if (created?.assessmentId) setLocation(`/assessments/${created.assessmentId}`);
+    else if (created?.productId) setLocation(`/products/${created.productId}`);
+  }
+
+  async function openDossier(prod: ProductItem) {
+    if (prod.userProductId) return setLocation(`/products/${prod.userProductId}`);
+    const created = await createConformityFor(prod);
+    if (created?.productId) setLocation(`/products/${created.productId}`);
+  }
   const [activeTab, setActiveTab] = useState<"products" | "customers" | "psirt-triage" | "import">("products");
   const [displayMode, setDisplayMode] = useState<"cards" | "table">("cards");
   const [products, setProducts] = useState<ProductItem[]>([]);
@@ -650,7 +695,7 @@ export function ProductPortfolioPage() {
                             variant="secondary"
                             className={cn(
                               "font-mono text-[10px]",
-                              prod.craClass === "Class II" ? "bg-orange-500/10 text-orange-400 border-orange-500/30" : "bg-primary/10 text-primary"
+                              prod.craClass === "Class II" ? "bg-orange-500/10 text-orange-400 border-orange-500/30" : "bg-primary/10 text-primary-ink"
                             )}
                           >
                             CRA {prod.craClass}
@@ -706,7 +751,7 @@ export function ProductPortfolioPage() {
                             <div>
                               <div className="font-bold text-foreground">{dep.customerName}</div>
                               <div className="text-[11px] text-muted-foreground font-mono">
-                                Sector: {dep.cisaSector} • Deployed: <span className="font-semibold text-primary">{dep.deployedVersion}</span> ({dep.quantity} units)
+                                Sector: {dep.cisaSector} • Deployed: <span className="font-semibold text-primary-ink">{dep.deployedVersion}</span> ({dep.quantity} units)
                               </div>
                             </div>
 
@@ -752,7 +797,7 @@ export function ProductPortfolioPage() {
                         type="button"
                         variant="outline"
                         size="sm"
-                        onClick={() => setLocation(`/products/${prod.userProductId || prod.id || 1}`)}
+                        onClick={() => openDossier(prod)}
                         className="text-xs font-bold gap-1.5 border-border hover:bg-muted"
                       >
                         <Pencil className="h-3.5 w-3.5 text-primary" /> View Product Dossier &amp; Edit
@@ -762,7 +807,7 @@ export function ProductPortfolioPage() {
                         type="button"
                         variant="default"
                         size="sm"
-                        onClick={() => setLocation(`/assessments/${prod.userProductId || prod.id || 1}`)}
+                        onClick={() => openWorkspace(prod)}
                         className="text-xs font-bold gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm cta-lift"
                       >
                         <Zap className="h-3.5 w-3.5" /> Open Assessment Workspace →
@@ -837,7 +882,7 @@ export function ProductPortfolioPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => setGuidanceModalProduct(prod)}
-                            className="h-8 text-xs font-bold text-primary"
+                            className="h-8 text-xs font-bold text-primary-ink"
                           >
                             Guidance Note
                           </Button>
@@ -845,7 +890,7 @@ export function ProductPortfolioPage() {
                             type="button"
                             variant="default"
                             size="sm"
-                            onClick={() => setLocation(`/assessments/${prod.userProductId || prod.id || 1}`)}
+                            onClick={() => openWorkspace(prod)}
                             className="h-8 text-xs font-bold gap-1 bg-primary text-primary-foreground hover:bg-primary/90"
                           >
                             <Zap className="h-3 w-3" /> Assessment Workspace →
@@ -867,7 +912,7 @@ export function ProductPortfolioPage() {
           {/* Operations Bar */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-card p-4 rounded-2xl border border-border shadow-sm">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 font-mono text-xs">
+              <Badge variant="outline" className="bg-primary/10 text-primary-ink border-primary/20 font-mono text-xs">
                 Fleet Management Engine
               </Badge>
 
@@ -923,7 +968,7 @@ export function ProductPortfolioPage() {
                   <CardHeader className="border-b p-6 bg-gradient-to-r from-card via-card to-muted/40">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 font-mono text-[10px]">
+                        <Badge variant="outline" className="bg-primary/10 text-primary-ink border-primary/20 font-mono text-[10px]">
                           {cust.cisaSector}
                         </Badge>
 
@@ -940,7 +985,7 @@ export function ProductPortfolioPage() {
 
                       <div className="text-xs text-muted-foreground font-mono space-y-1">
                         <div>Contact: <span className="text-foreground font-semibold">{cust.contactName}</span> ({cust.contactTitle})</div>
-                        <div className="flex items-center gap-1 text-primary">
+                        <div className="flex items-center gap-1 text-primary-ink">
                           <Mail className="h-3 w-3" /> {cust.contactEmail}
                         </div>
                       </div>
@@ -958,7 +1003,7 @@ export function ProductPortfolioPage() {
                         <div key={dep.id} className="p-3.5 rounded-2xl bg-muted/40 border border-border/70 space-y-1.5">
                           <div className="flex items-center justify-between font-bold text-xs">
                             <span className="text-foreground">{dep.productName}</span>
-                            <span className="font-mono text-primary">{dep.quantity} units</span>
+                            <span className="font-mono text-primary-ink">{dep.quantity} units</span>
                           </div>
 
                           <div className="flex items-center justify-between text-[11px] font-mono text-muted-foreground">
@@ -1130,7 +1175,7 @@ export function ProductPortfolioPage() {
                             <div className="font-semibold text-foreground">{cust.contactName}</div>
                             <div className="text-muted-foreground">{cust.contactTitle}</div>
                           </td>
-                          <td className="p-4 font-mono text-[11px] text-primary">{cust.contactEmail}</td>
+                          <td className="p-4 font-mono text-[11px] text-primary-ink">{cust.contactEmail}</td>
                           <td className="p-4 text-[11px] font-mono">
                             {mainDep?.productName || "NovaGuard Smart Home Hub v2"}
                           </td>
@@ -1253,7 +1298,7 @@ export function ProductPortfolioPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono bg-background p-3 rounded-xl border border-border/80">
                     <div><strong>CISO Contact:</strong> {cust.contactName}</div>
-                    <div><strong>Email:</strong> <span className="text-primary">{cust.contactEmail}</span></div>
+                    <div><strong>Email:</strong> <span className="text-primary-ink">{cust.contactEmail}</span></div>
                     <div><strong>Region:</strong> {cust.region}</div>
                   </div>
 
@@ -1526,7 +1571,7 @@ Robot Vision Pro, CRA-IIoT-9920, Robotics, Class II, Airbus Defence, c.dubois@ai
                         <tr key={idx} className="border-b border-border/40">
                           <td className="p-1.5 font-bold text-foreground">{item.orgName}</td>
                           <td className="p-1.5">{item.contactName} ({item.contactEmail})</td>
-                          <td className="p-1.5 text-primary">{item.cisaSector}</td>
+                          <td className="p-1.5 text-primary-ink">{item.cisaSector}</td>
                           <td className="p-1.5">{item.productName}</td>
                           <td className="p-1.5">{item.deployedVersion}</td>
                           <td className="p-1.5 font-bold">{item.quantity}</td>

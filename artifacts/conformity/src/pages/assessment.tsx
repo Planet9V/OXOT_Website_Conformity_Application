@@ -253,7 +253,7 @@ export default function Assessment() {
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">{detail.product.name}</h1>
           <div className="flex items-center gap-2 flex-wrap mt-2">
-            <Badge className="rounded-md bg-reg-cra text-white font-mono text-[10px]">
+            <Badge className="rounded-md bg-reg-cra text-primary-foreground font-mono text-[10px]">
               {a.regulationKey.toUpperCase()}
             </Badge>
             <Badge variant="outline" className="rounded-md border-border text-foreground">
