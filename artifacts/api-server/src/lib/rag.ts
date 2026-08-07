@@ -5,6 +5,7 @@ import {
   pageSectionsTable,
   contentChunksTable,
   conformityEmbeddingsTable,
+  EMBEDDING_DIMENSIONS,
   type InsertContentChunk,
 } from "@workspace/db";
 import { embedText, embedTexts } from "./embeddings";
@@ -93,12 +94,12 @@ export async function reindexContent(): Promise<number> {
     embeddings = await embedTexts(chunks.map((c) => c.content));
   } catch (err) {
     logger.warn({ err }, "Embedding API call failed during reindex, utilizing zero-vector fallback index");
-    embeddings = chunks.map(() => new Array(1536).fill(0.001));
+    embeddings = chunks.map(() => new Array(EMBEDDING_DIMENSIONS).fill(0.001));
   }
 
   const rows: InsertContentChunk[] = chunks.map((chunk, i) => ({
     ...chunk,
-    embedding: (embeddings[i] || new Array(1536).fill(0.001)) as number[],
+    embedding: (embeddings[i] || new Array(EMBEDDING_DIMENSIONS).fill(0.001)) as number[],
   }));
 
   await db.transaction(async (tx) => {
