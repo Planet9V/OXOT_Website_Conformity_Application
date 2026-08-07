@@ -24,7 +24,7 @@ A statutory conformity platform for the **EU Cyber Resilience Act (Regulation (E
 
 ## Tech stack
 
-- **Frontend**: React 18, TypeScript, Tailwind CSS v4, Wouter, TanStack Query
+- **Frontend**: React 19, TypeScript, Tailwind CSS v4, Wouter, TanStack Query
 - **API**: Node.js 24, Express 5, Drizzle ORM, PostgreSQL (pgvector)
 - **Testing**: Vitest, Playwright
 - **Deployment**: multi-stage Docker with nginx; Railway configuration included
