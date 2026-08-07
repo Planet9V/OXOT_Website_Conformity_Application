@@ -1,5 +1,5 @@
 import { useLocale } from '@/providers/locale-provider';
-import { useGetNavigation, useGetSiteSettings, getGetNavigationQueryKey, getGetSiteSettingsQueryKey } from '@workspace/api-client-react';
+import { useGetSiteSettings, getGetSiteSettingsQueryKey } from '@workspace/api-client-react';
 import { Link } from 'wouter';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import { SocialFeed } from '@/components/social-feed';
@@ -9,14 +9,19 @@ export function Footer() {
   const { locale } = useLocale();
   const { openSettings, cookieSettingsLabel } = useCookieConsentSettings();
   
-  const { data: navItems = [] } = useGetNavigation(locale, { 
-    query: { queryKey: getGetNavigationQueryKey(locale) } 
-  });
   const { data: settings } = useGetSiteSettings(locale, {
     query: { queryKey: getGetSiteSettingsQueryKey(locale) }
   });
 
-  const footerNav = navItems.filter((i) => i.placement === 'footer').sort((a, b) => a.order - b.order);
+  // Static funnel footer nav — matches the header; no CMS dependency (durable).
+  const footerNav = [
+    { id: 'platform', label: 'Platform', href: '/product', external: false },
+    { id: 'pricing', label: 'Pricing', href: '/pricing', external: false },
+    { id: 'deployment', label: 'Deployment', href: '/deployment', external: false },
+    { id: 'resources', label: 'Resources', href: '/resources', external: false },
+    { id: 'cra-check', label: '2-minute check', href: '/cra-check', external: false },
+    { id: 'demo', label: 'Book a demo', href: '/demo', external: false },
+  ];
 
   const socialLinks = settings?.socialLinks ?? [];
 

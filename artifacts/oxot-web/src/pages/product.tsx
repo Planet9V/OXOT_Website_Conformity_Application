@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
+import { JsonLd } from '@/components/json-ld';
 
 const MODULES = [
   {
@@ -56,14 +58,28 @@ const JOURNEY = [
 ];
 
 export default function ProductPage() {
-  useSeo({
-    title: 'The platform — OXOT Conformance Platform',
-    description:
-      'Six modules and an eight-step compliance journey: from classification to a defensible Annex VII technical file, with statutory Article 14 clocks running live.',
-  });
+  useSeo(
+    pageSeo('/product', {
+      title: 'The platform — OXOT Conformance Platform',
+      description:
+        'Six modules and an eight-step compliance journey: from classification to a defensible Annex VII technical file, with statutory Article 14 clocks running live.',
+    }),
+  );
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">
+      <JsonLd
+        id="ld-software-application"
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'OXOT Conformance Platform',
+          applicationCategory: 'BusinessApplication',
+          description:
+            'CRA conformity workbench: product dossiers, the eight-step compliance journey, Annex VII technical files, PSIRT and Article 14 statutory clocks.',
+          offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
+        }}
+      />
       <PageHeader
         kicker="THE PLATFORM"
         title="One record, every regulation"
@@ -93,7 +109,7 @@ export default function ProductPage() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {JOURNEY.map(([step, body], i) => (
             <div key={step} className="rounded-xl border border-border bg-card p-5">
-              <span className="font-mono text-xs text-primary">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-xs text-primary-ink">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-1 font-display text-base font-normal tracking-tight text-foreground">{step}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{body}</p>
             </div>

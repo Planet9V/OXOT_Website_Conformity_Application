@@ -74,7 +74,7 @@ export function Header() {
                   aria-current={active ? 'page' : undefined}
                   className={`relative inline-flex items-center justify-center text-sm font-medium px-3 h-9 rounded-md transition-colors
                     ${active
-                      ? 'text-primary after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:rounded-full after:bg-primary'
+                      ? 'text-primary-ink after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:rounded-full after:bg-primary'
                       : 'text-muted-foreground hover:text-foreground'
                     }`}
                 >
@@ -133,7 +133,7 @@ export function Header() {
                 onClick={closeMobileMenu}
                 aria-current={isActive(item.href) ? 'page' : undefined}
                 className={`block px-5 py-3 text-sm font-medium transition-colors hover:bg-muted/50
-                  ${isActive(item.href) ? 'text-primary' : 'text-foreground'}`}
+                  ${isActive(item.href) ? 'text-primary-ink' : 'text-foreground'}`}
               >
                 {item.label}
               </Link>

@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { ClipboardCheck, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
 import { CraSelfCheck, type SelfCheckCopy } from '@/components/cra-check/self-check';
 import { parsePrefill } from '@/lib/cra-selfcheck';
 import copyEn from '@/data/cra_selfcheck_en.json';
@@ -10,11 +11,13 @@ import copyEn from '@/data/cra_selfcheck_en.json';
 const copy = copyEn as unknown as SelfCheckCopy;
 
 export default function CraCheckPage() {
-  useSeo({
-    title: '2-Minute CRA Readiness Check',
-    description:
-      'Six questions, about two minutes: an indicative CRA classification, your route to CE marking, your specific gaps and a readiness score — grounded in Regulation (EU) 2024/2847, not a vendor pitch.',
-  });
+  useSeo(
+    pageSeo('/cra-check', {
+      title: '2-Minute CRA Readiness Check',
+      description:
+        'Six questions, about two minutes: an indicative CRA classification, your route to CE marking, your specific gaps and a readiness score — grounded in Regulation (EU) 2024/2847, not a vendor pitch.',
+    }),
+  );
 
   // Prefill from the home-page teaser hand-off (?position=&classAware=&sbom=).
   const { answers, openOnCategory } = useMemo(() => {

@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { ServerCog, Building2, HardDrive, Cpu, Lock, Mail, Users, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
 
 const OPTIONS = [
   {
@@ -29,11 +30,13 @@ const FEATURES = [
 ];
 
 export default function DeploymentPage() {
-  useSeo({
-    title: 'Deployment — OXOT Conformance Platform',
-    description:
-      'Single tenant, always. Run it in a secure datacenter, or on your own premises with a local AI model — your evidence never leaves your control.',
-  });
+  useSeo(
+    pageSeo('/deployment', {
+      title: 'Deployment — OXOT Conformance Platform',
+      description:
+        'Single tenant, always. Run it in a secure datacenter, or on your own premises with a local AI model — your evidence never leaves your control.',
+    }),
+  );
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">

@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { Library, Download, Newspaper, BookOpen, FileText, Scale, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
 
 const COLLATERAL = [
   {
@@ -25,11 +26,13 @@ const REFERENCE = [
 ];
 
 export default function ResourcesPage() {
-  useSeo({
-    title: 'Resources — OXOT Conformance Platform',
-    description:
-      'Spec sheet and sales sheet for the CRA Conformance Application, plus the CRA primer, live regulatory news, knowledge hub and source library.',
-  });
+  useSeo(
+    pageSeo('/resources', {
+      title: 'Resources — OXOT Conformance Platform',
+      description:
+        'Spec sheet and sales sheet for the CRA Conformance Application, plus the CRA primer, live regulatory news, knowledge hub and source library.',
+    }),
+  );
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">

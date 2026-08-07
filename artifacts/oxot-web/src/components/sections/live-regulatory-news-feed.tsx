@@ -94,7 +94,7 @@ export function LiveRegulatoryNewsFeed() {
           </span>
           <Link
             href="/news"
-            className="ml-auto text-sm font-medium text-primary hover:underline flex items-center gap-1"
+            className="ml-auto text-sm font-medium text-primary-ink hover:underline flex items-center gap-1"
           >
             See all regulatory news <ArrowRight className="h-3.5 w-3.5" />
           </Link>

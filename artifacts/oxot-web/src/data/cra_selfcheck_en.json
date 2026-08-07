@@ -126,7 +126,7 @@
   },
   "nowLabel": "Your NOW",
   "manufacturerWarning": "Because you rebrand or substantially modify another vendor's product, the CRA likely makes YOU its manufacturer (Art. 21/22) — with the full technical file and reporting duties that follow.",
-  "penaltyNote": "Annex I sets the bar: 13 product-security properties (Part I) and 8 vulnerability-handling processes (Part II) — each one evidenced in the Annex VII technical file.",
+  "annexNote": "Annex I sets the bar: 13 product-security properties (Part I) and 8 vulnerability-handling processes (Part II) — each one evidenced in the Annex VII technical file.",
   "review": {
     "title": "Submit your read for a human review — and a call",
     "body": "Send us this result and OXOT reviews it, confirms your classification, chooses your route and estimates the effort — live, in a free 45-minute intake. You keep all three answers whether or not we work together.",
@@ -199,7 +199,7 @@
       "cert": "ISO 27001 / IEC 62443 certificate — +12 points",
       "cert_progress": "Certification in progress — +6 points",
       "sdl": "Secure-development (SDL) documentation — +6 points",
-      "queue": "Notified-body queue penalty — −8 points"
+      "queue": "Notified-body queue delay — −8 points"
     },
     "s7Callout": {
       "text": "A Siemens S7-1500 in an energy utility = Class II. The same device in a food packaging plant = likely Class I.",
