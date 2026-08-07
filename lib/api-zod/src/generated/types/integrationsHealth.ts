@@ -11,4 +11,5 @@ export interface IntegrationsHealth {
   email: IntegrationHealthEntry;
   linkedin: IntegrationHealthEntry;
   x: IntegrationHealthEntry;
+  slack: IntegrationHealthEntry;
 }

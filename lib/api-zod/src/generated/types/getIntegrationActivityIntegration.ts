@@ -13,4 +13,5 @@ export const GetIntegrationActivityIntegration = {
   email: 'email',
   linkedin: 'linkedin',
   x: 'x',
+  slack: 'slack',
 } as const;

@@ -24,11 +24,11 @@ const copy = {
   en: {
     seoTitle: '2-Minute CRA Readiness Check',
     seoDescription:
-      'Six questions, about two minutes: an indicative CRA classification, your route to CE marking, your specific gaps and a readiness score — grounded in Regulation (EU) 2024/2847, not a vendor pitch.',
+      'A few quick questions, about two minutes: an indicative CRA classification, your route to CE marking, your specific gaps and a readiness score — grounded in Regulation (EU) 2024/2847, not a vendor pitch.',
     kicker: '2-MINUTE READINESS CHECK',
     title: 'Are you CRA-ready?',
     description:
-      "Six questions, about two minutes. You'll get an indicative CRA classification, your route to the CE marking, your specific gaps and a readiness score — grounded in the regulation, not a vendor pitch. Submit it for a human review and a downloadable report.",
+      "A few quick questions, about two minutes. You'll get an indicative CRA classification, your route to the CE marking, your specific gaps and a readiness score — grounded in the regulation, not a vendor pitch. Submit it for a human review and a downloadable report.",
     deeperKicker: 'Ready to go deeper?',
     finalTitle: 'See your own portfolio in the workbench',
     finalBody:
@@ -38,11 +38,11 @@ const copy = {
   nl: {
     seoTitle: 'CRA-gereedheidscheck van 2 minuten',
     seoDescription:
-      'Zes vragen, ongeveer twee minuten: een indicatieve CRA-classificatie, uw route naar de CE-markering, uw specifieke tekortkomingen en een gereedheidsscore — gebaseerd op Verordening (EU) 2024/2847, geen verkooppraatje.',
+      'Een paar korte vragen, ongeveer twee minuten: een indicatieve CRA-classificatie, uw route naar de CE-markering, uw specifieke tekortkomingen en een gereedheidsscore — gebaseerd op Verordening (EU) 2024/2847, geen verkooppraatje.',
     kicker: 'GEREEDHEIDSCHECK VAN 2 MINUTEN',
     title: 'Bent u CRA-gereed?',
     description:
-      'Zes vragen, ongeveer twee minuten. U ontvangt een indicatieve CRA-classificatie, uw route naar de CE-markering, uw specifieke tekortkomingen en een gereedheidsscore — gebaseerd op de verordening, geen verkooppraatje. Dien het in voor een beoordeling door een mens en een downloadbaar rapport.',
+      'Een paar korte vragen, ongeveer twee minuten. U ontvangt een indicatieve CRA-classificatie, uw route naar de CE-markering, uw specifieke tekortkomingen en een gereedheidsscore — gebaseerd op de verordening, geen verkooppraatje. Dien het in voor een beoordeling door een mens en een downloadbaar rapport.',
     deeperKicker: 'Klaar om dieper te gaan?',
     finalTitle: 'Bekijk uw eigen portfolio in de workbench',
     finalBody:

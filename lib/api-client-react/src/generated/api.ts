@@ -156,6 +156,8 @@ import type {
   SeoPage,
   SeoPageInput,
   SiteSettings,
+  SlackSettingsInput,
+  SlackTestResult,
   SocialPostInput,
   SocialPostLogEntry,
   SocialPostResult,
@@ -5706,6 +5708,148 @@ export const useTestXConnection = <TError = ErrorType<UnauthorizedResponse>,
         TContext
       > => {
       return useMutation(getTestXConnectionMutationOptions(options));
+    }
+
+export const getSaveSlackSettingsUrl = () => {
+
+
+
+
+  return `/api/admin/settings/slack`
+}
+
+/**
+ * @summary Save Slack webhook settings
+ */
+export const saveSlackSettings = async (slackSettingsInput: SlackSettingsInput, options?: RequestInit): Promise<IntegrationSettings> => {
+
+  return customFetch<IntegrationSettings>(getSaveSlackSettingsUrl(),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(slackSettingsInput)
+  }
+);}
+
+
+
+
+
+export const getSaveSlackSettingsMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof saveSlackSettings>>, TError,{data: BodyType<SlackSettingsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof saveSlackSettings>>, TError,{data: BodyType<SlackSettingsInput>}, TContext> => {
+
+const mutationKey = ['saveSlackSettings'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof saveSlackSettings>>, {data: BodyType<SlackSettingsInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  saveSlackSettings(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SaveSlackSettingsMutationResult = NonNullable<Awaited<ReturnType<typeof saveSlackSettings>>>
+    export type SaveSlackSettingsMutationBody = BodyType<SlackSettingsInput>
+    export type SaveSlackSettingsMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse>
+
+    /**
+ * @summary Save Slack webhook settings
+ */
+export const useSaveSlackSettings = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof saveSlackSettings>>, TError,{data: BodyType<SlackSettingsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof saveSlackSettings>>,
+        TError,
+        {data: BodyType<SlackSettingsInput>},
+        TContext
+      > => {
+      return useMutation(getSaveSlackSettingsMutationOptions(options));
+    }
+
+export const getTestSlackConnectionUrl = () => {
+
+
+
+
+  return `/api/admin/settings/slack/test`
+}
+
+/**
+ * @summary Send a test message to the configured Slack webhook
+ */
+export const testSlackConnection = async ( options?: RequestInit): Promise<SlackTestResult> => {
+
+  return customFetch<SlackTestResult>(getTestSlackConnectionUrl(),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getTestSlackConnectionMutationOptions = <TError = ErrorType<UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof testSlackConnection>>, TError,void, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof testSlackConnection>>, TError,void, TContext> => {
+
+const mutationKey = ['testSlackConnection'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof testSlackConnection>>, void> = () => {
+
+
+          return  testSlackConnection(requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type TestSlackConnectionMutationResult = NonNullable<Awaited<ReturnType<typeof testSlackConnection>>>
+
+    export type TestSlackConnectionMutationError = ErrorType<UnauthorizedResponse>
+
+    /**
+ * @summary Send a test message to the configured Slack webhook
+ */
+export const useTestSlackConnection = <TError = ErrorType<UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof testSlackConnection>>, TError,void, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof testSlackConnection>>,
+        TError,
+        void,
+        TContext
+      > => {
+      return useMutation(getTestSlackConnectionMutationOptions(options));
     }
 
 export const getSaveConformityAlertsSettingsUrl = () => {

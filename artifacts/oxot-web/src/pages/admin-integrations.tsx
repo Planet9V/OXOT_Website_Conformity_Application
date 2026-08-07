@@ -6,9 +6,11 @@ import {
   useSaveEmailSettings,
   useSaveLinkedinSettings,
   useSaveXSettings,
+  useSaveSlackSettings,
   useSendTestEmail,
   useTestLinkedinConnection,
   useTestXConnection,
+  useTestSlackConnection,
   useSaveConformityAlertsSettings,
   useRunConformityAlertsCheck,
   useGetIntegrationsHealth,
@@ -34,6 +36,7 @@ import {
   Mail,
   Linkedin,
   Twitter,
+  Slack,
   Save,
   Send,
   Plug,
@@ -71,6 +74,10 @@ type XForm = {
   apiSecret: string;
   accessToken: string;
   accessSecret: string;
+};
+type SlackForm = {
+  enabled: boolean;
+  webhookUrl: string;
 };
 type ConformityAlertsForm = {
   enabled: boolean;
@@ -279,6 +286,7 @@ const INTEGRATION_LABEL: Record<string, string> = {
   email: "Email",
   linkedin: "LinkedIn",
   x: "X",
+  slack: "Slack",
 };
 
 function fmtDate(value: string): string {
@@ -300,6 +308,7 @@ function ActivityFeed({ authenticated }: { authenticated: boolean }) {
     { key: GetIntegrationActivityIntegration.email, label: "Email" },
     { key: GetIntegrationActivityIntegration.linkedin, label: "LinkedIn" },
     { key: GetIntegrationActivityIntegration.x, label: "X" },
+    { key: GetIntegrationActivityIntegration.slack, label: "Slack" },
   ];
 
   return (
@@ -427,6 +436,10 @@ export default function AdminIntegrations() {
     accessToken: "",
     accessSecret: "",
   });
+  const [slack, setSlack] = useState<SlackForm>({
+    enabled: false,
+    webhookUrl: "",
+  });
   const [alerts, setAlerts] = useState<ConformityAlertsForm>({
     enabled: false,
     recipient: "",
@@ -439,6 +452,7 @@ export default function AdminIntegrations() {
   const [testTo, setTestTo] = useState("");
   const [linkedinTest, setLinkedinTest] = useState<ConnectionTestResult | null>(null);
   const [xTest, setXTest] = useState<ConnectionTestResult | null>(null);
+  const [slackTest, setSlackTest] = useState<{ delivered: boolean; error: string | null } | null>(null);
 
   useEffect(() => {
     if (!data) return;
@@ -470,6 +484,10 @@ export default function AdminIntegrations() {
       apiSecret: "",
       accessToken: "",
       accessSecret: "",
+    });
+    setSlack({
+      enabled: data.slack.enabled,
+      webhookUrl: "",
     });
     setAlerts({
       enabled: data.conformityAlerts.enabled,
@@ -535,6 +553,34 @@ export default function AdminIntegrations() {
         afterSave();
       },
       onError: () => toast({ title: "Could not save X settings", variant: "destructive" }),
+    },
+  });
+  const saveSlack = useSaveSlackSettings({
+    mutation: {
+      onSuccess: () => {
+        toast({ title: "Slack settings saved" });
+        afterSave();
+      },
+      onError: () => toast({ title: "Could not save Slack settings", variant: "destructive" }),
+    },
+  });
+  const testSlack = useTestSlackConnection({
+    mutation: {
+      onSuccess: (res) => {
+        setSlackTest(res);
+        if (res.delivered) toast({ title: "Test message sent to Slack" });
+        else
+          toast({
+            title: "Slack test message not sent",
+            description: res.error ?? "Check your webhook URL.",
+            variant: "destructive",
+          });
+        invalidateHealth();
+        invalidateActivity();
+      },
+      onError: () => {
+        setSlackTest({ delivered: false, error: "Request failed" });
+      },
     },
   });
   const sendTest = useSendTestEmail({
@@ -650,8 +696,8 @@ export default function AdminIntegrations() {
         <div>
           <h1 className="font-display text-3xl font-bold tracking-tight">Integrations</h1>
           <p className="mt-1 text-muted-foreground">
-            Configure, test, and monitor email delivery and your LinkedIn &amp; X connections.
-            Secrets are stored securely and never shown again after saving.
+            Configure, test, and monitor email delivery, your LinkedIn &amp; X connections, and
+            Slack lead alerts. Secrets are stored securely and never shown again after saving.
           </p>
         </div>
       </div>
@@ -967,6 +1013,71 @@ export default function AdminIntegrations() {
               <Button disabled={saveX.isPending} onClick={() => saveX.mutate({ data: x })}>
                 <Save className="mr-2 h-4 w-4" />
                 {saveX.isPending ? "Saving…" : "Save X settings"}
+              </Button>
+            </div>
+          </IntegrationCard>
+
+          {/* ---------------- Slack ---------------- */}
+          <IntegrationCard
+            icon={Slack}
+            title="Slack"
+            description="Ping a channel the moment a lead (CRA check or demo request) lands — via a static Incoming Webhook URL, no OAuth and no expiring token."
+            enabled={slack.enabled}
+            onToggle={(v) => setSlack((s) => ({ ...s, enabled: v }))}
+            health={health?.slack}
+          >
+            <Field
+              label="Webhook URL"
+              hint={
+                data?.slack.webhookUrlSet
+                  ? "A webhook URL is already stored."
+                  : "Slack → your workspace → Apps → Incoming Webhooks → Add New Webhook."
+              }
+            >
+              <Input
+                type="password"
+                value={slack.webhookUrl}
+                onChange={(e) => setSlack((s) => ({ ...s, webhookUrl: e.target.value }))}
+                placeholder={data?.slack.webhookUrlSet ? SECRET_PLACEHOLDER : "https://hooks.slack.com/services/…"}
+                autoComplete="off"
+              />
+            </Field>
+
+            {slackTest && (
+              <div
+                className={`mt-3 flex items-start gap-2 rounded-md border p-2.5 text-xs ${
+                  slackTest.delivered
+                    ? "border-green-200 bg-green-50 text-green-800 dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-300"
+                    : "border-destructive/30 bg-destructive/5 text-destructive"
+                }`}
+              >
+                {slackTest.delivered ? (
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+                ) : (
+                  <XCircle className="mt-0.5 h-4 w-4 shrink-0" />
+                )}
+                <div className="min-w-0">
+                  <span className="font-medium">{slackTest.delivered ? "Message sent" : "Not sent"}</span>
+                  {slackTest.error && <span className="ml-1 break-words">— {slackTest.error}</span>}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t pt-4">
+              <Button
+                variant="outline"
+                disabled={testSlack.isPending}
+                onClick={() => {
+                  setSlackTest(null);
+                  testSlack.mutate();
+                }}
+              >
+                <Send className="mr-2 h-4 w-4" />
+                {testSlack.isPending ? "Sending…" : "Send test message"}
+              </Button>
+              <Button disabled={saveSlack.isPending} onClick={() => saveSlack.mutate({ data: slack })}>
+                <Save className="mr-2 h-4 w-4" />
+                {saveSlack.isPending ? "Saving…" : "Save Slack settings"}
               </Button>
             </div>
           </IntegrationCard>

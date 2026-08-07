@@ -16,7 +16,7 @@ import {
   type IntegrationHealth,
 } from "@workspace/db";
 import { and, desc, eq, gte } from "drizzle-orm";
-import { getEmailConfig, getLinkedinConfig, getXConfig } from "./integrationSettings";
+import { getEmailConfig, getLinkedinConfig, getXConfig, getSlackConfig } from "./integrationSettings";
 
 const RECENT_WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
 
@@ -37,6 +37,7 @@ export interface IntegrationsHealth {
   email: IntegrationHealthEntry;
   linkedin: IntegrationHealthEntry;
   x: IntegrationHealthEntry;
+  slack: IntegrationHealthEntry;
 }
 
 /**
@@ -82,11 +83,17 @@ async function recentEventCounts(integration: string): Promise<{ success: number
 }
 
 export async function getIntegrationsHealth(): Promise<IntegrationsHealth> {
-  const [email, linkedin, x] = await Promise.all([getEmailConfig(), getLinkedinConfig(), getXConfig()]);
-  const [emailCounts, linkedinCounts, xCounts] = await Promise.all([
+  const [email, linkedin, x, slack] = await Promise.all([
+    getEmailConfig(),
+    getLinkedinConfig(),
+    getXConfig(),
+    getSlackConfig(),
+  ]);
+  const [emailCounts, linkedinCounts, xCounts, slackCounts] = await Promise.all([
     recentEventCounts("email"),
     recentSocialCounts("linkedin"),
     recentSocialCounts("x"),
+    recentEventCounts("slack"),
   ]);
 
   const emailConfigured = Boolean(
@@ -94,6 +101,7 @@ export async function getIntegrationsHealth(): Promise<IntegrationsHealth> {
   );
   const linkedinConfigured = Boolean(linkedin.accessToken && linkedin.authorUrn);
   const xConfigured = Boolean(x.apiKey && x.apiSecret && x.accessToken && x.accessSecret);
+  const slackConfigured = Boolean(slack.webhookUrl);
 
   return {
     email: {
@@ -132,6 +140,18 @@ export async function getIntegrationsHealth(): Promise<IntegrationsHealth> {
       recentSuccessCount: xCounts.success,
       recentFailureCount: xCounts.failure,
     },
+    slack: {
+      enabled: slack.enabled ?? false,
+      configured: slackConfigured,
+      connected: connectedFromHealth(slack.health),
+      lastCheckedAt: slack.health?.lastCheckedAt ?? null,
+      lastSuccessAt: slack.health?.lastSuccessAt ?? null,
+      lastFailureAt: slack.health?.lastFailureAt ?? null,
+      lastError: slack.health?.lastError ?? null,
+      tokenExpiresAt: null,
+      recentSuccessCount: slackCounts.success,
+      recentFailureCount: slackCounts.failure,
+    },
   };
 }
 
@@ -151,11 +171,11 @@ export interface ActivityItem {
  */
 export async function getIntegrationActivity(
   limit: number,
-  integration?: "email" | "linkedin" | "x",
+  integration?: "email" | "linkedin" | "x" | "slack",
 ): Promise<ActivityItem[]> {
   const socialWhere = integration
-    ? integration === "email"
-      ? // email never appears in social_posts
+    ? integration === "email" || integration === "slack"
+      ? // email/slack never appear in social_posts
         eq(socialPostsTable.platform, "__none__")
       : eq(socialPostsTable.platform, integration)
     : undefined;

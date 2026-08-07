@@ -90,6 +90,18 @@ export type XConfig = {
 };
 
 /**
+ * Slack lead-notification webhook. Uses a static Incoming Webhook URL (no
+ * OAuth, no expiring token) — unlike LinkedinConfig/XConfig, which need
+ * periodic re-authorization.
+ */
+export type SlackConfig = {
+  enabled?: boolean;
+  webhookUrl?: string; // secret — never sent to the client
+  // Non-secret observability snapshot (last send outcome).
+  health?: IntegrationHealth;
+};
+
+/**
  * CRA incident deadline alert emails (conformity app). Non-secret.
  * `recipient` falls back to emailConfig.alertEmail -> fromEmail when blank.
  */
@@ -128,6 +140,7 @@ export const appSettingsTable = pgTable("app_settings", {
   emailConfig: jsonb("email_config").$type<EmailConfig>().notNull().default({}),
   linkedinConfig: jsonb("linkedin_config").$type<LinkedinConfig>().notNull().default({}),
   xConfig: jsonb("x_config").$type<XConfig>().notNull().default({}),
+  slackConfig: jsonb("slack_config").$type<SlackConfig>().notNull().default({}),
   conformityAlertsConfig: jsonb("conformity_alerts_config")
     .$type<ConformityAlertsConfig>()
     .notNull()

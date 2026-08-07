@@ -1660,6 +1660,42 @@ paths:
                 $ref: "#/components/schemas/ConnectionTestResult"
         "401":
           $ref: "#/components/responses/Unauthorized"
+  /admin/settings/slack:
+    put:
+      operationId: saveSlackSettings
+      tags: [settings]
+      summary: Save Slack webhook settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SlackSettingsInput"
+      responses:
+        "200":
+          description: Saved integration settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IntegrationSettings"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+  /admin/settings/slack/test:
+    post:
+      operationId: testSlackConnection
+      tags: [settings]
+      summary: Send a test message to the configured Slack webhook
+      responses:
+        "200":
+          description: Send result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SlackTestResult"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
   /admin/settings/conformity-alerts:
     put:
       operationId: saveConformityAlertsSettings
@@ -1728,7 +1764,7 @@ paths:
           required: false
           schema:
             type: string
-            enum: [email, linkedin, x]
+            enum: [email, linkedin, x, slack]
       responses:
         "200":
           description: Reverse-chronological activity items
@@ -5878,6 +5914,17 @@ components:
         - accessTokenSet
         - accessSecretSet
         - health
+    SlackSettings:
+      type: object
+      properties:
+        enabled: { type: boolean }
+        webhookUrlSet: { type: boolean }
+        health:
+          $ref: "#/components/schemas/IntegrationHealthSnapshot"
+      required:
+        - enabled
+        - webhookUrlSet
+        - health
     ConformityAlertsSettings:
       type: object
       properties:
@@ -5909,12 +5956,15 @@ components:
           $ref: "#/components/schemas/LinkedinSettings"
         x:
           $ref: "#/components/schemas/XSettings"
+        slack:
+          $ref: "#/components/schemas/SlackSettings"
         conformityAlerts:
           $ref: "#/components/schemas/ConformityAlertsSettings"
       required:
         - email
         - linkedin
         - x
+        - slack
         - conformityAlerts
     EmailSettingsInput:
       type: object
@@ -5949,6 +5999,19 @@ components:
         apiSecret: { type: string }
         accessToken: { type: string }
         accessSecret: { type: string }
+    SlackSettingsInput:
+      type: object
+      properties:
+        enabled: { type: boolean }
+        webhookUrl: { type: string }
+    SlackTestResult:
+      type: object
+      properties:
+        delivered: { type: boolean }
+        error: { type: ["string", "null"] }
+      required:
+        - delivered
+        - error
     ConformityAlertsSettingsInput:
       type: object
       properties:
@@ -6039,10 +6102,13 @@ components:
           $ref: "#/components/schemas/IntegrationHealthEntry"
         x:
           $ref: "#/components/schemas/IntegrationHealthEntry"
+        slack:
+          $ref: "#/components/schemas/IntegrationHealthEntry"
       required:
         - email
         - linkedin
         - x
+        - slack
     IntegrationActivityItem:
       type: object
       properties:

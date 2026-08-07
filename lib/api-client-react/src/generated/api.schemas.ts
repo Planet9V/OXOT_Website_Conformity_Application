@@ -1095,6 +1095,12 @@ export interface XSettings {
   health: IntegrationHealthSnapshot;
 }
 
+export interface SlackSettings {
+  enabled: boolean;
+  webhookUrlSet: boolean;
+  health: IntegrationHealthSnapshot;
+}
+
 export interface ConformityAlertsSettings {
   enabled: boolean;
   recipient: string;
@@ -1109,6 +1115,7 @@ export interface IntegrationSettings {
   email: EmailSettings;
   linkedin: LinkedinSettings;
   x: XSettings;
+  slack: SlackSettings;
   conformityAlerts: ConformityAlertsSettings;
 }
 
@@ -1144,6 +1151,17 @@ export interface XSettingsInput {
   apiSecret?: string;
   accessToken?: string;
   accessSecret?: string;
+}
+
+export interface SlackSettingsInput {
+  enabled?: boolean;
+  webhookUrl?: string;
+}
+
+export interface SlackTestResult {
+  delivered: boolean;
+  /** @nullable */
+  error: string | null;
 }
 
 export interface ConformityAlertsSettingsInput {
@@ -1212,6 +1230,7 @@ export interface IntegrationsHealth {
   email: IntegrationHealthEntry;
   linkedin: IntegrationHealthEntry;
   x: IntegrationHealthEntry;
+  slack: IntegrationHealthEntry;
 }
 
 export interface IntegrationActivityItem {
@@ -3050,6 +3069,7 @@ export const GetIntegrationActivityIntegration = {
   email: 'email',
   linkedin: 'linkedin',
   x: 'x',
+  slack: 'slack',
 } as const;
 
 export type GetAnalyticsOverviewParams = {

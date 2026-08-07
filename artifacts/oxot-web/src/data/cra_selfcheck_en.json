@@ -1,6 +1,6 @@
 {
   "title": "CRA Classification Self-Check",
-  "intro": "Six questions, about two minutes. You'll get an indicative CRA classification, your route to the CE marking, your specific gaps and a readiness score — grounded in the regulation, not a vendor pitch. Then submit it to OXOT for a human review and a call.",
+  "intro": "A few quick questions, about two minutes. You'll get an indicative CRA classification, your route to the CE marking, your specific gaps and a readiness score — grounded in the regulation, not a vendor pitch. Then submit it to OXOT for a human review and a call.",
   "disclaimer": "This is an indicative read, not a legal determination. OXOT confirms your classification with you in the intake. Grounded in Regulation (EU) 2024/2847 (the Cyber Resilience Act) and Commission Implementing Regulation (EU) 2025/2392, which fixes the technical scope of Important (Annex III) and Critical (Annex IV) products.",
   "scarcityNote": "2026 reality: zero notified bodies · Class I self-assessment needs harmonised standards or common specifications (none yet; ~Q2 2027) · designation takes 12–18 months. The queue forms before the doors open.",
   "progress": "Question {n} of {total}",
