@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { CalendarCheck, Check, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { Button } from '@/components/ui/button';
 import { useLocale } from '@/providers/locale-provider';
+import { entranceVariants } from '@/lib/motion';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const field =
@@ -158,15 +160,17 @@ export default function DemoPage() {
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-5xl">
-      <PageHeader
-        kicker={t.headerKicker}
-        title={t.headerTitle}
-        icon={CalendarCheck}
-        description={t.headerDescription}
-      />
+      <motion.div {...entranceVariants(0)}>
+        <PageHeader
+          kicker={t.headerKicker}
+          title={t.headerTitle}
+          icon={CalendarCheck}
+          description={t.headerDescription}
+        />
+      </motion.div>
 
       <div className="grid gap-8 md:grid-cols-2">
-        <div>
+        <motion.div {...entranceVariants(0.1)}>
           <p className="oxot-kicker mb-3">{t.coversHeading}</p>
           <ul className="space-y-3">
             {t.covers.map((c) => (
@@ -182,9 +186,9 @@ export default function DemoPage() {
             </a>{' '}
             {t.scopePost}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+        <motion.div className="rounded-xl border border-border bg-card p-6 shadow-sm" {...entranceVariants(0.2)}>
           {state === 'success' ? (
             <div className="flex flex-col items-start gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
@@ -229,7 +233,7 @@ export default function DemoPage() {
               <p className="text-center text-xs text-muted-foreground">{t.fineprint}</p>
             </form>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
