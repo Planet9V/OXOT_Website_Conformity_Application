@@ -4,7 +4,7 @@ import { SectionRenderer } from '@/components/sections/section-renderer';
 import { RelatedServices } from '@/components/sections/related-services';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useParams } from 'wouter';
-import NotFound from './not-found';
+import { NotFoundContent } from './not-found';
 import { useSeo } from '@/hooks/use-seo';
 
 export default function SlugPage() {
@@ -27,7 +27,7 @@ export default function SlugPage() {
     ogImage: page.ogImage,
   } : null);
 
-  if (!slug) return <NotFound />;
+  if (!slug) return <NotFoundContent />;
 
   if (isLoading) {
     return (
@@ -44,7 +44,7 @@ export default function SlugPage() {
 
   if (error || !page) {
     if ((error as any)?.status === 404) {
-      return <NotFound />;
+      return <NotFoundContent />;
     }
     return (
       <div className="w-full min-h-[70vh] flex flex-col items-center justify-center text-center px-4">

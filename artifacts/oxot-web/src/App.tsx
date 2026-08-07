@@ -51,7 +51,28 @@ import NotFound from '@/pages/not-found';
 import { PublicLayout } from '@/components/layout/public-layout';
 import { CookieConsentProvider } from '@/components/cookie-consent';
 
-const queryClient = new QueryClient();
+// Root cause of a stuck "Content unavailable" state on any bad slug (both
+// locales): the default retry policy retries EVERY error, including a 404 —
+// which is deterministic and will never succeed on retry. Under a paused
+// fetchStatus (e.g. a momentary network blip), that left the query stuck
+// mid-retry indefinitely, so `error` never settled and pages like
+// slug-page.tsx never reached their `error.status === 404` branch. 4xx client
+// errors are never worth retrying; only network/5xx failures are.
+function isNonRetryableClientError(error: unknown): boolean {
+  const status = (error as { status?: number })?.status;
+  return typeof status === 'number' && status >= 400 && status < 500;
+}
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: (failureCount, error) => {
+        if (isNonRetryableClientError(error)) return false;
+        return failureCount < 3;
+      },
+    },
+  },
+});
 
 // Wrap public routes in the PublicLayout shell
 function PublicRoute({ component: Component }: { component: any }) {
