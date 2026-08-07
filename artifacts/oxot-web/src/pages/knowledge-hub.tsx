@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'wouter';
 import {
   useGetAdminSession,
@@ -50,7 +49,9 @@ const CATALOGUE_LINKS = [
 // Localised static chrome only (nl-NL professional register, "u"). Machine-
 // assisted — flag Dutch strings for a native reviewer before go-live. Regulation
 // display names (REGULATION_LABELS) and all member-guide/catalogue content are
-// API/DB-sourced and deliberately left untranslated.
+// API/DB-sourced (fetched per active locale) and deliberately left untranslated
+// here — until Dutch member pages are authored, /nl visitors see this page's
+// translated chrome plus the (also translated) "no guides yet" empty state.
 const copy = {
   en: {
     seoTitle: 'Knowledge Hub',
@@ -122,14 +123,6 @@ const copy = {
 export default function KnowledgeHubPage() {
   const { locale } = useLocale();
   const t = copy[locale];
-  // The Knowledge Hub and its member guides are English-only. When reached
-  // through the /nl mount, escape to the canonical root-level URL so every
-  // relative link resolves against English routes instead of 404ing under /nl.
-  const nlMounted =
-    typeof window !== 'undefined' && window.location.pathname.startsWith('/nl/');
-  useEffect(() => {
-    if (nlMounted) window.location.replace('/knowledge');
-  }, [nlMounted]);
 
   useSeo({
     title: t.seoTitle,
@@ -145,9 +138,11 @@ export default function KnowledgeHubPage() {
 
   // The server already filters this list by the caller's visibility tier;
   // members see public + members pages, so selecting visibility === "members"
-  // here yields exactly the gated Knowledge Hub shelves.
-  const { data: pages = [] } = useListPages('en', {
-    query: { queryKey: getListPagesQueryKey('en'), enabled: authenticated },
+  // here yields exactly the gated Knowledge Hub shelves. Fetched by the active
+  // locale so /nl visitors see Dutch member guides (falls back to the empty
+  // state, translated, until Dutch member content is authored).
+  const { data: pages = [] } = useListPages(locale, {
+    query: { queryKey: getListPagesQueryKey(locale), enabled: authenticated },
   });
 
   if (sessionLoading) {
@@ -219,7 +214,7 @@ export default function KnowledgeHubPage() {
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {CATALOGUE_LINKS.map((item, i) => (
-            <a key={item.href} href={item.href} className="group">
+            <Link key={item.href} href={item.href} className="group">
               <Card className="h-full transition-colors group-hover:border-primary/50">
                 <CardHeader>
                   <item.icon className="h-5 w-5 text-primary mb-1" aria-hidden="true" />
@@ -233,7 +228,7 @@ export default function KnowledgeHubPage() {
                   <CardDescription>{t.catalogue[i].description}</CardDescription>
                 </CardHeader>
               </Card>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
@@ -252,10 +247,11 @@ export default function KnowledgeHubPage() {
             {key !== CROSS_CUTTING && <Badge variant="outline">{key}</Badge>}
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Plain <a>: hub pages are English-only, so escape any /nl
-                router nesting and always land on the root-level slug. */}
+            {/* Link (not <a>): pages are now fetched by the active locale, so
+                the slug already belongs to that locale — resolving it through
+                the nested router keeps a Dutch visitor inside /nl. */}
             {(groups.get(key) ?? []).map((page) => (
-              <a key={page.id} href={`/${page.slug}`} className="group">
+              <Link key={page.id} href={`/${page.slug}`} className="group">
                 <Card className="h-full transition-colors group-hover:border-primary/50">
                   <CardHeader>
                     {key === CROSS_CUTTING ? (
@@ -273,7 +269,7 @@ export default function KnowledgeHubPage() {
                     {page.excerpt && <CardDescription>{page.excerpt}</CardDescription>}
                   </CardHeader>
                 </Card>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
