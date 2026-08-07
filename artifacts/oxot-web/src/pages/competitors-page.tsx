@@ -168,7 +168,7 @@ export default function CompetitorsPage() {
                 {t.exploreWorkbench} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
-            <a href="http://localhost:8088/conformity-briefing/" target="_blank" rel="noopener noreferrer">
+            <a href="/conformity-briefing/" target="_blank" rel="noopener noreferrer">
               <Button size="lg" variant="outline" className="border-slate-700 text-slate-200 hover:bg-slate-900">
                 {t.viewBriefing}
               </Button>
