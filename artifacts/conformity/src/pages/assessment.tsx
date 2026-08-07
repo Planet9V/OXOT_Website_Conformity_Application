@@ -367,7 +367,7 @@ export default function Assessment() {
         </TabsList>
 
         <TabsContent value="actions">
-          <NextActions assessmentId={id} onNavigateTab={(t) => setTab(t)} />
+          <NextActions assessmentId={id} onNavigate={(t) => setTab(t)} />
         </TabsContent>
 
         <TabsContent value="wizard">
