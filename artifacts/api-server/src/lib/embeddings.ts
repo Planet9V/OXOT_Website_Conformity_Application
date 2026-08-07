@@ -1,13 +1,32 @@
 /**
- * Text embeddings via OpenRouter (OpenAI `text-embedding-3-small`, 1536 dims).
+ * Text embeddings via OpenRouter, model `qwen/qwen3-embedding-8b`.
  * Requires the user-provided OPENROUTER_API_KEY secret. The Replit AI
  * integration proxies do not support the embeddings API, so we call OpenRouter
  * directly here.
+ *
+ * Standard, documented pairing — keep in sync if this ever changes:
+ *   - Model: qwen/qwen3-embedding-8b (Matryoshka-trained: supports a
+ *     `dimensions` request param to truncate its native output to a smaller,
+ *     still-valid embedding — used below to request exactly EMBEDDING_DIMENSIONS).
+ *   - Output size: EMBEDDING_DIMENSIONS (see contentChunks.ts) — MUST match
+ *     the `vector(...)` column width on both contentChunksTable and
+ *     conformityEmbeddingsTable, or inserts fail and cosine search breaks.
+ *   - Was previously `openai/text-embedding-3-small`: switched because
+ *     OpenRouter's own upstream OpenAI backend key for that model is broken
+ *     (401 on every call, independent of the caller's OPENROUTER_API_KEY —
+ *     verified directly against the embeddings endpoint).
+ *
+ * Local/on-prem swap: for a self-hosted deployment with no external LLM
+ * calls, point OPENROUTER_BASE at a local Ollama instance's OpenAI-compatible
+ * endpoint and keep EMBEDDING_MODEL as "qwen3-embedding:4b" (or the 8b tag) —
+ * same model family, same `dimensions` truncation support, so query-time and
+ * index-time vectors stay compatible without a schema change.
  */
 import { getDbOpenRouterApiKey } from "./models";
+import { EMBEDDING_DIMENSIONS } from "@workspace/db";
 
 const OPENROUTER_BASE = "https://openrouter.ai/api/v1";
-const EMBEDDING_MODEL = "openai/text-embedding-3-small";
+const EMBEDDING_MODEL = "qwen/qwen3-embedding-8b";
 const BATCH_SIZE = 64;
 const MAX_RETRIES = 3;
 
@@ -34,7 +53,7 @@ async function embedBatch(inputs: string[], key: string): Promise<number[][]> {
           Authorization: `Bearer ${key}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ model: EMBEDDING_MODEL, input: inputs }),
+        body: JSON.stringify({ model: EMBEDDING_MODEL, input: inputs, dimensions: EMBEDDING_DIMENSIONS }),
       });
       if (!res.ok) {
         const body = await res.text();
