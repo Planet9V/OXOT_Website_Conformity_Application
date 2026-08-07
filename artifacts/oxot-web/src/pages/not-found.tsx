@@ -32,7 +32,7 @@ export function NotFoundContent() {
       <div className="w-24 h-24 bg-muted rounded-3xl flex items-center justify-center mb-8 transform rotate-12">
         <FileQuestion className="w-12 h-12 text-muted-foreground transform -rotate-12" />
       </div>
-      <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4">
+      <h1 className="oxot-h1 mb-4">
         {t.title}
       </h1>
       <p className="text-lg md:text-xl text-muted-foreground max-w-md mb-8">

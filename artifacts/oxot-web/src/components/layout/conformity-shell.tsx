@@ -43,7 +43,7 @@ export function ConformityShell({ children }: { children: React.ReactNode }) {
           <p className="text-xs font-semibold tracking-[0.15em] uppercase text-primary mb-2">
             Conformity Platform
           </p>
-          <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight mb-1">
+          <h1 className="oxot-h1 text-foreground leading-tight mb-1">
             EU Regulatory Intelligence
           </h1>
           <p className="text-sm text-muted-foreground max-w-xl">

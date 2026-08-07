@@ -48,7 +48,7 @@ export default function SlugPage() {
     }
     return (
       <div className="w-full min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-3xl font-display font-bold mb-4">Content unavailable</h1>
+        <h1 className="oxot-h1 mb-4">Content unavailable</h1>
         <p className="text-muted-foreground max-w-md">
           We couldn't load this page. Please try again later.
         </p>
@@ -62,7 +62,7 @@ export default function SlugPage() {
     <div className="w-full">
       {sortedSections.length === 0 && (
         <div className="container mx-auto px-4 py-32 text-center">
-          <h1 className="text-4xl font-display font-bold mb-4">{page.title}</h1>
+          <h1 className="oxot-h1 mb-4">{page.title}</h1>
           <p className="text-muted-foreground">This page has no content yet.</p>
         </div>
       )}

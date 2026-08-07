@@ -63,8 +63,8 @@ export default function ConformitySourceViewer() {
           <span className="oxot-kicker block mb-2">
             SOURCE LIBRARY{doc ? ` · ${doc.kind.toUpperCase()}` : ''}
           </span>
-          <h1 className="font-display text-3xl md:text-4xl font-normal tracking-tight text-foreground flex items-center gap-2.5">
-            <FileText className="w-7 h-7 text-primary shrink-0" /> {doc?.title ?? filename}
+          <h1 className="oxot-h1 text-foreground flex items-center gap-2.5">
+            <FileText className="w-6 h-6 text-primary shrink-0" /> {doc?.title ?? filename}
           </h1>
           {doc?.description && (
             <p className="mt-3 max-w-3xl text-muted-foreground">{doc.description}</p>
