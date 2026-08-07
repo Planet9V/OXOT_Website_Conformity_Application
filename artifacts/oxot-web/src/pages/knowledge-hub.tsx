@@ -21,6 +21,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { useSeo } from '@/hooks/use-seo';
+import { useLocale } from '@/providers/locale-provider';
 
 // Display names for regulation tracks, keyed by the conformity catalogue's
 // natural regulation keys. Unknown keys fall back to the raw key so future
@@ -38,7 +39,89 @@ const REGULATION_LABELS: Record<string, string> = {
 
 const CROSS_CUTTING = '__cross';
 
+// Position-indexed icons + link targets for the live catalogue cards; the
+// visible copy lives in `copy.*.catalogue` at the same index (mirrors home.tsx).
+const CATALOGUE_LINKS = [
+  { href: '/conformity-platform/requirements', icon: ListTree },
+  { href: '/conformity-platform/regulations', icon: Scale },
+  { href: '/conformity-platform/matrix', icon: Grid3x3 },
+];
+
+// Localised static chrome only (nl-NL professional register, "u"). Machine-
+// assisted — flag Dutch strings for a native reviewer before go-live. Regulation
+// display names (REGULATION_LABELS) and all member-guide/catalogue content are
+// API/DB-sourced and deliberately left untranslated.
+const copy = {
+  en: {
+    seoTitle: 'Knowledge Hub',
+    seoDescription:
+      'Member reference library: regulation guidance, templates, and workbench how-tos.',
+    loading: 'Loading…',
+    gateTitle: 'Knowledge Hub is for members',
+    gateBody:
+      'Sign in to access the full regulatory reference library, artifact templates, and workbench guides for this deployment.',
+    signIn: 'Sign in',
+    headerKicker: 'MEMBER REFERENCE LIBRARY',
+    headerTitle: 'Knowledge Hub',
+    headerBody:
+      'The reference library behind your conformance work: regulation guidance, artifact templates, and workbench how-tos, organized by regulation track. The live catalogue links render directly from the workbench, so requirement counts and mappings are never out of date. Member guides are grouped by the regulation they serve, with platform-wide guides at the end.',
+    openWorkbench: 'Open Workbench',
+    catalogueHeading: 'Live catalogue reference',
+    catalogue: [
+      {
+        title: 'Requirement catalogue',
+        description: 'Every requirement, rendered live from the workbench catalogue.',
+      },
+      {
+        title: 'Regulations',
+        description: 'The regulation tracks loaded on this deployment.',
+      },
+      {
+        title: 'Cross-regulation matrix',
+        description: 'How requirements map across regulations — evidence reuse at a glance.',
+      },
+    ],
+    platformGuides: 'Platform guides',
+    empty: 'No member guides have been published on this deployment yet.',
+  },
+  nl: {
+    seoTitle: 'Kenniscentrum',
+    seoDescription:
+      'Referentiebibliotheek voor leden: begeleiding bij regelgeving, sjablonen en handleidingen voor de workbench.',
+    loading: 'Laden…',
+    gateTitle: 'Het Kenniscentrum is voor leden',
+    gateBody:
+      'Meld u aan voor toegang tot de volledige referentiebibliotheek met regelgeving, artefactsjablonen en workbench-handleidingen voor deze implementatie.',
+    signIn: 'Aanmelden',
+    headerKicker: 'REFERENTIEBIBLIOTHEEK VOOR LEDEN',
+    headerTitle: 'Kenniscentrum',
+    headerBody:
+      'De referentiebibliotheek achter uw conformiteitswerk: begeleiding bij regelgeving, artefactsjablonen en workbench-handleidingen, geordend per regelgevingstraject. De links naar de live catalogus worden rechtstreeks vanuit de workbench weergegeven, zodat het aantal vereisten en de koppelingen nooit verouderd zijn. Handleidingen voor leden zijn gegroepeerd op de regelgeving die ze betreffen, met platformbrede handleidingen aan het eind.',
+    openWorkbench: 'Workbench openen',
+    catalogueHeading: 'Referentie live catalogus',
+    catalogue: [
+      {
+        title: 'Vereistencatalogus',
+        description: 'Elke vereiste, live weergegeven uit de workbench-catalogus.',
+      },
+      {
+        title: 'Regelgeving',
+        description: 'De regelgevingstrajecten die op deze implementatie zijn geladen.',
+      },
+      {
+        title: 'Matrix over regelgeving heen',
+        description:
+          'Hoe vereisten over regelgevingen heen op elkaar aansluiten — hergebruik van bewijs in één oogopslag.',
+      },
+    ],
+    platformGuides: 'Platformhandleidingen',
+    empty: 'Er zijn nog geen handleidingen voor leden gepubliceerd op deze implementatie.',
+  },
+} as const;
+
 export default function KnowledgeHubPage() {
+  const { locale } = useLocale();
+  const t = copy[locale];
   // The Knowledge Hub and its member guides are English-only. When reached
   // through the /nl mount, escape to the canonical root-level URL so every
   // relative link resolves against English routes instead of 404ing under /nl.
@@ -49,8 +132,8 @@ export default function KnowledgeHubPage() {
   }, [nlMounted]);
 
   useSeo({
-    title: 'Knowledge Hub',
-    description: 'Member reference library: regulation guidance, templates, and workbench how-tos.',
+    title: t.seoTitle,
+    description: t.seoDescription,
     noindex: true,
   });
 
@@ -70,7 +153,7 @@ export default function KnowledgeHubPage() {
   if (sessionLoading) {
     return (
       <div className="container mx-auto px-4 md:px-8 py-24 text-center text-muted-foreground">
-        Loading…
+        {t.loading}
       </div>
     );
   }
@@ -83,15 +166,12 @@ export default function KnowledgeHubPage() {
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-muted">
               <Lock className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
             </div>
-            <CardTitle>Knowledge Hub is for members</CardTitle>
-            <CardDescription>
-              Sign in to access the full regulatory reference library, artifact templates, and
-              workbench guides for this deployment.
-            </CardDescription>
+            <CardTitle>{t.gateTitle}</CardTitle>
+            <CardDescription>{t.gateBody}</CardDescription>
           </CardHeader>
           <CardContent className="flex justify-center">
             <Button asChild>
-              <Link href="/admin/login">Sign in</Link>
+              <Link href="/admin/login">{t.signIn}</Link>
             </Button>
           </CardContent>
         </Card>
@@ -115,38 +195,17 @@ export default function KnowledgeHubPage() {
     ...(groups.has(CROSS_CUTTING) ? [CROSS_CUTTING] : []),
   ];
 
-  const catalogueLinks = [
-    {
-      href: '/conformity-platform/requirements',
-      icon: ListTree,
-      title: 'Requirement catalogue',
-      description: 'Every requirement, rendered live from the workbench catalogue.',
-    },
-    {
-      href: '/conformity-platform/regulations',
-      icon: Scale,
-      title: 'Regulations',
-      description: 'The regulation tracks loaded on this deployment.',
-    },
-    {
-      href: '/conformity-platform/matrix',
-      icon: Grid3x3,
-      title: 'Cross-regulation matrix',
-      description: 'How requirements map across regulations — evidence reuse at a glance.',
-    },
-  ];
-
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 space-y-12">
       <PageHeader
-        kicker="MEMBER REFERENCE LIBRARY"
-        title="Knowledge Hub"
+        kicker={t.headerKicker}
+        title={t.headerTitle}
         icon={BookOpen}
-        description="The reference library behind your conformance work: regulation guidance, artifact templates, and workbench how-tos, organized by regulation track. The live catalogue links render directly from the workbench, so requirement counts and mappings are never out of date. Member guides are grouped by the regulation they serve, with platform-wide guides at the end."
+        description={t.headerBody}
         actions={
           <Button asChild>
             <a href="/conformity/">
-              Open Workbench
+              {t.openWorkbench}
               <ExternalLink className="ml-2 h-4 w-4" aria-hidden="true" />
             </a>
           </Button>
@@ -156,22 +215,22 @@ export default function KnowledgeHubPage() {
       {/* Live catalogue reference — rendered from the workbench, never duplicated */}
       <section aria-labelledby="catalogue-heading">
         <h2 id="catalogue-heading" className="font-display text-xl font-semibold mb-4">
-          Live catalogue reference
+          {t.catalogueHeading}
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {catalogueLinks.map((item) => (
+          {CATALOGUE_LINKS.map((item, i) => (
             <a key={item.href} href={item.href} className="group">
               <Card className="h-full transition-colors group-hover:border-primary/50">
                 <CardHeader>
                   <item.icon className="h-5 w-5 text-primary mb-1" aria-hidden="true" />
                   <CardTitle className="text-base flex items-center gap-2">
-                    {item.title}
+                    {t.catalogue[i].title}
                     <ArrowRight
                       className="h-4 w-4 opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0"
                       aria-hidden="true"
                     />
                   </CardTitle>
-                  <CardDescription>{item.description}</CardDescription>
+                  <CardDescription>{t.catalogue[i].description}</CardDescription>
                 </CardHeader>
               </Card>
             </a>
@@ -184,8 +243,10 @@ export default function KnowledgeHubPage() {
         <section key={key} aria-labelledby={`track-${key}`}>
           <div className="flex items-center gap-3 mb-4">
             <h2 id={`track-${key}`} className="font-display text-xl font-semibold">
+              {/* Regulation display names (REGULATION_LABELS) and page titles/
+                  excerpts below are API/DB-sourced — left untranslated. */}
               {key === CROSS_CUTTING
-                ? 'Platform guides'
+                ? t.platformGuides
                 : (REGULATION_LABELS[key] ?? key.toUpperCase())}
             </h2>
             {key !== CROSS_CUTTING && <Badge variant="outline">{key}</Badge>}
@@ -219,9 +280,7 @@ export default function KnowledgeHubPage() {
       ))}
 
       {memberPages.length === 0 && (
-        <p className="text-muted-foreground">
-          No member guides have been published on this deployment yet.
-        </p>
+        <p className="text-muted-foreground">{t.empty}</p>
       )}
     </div>
   );

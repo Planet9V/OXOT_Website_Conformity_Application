@@ -21,14 +21,62 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 import { useSeo } from '@/hooks/use-seo';
 import { regBgStyle, regTextStyle } from '@/lib/reg-colors';
+import { useLocale } from '@/providers/locale-provider';
 
-const OBLIGATION_LABELS: Record<string, string> = {
-  product_requirement: 'Product req.',
-  process: 'Process',
-  documentation: 'Documentation',
-  governance: 'Governance',
-  reporting: 'Reporting',
-};
+// Static UI chrome only. The framework/regulation data itself (names, titles,
+// summaries, dates, classes, routes, requirement text) is API-sourced and is
+// intentionally NOT translated here. nl-NL professional register ("u");
+// machine-assisted — flag Dutch strings for a native reviewer before go-live.
+const copy = {
+  en: {
+    seoTitleSuffix: ' — OXOT Frameworks',
+    notFound: 'Regulation not found',
+    backToFrameworks: '← Back to frameworks',
+    breadcrumb: 'Frameworks',
+    officialText: 'Official text',
+    viewInMatrix: 'View in matrix',
+    keyDates: 'Key dates',
+    productClasses: 'Product classes & entity types',
+    conformityRoutes: 'Conformity routes',
+    thirdPartyRequired: 'Third-party required',
+    requirements: 'Requirements',
+    requirementsSubtitle: 'Specific obligations drawn from the official text.',
+    crossRefs: 'cross-refs',
+    allFrameworks: 'All frameworks',
+    viewMatrix: 'View cross-framework matrix',
+    obligations: {
+      product_requirement: 'Product req.',
+      process: 'Process',
+      documentation: 'Documentation',
+      governance: 'Governance',
+      reporting: 'Reporting',
+    },
+  },
+  nl: {
+    seoTitleSuffix: ' — OXOT Raamwerken',
+    notFound: 'Verordening niet gevonden',
+    backToFrameworks: '← Terug naar raamwerken',
+    breadcrumb: 'Raamwerken',
+    officialText: 'Officiële tekst',
+    viewInMatrix: 'Bekijk in matrix',
+    keyDates: 'Belangrijke datums',
+    productClasses: 'Productklassen en entiteitstypen',
+    conformityRoutes: 'Conformiteitsroutes',
+    thirdPartyRequired: 'Derde partij vereist',
+    requirements: 'Vereisten',
+    requirementsSubtitle: 'Specifieke verplichtingen ontleend aan de officiële tekst.',
+    crossRefs: 'kruisverwijzingen',
+    allFrameworks: 'Alle raamwerken',
+    viewMatrix: 'Bekijk de raamwerkoverstijgende matrix',
+    obligations: {
+      product_requirement: 'Productvereiste',
+      process: 'Proces',
+      documentation: 'Documentatie',
+      governance: 'Governance',
+      reporting: 'Rapportage',
+    },
+  },
+} as const;
 
 const OBLIGATION_ICONS: Record<string, React.ElementType> = {
   product_requirement: ShieldCheck,
@@ -39,7 +87,8 @@ const OBLIGATION_ICONS: Record<string, React.ElementType> = {
 };
 
 function ObligationBadge({ type }: { type: string }) {
-  const label = OBLIGATION_LABELS[type] ?? type;
+  const { locale } = useLocale();
+  const label = (copy[locale].obligations as Record<string, string>)[type] ?? type;
   const Icon = OBLIGATION_ICONS[type] ?? ClipboardList;
   return (
     <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
@@ -50,6 +99,8 @@ function ObligationBadge({ type }: { type: string }) {
 }
 
 export default function FrameworkDetailPage() {
+  const { locale } = useLocale();
+  const t = copy[locale];
   const params = useParams<{ key: string }>();
   const key = params.key ?? '';
 
@@ -65,7 +116,7 @@ export default function FrameworkDetailPage() {
   useSeo(
     reg
       ? {
-          title: `${reg.name} — OXOT Frameworks`,
+          title: `${reg.name}${t.seoTitleSuffix}`,
           description: reg.summary,
         }
       : null
@@ -88,9 +139,9 @@ export default function FrameworkDetailPage() {
   if (!reg) {
     return (
       <div className="pt-32 pb-24 container mx-auto px-4 md:px-8 text-center">
-        <h1 className="text-3xl font-display font-bold mb-4">Regulation not found</h1>
+        <h1 className="text-3xl font-display font-bold mb-4">{t.notFound}</h1>
         <Link href="/frameworks" className="text-primary hover:underline">
-          ← Back to frameworks
+          {t.backToFrameworks}
         </Link>
       </div>
     );
@@ -123,7 +174,7 @@ export default function FrameworkDetailPage() {
             className="flex items-center gap-2 text-sm text-muted-foreground mb-8"
           >
             <Link href="/frameworks" className="hover:text-foreground transition-colors flex items-center gap-1">
-              <ArrowLeft className="w-4 h-4" /> Frameworks
+              <ArrowLeft className="w-4 h-4" /> {t.breadcrumb}
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-foreground font-medium">{reg.shortName}</span>
@@ -190,13 +241,13 @@ export default function FrameworkDetailPage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
               >
-                Official text <ExternalLink className="w-3.5 h-3.5" />
+                {t.officialText} <ExternalLink className="w-3.5 h-3.5" />
               </a>
               <Link
                 href="/frameworks/matrix"
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                View in matrix <ChevronRight className="w-3.5 h-3.5" />
+                {t.viewInMatrix} <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </motion.div>
           </div>
@@ -209,7 +260,7 @@ export default function FrameworkDetailPage() {
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-xl font-display font-semibold mb-6 flex items-center gap-2">
               <Calendar className="w-5 h-5 text-primary" />
-              Key dates
+              {t.keyDates}
             </h2>
             <div className="relative pl-6 border-l-2 border-border/60 flex flex-col gap-6 max-w-2xl">
               {reg.keyDates.map((kd, i) => (
@@ -242,7 +293,7 @@ export default function FrameworkDetailPage() {
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-xl font-display font-semibold mb-6 flex items-center gap-2">
               <Building2 className="w-5 h-5 text-primary" />
-              Product classes &amp; entity types
+              {t.productClasses}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               {reg.classes.map((cls, i) => (
@@ -276,7 +327,7 @@ export default function FrameworkDetailPage() {
           <div className="container mx-auto px-4 md:px-8">
             <h2 className="text-xl font-display font-semibold mb-6 flex items-center gap-2">
               <Route className="w-5 h-5 text-primary" />
-              Conformity routes
+              {t.conformityRoutes}
             </h2>
             <div className="flex flex-col gap-3 max-w-3xl">
               {reg.routes.map((route, i) => (
@@ -300,7 +351,7 @@ export default function FrameworkDetailPage() {
                       <h3 className="text-sm font-semibold text-foreground">{route.name}</h3>
                       {route.thirdPartyRequired && (
                         <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400">
-                          Third-party required
+                          {t.thirdPartyRequired}
                         </span>
                       )}
                     </div>
@@ -320,7 +371,7 @@ export default function FrameworkDetailPage() {
             <div>
               <h2 className="text-xl font-display font-semibold flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-primary" />
-                Requirements
+                {t.requirements}
                 {reqs && (
                   <span className="ml-2 text-base font-normal text-muted-foreground">
                     ({reqs.length})
@@ -328,7 +379,7 @@ export default function FrameworkDetailPage() {
                 )}
               </h2>
               <p className="text-sm text-muted-foreground mt-1">
-                Specific obligations drawn from the official text.
+                {t.requirementsSubtitle}
               </p>
             </div>
           </div>
@@ -368,7 +419,7 @@ export default function FrameworkDetailPage() {
                         href="/frameworks/matrix"
                         className="ml-auto text-xs text-muted-foreground hover:text-primary transition-colors"
                       >
-                        {req.mappingCount} cross-refs
+                        {req.mappingCount} {t.crossRefs}
                       </Link>
                     )}
                   </div>
@@ -388,13 +439,13 @@ export default function FrameworkDetailPage() {
             href="/frameworks"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> All frameworks
+            <ArrowLeft className="w-4 h-4" /> {t.allFrameworks}
           </Link>
           <Link
             href="/frameworks/matrix"
             className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
           >
-            View cross-framework matrix <ChevronRight className="w-4 h-4" />
+            {t.viewMatrix} <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
       </section>
