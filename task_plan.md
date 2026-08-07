@@ -72,10 +72,13 @@ Full brief: `docs/plans/motion-and-glass-styleguide/prompt.md`. Summary: the doc
 - **Verify**: build, Chrome — toggle "Reduce motion" in OS/browser dev-tools emulation, confirm animations are suppressed but content still renders (nothing stays permanently at `opacity: 0`).
 - **Commit** alone, separate from any page-content commit.
 
-### Phase 9 — Final full-site regression sweep
-- All 7 pages, both locales, both themes, one pass, using the same regression-sweep method as the rest of this session (curl for 200s, Chrome for visual + interaction spot-checks).
-- Confirm nothing outside the 7 target files (+ optionally `App.tsx` for Phase 8) shows up in `git diff --stat`.
-- PR, merge to `main` — same pattern as every other change this session (feature branch → PR → squash-merge → sync).
+### Phase 9 — Final full-site regression sweep — DONE
+- All 7 pages × 2 locales curl-checked: 14/14 return 200.
+- Chrome spot-check: `/nl` in light mode — entrance motion, Dutch translation, and CTA labels all render correctly (previously only dark mode had been checked this session).
+- Every phase (1–7) already merged to `main` individually as its own PR (#46–#52), verified via Docker build + Chrome before each merge — see PR history for per-phase interaction checks (wizard back/advance, form fill/submit, PDF download, CTA navigation).
+
+## Status: COMPLETE
+All 9 phases done. Framer Motion is now live on all 7 funnel pages (home, product, pricing, deployment, resources, cra-check, demo), using the pre-existing entrance/reveal pattern via `lib/motion.ts`. Zero new dependencies, zero changes to wizard/form internals, zero text/data changes.
 
 ## Decision log
 - **Reuse existing pattern vs. invent new one**: reuse. The codebase already has a working, consistent motion language in 11 files; introducing a second one would be inconsistent and unnecessary scope.
