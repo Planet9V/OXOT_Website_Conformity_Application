@@ -176,7 +176,7 @@ export default function CraHomePage() {
       <section className="border-b border-border bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container mx-auto px-4 md:px-8 py-20 md:py-28 max-w-4xl text-center">
           <p className="oxot-kicker">{t.kicker}</p>
-          <h1 className="mt-4 font-display text-4xl font-normal leading-[1.1] tracking-tight text-foreground md:text-6xl">
+          <h1 className="oxot-h1 mt-4 text-foreground">
             {t.heroTitle}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
@@ -218,13 +218,13 @@ export default function CraHomePage() {
       <section className="border-t border-border">
         <div className="container mx-auto px-4 md:px-8 py-16 md:py-20 max-w-6xl">
           <p className="oxot-kicker text-center">{t.stallsKicker}</p>
-          <h2 className="mt-2 text-center font-display text-3xl font-normal tracking-tight text-foreground">
+          <h2 className="oxot-h2 mt-2 text-center text-foreground">
             {t.stallsTitle}
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {t.stalls.map((s) => (
               <div key={s.title} className="rounded-2xl border border-border bg-card p-6 shadow-e1">
-                <h3 className="font-display text-lg font-normal tracking-tight text-foreground">{s.title}</h3>
+                <h3 className="oxot-h3 text-foreground">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
               </div>
             ))}
@@ -238,7 +238,7 @@ export default function CraHomePage() {
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="oxot-kicker">{t.pillarsKicker}</p>
-              <h2 className="mt-2 font-display text-3xl font-normal tracking-tight text-foreground">
+              <h2 className="oxot-h2 mt-2 text-foreground">
                 {t.pillarsTitle}
               </h2>
             </div>
@@ -254,7 +254,7 @@ export default function CraHomePage() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
-                  <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground">{p.title}</h3>
+                  <h3 className="oxot-h3 mt-4 text-foreground">{p.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
                 </div>
               );
@@ -269,7 +269,7 @@ export default function CraHomePage() {
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
             <ServerCog className="h-6 w-6 text-primary" />
           </div>
-          <h2 className="mt-4 font-display text-3xl font-normal tracking-tight text-foreground">
+          <h2 className="oxot-h2 mt-4 text-foreground">
             {t.deployTitle}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -285,7 +285,7 @@ export default function CraHomePage() {
       <section className="border-t border-border bg-card/40">
         <div className="container mx-auto px-4 md:px-8 py-16 md:py-20 max-w-6xl">
           <p className="oxot-kicker text-center">{t.personasKicker}</p>
-          <h2 className="mt-2 text-center font-display text-3xl font-normal tracking-tight text-foreground">
+          <h2 className="oxot-h2 mt-2 text-center text-foreground">
             {t.personasTitle}
           </h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -305,7 +305,7 @@ export default function CraHomePage() {
       {/* Final CTA */}
       <section className="border-t border-border">
         <div className="container mx-auto px-4 md:px-8 py-16 md:py-24 max-w-3xl text-center">
-          <h2 className="font-display text-3xl font-normal tracking-tight text-foreground md:text-4xl">
+          <h2 className="oxot-h2 text-foreground">
             {t.finalTitle}
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground">
