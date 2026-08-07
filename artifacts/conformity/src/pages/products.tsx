@@ -188,7 +188,7 @@ export default function Products() {
                 <TableRow key={p.id} className="hover:bg-muted/50 transition-colors">
                   <TableCell>
                     <Link href={`/products/${p.id}`} className="block group">
-                      <div className="font-medium group-hover:text-primary transition-colors">
+                      <div className="font-medium group-hover:text-primary-ink transition-colors">
                         {p.name}
                       </div>
                       {p.manufacturerName && (

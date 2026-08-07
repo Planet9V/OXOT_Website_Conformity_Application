@@ -695,7 +695,7 @@ export function ProductPortfolioPage() {
                             variant="secondary"
                             className={cn(
                               "font-mono text-[10px]",
-                              prod.craClass === "Class II" ? "bg-orange-500/10 text-orange-400 border-orange-500/30" : "bg-primary/10 text-primary"
+                              prod.craClass === "Class II" ? "bg-orange-500/10 text-orange-400 border-orange-500/30" : "bg-primary/10 text-primary-ink"
                             )}
                           >
                             CRA {prod.craClass}
@@ -751,7 +751,7 @@ export function ProductPortfolioPage() {
                             <div>
                               <div className="font-bold text-foreground">{dep.customerName}</div>
                               <div className="text-[11px] text-muted-foreground font-mono">
-                                Sector: {dep.cisaSector} • Deployed: <span className="font-semibold text-primary">{dep.deployedVersion}</span> ({dep.quantity} units)
+                                Sector: {dep.cisaSector} • Deployed: <span className="font-semibold text-primary-ink">{dep.deployedVersion}</span> ({dep.quantity} units)
                               </div>
                             </div>
 
@@ -882,7 +882,7 @@ export function ProductPortfolioPage() {
                             variant="ghost"
                             size="sm"
                             onClick={() => setGuidanceModalProduct(prod)}
-                            className="h-8 text-xs font-bold text-primary"
+                            className="h-8 text-xs font-bold text-primary-ink"
                           >
                             Guidance Note
                           </Button>
@@ -912,7 +912,7 @@ export function ProductPortfolioPage() {
           {/* Operations Bar */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-card p-4 rounded-2xl border border-border shadow-sm">
             <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 font-mono text-xs">
+              <Badge variant="outline" className="bg-primary/10 text-primary-ink border-primary/20 font-mono text-xs">
                 Fleet Management Engine
               </Badge>
 
@@ -968,7 +968,7 @@ export function ProductPortfolioPage() {
                   <CardHeader className="border-b p-6 bg-gradient-to-r from-card via-card to-muted/40">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 font-mono text-[10px]">
+                        <Badge variant="outline" className="bg-primary/10 text-primary-ink border-primary/20 font-mono text-[10px]">
                           {cust.cisaSector}
                         </Badge>
 
@@ -985,7 +985,7 @@ export function ProductPortfolioPage() {
 
                       <div className="text-xs text-muted-foreground font-mono space-y-1">
                         <div>Contact: <span className="text-foreground font-semibold">{cust.contactName}</span> ({cust.contactTitle})</div>
-                        <div className="flex items-center gap-1 text-primary">
+                        <div className="flex items-center gap-1 text-primary-ink">
                           <Mail className="h-3 w-3" /> {cust.contactEmail}
                         </div>
                       </div>
@@ -1003,7 +1003,7 @@ export function ProductPortfolioPage() {
                         <div key={dep.id} className="p-3.5 rounded-2xl bg-muted/40 border border-border/70 space-y-1.5">
                           <div className="flex items-center justify-between font-bold text-xs">
                             <span className="text-foreground">{dep.productName}</span>
-                            <span className="font-mono text-primary">{dep.quantity} units</span>
+                            <span className="font-mono text-primary-ink">{dep.quantity} units</span>
                           </div>
 
                           <div className="flex items-center justify-between text-[11px] font-mono text-muted-foreground">
@@ -1175,7 +1175,7 @@ export function ProductPortfolioPage() {
                             <div className="font-semibold text-foreground">{cust.contactName}</div>
                             <div className="text-muted-foreground">{cust.contactTitle}</div>
                           </td>
-                          <td className="p-4 font-mono text-[11px] text-primary">{cust.contactEmail}</td>
+                          <td className="p-4 font-mono text-[11px] text-primary-ink">{cust.contactEmail}</td>
                           <td className="p-4 text-[11px] font-mono">
                             {mainDep?.productName || "NovaGuard Smart Home Hub v2"}
                           </td>
@@ -1298,7 +1298,7 @@ export function ProductPortfolioPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono bg-background p-3 rounded-xl border border-border/80">
                     <div><strong>CISO Contact:</strong> {cust.contactName}</div>
-                    <div><strong>Email:</strong> <span className="text-primary">{cust.contactEmail}</span></div>
+                    <div><strong>Email:</strong> <span className="text-primary-ink">{cust.contactEmail}</span></div>
                     <div><strong>Region:</strong> {cust.region}</div>
                   </div>
 
@@ -1571,7 +1571,7 @@ Robot Vision Pro, CRA-IIoT-9920, Robotics, Class II, Airbus Defence, c.dubois@ai
                         <tr key={idx} className="border-b border-border/40">
                           <td className="p-1.5 font-bold text-foreground">{item.orgName}</td>
                           <td className="p-1.5">{item.contactName} ({item.contactEmail})</td>
-                          <td className="p-1.5 text-primary">{item.cisaSector}</td>
+                          <td className="p-1.5 text-primary-ink">{item.cisaSector}</td>
                           <td className="p-1.5">{item.productName}</td>
                           <td className="p-1.5">{item.deployedVersion}</td>
                           <td className="p-1.5 font-bold">{item.quantity}</td>
