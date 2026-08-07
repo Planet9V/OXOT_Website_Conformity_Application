@@ -96,9 +96,9 @@ Read-only reference lookups (`conformity.ts`):
 | GET | `/api/conformity/portfolio` | requireAuth | Portfolio overview. |
 | GET | `/api/conformity/cra-analytics` | **Public** | CRA analytics data. |
 | GET · POST | `/api/conformity/products` | requireAuth | List / create products. |
-| POST | `/api/conformity/products/quick-start` | **Public** | Quick-start product. |
-| GET | `/api/conformity/products/:id` · `/:id/revisions` | **Public** | Product / revision history. |
-| PUT · DELETE | `/api/conformity/products/:id` | **Public** (demo-guarded) | Update / delete product. |
+| POST | `/api/conformity/products/quick-start` | requireAuth | Quick-start product. |
+| GET | `/api/conformity/products/:id` · `/:id/revisions` | requireAuth | Product / revision history. |
+| PUT · DELETE | `/api/conformity/products/:id` | requireAuth (demo-guarded) | Update / delete product. |
 | GET | `/api/conformity/team` | requireAuth | Workbench team roster. |
 | POST | `/api/conformity/assessments` | requireAuth | Create assessment. |
 | GET · DELETE | `/api/conformity/assessments/:id` | requireAuth | Get / delete assessment. |
@@ -134,8 +134,8 @@ Read-only reference lookups (`conformity.ts`):
 | GET · POST | `/api/conformity/assessments/:id/bom-notifications` | requireAuth | List / create maintainer notifications. |
 | GET | `/api/conformity/assessments/:id/bom-notification-gaps` | requireAuth | Art. 13(6) notification gaps. |
 | PATCH | `/api/conformity/bom-notifications/:notificationId` | requireAuth | Update notification. |
-| GET | `/api/conformity/boms/:bomId/hierarchy` · `/cbom-audit` | **Public** | Component tree / crypto (PQC) audit. |
-| POST | `/api/conformity/boms/compare` | **Public** (demo-guarded) | Diff two BOMs. |
+| GET | `/api/conformity/boms/:bomId/hierarchy` · `/cbom-audit` | requireAuth | Component tree / crypto (PQC) audit. |
+| POST | `/api/conformity/boms/compare` | requireAuth (demo-guarded) | Diff two BOMs. |
 
 ## Workbench — flows, assistant, me, reports
 
@@ -220,7 +220,7 @@ All **requireAdmin** unless noted. Auth/session endpoints are public (they estab
 
 ## Product portfolio
 
-`productPortfolio.ts`, mounted at **`/api/portfolio`**. **As written, none of these routes carry `requireAuth`/`requireAdmin`** (see [Security notes](#security-notes)).
+`productPortfolio.ts`, mounted at **`/api/portfolio`**. Every route requires **`requireAuth`** + the demo read-only write-guard (part of the gated conformity workbench).
 
 | Method | Path | Description |
 |---|---|---|
@@ -234,8 +234,9 @@ All **requireAdmin** unless noted. Auth/session endpoints are public (they estab
 
 ## Security notes
 
-Surfaced by the endpoint audit (informational — these are pre-existing, not introduced by recent work; confirm intent with the team):
+The endpoint audit originally found unauthenticated workbench surfaces; these have been **closed** — the whole conformity application is now behind `requireAuth`:
 
-- **Unauthenticated conformity routes.** Several `/api/conformity/*` routes have **no `requireAuth`**: `GET /cra-analytics`, `POST /products/quick-start`, `GET /products/:id`(+`/revisions`), `PUT`/`DELETE /products/:id`, `POST /boms/compare`, `GET /boms/:bomId/hierarchy`, `GET /boms/:bomId/cbom-audit`. Writes are still subject to the demo read-only guard, but not to authentication.
-- **The entire `productPortfolio` router (`/api/portfolio/*`) is unauthenticated** as mounted — including bulk upload and customer CRUD. Worth flagging if that surface is meant to be admin-only.
-- The **auditor** routes authenticate by a workspace token in the request, not the cookie session — treat them as a distinct token-based surface.
+- **Conformity product routes** (`POST /products/quick-start`, `GET /products/:id` (+`/revisions`), `PUT`/`DELETE /products/:id`) and **BOM routes** (`POST /boms/compare`, `GET /boms/:bomId/hierarchy`, `GET /boms/:bomId/cbom-audit`) now require `requireAuth`, matching their siblings.
+- **The entire `productPortfolio` router (`/api/portfolio/*`)** now requires `requireAuth` and installs the demo read-only write-guard — bulk upload and customer CRUD are no longer public.
+- **Deliberately still public:** `GET /api/conformity/cra-analytics` (backs the public marketing dashboard), the read-only reference catalogue, and the `/api/conformity/public/*` CVD/trust-center endpoints.
+- The **auditor** routes authenticate by a workspace token in the request, not the cookie session — a distinct token-based surface.

@@ -17,8 +17,27 @@ import {
   type CustomerDeploymentRow,
   type ProductDocumentRow,
 } from "@workspace/db";
+import { requireAuth, getSession } from "../lib/adminAuth";
 
 export const productPortfolioRouter: IRouter = Router();
+
+// The product portfolio is part of the gated conformity workbench — only the
+// /conformity/ SPA calls /api/portfolio/*. Gate every route behind requireAuth
+// (admin, member, or the read-only demo role), matching the rest of the
+// conformity execution layer, and block demo writes when DEMO_READONLY=true.
+productPortfolioRouter.use((req, res, next): void => {
+  if (
+    req.method !== "GET" &&
+    req.method !== "HEAD" &&
+    req.method !== "OPTIONS" &&
+    getSession(req)?.role === "demo" &&
+    process.env["DEMO_READONLY"] === "true"
+  ) {
+    res.status(403).json({ error: "The demo workspace is read-only." });
+    return;
+  }
+  next();
+});
 
 // Demo Initializer / Seed Data Generator
 const DEMO_PRODUCTS = [
@@ -222,7 +241,7 @@ async function seedDatabaseIfEmpty() {
 }
 
 // 1. GET /api/portfolio/products - List all products with releases & customer deployments
-productPortfolioRouter.get("/products", async (req, res) => {
+productPortfolioRouter.get("/products", requireAuth, async (req, res) => {
   try {
     await seedDatabaseIfEmpty();
     let products: any[] = [];
@@ -303,7 +322,7 @@ productPortfolioRouter.get("/products", async (req, res) => {
 });
 
 // 2. GET /api/portfolio/customers - List enterprise customers with deployed products & flags
-productPortfolioRouter.get("/customers", async (req, res) => {
+productPortfolioRouter.get("/customers", requireAuth, async (req, res) => {
   try {
     await seedDatabaseIfEmpty();
     let customers: any[] = [];
@@ -354,7 +373,7 @@ productPortfolioRouter.get("/customers", async (req, res) => {
 });
 
 // 3. POST /api/portfolio/upload-bulk - Mass CSV / Markdown table bulk parser & upsert
-productPortfolioRouter.post("/upload-bulk", async (req, res) => {
+productPortfolioRouter.post("/upload-bulk", requireAuth, async (req, res) => {
   try {
     const { fileContent, fileType } = req.body;
     if (!fileContent || typeof fileContent !== "string") {
@@ -488,7 +507,7 @@ productPortfolioRouter.post("/upload-bulk", async (req, res) => {
 });
 
 // 4. PUT /api/portfolio/customers/:id - Update enterprise customer details & deployment
-productPortfolioRouter.put("/customers/:id", async (req, res) => {
+productPortfolioRouter.put("/customers/:id", requireAuth, async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
     const { orgName, contactName, contactTitle, contactEmail, region, cisaSector, deploymentId, productId, deployedVersion, quantity, isOutdatedVersion } = req.body;
@@ -547,7 +566,7 @@ productPortfolioRouter.put("/customers/:id", async (req, res) => {
 });
 
 // 5. POST /api/portfolio/customers - Create new customer and optional deployment
-productPortfolioRouter.post("/customers", async (req, res) => {
+productPortfolioRouter.post("/customers", requireAuth, async (req, res) => {
   try {
     const { orgName, contactName, contactTitle, contactEmail, region, cisaSector, productId, deployedVersion, quantity } = req.body;
 
@@ -599,7 +618,7 @@ productPortfolioRouter.post("/customers", async (req, res) => {
 });
 
 // 6. DELETE /api/portfolio/customers/:id - Delete customer and deployments
-productPortfolioRouter.delete("/customers/:id", async (req, res) => {
+productPortfolioRouter.delete("/customers/:id", requireAuth, async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
     await db.delete(customerDeploymentsTable).where(eq(customerDeploymentsTable.customerId, id));
@@ -611,7 +630,7 @@ productPortfolioRouter.delete("/customers/:id", async (req, res) => {
 });
 
 // 7. POST /api/portfolio/ai-parse-file - Prescriptive AI Parsing for raw text (MD, CSV, Excel text)
-productPortfolioRouter.post("/ai-parse-file", async (req, res) => {
+productPortfolioRouter.post("/ai-parse-file", requireAuth, async (req, res) => {
   try {
     const { rawText, fileName } = req.body;
     if (!rawText || typeof rawText !== "string") {
@@ -666,7 +685,7 @@ productPortfolioRouter.post("/ai-parse-file", async (req, res) => {
 });
 
 // 8. GET /api/portfolio/psirt-impact/:cveId - Returns impacted products and customer accounts
-productPortfolioRouter.get("/psirt-impact/:cveId", async (req, res) => {
+productPortfolioRouter.get("/psirt-impact/:cveId", requireAuth, async (req, res) => {
   try {
     const { cveId } = req.params;
     const products = await db.select().from(craProductsTable);
@@ -712,7 +731,7 @@ productPortfolioRouter.get("/psirt-impact/:cveId", async (req, res) => {
 // ============================================================================
 
 // 9. GET /api/portfolio/products/:id/documents - List paginated documents for a product
-productPortfolioRouter.get("/products/:id/documents", async (req, res) => {
+productPortfolioRouter.get("/products/:id/documents", requireAuth, async (req, res) => {
   try {
     const productId = parseInt(req.params.id, 10);
     const page = Math.max(1, parseInt(req.query.page as string, 10) || 1);
@@ -764,7 +783,7 @@ productPortfolioRouter.get("/products/:id/documents", async (req, res) => {
 });
 
 // 10. POST /api/portfolio/products/:id/documents - Upload & register product document with SHA-256 provenance
-productPortfolioRouter.post("/products/:id/documents", async (req, res) => {
+productPortfolioRouter.post("/products/:id/documents", requireAuth, async (req, res) => {
   try {
     const productId = parseInt(req.params.id, 10);
     const {
@@ -833,7 +852,7 @@ productPortfolioRouter.post("/products/:id/documents", async (req, res) => {
 });
 
 // 11. DELETE /api/portfolio/documents/:docId - Remove document record and file
-productPortfolioRouter.delete("/documents/:docId", async (req, res) => {
+productPortfolioRouter.delete("/documents/:docId", requireAuth, async (req, res) => {
   try {
     const docId = parseInt(req.params.docId, 10);
     const [existing] = await db
@@ -867,7 +886,7 @@ productPortfolioRouter.delete("/documents/:docId", async (req, res) => {
 });
 
 // 12. GET /api/portfolio/documents/:docId/download - Stream/download file attachment
-productPortfolioRouter.get("/documents/:docId/download", async (req, res) => {
+productPortfolioRouter.get("/documents/:docId/download", requireAuth, async (req, res) => {
   try {
     const docId = parseInt(req.params.docId, 10);
     const [existing] = await db
