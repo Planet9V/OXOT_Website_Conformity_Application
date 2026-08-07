@@ -3,6 +3,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
 import { useEffect } from 'react';
+import { MotionConfig } from 'framer-motion';
 import { stripLocalePrefix } from '@/providers/locale-routing';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { LocaleProvider } from '@/providers/locale-provider';
@@ -285,18 +286,23 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="dark" storageKey="oxot-theme">
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <LocaleProvider>
-            <CookieConsentProvider>
-              <TooltipProvider>
-                <Router />
-                <Toaster />
-              </TooltipProvider>
-            </CookieConsentProvider>
-          </LocaleProvider>
-        </WouterRouter>
-      </ThemeProvider>
+      {/* reducedMotion="user" makes every framer-motion component (existing
+          and future) automatically honor the OS prefers-reduced-motion
+          setting, with zero per-component changes. */}
+      <MotionConfig reducedMotion="user">
+        <ThemeProvider defaultTheme="dark" storageKey="oxot-theme">
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <LocaleProvider>
+              <CookieConsentProvider>
+                <TooltipProvider>
+                  <Router />
+                  <Toaster />
+                </TooltipProvider>
+              </CookieConsentProvider>
+            </LocaleProvider>
+          </WouterRouter>
+        </ThemeProvider>
+      </MotionConfig>
     </QueryClientProvider>
   );
 }
