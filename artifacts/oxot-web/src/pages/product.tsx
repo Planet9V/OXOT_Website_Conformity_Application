@@ -109,7 +109,7 @@ export default function ProductPage() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {JOURNEY.map(([step, body], i) => (
             <div key={step} className="rounded-xl border border-border bg-card p-5">
-              <span className="font-mono text-xs text-primary">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-xs text-primary-ink">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-1 font-display text-base font-normal tracking-tight text-foreground">{step}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{body}</p>
             </div>

@@ -420,7 +420,7 @@ export function CraSelfCheck({
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.body}</p>
           <p className="mt-3 text-sm font-medium text-foreground">{r.route}</p>
           <div className="mt-3 rounded-lg border border-border bg-background p-3 text-sm">
-            <span className="font-semibold text-primary">{copy.nowLabel}: </span>
+            <span className="font-semibold text-primary-ink">{copy.nowLabel}: </span>
             <span className="text-foreground">{copy.nowActions[result.nowActionKey]}</span>
           </div>
         </div>
@@ -454,7 +454,7 @@ export function CraSelfCheck({
                         href={closure.href}
                         className="mt-2 ml-3.5 block rounded-lg border border-border bg-background p-3 text-xs leading-relaxed transition-colors hover:border-primary hover:bg-primary/5"
                       >
-                        <span className="font-semibold text-primary">{closure.title}</span>
+                        <span className="font-semibold text-primary-ink">{closure.title}</span>
                         <span className="mt-1 block text-muted-foreground">{closure.body}</span>
                       </a>
                     )}
@@ -579,7 +579,7 @@ export function CraSelfCheck({
         <span className="font-medium text-muted-foreground">
           {copy.progress.replace("{n}", String(step + 1)).replace("{total}", String(total))}
         </span>
-        <span className="text-primary">{copy.encouragement[Math.min(step, copy.encouragement.length - 1)]}</span>
+        <span className="text-primary-ink">{copy.encouragement[Math.min(step, copy.encouragement.length - 1)]}</span>
       </div>
       <div className="mb-4 h-1.5 w-full overflow-hidden rounded-full bg-muted">
         <div className="h-full rounded-full bg-primary transition-all duration-300" style={{ width: `${pct}%` }} />
@@ -682,7 +682,7 @@ export function CraSelfCheck({
       {qd.type !== "multi" && selectedOpt?.insight && (
         <div className="mt-3 flex items-start gap-2 rounded-lg border border-primary/30 bg-primary/5 p-3 text-xs leading-relaxed text-foreground">
           <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-          <span><span className="font-semibold text-primary">{copy.insightLabel}: </span>{selectedOpt.insight}</span>
+          <span><span className="font-semibold text-primary-ink">{copy.insightLabel}: </span>{selectedOpt.insight}</span>
         </div>
       )}
 

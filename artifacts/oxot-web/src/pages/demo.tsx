@@ -95,7 +95,7 @@ export default function DemoPage() {
           </ul>
           <p className="mt-6 text-sm text-muted-foreground">
             Prefer to scope yourself first? Take the{' '}
-            <a href="/cra-check" className="font-medium text-primary hover:underline">
+            <a href="/cra-check" className="font-medium text-primary-ink hover:underline">
               2-minute readiness check
             </a>{' '}
             and bring the result to the call.
@@ -115,7 +115,7 @@ export default function DemoPage() {
               </p>
               <a
                 href="/cra-check"
-                className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary-ink hover:underline"
               >
                 Take the 2-minute check <ArrowRight className="h-4 w-4" />
               </a>

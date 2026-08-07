@@ -62,7 +62,7 @@ Raise the public CRA funnel website to a verified **A- minimum in 8 categories**
 - JSON-LD: add `Organization` (site-wide, e.g. in `PublicLayout` or `home.tsx`) and `SoftwareApplication`/`Product` on `/product`.
 - **Verify:** `curl /api/seo/sitemap.xml` lists all 7 routes; each page's `<head>` has OG + canonical; JSON-LD passes a schema validator.
 
-### Phase 7 — Verify & re-grade (gate) — status: pending
+### Phase 7 — Verify & re-grade (gate) — status: complete — GATE MET (8/8 at A-, Content at A). See progress.md.
 - Docker rebuild `web` (+ `api` if seo.ts changed); bring up stack.
 - Run the **A- acceptance matrix** above end-to-end (curl matrix + axe + sitemap + wizard e2e + Chrome spot-check of all 7 pages incl. 375px).
 - Re-grade all 8 categories against the rubric; record in `findings.md`. Gate: **≥8 at A-** or iterate.

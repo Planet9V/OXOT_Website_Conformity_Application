@@ -149,7 +149,7 @@ export default function CraHomePage() {
                 One record, every regulation
               </h2>
             </div>
-            <Link href="/product" className="text-sm font-medium text-primary hover:underline">
+            <Link href="/product" className="text-sm font-medium text-primary-ink hover:underline">
               Explore the six modules →
             </Link>
           </div>
@@ -180,7 +180,7 @@ export default function CraHomePage() {
             Run it in a secure datacenter, or on your own premises with a local AI model — your evidence never
             leaves your control.
           </p>
-          <Link href="/deployment" className="mt-5 inline-block text-sm font-medium text-primary hover:underline">
+          <Link href="/deployment" className="mt-5 inline-block text-sm font-medium text-primary-ink hover:underline">
             See the deployment options →
           </Link>
         </div>
