@@ -274,7 +274,7 @@ export default function ProductDetail() {
                 : "Active CRA Conformity Execution Workbench"}
             </h3>
             <p className="text-xs text-muted-foreground font-sans leading-relaxed">
-              Step through the guided 4-stage wizard: Scope Determination $\rightarrow$ Standards Route Selection $\rightarrow$ xBOM Vulnerability Analysis $\rightarrow$ Statutory Declaration of Conformity.
+              Step through the guided 4-stage wizard: Scope Determination → Standards Route Selection → xBOM Vulnerability Analysis → Statutory Declaration of Conformity.
             </p>
           </div>
 

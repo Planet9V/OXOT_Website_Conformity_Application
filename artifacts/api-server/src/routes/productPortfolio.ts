@@ -6,6 +6,7 @@ import path from "path";
 import {
   db,
   conformityProductsTable,
+  conformityAssessmentsTable,
   craProductsTable,
   productReleasesTable,
   enterpriseCustomersTable,
@@ -249,9 +250,19 @@ productPortfolioRouter.get("/products", requireAuth, async (req, res) => {
     let releases: any[] = [];
     let deployments: any[] = [];
     let customers: any[] = [];
+    let assessments: any[] = [];
 
     try { products = await db.select().from(craProductsTable).orderBy(desc(craProductsTable.id)); } catch (e) { console.error("Error selecting craProductsTable:", e); }
     try { userProducts = await db.select().from(conformityProductsTable).orderBy(desc(conformityProductsTable.id)); } catch (e) { console.error("Error selecting conformityProductsTable:", e); }
+    try { assessments = await db.select().from(conformityAssessmentsTable); } catch (e) { console.error("Error selecting conformityAssessmentsTable:", e); }
+
+    // The first (earliest) assessment for a given conformity product id, or null.
+    const assessmentFor = (conformityProductId: number): number | null => {
+      const match = assessments
+        .filter((a) => a.productId === conformityProductId)
+        .sort((a, b) => a.id - b.id)[0];
+      return match ? match.id : null;
+    };
     try { releases = await db.select().from(productReleasesTable); } catch (e) { console.error("Error selecting productReleasesTable:", e); }
     try { deployments = await db.select().from(customerDeploymentsTable); } catch (e) { console.error("Error selecting customerDeploymentsTable:", e); }
     try { customers = await db.select().from(enterpriseCustomersTable); } catch (e) { console.error("Error selecting enterpriseCustomersTable:", e); }
@@ -260,6 +271,7 @@ productPortfolioRouter.get("/products", requireAuth, async (req, res) => {
       return {
         id: 10000 + u.id,
         userProductId: u.id,
+        assessmentId: assessmentFor(u.id),
         sku: `SKU-CRA-USER-${u.id}`,
         name: u.name,
         category: u.productType === "hardware" ? "Hardware & Embedded" : u.productType === "hardware_with_software" ? "Industrial Gateway" : "Software System",
@@ -302,12 +314,18 @@ productPortfolioRouter.get("/products", requireAuth, async (req, res) => {
           };
         });
 
-      // Match against conformityProductsTable row by ID or name
-      const matchingUserProd = userProducts.find(u => u.name === prod.name || u.id === prod.id);
+      // Link a catalog product to a real conformity product ONLY by exact name.
+      // (Do NOT match by id — a catalog id and a conformity-product id are
+      // unrelated; matching them navigated to foreign/nonexistent assessments.)
+      const matchingUserProd = userProducts.find((u) => u.name === prod.name);
+      const conformityProductId = matchingUserProd?.id ?? null;
 
       return {
         ...prod,
-        userProductId: matchingUserProd?.id || prod.id,
+        // null when this catalog item has no backing conformity record — the UI
+        // then offers to start an assessment instead of opening a bogus id.
+        userProductId: conformityProductId,
+        assessmentId: conformityProductId ? assessmentFor(conformityProductId) : null,
         releases: prodReleases,
         deployments: prodDeployments,
         totalDeployedQuantity: prodDeployments.reduce((sum, d) => sum + d.quantity, 0),

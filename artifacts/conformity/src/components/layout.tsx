@@ -177,7 +177,7 @@ function navLinkClass(active: boolean) {
   return cn(
     "relative inline-flex items-center gap-1.5 h-9 px-3 text-sm font-medium rounded-md transition-colors",
     active
-      ? "text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:rounded-full after:bg-primary"
+      ? "text-primary-ink after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:rounded-full after:bg-primary"
       : "text-muted-foreground hover:text-foreground",
   );
 }
@@ -356,7 +356,7 @@ function MobileSession({ onNavigate }: { onNavigate: () => void }) {
 function mobileItemClass(active: boolean) {
   return cn(
     "flex items-center gap-3 px-5 py-3 text-sm font-medium transition-colors",
-    active ? "text-primary bg-primary/5" : "text-foreground hover:bg-muted/50",
+    active ? "text-primary-ink bg-primary/5" : "text-foreground hover:bg-muted/50",
   );
 }
 

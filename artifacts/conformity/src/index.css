@@ -114,7 +114,7 @@
   --primary: 28 90% 55%;
   /* AA-contrast orange for small text on light surfaces (OXOT styleguide §2.3) */
   --primary-ink: 28 100% 33%;
-  --primary-foreground: 0 0% 100%;
+  --primary-foreground: 210 50% 12%;
 
   /* Steel blue */
   --secondary: 215 30% 40%;
@@ -203,7 +203,7 @@
   --primary: 28 90% 55%;
   /* Lighter orange for small text on dark surfaces (OXOT styleguide §2.3) */
   --primary-ink: 28 100% 62%;
-  --primary-foreground: 0 0% 100%;
+  --primary-foreground: 210 50% 12%;
 
   --secondary: 215 30% 45%;
   --secondary-foreground: 0 0% 100%;
@@ -354,7 +354,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: hsl(var(--primary));
+  color: hsl(var(--primary-ink));
 }
 .cta-lift {
   transition:

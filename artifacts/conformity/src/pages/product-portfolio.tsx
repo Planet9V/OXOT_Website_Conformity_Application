@@ -109,7 +109,8 @@ interface ProductItem {
   totalDeployedQuantity: number;
   outdatedDeploymentsCount: number;
   isUserCreated?: boolean;
-  userProductId?: number;
+  userProductId?: number | null;
+  assessmentId?: number | null;
 }
 
 interface CustomerItem {
@@ -141,6 +142,50 @@ interface CustomerItem {
 
 export function ProductPortfolioPage() {
   const [, setLocation] = useLocation();
+
+  // Resolve where a portfolio card should go. A catalog product may have a real
+  // linked conformity assessment (assessmentId) or product (userProductId); if
+  // it has neither, we START one via quick-start rather than navigating to a
+  // bogus id (the old `prod.id || 1` fallback caused "Assessment not found").
+  const mapClassification = (craClass?: string) =>
+    craClass && craClass.includes("II") ? "important_class_2" : "important_class_1";
+  const mapProductType = (category?: string) =>
+    category?.toLowerCase().includes("hardware") ? "hardware_with_software" : "industrial_device";
+
+  async function createConformityFor(prod: ProductItem): Promise<{ assessmentId?: number; productId?: number } | null> {
+    try {
+      const res = await fetch("/api/conformity/products/quick-start", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          name: prod.name,
+          productType: mapProductType(prod.category),
+          description: prod.description,
+          classification: mapClassification(prod.craClass),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) return { assessmentId: data.assessmentId, productId: data.productId };
+    } catch {
+      /* fall through to no-op below */
+    }
+    return null;
+  }
+
+  async function openWorkspace(prod: ProductItem) {
+    if (prod.assessmentId) return setLocation(`/assessments/${prod.assessmentId}`);
+    if (prod.userProductId) return setLocation(`/products/${prod.userProductId}`);
+    const created = await createConformityFor(prod);
+    if (created?.assessmentId) setLocation(`/assessments/${created.assessmentId}`);
+    else if (created?.productId) setLocation(`/products/${created.productId}`);
+  }
+
+  async function openDossier(prod: ProductItem) {
+    if (prod.userProductId) return setLocation(`/products/${prod.userProductId}`);
+    const created = await createConformityFor(prod);
+    if (created?.productId) setLocation(`/products/${created.productId}`);
+  }
   const [activeTab, setActiveTab] = useState<"products" | "customers" | "psirt-triage" | "import">("products");
   const [displayMode, setDisplayMode] = useState<"cards" | "table">("cards");
   const [products, setProducts] = useState<ProductItem[]>([]);
@@ -752,7 +797,7 @@ export function ProductPortfolioPage() {
                         type="button"
                         variant="outline"
                         size="sm"
-                        onClick={() => setLocation(`/products/${prod.userProductId || prod.id || 1}`)}
+                        onClick={() => openDossier(prod)}
                         className="text-xs font-bold gap-1.5 border-border hover:bg-muted"
                       >
                         <Pencil className="h-3.5 w-3.5 text-primary" /> View Product Dossier &amp; Edit
@@ -762,7 +807,7 @@ export function ProductPortfolioPage() {
                         type="button"
                         variant="default"
                         size="sm"
-                        onClick={() => setLocation(`/assessments/${prod.userProductId || prod.id || 1}`)}
+                        onClick={() => openWorkspace(prod)}
                         className="text-xs font-bold gap-1.5 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm cta-lift"
                       >
                         <Zap className="h-3.5 w-3.5" /> Open Assessment Workspace →
@@ -845,7 +890,7 @@ export function ProductPortfolioPage() {
                             type="button"
                             variant="default"
                             size="sm"
-                            onClick={() => setLocation(`/assessments/${prod.userProductId || prod.id || 1}`)}
+                            onClick={() => openWorkspace(prod)}
                             className="h-8 text-xs font-bold gap-1 bg-primary text-primary-foreground hover:bg-primary/90"
                           >
                             <Zap className="h-3 w-3" /> Assessment Workspace →
