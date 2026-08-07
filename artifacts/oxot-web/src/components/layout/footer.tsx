@@ -5,22 +5,53 @@ import { NewsletterSignup } from '@/components/newsletter-signup';
 import { SocialFeed } from '@/components/social-feed';
 import { useCookieConsentSettings } from '@/components/cookie-consent';
 
+// Localised footer chrome (nl-NL professional register). Machine-assisted —
+// flag Dutch strings for a native reviewer before go-live.
+const copy = {
+  en: {
+    nav: ['Platform', 'Pricing', 'Deployment', 'Resources', '2-minute check', 'Book a demo'],
+    homeAria: 'OXOT — home',
+    tagline: 'Operational eXcellence in Operational Technology.',
+    newsletter: 'Newsletter',
+    navigation: 'Navigation',
+    connect: 'Connect',
+    followUs: 'Follow us on social media.',
+    rights: 'All rights reserved.',
+    privacy: 'Privacy',
+    terms: 'Terms',
+  },
+  nl: {
+    nav: ['Platform', 'Prijzen', 'Implementatie', 'Bronnen', '2-minutencheck', 'Demo aanvragen'],
+    homeAria: 'OXOT — startpagina',
+    tagline: 'Operational eXcellence in Operational Technology.',
+    newsletter: 'Nieuwsbrief',
+    navigation: 'Navigatie',
+    connect: 'Volg ons',
+    followUs: 'Volg ons op social media.',
+    rights: 'Alle rechten voorbehouden.',
+    privacy: 'Privacy',
+    terms: 'Voorwaarden',
+  },
+} as const;
+
 export function Footer() {
   const { locale } = useLocale();
+  const t = copy[locale];
   const { openSettings, cookieSettingsLabel } = useCookieConsentSettings();
-  
+
   const { data: settings } = useGetSiteSettings(locale, {
     query: { queryKey: getGetSiteSettingsQueryKey(locale) }
   });
 
   // Static funnel footer nav — matches the header; no CMS dependency (durable).
+  // Labels come from the locale copy above (indexed), hrefs stay code.
   const footerNav = [
-    { id: 'platform', label: 'Platform', href: '/product', external: false },
-    { id: 'pricing', label: 'Pricing', href: '/pricing', external: false },
-    { id: 'deployment', label: 'Deployment', href: '/deployment', external: false },
-    { id: 'resources', label: 'Resources', href: '/resources', external: false },
-    { id: 'cra-check', label: '2-minute check', href: '/cra-check', external: false },
-    { id: 'demo', label: 'Book a demo', href: '/demo', external: false },
+    { id: 'platform', href: '/product', external: false },
+    { id: 'pricing', href: '/pricing', external: false },
+    { id: 'deployment', href: '/deployment', external: false },
+    { id: 'resources', href: '/resources', external: false },
+    { id: 'cra-check', href: '/cra-check', external: false },
+    { id: 'demo', href: '/demo', external: false },
   ];
 
   const socialLinks = settings?.socialLinks ?? [];
@@ -35,7 +66,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2 space-y-4">
             <Link
               href="/"
-              aria-label="OXOT — home"
+              aria-label={t.homeAria}
               className="inline-flex select-none font-sans text-lg font-semibold tracking-[0.3em] text-foreground no-underline"
             >
               {(settings?.siteName || 'OXOT').toUpperCase() === 'OXOT' ? (
@@ -45,7 +76,7 @@ export function Footer() {
               )}
             </Link>
             <p className="text-muted-foreground text-sm max-w-sm">
-              {settings?.description || 'Operational eXcellence in Operational Technology.'}
+              {settings?.description || t.tagline}
             </p>
             {settings?.contactEmail && (
               <a href={`mailto:${settings.contactEmail}`} className="text-sm font-medium hover:text-primary transition-colors block">
@@ -53,23 +84,23 @@ export function Footer() {
               </a>
             )}
             <div className="pt-2">
-              <h4 className="font-display font-semibold mb-2 text-sm">Newsletter</h4>
+              <h4 className="font-display font-semibold mb-2 text-sm">{t.newsletter}</h4>
               <NewsletterSignup source="footer" />
             </div>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display font-semibold">Navigation</h4>
+            <h4 className="font-display font-semibold">{t.navigation}</h4>
             <ul className="space-y-2">
-              {footerNav.map((item) => (
+              {footerNav.map((item, i) => (
                 <li key={item.id}>
                   {item.external ? (
                     <a href={item.href} target="_blank" rel="noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      {item.label}
+                      {t.nav[i]}
                     </a>
                   ) : (
                     <Link href={item.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      {item.label}
+                      {t.nav[i]}
                     </Link>
                   )}
                 </li>
@@ -78,7 +109,7 @@ export function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display font-semibold">Connect</h4>
+            <h4 className="font-display font-semibold">{t.connect}</h4>
             {settings?.socialLinks && settings.socialLinks.length > 0 ? (
               <ul className="space-y-2">
                 {settings.socialLinks.map((social) => (
@@ -90,7 +121,7 @@ export function Footer() {
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-muted-foreground">Follow us on social media.</p>
+              <p className="text-sm text-muted-foreground">{t.followUs}</p>
             )}
           </div>
           
@@ -98,11 +129,11 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            {settings?.footerText || `© ${new Date().getFullYear()} OXOT. All rights reserved.`}
+            {settings?.footerText || `© ${new Date().getFullYear()} OXOT. ${t.rights}`}
           </p>
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-foreground transition-colors">{t.privacy}</Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors">{t.terms}</Link>
             <button
               type="button"
               onClick={openSettings}

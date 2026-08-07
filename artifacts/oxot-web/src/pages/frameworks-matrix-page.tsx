@@ -6,12 +6,64 @@ import { useGetMappingMatrix } from '@workspace/api-client-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useSeo } from '@/hooks/use-seo';
 import { regBgStyle, regColor } from '@/lib/reg-colors';
+import { useLocale } from '@/providers/locale-provider';
+
+// Localised static chrome (nl-NL professional register, "u"). Machine-assisted —
+// flag Dutch strings for a native reviewer before go-live. All matrix content
+// (theme names/descriptions, regulation names/short names, requirement counts) is
+// API-sourced via useGetMappingMatrix and is NOT translated here.
+const copy = {
+  en: {
+    seoTitle: 'Control Matrix — OXOT Frameworks',
+    seoDescription:
+      'Cross-regulation requirements matrix showing how EU cybersecurity obligations map across control themes — CRA, NIS2, AI Act, Machinery, IEC 62443 and more.',
+    breadcrumb: 'Frameworks',
+    badge: 'Cross-regulation view',
+    title: 'Control requirements matrix',
+    intro:
+      'Each row is a cross-cutting control theme; each column is a regulation or standard. The number in each cell is the count of requirements that cover that theme.',
+    filterTheme: 'Filter theme:',
+    all: 'All',
+    unableToLoad: 'Unable to load matrix data.',
+    controlTheme: 'Control theme',
+    legendInfo: 'Numbers show how many requirements that regulation has for that control theme.',
+    exploreTitle: 'Explore individual frameworks',
+    reqsAbbrev: 'reqs',
+    backToAll: 'Back to all frameworks',
+    // themeName / regName are API-sourced and passed through unchanged.
+    cellTitle: (count: number, themeName: string, regName: string) =>
+      `${count} requirement${count !== 1 ? 's' : ''} for ${themeName} in ${regName}`,
+  },
+  nl: {
+    seoTitle: 'Matrix van beheersmaatregelen — OXOT Raamwerken',
+    seoDescription:
+      'Matrix met vereisten over meerdere verordeningen die laat zien hoe EU-cyberbeveiligingsverplichtingen aansluiten op thema’s van beheersmaatregelen — CRA, NIS2, AI Act, Machinery, IEC 62443 en meer.',
+    breadcrumb: 'Raamwerken',
+    badge: 'Weergave over meerdere verordeningen',
+    title: 'Matrix van beheersmaatregelen',
+    intro:
+      'Elke rij is een overkoepelend thema van beheersmaatregelen; elke kolom is een verordening of norm. Het getal in elke cel is het aantal vereisten dat dat thema bestrijkt.',
+    filterTheme: 'Filter op thema:',
+    all: 'Alle',
+    unableToLoad: 'Kan de matrixgegevens niet laden.',
+    controlTheme: 'Thema van beheersmaatregelen',
+    legendInfo: 'De getallen tonen hoeveel vereisten die verordening heeft voor dat thema van beheersmaatregelen.',
+    exploreTitle: 'Verken afzonderlijke raamwerken',
+    reqsAbbrev: 'vereisten',
+    backToAll: 'Terug naar alle raamwerken',
+    // themeName / regName are API-sourced and passed through unchanged.
+    cellTitle: (count: number, themeName: string, regName: string) =>
+      `${count} ${count !== 1 ? 'vereisten' : 'vereiste'} voor ${themeName} in ${regName}`,
+  },
+} as const;
 
 export default function FrameworksMatrixPage() {
+  const { locale } = useLocale();
+  const t = copy[locale];
+
   useSeo({
-    title: 'Control Matrix — OXOT Frameworks',
-    description:
-      'Cross-regulation requirements matrix showing how EU cybersecurity obligations map across control themes — CRA, NIS2, AI Act, Machinery, IEC 62443 and more.',
+    title: t.seoTitle,
+    description: t.seoDescription,
   });
 
   const { data: matrix, isLoading } = useGetMappingMatrix();
@@ -47,7 +99,7 @@ export default function FrameworksMatrixPage() {
             className="flex items-center gap-2 text-sm text-muted-foreground mb-8"
           >
             <Link href="/frameworks" className="hover:text-foreground transition-colors flex items-center gap-1">
-              <ArrowLeft className="w-4 h-4" /> Frameworks
+              <ArrowLeft className="w-4 h-4" /> {t.breadcrumb}
             </Link>
           </motion.nav>
 
@@ -57,7 +109,7 @@ export default function FrameworksMatrixPage() {
               animate={{ opacity: 1, y: 0 }}
               className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-5"
             >
-              Cross-regulation view
+              {t.badge}
             </motion.span>
 
             <motion.h1
@@ -66,7 +118,7 @@ export default function FrameworksMatrixPage() {
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight text-foreground mb-4"
             >
-              Control requirements matrix
+              {t.title}
             </motion.h1>
 
             <motion.p
@@ -75,8 +127,7 @@ export default function FrameworksMatrixPage() {
               transition={{ delay: 0.15 }}
               className="text-base md:text-lg text-muted-foreground leading-relaxed"
             >
-              Each row is a cross-cutting control theme; each column is a regulation or standard.
-              The number in each cell is the count of requirements that cover that theme.
+              {t.intro}
             </motion.p>
           </div>
         </div>
@@ -87,7 +138,7 @@ export default function FrameworksMatrixPage() {
         <div className="sticky top-16 z-20 bg-background/90 backdrop-blur border-b border-border/40 py-3">
           <div className="container mx-auto px-4 md:px-8">
             <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-              <span className="text-xs text-muted-foreground font-medium shrink-0">Filter theme:</span>
+              <span className="text-xs text-muted-foreground font-medium shrink-0">{t.filterTheme}</span>
               <button
                 onClick={() => setSelectedTheme(null)}
                 className={`shrink-0 text-xs px-3 py-1 rounded-full border transition-all ${
@@ -96,7 +147,7 @@ export default function FrameworksMatrixPage() {
                     : 'border-border/60 text-muted-foreground hover:border-primary/40 hover:text-foreground'
                 }`}
               >
-                All
+                {t.all}
               </button>
               {matrix.themes.map((t) => (
                 <button
@@ -128,7 +179,7 @@ export default function FrameworksMatrixPage() {
             </div>
           ) : !matrix ? (
             <div className="text-center py-16 text-muted-foreground">
-              Unable to load matrix data.
+              {t.unableToLoad}
             </div>
           ) : (
             <div className="overflow-x-auto rounded-2xl border border-border/50 shadow-sm">
@@ -137,7 +188,7 @@ export default function FrameworksMatrixPage() {
                 <thead>
                   <tr className="bg-muted/40">
                     <th className="text-left p-4 font-semibold text-foreground text-sm border-b border-border/50 w-48 min-w-[12rem]">
-                      Control theme
+                      {t.controlTheme}
                     </th>
                     {regulations.map((reg) => (
                       <th
@@ -201,7 +252,7 @@ export default function FrameworksMatrixPage() {
                                     color: `hsl(${regColor(reg.key)})`,
                                     boxShadow: isHovered ? `0 0 0 2px hsl(${regColor(reg.key)} / 0.4)` : undefined,
                                   }}
-                                  title={`${count} requirement${count !== 1 ? 's' : ''} for ${theme.name} in ${reg.name}`}
+                                  title={t.cellTitle(count, theme.name, reg.name)}
                                 >
                                   {count}
                                 </div>
@@ -231,7 +282,7 @@ export default function FrameworksMatrixPage() {
             >
               <div className="flex items-center gap-2">
                 <Info className="w-3.5 h-3.5" />
-                Numbers show how many requirements that regulation has for that control theme.
+                {t.legendInfo}
               </div>
               <div className="flex items-center gap-4">
                 {regulations.slice(0, 6).map((reg) => (
@@ -253,7 +304,7 @@ export default function FrameworksMatrixPage() {
       {!isLoading && matrix && (
         <section className="py-12 border-t border-border/40">
           <div className="container mx-auto px-4 md:px-8">
-            <h2 className="text-xl font-display font-semibold mb-6">Explore individual frameworks</h2>
+            <h2 className="text-xl font-display font-semibold mb-6">{t.exploreTitle}</h2>
             <div className="flex flex-wrap gap-3">
               {regulations.map((reg) => (
                 <Link key={reg.key} href={`/frameworks/${reg.key}`}>
@@ -271,7 +322,7 @@ export default function FrameworksMatrixPage() {
                     />
                     {reg.name}
                     <span className="text-xs opacity-70">
-                      {reg.requirementCount} reqs
+                      {reg.requirementCount} {t.reqsAbbrev}
                     </span>
                   </span>
                 </Link>
@@ -288,7 +339,7 @@ export default function FrameworksMatrixPage() {
             href="/frameworks"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> Back to all frameworks
+            <ArrowLeft className="w-4 h-4" /> {t.backToAll}
           </Link>
         </div>
       </div>

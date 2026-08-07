@@ -1,0 +1,288 @@
+{
+  "title": "CRA-classificatie zelfcheck",
+  "intro": "Zes vragen, ongeveer twee minuten. U ontvangt een indicatieve CRA-classificatie, uw route naar de CE-markering, uw specifieke tekortkomingen en een gereedheidsscore — gefundeerd op de verordening, niet op een verkooppraatje. Dien het vervolgens in bij OXOT voor een menselijke beoordeling en een gesprek.",
+  "disclaimer": "Dit is een indicatieve lezing, geen juridische vaststelling. OXOT bevestigt uw classificatie samen met u tijdens de intake. Gefundeerd op Verordening (EU) 2024/2847 (de Cyber Resilience Act) en Uitvoeringsverordening (EU) 2025/2392 van de Commissie, die de technische reikwijdte vastlegt van belangrijke (Bijlage III) en kritieke (Bijlage IV) producten.",
+  "scarcityNote": "Realiteit in 2026: nul aangemelde instanties · zelfbeoordeling voor Klasse I vereist geharmoniseerde normen of gemeenschappelijke specificaties (nog geen; ~Q2 2027) · aanwijzing duurt 12–18 maanden. De wachtrij vormt zich voordat de deuren opengaan.",
+  "progress": "Vraag {n} van {total}",
+  "continue": "Doorgaan",
+  "insightLabel": "Wat dit betekent",
+  "deadlineLabel": "dagen tot 11 dec 2027",
+  "nav": { "back": "Terug", "restart": "Opnieuw beginnen", "seeResult": "Bekijk mijn resultaat", "selectAll": "Selecteer alles wat van toepassing is" },
+  "encouragement": ["Laten we beginnen.", "Goed.", "Halverwege.", "Bijna klaar.", "Nog eentje na deze.", "Laatste vraag."],
+  "questions": [
+    {
+      "id": "position", "type": "single", "label": "Wat beschrijft u het beste?",
+      "options": [
+        { "value": "manufacturer", "label": "Productfabrikant", "insight": "Als fabrikant draagt u het volledige gewicht van de CRA — het technische dossier van Bijlage VII, de CE-markering, en vanaf 11 sep 2026 een vroege waarschuwing binnen 24 uur voor actief misbruikte kwetsbaarheden." },
+        { "value": "oem", "label": "OEM — meerdere productgroepen", "insight": "De rekensom van het portfolio is meedogenloos: bij 16–24 weken per typeonderzoek per product past een grote catalogus niet vóór 11 dec 2027. Module H (één geauditeerd kwaliteitsmanagementsysteem) is doorgaans de enige begaanbare weg — en het opzetten daarvan duurt 8–14 maanden." },
+        { "value": "integrator", "label": "Integrator / systeemintegrator", "insight": "Let op Artikel 22: een substantiële wijziging — uw eigen firmware, gewijzigde beveiligingseigenschappen — maakt ÚW de fabrikant van het gewijzigde product. Configureren mag; bouwen niet. De meeste integrators kunnen nog niet zeggen aan welke kant van die lijn hun projecten vallen." },
+        { "value": "reseller", "label": "Distributeur / wederverkoper", "insight": "Vanaf 11 dec 2027 mag u alleen nog CRA-conforme producten aanbieden, en u moet de CE-markering en de conformiteitsverklaring op elk product verifiëren. Voorziet u een productlijn van uw eigen merk, dan maakt Artikel 21 u de fabrikant ervan — inclusief het volledige technische dossier." },
+        { "value": "operator", "label": "Eigenaar / operator (inkoop)", "insight": "Uw praktische CRA-blootstelling is niet uw eigen naleving — het is die van uw leveranciers. NIS2 vraagt uw omgeving al om state-of-the-art; de CRA legt de lat hoger voor elk product dat erin komt. 2026 is het jaar om leveranciers te testen, terwijl u nog kunt overstappen." }
+      ]
+    },
+    {
+      "id": "hasDigital", "type": "single", "label": "Bevat uw product software, of maakt het verbinding met een netwerk of een ander apparaat?",
+      "options": [
+        { "value": "yes", "label": "Ja", "insight": "Dan valt u binnen de reikwijdte. De CRA dekt alle 'producten met digitale elementen' — alles met software of een directe of indirecte logische/fysieke verbinding met een apparaat of netwerk." },
+        { "value": "no", "label": "Nee", "insight": "U valt mogelijk buiten de reikwijdte — de CRA dekt producten met digitale elementen. Maar 'waarschijnlijk erbuiten' is niet 'zeker erbuiten', en een verkeerde inschatting hier is kostbaar; bevestig het." },
+        { "value": "unsure", "label": "Niet zeker", "insight": "Als het enige software of connectiviteit heeft, ga er dan van uit dat het binnen de reikwijdte valt totdat het tegendeel is bewezen — de definitie is bewust ruim, en reikt tot componenten, niet alleen tot eindproducten." }
+      ]
+    },
+    {
+      "id": "category", "type": "single", "label": "Wat komt het dichtst bij uw product?",
+      "options": [
+        { "value": "default", "label": "Een algemeen product met digitale elementen (bijv. een verbonden sensor of apparaat)", "insight": "Standaardproducten beoordelen zichzelf (Module A) — maar 'zelfbeoordeling' betekent nog steeds een volledig technisch dossier volgens Bijlage VII, een SBOM en een proces voor het afhandelen van kwetsbaarheden, alle auditklaar tegen de deadline." },
+        { "value": "classI", "label": "Een beveiligingsrelevante functie (wachtwoord-/identiteitsbeheerder, VPN, firewall, netwerkbeheer, SIEM, bootmanager)", "insight": "Klasse I mag zichzelf alleen beoordelen aan de hand van geharmoniseerde normen of gemeenschappelijke specificaties (Art. 32(2)) — en die bestaan nog geen van beide (verwacht ~Q2 2027). Totdat er één beschikbaar is, is de zelfroute gesloten; het alternatief loopt via een aangemelde instantie, waarvan er vandaag nul zijn aangewezen." },
+        { "value": "classII", "label": "Een essentiële beveiligings- of OT-component (HSM, secure element, industriële firewall, PLC/RTU/DCS, safety controller, gateway voor slimme meters)", "insight": "Klasse II vereist zonder meer beoordeling door derden — Module B+C of een volledig kwaliteitsmanagementsysteem volgens Module H. Er is geen route voor zelfbeoordeling, en capaciteit — niet inspanning — is de beperkende factor." },
+        { "value": "critical", "label": "Een kritieke component (slimme meter, smartcard, hardwareapparaat met een security box, gebruikt door essentiële entiteiten)", "insight": "Kritieke producten kampen met verplichte beoordeling door derden en vereisen mogelijk Europese cyberbeveiligingscertificering — de strengste en langste route. Classificatie en capaciteitsplanning zouden onmiddellijk moeten beginnen." },
+        { "value": "unsure", "label": "Niet zeker", "insight": "Classificatie is de beslissing met de grootste hefboomwerking onder de CRA — ze bepaalt uw hele route. Een zeker beeld krijgen is precies wat de intake van 45 minuten live doet." }
+      ]
+    },
+    {
+      "id": "becomesManufacturer", "type": "bool", "label": "Voorziet u het product van een ander merk, wijzigt u het substantieel, of voegt u uw eigen firmware toe aan het product van een andere leverancier?",
+      "options": [
+        { "value": "yes", "label": "Ja", "insight": "Dat herclassificeert u waarschijnlijk als fabrikant onder Artikel 21/22 — met het volledige technische dossier, een PSIRT-/proces voor het afhandelen van kwetsbaarheden, en de meldplichten die daaruit voortvloeien. Dit is de valkuil die de meeste integrators en distributeurs missen." },
+        { "value": "no", "label": "Nee", "insight": "Goed — pure configuratie en distributie houden u buiten de status van fabrikant. Maar houd de grens scherp: op het moment dat u beveiligingseigenschappen wijzigt, verschuiven de verplichtingen naar u." }
+      ]
+    },
+    {
+      "id": "euMarket", "type": "bool", "label": "Worden de producten op de EU-markt aangeboden (rechtstreeks of via distributeurs)?",
+      "options": [
+        { "value": "yes", "label": "Ja", "insight": "Toegang tot de EU-markt is nu afhankelijk van CRA-conformiteit — na 11 dec 2027 mag een niet-conform product niet op de EU-markt worden aangeboden of daar beschikbaar worden gesteld. De klok tikt al." },
+        { "value": "no", "label": "Nee / nog niet", "insight": "Als u indirect aan de EU verkoopt — via distributeurs of als component in het product van iemand anders — reiken de verplichtingen toch tot u. De moeite waard om uw werkelijke blootstelling te bevestigen." }
+      ]
+    },
+    {
+      "id": "evidence", "type": "multi", "label": "Wat heeft u al, per product? (dit bepaalt uw tekortkomingen)",
+      "options": [
+        { "value": "sbom", "label": "SBOM (software bill of materials)" },
+        { "value": "risk", "label": "Risicobeoordeling (Bijlage I)" },
+        { "value": "cvd", "label": "CVD / PSIRT — proces voor het afhandelen van kwetsbaarheden" },
+        { "value": "sdl", "label": "Documentatie voor veilige ontwikkeling (SDL)" },
+        { "value": "cert", "label": "ISO 9001/27001- of IEC 62443-certificaat" },
+        { "value": "cert_progress", "label": "Certificering in uitvoering (IEC 62443 / ISO 27001)" },
+        { "value": "none", "label": "Nog geen van deze" }
+      ]
+    }
+  ],
+  "resultTitle": "Uw indicatieve CRA-lezing",
+  "readiness": {
+    "label": "CRA-gereedheid",
+    "outOf": "/ 100",
+    "bands": {
+      "on_track": { "title": "Op schema", "note": "U beschikt over de kernartefacten. Het werk draait nu om routekeuze en fasering ten opzichte van de deadline." },
+      "behind": { "title": "Achterop", "note": "U mist een kernartefact. Herstelbaar — maar de wachtrij voor capaciteit bij derden vormt zich nu al." },
+      "at_risk": { "title": "Risicovol", "note": "Tekortkomingen plus een route die vandaag geen zelfbeoordeling toelaat. Dit is het profiel dat zonder speelruimte komt te zitten vóór 11 dec 2027." }
+    }
+  },
+  "gaps": {
+    "label": "Uw tekortkomingen",
+    "noneLabel": "Kernartefacten aanwezig",
+    "none": "U beschikt al over de SBOM, de risicobeoordeling en het proces voor het afhandelen van kwetsbaarheden — de beoordeling draait om routekeuze en fasering, niet om beginnen bij nul.",
+    "items": {
+      "sbom": "Nog geen SBOM — het is de basis van het dossier volgens Bijlage VII en het eerste waar een beoordelaar om vraagt.",
+      "risk": "Geen risicobeoordeling — Bijlage I vereist die, en ze stuurt het hele beveiligingsontwerp en uw restrisicodossier aan.",
+      "cvd": "Geen gecoördineerde bekendmaking van kwetsbaarheden / PSIRT — verplicht, en het is wat incidentmelding binnen 24 uur van paniek in proces verandert."
+    }
+  },
+  "results": {
+    "CLASS_I": {
+      "headline": "Waarschijnlijk belangrijk, Klasse I — en de deur voor zelfbeoordeling is momenteel gesloten.",
+      "body": "Klasse I-producten kunnen zichzelf niet certificeren totdat geharmoniseerde CRA-normen zijn aangewezen (verwacht ~Q2 2027). Elke externe route loopt via een aangemelde instantie — en vandaag zijn er nul aangewezen. De muur staat vast op 11 december 2027. De wachtrij vormt zich nu.",
+      "route": "Route: beoordeling door derden — zelfbeoordeling vereist geharmoniseerde normen of gemeenschappelijke specificaties (Art. 32(2)); die bestaan nog geen van beide."
+    },
+    "CLASS_II": {
+      "headline": "Waarschijnlijk belangrijk, Klasse II — beoordeling door derden is verplicht.",
+      "body": "Klasse II-producten vereisen conformiteitsbeoordeling door een aangemelde instantie — Module B+C, of een volledig kwaliteitsmanagementsysteem volgens Module H. Met feitelijk nul aangewezen instanties in 2026 is capaciteit, niet inspanning, uw beperkende factor.",
+      "route": "Route: Module B+C of Module H (door derden)."
+    },
+    "CRITICAL": {
+      "headline": "Waarschijnlijk kritiek — de strengste route, en mogelijk EU-certificering.",
+      "body": "Kritieke producten kampen met verplichte beoordeling door derden en vereisen mogelijk Europese cyberbeveiligingscertificering. Classificatie en capaciteitsplanning zouden onmiddellijk moeten beginnen — dit is de langste weg naar de CE-markering.",
+      "route": "Route: beoordeling door derden (+ mogelijk EU-certificering)."
+    },
+    "DEFAULT": {
+      "headline": "Waarschijnlijk een standaardproduct met digitale elementen.",
+      "body": "U kunt in principe zichzelf beoordelen (Module A) — maar u bent nog steeds een volledig technisch dossier volgens Bijlage VII, een SBOM en een proces voor het afhandelen van kwetsbaarheden verschuldigd, alle auditklaar tegen 11 december 2027. 'Zelfbeoordeling' is niet 'minder doen'.",
+      "route": "Route: zelfbeoordeling (Module A) — het technische dossier is nog steeds vereist."
+    },
+    "NEEDS_REVIEW": {
+      "headline": "Uw klasse heeft een gedegen beoordeling nodig.",
+      "body": "Op basis van deze antwoorden kunnen we uw product niet met zekerheid plaatsen — wat vaak voorkomt, en precies wat de intake van 45 minuten live oplost, met een OT-ingenieur.",
+      "route": "Route: te bepalen tijdens de intake."
+    },
+    "OUT_OF_SCOPE_LIKELY": {
+      "headline": "Waarschijnlijk buiten de reikwijdte — maar bevestig het.",
+      "body": "De CRA dekt producten met digitale elementen. Als geen van uw producten software of connectiviteit heeft, valt u mogelijk buiten de reikwijdte — maar 'waarschijnlijk' is niet 'zeker', en een verkeerde inschatting hier is kostbaar.",
+      "route": "Route: reikwijdte bevestigen."
+    }
+  },
+  "nowActions": {
+    "now_sbom": "Maak een SBOM voor uw belangrijkste productlijn — het deblokkeert al het andere.",
+    "now_risk": "Stel de risicobeoordeling volgens Bijlage I op — ze stuurt het beveiligingsontwerp aan.",
+    "now_reserve_slot": "Reserveer een plek bij een conformiteitsbeoordelingsinstantie voordat de wachtrij zich vormt.",
+    "now_annex_vii": "Stel het technische dossier volgens Bijlage VII samen — u heeft de onderdelen; maak het nu beoordeelbaar.",
+    "confirm_scope": "Bevestig de reikwijdte van uw belangrijkste producten vóór al het andere."
+  },
+  "nowLabel": "Uw NU",
+  "manufacturerWarning": "Omdat u het product van een andere leverancier van uw eigen merk voorziet of substantieel wijzigt, maakt de CRA waarschijnlijk ÚW de fabrikant ervan (Art. 21/22) — met het volledige technische dossier en de meldplichten die daaruit voortvloeien.",
+  "annexNote": "Bijlage I legt de lat: 13 productbeveiligingseigenschappen (Deel I) en 8 processen voor het afhandelen van kwetsbaarheden (Deel II) — elk onderbouwd in het technische dossier volgens Bijlage VII.",
+  "review": {
+    "title": "Dien uw lezing in voor een menselijke beoordeling — en een gesprek",
+    "body": "Stuur ons dit resultaat en OXOT beoordeelt het, bevestigt uw classificatie, kiest uw route en schat de inspanning in — live, in een gratis intake van 45 minuten. U behoudt alle drie de antwoorden, of we nu samenwerken of niet.",
+    "bullets": [
+      "Uw classificatie, bevestigd door een OT-ingenieur — geen afvinklijst",
+      "Uw route naar de CE-markering (Module A / B+C / H), gekozen voor uw portfolio",
+      "Een inschatting van inspanning en tijdlijn ten opzichte van 11 december 2027",
+      "Een gereserveerde plek bij een conformiteitsbeoordelingsinstantie, als uw route die nodig heeft"
+    ],
+    "reassurance": "Gratis · 45 minuten · voorstel met NDA & MSA binnen 2 werkdagen.",
+    "form": {
+      "name": "Naam", "namePh": "Uw naam",
+      "email": "Werk-e-mail", "emailPh": "u@bedrijf.com",
+      "company": "Organisatie", "companyPh": "Bedrijf",
+      "role": "Functie", "rolePh": "bijv. Hoofd Productbeveiliging",
+      "blocker": "Uw meest dringende CRA-vraag (optioneel)", "blockerPh": "Wat moet in één zin het meest worden beantwoord?",
+      "submit": "Indienen voor beoordeling + gesprek boeken", "submitting": "Bezig met indienen…",
+      "errName": "Voer uw naam in.", "errEmail": "Voer een geldig werk-e-mailadres in.",
+      "errGeneric": "Er is iets misgegaan — probeer het opnieuw.", "errRate": "Te veel inzendingen — probeer het over een minuut opnieuw."
+    },
+    "success": {
+      "heading": "We hebben het ontvangen.",
+      "body": "Vincent beoordeelt uw lezing persoonlijk en neemt binnen 2 werkdagen contact op om uw intake van 45 minuten in te plannen. Uw indicatieve classificatie, route en tekortkomingen staan hierboven — bewaar ze.",
+      "scheduleHeading": "Liever meteen een tijdstip kiezen?",
+      "scheduleFallback": "We mailen u een link om in te plannen."
+    }
+  },
+  "v2": {
+    "roleQuestion": {
+      "label": "In welke stoel zit u?",
+      "options": [
+        { "value": "psirt", "label": "PSIRT / kwetsbaarheidsbeheer" },
+        { "value": "compliance", "label": "Naleving / regelgevingszaken" },
+        { "value": "ciso", "label": "CISO / beveiligingsleiderschap" },
+        { "value": "engineering", "label": "Engineering / productbeveiliging" },
+        { "value": "other", "label": "Anders" }
+      ]
+    },
+    "portfolioQuestion": {
+      "label": "Hoeveel producten zouden tegen 11 dec 2027 een CE-markering nodig hebben?",
+      "options": [
+        { "value": "p1", "label": "Slechts één" },
+        { "value": "p2_10", "label": "2–10 producten" },
+        { "value": "p11_50", "label": "11–50 producten" },
+        { "value": "p50plus", "label": "50+ producten", "insight": "100 producten × 16–24 weken past niet vóór dec 2027; Module H duurt 8–14 maanden — het moet nu beginnen." }
+      ]
+    },
+    "deployQuestion": {
+      "label": "Waar belandt dit product doorgaans?",
+      "options": [
+        { "value": "nis2_essential", "label": "Een NIS2-essentiële entiteit (energie, water, gezondheid, transport)" },
+        { "value": "general", "label": "Algemeen commercieel of consumentengebruik" },
+        { "value": "unsure", "label": "Niet zeker" }
+      ]
+    },
+    "evidenceLivingQuestion": {
+      "label": "Als een component verandert, wat gebeurt er dan met uw bewijs?",
+      "options": [
+        { "value": "model", "label": "Het werkt zichzelf automatisch bij vanuit een live model" },
+        { "value": "manual", "label": "Iemand werkt de papieren handmatig bij" },
+        { "value": "stale", "label": "Het veroudert tot de volgende audit" }
+      ]
+    },
+    "deltaLabels": {
+      "missing_sbom": "Geen SBOM — −22 punten",
+      "missing_risk": "Geen risicobeoordeling volgens Bijlage I — −22 punten",
+      "missing_cvd": "Geen CVD-/PSIRT-proces — −22 punten",
+      "hard_route": "Route vereist beoordeling door derden — −14 punten",
+      "eu_market": "Al op de EU-markt — −4 punten",
+      "cert": "ISO 27001-/IEC 62443-certificaat — +12 punten",
+      "cert_progress": "Certificering in uitvoering — +6 punten",
+      "sdl": "Documentatie voor veilige ontwikkeling (SDL) — +6 punten",
+      "queue": "Vertraging door wachtrij bij aangemelde instantie — −8 punten"
+    },
+    "s7Callout": {
+      "text": "Een Siemens S7-1500 bij een energieleverancier = Klasse II. Hetzelfde apparaat in een voedselverpakkingsfabriek = waarschijnlijk Klasse I.",
+      "source": "Verordening (EU) 2024/2847, Art. 6 & Bijlage III"
+    },
+    "reportingClock": "Uw eerste harde datum is niet dec 2027 — het is 11 september 2026: vroege waarschuwing binnen 24u, melding binnen 72u, eindrapport binnen 14 dagen aan ENISA.",
+    "programmeStrip": "Classificeren → Testen → Dossier. Vanaf ongeveer €20K. Fase 1 doorgaans 2–4 weken per product. Vincent reageert binnen 2 dagen.",
+    "roleHeaders": {
+      "psirt": "Opgebouwd rond uw PSIRT-wachtrij: het afhandelen van kwetsbaarheden, de klok van 24u/72u/14d, en wat als eerste te automatiseren.",
+      "compliance": "Opgebouwd rond uw nalevingsprogramma: het technische dossier, de route, en het bewijs waar een auditor als eerste om vraagt.",
+      "ciso": "Opgebouwd rond uw beveiligingsroadmap: waar de CRA de lat hoger legt dan NIS2, en waarvoor u capaciteit moet begroten.",
+      "engineering": "Opgebouwd rond uw backlog: SBOM-tooling, SDL-bewijs, en wat een typeonderzoek blokkeert.",
+      "other": "Opgebouwd rond uw CRA-programma: classificatie, route, en de tekortkomingen die uw tijdlijn bepalen."
+    },
+    "runway": {
+      "title": "Haalt u de muur?",
+      "startLabel": "Als u begint",
+      "annotations": [
+        "Serieel testen: 16–24 weken per product, het een na het ander.",
+        "Module H parallelliseert de wachtrij — één geauditeerd kwaliteitssysteem dekt het hele portfolio, maar het opzetten ervan duurt 8–14 maanden."
+      ],
+      "overshootLabel": "weken tekort voor 11 dec 2027",
+      "fitsLabel": "Past vóór 11 dec 2027"
+    },
+    "gapClosure": {
+      "sbom": {
+        "title": "Begin met uw SBOM",
+        "body": "De basis van het technische dossier volgens Bijlage VII, en het eerste waar een beoordelaar om vraagt. Begin hier en de rest van de bewijsketen heeft iets om aan op te hangen.",
+        "href": "/cra-check"
+      },
+      "risk": {
+        "title": "Stel uw risicobeoordeling volgens Bijlage I op",
+        "body": "Stuurt het hele beveiligingsontwerp en uw restrisicodossier aan — verplicht, niet optioneel, voor elk product met digitale elementen.",
+        "href": "/cra-check"
+      },
+      "cvd": {
+        "title": "Zet CVD / PSIRT op",
+        "body": "Verandert de plicht tot vroege waarschuwing binnen 24 uur van paniek in proces — bouw het voordat u het nodig heeft, niet tijdens een incident.",
+        "href": "/cra-check"
+      }
+    },
+    "evidenceLivingClose": {
+      "model": "Uw bewijs werkt zichzelf bij — dat is het profiel dat een aangemelde instantie het snelst doorloopt.",
+      "manual": "Handmatige updates volstaan voorlopig, maar ze schalen niet naar een portfolio van 50 producten onder auditdruk.",
+      "stale": "Verouderd bewijs is de meest voorkomende reden dat een technisch dossier de beoordeling niet doorstaat — los dit op vóór al het andere."
+    },
+    "teaser": {
+      "title": "Bent u CRA-klaar?",
+      "q1": {
+        "label": "Waar zit u in de waardeketen?",
+        "options": [
+          { "value": "manufacturer", "label": "Productfabrikant" },
+          { "value": "oem", "label": "OEM — meerdere productgroepen" },
+          { "value": "integrator", "label": "Integrator / systeemintegrator" },
+          { "value": "reseller", "label": "Distributeur / wederverkoper" },
+          { "value": "operator", "label": "Eigenaar / operator (inkoop)" }
+        ]
+      },
+      "q2": {
+        "label": "Kent u de CRA-klasse van uw product?",
+        "options": [
+          { "value": "default", "label": "Standaard (~90% van de producten)" },
+          { "value": "classI", "label": "Klasse I" },
+          { "value": "classII", "label": "Klasse II" },
+          { "value": "unsure", "label": "Geen idee" }
+        ]
+      },
+      "q3": {
+        "label": "Heeft u vandaag een machineleesbare SBOM (SPDX/CycloneDX)?",
+        "yes": "Ja",
+        "no": "Nee",
+        "noHint": "ENISA, juni 2026: slechts 35% van de mkb-bedrijven wel."
+      },
+      "verdictScope": "Waarschijnlijk binnen de reikwijdte.",
+      "verdictRoute": {
+        "default": "Standaardproducten beoordelen zichzelf (Module A) — maar het technische dossier volgens Bijlage VII is nog steeds vereist.",
+        "classI": "Klasse I: zelfbeoordeling vereist geharmoniseerde normen of gemeenschappelijke specificaties (Art. 32(2)); die zijn nog geen van beide beschikbaar (~Q2 2027) — de route loopt via een aangemelde instantie, en vandaag zijn er nul aangewezen.",
+        "classII": "Klasse II: de verplichte route via derden — Module B+C of een volledig kwaliteitsmanagementsysteem volgens Module H, via een aangemelde instantie. Er is geen optie voor zelfbeoordeling.",
+        "unsure": "Uw klasse is de beslissing met de grootste hefboomwerking onder de CRA — de volledige check legt die in ongeveer twee minuten vast."
+      },
+      "verdictSbomGap": "65% van de mkb-bedrijven deelt uw SBOM-tekortkoming (ENISA, juni 2026).",
+      "verdictSbomOk": "Uw SBOM is de basis van het dossier volgens Bijlage VII — u bent de meesten voor.",
+      "cta": "Ontvang uw klasse, route en gereedheidsscore — 2 minuten"
+    }
+  }
+}

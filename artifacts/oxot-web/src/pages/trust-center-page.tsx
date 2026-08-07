@@ -19,11 +19,93 @@ import {
   ShieldAlert,
   Fingerprint
 } from "lucide-react";
+import { useLocale } from '@/providers/locale-provider';
+
+// Localised static chrome (nl-NL professional register, "u"). Machine-assisted —
+// flag Dutch strings for a native reviewer before go-live. NOTE: product/trust
+// data (name, description, version, ceMarkStatus, policyText, contact email,
+// support dates, DoC URL) is API-sourced from /trust-center and stays untranslated.
+const copy = {
+  en: {
+    badge: 'Official EU CRA Statutory Product Trust Center',
+    heroTitleLine1: 'Cryptographic Integrity & ',
+    heroTitleLine2: 'CRA Compliance Provenance',
+    heroBody:
+      'Public verification portal for market surveillance authorities, enterprise procurement officers, and security auditors enforcing Regulation (EU) 2024/2847.',
+    loading: 'Loading Product Verification Ledger...',
+    errorTitle: 'Verification Ledger Unavailable',
+    errorFallback: 'Product ID not found',
+    manufacturerLabel: 'Manufacturer: ',
+    supportPeriodLabel: 'Support Period: ',
+    supportPeriodTo: 'to',
+    ceMarkTitle: 'CE Mark Certified',
+    ceMarkSubtitle: 'EU Regulation 2024/2847 Compliant',
+    downloadDoc: 'Download Official EU DoC (PDF)',
+    tabDoc: 'Statutory EU Declaration of Conformity (DoC)',
+    tabPsirt: 'CVD Policy & PSIRT Contact',
+    tabSbom: 'xBOM Security Integrity',
+    docHeading: 'Annex V EU Declaration of Conformity Ledger',
+    docBodyPart1:
+      'This EU Declaration of Conformity is issued under the sole responsibility of the manufacturer, ',
+    docBodyPart2:
+      '. It confirms that the product complies with all mandatory essential cybersecurity requirements of Annex I of Regulation (EU) 2024/2847.',
+    harmonizedStandardsLabel: 'Harmonized Standards Applied:',
+    notifiedBodyLabel: 'Notified Body Examination:',
+    psirtHeading: 'Article 14 Coordinated Vulnerability Disclosure (CVD)',
+    securityEmailLabel: 'Security Vulnerability Contact Email',
+    reportVulnerability: 'Report Vulnerability',
+    sbomHeading: 'Software Bill of Materials (CycloneDX 1.5)',
+    sbomBody:
+      'Components and dependencies are continuously monitored against CISA KEV and NVD vulnerability databases.',
+    sbomSpecVersion: 'CycloneDX Spec Version: 1.5',
+    sbomHash:
+      'Cryptographic Provenance Hash: sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    sbomStatus: 'Status: ZERO KNOWN EXPLOITED VULNERABILITIES (KEV)',
+  },
+  nl: {
+    badge: 'Officieel wettelijk EU CRA-Trust Center voor producten',
+    heroTitleLine1: 'Cryptografische integriteit & ',
+    heroTitleLine2: 'Herkomst van CRA-naleving',
+    heroBody:
+      'Openbaar verificatieportaal voor markttoezichtautoriteiten, inkoopfunctionarissen van ondernemingen en beveiligingsauditors die Verordening (EU) 2024/2847 handhaven.',
+    loading: 'Productverificatieregister laden...',
+    errorTitle: 'Verificatieregister niet beschikbaar',
+    errorFallback: 'Product-ID niet gevonden',
+    manufacturerLabel: 'Fabrikant: ',
+    supportPeriodLabel: 'Ondersteuningsperiode: ',
+    supportPeriodTo: 'tot',
+    ceMarkTitle: 'CE-markering gecertificeerd',
+    ceMarkSubtitle: 'Conform EU-Verordening 2024/2847',
+    downloadDoc: 'Officiële EU-conformiteitsverklaring downloaden (PDF)',
+    tabDoc: 'Wettelijke EU-conformiteitsverklaring (DoC)',
+    tabPsirt: 'CVD-beleid & PSIRT-contact',
+    tabSbom: 'xBOM-beveiligingsintegriteit',
+    docHeading: 'Register van de EU-conformiteitsverklaring — Bijlage V',
+    docBodyPart1:
+      'Deze EU-conformiteitsverklaring wordt afgegeven onder de uitsluitende verantwoordelijkheid van de fabrikant, ',
+    docBodyPart2:
+      '. Zij bevestigt dat het product voldoet aan alle verplichte essentiële cyberbeveiligingsvereisten van Bijlage I van Verordening (EU) 2024/2847.',
+    harmonizedStandardsLabel: 'Toegepaste geharmoniseerde normen:',
+    notifiedBodyLabel: 'Onderzoek door aangemelde instantie:',
+    psirtHeading: 'Artikel 14 – Gecoördineerde openbaarmaking van kwetsbaarheden (CVD)',
+    securityEmailLabel: 'Contact-e-mail voor beveiligingskwetsbaarheden',
+    reportVulnerability: 'Kwetsbaarheid melden',
+    sbomHeading: 'Software Bill of Materials (CycloneDX 1.5)',
+    sbomBody:
+      'Componenten en afhankelijkheden worden continu gecontroleerd aan de hand van de kwetsbaarhedendatabases CISA KEV en NVD.',
+    sbomSpecVersion: 'CycloneDX-specificatieversie: 1.5',
+    sbomHash:
+      'Cryptografische herkomsthash: sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+    sbomStatus: 'Status: GEEN BEKENDE MISBRUIKTE KWETSBAARHEDEN (KEV)',
+  },
+} as const;
 
 export default function TrustCenterPage() {
+  const { locale } = useLocale();
+  const t = copy[locale];
   const params = useParams<{ productId?: string }>();
   const productId = params.productId || "1";
-  
+
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -55,31 +137,31 @@ export default function TrustCenterPage() {
         <section className="text-center space-y-6 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 backdrop-blur-xl text-cyan-400 text-xs font-semibold uppercase tracking-widest shadow-lg shadow-cyan-950/50 hover:border-cyan-400/50 transition-all duration-300">
             <Sparkles className="w-4 h-4 animate-pulse text-cyan-400" />
-            Official EU CRA Statutory Product Trust Center
+            {t.badge}
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            Cryptographic Integrity & <br />
+            {t.heroTitleLine1}<br />
             <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">
-              CRA Compliance Provenance
+              {t.heroTitleLine2}
             </span>
           </h1>
 
           <p className="text-lg text-slate-400 font-normal leading-relaxed max-w-2xl mx-auto">
-            Public verification portal for market surveillance authorities, enterprise procurement officers, and security auditors enforcing Regulation (EU) 2024/2847.
+            {t.heroBody}
           </p>
         </section>
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
             <div className="w-12 h-12 border-4 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin" />
-            <p className="text-sm font-mono text-cyan-400 animate-pulse">Loading Product Verification Ledger...</p>
+            <p className="text-sm font-mono text-cyan-400 animate-pulse">{t.loading}</p>
           </div>
         ) : error || !data ? (
           <div className="p-8 rounded-2xl bg-red-950/30 border border-red-500/30 text-center max-w-xl mx-auto backdrop-blur-xl">
             <AlertTriangle className="w-12 h-12 text-red-400 mx-auto mb-3" />
-            <h3 className="text-lg font-bold text-red-200">Verification Ledger Unavailable</h3>
-            <p className="text-sm text-red-300/80 mt-1">{error || "Product ID not found"}</p>
+            <h3 className="text-lg font-bold text-red-200">{t.errorTitle}</h3>
+            <p className="text-sm text-red-300/80 mt-1">{error || t.errorFallback}</p>
           </div>
         ) : (
           <>
@@ -108,11 +190,11 @@ export default function TrustCenterPage() {
                   <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-white/10 text-xs">
                     <div className="flex items-center gap-2.5 text-slate-400">
                       <Building2 className="w-4 h-4 text-cyan-400" />
-                      <span>Manufacturer: <strong className="text-slate-200">{data.manufacturerName}</strong></span>
+                      <span>{t.manufacturerLabel}<strong className="text-slate-200">{data.manufacturerName}</strong></span>
                     </div>
                     <div className="flex items-center gap-2.5 text-slate-400">
                       <Calendar className="w-4 h-4 text-purple-400" />
-                      <span>Support Period: <strong className="text-slate-200">{data.supportPeriodStart} to {data.supportPeriodEnd}</strong></span>
+                      <span>{t.supportPeriodLabel}<strong className="text-slate-200">{data.supportPeriodStart} {t.supportPeriodTo} {data.supportPeriodEnd}</strong></span>
                     </div>
                   </div>
                 </div>
@@ -123,8 +205,8 @@ export default function TrustCenterPage() {
                     <Award className="w-8 h-8" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white">CE Mark Certified</h4>
-                    <p className="text-xs text-cyan-300/80 mt-0.5">EU Regulation 2024/2847 Compliant</p>
+                    <h4 className="text-lg font-bold text-white">{t.ceMarkTitle}</h4>
+                    <p className="text-xs text-cyan-300/80 mt-0.5">{t.ceMarkSubtitle}</p>
                   </div>
                   <a
                     href={data.declarationOfConformityUrl}
@@ -132,7 +214,7 @@ export default function TrustCenterPage() {
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs tracking-wide transition-all shadow-lg shadow-cyan-500/20"
                   >
-                    <Download className="w-4 h-4" /> Download Official EU DoC (PDF)
+                    <Download className="w-4 h-4" /> {t.downloadDoc}
                   </a>
                 </div>
               </div>
@@ -149,7 +231,7 @@ export default function TrustCenterPage() {
                       : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  Statutory EU Declaration of Conformity (DoC)
+                  {t.tabDoc}
                 </button>
                 <button
                   onClick={() => setActiveTab("psirt")}
@@ -159,7 +241,7 @@ export default function TrustCenterPage() {
                       : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  CVD Policy & PSIRT Contact
+                  {t.tabPsirt}
                 </button>
                 <button
                   onClick={() => setActiveTab("sbom")}
@@ -169,7 +251,7 @@ export default function TrustCenterPage() {
                       : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  xBOM Security Integrity
+                  {t.tabSbom}
                 </button>
               </div>
 
@@ -177,19 +259,19 @@ export default function TrustCenterPage() {
               {activeTab === "doc" && (
                 <div className="p-8 rounded-2xl bg-slate-900/30 border border-white/10 backdrop-blur-xl space-y-6">
                   <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                    <FileCheck className="w-5 h-5 text-cyan-400" /> Annex V EU Declaration of Conformity Ledger
+                    <FileCheck className="w-5 h-5 text-cyan-400" /> {t.docHeading}
                   </h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    This EU Declaration of Conformity is issued under the sole responsibility of the manufacturer, <strong>{data.manufacturerName}</strong>. It confirms that the product complies with all mandatory essential cybersecurity requirements of Annex I of Regulation (EU) 2024/2847.
+                    {t.docBodyPart1}<strong>{data.manufacturerName}</strong>{t.docBodyPart2}
                   </p>
                   
                   <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-white/10 text-xs">
                     <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-1">
-                      <span className="text-slate-400">Harmonized Standards Applied:</span>
+                      <span className="text-slate-400">{t.harmonizedStandardsLabel}</span>
                       <p className="text-slate-200 font-mono font-medium">EN IEC 62443-4-1, EN IEC 62443-4-2, ETSI EN 303 645</p>
                     </div>
                     <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-1">
-                      <span className="text-slate-400">Notified Body Examination:</span>
+                      <span className="text-slate-400">{t.notifiedBodyLabel}</span>
                       <p className="text-slate-200 font-mono font-medium">TÜV SÜD Product Service GmbH (NB 0123)</p>
                     </div>
                   </div>
@@ -200,7 +282,7 @@ export default function TrustCenterPage() {
               {activeTab === "psirt" && (
                 <div className="p-8 rounded-2xl bg-slate-900/30 border border-white/10 backdrop-blur-xl space-y-6">
                   <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                    <ShieldAlert className="w-5 h-5 text-purple-400" /> Article 14 Coordinated Vulnerability Disclosure (CVD)
+                    <ShieldAlert className="w-5 h-5 text-purple-400" /> {t.psirtHeading}
                   </h3>
                   <p className="text-slate-300 text-sm leading-relaxed">{data.policyText}</p>
                   
@@ -208,7 +290,7 @@ export default function TrustCenterPage() {
                     <div className="flex items-center gap-3">
                       <Mail className="w-5 h-5 text-purple-400" />
                       <div>
-                        <p className="text-xs text-purple-300/80">Security Vulnerability Contact Email</p>
+                        <p className="text-xs text-purple-300/80">{t.securityEmailLabel}</p>
                         <p className="text-sm font-bold text-white">{data.securityContactEmail}</p>
                       </div>
                     </div>
@@ -216,7 +298,7 @@ export default function TrustCenterPage() {
                       href={`mailto:${data.securityContactEmail}`}
                       className="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs"
                     >
-                      Report Vulnerability
+                      {t.reportVulnerability}
                     </a>
                   </div>
                 </div>
@@ -226,16 +308,16 @@ export default function TrustCenterPage() {
               {activeTab === "sbom" && (
                 <div className="p-8 rounded-2xl bg-slate-900/30 border border-white/10 backdrop-blur-xl space-y-6">
                   <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                    <Fingerprint className="w-5 h-5 text-teal-400" /> Software Bill of Materials (CycloneDX 1.5)
+                    <Fingerprint className="w-5 h-5 text-teal-400" /> {t.sbomHeading}
                   </h3>
                   <p className="text-slate-300 text-sm leading-relaxed">
-                    Components and dependencies are continuously monitored against CISA KEV and NVD vulnerability databases.
+                    {t.sbomBody}
                   </p>
-                  
+
                   <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 font-mono text-xs text-teal-300/90 space-y-1">
-                    <p>CycloneDX Spec Version: 1.5</p>
-                    <p>Cryptographic Provenance Hash: sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</p>
-                    <p>Status: ZERO KNOWN EXPLOITED VULNERABILITIES (KEV)</p>
+                    <p>{t.sbomSpecVersion}</p>
+                    <p>{t.sbomHash}</p>
+                    <p>{t.sbomStatus}</p>
                   </div>
                 </div>
               )}
