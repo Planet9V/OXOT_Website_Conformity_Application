@@ -20,29 +20,41 @@ const copy = {
   },
 } as const;
 
-export default function NotFound() {
+// The bare content, no layout — for use from inside a page that already
+// renders within a PublicLayout (e.g. slug-page.tsx's 404 branches), so it
+// doesn't double up the header/footer.
+export function NotFoundContent() {
   const { locale } = useLocale();
   const t = copy[locale];
 
   return (
-    <PublicLayout>
-      <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
-        <div className="w-24 h-24 bg-muted rounded-3xl flex items-center justify-center mb-8 transform rotate-12">
-          <FileQuestion className="w-12 h-12 text-muted-foreground transform -rotate-12" />
-        </div>
-        <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4">
-          {t.title}
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground max-w-md mb-8">
-          {t.body}
-        </p>
-        <Button asChild size="lg" className="rounded-full">
-          <Link href="/">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t.backToHome}
-          </Link>
-        </Button>
+    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+      <div className="w-24 h-24 bg-muted rounded-3xl flex items-center justify-center mb-8 transform rotate-12">
+        <FileQuestion className="w-12 h-12 text-muted-foreground transform -rotate-12" />
       </div>
+      <h1 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-4">
+        {t.title}
+      </h1>
+      <p className="text-lg md:text-xl text-muted-foreground max-w-md mb-8">
+        {t.body}
+      </p>
+      <Button asChild size="lg" className="rounded-full">
+        <Link href="/">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          {t.backToHome}
+        </Link>
+      </Button>
+    </div>
+  );
+}
+
+// Default export: the Switch-level catch-all fallback (App.tsx's final
+// `<Route component={NotFound} />`), which is NOT wrapped by PublicRoute —
+// this is the one place that genuinely needs its own layout.
+export default function NotFound() {
+  return (
+    <PublicLayout>
+      <NotFoundContent />
     </PublicLayout>
   );
 }
