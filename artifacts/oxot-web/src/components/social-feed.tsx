@@ -9,6 +9,7 @@
 
 import { useEffect } from 'react';
 import { Linkedin, Twitter } from 'lucide-react';
+import { useLocale } from '@/providers/locale-provider';
 
 interface SocialLink {
   platform: string;
@@ -18,6 +19,27 @@ interface SocialLink {
 interface SocialFeedProps {
   socialLinks: SocialLink[];
 }
+
+// Localised social-feed copy (nl-NL professional register, "u"). Machine-
+// assisted — flag Dutch strings for a native reviewer before go-live.
+const copy = {
+  en: {
+    loadingPosts: 'Loading posts…',
+    followLinkedInTitle: 'Follow us on LinkedIn',
+    followLinkedInBody: 'Stay updated with our latest compliance insights and announcements.',
+    followLinkedInCta: 'Follow on LinkedIn',
+    heading: 'Follow Along',
+    subheading: 'Get the latest updates directly from our social channels.',
+  },
+  nl: {
+    loadingPosts: 'Berichten laden…',
+    followLinkedInTitle: 'Volg ons op LinkedIn',
+    followLinkedInBody: 'Blijf op de hoogte van onze laatste compliance-inzichten en aankondigingen.',
+    followLinkedInCta: 'Volgen op LinkedIn',
+    heading: 'Blijf op de hoogte',
+    subheading: 'Het laatste nieuws rechtstreeks van onze sociale kanalen.',
+  },
+} as const;
 
 // Extract a Twitter username from a profile URL.
 function extractTwitterHandle(url: string): string | null {
@@ -43,7 +65,7 @@ function isLinkedInUrl(url: string): boolean {
   }
 }
 
-function TwitterEmbed({ handle }: { handle: string }) {
+function TwitterEmbed({ handle, loadingPosts }: { handle: string; loadingPosts: string }) {
   // Load Twitter's widget script once.
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -75,23 +97,23 @@ function TwitterEmbed({ handle }: { handle: string }) {
           data-chrome="noheader nofooter noborders"
           href={`https://twitter.com/${handle}`}
         >
-          Loading posts…
+          {loadingPosts}
         </a>
       </div>
     </div>
   );
 }
 
-function LinkedInCard({ url }: { url: string }) {
+function LinkedInCard({ url, t }: { url: string; t: (typeof copy)['en'] }) {
   return (
     <div className="w-full rounded-xl border bg-card p-6 flex flex-col items-center gap-4 text-center">
       <div className="w-12 h-12 rounded-full bg-[#0077B5] flex items-center justify-center">
         <Linkedin className="w-6 h-6 text-white" />
       </div>
       <div>
-        <p className="font-semibold text-sm">Follow us on LinkedIn</p>
+        <p className="font-semibold text-sm">{t.followLinkedInTitle}</p>
         <p className="text-xs text-muted-foreground mt-1">
-          Stay updated with our latest compliance insights and announcements.
+          {t.followLinkedInBody}
         </p>
       </div>
       <a
@@ -101,13 +123,15 @@ function LinkedInCard({ url }: { url: string }) {
         className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#0077B5] text-white text-sm font-medium hover:bg-[#005f94] transition-colors"
       >
         <Linkedin className="w-4 h-4" />
-        Follow on LinkedIn
+        {t.followLinkedInCta}
       </a>
     </div>
   );
 }
 
 export function SocialFeed({ socialLinks }: SocialFeedProps) {
+  const { locale } = useLocale();
+  const t = copy[locale];
   const twitterUrl = socialLinks.find(
     (l) => l.platform.toLowerCase().includes('twitter') || l.platform.toLowerCase() === 'x' || extractTwitterHandle(l.url) !== null,
   );
@@ -125,14 +149,14 @@ export function SocialFeed({ socialLinks }: SocialFeedProps) {
   return (
     <section className="container mx-auto px-4 md:px-8 py-12">
       <div className="mb-8 text-center">
-        <h2 className="font-display font-bold text-2xl md:text-3xl">Follow Along</h2>
+        <h2 className="font-display font-bold text-2xl md:text-3xl">{t.heading}</h2>
         <p className="text-muted-foreground mt-2 text-sm md:text-base">
-          Get the latest updates directly from our social channels.
+          {t.subheading}
         </p>
       </div>
       <div className={`grid gap-6 ${hasBoth ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 max-w-lg mx-auto'}`}>
-        {twitterHandle && <TwitterEmbed handle={twitterHandle} />}
-        {linkedInUrl && <LinkedInCard url={linkedInUrl.url} />}
+        {twitterHandle && <TwitterEmbed handle={twitterHandle} loadingPosts={t.loadingPosts} />}
+        {linkedInUrl && <LinkedInCard url={linkedInUrl.url} t={t} />}
       </div>
     </section>
   );
