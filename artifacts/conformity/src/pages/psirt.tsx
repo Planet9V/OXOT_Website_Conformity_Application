@@ -118,10 +118,10 @@ export default function PsirtPage() {
         {/* Statutory Clocks & Quick Action */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
           <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-3 text-center">
-            <span className="text-[10px] font-mono font-bold uppercase text-destructive block tracking-wider">
+            <span className="text-[10px] font-mono font-bold uppercase text-red-700 block tracking-wider">
               Article 14(1) 24h Clock
             </span>
-            <span className="text-lg font-mono font-extrabold text-destructive">09h 14m 22s</span>
+            <span className="text-lg font-mono font-extrabold text-red-700">09h 14m 22s</span>
           </div>
           <Button
             type="button"
@@ -165,7 +165,7 @@ export default function PsirtPage() {
               <div className="rounded-xl border border-border bg-background p-4 space-y-1.5">
                 <span className="text-xs font-mono text-muted-foreground flex items-center justify-between">
                   <span>Published ISO Advisories:</span>
-                  <span className="font-bold text-emerald-500">2 Published</span>
+                  <span className="font-bold text-emerald-700">2 Published</span>
                 </span>
                 <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                   <div className="h-full bg-emerald-500 w-[80%]" />
@@ -210,7 +210,7 @@ export default function PsirtPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono font-bold uppercase text-orange-400 tracking-wider">
+                <span className="text-xs font-mono font-bold uppercase text-primary-ink tracking-wider">
                   AI Automated Intake Recommendation
                 </span>
                 <Badge variant="outline" className="text-[10px] font-mono bg-red-500/20 text-red-400 border-red-500/40">
@@ -228,7 +228,7 @@ export default function PsirtPage() {
               type="button"
               size="sm"
               onClick={() => handleLaunchEnisaForm("early_warning")}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs gap-1 shadow-md shadow-orange-500/20"
+              className="bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold text-xs gap-1 shadow-md shadow-orange-500/20"
             >
               <Sparkles className="h-3.5 w-3.5" /> Initialize PSIRT Incident
             </Button>
@@ -346,7 +346,7 @@ export default function PsirtPage() {
                 <h3 className="font-display font-bold text-lg text-foreground">ENISA Article 14 Incident Intake &amp; Statutory Queue</h3>
                 <p className="text-xs text-muted-foreground mt-0.5">Track live incidents against 24h Early Warning and 72h Notification statutory clocks.</p>
               </div>
-              <Button onClick={() => handleLaunchEnisaForm("early_warning")} className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs gap-1">
+              <Button onClick={() => handleLaunchEnisaForm("early_warning")} className="bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold text-xs gap-1">
                 <Plus className="h-4 w-4" /> New Article 14 Incident
               </Button>
             </div>
@@ -369,7 +369,7 @@ export default function PsirtPage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-2 pt-2">
-                <Button size="sm" onClick={() => handleLaunchEnisaForm("early_warning")} className="bg-orange-500 text-white font-bold text-xs gap-1">
+                <Button size="sm" onClick={() => handleLaunchEnisaForm("early_warning")} className="bg-orange-500 text-primary-foreground font-bold text-xs gap-1">
                   <Flame className="h-3.5 w-3.5" /> Submit ENISA 24h Early Warning
                 </Button>
                 <Button size="sm" variant="outline" onClick={() => handleLaunchEnisaForm("detailed_report")} className="font-mono text-xs">
@@ -466,7 +466,7 @@ export default function PsirtPage() {
             <Button
               onClick={handleSubmitEnisaForm}
               disabled={formSubmitted}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-bold gap-1.5"
+              className="bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold gap-1.5"
             >
               {formSubmitted ? "Transmitting to ENISA..." : "Transmit Statutory Package to ENISA"}
             </Button>
