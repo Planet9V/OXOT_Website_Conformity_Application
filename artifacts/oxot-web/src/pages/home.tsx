@@ -1,4 +1,5 @@
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   ClipboardCheck,
@@ -13,6 +14,7 @@ import { pageSeo } from '@/lib/page-seo';
 import { JsonLd } from '@/components/json-ld';
 import { LiveRegulatoryNewsFeed } from '@/components/sections/live-regulatory-news-feed';
 import { useLocale } from '@/providers/locale-provider';
+import { entranceVariants, revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -175,14 +177,20 @@ export default function CraHomePage() {
       {/* Hero */}
       <section className="border-b border-border bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container mx-auto px-4 md:px-8 py-20 md:py-28 max-w-4xl text-center">
-          <p className="oxot-kicker">{t.kicker}</p>
-          <h1 className="oxot-h1 mt-4 text-foreground">
+          <motion.p className="oxot-kicker" {...entranceVariants(0)}>{t.kicker}</motion.p>
+          <motion.h1 className="oxot-h1 mt-4 text-foreground" {...entranceVariants(0.1)}>
             {t.heroTitle}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          </motion.h1>
+          <motion.p
+            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground"
+            {...entranceVariants(0.2)}
+          >
             {t.heroBody}
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          </motion.p>
+          <motion.div
+            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            {...entranceVariants(0.3)}
+          >
             <Link
               href="/demo"
               className="cta-lift inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
@@ -195,7 +203,7 @@ export default function CraHomePage() {
             >
               <ClipboardCheck className="h-4 w-4" /> {t.takeCheck}
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -222,11 +230,15 @@ export default function CraHomePage() {
             {t.stallsTitle}
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {t.stalls.map((s) => (
-              <div key={s.title} className="rounded-2xl border border-border bg-card p-6 shadow-e1">
+            {t.stalls.map((s, i) => (
+              <motion.div
+                key={s.title}
+                className="rounded-2xl border border-border bg-card p-6 shadow-e1"
+                {...revealVariants(i)}
+              >
                 <h3 className="oxot-h3 text-foreground">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -250,13 +262,17 @@ export default function CraHomePage() {
             {t.pillars.map((p, i) => {
               const Icon = PILLAR_ICONS[i];
               return (
-                <div key={p.title} className="rounded-2xl border border-border bg-card p-6 shadow-e1">
+                <motion.div
+                  key={p.title}
+                  className="rounded-2xl border border-border bg-card p-6 shadow-e1"
+                  {...revealVariants(i)}
+                >
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                     <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="oxot-h3 mt-4 text-foreground">{p.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -289,14 +305,18 @@ export default function CraHomePage() {
             {t.personasTitle}
           </h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {t.personas.map(([who, what]) => (
-              <div key={who} className="flex items-start gap-3 rounded-xl border border-border bg-card p-5">
+            {t.personas.map(([who, what], i) => (
+              <motion.div
+                key={who}
+                className="flex items-start gap-3 rounded-xl border border-border bg-card p-5"
+                {...revealVariants(i)}
+              >
                 <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                 <div>
                   <p className="font-medium text-foreground">{who}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{what}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
