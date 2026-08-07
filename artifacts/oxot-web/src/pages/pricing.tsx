@@ -1,9 +1,11 @@
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import { Tag, Check, ArrowRight, Radar, LifeBuoy, Users } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
+import { revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -201,11 +203,12 @@ export default function PricingPage() {
         {t.tiers.map((tier, i) => {
           const featured = TIER_FEATURED[i];
           return (
-            <div
+            <motion.div
               key={tier.name}
               className={`flex flex-col rounded-2xl border bg-card p-6 ${
                 featured ? 'border-primary shadow-e2 ring-1 ring-primary/30' : 'border-border shadow-e1'
               }`}
+              {...revealVariants(i)}
             >
               {featured && <span className="oxot-kicker mb-2">{t.mostChosen}</span>}
               <h3 className="font-display text-2xl font-normal tracking-tight text-foreground">{tier.name}</h3>
@@ -241,7 +244,7 @@ export default function PricingPage() {
               >
                 {t.bookDemo} <ArrowRight className="h-4 w-4" />
               </Link>
-            </div>
+            </motion.div>
           );
         })}
       </div>
@@ -263,14 +266,18 @@ export default function PricingPage() {
           {t.addons.map((a, i) => {
             const Icon = ADDON_ICONS[i];
             return (
-              <div key={a.name} className="rounded-2xl border border-border bg-card p-6 shadow-e1">
+              <motion.div
+                key={a.name}
+                className="rounded-2xl border border-border bg-card p-6 shadow-e1"
+                {...revealVariants(i)}
+              >
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                   <Icon className="h-5 w-5 text-primary" />
                 </div>
                 <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground">{a.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{a.body}</p>
                 <p className="mt-4 text-xs font-medium text-primary-ink">{t.addonCta}</p>
-              </div>
+              </motion.div>
             );
           })}
         </div>
