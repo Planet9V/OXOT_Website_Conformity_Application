@@ -1,9 +1,11 @@
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import { ServerCog, Building2, HardDrive, Cpu, Lock, Mail, Users, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
+import { revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -112,13 +114,17 @@ export default function DeploymentPage() {
         {t.options.map((o, i) => {
           const Icon = OPTION_ICONS[i];
           return (
-            <div key={o.name} className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-e1">
+            <motion.div
+              key={o.name}
+              className="flex flex-col rounded-2xl border border-border bg-card p-6 shadow-e1"
+              {...revealVariants(i)}
+            >
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                 <Icon className="h-5 w-5 text-primary" />
               </div>
               <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground">{o.name}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{o.body}</p>
-            </div>
+            </motion.div>
           );
         })}
       </div>
@@ -139,10 +145,14 @@ export default function DeploymentPage() {
             {t.features.map((label, i) => {
               const Icon = FEATURE_ICONS[i];
               return (
-                <li key={label} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
+                <motion.li
+                  key={label}
+                  className="flex items-start gap-3 rounded-xl border border-border bg-card p-4"
+                  {...revealVariants(i)}
+                >
                   <Icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                   <span className="text-sm text-foreground">{label}</span>
-                </li>
+                </motion.li>
               );
             })}
           </ul>
