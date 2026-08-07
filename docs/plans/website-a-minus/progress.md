@@ -8,8 +8,13 @@
 - Wrote `task_plan.md`, `findings.md`, `progress.md`. Branch: `feature/website-a-minus-remediation`.
 
 ## Current status
-- **Phase: planning complete; implementation not started.**
-- Awaiting go to execute Phase 1 (code-quality cleanup) → Phase 8 (ship).
+- **Batch 1 (Phases 1–3) complete.** Next: Batch 2 = Phases 4–6 (Conversion, Accessibility, SEO).
+
+## Batch 1 results (Phases 1–3)
+- P1: deleted `header-panels.ts`(+test), `home-page.tsx`; renamed `penaltyNote`→`annexNote` (self-check.tsx + JSON); fixed `segments.ts` comment.
+- P2: `deltaLabels.queue` "penalty"→"delay"; D3 resolved — `/cra-primer` durable via snapshot seed (kept).
+- P3: removed duplicate home secondary CTA; footer nav → static funnel list (dropped CMS `useGetNavigation` dependency).
+- Verify: oxot-web typecheck clean except the pre-existing `conformity-dashboard.tsx:675` error (unrelated). Dead files confirmed gone; no stale refs.
 
 ## Test results (to be filled during Phase 7)
 | Check | Result |

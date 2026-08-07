@@ -202,18 +202,12 @@ export default function CraHomePage() {
             A 45-minute walkthrough covers classification, the evidence you already hold, and what a defensible
             Annex VII technical file looks like for your products.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-8 flex justify-center">
             <Link
               href="/demo"
               className="cta-lift inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
             >
               Book a demo <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/cra-check"
-              className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              <ClipboardCheck className="h-4 w-4" /> Take the 2-minute check
             </Link>
           </div>
         </div>

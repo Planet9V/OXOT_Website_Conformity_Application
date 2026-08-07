@@ -65,7 +65,7 @@ export interface SelfCheckCopy {
   nowActions: Record<string, string>;
   nowLabel: string;
   manufacturerWarning: string;
-  penaltyNote: string;
+  annexNote: string;
   review: {
     title: string;
     body: string;
@@ -428,8 +428,8 @@ export function CraSelfCheck({
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
             {myGaps.length ? copy.gaps.label : copy.gaps.noneLabel}
           </p>
-          {/* CISO dialect: lead with the penalty ceiling before the gap list. */}
-          {roleKey === "ciso" && <p className="mt-2 text-xs text-muted-foreground">{copy.penaltyNote}</p>}
+          {/* CISO dialect: lead with the Annex I evidence bar before the gap list. */}
+          {roleKey === "ciso" && <p className="mt-2 text-xs text-muted-foreground">{copy.annexNote}</p>}
           {myGaps.length === 0 ? (
             <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground">
               <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" /> {copy.gaps.none}
@@ -466,7 +466,7 @@ export function CraSelfCheck({
           {roleKey === "engineering" && (
             <p className="mt-3 text-sm font-medium text-foreground">{copy.v2.roleHeaders.engineering}</p>
           )}
-          {roleKey !== "ciso" && <p className="mt-3 text-xs text-muted-foreground">{copy.penaltyNote}</p>}
+          {roleKey !== "ciso" && <p className="mt-3 text-xs text-muted-foreground">{copy.annexNote}</p>}
           {answers.evidenceLiving && (
             <p className="mt-3 text-xs text-muted-foreground">{copy.v2.evidenceLivingClose[answers.evidenceLiving]}</p>
           )}

@@ -21,19 +21,20 @@ Raise the public CRA funnel website to a verified **A- minimum in 8 categories**
 
 ## Phases
 
-### Phase 1 — Code-quality cleanup (lowest risk) — status: pending
+### Phase 1 — Code-quality cleanup (lowest risk) — status: complete
 - Delete `artifacts/oxot-web/src/components/layout/header-panels.ts` and `header-panels.test.ts` (orphaned since the static nav rewrite).
 - Delete `artifacts/oxot-web/src/pages/home-page.tsx` (orphaned CMS home; `/` uses `pages/home.tsx`).
 - Rename `penaltyNote` → `annexNote` in `src/data/cra_selfcheck_en.json` + `src/components/cra-check/self-check.tsx` (interface + 3 usages + the "penalty ceiling" comment).
 - Fix stale `next build` comment in `src/lib/segments.ts`.
 - **Verify:** `tsc` typecheck of oxot-web has no NEW errors; Docker build green.
 
-### Phase 2 — Content/compliance + Durability — status: pending
+### Phase 2 — Content/compliance + Durability — status: complete
+> D3 RESOLVED: `cra-primer` is in the content snapshot (`site-content.json`), so `seed:site` restores it on a fresh DB → the link is durable. **Kept `/cra-primer`; no repoint needed.**
 - `src/data/cra_selfcheck_en.json`: `deltaLabels.queue` "Notified-body queue **penalty**" → "Notified-body queue **delay**".
 - `src/pages/resources.tsx:20`: repoint CRA Primer from `/cra-primer` (CMS-dependent) to a durable target — **decision needed at build time**: either a static `/resources` primer section or a guaranteed-seeded route. Default: keep `/cra-primer` only if we add it to the durable seed; otherwise link to the static `/cra-check` explainer + `/news`. (See Decision Log D3.)
 - **Verify:** repo-wide grep for `€15M|2\.5%|penalty` returns only non-user-facing/no hits; primer link resolves on a fresh DB.
 
-### Phase 3 — Design/UX — status: pending
+### Phase 3 — Design/UX — status: complete (code); 375px visual check moved to Phase 7
 - `src/pages/home.tsx`: remove the duplicate "Take the 2-minute check" secondary CTA (keep hero, drop the closing-band duplicate, or vice-versa).
 - `src/components/layout/footer.tsx`: replace/trim the generic "Follow Along / social channels" footer with a funnel-appropriate footer (nav links + Book a demo + legal), or hide social if empty.
 - Mobile pass at 375px on all 7 pages (Chrome device emulation) — fix any overflow/tap-target issues.
