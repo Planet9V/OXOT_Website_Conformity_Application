@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
 import { ClipboardCheck, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
@@ -9,6 +10,7 @@ import { parsePrefill } from '@/lib/cra-selfcheck';
 import copyEn from '@/data/cra_selfcheck_en.json';
 import copyNl from '@/data/cra_selfcheck_nl.json';
 import { useLocale } from '@/providers/locale-provider';
+import { entranceVariants, revealVariants } from '@/lib/motion';
 
 const selfCheckCopy: Record<'en' | 'nl', SelfCheckCopy> = {
   en: copyEn as unknown as SelfCheckCopy,
@@ -72,12 +74,14 @@ export default function CraCheckPage() {
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-2xl">
-      <PageHeader
-        kicker={t.kicker}
-        title={t.title}
-        icon={ClipboardCheck}
-        description={t.description}
-      />
+      <motion.div {...entranceVariants(0)}>
+        <PageHeader
+          kicker={t.kicker}
+          title={t.title}
+          icon={ClipboardCheck}
+          description={t.description}
+        />
+      </motion.div>
 
       <CraSelfCheck
         locale={locale}
@@ -86,7 +90,10 @@ export default function CraCheckPage() {
         openOnCategory={openOnCategory}
       />
 
-      <div className="mt-12 rounded-xl border border-border bg-card p-6 text-center">
+      <motion.div
+        className="mt-12 rounded-xl border border-border bg-card p-6 text-center"
+        {...revealVariants(0)}
+      >
         <p className="oxot-kicker mb-2">{t.deeperKicker}</p>
         <h2 className="font-display text-xl font-normal tracking-tight text-foreground">
           {t.finalTitle}
@@ -100,7 +107,7 @@ export default function CraCheckPage() {
         >
           {t.bookDemo} <ArrowRight className="h-4 w-4" />
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 }
