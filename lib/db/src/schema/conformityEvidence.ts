@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityAssessmentsTable } from "./conformityAssessments";
@@ -27,7 +27,9 @@ export const conformityEvidenceTable = pgTable("conformity_evidence", {
   fileHash: text("file_hash").notNull().default(""),
   note: text("note").notNull().default(""),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  index("conformity_evidence_assessment_id_idx").on(table.assessmentId),
+]);
 
 export const insertConformityEvidenceSchema = createInsertSchema(
   conformityEvidenceTable,

@@ -1,4 +1,4 @@
-import { pgTable, serial, integer, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, integer, text, timestamp, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityProductsTable } from "./conformityProducts";
@@ -52,7 +52,9 @@ export const conformityVulnReportsTable = pgTable("conformity_vuln_reports", {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-});
+}, (table) => [
+  index("conformity_vuln_reports_product_id_idx").on(table.productId),
+]);
 
 /** Append-only lifecycle ledger for a vulnerability report. */
 export const conformityVulnReportEventsTable = pgTable("conformity_vuln_report_events", {
@@ -65,7 +67,9 @@ export const conformityVulnReportEventsTable = pgTable("conformity_vuln_report_e
   actor: text("actor").notNull().default(""),
   note: text("note").notNull().default(""),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  index("conformity_vuln_report_events_report_id_idx").on(table.reportId),
+]);
 
 export const insertConformityVulnReportSchema = createInsertSchema(
   conformityVulnReportsTable,

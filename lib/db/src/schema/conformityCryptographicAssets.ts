@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, boolean, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityBomComponentsTable } from "./conformityBomComponents";
@@ -18,7 +18,9 @@ export const conformityCryptographicAssetsTable = pgTable("conformity_cryptograp
   isDeprecated: boolean("is_deprecated").notNull().default(false), // true for MD5, SHA-1, DES
   isPqcReady: boolean("is_pqc_ready").notNull().default(false), // Post-Quantum Cryptography status
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  index("conformity_cryptographic_assets_component_id_idx").on(table.componentId),
+]);
 
 export const insertConformityCryptographicAssetSchema = createInsertSchema(
   conformityCryptographicAssetsTable,

@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, jsonb, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityBomsTable } from "./conformityBoms";
@@ -46,7 +46,9 @@ export const conformityBomComponentsTable = pgTable("conformity_bom_components",
   chipsetArchitecture: text("chipset_architecture").notNull().default(""),
   pqcReadinessScore: integer("pqc_readiness_score").notNull().default(100),
   raw: jsonb("raw").$type<Record<string, unknown>>().notNull().default({}),
-});
+}, (table) => [
+  index("conformity_bom_components_bom_id_idx").on(table.bomId),
+]);
 
 export const insertConformityBomComponentSchema = createInsertSchema(
   conformityBomComponentsTable,

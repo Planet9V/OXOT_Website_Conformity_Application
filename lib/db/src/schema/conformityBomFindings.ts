@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, jsonb, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, jsonb, timestamp, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityBomsTable } from "./conformityBoms";
@@ -30,7 +30,9 @@ export const conformityBomFindingsTable = pgTable("conformity_bom_findings", {
   source: text("source").notNull().default(""),
   detail: jsonb("detail").$type<Record<string, unknown>>().notNull().default({}),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  index("conformity_bom_findings_bom_id_idx").on(table.bomId),
+]);
 
 export const insertConformityBomFindingSchema = createInsertSchema(
   conformityBomFindingsTable,

@@ -1,4 +1,4 @@
-import { pgTable, serial, integer, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, integer, text, timestamp, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityProductsTable } from "./conformityProducts";
@@ -43,7 +43,11 @@ export const conformityAdvisoriesTable = pgTable("conformity_advisories", {
     .notNull()
     .defaultNow()
     .$onUpdate(() => new Date()),
-});
+}, (table) => [
+  index("conformity_advisories_product_id_idx").on(table.productId),
+  index("conformity_advisories_vuln_report_id_idx").on(table.vulnReportId),
+  index("conformity_advisories_incident_id_idx").on(table.incidentId),
+]);
 
 export const insertConformityAdvisorySchema = createInsertSchema(conformityAdvisoriesTable).omit({
   id: true,
