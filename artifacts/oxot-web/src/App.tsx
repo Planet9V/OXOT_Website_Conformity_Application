@@ -2,18 +2,18 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
-import { useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { MotionConfig } from 'framer-motion';
 import { stripLocalePrefix } from '@/providers/locale-routing';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { LocaleProvider } from '@/providers/locale-provider';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Pages
 import SlugPage from '@/pages/slug-page';
 import FrameworksPage from '@/pages/frameworks-page';
 import FrameworkDetailPage from '@/pages/framework-detail-page';
 import FrameworksMatrixPage from '@/pages/frameworks-matrix-page';
-import ConformityDashboard from '@/pages/conformity-dashboard';
 import ConformityRegulations from '@/pages/conformity-regulations';
 import ConformityRegulationDetail from '@/pages/conformity-regulation-detail';
 import ConformityRequirements from '@/pages/conformity-requirements';
@@ -22,19 +22,6 @@ import ConformityThemes from '@/pages/conformity-themes';
 import ConformityMappings from '@/pages/conformity-mappings';
 import ConformitySources from '@/pages/conformity-sources';
 import ConformitySourceViewer from '@/pages/conformity-source-viewer';
-import AdminLogin from '@/pages/admin-login';
-import AdminDashboard from '@/pages/admin-dashboard';
-import AdminLeads from '@/pages/admin-leads';
-import AdminPages from '@/pages/admin-pages';
-import AdminPageEditor from '@/pages/admin-page-editor';
-import AdminMenus from '@/pages/admin-menus';
-import AdminCarousel from '@/pages/admin-carousel';
-import AdminAi from '@/pages/admin-ai';
-import AdminSeo from '@/pages/admin-seo';
-import AdminAnalytics from '@/pages/admin-analytics';
-import AdminNewsletter from '@/pages/admin-newsletter';
-import AdminSettings from '@/pages/admin-settings';
-import AdminIntegrations from '@/pages/admin-integrations';
 import KnowledgeHubPage from '@/pages/knowledge-hub';
 import RegulatoryNewsPage from '@/pages/regulatory-news';
 import CraCheckPage from '@/pages/cra-check';
@@ -51,6 +38,37 @@ import NewsletterUnsubscribe from '@/pages/newsletter-unsubscribe';
 import NotFound from '@/pages/not-found';
 import { PublicLayout } from '@/components/layout/public-layout';
 import { CookieConsentProvider } from '@/components/cookie-consent';
+
+// Code-split: the admin console and the conformity dashboard (recharts +
+// framer-motion heavy) are never visited by a typical marketing-site visitor,
+// but were previously statically imported into App.tsx, so the public
+// homepage shipped the same bundle weight as the authenticated admin
+// console. Lazy-loading them keeps that weight out of the first-load chunk
+// for every public page. Mirrors the pattern already proven in
+// conformity/src/pages/dashboard.tsx (its own CommandCenter lazy-load).
+const ConformityDashboard = lazy(() => import('@/pages/conformity-dashboard'));
+const AdminLogin = lazy(() => import('@/pages/admin-login'));
+const AdminDashboard = lazy(() => import('@/pages/admin-dashboard'));
+const AdminLeads = lazy(() => import('@/pages/admin-leads'));
+const AdminPages = lazy(() => import('@/pages/admin-pages'));
+const AdminPageEditor = lazy(() => import('@/pages/admin-page-editor'));
+const AdminMenus = lazy(() => import('@/pages/admin-menus'));
+const AdminCarousel = lazy(() => import('@/pages/admin-carousel'));
+const AdminAi = lazy(() => import('@/pages/admin-ai'));
+const AdminSeo = lazy(() => import('@/pages/admin-seo'));
+const AdminAnalytics = lazy(() => import('@/pages/admin-analytics'));
+const AdminNewsletter = lazy(() => import('@/pages/admin-newsletter'));
+const AdminSettings = lazy(() => import('@/pages/admin-settings'));
+const AdminIntegrations = lazy(() => import('@/pages/admin-integrations'));
+
+/** Minimal full-viewport loading state shown only while a lazy chunk loads. */
+function RouteLoadingFallback() {
+  return (
+    <div className="flex min-h-screen items-center justify-center p-8">
+      <Skeleton className="h-8 w-40" />
+    </div>
+  );
+}
 
 // Root cause of a stuck "Content unavailable" state on any bad slug (both
 // locales): the default retry policy retries EVERY error, including a 404 —
@@ -251,35 +269,37 @@ function Router() {
   }, [location, navigate]);
 
   return (
-    <Switch>
-      {/* Admin Routes - No Public Layout, locale-agnostic */}
-      <Route path="/admin/login" component={AdminLogin} />
-      <Route path="/admin" component={AdminDashboard} />
-      <Route path="/admin/pages/:id">
-        {(params) => <AdminPageEditor id={Number(params.id)} />}
-      </Route>
-      <Route path="/admin/pages" component={AdminPages} />
-      <Route path="/admin/menus" component={AdminMenus} />
-      <Route path="/admin/carousel" component={AdminCarousel} />
-      <Route path="/admin/leads" component={AdminLeads} />
-      <Route path="/admin/ai" component={AdminAi} />
-      <Route path="/admin/seo" component={AdminSeo} />
-      <Route path="/admin/analytics" component={AdminAnalytics} />
+    <Suspense fallback={<RouteLoadingFallback />}>
+      <Switch>
+        {/* Admin Routes - No Public Layout, locale-agnostic */}
+        <Route path="/admin/login" component={AdminLogin} />
+        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/admin/pages/:id">
+          {(params) => <AdminPageEditor id={Number(params.id)} />}
+        </Route>
+        <Route path="/admin/pages" component={AdminPages} />
+        <Route path="/admin/menus" component={AdminMenus} />
+        <Route path="/admin/carousel" component={AdminCarousel} />
+        <Route path="/admin/leads" component={AdminLeads} />
+        <Route path="/admin/ai" component={AdminAi} />
+        <Route path="/admin/seo" component={AdminSeo} />
+        <Route path="/admin/analytics" component={AdminAnalytics} />
 
-      <Route path="/admin/newsletter" component={AdminNewsletter} />
-      <Route path="/admin/settings" component={AdminSettings} />
-      <Route path="/admin/integrations" component={AdminIntegrations} />
+        <Route path="/admin/newsletter" component={AdminNewsletter} />
+        <Route path="/admin/settings" component={AdminSettings} />
+        <Route path="/admin/integrations" component={AdminIntegrations} />
 
-      {/* Dutch public pages — nested router gives every child a "/nl" base. */}
-      <Route path="/nl" nest>
-        <PublicRoutes />
-      </Route>
+        {/* Dutch public pages — nested router gives every child a "/nl" base. */}
+        <Route path="/nl" nest>
+          <PublicRoutes />
+        </Route>
 
-      {/* English public pages — default locale at the site root. */}
-      <Route>
-        <PublicRoutes />
-      </Route>
-    </Switch>
+        {/* English public pages — default locale at the site root. */}
+        <Route>
+          <PublicRoutes />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 }
 
