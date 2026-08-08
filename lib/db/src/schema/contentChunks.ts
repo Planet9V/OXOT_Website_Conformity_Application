@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp, vector } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, vector, index } from "drizzle-orm/pg-core";
 
 /** Embedding dimension for OpenAI `text-embedding-3-small` (via OpenRouter). */
 export const EMBEDDING_DIMENSIONS = 1536;
@@ -20,7 +20,13 @@ export const contentChunksTable = pgTable("content_chunks", {
   visibility: text("visibility").notNull().default("public"),
   embedding: vector("embedding", { dimensions: EMBEDDING_DIMENSIONS }).notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  // retrieveContext() filters by (locale, visibility) before computing cosine
+  // distance — this is the one query in the codebase with no scoping index at
+  // all, so it degrades to a full seq-scan-plus-distance-compute as the
+  // corpus grows.
+  index("content_chunks_locale_visibility_idx").on(table.locale, table.visibility),
+]);
 
 export type ContentChunkRow = typeof contentChunksTable.$inferSelect;
 export type InsertContentChunk = typeof contentChunksTable.$inferInsert;

@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, boolean, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityBomComponentsTable } from "./conformityBomComponents";
@@ -19,7 +19,9 @@ export const conformitySaasAssetsTable = pgTable("conformity_saas_assets", {
   slaUptimePercentage: text("sla_uptime_percentage").notNull().default("99.99"),
   isThirdPartyManaged: boolean("is_third_party_managed").notNull().default(true),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  index("conformity_saas_assets_component_id_idx").on(table.componentId),
+]);
 
 export const insertConformitySaasAssetSchema = createInsertSchema(
   conformitySaasAssetsTable,

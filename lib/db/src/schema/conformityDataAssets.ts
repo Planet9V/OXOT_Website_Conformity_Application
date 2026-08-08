@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, timestamp, boolean } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp, boolean, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityBomComponentsTable } from "./conformityBomComponents";
@@ -21,7 +21,9 @@ export const conformityDataAssetsTable = pgTable("conformity_data_assets", {
   retentionPeriodYears: integer("retention_period_years").notNull().default(10),
   containsPii: boolean("contains_pii").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+}, (table) => [
+  index("conformity_data_assets_component_id_idx").on(table.componentId),
+]);
 
 export const insertConformityDataAssetSchema = createInsertSchema(
   conformityDataAssetsTable,
