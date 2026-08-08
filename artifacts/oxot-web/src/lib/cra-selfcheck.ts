@@ -1,7 +1,10 @@
 // Client-safe (NO pg / server imports) so both the quiz client component and its
 // unit tests can use it. Pure scoring for the CRA Classification Self-Check —
 // indicative only, never a legal determination (see docs/CRA-CLASSIFICATION-SELF-CHECK.md).
-import { type Segment } from "@/lib/segments";
+// Relative import (not the "@/" alias): this file's own unit test runs under
+// plain Node (no bundler/alias resolution), so a bare "@/..." specifier would
+// break it even though the import is type-only.
+import { type Segment } from "./segments.ts";
 
 export type Position = "manufacturer" | "oem" | "integrator" | "reseller" | "operator";
 export type HasDigital = "yes" | "no" | "unsure";
