@@ -1,5 +1,24 @@
 # Findings — Toolkit-Skills Codebase & Website Evaluation (2026-08-07)
 
+## STATUS: ALL ITEMIZED FINDINGS BELOW ARE FIXED (as of 2026-08-08)
+
+Every item in "CRITICAL", "HIGH", and the "Top 5 recommendations" list below
+has been fixed, verified (Docker build + live curl/Chrome), and merged to
+main via its own PR: #53 (team access control + plaintext passwords, CORS,
+login rate limit + fail-closed admin creds), #55 (DB indexes), #56 (test
+script + CRA scoring tests), #57 (helmet security headers), #58 (font
+loading dedup), #59 (route-level code splitting). The narrative sections
+below are kept as-written (historical record of what was found), not updated
+to past tense — check the PR list above for current status, not this text.
+
+Not yet addressed (lower-priority findings from the full report, not in the
+top-5 list — see the published Artifact for full detail): API versioning,
+inconsistent pagination/error-response shapes, missing OpenAPI endpoint
+documentation, several medium/low accessibility gaps (skip-link, unlabelled
+Edit Profile dialog, ARIA radiogroup keyboard nav), and the remaining
+unindexed lower-traffic FK columns already covered in PR #55's broader sweep.
+
+
 Full per-dimension JSON (all findings, strengths, evidence): see workflow journal at
 `/Users/jimmcknney/.claude/projects/-Users-jimmcknney-Downloads-OXOT-Website-Conformity-Application/046b87da-0622-4684-a688-c82e95b88495/subagents/workflows/wf_d8cdc2c7-c45/journal.jsonl`
 and the published Artifact report.
