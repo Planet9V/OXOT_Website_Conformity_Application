@@ -6,7 +6,7 @@ import {
   conformityActivityTable,
   type ConformityMemberRow,
 } from "@workspace/db";
-import { requireAuth, getSession, reservedUsernames } from "../lib/adminAuth";
+import { requireAuth, requireAdmin, getSession, reservedUsernames } from "../lib/adminAuth";
 import { hashPassword, normalizeUsername, USERNAME_RE } from "../lib/teamMembers";
 
 const router: IRouter = Router();
@@ -45,6 +45,13 @@ function toDto(m: ConformityMemberRow) {
   };
 }
 
+// Non-admin surfaces (PSIRT canvas, dropdowns) only need identity fields —
+// never expose plainPassword outside the admin team-management page.
+function toPublicDto(m: ConformityMemberRow) {
+  const { plainPassword: _plainPassword, ...rest } = toDto(m);
+  return rest;
+}
+
 function isUniqueViolation(err: unknown): boolean {
   if (!err || typeof err !== "object") {
     return false;
@@ -55,20 +62,21 @@ function isUniqueViolation(err: unknown): boolean {
   return isUniqueViolation((err as { cause?: unknown }).cause);
 }
 
-// Public or session GET for PSIRT canvas & dropdowns
+// Public or session GET for PSIRT canvas & dropdowns — identity fields only,
+// never plainPassword (that's an admin-only surface, see /admin/team below).
 router.get("/team", requireAuth, async (_req, res): Promise<void> => {
   try {
     const rows = await db
       .select()
       .from(conformityMembersTable)
       .orderBy(desc(conformityMembersTable.active), asc(conformityMembersTable.displayName));
-    res.json(rows.map(toDto));
+    res.json(rows.map(toPublicDto));
   } catch (err: any) {
     res.status(500).json({ error: err?.message || "Failed to list team members" });
   }
 });
 
-router.get("/admin/team", requireAuth, async (_req, res): Promise<void> => {
+router.get("/admin/team", requireAdmin, async (_req, res): Promise<void> => {
   try {
     const rows = await db
       .select()
@@ -80,7 +88,7 @@ router.get("/admin/team", requireAuth, async (_req, res): Promise<void> => {
   }
 });
 
-router.post("/admin/team", requireAuth, async (req, res): Promise<void> => {
+router.post("/admin/team", requireAdmin, async (req, res): Promise<void> => {
   const {
     username: rawUsername,
     displayName: rawDisplayName,
@@ -165,7 +173,7 @@ router.post("/admin/team", requireAuth, async (req, res): Promise<void> => {
   }
 });
 
-router.patch("/admin/team/:id", requireAuth, async (req, res): Promise<void> => {
+router.patch("/admin/team/:id", requireAdmin, async (req, res): Promise<void> => {
   try {
     const id = parseInt(req.params.id, 10);
     const body = req.body;

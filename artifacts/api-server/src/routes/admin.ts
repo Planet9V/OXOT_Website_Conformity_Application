@@ -14,10 +14,31 @@ import {
 import { verifyMemberCredentials } from "../lib/teamMembers";
 import { eq } from "drizzle-orm";
 import { db, conformityMembersTable } from "@workspace/db";
+import { rateLimit } from "../middlewares/rateLimit";
 
 const router: IRouter = Router();
 
-router.post("/admin/login", async (req, res): Promise<void> => {
+// Abuse protection: without this, admin/demo/every member account is open to
+// unthrottled credential-stuffing. Limits are generous enough that a real
+// person mistyping a password a few times is unaffected.
+const loginIpLimiter = rateLimit({
+  keyPrefix: "admin-login-ip",
+  windowMs: 15 * 60_000, // 15 minutes
+  max: 10,
+  message: "Too many login attempts. Please try again in a little while.",
+});
+const loginUsernameLimiter = rateLimit({
+  keyPrefix: "admin-login-username",
+  windowMs: 15 * 60_000,
+  max: 5,
+  keyGenerator: (req) => {
+    const username = (req.body as { username?: unknown } | undefined)?.username;
+    return typeof username === "string" ? username.trim().toLowerCase() : null;
+  },
+  message: "Too many login attempts. Please try again in a little while.",
+});
+
+router.post("/admin/login", loginIpLimiter, loginUsernameLimiter, async (req, res): Promise<void> => {
   const parsed = AdminLoginBody.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: parsed.error.message });
