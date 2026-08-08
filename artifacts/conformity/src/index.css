@@ -380,3 +380,38 @@
     transform: none;
   }
 }
+
+/* Heading scale — mirrors oxot-web's index.css §3.2 exactly, so h1-h4 are the
+   same size in both apps instead of each hand-rolling its own text-*xl. Not
+   yet applied to any component here — additive only (see the 2026-08-07
+   codebase evaluation, responsive/visual dimension). */
+.oxot-h1 {
+  font-family: var(--app-font-display), Georgia, serif;
+  font-size: 1.875rem; /* 30px */
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.oxot-h2 {
+  font-family: var(--app-font-display), Georgia, serif;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.oxot-h3 {
+  font-family: var(--app-font-display), Georgia, serif;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.3;
+  font-weight: 400;
+}
+.oxot-h4 {
+  font-family: var(--app-font-sans), system-ui, sans-serif;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.4;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .oxot-h1 { font-size: 2.25rem; } /* 36px */
+  .oxot-h2 { font-size: 1.875rem; } /* 30px */
+}

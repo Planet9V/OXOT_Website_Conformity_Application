@@ -212,12 +212,37 @@ export default function DemoPage() {
               )}
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>
-                  <input name="name" className={field} placeholder={t.phName} aria-label={t.alName} autoComplete="name" />
-                  {errors.name && <p className="mt-1 text-xs text-orange-600 dark:text-orange-400">{errors.name}</p>}
+                  <input
+                    name="name"
+                    className={field}
+                    placeholder={t.phName}
+                    aria-label={t.alName}
+                    aria-invalid={errors.name ? true : undefined}
+                    aria-describedby={errors.name ? "demo-name-error" : undefined}
+                    autoComplete="name"
+                  />
+                  {errors.name && (
+                    <p id="demo-name-error" role="alert" className="mt-1 text-xs text-orange-600 dark:text-orange-400">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <input name="email" type="email" className={field} placeholder={t.phEmail} aria-label={t.alEmail} autoComplete="email" />
-                  {errors.email && <p className="mt-1 text-xs text-orange-600 dark:text-orange-400">{errors.email}</p>}
+                  <input
+                    name="email"
+                    type="email"
+                    className={field}
+                    placeholder={t.phEmail}
+                    aria-label={t.alEmail}
+                    aria-invalid={errors.email ? true : undefined}
+                    aria-describedby={errors.email ? "demo-email-error" : undefined}
+                    autoComplete="email"
+                  />
+                  {errors.email && (
+                    <p id="demo-email-error" role="alert" className="mt-1 text-xs text-orange-600 dark:text-orange-400">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
                 <input name="company" className={field} placeholder={t.phCompany} aria-label={t.alCompany} autoComplete="organization" />
                 <input name="role" className={field} placeholder={t.phRole} aria-label={t.alRole} autoComplete="organization-title" />

@@ -2724,6 +2724,27 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/evidence/{id}/download:
+    get:
+      operationId: downloadConformityEvidence
+      tags: [conformity]
+      summary: Stream a file-backed evidence attachment (admin-gated; confidential)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The evidence file, streamed with its original content type
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
   /conformity/assessments/{id}/artifacts:
     get:
       operationId: listConformityArtifacts

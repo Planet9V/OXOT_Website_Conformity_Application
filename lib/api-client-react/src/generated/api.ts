@@ -9666,6 +9666,83 @@ export const useDeleteConformityEvidence = <TError = ErrorType<UnauthorizedRespo
       return useMutation(getDeleteConformityEvidenceMutationOptions(options));
     }
 
+export const getDownloadConformityEvidenceUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/evidence/${id}/download`
+}
+
+/**
+ * @summary Stream a file-backed evidence attachment (admin-gated; confidential)
+ */
+export const downloadConformityEvidence = async (id: number, options?: RequestInit): Promise<Blob> => {
+
+  return customFetch<Blob>(getDownloadConformityEvidenceUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getDownloadConformityEvidenceQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/evidence/${id}/download`
+    ] as const;
+    }
+
+
+export const getDownloadConformityEvidenceQueryOptions = <TData = Awaited<ReturnType<typeof downloadConformityEvidence>>, TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof downloadConformityEvidence>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getDownloadConformityEvidenceQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof downloadConformityEvidence>>> = ({ signal }) => downloadConformityEvidence(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof downloadConformityEvidence>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type DownloadConformityEvidenceQueryResult = NonNullable<Awaited<ReturnType<typeof downloadConformityEvidence>>>
+export type DownloadConformityEvidenceQueryError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary Stream a file-backed evidence attachment (admin-gated; confidential)
+ */
+
+export function useDownloadConformityEvidence<TData = Awaited<ReturnType<typeof downloadConformityEvidence>>, TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof downloadConformityEvidence>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getDownloadConformityEvidenceQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
 export const getListConformityArtifactsUrl = (id: number,) => {
 
 

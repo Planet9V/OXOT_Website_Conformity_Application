@@ -220,6 +220,26 @@ export function CraSelfCheck({
     });
   }
 
+  // WAI-ARIA radiogroup pattern: Left/Up moves to the previous option,
+  // Right/Down to the next, wrapping at the ends — and (matching how these
+  // buttons already select on click) moves selection along with focus.
+  function handleRadioGroupKeyDown(
+    e: React.KeyboardEvent<HTMLDivElement>,
+    values: string[],
+    onSelect: (value: string) => void,
+  ) {
+    const forward = e.key === "ArrowRight" || e.key === "ArrowDown";
+    const backward = e.key === "ArrowLeft" || e.key === "ArrowUp";
+    if (!forward && !backward) return;
+    e.preventDefault();
+    const radios = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>('[role="radio"]'));
+    const currentIndex = radios.findIndex((r) => r === document.activeElement);
+    const delta = forward ? 1 : -1;
+    const nextIndex = (currentIndex + delta + values.length) % values.length;
+    radios[nextIndex]?.focus();
+    onSelect(values[nextIndex]!);
+  }
+
   function toggleMulti(value: EvidenceItem) {
     setAnswers((a) => {
       if (value === "none") {
@@ -536,12 +556,37 @@ export function CraSelfCheck({
               {topError && <div className="rounded-lg border border-orange-500/50 bg-orange-500/10 p-3 text-sm">{topError}</div>}
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>
-                  <input name="name" className={field} placeholder={copy.review.form.namePh} aria-label={copy.review.form.name} autoComplete="name" />
-                  {errors.name && <p className="mt-1 text-xs text-orange-600 dark:text-orange-400">{errors.name}</p>}
+                  <input
+                    name="name"
+                    className={field}
+                    placeholder={copy.review.form.namePh}
+                    aria-label={copy.review.form.name}
+                    aria-invalid={errors.name ? true : undefined}
+                    aria-describedby={errors.name ? "review-name-error" : undefined}
+                    autoComplete="name"
+                  />
+                  {errors.name && (
+                    <p id="review-name-error" role="alert" className="mt-1 text-xs text-orange-600 dark:text-orange-400">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <input name="email" type="email" className={field} placeholder={copy.review.form.emailPh} aria-label={copy.review.form.email} autoComplete="email" />
-                  {errors.email && <p className="mt-1 text-xs text-orange-600 dark:text-orange-400">{errors.email}</p>}
+                  <input
+                    name="email"
+                    type="email"
+                    className={field}
+                    placeholder={copy.review.form.emailPh}
+                    aria-label={copy.review.form.email}
+                    aria-invalid={errors.email ? true : undefined}
+                    aria-describedby={errors.email ? "review-email-error" : undefined}
+                    autoComplete="email"
+                  />
+                  {errors.email && (
+                    <p id="review-email-error" role="alert" className="mt-1 text-xs text-orange-600 dark:text-orange-400">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
                 <input name="company" className={field} placeholder={copy.review.form.companyPh} aria-label={copy.review.form.company} autoComplete="organization" />
                 <input name="role" className={field} placeholder={copy.review.form.rolePh} aria-label={copy.review.form.role} autoComplete="organization-title" />
@@ -599,7 +644,21 @@ export function CraSelfCheck({
       <div ref={topRef} className="rounded-xl border border-border bg-card p-6 shadow-sm sm:p-8">
         {progressHeader}
         <h2 className="text-base font-semibold text-foreground">{copy.v2.roleQuestion.label}</h2>
-        <div role="radiogroup" aria-label={copy.v2.roleQuestion.label} className="mt-4 grid gap-2 sm:grid-cols-2">
+        <div
+          role="radiogroup"
+          aria-label={copy.v2.roleQuestion.label}
+          className="mt-4 grid gap-2 sm:grid-cols-2"
+          onKeyDown={(e) =>
+            handleRadioGroupKeyDown(
+              e,
+              copy.v2.roleQuestion.options.map((o) => o.value),
+              (value) => {
+                setAnswers((a) => ({ ...a, role: value as Role }));
+                next();
+              },
+            )
+          }
+        >
           {copy.v2.roleQuestion.options.map((o) => (
             <button
               key={o.value}
@@ -661,7 +720,18 @@ export function CraSelfCheck({
       {stepId === "evidence" && (
         <div className="mt-5 border-t border-border pt-4">
           <h3 className="text-sm font-semibold text-foreground">{copy.v2.evidenceLivingQuestion.label}</h3>
-          <div role="radiogroup" aria-label={copy.v2.evidenceLivingQuestion.label} className="mt-3 grid gap-2 sm:grid-cols-3">
+          <div
+            role="radiogroup"
+            aria-label={copy.v2.evidenceLivingQuestion.label}
+            className="mt-3 grid gap-2 sm:grid-cols-3"
+            onKeyDown={(e) =>
+              handleRadioGroupKeyDown(
+                e,
+                copy.v2.evidenceLivingQuestion.options.map((o) => o.value),
+                (value) => setAnswers((a) => ({ ...a, evidenceLiving: value as EvidenceLiving })),
+              )
+            }
+          >
             {copy.v2.evidenceLivingQuestion.options.map((o) => (
               <button
                 key={o.value}

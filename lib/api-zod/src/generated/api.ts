@@ -3854,6 +3854,16 @@ export const DeleteConformityEvidenceResponse = zod.object({
 
 
 /**
+ * @summary Stream a file-backed evidence attachment (admin-gated; confidential)
+ */
+export const DownloadConformityEvidenceParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const DownloadConformityEvidenceResponse = zod.unknown()
+
+
+/**
  * @summary List generated artifacts for an assessment
  */
 export const ListConformityArtifactsParams = zod.object({
