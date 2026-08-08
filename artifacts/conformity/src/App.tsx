@@ -17,22 +17,41 @@ import Sources from './pages/sources';
 import SourceViewer from './pages/source-viewer';
 import Products from './pages/products';
 import ProductDetail from './pages/product-detail';
-import Assessment from './pages/assessment';
-import Flows from './pages/flows';
 import Team from './pages/team';
 import Welcome from './pages/welcome';
 import Demo from './pages/demo';
 import Overview from './pages/overview';
 import Onboarding from './pages/onboarding';
 import Profile from './pages/profile';
-import Reports from './pages/reports';
-import ReportWorkspace from './pages/report-workspace';
-import Psirt from './pages/psirt';
-import { ProductPortfolioPage } from './pages/product-portfolio';
 import Security from './pages/security';
-import AuditorPortalPage from './pages/auditor-portal';
 
-import React, { Component, type ReactNode } from "react";
+import React, { Component, Suspense, lazy, type ReactNode } from "react";
+import { Skeleton } from './components/ui/skeleton';
+
+// Code-split the heaviest feature workspaces (chart-heavy or, in
+// product-portfolio's case, a 1727-line single component) out of the main
+// bundle — every route in this app was previously statically imported, so
+// visiting /team pulled in PSIRT's recharts bundle and the whole product
+// portfolio workspace too. Mirrors the lazy-load pattern already proven in
+// pages/dashboard.tsx (its own CommandCenter lazy-load).
+const Assessment = lazy(() => import('./pages/assessment'));
+const Flows = lazy(() => import('./pages/flows'));
+const Reports = lazy(() => import('./pages/reports'));
+const ReportWorkspace = lazy(() => import('./pages/report-workspace'));
+const Psirt = lazy(() => import('./pages/psirt'));
+const ProductPortfolioPage = lazy(() =>
+  import('./pages/product-portfolio').then((m) => ({ default: m.ProductPortfolioPage })),
+);
+const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
+
+/** Minimal loading state shown only while a lazy chunk loads. */
+function RouteLoadingFallback() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center p-8">
+      <Skeleton className="h-8 w-40" />
+    </div>
+  );
+}
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -105,6 +124,7 @@ function ShellRoutes() {
   return (
     <AuthGate>
       <AppShell>
+        <Suspense fallback={<RouteLoadingFallback />}>
         <Switch>
           <Route path="/" component={Dashboard} />
           <Route path="/overview" component={Overview} />
@@ -161,6 +181,7 @@ function ShellRoutes() {
             </div>
           </Route>
         </Switch>
+        </Suspense>
       </AppShell>
     </AuthGate>
   );
@@ -174,7 +195,11 @@ function Router() {
       {/* Public CVD surface (Annex I Part II CRA) — no auth, full-bleed. */}
       <Route path="/security" component={Security} />
       {/* Notified Body Auditor Portal (Module B/H) — token-authenticated, full-bleed. */}
-      <Route path="/auditor-portal" component={AuditorPortalPage} />
+      <Route path="/auditor-portal">
+        <Suspense fallback={<RouteLoadingFallback />}>
+          <AuditorPortalPage />
+        </Suspense>
+      </Route>
       {/* Full-bleed like the demo front door: onboarding gets full attention. */}
       <Route path="/onboarding">
         <AuthGate>
