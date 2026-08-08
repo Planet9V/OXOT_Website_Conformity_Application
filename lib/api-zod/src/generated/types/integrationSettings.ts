@@ -8,11 +8,13 @@
 import type { ConformityAlertsSettings } from './conformityAlertsSettings';
 import type { EmailSettings } from './emailSettings';
 import type { LinkedinSettings } from './linkedinSettings';
+import type { SlackSettings } from './slackSettings';
 import type { XSettings } from './xSettings';
 
 export interface IntegrationSettings {
   email: EmailSettings;
   linkedin: LinkedinSettings;
   x: XSettings;
+  slack: SlackSettings;
   conformityAlerts: ConformityAlertsSettings;
 }

@@ -7,9 +7,11 @@ import {
   SaveEmailSettingsBody,
   SaveLinkedinSettingsBody,
   SaveXSettingsBody,
+  SaveSlackSettingsBody,
   SendTestEmailBody,
   TestXConnectionResponse,
   TestLinkedinConnectionResponse,
+  TestSlackConnectionResponse,
   SaveConformityAlertsSettingsBody,
   RunConformityAlertsCheckResponse,
 } from "@workspace/api-zod";
@@ -20,6 +22,7 @@ import {
   saveEmailConfig,
   saveLinkedinConfig,
   saveXConfig,
+  saveSlackConfig,
   saveConformityAlertsConfig,
   getXConfig,
   getLinkedinConfig,
@@ -32,6 +35,7 @@ import { verifyXConnection, verifyLinkedinConnection } from "../lib/social";
 import { runConformityAlertScan } from "../lib/conformityAlertScan";
 import { generateRegulatoryNews } from "../lib/regulatoryNewsGenerator";
 import { sendEmail } from "../lib/mailer";
+import { sendSlackMessage } from "../lib/slack";
 import { logger } from "../lib/logger";
 
 const router: IRouter = Router();
@@ -197,6 +201,30 @@ router.post("/admin/settings/x/test", requireAdmin, async (_req, res) => {
       checkedAt: result.checkedAt,
     }),
   );
+});
+
+router.put("/admin/settings/slack", requireAdmin, async (req, res) => {
+  const parsed = SaveSlackSettingsBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.issues[0]?.message ?? "Invalid request" });
+    return;
+  }
+  const settings = await saveSlackConfig(parsed.data);
+  void recordIntegrationEvent({ integration: "slack", kind: "config_saved", success: true });
+  res.json(GetIntegrationSettingsResponse.parse(settings));
+});
+
+// Non-destructive test: sends one real message to the configured webhook so
+// the admin can confirm the URL actually works.
+router.post("/admin/settings/slack/test", requireAdmin, async (_req, res) => {
+  const result = await sendSlackMessage("OXOT test message — if you see this, your Slack webhook is working.");
+  void recordIntegrationEvent({
+    integration: "slack",
+    kind: "test_message",
+    success: result.delivered,
+    detail: result.delivered ? "test message sent" : (result.error ?? "not delivered"),
+  });
+  res.json(TestSlackConnectionResponse.parse({ delivered: result.delivered, error: result.error ?? null }));
 });
 
 router.put("/admin/settings/conformity-alerts", requireAdmin, async (req, res) => {

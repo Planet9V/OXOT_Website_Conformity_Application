@@ -5,6 +5,7 @@ import {
   type EmailConfig,
   type LinkedinConfig,
   type XConfig,
+  type SlackConfig,
   type ConformityAlertsConfig,
   type RegulatoryNewsConfig,
   type IntegrationHealth,
@@ -13,7 +14,7 @@ import { eq, sql } from "drizzle-orm";
 import { getAppSettings } from "./models";
 import { logger } from "./logger";
 
-export type IntegrationName = "email" | "linkedin" | "x";
+export type IntegrationName = "email" | "linkedin" | "x" | "slack";
 
 /**
  * Admin-configurable integration settings (email/SMTP, LinkedIn, X).
@@ -72,6 +73,12 @@ export interface MaskedXConfig {
   health: MaskedHealth;
 }
 
+export interface MaskedSlackConfig {
+  enabled: boolean;
+  webhookUrlSet: boolean;
+  health: MaskedHealth;
+}
+
 /** No secrets in here — masked shape exists for UI symmetry + effectiveRecipient. */
 export interface MaskedConformityAlertsConfig {
   enabled: boolean;
@@ -88,6 +95,7 @@ export interface MaskedIntegrationSettings {
   email: MaskedEmailConfig;
   linkedin: MaskedLinkedinConfig;
   x: MaskedXConfig;
+  slack: MaskedSlackConfig;
   conformityAlerts: MaskedConformityAlertsConfig;
 }
 
@@ -110,6 +118,11 @@ export async function getLinkedinConfig(): Promise<LinkedinConfig> {
 export async function getXConfig(): Promise<XConfig> {
   const row = await getAppSettings();
   return row?.xConfig ?? {};
+}
+
+export async function getSlackConfig(): Promise<SlackConfig> {
+  const row = await getAppSettings();
+  return row?.slackConfig ?? {};
 }
 
 export async function getConformityAlertsConfig(): Promise<ConformityAlertsConfig> {
@@ -189,6 +202,14 @@ function maskX(c: XConfig): MaskedXConfig {
   };
 }
 
+function maskSlack(c: SlackConfig): MaskedSlackConfig {
+  return {
+    enabled: c.enabled ?? false,
+    webhookUrlSet: Boolean(c.webhookUrl),
+    health: maskHealth(c.health),
+  };
+}
+
 function maskConformityAlerts(
   c: ConformityAlertsConfig,
   email: EmailConfig,
@@ -211,6 +232,7 @@ export async function getIntegrationSettingsMasked(): Promise<MaskedIntegrationS
     email: maskEmail(row.emailConfig ?? {}),
     linkedin: maskLinkedin(row.linkedinConfig ?? {}),
     x: maskX(row.xConfig ?? {}),
+    slack: maskSlack(row.slackConfig ?? {}),
     conformityAlerts: maskConformityAlerts(row.conformityAlertsConfig ?? {}, row.emailConfig ?? {}),
   };
 }
@@ -358,6 +380,13 @@ export async function saveXConfig(patch: Partial<XConfig>): Promise<MaskedIntegr
   return getIntegrationSettingsMasked();
 }
 
+export async function saveSlackConfig(patch: Partial<SlackConfig>): Promise<MaskedIntegrationSettings> {
+  const row = await getAppSettings();
+  const merged = mergePreservingSecrets(row.slackConfig ?? {}, patch, ["webhookUrl"]);
+  await db.update(appSettingsTable).set({ slackConfig: merged }).where(eq(appSettingsTable.id, row.id));
+  return getIntegrationSettingsMasked();
+}
+
 /** No secret fields in this config — plain merge (undefined keys are skipped). */
 export async function saveConformityAlertsConfig(
   patch: Partial<ConformityAlertsConfig>,
@@ -400,13 +429,17 @@ export async function recordIntegrationHealth(
         ? row.emailConfig?.health
         : integration === "linkedin"
           ? row.linkedinConfig?.health
-          : row.xConfig?.health;
+          : integration === "slack"
+            ? row.slackConfig?.health
+            : row.xConfig?.health;
     const column =
       integration === "email"
         ? "email_config"
         : integration === "linkedin"
           ? "linkedin_config"
-          : "x_config";
+          : integration === "slack"
+            ? "slack_config"
+            : "x_config";
     const newHealth = buildHealth(existingHealth);
     // Atomically update ONLY the `health` sub-path via jsonb_set. This must never
     // read-modify-write the whole config object, or a concurrent admin save of

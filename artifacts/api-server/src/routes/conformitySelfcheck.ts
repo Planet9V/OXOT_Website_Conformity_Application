@@ -5,6 +5,7 @@ import { db, leadsTable } from "@workspace/db";
 import { rateLimit } from "../middlewares/rateLimit";
 import { validateReportPayload } from "../lib/selfcheckReportPayload";
 import { SelfCheckReport } from "../lib/selfcheckReportPdf";
+import { sendSlackMessage } from "../lib/slack";
 
 const router: IRouter = Router();
 
@@ -53,15 +54,23 @@ router.post("/lead", leadIpLimiter, leadEmailLimiter, async (req, res): Promise<
   const message = [summary, blocker && `Question: ${blocker}`].filter(Boolean).join("\n") || null;
   const role = clamp(b.role, 120);
 
+  const source = clamp(b.source, 60) || "cra_selfcheck";
+  const company = clamp(b.company, 200) || null;
+
   await db.insert(leadsTable).values({
     name,
     email,
-    company: clamp(b.company, 200) || null,
+    company,
     message: [message, role && `Role: ${role}`].filter(Boolean).join("\n") || null,
     segment: clamp(b.segment, 40) || null,
-    source: clamp(b.source, 60) || "cra_selfcheck",
+    source,
     locale: b.locale === "nl" ? "nl" : "en",
   });
+
+  // Fire-and-forget: never let a Slack hiccup affect the lead-capture response.
+  void sendSlackMessage(
+    `New lead (${source}): ${name} <${email}>${company ? ` — ${company}` : ""}`,
+  );
 
   res.json({ ok: true });
 });

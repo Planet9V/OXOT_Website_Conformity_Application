@@ -13,7 +13,7 @@ export const integrationEventsTable = pgTable(
   "integration_events",
   {
     id: serial("id").primaryKey(),
-    // email | linkedin | x
+    // email | linkedin | x | slack
     integration: text("integration").notNull(),
     // config_saved | verify | test_email | send | post | oauth | token_warning ...
     kind: text("kind").notNull(),

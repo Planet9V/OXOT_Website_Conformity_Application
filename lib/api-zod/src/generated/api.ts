@@ -1411,7 +1411,6 @@ export const DeleteCarouselSlideResponse = zod.object({
  */
 export const GetLlmSettingsResponse = zod.object({
   "config": zod.object({
-  "openrouterApiKey": zod.string().nullish(),
   "chatModel": zod.string().nullish(),
   "embeddingModel": zod.string().nullish(),
   "longContextModel": zod.string().nullish(),
@@ -1429,12 +1428,9 @@ export const GetLlmSettingsResponse = zod.object({
   "id": zod.string(),
   "name": zod.string(),
   "provider": zod.string(),
-  "category": zod.string().nullish(),
   "description": zod.string(),
   "roles": zod.array(zod.string()),
-  "contextWindow": zod.number().nullish(),
-  "pricingPrompt": zod.string().nullish(),
-  "pricingCompletion": zod.string().nullish()
+  "contextWindow": zod.number().nullish()
 }))
 })
 
@@ -1443,7 +1439,6 @@ export const GetLlmSettingsResponse = zod.object({
  * @summary Save LLM model selection
  */
 export const SaveLlmSettingsBody = zod.object({
-  "openrouterApiKey": zod.string().nullish(),
   "chatModel": zod.string().nullish(),
   "embeddingModel": zod.string().nullish(),
   "longContextModel": zod.string().nullish(),
@@ -1454,7 +1449,6 @@ export const SaveLlmSettingsBody = zod.object({
 
 export const SaveLlmSettingsResponse = zod.object({
   "config": zod.object({
-  "openrouterApiKey": zod.string().nullish(),
   "chatModel": zod.string().nullish(),
   "embeddingModel": zod.string().nullish(),
   "longContextModel": zod.string().nullish(),
@@ -1472,12 +1466,9 @@ export const SaveLlmSettingsResponse = zod.object({
   "id": zod.string(),
   "name": zod.string(),
   "provider": zod.string(),
-  "category": zod.string().nullish(),
   "description": zod.string(),
   "roles": zod.array(zod.string()),
-  "contextWindow": zod.number().nullish(),
-  "pricingPrompt": zod.string().nullish(),
-  "pricingCompletion": zod.string().nullish()
+  "contextWindow": zod.number().nullish()
 }))
 })
 
@@ -1527,6 +1518,16 @@ export const GetIntegrationSettingsResponse = zod.object({
   "apiSecretSet": zod.boolean(),
   "accessTokenSet": zod.boolean(),
   "accessSecretSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "webhookUrlSet": zod.boolean(),
   "health": zod.object({
   "lastCheckedAt": zod.number().nullable(),
   "lastSuccessAt": zod.number().nullable(),
@@ -1603,6 +1604,16 @@ export const SaveEmailSettingsResponse = zod.object({
   "apiSecretSet": zod.boolean(),
   "accessTokenSet": zod.boolean(),
   "accessSecretSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "webhookUrlSet": zod.boolean(),
   "health": zod.object({
   "lastCheckedAt": zod.number().nullable(),
   "lastSuccessAt": zod.number().nullable(),
@@ -1702,6 +1713,16 @@ export const SaveLinkedinSettingsResponse = zod.object({
   "lastError": zod.string().nullable()
 })
 }),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "webhookUrlSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
   "conformityAlerts": zod.object({
   "enabled": zod.boolean(),
   "recipient": zod.string(),
@@ -1786,6 +1807,16 @@ export const SaveXSettingsResponse = zod.object({
   "lastError": zod.string().nullable()
 })
 }),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "webhookUrlSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
   "conformityAlerts": zod.object({
   "enabled": zod.boolean(),
   "recipient": zod.string(),
@@ -1805,6 +1836,94 @@ export const TestXConnectionResponse = zod.object({
   "ok": zod.boolean(),
   "error": zod.string().nullable(),
   "checkedAt": zod.string()
+})
+
+
+/**
+ * @summary Save Slack webhook settings
+ */
+export const SaveSlackSettingsBody = zod.object({
+  "enabled": zod.boolean().optional(),
+  "webhookUrl": zod.string().optional()
+})
+
+export const SaveSlackSettingsResponse = zod.object({
+  "email": zod.object({
+  "enabled": zod.boolean(),
+  "fromName": zod.string(),
+  "fromEmail": zod.string(),
+  "smtpHost": zod.string(),
+  "smtpPort": zod.number(),
+  "smtpSecure": zod.boolean(),
+  "smtpUser": zod.string(),
+  "smtpPasswordSet": zod.boolean(),
+  "alertEmail": zod.string(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
+  "linkedin": zod.object({
+  "enabled": zod.boolean(),
+  "autoPublish": zod.boolean(),
+  "profileUrl": zod.string(),
+  "authorUrn": zod.string(),
+  "accessTokenSet": zod.boolean(),
+  "expiresAt": zod.number().nullable(),
+  "clientId": zod.string(),
+  "clientSecretSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
+  "x": zod.object({
+  "enabled": zod.boolean(),
+  "autoPublish": zod.boolean(),
+  "username": zod.string(),
+  "apiKeySet": zod.boolean(),
+  "apiSecretSet": zod.boolean(),
+  "accessTokenSet": zod.boolean(),
+  "accessSecretSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "webhookUrlSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
+  "conformityAlerts": zod.object({
+  "enabled": zod.boolean(),
+  "recipient": zod.string(),
+  "leadTimeHours": zod.number(),
+  "digestEnabled": zod.boolean(),
+  "reminderIntervalHours": zod.number(),
+  "maxReminders": zod.number(),
+  "effectiveRecipient": zod.string()
+})
+})
+
+
+/**
+ * @summary Send a test message to the configured Slack webhook
+ */
+export const TestSlackConnectionResponse = zod.object({
+  "delivered": zod.boolean(),
+  "error": zod.string().nullable()
 })
 
 
@@ -1878,6 +1997,16 @@ export const SaveConformityAlertsSettingsResponse = zod.object({
   "lastError": zod.string().nullable()
 })
 }),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "webhookUrlSet": zod.boolean(),
+  "health": zod.object({
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable()
+})
+}),
   "conformityAlerts": zod.object({
   "enabled": zod.boolean(),
   "recipient": zod.string(),
@@ -1943,6 +2072,18 @@ export const GetIntegrationsHealthResponse = zod.object({
   "tokenExpiresAt": zod.number().nullable(),
   "recentSuccessCount": zod.number(),
   "recentFailureCount": zod.number()
+}),
+  "slack": zod.object({
+  "enabled": zod.boolean(),
+  "configured": zod.boolean(),
+  "connected": zod.boolean().nullable(),
+  "lastCheckedAt": zod.number().nullable(),
+  "lastSuccessAt": zod.number().nullable(),
+  "lastFailureAt": zod.number().nullable(),
+  "lastError": zod.string().nullable(),
+  "tokenExpiresAt": zod.number().nullable(),
+  "recentSuccessCount": zod.number(),
+  "recentFailureCount": zod.number()
 })
 })
 
@@ -1956,7 +2097,7 @@ export const getIntegrationActivityQueryLimitMax = 200;
 
 export const GetIntegrationActivityQueryParams = zod.object({
   "limit": zod.coerce.number().min(1).max(getIntegrationActivityQueryLimitMax).optional(),
-  "integration": zod.enum(['email', 'linkedin', 'x']).optional()
+  "integration": zod.enum(['email', 'linkedin', 'x', 'slack']).optional()
 })
 
 export const GetIntegrationActivityResponseItem = zod.object({
