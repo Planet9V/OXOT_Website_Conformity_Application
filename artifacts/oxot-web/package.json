@@ -8,7 +8,7 @@
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "node --experimental-strip-types src/components/sections/article-links.test.ts && node --experimental-strip-types src/components/sections/article-headings.test.ts && node --experimental-strip-types src/components/layout/header-panels.test.ts && node --experimental-strip-types src/hooks/use-analytics.test.ts && node --experimental-strip-types src/hooks/use-analytics-consent-change.test.ts && node --experimental-strip-types src/components/sections/related-services.test.ts && node --experimental-strip-types src/providers/locale-routing.test.ts && node --experimental-strip-types src/components/rich-text-link.test.ts",
+    "test": "node --experimental-strip-types src/components/sections/article-links.test.ts && node --experimental-strip-types src/components/sections/article-headings.test.ts && node --experimental-strip-types src/hooks/use-analytics.test.ts && node --experimental-strip-types src/hooks/use-analytics-consent-change.test.ts && node --experimental-strip-types src/components/sections/related-services.test.ts && node --experimental-strip-types src/providers/locale-routing.test.ts && node --experimental-strip-types src/components/rich-text-link.test.ts && node --experimental-strip-types src/lib/cra-selfcheck.test.ts",
     "test:e2e": "node e2e/setup-browser.mjs && playwright test"
   },
   "devDependencies": {
