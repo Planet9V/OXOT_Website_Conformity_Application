@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap');
+/* Fonts (IBM Plex Mono / Instrument Sans / Newsreader — the families actually
+   referenced by --app-font-sans/--app-font-display/--app-font-mono below) are
+   loaded via a <link> tag in index.html, not a CSS @import here: @import is
+   discovered late (the browser must fetch+parse this file before it can even
+   start the font request), which was duplicating font network requests and
+   delaying text paint against a second, dead font set previously declared in
+   index.html. See the 2026-08-07 codebase evaluation, performance dimension. */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
