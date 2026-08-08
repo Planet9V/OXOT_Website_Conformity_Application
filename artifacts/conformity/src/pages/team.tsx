@@ -313,43 +313,43 @@ function EditMemberDialog({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-2 text-xs">
           <div className="space-y-1">
-            <Label>Full Name</Label>
-            <Input className="h-8 text-xs" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+            <Label htmlFor="edit-member-name">Full Name</Label>
+            <Input id="edit-member-name" className="h-8 text-xs" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
           </div>
 
           <div className="space-y-1">
-            <Label>Position / Job Title</Label>
-            <Input className="h-8 text-xs" value={position} onChange={(e) => setPosition(e.target.value)} />
+            <Label htmlFor="edit-member-position">Position / Job Title</Label>
+            <Input id="edit-member-position" className="h-8 text-xs" value={position} onChange={(e) => setPosition(e.target.value)} />
           </div>
 
           <div className="space-y-1">
-            <Label>Email Address</Label>
-            <Input className="h-8 text-xs font-mono" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Label htmlFor="edit-member-email">Email Address</Label>
+            <Input id="edit-member-email" className="h-8 text-xs font-mono" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
 
           <div className="space-y-1">
-            <Label>Telephone Number</Label>
-            <Input className="h-8 text-xs font-mono" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
+            <Label htmlFor="edit-member-telephone">Telephone Number</Label>
+            <Input id="edit-member-telephone" className="h-8 text-xs font-mono" value={telephone} onChange={(e) => setTelephone(e.target.value)} />
           </div>
 
           <div className="space-y-1">
-            <Label>Department</Label>
-            <Input className="h-8 text-xs" value={department} onChange={(e) => setDepartment(e.target.value)} />
+            <Label htmlFor="edit-member-dept">Department</Label>
+            <Input id="edit-member-dept" className="h-8 text-xs" value={department} onChange={(e) => setDepartment(e.target.value)} />
           </div>
 
           <div className="space-y-1">
-            <Label>Organization</Label>
-            <Input className="h-8 text-xs" value={organization} onChange={(e) => setOrganization(e.target.value)} />
+            <Label htmlFor="edit-member-org">Organization</Label>
+            <Input id="edit-member-org" className="h-8 text-xs" value={organization} onChange={(e) => setOrganization(e.target.value)} />
           </div>
 
           <div className="space-y-1 sm:col-span-2">
-            <Label>Role Responsibility &amp; Mandate</Label>
-            <Input className="h-8 text-xs" value={roleResponsibility} onChange={(e) => setRoleResponsibility(e.target.value)} />
+            <Label htmlFor="edit-member-role">Role Responsibility &amp; Mandate</Label>
+            <Input id="edit-member-role" className="h-8 text-xs" value={roleResponsibility} onChange={(e) => setRoleResponsibility(e.target.value)} />
           </div>
 
           <div className="space-y-1 sm:col-span-2">
-            <Label>Update Password</Label>
-            <Input className="h-8 text-xs font-mono" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Label htmlFor="edit-member-password">Update Password</Label>
+            <Input id="edit-member-password" className="h-8 text-xs font-mono" value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
         </div>
 

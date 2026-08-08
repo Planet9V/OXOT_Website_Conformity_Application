@@ -26,7 +26,7 @@ RUN pnpm install --frozen-lockfile
 # then the API bundle and the three static frontends. BASE_PATH must match
 # the nginx routing below.
 # Force complete cache invalidation across all multi-stage targets
-RUN echo "Rebuild trigger: 2026-08-07-route-code-splitting-v1"
+RUN echo "Rebuild trigger: 2026-08-08-a11y-heading-grid-openapi-v1"
 RUN pnpm run typecheck:libs \
  && pnpm --filter @workspace/api-server run build \
  && BASE_PATH=/ pnpm --filter @workspace/oxot-web run build \
