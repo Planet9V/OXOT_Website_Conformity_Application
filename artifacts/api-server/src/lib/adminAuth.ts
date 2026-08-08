@@ -41,12 +41,18 @@ function getSessionSecret(): string {
   return secret;
 }
 
-/** Returns the configured admin credentials, or null if not yet configured. */
+/**
+ * Returns the configured admin credentials. Fails closed like
+ * getSessionSecret(): unlike the demo account (intentionally public), the
+ * admin account must never silently fall back to a well-known default.
+ */
 export function getAdminCredentials(): { username: string; password: string } {
-  return {
-    username: process.env["ADMIN_USERNAME"] || "admin",
-    password: process.env["ADMIN_PASSWORD"] || "admin",
-  };
+  const username = process.env["ADMIN_USERNAME"];
+  const password = process.env["ADMIN_PASSWORD"];
+  if (!username || !password) {
+    throw new Error("ADMIN_USERNAME and ADMIN_PASSWORD are required for admin login.");
+  }
+  return { username, password };
 }
 
 /**

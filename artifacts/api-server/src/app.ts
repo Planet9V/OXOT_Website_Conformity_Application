@@ -38,7 +38,35 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 // Expose the id to browser JS (CORS hides non-simple response headers by default).
-app.use(cors({ origin: true, credentials: true, exposedHeaders: ["X-Request-Id"] }));
+// In every real deployment (local Docker `web`, Railway) nginx reverse-proxies
+// /api/ onto the same origin as the frontend, so the browser never makes a
+// genuinely cross-origin request — CORS approval is only relevant to local
+// non-Docker dev (Vite on a different port than the API) and to any operator-
+// configured origin via ALLOWED_ORIGINS. Reflecting any origin with
+// credentials:true (the previous config) let any third-party site make
+// credentialed requests directly to the API, bypassing that same-origin setup.
+const allowedOrigins = (process.env["ALLOWED_ORIGINS"] ?? "")
+  .split(",")
+  .map((o) => o.trim())
+  .filter(Boolean);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) {
+        // No Origin header: same-origin, curl, server-to-server — always allowed.
+        callback(null, true);
+        return;
+      }
+      if (process.env["NODE_ENV"] !== "production" || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    exposedHeaders: ["X-Request-Id"],
+  }),
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
