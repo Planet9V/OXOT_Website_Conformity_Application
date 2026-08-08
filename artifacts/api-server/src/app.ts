@@ -1,11 +1,22 @@
 import express, { type Express, type Request, type Response, type NextFunction } from "express";
 import cors from "cors";
+import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
 const app: Express = express();
+
+// Standard security response headers (CSP, X-Frame-Options,
+// X-Content-Type-Options, HSTS, etc.) — this app previously shipped with
+// none. Defaults are appropriate here: this server only ever returns JSON
+// (the frontend HTML/JS/CSS is served separately by nginx), so helmet's
+// default CSP (`default-src 'self'`) and Cross-Origin-Resource-Policy
+// (`same-origin`) don't constrain any real document/asset loading — they
+// just close off the case where a browser is ever tricked into rendering
+// an API response as a document.
+app.use(helmet());
 
 // Behind Replit's proxy: trust X-Forwarded-For so req.ip is the real client
 // address. Per-IP rate limiting and GDPR consent-IP capture both rely on this.
