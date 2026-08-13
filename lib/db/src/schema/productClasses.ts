@@ -16,6 +16,8 @@ export const productClassesTable = pgTable("product_classes", {
   description: text("description").notNull(),
   riskLevel: text("risk_level"),
   defaultRouteKey: text("default_route_key"),
+  subcategoryKey: text("subcategory_key"),
+  annexIiiRef: text("annex_iii_ref"),
   sortOrder: integer("sort_order").notNull().default(0),
 }, (table) => [
   uniqueIndex("product_classes_reg_key_unique").on(table.regulationKey, table.key),

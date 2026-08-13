@@ -22,6 +22,7 @@ import ConformityThemes from '@/pages/conformity-themes';
 import ConformityMappings from '@/pages/conformity-mappings';
 import ConformitySources from '@/pages/conformity-sources';
 import ConformitySourceViewer from '@/pages/conformity-source-viewer';
+import StatutoryWorkbench from '@/pages/statutory-workbench';
 import KnowledgeHubPage from '@/pages/knowledge-hub';
 import RegulatoryNewsPage from '@/pages/regulatory-news';
 import CraCheckPage from '@/pages/cra-check';
@@ -171,6 +172,12 @@ function PublicRoutes() {
       </Route>
       <Route path="/conformity/">
         {() => <PublicRoute component={ConformityDashboard} />}
+      </Route>
+      <Route path="/conformity/statutory-workbench">
+        {() => <PublicRoute component={StatutoryWorkbench} />}
+      </Route>
+      <Route path="/conformity/statutory-workbench/">
+        {() => <PublicRoute component={StatutoryWorkbench} />}
       </Route>
       <Route path="/conformity/regulations">
         {() => <PublicRoute component={ConformityRegulations} />}

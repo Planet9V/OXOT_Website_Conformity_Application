@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "regulation_id": "REG_EU_2024_2847",
+  "official_title": "Regulation (EU) 2024/2847 of the European Parliament and of the Council on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)",
+  "short_name": "Cyber Resilience Act",
+  "acronym": "CRA",
+  "official_journal": "OJ L 2024/2847, 20.11.2024",
+  "entry_into_force": "2024-12-10",
+  "general_application_date": "2027-12-10",
+  "reporting_application_date": "2026-09-10",
+  "manifest_anchor": {
+    "total_recitals": 120,
+    "total_chapters": 10,
+    "total_articles": 71,
+    "total_annexes": 8,
+    "total_essential_requirements": 21
+  },
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "title": "General Provisions",
+      "articles": [
+        { "id": "ART_01", "number": 1, "title": "Subject matter", "recitals": [1, 2, 3] },
+        { "id": "ART_02", "number": 2, "title": "Scope", "recitals": [4, 5, 6, 7, 8, 9, 10] },
+        { "id": "ART_03", "number": 3, "title": "Definitions", "recitals": [11, 12, 13, 14, 15] },
+        { "id": "ART_04", "number": 4, "title": "Free movement", "recitals": [16] },
+        { "id": "ART_05", "number": 5, "title": "Requirements for products with digital elements", "recitals": [17, 18, 19] }
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "title": "Obligations of Economic Operators",
+      "articles": [
+        { "id": "ART_06", "number": 6, "title": "Obligations of manufacturers", "recitals": [20, 21, 22, 23] },
+        { "id": "ART_07", "number": 7, "title": "Authorised representatives", "recitals": [24] },
+        { "id": "ART_08", "number": 8, "title": "Obligations of importers", "recitals": [25, 26] },
+        { "id": "ART_09", "number": 9, "title": "Obligations of distributors", "recitals": [27] },
+        { "id": "ART_10", "number": 10, "title": "Cases in which obligations of manufacturers apply to importers and distributors", "recitals": [28] },
+        { "id": "ART_11", "number": 11, "title": "Other cases in which obligations of manufacturers apply", "recitals": [29] },
+        { "id": "ART_12", "number": 12, "title": "Identification of economic operators", "recitals": [30] },
+        { "id": "ART_13", "number": 13, "title": "Vulnerability handling obligations of manufacturers", "recitals": [31, 32, 33, 34] },
+        { "id": "ART_14", "number": 14, "title": "Reporting obligations of manufacturers", "recitals": [35, 36, 37, 38, 39, 40] },
+        { "id": "ART_15", "number": 15, "title": "Voluntary reporting for open source software", "recitals": [41] },
+        { "id": "ART_16", "number": 16, "title": "Single reporting platform", "recitals": [42] },
+        { "id": "ART_17", "number": 17, "title": "Guidelines on support periods", "recitals": [43] }
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "title": "Conformity of Products with Digital Elements",
+      "articles": [
+        { "id": "ART_18", "number": 18, "title": "Presumption of conformity", "recitals": [44, 45, 46] },
+        { "id": "ART_19", "number": 19, "title": "EU declaration of conformity", "recitals": [47] },
+        { "id": "ART_20", "number": 20, "title": "General principles of the CE marking", "recitals": [48] },
+        { "id": "ART_21", "number": 21, "title": "Rules and conditions for affixing the CE marking", "recitals": [49] },
+        { "id": "ART_22", "number": 22, "title": "Technical documentation", "recitals": [50] },
+        { "id": "ART_23", "number": 23, "title": "Support period documentation", "recitals": [51] },
+        { "id": "ART_24", "number": 24, "title": "Important products with digital elements", "recitals": [52, 53, 54] },
+        { "id": "ART_25", "number": 25, "title": "Critical products with digital elements", "recitals": [55, 56] },
+        { "id": "ART_26", "number": 26, "title": "Mandatory cybersecurity certification", "recitals": [57] },
+        { "id": "ART_27", "number": 27, "title": "Union assistance for SMEs", "recitals": [58] },
+        { "id": "ART_28", "number": 28, "title": "Conformity assessment bodies", "recitals": [59] },
+        { "id": "ART_29", "number": 29, "title": "Application for notification", "recitals": [60] },
+        { "id": "ART_30", "number": 30, "title": "Notification procedure", "recitals": [61] },
+        { "id": "ART_31", "number": 31, "title": "Identification numbers and lists of notified bodies", "recitals": [62] },
+        { "id": "ART_32", "number": 32, "title": "Conformity assessment procedures", "recitals": [63, 64, 65, 66] },
+        { "id": "ART_33", "number": 33, "title": "Mutual recognition agreements", "recitals": [67] },
+        { "id": "ART_34", "number": 34, "title": "Operational obligations of notified bodies", "recitals": [68] }
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "title": "Notification of Conformity Assessment Bodies",
+      "articles": [
+        { "id": "ART_35", "number": 35, "title": "Notifying authorities", "recitals": [69] },
+        { "id": "ART_36", "number": 36, "title": "Requirements relating to notifying authorities", "recitals": [70] },
+        { "id": "ART_37", "number": 37, "title": "Information obligation on notifying authorities", "recitals": [71] },
+        { "id": "ART_38", "number": 38, "title": "Requirements relating to notified bodies", "recitals": [72, 73] },
+        { "id": "ART_39", "number": 39, "title": "Presumption of conformity of notified bodies", "recitals": [74] },
+        { "id": "ART_40", "number": 40, "title": "Subcontracting by notified bodies", "recitals": [75] },
+        { "id": "ART_41", "number": 41, "title": "Application for notification", "recitals": [76] },
+        { "id": "ART_42", "number": 42, "title": "Notification procedure", "recitals": [77] },
+        { "id": "ART_43", "number": 43, "title": "Identification numbers and lists of notified bodies", "recitals": [78] },
+        { "id": "ART_44", "number": 44, "title": "Changes to notifications", "recitals": [79] },
+        { "id": "ART_45", "number": 45, "title": "Challenge of the competence of notified bodies", "recitals": [80] },
+        { "id": "ART_46", "number": 46, "title": "Operational obligations of notified bodies", "recitals": [81] },
+        { "id": "ART_47", "number": 47, "title": "Information obligation on notified bodies", "recitals": [82] },
+        { "id": "ART_48", "number": 48, "title": "Exchange of experience", "recitals": [83] },
+        { "id": "ART_49", "number": 49, "title": "Coordination of notified bodies", "recitals": [84] },
+        { "id": "ART_50", "number": 50, "title": "Conformity assessment bodies in third countries", "recitals": [85] },
+        { "id": "ART_51", "number": 51, "title": "Appeals against decisions of notified bodies", "recitals": [86] }
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "title": "Market Surveillance and EU Enforcement",
+      "articles": [
+        { "id": "ART_52", "number": 52, "title": "Market surveillance and control of products entering the Union market", "recitals": [87, 88] },
+        { "id": "ART_53", "number": 53, "title": "Procedure for dealing with products presenting a cybersecurity risk", "recitals": [89, 90] },
+        { "id": "ART_54", "number": 54, "title": "Union safeguard procedure", "recitals": [91] },
+        { "id": "ART_55", "number": 55, "title": "Compliant products presenting a significant cybersecurity risk", "recitals": [92] },
+        { "id": "ART_56", "number": 56, "title": "Formal non-compliance", "recitals": [93] },
+        { "id": "ART_57", "number": 57, "title": "Joint activities of market surveillance authorities", "recitals": [94] },
+        { "id": "ART_58", "number": 58, "title": "Sweeps of products with digital elements", "recitals": [95] },
+        { "id": "ART_59", "number": 59, "title": "Cybersecurity emergency intervention", "recitals": [96] },
+        { "id": "ART_60", "number": 60, "title": "ADCO for the Cyber Resilience Act", "recitals": [97] },
+        { "id": "ART_61", "number": 61, "title": "Penalties", "recitals": [98, 99] },
+        { "id": "ART_62", "number": 62, "title": "Representative actions", "recitals": [100] },
+        { "id": "ART_63", "number": 63, "title": "Evaluation and review", "recitals": [101] }
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "title": "Delegated Powers and Committee Procedure",
+      "articles": [
+        { "id": "ART_64", "number": 64, "title": "Exercise of the delegation", "recitals": [102, 103] },
+        { "id": "ART_65", "number": 65, "title": "Committee procedure", "recitals": [104] },
+        { "id": "ART_66", "number": 66, "title": "Reporting by the Commission", "recitals": [105] }
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "title": "Confidentiality and Penalties",
+      "articles": [
+        { "id": "ART_67", "number": 67, "title": "Confidentiality", "recitals": [106, 107] },
+        { "id": "ART_68", "number": 68, "title": "Penalties and administrative fines", "recitals": [108, 109, 110] }
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "title": "Transitional and Final Provisions",
+      "articles": [
+        { "id": "ART_69", "number": 69, "title": "Transitional provisions", "recitals": [111, 112, 113] },
+        { "id": "ART_70", "number": 70, "title": "Transposition and entry into force", "recitals": [114, 115] },
+        { "id": "ART_71", "number": 71, "title": "Application dates and timeline", "recitals": [116, 117, 118, 119, 120] }
+      ]
+    }
+  ],
+  "annexes": [
+    { "id": "ANNEX_I", "number": 1, "title": "Essential Cybersecurity Requirements", "parts": ["Part I: Cybersecurity Properties", "Part II: Vulnerability Handling Requirements"] },
+    { "id": "ANNEX_II", "number": 2, "title": "Information and Instructions to the User" },
+    { "id": "ANNEX_III", "number": 3, "title": "Important and Critical Products with Digital Elements", "categories": ["Class I Important", "Class II Important", "Critical"] },
+    { "id": "ANNEX_IV", "number": 4, "title": "EU Declaration of Conformity" },
+    { "id": "ANNEX_V", "number": 5, "title": "Conformity Assessment Procedures", "modules": ["Module A", "Module B", "Module C", "Module H"] },
+    { "id": "ANNEX_VI", "number": 6, "title": "Technical Documentation Requirements" },
+    { "id": "ANNEX_VII", "number": 7, "title": "Harmonised Standards and Common Specifications" },
+    { "id": "ANNEX_VIII", "number": 8, "title": "Correlation Table" }
+  ]
+}

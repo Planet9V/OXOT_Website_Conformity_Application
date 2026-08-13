@@ -83,6 +83,10 @@ export function resolveRoutes(
   if (classKey === "important_class_i" && appliesHarmonised !== true) {
     allowed = allowed.filter((r) => r.key !== "module_a");
   }
+  // Class II important products (Art 32(3)) and Critical products (Art 32(4)) may NEVER use Module A.
+  if (classKey === "important_class_ii" || classKey === "critical") {
+    allowed = allowed.filter((r) => r.key !== "module_a");
+  }
 
   let recommendedRouteKey: string | null = productClass?.defaultRouteKey ?? null;
   if (classKey === "important_class_i") {
@@ -211,6 +215,45 @@ export function computeGrade(
     artifactScore,
     perTheme,
     perArtifact,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Article 61 Financial Penalty Risk Engine
+// ---------------------------------------------------------------------------
+
+/**
+ * Calculates statutory fine risk exposure under CRA Article 61.
+ * Article 61(1): Non-compliance with Annex I essential requirements triggers
+ * administrative fines up to €15,000,000 or 2.5% of worldwide annual turnover,
+ * whichever is higher.
+ */
+export function computeArticle61PenaltyRisk(input: {
+  blockerCount: number;
+  globalTurnoverEur?: number | null;
+}): {
+  maxStatutoryFineEur: number;
+  fineRiskCategory: "low" | "medium" | "high" | "critical";
+  penaltyBasis: string;
+} {
+  const baseCap = 15_000_000;
+  const turnoverCap = input.globalTurnoverEur ? input.globalTurnoverEur * 0.025 : 0;
+  const maxStatutoryFineEur = Math.max(baseCap, turnoverCap);
+
+  let fineRiskCategory: "low" | "medium" | "high" | "critical" = "low";
+  if (input.blockerCount > 5) fineRiskCategory = "critical";
+  else if (input.blockerCount > 2) fineRiskCategory = "high";
+  else if (input.blockerCount > 0) fineRiskCategory = "medium";
+
+  const penaltyBasis =
+    input.globalTurnoverEur && turnoverCap > baseCap
+      ? `2.5% of global turnover (€${(turnoverCap / 1e6).toFixed(1)}M)`
+      : `Statutory cap (€15M under CRA Art 61(1))`;
+
+  return {
+    maxStatutoryFineEur,
+    fineRiskCategory,
+    penaltyBasis,
   };
 }
 

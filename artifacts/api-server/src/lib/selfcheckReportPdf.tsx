@@ -53,6 +53,8 @@ const L = {
     classification: "Indicative classification",
     readiness: "Readiness score",
     band: "Band",
+    fineRisk: "Fine exposure (Art 61)",
+    fineRiskText: "Up to €15,000,000 or 2.5% of global annual turnover for Annex I essential requirement non-compliance.",
     gaps: "Your gaps",
     noGaps: "No specific gaps were flagged by your answers.",
     next: "What happens next",
@@ -70,6 +72,8 @@ const L = {
     classification: "Indicatieve classificatie",
     readiness: "Gereedheidsscore",
     band: "Band",
+    fineRisk: "Boeterisico (Art 61)",
+    fineRiskText: "Tot € 15.000.000 of 2,5% van de wereldwijde jaaromzet bij niet-naleving van essentiële eisen (Bijlage I).",
     gaps: "Uw hiaten",
     noGaps: "Uw antwoorden brachten geen specifieke hiaten aan het licht.",
     next: "Wat er nu gebeurt",
@@ -118,6 +122,10 @@ export function SelfCheckReport({ data, generatedAt }: { data: ReportPayload; ge
             <Text style={s.v}>{data.bandLabel}</Text>
           </View>
         ) : null}
+        <View style={s.row}>
+          <Text style={s.k}>{t.fineRisk}</Text>
+          <Text style={s.v}>{t.fineRiskText}</Text>
+        </View>
 
         <Text style={s.section}>{t.gaps}</Text>
         <View style={s.sectionRule} />

@@ -6,17 +6,17 @@
   "progress": "Question {n} of {total}",
   "continue": "Continue",
   "insightLabel": "What this means",
-  "deadlineLabel": "days to 11 Dec 2027",
+  "deadlineLabel": "days to 10 Dec 2027",
   "nav": { "back": "Back", "restart": "Start over", "seeResult": "See my result", "selectAll": "Select all that apply" },
   "encouragement": ["Let's start.", "Good.", "Halfway there.", "Nearly done.", "One more after this.", "Last question."],
   "questions": [
     {
       "id": "position", "type": "single", "label": "Which best describes you?",
       "options": [
-        { "value": "manufacturer", "label": "Product manufacturer", "insight": "As the manufacturer you carry the full weight of the CRA — the Annex VII technical file, the CE marking, and from 11 Sep 2026 a 24-hour early warning for actively exploited vulnerabilities." },
-        { "value": "oem", "label": "OEM — multiple product groups", "insight": "The portfolio math is unforgiving: at 16–24 weeks per product type-examination, a large catalogue doesn't fit before 11 Dec 2027. Module H (one audited quality-management system) is usually the only way through — and it takes 8–14 months to stand up." },
+        { "value": "manufacturer", "label": "Product manufacturer", "insight": "As the manufacturer you carry the full weight of the CRA — the Annex VII technical file, the CE marking, and from 10 September 2026 a 24-hour early warning for actively exploited vulnerabilities." },
+        { "value": "oem", "label": "OEM — multiple product groups", "insight": "The portfolio math is unforgiving: at 16–24 weeks per product type-examination, a large catalogue doesn't fit before 10 Dec 2027. Module H (one audited quality-management system) is usually the only way through — and it takes 8–14 months to stand up." },
         { "value": "integrator", "label": "Integrator / systems integrator", "insight": "Watch Article 22: a substantial modification — your own firmware, changed security properties — makes YOU the manufacturer of the modified product. Configuring is fine; building is not. Most integrators can't yet say which side of that line their projects sit on." },
-        { "value": "reseller", "label": "Distributor / reseller", "insight": "From 11 Dec 2027 you may only offer CRA-compliant products, and you must verify the CE marking and declaration of conformity on each. Rebrand a line, and Article 21 makes you its manufacturer — full technical file included." },
+        { "value": "reseller", "label": "Distributor / reseller", "insight": "From 10 Dec 2027 you may only offer CRA-compliant products, and you must verify the CE marking and declaration of conformity on each. Rebrand a line, and Article 21 makes you its manufacturer — full technical file included." },
         { "value": "operator", "label": "Owner / operator (procurement)", "insight": "Your practical CRA exposure isn't your own compliance — it's your suppliers'. NIS2 already asks your estate for state-of-the-art; the CRA raises the bar on every product entering it. 2026 is the year to test suppliers, while you can still switch." }
       ]
     },
@@ -48,7 +48,7 @@
     {
       "id": "euMarket", "type": "bool", "label": "Are the products placed on the EU market (directly or via distributors)?",
       "options": [
-        { "value": "yes", "label": "Yes", "insight": "EU market access is now conditional on CRA conformity — after 11 Dec 2027 a non-compliant product cannot be placed on, or made available in, the EU market. The clock is already running." },
+        { "value": "yes", "label": "Yes", "insight": "EU market access is now conditional on CRA conformity — after 10 Dec 2027 a non-compliant product cannot be placed on, or made available in, the EU market. The clock is already running." },
         { "value": "no", "label": "No / not yet", "insight": "If you sell into the EU indirectly — via distributors or as a component in someone else's product — the obligations still reach you. Worth confirming your real exposure." }
       ]
     },
@@ -72,7 +72,7 @@
     "bands": {
       "on_track": { "title": "On track", "note": "You hold the core artifacts. The work now is routing and sequencing against the deadline." },
       "behind": { "title": "Behind", "note": "You're missing a core artifact. Recoverable — but the queue for third-party capacity is forming now." },
-      "at_risk": { "title": "At risk", "note": "Gaps plus a route that can't self-assess today. This is the profile that runs out of runway before 11 Dec 2027." }
+      "at_risk": { "title": "At risk", "note": "Gaps plus a route that can't self-assess today. This is the profile that runs out of runway before 10 Dec 2027." }
     }
   },
   "gaps": {
@@ -88,7 +88,7 @@
   "results": {
     "CLASS_I": {
       "headline": "Likely Important, Class I — and the self-assessment door is currently closed.",
-      "body": "Class I products can't self-certify until harmonised CRA standards are designated (expected ~Q2 2027). Every external route runs through a notified body — and today zero are designated. The wall is fixed at 11 December 2027. The queue is forming now.",
+      "body": "Class I products can't self-certify until harmonised CRA standards are designated (expected ~Q2 2027). Every external route runs through a notified body — and today zero are designated. The wall is fixed at 10 December 2027. The queue is forming now.",
       "route": "Route: third-party assessment — self-assessment needs harmonised standards or common specifications (Art. 32(2)); neither exists yet."
     },
     "CLASS_II": {
@@ -103,7 +103,7 @@
     },
     "DEFAULT": {
       "headline": "Likely a default product with digital elements.",
-      "body": "You can self-assess (Module A) in principle — but you still owe a full Annex VII technical file, an SBOM and a vulnerability-handling process, all audit-ready by 11 December 2027. 'Self-assess' is not 'do less'.",
+      "body": "You can self-assess (Module A) in principle — but you still owe a full Annex VII technical file, an SBOM and a vulnerability-handling process, all audit-ready by 10 December 2027. 'Self-assess' is not 'do less'.",
       "route": "Route: self-assessment (Module A) — the technical file is still required."
     },
     "NEEDS_REVIEW": {
@@ -133,7 +133,7 @@
     "bullets": [
       "Your classification, confirmed by an OT engineer — not a checklist",
       "Your route to the CE marking (Module A / B+C / H), chosen for your portfolio",
-      "An effort and timeline estimate against 11 December 2027",
+      "An effort and timeline estimate against 10 December 2027",
       "A reserved Conformity Assessment Body slot, if your route needs one"
     ],
     "reassurance": "Free · 45 minutes · proposal with NDA & MSA within 2 working days.",
@@ -166,7 +166,7 @@
       ]
     },
     "portfolioQuestion": {
-      "label": "How many products would need a CE mark by 11 Dec 2027?",
+      "label": "How many products would need a CE mark by 10 Dec 2027?",
       "options": [
         { "value": "p1", "label": "Just one" },
         { "value": "p2_10", "label": "2–10 products" },
@@ -205,7 +205,7 @@
       "text": "A Siemens S7-1500 in an energy utility = Class II. The same device in a food packaging plant = likely Class I.",
       "source": "Reg (EU) 2024/2847, Art. 6 & Annex III"
     },
-    "reportingClock": "Your first hard date is not Dec 2027 — it is 11 September 2026: 24h early warning, 72h notification, 14d final report to ENISA.",
+    "reportingClock": "Your first hard date is not Dec 2027 — it is 10 September 2026: 24h early warning, 72h notification, 14d final report to ENISA.",
     "programmeStrip": "Classify → Test → File. From about €20K. Phase 1 typically 2–4 weeks per product. Vincent replies within 2 days.",
     "roleHeaders": {
       "psirt": "Built around your PSIRT queue: vulnerability handling, the 24h/72h/14d clock, and what to automate first.",
@@ -221,8 +221,8 @@
         "Serial testing: 16–24 weeks per product, one after another.",
         "Module H parallelises the queue — one audited quality system covers the whole portfolio, but takes 8–14 months to stand up."
       ],
-      "overshootLabel": "weeks short of 11 Dec 2027",
-      "fitsLabel": "Fits before 11 Dec 2027"
+      "overshootLabel": "weeks short of 10 Dec 2027",
+      "fitsLabel": "Fits before 10 Dec 2027"
     },
     "gapClosure": {
       "sbom": {

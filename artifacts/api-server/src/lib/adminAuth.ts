@@ -35,22 +35,21 @@ export interface MemberIdentity {
 
 function getSessionSecret(): string {
   const secret = process.env["SESSION_SECRET"];
-  if (!secret) {
-    throw new Error("SESSION_SECRET is required for admin sessions.");
+  if (!secret || secret === "change-me" || (process.env["NODE_ENV"] === "production" && secret.length < 32)) {
+    throw new Error("SESSION_SECRET is required, must not be placeholder 'change-me', and must be at least 32 characters in production.");
   }
   return secret;
 }
 
 /**
- * Returns the configured admin credentials. Fails closed like
- * getSessionSecret(): unlike the demo account (intentionally public), the
- * admin account must never silently fall back to a well-known default.
+ * Returns the configured admin credentials. Fails closed: unlike the demo account,
+ * the admin account must never silently fall back to a well-known default.
  */
 export function getAdminCredentials(): { username: string; password: string } {
   const username = process.env["ADMIN_USERNAME"];
   const password = process.env["ADMIN_PASSWORD"];
-  if (!username || !password) {
-    throw new Error("ADMIN_USERNAME and ADMIN_PASSWORD are required for admin login.");
+  if (!username || !password || password === "change-me" || (process.env["NODE_ENV"] === "production" && password.length < 12)) {
+    throw new Error("ADMIN_USERNAME and ADMIN_PASSWORD are required, must not be placeholder 'change-me', and password must be at least 12 characters in production.");
   }
   return { username, password };
 }

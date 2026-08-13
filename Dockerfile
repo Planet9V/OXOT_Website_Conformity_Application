@@ -38,6 +38,7 @@ FROM node:24-slim AS api
 WORKDIR /app
 ENV NODE_ENV=production PORT=8080
 COPY --from=build /app /app
+USER node
 EXPOSE 8080
 CMD ["node", "--enable-source-maps", "artifacts/api-server/dist/index.mjs"]
 

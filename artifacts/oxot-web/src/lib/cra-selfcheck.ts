@@ -322,7 +322,7 @@ const WEEK_MS = 7 * 24 * 3600 * 1000;
 const PRODUCTS: Record<PortfolioSize, number> = { p1: 1, p2_10: 10, p11_50: 50, p50plus: 100 };
 
 /** The Class II self-assessment closure date the runway graphic counts down to. */
-const WALL = Date.UTC(2027, 11, 11); // 2027-12-11
+const WALL = Date.UTC(2027, 11, 10); // 2027-12-10
 
 /**
  * Serial worst-case runway math for the "can you make the wall" graphic: how many

@@ -687,7 +687,7 @@ router.get("/conformity/portfolio", requireAuth, async (_req, res): Promise<void
 // Dedicated CRA Annex I Analytics & Product Drill-Down Endpoint
 // ---------------------------------------------------------------------------
 
-router.get("/conformity/cra-analytics", async (req, res): Promise<void> => {
+router.get("/conformity/cra-analytics", requireAuth, async (req, res): Promise<void> => {
   try {
     const selectedProductId = req.query.productId ? Number(req.query.productId) : null;
 

@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "gbrain": {
+      "type": "stdio",
+      "command": "gbrain",
+      "args": [
+        "serve"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${OPENROUTER_API_KEY}",
+        "OPENAI_BASE_URL": "https://openrouter.ai/api/v1",
+        "GBRAIN_EMBED_MODEL": "qwen/qwen3-embedding-4b",
+        "GBRAIN_DATABASE_URL": "postgresql://gbrain:gbrain@localhost:5433/oxot_web_conformity"
+      }
+    }
+  }
+}
