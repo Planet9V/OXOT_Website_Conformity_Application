@@ -173,12 +173,6 @@ function PublicRoutes() {
       <Route path="/conformity/">
         {() => <PublicRoute component={ConformityDashboard} />}
       </Route>
-      <Route path="/conformity/statutory-workbench">
-        {() => <PublicRoute component={StatutoryWorkbench} />}
-      </Route>
-      <Route path="/conformity/statutory-workbench/">
-        {() => <PublicRoute component={StatutoryWorkbench} />}
-      </Route>
       <Route path="/conformity/regulations">
         {() => <PublicRoute component={ConformityRegulations} />}
       </Route>
@@ -251,6 +245,9 @@ function PublicRoutes() {
       </Route>
       <Route path="/conformity-platform/sources">
         {() => <PublicRoute component={ConformitySources} />}
+      </Route>
+      <Route path="/conformity-platform/statutory-workbench">
+        {() => <PublicRoute component={StatutoryWorkbench} />}
       </Route>
 
       <Route path="/:slug">
