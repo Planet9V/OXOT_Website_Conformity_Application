@@ -545,7 +545,7 @@ export function StatutoryReferenceWorkbench() {
         {/* STATUTORY FOOTER */}
         <div className="p-3 border-t border-slate-800 bg-slate-900 text-xs text-slate-500 flex items-center justify-between">
           <span>Regulation (EU) 2024/2847</span>
-          <span className="text-emerald-400 font-mono">100% Verified</span>
+          <span className="text-slate-500 font-mono">27 of 71 Articles Curated</span>
         </div>
       </aside>
 
