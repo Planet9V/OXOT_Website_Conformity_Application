@@ -40,6 +40,7 @@ import { GradeDistribution } from "./grade-distribution";
 import { TriageBoard } from "./triage-board";
 import { CraAnalyticsSuite } from "./cra-analytics-suite";
 import { coverageTone } from "./theme";
+import { PersonaCockpit } from "@/components/persona-cockpit";
 
 import {
   Dialog,
@@ -256,7 +257,10 @@ export function CommandCenter() {
         </div>
       </div>
 
-      {/* 2. Compact High-Density Metric Cards (Single Row) */}
+      {/* 2. Unified Role-Based Persona Cockpit & Statutory Action Funnels */}
+      <PersonaCockpit initialPersona="INTEGRATOR" />
+
+      {/* 3. Compact High-Density Metric Cards (Single Row) */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <MetricCard icon={ClipboardList} label="Active assessments" value={data.totals.assessments} tone="text-foreground" />
         <MetricCard
