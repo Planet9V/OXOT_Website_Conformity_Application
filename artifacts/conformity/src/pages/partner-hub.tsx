@@ -1232,8 +1232,10 @@ export default function PartnerHubPage() {
                 <div className="space-y-2">
                   {(drawerContent as any).paragraphs.map((p: any) => (
                     <div key={p.paragraphNumber} className="text-xs text-foreground/90 leading-relaxed p-2.5 rounded bg-muted/20">
-                      <span className="font-mono font-bold text-primary mr-1.5">{p.paragraphNumber}.</span>
-                      {p.text}
+                      {p.paragraphNumber > 0 && (
+                        <span className="font-mono font-bold text-primary mr-1.5">{p.paragraphNumber}.</span>
+                      )}
+                      <span className="whitespace-pre-line">{p.text}</span>
                     </div>
                   ))}
                 </div>
@@ -1262,11 +1264,11 @@ export default function PartnerHubPage() {
                 <h3 className="font-display font-medium text-lg text-foreground">
                   {(drawerContent as any).title}
                 </h3>
-                {(drawerContent as any).elements && (
+                {(drawerContent as any).blocks && (
                   <div className="space-y-1 text-xs text-muted-foreground">
-                    {(drawerContent as any).elements.map((el: string, idx: number) => (
-                      <div key={idx} className="p-2 rounded bg-muted/20 text-foreground">
-                        {idx + 1}. {el}
+                    {(drawerContent as any).blocks.map((line: string, idx: number) => (
+                      <div key={idx} className="p-2 rounded bg-muted/20 text-foreground leading-relaxed">
+                        {line}
                       </div>
                     ))}
                   </div>

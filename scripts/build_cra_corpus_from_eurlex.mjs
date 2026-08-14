@@ -361,34 +361,13 @@ function main() {
     write("03_annexes_full.json", annexesFull);
     write("04_bidirectional_graph.json", graph);
 
-    const banner = `/**
- * CRA statutory corpus — Regulation (EU) 2024/2847.
- *
- * GENERATED FILE. Do not edit by hand.
- * Built by scripts/build_cra_corpus_from_eurlex.mjs from the Official Journal
- * text (${REG.officialJournalReference}, CELEX ${REG.celex}) cached at
- * docs/cra_statutory_corpus/source/. Every recital, article paragraph and annex
- * line is verbatim OJ text. Regenerate with:
- *   node scripts/build_cra_corpus_from_eurlex.mjs --refetch && node scripts/sync_cra_corpus_data.mjs
- */
-`;
-    const ts =
-      banner +
-      `export const recitalsData = ${JSON.stringify(recitalsFull, null, 2)} as const;\n\n` +
-      `export const articlesData = ${JSON.stringify(articlesFull, null, 2)} as const;\n\n` +
-      `export const annexesData = ${JSON.stringify(annexesFull, null, 2)} as const;\n\n` +
-      `export const graphData = ${JSON.stringify(graph, null, 2)} as const;\n`;
-
-    const target = path.join(ROOT, "artifacts/api-server/src/lib/craCorpusData.ts");
-    fs.writeFileSync(target, ts, "utf8");
-
     const numberedParas = articles.reduce(
       (n, a) => n + a.paragraphs.filter((p) => p.paragraphNumber > 0).length, 0);
     process.stdout.write(
       `Recitals ${recitals.length} · Chapters ${chapterList.length} · Articles ${articles.length} ` +
         `(${articles.reduce((n, a) => n + a.paragraphs.length, 0)} paragraphs, ${numberedParas} numbered) · ` +
         `Annexes ${annexes.length} · Graph edges ${graph.edges.length}\n` +
-        `Wrote ${path.relative(ROOT, target)}\n`
+        `Wrote JSON to ${path.relative(ROOT, CORPUS_DIR)} — now run scripts/sync_cra_corpus_data.mjs\n`
     );
   });
 }

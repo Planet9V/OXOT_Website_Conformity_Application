@@ -565,8 +565,10 @@ export default function OxotPartnerHubPage() {
                 <div className="space-y-2">
                   {(drawerContent as any).paragraphs.map((p: any) => (
                     <div key={p.paragraphNumber} className="text-xs text-foreground/90 leading-relaxed p-2.5 rounded bg-muted/20">
-                      <span className="font-mono font-bold text-primary mr-1.5">{p.paragraphNumber}.</span>
-                      {p.text}
+                      {p.paragraphNumber > 0 && (
+                        <span className="font-mono font-bold text-primary mr-1.5">{p.paragraphNumber}.</span>
+                      )}
+                      <span className="whitespace-pre-line">{p.text}</span>
                     </div>
                   ))}
                 </div>

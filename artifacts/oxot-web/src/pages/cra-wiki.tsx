@@ -154,7 +154,7 @@ export default function CraWikiPage() {
                 </span>
               </div>
               <p className="text-[11px] font-mono text-muted-foreground">
-                Official Journal Publication • OJ L, 2024/2847 • Single Source of Truth Wiki
+                Official Journal Publication • OJ L, 2024/2847 • CELEX 32024R2847
               </p>
             </div>
           </div>
@@ -536,73 +536,29 @@ export default function CraWikiPage() {
                 </h1>
               </div>
 
-              {/* Annex Parts / Lists rendering */}
-              {currentAnnex.parts && (
-                <div className="space-y-6">
-                  {currentAnnex.parts.map((part: any) => (
-                    <div key={part.partNumber} className="space-y-3 p-4 rounded-lg bg-muted/20 border border-border/60">
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-semibold text-primary">Part {part.partNumber}:</span>
-                        <h3 className="font-sans font-medium text-sm text-foreground">{part.partTitle}</h3>
-                      </div>
-                      <div className="space-y-2">
-                        {part.requirements.map((req: any) => (
-                          <div key={req.id} className="p-3 rounded-md bg-card/60 border border-border/60 text-xs space-y-1">
-                            <div className="font-mono font-semibold text-primary flex items-center justify-between">
-                              <span>{req.id}</span>
-                              <span className="text-[10px] text-muted-foreground">Annex I Mandate</span>
-                            </div>
-                            <p className="font-medium text-foreground">{req.clause}</p>
-                            <p className="text-muted-foreground leading-relaxed">{req.description}</p>
-                          </div>
-                        ))}
-                      </div>
+              {/* Verbatim annex text from the Official Journal. Rendering the corpus's
+                  ordered text lines means every annex shows content — the previous
+                  shape-specific branches left five of eight annexes blank. */}
+              <div className="space-y-2">
+                {currentAnnex.blocks.map((line: string, idx: number) => {
+                  const point = /^(\(?[a-z0-9]{1,4}\)|\d{1,2}\.)\s+(.*)$/i.exec(line);
+                  const isHeading = !point && line === line.toUpperCase() && line.length < 90;
+                  if (isHeading) {
+                    return (
+                      <h3 key={idx} className="font-sans font-semibold text-sm text-foreground pt-4 first:pt-0">
+                        {line}
+                      </h3>
+                    );
+                  }
+                  return (
+                    <div key={idx} className="flex items-start gap-2 text-xs leading-relaxed text-foreground/90">
+                      {point && <span className="font-mono text-primary font-bold shrink-0">{point[1]}</span>}
+                      <span>{point ? point[2] : line}</span>
                     </div>
-                  ))}
-                </div>
-              )}
+                  );
+                })}
+              </div>
 
-              {currentAnnex.classI && (
-                <div className="space-y-4">
-                  <div className="p-4 rounded-lg bg-muted/20 border border-border/60 space-y-3">
-                    <h3 className="font-sans font-semibold text-sm text-foreground flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-primary" />
-                      Class I Important Products with Digital Elements
-                    </h3>
-                    <ul className="space-y-1.5 text-xs text-muted-foreground list-disc list-inside">
-                      {currentAnnex.classI.map((item: string, idx: number) => (
-                        <li key={idx} className="leading-relaxed text-foreground/90">{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="p-4 rounded-lg bg-muted/20 border border-border/60 space-y-3">
-                    <h3 className="font-sans font-semibold text-sm text-foreground flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4 text-orange-500" />
-                      Class II Important Products (Mandatory Notified Body Assessment)
-                    </h3>
-                    <ul className="space-y-1.5 text-xs text-muted-foreground list-disc list-inside">
-                      {currentAnnex.classII.map((item: string, idx: number) => (
-                        <li key={idx} className="leading-relaxed text-foreground/90">{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {currentAnnex.elements && (
-                <div className="p-4 rounded-lg bg-muted/20 border border-border/60 space-y-3">
-                  <h3 className="font-sans font-semibold text-sm text-foreground">Mandatory File Sections:</h3>
-                  <div className="space-y-2">
-                    {currentAnnex.elements.map((el: string, idx: number) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-muted-foreground">
-                        <span className="font-mono text-primary font-bold">{idx + 1}.</span>
-                        <span className="text-foreground/90">{el}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </article>
           )}
         </main>

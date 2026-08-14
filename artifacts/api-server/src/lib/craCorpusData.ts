@@ -1,12 +1,15 @@
 /**
  * CRA statutory corpus — Regulation (EU) 2024/2847.
  *
- * GENERATED FILE. Do not edit by hand.
- * Built by scripts/build_cra_corpus_from_eurlex.mjs from the Official Journal
- * text (OJ L, 2024/2847, 20.11.2024, CELEX 32024R2847) cached at
- * docs/cra_statutory_corpus/source/. Every recital, article paragraph and annex
- * line is verbatim OJ text. Regenerate with:
- *   node scripts/build_cra_corpus_from_eurlex.mjs --refetch && node scripts/sync_cra_corpus_data.mjs
+ * GENERATED FILE — DO NOT EDIT BY HAND.
+ * Built from the Official Journal text (OJ L, 2024/2847, 20.11.2024,
+ * CELEX 32024R2847) by scripts/build_cra_corpus_from_eurlex.mjs and copied
+ * here by scripts/sync_cra_corpus_data.mjs. Every recital, article paragraph and annex
+ * line is verbatim OJ text; cross-references are extracted from that text.
+ *
+ * Regenerate:
+ *   node scripts/build_cra_corpus_from_eurlex.mjs --refetch
+ *   node scripts/sync_cra_corpus_data.mjs
  */
 export const recitalsData = {
   "regulation": "Regulation (EU) 2024/2847",
@@ -1551,7 +1554,7 @@ export const recitalsData = {
       "relatedAnnexes": []
     }
   ]
-} as const;
+};
 
 export const articlesData = {
   "regulation": "Regulation (EU) 2024/2847",
@@ -4182,7 +4185,7 @@ export const articlesData = {
       ]
     }
   ]
-} as const;
+};
 
 export const annexesData = {
   "regulation": "Regulation (EU) 2024/2847",
@@ -4467,7 +4470,7 @@ export const annexesData = {
       ]
     }
   ]
-} as const;
+};
 
 export const graphData = {
   "graphVersion": "2.0-eurlex",
@@ -5627,4 +5630,4 @@ export const graphData = {
       "type": "annex_refers_article"
     }
   ]
-} as const;
+};

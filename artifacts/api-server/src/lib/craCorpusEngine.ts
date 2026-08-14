@@ -35,15 +35,10 @@ export interface CraRecital {
 export interface CraAnnex {
   annexNumber: string;
   title: string;
-  parts?: any[];
-  requirements?: any[];
-  classI?: string[];
-  classII?: string[];
-  products?: string[];
-  mandatoryFields?: string[];
-  modules?: any[];
-  elements?: string[];
-  crossDirectives?: string[];
+  /** Ordered verbatim text lines of the annex as published in the OJ. */
+  blocks: string[];
+  tags?: string[];
+  referencedArticles?: number[];
 }
 
 export interface CraCorpusStructure {
@@ -149,11 +144,7 @@ export function searchCraCorpus(query: string): {
     return (
       annex.title.toLowerCase().includes(q) ||
       annex.annexNumber.toLowerCase() === q ||
-      (annex.classI && annex.classI.some((c) => c.toLowerCase().includes(q))) ||
-      (annex.classII && annex.classII.some((c) => c.toLowerCase().includes(q))) ||
-      (annex.parts && JSON.stringify(annex.parts).toLowerCase().includes(q)) ||
-      (annex.requirements && JSON.stringify(annex.requirements).toLowerCase().includes(q)) ||
-      (annex.elements && annex.elements.some((e) => e.toLowerCase().includes(q)))
+      annex.blocks.some((line) => line.toLowerCase().includes(q))
     );
   });
 

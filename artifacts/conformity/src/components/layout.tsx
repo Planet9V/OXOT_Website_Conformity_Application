@@ -130,7 +130,7 @@ const CRA_OPERATIONS: NavItem[] = [
   { href: "/ce-studio", label: "CE Nameplate Studio (Arts. 22/23)", icon: Grid3x3, description: "Vector CE rating plate & digital product passport generator" },
   { href: "/steward", label: "Open-Source Steward (Art. 33)", icon: ListTree, description: "FOSS voluntary security attestations & OpenVEX statements" },
   { href: "/archive", label: "10-Year Archive Ledger (Art. 17)", icon: Database, description: "Statutory importer technical documentation vault (2037+)" },
-  { href: "/wiki", label: "Full CRA Statutory Wiki", icon: Book, description: "Verbatim 71 articles, 128 recitals & 8 annexes" },
+  { href: "/wiki", label: "Full CRA Statutory Wiki", icon: Book, description: "Verbatim OJ text — 71 articles, 130 recitals & 8 annexes" },
   { href: "/auditor-portal", label: "Notified Body Auditor Portal", icon: ClipboardCheck, description: "Third-party Module H / B+C examination workbench" },
 ];
 
