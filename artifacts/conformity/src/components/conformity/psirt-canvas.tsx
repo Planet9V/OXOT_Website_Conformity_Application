@@ -257,7 +257,11 @@ export function PsirtCanvas({
           : c
       )
     );
-    toast.success(`Statutory security advisory dispatched to ${cust.orgName} (${cust.email})`);
+    // Nothing is sent from here — this records that YOU notified the customer,
+    // so the date can be evidenced later. Do not word it as a dispatch.
+    toast.success(`Marked ${cust.orgName} as notified`, {
+      description: `Recorded against ${cust.email}. Send the advisory yourself; this app does not contact customers.`,
+    });
   };
 
   const handleGenerateAiNotice = (cust: CustomerAccount) => {
