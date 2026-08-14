@@ -1,0 +1,79 @@
+{
+  "regulation": "Regulation (EU) 2024/2847",
+  "shortTitle": "EU Cyber Resilience Act (CRA)",
+  "officialJournalReference": "OJ L, 2024/2847, 20.11.2024",
+  "entryIntoForce": "2024-12-10",
+  "generalApplicationDate": "2027-12-11",
+  "earlyReportingApplicationDate": "2026-09-11",
+  "totalRecitals": 128,
+  "recitals": [
+    {
+      "number": 1,
+      "title": "Internal Market Fragmentation & Cybersecurity Deficits",
+      "text": "Cybersecurity threats have a strong cross-border dimension. The increasing integration of digital elements into physical and virtual products creates vulnerabilities that can be exploited across borders, leading to severe economic and social disruption.",
+      "relatedArticles": [1, 2, 3]
+    },
+    {
+      "number": 2,
+      "title": "Scope & Need for Harmonised Regulatory Framework",
+      "text": "In order to ensure the proper functioning of the internal market and a high level of cybersecurity for all products with digital elements placed on the Union market, it is necessary to establish comprehensive, harmonised cybersecurity rules for such products.",
+      "relatedArticles": [1, 2, 4]
+    },
+    {
+      "number": 18,
+      "title": "Treatment of Software Components and Free and Open Source Software",
+      "text": "Software and data components, including libraries and operating systems, integrated into products with digital elements are within scope. However, free and open-source software developed or supplied outside the course of a commercial activity is excluded from the direct scope, while commercial integration requires supply chain due diligence.",
+      "relatedArticles": [2, 10, 18],
+      "tags": ["SBOM", "OpenSource", "SupplyChain"]
+    },
+    {
+      "number": 34,
+      "title": "Spare Parts & Maintenance for Pre-2027 Equipment (Crucial SI Exemption)",
+      "text": "Spare parts exclusively intended to replace identical parts in products with digital elements placed on the market before the date of application of this Regulation should not be considered as a new placement on the market. Consequently, such spare parts are not required to comply with the essential requirements or conformity assessment procedures laid down in this Regulation, provided they do not alter the performance or intended purpose of the original product.",
+      "relatedArticles": [2, 19, 21, 69],
+      "tags": ["SpareParts", "Grandfathering", "SystemIntegrator", "Maintenance"]
+    },
+    {
+      "number": 51,
+      "title": "Substantial Modification Criteria & Manufacturer Designation",
+      "text": "Where a product with digital elements is subject to a substantial modification that affects its compliance with the essential cybersecurity requirements or alters the intended purpose for which it was assessed, the person carrying out that modification should be considered a manufacturer under Article 20.",
+      "relatedArticles": [20, 21],
+      "tags": ["SubstantialModification", "Article21", "Liability"]
+    },
+    {
+      "number": 68,
+      "title": "24-Hour Early Warning Vulnerability Notification Duty",
+      "text": "To enable swift mitigation of widespread cyber threats, manufacturers must notify actively exploited vulnerabilities and severe security incidents to CSIRTs and ENISA within 24 hours of becoming aware, followed by a detailed incident report within 72 hours.",
+      "relatedArticles": [14],
+      "tags": ["PSIRT", "VulnerabilityReporting", "ENISA", "CSIRT"]
+    },
+    {
+      "number": 75,
+      "title": "Role of Software Bill of Materials (SBOM) in Vulnerability Tracking",
+      "text": "Manufacturers should draw up and maintain a software bill of materials (SBOM) identifying all top-level and transitive software components, allowing rapid vulnerability triage and automated asset correlation when new CVEs are published.",
+      "relatedArticles": [10, 13, 24],
+      "tags": ["SBOM", "CycloneDX", "SPDX", "VEX"]
+    },
+    {
+      "number": 102,
+      "title": "Conformity Assessment Modules & Notified Body Oversight",
+      "text": "For products presenting higher cybersecurity risk profiles categorized as Important Class I, Important Class II, or Critical, third-party conformity assessment bodies (Notified Bodies) must independently inspect technical files and verify security architecture under Annex VI.",
+      "relatedArticles": [24, 32, 35],
+      "tags": ["NotifiedBody", "CAB", "ConformityAssessment"]
+    },
+    {
+      "number": 115,
+      "title": "Administrative Fines & Proportionality",
+      "text": "Administrative fines up to EUR 15,000,000 or 2.5% of total worldwide annual turnover should be applied effectively and dissuasively for non-compliance with essential requirements, with proportionate adjustments for SMEs and non-profit organizations.",
+      "relatedArticles": [61],
+      "tags": ["Penalties", "Fines", "Enforcement"]
+    },
+    {
+      "number": 125,
+      "title": "Staggered Entry into Application and Grandfathering Timeline",
+      "text": "To allow economic operators, notified bodies, and market surveillance authorities sufficient time to adapt, the Regulation applies 36 months after entry into force (11 December 2027), except for the vulnerability notification obligations under Article 14 which apply 21 months after entry into force (11 September 2026).",
+      "relatedArticles": [69, 71],
+      "tags": ["Timeline", "ApplicationDate", "Grandfathering"]
+    }
+  ]
+}

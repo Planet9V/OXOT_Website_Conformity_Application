@@ -1,0 +1,97 @@
+{
+  "graphVersion": "2026.1",
+  "statutoryFramework": "Regulation (EU) 2024/2847",
+  "nodesCount": 42,
+  "edges": [
+    {
+      "source": "ARTICLE_10",
+      "target": "ANNEX_I",
+      "relationship": "MANDATES_ESSENTIAL_REQUIREMENTS",
+      "label": "Article 10(1) enforces Annex I Part I & Part II"
+    },
+    {
+      "source": "ARTICLE_10",
+      "target": "APP_FEATURE_SBOM_VAULT",
+      "relationship": "IMPLEMENTED_BY",
+      "label": "Article 10(4) automated via xBOM Multi-Format Ingestion"
+    },
+    {
+      "source": "ARTICLE_13",
+      "target": "ANNEX_II",
+      "relationship": "MANDATES_USER_INSTRUCTIONS",
+      "label": "Article 13 references Annex II user guidance and lifetime disclosure"
+    },
+    {
+      "source": "ARTICLE_14",
+      "target": "RECITAL_68",
+      "relationship": "GROUNDED_IN",
+      "label": "24h Early Warning obligation explained in Recital 68"
+    },
+    {
+      "source": "ARTICLE_14",
+      "target": "APP_FEATURE_PSIRT_EARLY_WARNING",
+      "relationship": "IMPLEMENTED_BY",
+      "label": "Article 14 24h CSIRT/ENISA notice automated via PSIRT Hub"
+    },
+    {
+      "source": "ARTICLE_18",
+      "target": "ANNEX_V",
+      "relationship": "VERIFIES_DOC",
+      "label": "Article 18(2) mandates verified EU Declaration of Conformity"
+    },
+    {
+      "source": "ARTICLE_19",
+      "target": "APP_FEATURE_SUPPLIER_REGISTRY",
+      "relationship": "IMPLEMENTED_BY",
+      "label": "Article 19 Distributor verification & Duty to Refrain in Partner Hub"
+    },
+    {
+      "source": "ARTICLE_20",
+      "target": "ARTICLE_21",
+      "relationship": "TRIGGERED_BY",
+      "label": "Substantial modification under Art. 21 transfers Art. 20 Manufacturer status"
+    },
+    {
+      "source": "ARTICLE_21",
+      "target": "RECITAL_34",
+      "relationship": "EXEMPTION_BASIS",
+      "label": "Recital 34 identical spare parts maintain Integrator Exemption"
+    },
+    {
+      "source": "ARTICLE_21",
+      "target": "APP_FEATURE_ARTICLE_21_WIZARD",
+      "relationship": "IMPLEMENTED_BY",
+      "label": "Article 21 4-Gate Checklist & SHA-256 certificate sealing in Partner Hub"
+    },
+    {
+      "source": "ARTICLE_24",
+      "target": "ANNEX_III",
+      "relationship": "DEFINES_CLASSES",
+      "label": "Article 24 classifies Class I and Class II Important Products"
+    },
+    {
+      "source": "ARTICLE_24",
+      "target": "ANNEX_IV",
+      "relationship": "DEFINES_CRITICAL",
+      "label": "Article 24 identifies Annex IV Critical Products"
+    },
+    {
+      "source": "ARTICLE_32",
+      "target": "ANNEX_VI",
+      "relationship": "SELECTS_MODULE",
+      "label": "Article 32 matches product class to Modules A, H, or B+C"
+    },
+    {
+      "source": "ARTICLE_61",
+      "target": "RECITAL_115",
+      "relationship": "PENALTY_FRAMEWORK",
+      "label": "EUR 15M / 2.5% turnover penalty provisions"
+    },
+    {
+      "source": "ARTICLE_69",
+      "target": "RECITAL_125",
+      "relationship": "TRANSITIONAL_DATES",
+      "label": "Grandfathering pre-2027 and staggered 11 Sept 2026 early reporting"
+    }
+  ]
+}

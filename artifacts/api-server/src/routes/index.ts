@@ -38,11 +38,13 @@ import conformitySelfcheckRouter from "./conformitySelfcheck";
 import { productPortfolioRouter } from "./productPortfolio";
 import { partnerScopeRouter } from "./partnerScope";
 import { ecosystemRouter } from "./ecosystemRoutes";
+import { craWikiRouter } from "./craWikiRoutes";
 
 const router: IRouter = Router();
 
 router.use("/portfolio", productPortfolioRouter);
 router.use("/ecosystem", ecosystemRouter);
+router.use("/wiki/cra", craWikiRouter);
 router.use(partnerScopeRouter);
 router.use(regulatoryNewsRouter);
 router.use(conformitySelfcheckRouter);

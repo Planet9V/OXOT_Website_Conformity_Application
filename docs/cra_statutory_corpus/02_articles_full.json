@@ -1,0 +1,248 @@
+{
+  "regulation": "Regulation (EU) 2024/2847",
+  "shortTitle": "EU Cyber Resilience Act (CRA)",
+  "chaptersCount": 7,
+  "totalArticles": 71,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterTitle": "General Provisions",
+      "articlesRange": "Articles 1–9",
+      "articles": [
+        {
+          "articleNumber": 1,
+          "title": "Subject Matter",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "This Regulation lays down rules for the placing on the market of products with digital elements to ensure the cybersecurity of such products; essential requirements for the design, development and production of products with digital elements; obligations of economic operators; rules on market surveillance and enforcement; and rules on the notification of conformity assessment bodies."
+            }
+          ],
+          "legalCommentary": "Establishes horizontal, direct Union-wide applicability across all physical hardware and standalone software containing digital communication or logic elements."
+        },
+        {
+          "articleNumber": 2,
+          "title": "Scope",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "This Regulation applies to products with digital elements made available on the market, the intended purpose or reasonably foreseeable use of which includes a direct or indirect logical or physical data connection to a device or network."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "This Regulation does not apply to products with digital elements to which other Union acts apply where those acts achieve the same or higher level of cybersecurity, including Regulation (EU) 2017/745 (Medical Devices), Regulation (EU) 2017/746 (In Vitro Diagnostics), Regulation (EU) 2018/1139 (Civil Aviation), and Regulation (EU) 2019/2144 (Motor Vehicles)."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Free and open-source software developed or supplied outside the course of a commercial activity is excluded from the scope of this Regulation."
+            }
+          ],
+          "legalCommentary": "Critical boundary definition. OT networks, industrial switches, PLCs, HMIs, and SCADA software are squarely within scope. Non-commercial open source is excluded, but commercial redistribution or embedded inclusion triggers manufacturer due diligence."
+        },
+        {
+          "articleNumber": 3,
+          "title": "Definitions",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "For the purposes of this Regulation: 'product with digital elements' means any software or hardware product and its remote data processing solutions, including software or hardware components being placed on the market separately; 'manufacturer' means any natural or legal person who develops or manufactures products with digital elements or has products with digital elements designed, developed or manufactured, and markets them under its name or trademark; 'substantial modification' means a change to the product with digital elements following its placing on the market which affects the compliance of the product with the essential cybersecurity requirements or results in a modification of the intended purpose."
+            }
+          ],
+          "legalCommentary": "Crucial definitions for System Integrators: Substantial Modification determines whether an SI becomes legally deemed a Manufacturer under Article 20."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 2,
+      "chapterTitle": "Obligations of Economic Operators",
+      "articlesRange": "Articles 10–23",
+      "articles": [
+        {
+          "articleNumber": 10,
+          "title": "Obligations of Manufacturers (Design, Lifecycle & Free Patches)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Manufacturers shall ensure that products with digital elements are designed, developed and produced in accordance with the essential cybersecurity requirements set out in Part I of Annex I."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Manufacturers shall carry out a cybersecurity risk assessment and take the results into account during the design, development, production, delivery and maintenance phases."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Manufacturers shall provide security updates to address vulnerabilities free of charge for the expected product lifetime or a minimum period of five years from placing on the market."
+            }
+          ],
+          "legalCommentary": "Mandates Security-by-Design (Annex I Part I) and free security patch delivery for the expected support lifetime (minimum 5 years)."
+        },
+        {
+          "articleNumber": 13,
+          "title": "Obligations of Manufacturers regarding Information and Instructions to the User",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Manufacturers shall ensure that products with digital elements are accompanied by the information and instructions to the user set out in Annex II, in clear and understandable language, including the end date of the support period and instructions on how to install security updates."
+            }
+          ],
+          "legalCommentary": "Requires transparent publishing of the support lifecycle end date and secure installation guides."
+        },
+        {
+          "articleNumber": 14,
+          "title": "Reporting Obligations of Manufacturers (24-Hour CSIRT Notification)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A manufacturer shall notify any actively exploited vulnerability contained in the product with digital elements that it becomes aware of to the CSIRT designated as coordinator and to ENISA within 24 hours of becoming aware of the actively exploited vulnerability."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The manufacturer shall submit a final report within 72 hours, detailing the root cause, remediation, and mitigation measures."
+            }
+          ],
+          "legalCommentary": "Applies early on 11 September 2026! 15 months ahead of the general CRA application date. Covers all active products in the field."
+        },
+        {
+          "articleNumber": 18,
+          "title": "Obligations of Importers",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Importers shall place on the market only products with digital elements that comply with the essential cybersecurity requirements set out in Annex I."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Before placing a product on the market, importers shall ensure that the appropriate conformity assessment procedure has been carried out by the manufacturer and that the product bears the CE marking."
+            }
+          ],
+          "legalCommentary": "Importers act as the first EU border gatekeeper. Non-compliant hardware without CE marking cannot enter EU distribution."
+        },
+        {
+          "articleNumber": 19,
+          "title": "Obligations of Distributors & Duty to Refrain",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "When making a product with digital elements available on the market, distributors shall act with due care in relation to the requirements of this Regulation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Where a distributor considers or has reason to believe that a product is not in conformity with the essential requirements set out in Annex I, the distributor shall NOT make the product available on the market (Duty to Refrain) until it has been brought into conformity."
+            }
+          ],
+          "legalCommentary": "Core statutory duty for System Integrators and Distributors (Axians, Actemium). Mandatory legal duty to halt distribution of EOS / unpatchable hardware lacking CE or DoC."
+        },
+        {
+          "articleNumber": 20,
+          "title": "Cases in Which Obligations of Manufacturers Apply to Other Economic Operators",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "An importer or distributor shall be considered a manufacturer for the purposes of this Regulation and shall be subject to all obligations of the manufacturer under Article 10, where that importer or distributor places a product on the market under its own name or trademark or carries out a substantial modification."
+            }
+          ],
+          "legalCommentary": "The statutory trigger that transfers full €15M manufacturer liabilities onto SIs if they make substantial modifications."
+        },
+        {
+          "articleNumber": 21,
+          "title": "Substantial Modification Due Diligence & Exemption Boundaries",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A person who carries out a modification to a product with digital elements that affects its compliance with essential cybersecurity requirements or alters its intended purpose shall be subject to the obligations of a manufacturer."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Modifications performed exclusively with original manufacturer-certified spare parts and vendor-signed firmware updates to maintain operational capability within the original design parameters shall NOT constitute a substantial modification (Recital 34)."
+            }
+          ],
+          "legalCommentary": "Governs the Article 21 Wizard. SIs remain exempt from manufacturer status if they perform identical spare replacements under Recital 34."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 3,
+      "chapterTitle": "Conformity of Products with Digital Elements",
+      "articlesRange": "Articles 24–34",
+      "articles": [
+        {
+          "articleNumber": 24,
+          "title": "Classification of Products with Digital Elements (Important & Critical Classes)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Products with digital elements shall be classified into Default, Important Class I (Annex III), Important Class II (Annex III), or Critical (Annex IV) based on their core cybersecurity functionality and system criticality."
+            }
+          ],
+          "legalCommentary": "Important Class I includes managed switches, routers, and password managers. Important Class II includes industrial firewalls, PLCs, and hypervisors. Critical includes hardware tamper-proof chips."
+        },
+        {
+          "articleNumber": 32,
+          "title": "Conformity Assessment Procedures",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "For default products, the manufacturer may use Module A (Internal Control). For Important Class I, harmonised standards or third-party assessment is required. For Important Class II and Critical, mandatory third-party assessment by a Notified Body (Module H or B+C) is required."
+            }
+          ],
+          "legalCommentary": "Determines the assessment pathway and whether a Notified Body must be engaged."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 5,
+      "chapterTitle": "Market Surveillance & EU Enforcement",
+      "articlesRange": "Articles 52–63",
+      "articles": [
+        {
+          "articleNumber": 61,
+          "title": "Penalties and Administrative Fines",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Non-compliance with essential cybersecurity requirements in Annex I or obligations in Articles 10 and 11 shall be subject to administrative fines of up to EUR 15,000,000 or 2.5% of total worldwide annual turnover for the preceding financial year, whichever is higher."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Non-compliance with other obligations under this Regulation shall be subject to administrative fines of up to EUR 10,000,000 or 2.0% of total worldwide annual turnover."
+            }
+          ],
+          "legalCommentary": "Statutory fine exposure calculated dynamically across plant turnover in the Partner Scope Cockpit."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 7,
+      "chapterTitle": "Confidentiality and Final Provisions",
+      "articlesRange": "Articles 68–71",
+      "articles": [
+        {
+          "articleNumber": 69,
+          "title": "Transitional Provisions & Grandfathering",
+          "paragraphs": [
+            {
+              "paragraphNumber": 2,
+              "text": "Products with digital elements that have been placed on the market before 11 December 2027 shall not be required to comply with the requirements of this Regulation unless they are subject to substantial modifications."
+            }
+          ],
+          "legalCommentary": "Grandfathering provision: Equipment placed on market before 11 Dec 2027 is exempt from general CE-marking, but Article 14 24h vulnerability reporting applies to all operating products from 11 Sept 2026."
+        },
+        {
+          "articleNumber": 71,
+          "title": "Entry into Force and Application",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "It shall apply from 11 December 2027. However, Article 14 (Vulnerability Reporting) shall apply from 11 September 2026, and Chapter IV (Notification of Conformity Assessment Bodies) shall apply from 11 June 2026."
+            }
+          ],
+          "legalCommentary": "Establishes the three key compliance milestones: CAB notification (June 2026), 24h PSIRT reporting (Sept 2026), and General Application (Dec 2027)."
+        }
+      ]
+    }
+  ]
+}

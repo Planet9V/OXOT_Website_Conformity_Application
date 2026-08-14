@@ -1,0 +1,158 @@
+{
+  "regulation": "Regulation (EU) 2024/2847",
+  "shortTitle": "EU Cyber Resilience Act (CRA) Annexes",
+  "totalAnnexes": 8,
+  "annexes": [
+    {
+      "annexNumber": "I",
+      "title": "Essential Cybersecurity Requirements",
+      "parts": [
+        {
+          "partNumber": 1,
+          "partTitle": "Security Requirements Relating to the Properties of Products with Digital Elements",
+          "requirements": [
+            {
+              "id": "ANNEX_I_PART_I_1",
+              "clause": "Design and development with an appropriate level of cybersecurity based on risk.",
+              "description": "Products shall be delivered without known exploitable vulnerabilities and with secure-by-default configurations."
+            },
+            {
+              "id": "ANNEX_I_PART_I_2",
+              "clause": "Protection of confidentiality, integrity, and availability of data.",
+              "description": "State-of-the-art cryptographic mechanisms, data-in-transit and data-at-rest protection, and strict access controls."
+            },
+            {
+              "id": "ANNEX_I_PART_I_3",
+              "clause": "Attack surface minimization and principle of least privilege.",
+              "description": "Disabling unused ports, services, and debug interfaces by default."
+            }
+          ]
+        },
+        {
+          "partNumber": 2,
+          "partTitle": "Vulnerability Handling Requirements",
+          "requirements": [
+            {
+              "id": "ANNEX_I_PART_II_1",
+              "clause": "Vulnerability identification, internal triage, and coordinated disclosure (CVD).",
+              "description": "Manufacturers must operate a dedicated vulnerability reporting channel and establish a documented PSIRT policy."
+            },
+            {
+              "id": "ANNEX_I_PART_II_2",
+              "clause": "Software Bill of Materials (SBOM) generation and maintenance.",
+              "description": "Machine-readable SBOM identifying all direct and transitive third-party dependencies in CycloneDX or SPDX format."
+            },
+            {
+              "id": "ANNEX_I_PART_II_3",
+              "clause": "Regular security testing and vulnerability scanning.",
+              "description": "Automated regression testing, static and dynamic analysis, and security updates testing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "annexNumber": "II",
+      "title": "Information and Instructions to the User",
+      "requirements": [
+        {
+          "id": "ANNEX_II_1",
+          "clause": "Clear point of contact for vulnerability reporting.",
+          "description": "Public email or portal for security researchers and end-users."
+        },
+        {
+          "id": "ANNEX_II_2",
+          "clause": "Guaranteed support period specification.",
+          "description": "Explicit month and year marking the end date of vulnerability patch availability."
+        },
+        {
+          "id": "ANNEX_II_3",
+          "clause": "Secure decommissioning and data sanitization instructions.",
+          "description": "Steps required to safely wipe credentials and configurations when retiring hardware."
+        }
+      ]
+    },
+    {
+      "annexNumber": "III",
+      "title": "Important Products with Digital Elements (Class I & Class II)",
+      "classI": [
+        "Identity management systems and privileged access management software",
+        "Standalone and embedded password managers",
+        "Software for vulnerability detection, asset discovery and endpoint protection",
+        "Network interfaces and virtual network switches (e.g. Scalance, Hirschmann, Cisco IE)",
+        "Routers, modems intended for internet connection, and industrial switches",
+        "Microcontrollers and integrated circuits with general-purpose instruction sets"
+      ],
+      "classII": [
+        "Operating systems (embedded, mobile, desktop, hypervisors)",
+        "Industrial firewalls, intrusion detection and prevention systems (IDS/IPS)",
+        "Programmable Logic Controllers (PLCs), Distributed Control Systems (DCS), and RTUs",
+        "Smart meter gateways and advanced industrial sensor controllers",
+        "Hardware security modules (HSMs) and smartcards"
+      ]
+    },
+    {
+      "annexNumber": "IV",
+      "title": "Critical Products with Digital Elements",
+      "products": [
+        "Hardware devices with security boxes and smartcard chips",
+        "Secure microcontrollers used in European Digital Identity Wallets",
+        "Hardware components with integrated cryptographic coprocessors evaluated at EAL4+"
+      ]
+    },
+    {
+      "annexNumber": "V",
+      "title": "EU Declaration of Conformity (Model Structure)",
+      "mandatoryFields": [
+        "1. Product name, model, type, batch or serial number",
+        "2. Name and address of manufacturer or authorized representative",
+        "3. Object of declaration (identification of product allowing traceability)",
+        "4. Statement of conformity with Regulation (EU) 2024/2847 and harmonised standards applied",
+        "5. Identification of Notified Body (name, number) and EU-type examination certificate where applicable",
+        "6. Signed for and on behalf of manufacturer (place, date, name, function, signature)"
+      ]
+    },
+    {
+      "annexNumber": "VI",
+      "title": "Conformity Assessment Procedures",
+      "modules": [
+        {
+          "moduleCode": "Module A",
+          "name": "Internal Control (Self-Assessment)",
+          "applicableFor": "Default products with digital elements without high risk."
+        },
+        {
+          "moduleCode": "Module H",
+          "name": "Comprehensive Quality Assurance by Notified Body",
+          "applicableFor": "Important Class II and Critical products."
+        },
+        {
+          "moduleCode": "Module B+C",
+          "name": "EU-Type Examination (B) followed by Conformity to Type (C)",
+          "applicableFor": "Important Class I (alternative) and Important Class II products."
+        }
+      ]
+    },
+    {
+      "annexNumber": "VII",
+      "title": "Technical Documentation (Contents of Technical File)",
+      "elements": [
+        "General description of the product and cybersecurity intended purpose",
+        "Cybersecurity risk assessment report identifying threats and vulnerability vectors",
+        "System architecture diagrams, data flow models, and trust boundaries",
+        "Software Bill of Materials (SBOM) and third-party component provenance ledger",
+        "Test reports, static analysis findings, penetration test results, and vulnerability remediation records"
+      ]
+    },
+    {
+      "annexNumber": "VIII",
+      "title": "Correlation Table & Directive Alignment",
+      "crossDirectives": [
+        "Directive 2001/95/EC (General Product Safety)",
+        "Directive 2014/53/EU (Radio Equipment Directive - RED Delegated Act)",
+        "Directive (EU) 2022/2555 (NIS2 Directive Art. 21 supply chain duties)",
+        "Regulation (EU) 2024/1689 (EU AI Act cybersecurity alignment)"
+      ]
+    }
+  ]
+}

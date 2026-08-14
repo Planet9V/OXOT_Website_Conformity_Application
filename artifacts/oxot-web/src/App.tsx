@@ -27,6 +27,7 @@ import KnowledgeHubPage from '@/pages/knowledge-hub';
 import RegulatoryNewsPage from '@/pages/regulatory-news';
 import CraCheckPage from '@/pages/cra-check';
 import PartnerScopePage from '@/pages/partner-scope';
+import CraWikiPage from '@/pages/cra-wiki';
 import CraHomePage from '@/pages/home';
 import DemoPage from '@/pages/demo';
 import PricingPage from '@/pages/pricing';
@@ -168,6 +169,18 @@ function PublicRoutes() {
       </Route>
       <Route path="/axians/">
         {() => <PublicRoute component={PartnerScopePage} />}
+      </Route>
+      <Route path="/wiki/cra">
+        {() => <PublicRoute component={CraWikiPage} />}
+      </Route>
+      <Route path="/wiki/cra/">
+        {() => <PublicRoute component={CraWikiPage} />}
+      </Route>
+      <Route path="/wiki">
+        {() => <PublicRoute component={CraWikiPage} />}
+      </Route>
+      <Route path="/wiki/">
+        {() => <PublicRoute component={CraWikiPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}
