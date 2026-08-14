@@ -28,6 +28,5 @@ Third: Guaranteed security patch delivery matching the OEM's declared product su
 
 Upstream component vendors who deliver transparent SBOMs and rapid security patches will dominate European supply chains. Those who don't will be replaced.
 
-Run a free supply chain assessment today at oxot.ai slash cra-check.
 
 Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.

@@ -1,46 +1,48 @@
-# ElevenLabs Music & Sound Effects Prompts — CRA Podcast Series
+# [EP_0.00 - SOLO] Master Intro & Outro Scripts with ElevenLabs Music Prompts
 
-> **Purpose:** Highly optimized prompts for ElevenLabs Eleven Music, Sound Effects, and Voice generators to produce professional, high-retention Intro & Outro audio beds for "The Cyber Resilience Act Briefing" (Jim Mckenney Solo & Two-Voice Series).
+> **Asset Type:** Master Audio Branding & Script Assets  
+> **Target Series:** Jim Mckenney Solo Consultant Series (50 Episodes)  
+> **Presenter:** Jim Mckenney (Digital Product Security Consultant)  
+> **ElevenLabs Voice Model:** `Jim Mckenney English` (Voice ID: `fh7rGvh0nJR3MFMkM9yd`)  
+> **Acoustic Guitar Style:** Warm Spanish Classical Guitar / B2B Industrial Tech Synth Bed
 
 ---
 
-## 1. Intro Music Bed & Sound Effects Prompt (15 Seconds)
+## 1. INTRO SEGMENT SCRIPT & MUSIC PROMPT (15 Seconds)
 
-### **ElevenLabs Music Generator Prompt:**
+### ElevenLabs Music Generator Prompt (Intro):
 ```text
 A warm, sophisticated Spanish classical guitar acoustic intro theme. Soft nylon-string fingerpicked guitar arpeggios, gentle warmth, subtle ambient reverb, elegant B2B broadcast opening, high production value, clean acoustic recording.
 ```
 
----
+### Intro Speech Script (Jim Mckenney):
+```dialogue
+[Soft nylon-string Spanish guitar intro swells for 3 seconds, then ducks smoothly under speech]
 
-## 2. Outro Music Bed & Sound Effects Prompt (15 Seconds)
+[JIM MCKENNEY]
+Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial manufacturers, OEMs, and operators across Europe to align OT devices and software with Regulation (EU) 2024/2847, IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice. Today, we're cutting straight through the legal noise.
 
-### **ElevenLabs Music Generator Prompt:**
-```text
-A gentle resolving Spanish classical guitar outro theme. Soft nylon-string acoustic guitar chords, warm resolving cadences, fading out smoothly over 10 seconds, elegant and relaxing resolution.
+[Guitar music resolves and fades out cleanly]
 ```
 
 ---
 
-## 3. Complete Voice + Music Prompt & Voice Specs (ElevenLabs Studio / Voice Lab)
+## 2. DEDICATED OUTRO SEGMENT SCRIPT & MUSIC PROMPT (20 Seconds)
 
-### **Voice Settings:**
-* **Voice Model:** Eleven Multilingual v2 / Eleven Turbo v2.5
-* **Recommended ElevenLabs Voice:** **"Adam"** (Deep, authoritative male tone) or **"Brian"** (Professional British narrator)
-* **Stability:** 0.65
-* **Clarity / Similarity:** 0.80
-* **Style Exaggeration:** 0.10
+> [!NOTE]
+> All brand directives, diagnostic tool references, and website calls-to-action are housed exclusively in this master Outro, keeping individual episode dialogue focused 100% on technical and statutory substance.
 
-### **ElevenLabs Text-to-Speech Intro Script:**
+### ElevenLabs Music Generator Prompt (Outro):
 ```text
-[Soft synth intro music swells]
-Welcome back. I'm Jim Mckenney, digital product security consultant. I work directly with industrial manufacturers, OEMs, and operators to align OT devices and software with the Cyber Resilience Act, IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic commentary, not formal legal advice.
-[Music ducks smoothly under voice]
+A gentle resolving Spanish classical guitar outro theme. Soft nylon-string acoustic guitar chords, warm resolving cadences, fading out smoothly over 12 seconds, elegant and relaxing resolution.
 ```
 
-### **ElevenLabs Text-to-Speech Outro Script:**
-```text
-[Outro music swells softly in background]
-Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.
-[Music fades out over 4 seconds]
+### Outro Speech Script (Jim Mckenney):
+```dialogue
+[Outro Spanish classical guitar music swells softly in background]
+
+[JIM MCKENNEY]
+Thank you for listening to The Cyber Resilience Act Briefing. For additional statutory cross-references, contract safe-harbor clauses, and interactive conformity intelligence tools, visit oxot.ai. Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney.
+
+[Music swells to full volume for 4 seconds, then fades out smoothly over 4 seconds]
 ```

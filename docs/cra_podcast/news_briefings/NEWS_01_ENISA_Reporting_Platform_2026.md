@@ -22,6 +22,5 @@ The Commission has made it clear: waiting for 2027 to build your vulnerability r
 
 To prepare, engineering teams must verify that their internal Product Security Incident Response Teams are equipped to triage vulnerabilities and communicate directly with ENISA's API.
 
-For more strategic analysis and free compliance tools, visit oxot.ai slash cra-check.
 
 Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.

@@ -1,45 +1,48 @@
-# [EP_0.00 - SOLO] Master Intro & Outro Scripts with ElevenLabs Music Prompts (Jim Mckenney Series)
+# [EP_0.00 - SOLO] Master Intro & Outro Scripts with ElevenLabs Music Prompts
 
 > **Asset Type:** Master Audio Branding & Script Assets  
-> **Target Series:** Jim Mckenney Solo Consultant Series  
+> **Target Series:** Jim Mckenney Solo Consultant Series (50 Episodes)  
 > **Presenter:** Jim Mckenney (Digital Product Security Consultant)  
 > **ElevenLabs Voice Model:** `Jim Mckenney English` (Voice ID: `fh7rGvh0nJR3MFMkM9yd`)  
-> **ElevenLabs Music Style:** Sophisticated B2B Industrial Tech Synth Bed
+> **Acoustic Guitar Style:** Warm Spanish Classical Guitar / B2B Industrial Tech Synth Bed
 
 ---
 
-## 1. INTRO SEGMENT SCRIPT & MUSIC PROMPT
+## 1. INTRO SEGMENT SCRIPT & MUSIC PROMPT (15 Seconds)
 
 ### ElevenLabs Music Generator Prompt (Intro):
 ```text
-A modern, sophisticated B2B tech podcast intro theme. Subtle analog synth pulses, warm low-end bass drone, clean electronic percussion with a steady 110 BPM rhythm. Dark cybersecurity and industrial automation atmosphere, transitioning into a clean, professional background pad. High production value, broadcast-quality mix, no loud harsh lead synths, polished B2B broadcast opening.
+A warm, sophisticated Spanish classical guitar acoustic intro theme. Soft nylon-string fingerpicked guitar arpeggios, gentle warmth, subtle ambient reverb, elegant B2B broadcast opening, high production value, clean acoustic recording.
 ```
 
 ### Intro Speech Script (Jim Mckenney):
 ```dialogue
-[Soft synth intro music swells for 3 seconds, then ducks under speech]
+[Soft nylon-string Spanish guitar intro swells for 3 seconds, then ducks smoothly under speech]
 
 [JIM MCKENNEY]
-Welcome back to The CRA Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial manufacturers, OEMs, and operators to align OT devices and software with the Cyber Resilience Act, IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic commentary, not formal legal advice. Today, we're cutting through the legal noise on [Episode Topic].
+Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial manufacturers, OEMs, and operators across Europe to align OT devices and software with Regulation (EU) 2024/2847, IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice. Today, we're cutting straight through the legal noise.
 
-[Music fades out cleanly]
+[Guitar music resolves and fades out cleanly]
 ```
 
 ---
 
-## 2. OUTRO SEGMENT SCRIPT & MUSIC PROMPT
+## 2. DEDICATED OUTRO SEGMENT SCRIPT & MUSIC PROMPT (20 Seconds)
+
+> [!NOTE]
+> All brand directives, diagnostic tool references, and website calls-to-action are housed exclusively in this master Outro, keeping individual episode dialogue focused 100% on technical and statutory substance.
 
 ### ElevenLabs Music Generator Prompt (Outro):
 ```text
-A warm, resolving tech podcast outro theme. Soft electronic synth chords, smooth ambient low-end bass, gentle rhythmic synth pluck fading out gradually over 12 seconds. Satisfying, professional, executive resolution tone. Clean B2B broadcast closing music.
+A gentle resolving Spanish classical guitar outro theme. Soft nylon-string acoustic guitar chords, warm resolving cadences, fading out smoothly over 12 seconds, elegant and relaxing resolution.
 ```
 
 ### Outro Speech Script (Jim Mckenney):
 ```dialogue
-[Outro music swells softly in background]
+[Outro Spanish classical guitar music swells softly in background]
 
 [JIM MCKENNEY]
-Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.
+Thank you for listening to The Cyber Resilience Act Briefing. For additional statutory cross-references, contract safe-harbor clauses, and interactive conformity intelligence tools, visit oxot.ai. Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney.
 
-[Music fades out over 5 seconds]
+[Music swells to full volume for 4 seconds, then fades out smoothly over 4 seconds]
 ```

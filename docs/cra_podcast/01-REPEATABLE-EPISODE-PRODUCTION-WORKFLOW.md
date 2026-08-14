@@ -1,114 +1,70 @@
-## 1. Dual-Format Workflow & Output Directories
+# Repeatable Episode Production Workflow: The CRA Podcast
+## Standard Operating Procedure for Solo & Studio Audio Generation
 
-Every episode in the 16-episode series is produced in **two distinct formats**:
-1. **Two-Voice Series:** Host 1 (Legal Lead - 'onyx') & Host 2 (Engineering Lead - 'nova') $\rightarrow$ output to `docs/cra_podcast/episodes/EP_X.YY_<Slug>.md`
-2. **Jim Mckenney Solo Series:** Digital Product Security Consultant Narrative $\rightarrow$ output to `docs/cra_podcast/episodes_solo/EP_X.YY_<Slug>_SOLO.md`
-
-> **Output Location Rule:** All generated audio files (`.wav` / `.m4a`) must output directly into their respective tracked directory (`docs/cra_podcast/episodes/` or `docs/cra_podcast/episodes_solo/`).
-
-```mermaid
-graph TD
-    A["Stage 1: Statutory Ingestion & Legal Gate"] --> B["Stage 2: Dual-Host Script Drafting"]
-    B --> C["Stage 3: De-Slop & Humanize (/avoid-ai-writing)"]
-    C --> D["Stage 4: Phonetic & Voice Mapping ('onyx' / 'nova')"]
-    D --> E["Stage 5: Spotify Metadata & Show Notes Engine"]
-    E --> F["Stage 6: Registry Tracking & State Lock"]
-```
-
-### Executed Skill Chain:
-1. **`oxot-marketing`**: Defines persona hooks, financial risk ALE/VaR metrics, and B2B pain points.
-2. **`podcast-generation`**: Controls dual-voice dialogue format (Host 1 'onyx' Legal vs Host 2 'nova' Engineering) and PCM audio rendering.
-3. **`avoid-ai-writing`**: Audits and rewrites prose to eliminate 21 categories of AI-isms, corporate buzzwords, formulaic transitions, and monotonous cadences.
-4. **`content-creator`**: Produces Spotify chapter markers, timestamps, show notes, and search-indexed episode titles.
-5. **`planning-with-files`**: Tracks episode states (`backlog` -> `drafted` -> `de_slopped` -> `voice_mapped` -> `published`) in `task_plan.md` and `episodes_registry.json`.
+> **Workflow Standard:** Multi-Agent Validated Production Pipeline (50 Episodes across 8 Miniseries)  
+> **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant)  
+> **Universal Episode Code:** `EP_S.EE` (e.g. `EP_1.01` to `EP_8.05`)  
+> **Target Output Path:** `docs/cra_podcast/episodes_solo/`
 
 ---
 
-## 2. The 6-Stage Episode Production Pipeline
+## 1. Unified 6-Stage Episode Production Pipeline
+
+```mermaid
+graph TD
+    A["Stage 1: Statutory Ingestion & Legal Gate"] --> B["Stage 2: Single-Voice Script Drafting"]
+    B --> C["Stage 3: De-Slop & Humanize (/avoid-ai-writing)"]
+    C --> D["Stage 4: Phonetic & Voice Mapping ('Jim Mckenney')"]
+    D --> E["Stage 5: Spotify Packaging & Chapter Markers"]
+    E --> F["Stage 6: Registry Tracking & Git State Lock"]
+```
+
+### Executed Skill Chain:
+1. **`/legal-advisor`**: Validates statutory accuracy against Regulation (EU) 2024/2847, NLF directives, and official Recitals.
+2. **`/marketing-psychology` & `/copywriting`**: Crafts high-retention narrative hooks, loss aversion framing, and clear 4-step action checklists.
+3. **`/avoid-ai-writing`**: Eliminates corporate buzzwords (*delve, leverage, pivotal, testament, seamlessly, crucial*) and ensures spoken cadence.
+4. **`podcast-generation`**: Controls single-voice dialogue audio synthesis and acoustic guitar music bed ducking.
+
+---
+
+## 2. Detailed Production Stages
 
 ### Stage 1: Statutory Ingestion & Legal Gate
-* **Input:** Target Episode ID, Persona, and Statutory Article/Annex selection from `docs/statutory-curation/2026-08-13/`.
+* **Input:** Episode Canonical Code (`EP_S.EE`), Persona, and Statutory Articles from `docs/statutory-curation/2026-08-14/`.
 * **Action:** Extract raw text, Recitals, official citations, and cross-regulation mappings.
-* **Output:** Clean **Statutory Fact Sheet** (Zero hallucinations).
+* **Output:** Clean **Statutory Fact Sheet** with zero legal hallucinations.
 
-### Stage 2: Multi-Pass Dual-Host Dialogue Drafting
-* **Pass 2A (Structural Outline):**
-  * Segment 1 (00:00–03:00): Legal Fact Sheet (Article mechanics).
-  * Segment 2 (03:00–15:00): Persona Deep Dive (OEM / Developer / Integrator impact).
-  * Segment 3 (15:00–22:00): Technical Implementation Checklist.
-  * Segment 4 (22:00–25:00): Q&A / Regulatory News Update.
-* **Pass 2B (Dialogue Synthesis):**
-  * **Host 1 (Legal Lead - 'onyx'):** Authoritative, precise, cites exact statutory text and Recitals.
-  * **Host 2 (Engineering Lead - 'nova'):** Pragmatic, inquisitive, translates legal clauses into firmware, SBOMs, and architecture.
+### Stage 2: Single-Voice Narrative Drafting
+* **Pass 2A (Structural Breakdown):**
+  * Segment 1 (00:00–01:30): Executive Hook & The Real-World Dilemma.
+  * Segment 2 (01:30–05:15): Statutory Architecture & Regulatory Breakdown.
+  * Segment 3 (05:15–08:45): Operational Impact & Plant Engineering Realities.
+  * Segment 4 (08:45–11:30): Engineering Mitigation & Supply Chain Governance.
+  * Segment 5 (11:30–13:50): 4-Step Actionable Checklist for Engineering Teams.
+  * Segment 6 (13:50–14:30): Authoritative Closure & Sign-Off.
 
 ### Stage 3: De-Slop & Humanize Pass (`/avoid-ai-writing`)
 * **Mandatory Rules:**
   * **No Buzzwords:** Strip *delve, leverage, pivotal landscape, testament to, seamlessly, robust, game-changer, holistic, crucial, foster, embark*.
-  * **Standardized Outro Sign-Off:** *"Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening."* (Short, clever, and never references Purdue layers/models).
-  * **Natural Conversational Flow:** Use contractions (*don't, can't, here's, what's*), short sentence variations, interjections, and natural host banter.
+  * **0% Inline Marketing:** Never include website URLs, sales pitches, or software directives in the episode body. All platform marketing is housed in the dedicated outro.
+  * **Standardized Sign-Off:** *"Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney—thank you for listening."*
 
-### Stage 4: Voice, Phonetic & ElevenLabs Production Standard (`podcast-generation`)
+### Stage 4: Voice, Phonetic & Audio Production Standard (`podcast-generation`)
 * **ElevenLabs Voice Specification:**
-  * **Jim Mckenney Solo Voice ID:** `Jim Mckenney English` (`fh7rGvh0nJR3MFMkM9yd`).
+  * **Voice Model:** `Jim Mckenney English` (`fh7rGvh0nJR3MFMkM9yd`).
   * **Tuned Voice Parameters:** `stability=0.60`, `similarity_boost=0.85`, `style=0.10`, `use_speaker_boost=true`.
-  * **Voice Model:** `eleven_multilingual_v2`.
-* **Mandatory Text Pre-Processing & Sanitization:**
-  * **Strip Speaker & Section Tags:** Remove `[JIM MCKENNEY]`, `[HOST 1]`, `## SECTION 2`, and metadata before API payload dispatch.
-  * **Convert Phonetic Brackets to Clean Prose:**
-    * ❌ `Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven]`
-    * ✅ `Regulation E U twenty twenty-four slash twenty-eight forty-seven`
-  * **Strip Markdown Artifacts:** Remove bold/italic asterisks (`*logical*` $\rightarrow$ `logical`), blockquotes (`>`), headers (`#`), and footer instructions.
-* **Paragraph Payload Chunking Rule:**
-  * Chunk text into 300–800 character paragraphs per API call. Never exceed 1,500 characters per call to prevent voice stuttering, word skipping, or scrambled cadence.
-* **Audio Ducking & Music Layering:**
-  * **Intro:** 2.0s Spanish Classical Guitar swell $\rightarrow$ duck music volume to -12dB under Jim Mckenney's voice intro $\rightarrow$ fade out.
-  * **Outro:** Jim Mckenney sign-off speech $\rightarrow$ Spanish Classical Guitar resolving chord swell $\rightarrow$ 3s fade out.
-* **FFmpeg Re-Encoding Rule:**
-  * Never use `-c copy` across distinct MP3 streams. Re-encode concatenated audio streams via `libmp3lame` at `192kbps` to ensure smooth frame alignment and seamless duration calculations.
+  * **Voice Engine:** `eleven_multilingual_v2`.
+* **Acoustic Guitar Ducking & Music Layering:**
+  * **Intro:** 2.0s Spanish Classical Guitar swell $\rightarrow$ duck volume to -14dB under Jim Mckenney's voice intro $\rightarrow$ fade out cleanly.
+  * **Episode Body:** Dry vocal narration with crisp broadcast warmth.
+  * **Dedicated Outro:** Standalone audio file (`EP_0.00`) containing platform CTA over resolving Spanish guitar chords.
 
 ### Stage 5: Spotify & Apple Podcasts Packaging Engine (`content-creator`)
 * **Output Package:**
-  1. **SEO Episode Title:** `[CRA Ep. X.YY] Article Z: Title | Persona Impact`
-  2. **Timestamped Chapter Markers:** `00:00 Intro`, `02:15 Fact Sheet`, `08:30 Persona Impact`, `14:45 Technical Checklist`.
-  3. **Show Notes (250 words):** Includes statutory references, episode summary, and link to free assessment tool (`https://oxot.ai/cra-check`).
-  4. **Key Takeaway Bullet Points:** 3 actionable takeaways for listeners.
+  1. **SEO Episode Title:** `[CRA EP_S.EE - Solo Briefing] Title | Jim Mckenney`
+  2. **Timestamped Chapter Markers:** `00:00 Intro`, `01:30 Statutory Breakdown`, `05:15 Industry Impact`, `11:30 Action Checklist`.
+  3. **Show Notes:** Statutory references, key takeaway points, and deep link to statutory wiki.
 
 ### Stage 6: Registry State Lock & File Creation
-* **Output Path:** `docs/cra_podcast/episodes/EP_X.YY_<Slug>.md`
-* **Action:** Update `docs/cra_podcast/task_plan.md` and `docs/cra_podcast/episodes_registry.json`.
-
----
-
-## 3. Episode State Registry Schema (`episodes_registry.json`)
-
-```json
-{
-  "episodes": [
-    {
-      "id": "EP_1.01",
-      "season": 1,
-      "episode_number": 1,
-      "title": "Is Your Product In Scope? Decoding Article 2 & Remote Data Processing",
-      "target_persona": "Software & Hardware OEMs",
-      "statutory_articles": ["Article 2", "Article 3", "Recitals 4-7"],
-      "status": "drafting_ready",
-      "file_path": "docs/cra_podcast/episodes/EP_1.01_Is_Your_Product_In_Scope.md"
-    }
-  ]
-}
-```
-
----
-
-## 4. Single-Episode Prompt Execution Command Template
-
-To generate any episode on demand, run the workflow with the following targeted prompt format:
-
-```markdown
-Generate CRA Podcast Episode [EP_ID] using the 6-Stage Episode Pipeline:
-- Episode ID: EP_1.01
-- Title: Is Your Product In Scope? Decoding Article 2 & Remote Data Processing
-- Target Persona: Software & Hardware OEMs
-- Statutory Corpus: CRA Articles 2 & 3, Recitals 4-7
-- Execute Stage 1 through Stage 6, applying /avoid-ai-writing to Stage 3.
-```
+* **Output Path:** `docs/cra_podcast/episodes_solo/EP_S.EE_<Slug>_SOLO.md`
+* **Action:** Update `docs/cra_podcast/episodes_registry.json` and `00-SOLO-EPISODES-CATALOGUE.md`.

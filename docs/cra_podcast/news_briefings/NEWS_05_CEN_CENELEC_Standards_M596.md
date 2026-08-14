@@ -26,6 +26,5 @@ For software development lifecycles, ISO/IEC 27001 and secure software developme
 
 However, standardisation bodies have warned that final harmonised standards may not be fully published until late 2026. In the interim, manufacturers must base their technical documentation on state-of-the-art standards like IEC 62443 to prove compliance during self-assessments or third-party audits.
 
-Align your product architecture with European standards today at oxot.ai slash cra-check.
 
 Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.

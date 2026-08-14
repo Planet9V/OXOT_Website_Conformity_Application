@@ -9,49 +9,79 @@
       "id": "SERIES_1",
       "title": "The Procurement & Contracting Crisis",
       "episodes_range": "01 - 06",
-      "target_personas": ["EPC Contractors", "Procurement Officers", "General Counsel"]
+      "target_personas": [
+        "EPC Contractors",
+        "Procurement Officers",
+        "General Counsel"
+      ]
     },
     {
       "id": "SERIES_2",
       "title": "The System Integrator & EPC Shield",
       "episodes_range": "07 - 13",
-      "target_personas": ["Industrial Integrators (Axians/VINCI)", "Automation Engineers"]
+      "target_personas": [
+        "Industrial Integrators (Axians/VINCI)",
+        "Automation Engineers"
+      ]
     },
     {
       "id": "SERIES_3",
       "title": "Brownfield OT, Spare Parts & Maintenance",
       "episodes_range": "14 - 19",
-      "target_personas": ["Maintenance Directors", "Plant Asset Managers", "Reliability Leads"]
+      "target_personas": [
+        "Maintenance Directors",
+        "Plant Asset Managers",
+        "Reliability Leads"
+      ]
     },
     {
       "id": "SERIES_4",
       "title": "Tier-2 Upstream Component Supplier Survival",
       "episodes_range": "20 - 25",
-      "target_personas": ["Embedded Hardware Vendors", "FOSS Stewards", "ODM Suppliers"]
+      "target_personas": [
+        "Embedded Hardware Vendors",
+        "FOSS Stewards",
+        "ODM Suppliers"
+      ]
     },
     {
       "id": "SERIES_5",
       "title": "Critical Sector Deep Dives",
       "episodes_range": "26 - 33",
-      "target_personas": ["Data Center, Energy, Water, Buildings, Rail, Marine & Pharma Leads"]
+      "target_personas": [
+        "Data Center, Energy, Water, Buildings, Rail, Marine & Pharma Leads"
+      ]
     },
     {
       "id": "SERIES_6",
       "title": "Vulnerability Operations, PSIRT & 24h Clocks",
       "episodes_range": "34 - 39",
-      "target_personas": ["PSIRT Leads", "Incident Response Directors", "Corporate CISOs"]
+      "target_personas": [
+        "PSIRT Leads",
+        "Incident Response Directors",
+        "Corporate CISOs"
+      ]
     },
     {
       "id": "SERIES_7",
       "title": "Conformity Assessment, Audits & CE Marking",
       "episodes_range": "40 - 45",
-      "target_personas": ["Quality Assurance Leads", "Testing Lab Directors", "Notified Bodies"]
+      "target_personas": [
+        "Quality Assurance Leads",
+        "Testing Lab Directors",
+        "Notified Bodies"
+      ]
     },
     {
       "id": "SERIES_8",
       "title": "Executive Liability, Penalties & Future Evolution",
       "episodes_range": "46 - 50",
-      "target_personas": ["CEOs", "CFOs", "Board Risk Committees", "Group CISOs"]
+      "target_personas": [
+        "CEOs",
+        "CFOs",
+        "Board Risk Committees",
+        "Group CISOs"
+      ]
     }
   ],
   "episodes": [
@@ -60,450 +90,753 @@
       "series": "SERIES_1",
       "episode_number": 1,
       "title": "The 2-Year Lag: Why 2024 Contracts Are Walking into a 2027 Regulatory Trap",
-      "statutory_articles": ["Article 2", "Article 71"],
+      "statutory_articles": [
+        "Article 2",
+        "Article 71"
+      ],
       "target_persona": "EPC Contractors & Project Planners",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 1,
+      "series_name": "The Procurement & Contracting Crisis",
+      "canonical_code": "EP_1.01"
     },
     {
       "id": "EP_02",
       "series": "SERIES_1",
       "episode_number": 2,
       "title": "Writing the Bulletproof CRA RFP: Specification Language for Asset Owners",
-      "statutory_articles": ["Article 13", "Annex I Part I"],
+      "statutory_articles": [
+        "Article 13",
+        "Annex I Part I"
+      ],
       "target_persona": "Procurement Directors & CISOs",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 1,
+      "series_name": "The Procurement & Contracting Crisis",
+      "canonical_code": "EP_1.02"
     },
     {
       "id": "EP_03",
       "series": "SERIES_1",
       "episode_number": 3,
       "title": "Variation Orders & Cost Shifts: Who Pays When CRA Forces a Mid-Project Redesign?",
-      "statutory_articles": ["Article 13", "Article 18"],
+      "statutory_articles": [
+        "Article 13",
+        "Article 18"
+      ],
       "target_persona": "General Contractors & Project Managers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 1,
+      "series_name": "The Procurement & Contracting Crisis",
+      "canonical_code": "EP_1.03"
     },
     {
       "id": "EP_04",
       "series": "SERIES_1",
       "episode_number": 4,
       "title": "The Importer's Due Diligence Checklist: Buying Non-EU Hardware Legally",
-      "statutory_articles": ["Article 19", "Article 22"],
+      "statutory_articles": [
+        "Article 19",
+        "Article 22"
+      ],
       "target_persona": "Hardware Importers & Supply Chain Teams",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 1,
+      "series_name": "The Procurement & Contracting Crisis",
+      "canonical_code": "EP_1.04"
     },
     {
       "id": "EP_05",
       "series": "SERIES_1",
       "episode_number": 5,
       "title": "Distributor Gatekeeping: What Stock Must Be Purged Before December 2027?",
-      "statutory_articles": ["Article 20", "Article 69"],
+      "statutory_articles": [
+        "Article 20",
+        "Article 69"
+      ],
       "target_persona": "Electrical Wholesalers & Distributors",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 1,
+      "series_name": "The Procurement & Contracting Crisis",
+      "canonical_code": "EP_1.05"
     },
     {
       "id": "EP_06",
       "series": "SERIES_1",
       "episode_number": 6,
       "title": "The Public Tender Playbook: Navigating EU Public Procurement Directives under CRA",
-      "statutory_articles": ["Article 57", "Directive 2014/24/EU"],
+      "statutory_articles": [
+        "Article 57",
+        "Directive 2014/24/EU"
+      ],
       "target_persona": "Municipal Utilities & Public Bodies",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 1,
+      "series_name": "The Procurement & Contracting Crisis",
+      "canonical_code": "EP_1.06"
     },
     {
       "id": "EP_07",
       "series": "SERIES_2",
       "episode_number": 7,
       "title": "The Accidental Manufacturer: How System Integrators Trigger Article 21 Liability",
-      "statutory_articles": ["Article 21", "Recital 24"],
+      "statutory_articles": [
+        "Article 21",
+        "Recital 24"
+      ],
       "target_persona": "System Integrators & Automation Engineers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.01"
     },
     {
       "id": "EP_08",
       "series": "SERIES_2",
       "episode_number": 8,
       "title": "Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments",
-      "statutory_articles": ["Article 18(2)"],
+      "statutory_articles": [
+        "Article 18(2)"
+      ],
       "target_persona": "EPC Commissioning Leads & Field Engineers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.02"
     },
     {
       "id": "EP_09",
       "series": "SERIES_2",
       "episode_number": 9,
       "title": "Custom SCADA Scripts vs. Product Logic: Where the CRA Regulatory Line Is Drawn",
-      "statutory_articles": ["Article 2(1)", "Recital 6"],
+      "statutory_articles": [
+        "Article 2(1)",
+        "Recital 6"
+      ],
       "target_persona": "SCADA Developers & PLC Programmers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.03"
     },
     {
       "id": "EP_10",
       "series": "SERIES_2",
       "episode_number": 10,
       "title": "The Axians Case Study: Building a Multi-Plant CRA Modernization Pipeline",
-      "statutory_articles": ["Article 21", "Annex VII", "Recital 34"],
+      "statutory_articles": [
+        "Article 21",
+        "Annex VII",
+        "Recital 34"
+      ],
       "target_persona": "Multi-Plant Engineering Directors",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.04"
     },
     {
       "id": "EP_11",
       "series": "SERIES_2",
       "episode_number": 11,
       "title": "Composite Systems & Brownfield Plant CE Marking: Who Owns the Nameplate?",
-      "statutory_articles": ["Article 25", "Article 26"],
+      "statutory_articles": [
+        "Article 25",
+        "Article 26"
+      ],
       "target_persona": "Skid Builders & OEM Integrators",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.05"
     },
     {
       "id": "EP_12",
       "series": "SERIES_2",
       "episode_number": 12,
       "title": "Drafting the Integrator Safe Harbor Agreement: BAA & Contract Scaffolding",
-      "statutory_articles": ["Article 21", "Article 61"],
+      "statutory_articles": [
+        "Article 21",
+        "Article 61"
+      ],
       "target_persona": "EPC General Counsel & Contract Negotiators",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.06"
     },
     {
       "id": "EP_13",
       "series": "SERIES_2",
       "episode_number": 13,
       "title": "The FAT/SAT Revolution: Updating Factory & Site Acceptance Testing for CRA",
-      "statutory_articles": ["Annex I Part I & II", "Article 24"],
+      "statutory_articles": [
+        "Annex I Part I & II",
+        "Article 24"
+      ],
       "target_persona": "QA Engineers & Plant Inspectors",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 2,
+      "series_name": "The System Integrator & EPC Shield",
+      "canonical_code": "EP_2.07"
     },
     {
       "id": "EP_14",
       "series": "SERIES_3",
       "episode_number": 14,
       "title": "The Spare Parts Illusion: Demystifying Article 2(6) & Recital 29 Exemption",
-      "statutory_articles": ["Article 2(6)", "Recital 29"],
+      "statutory_articles": [
+        "Article 2(6)",
+        "Recital 29"
+      ],
       "target_persona": "Maintenance Managers & Asset Owners",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 3,
+      "series_name": "Brownfield OT, Spare Parts & Maintenance",
+      "canonical_code": "EP_3.01"
     },
     {
       "id": "EP_15",
       "series": "SERIES_3",
       "episode_number": 15,
       "title": "When Maintenance Becomes Redesign: The 4-Step Test for Brownfield Retrofits",
-      "statutory_articles": ["Article 21", "Recital 24"],
+      "statutory_articles": [
+        "Article 21",
+        "Recital 24"
+      ],
       "target_persona": "Plant Asset Managers & Systems Engineers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 3,
+      "series_name": "Brownfield OT, Spare Parts & Maintenance",
+      "canonical_code": "EP_3.02"
     },
     {
       "id": "EP_16",
       "series": "SERIES_3",
       "episode_number": 16,
       "title": "Bridging the 5-Year OEM Gap: Keeping 20-Year Industrial Assets Compliant under NIS2",
-      "statutory_articles": ["Article 13(8)", "NIS2 Article 21"],
+      "statutory_articles": [
+        "Article 13(8)",
+        "NIS2 Article 21"
+      ],
       "target_persona": "Industrial Plant CISOs & Utility Operators",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 3,
+      "series_name": "Brownfield OT, Spare Parts & Maintenance",
+      "canonical_code": "EP_3.03"
     },
     {
       "id": "EP_17",
       "series": "SERIES_3",
       "episode_number": 17,
       "title": "Legacy Brownfield Integration: Connecting Pre-2027 PLCs to Modern Cloud SCADA",
-      "statutory_articles": ["Article 2", "Article 18", "Annex I"],
+      "statutory_articles": [
+        "Article 2",
+        "Article 18",
+        "Annex I"
+      ],
       "target_persona": "Cloud OT Engineers & Industry 4.0 Leads",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 3,
+      "series_name": "Brownfield OT, Spare Parts & Maintenance",
+      "canonical_code": "EP_3.04"
     },
     {
       "id": "EP_18",
       "series": "SERIES_3",
       "episode_number": 18,
       "title": "The Obsolescence Stockpile Strategy: Buying Spares in Bulk Before December 2027",
-      "statutory_articles": ["Article 2(6)", "Article 69"],
+      "statutory_articles": [
+        "Article 2(6)",
+        "Article 69"
+      ],
       "target_persona": "Supply Chain Managers & Inventory Controllers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 3,
+      "series_name": "Brownfield OT, Spare Parts & Maintenance",
+      "canonical_code": "EP_3.05"
     },
     {
       "id": "EP_19",
       "series": "SERIES_3",
       "episode_number": 19,
       "title": "Firmware Patching in Hazardous & ATEX Environments: The Safety vs. Security Showdown",
-      "statutory_articles": ["Annex I Part II", "ATEX 2014/34/EU"],
+      "statutory_articles": [
+        "Annex I Part II",
+        "ATEX 2014/34/EU"
+      ],
       "target_persona": "Hazardous Area Engineers & Refinery Ops",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 3,
+      "series_name": "Brownfield OT, Spare Parts & Maintenance",
+      "canonical_code": "EP_3.06"
     },
     {
       "id": "EP_20",
       "series": "SERIES_4",
       "episode_number": 20,
       "title": "The Tier-2 Dilemma: How Embedded Board Makers Survive Without Going Bankrupt",
-      "statutory_articles": ["Article 13", "Article 14", "Annex I"],
+      "statutory_articles": [
+        "Article 13",
+        "Article 14",
+        "Annex I"
+      ],
       "target_persona": "Embedded Hardware Designers & PCB Houses",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 4,
+      "series_name": "Tier-2 Upstream Component Supplier Survival",
+      "canonical_code": "EP_4.01"
     },
     {
       "id": "EP_21",
       "series": "SERIES_4",
       "episode_number": 21,
       "title": "Generating SBOMs That Satisfy Tier-1 OEMs: CycloneDX & SPDX in Embedded Systems",
-      "statutory_articles": ["Annex I Part II", "Article 13(1)"],
+      "statutory_articles": [
+        "Annex I Part II",
+        "Article 13(1)"
+      ],
       "target_persona": "Embedded Firmware Developers & DevSecOps",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 4,
+      "series_name": "Tier-2 Upstream Component Supplier Survival",
+      "canonical_code": "EP_4.02"
     },
     {
       "id": "EP_22",
       "series": "SERIES_4",
       "episode_number": 22,
       "title": "Vulnerability Data Sharing Agreements: Protecting IP While Enabling OEM Compliance",
-      "statutory_articles": ["Article 13(6)", "Article 14"],
+      "statutory_articles": [
+        "Article 13(6)",
+        "Article 14"
+      ],
       "target_persona": "Component Legal Counsel & VP of Engineering",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 4,
+      "series_name": "Tier-2 Upstream Component Supplier Survival",
+      "canonical_code": "EP_4.03"
     },
     {
       "id": "EP_23",
       "series": "SERIES_4",
       "episode_number": 23,
       "title": "Open-Source Firmware & Commercial Stewards: Monetizing CRA Compliance",
-      "statutory_articles": ["Recital 10", "Article 13"],
+      "statutory_articles": [
+        "Recital 10",
+        "Article 13"
+      ],
       "target_persona": "FOSS Maintainers & Commercial Stewards",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 4,
+      "series_name": "Tier-2 Upstream Component Supplier Survival",
+      "canonical_code": "EP_4.04"
     },
     {
       "id": "EP_24",
       "series": "SERIES_4",
       "episode_number": 24,
       "title": "White-Label Hardware & ODM Contracts: Shifting the CE Nameplate Burden",
-      "statutory_articles": ["Article 16", "Article 28"],
+      "statutory_articles": [
+        "Article 16",
+        "Article 28"
+      ],
       "target_persona": "ODM Manufacturers & Brand Owners",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 4,
+      "series_name": "Tier-2 Upstream Component Supplier Survival",
+      "canonical_code": "EP_4.05"
     },
     {
       "id": "EP_25",
       "series": "SERIES_4",
       "episode_number": 25,
       "title": "The Component Supplier's Minimum Viable Security Kit (MVSK)",
-      "statutory_articles": ["Annex I Part I"],
+      "statutory_articles": [
+        "Annex I Part I"
+      ],
       "target_persona": "Hardware Startups & Sensor Vendors",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 4,
+      "series_name": "Tier-2 Upstream Component Supplier Survival",
+      "canonical_code": "EP_4.06"
     },
     {
       "id": "EP_26",
       "series": "SERIES_5",
       "episode_number": 26,
       "title": "Data Centers & Hyperscalers: BMS, EPMS, UPS & PDU Firmware Under the Microscope",
-      "statutory_articles": ["Annex III", "Annex I"],
+      "statutory_articles": [
+        "Annex III",
+        "Annex I"
+      ],
       "target_persona": "Data Center Infrastructure Directors",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.01"
     },
     {
       "id": "EP_27",
       "series": "SERIES_5",
       "episode_number": 27,
       "title": "Smart Buildings & Real Estate: BACnet, Modbus, Access Control & Elevators",
-      "statutory_articles": ["Article 6", "Annex III"],
+      "statutory_articles": [
+        "Article 6",
+        "Annex III"
+      ],
       "target_persona": "Smart Building Systems Integrators (MSI)",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.02"
     },
     {
       "id": "EP_28",
       "series": "SERIES_5",
       "episode_number": 28,
       "title": "Power Grids & Renewable Substation Automation: IEC 61850 Relays & DERMS",
-      "statutory_articles": ["Annex IV", "IEC 62443", "IEC 61850"],
+      "statutory_articles": [
+        "Annex IV",
+        "IEC 62443",
+        "IEC 61850"
+      ],
       "target_persona": "Grid Automation Leads & Solar/Wind Operators",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.03"
     },
     {
       "id": "EP_29",
       "series": "SERIES_5",
       "episode_number": 29,
       "title": "Water & Wastewater Utilities: SCADA, Remote Telemetry & Dosing Controllers",
-      "statutory_articles": ["Annex III", "NIS2 Annex I"],
+      "statutory_articles": [
+        "Annex III",
+        "NIS2 Annex I"
+      ],
       "target_persona": "Municipal Water Engineers & SCADA Leads",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.04"
     },
     {
       "id": "EP_30",
       "series": "SERIES_5",
       "episode_number": 30,
       "title": "Rail & Public Transit: ETCS On-Board Units, Wayside Signaling & Train Control",
-      "statutory_articles": ["Annex IV", "EN 50126", "EN 50128"],
+      "statutory_articles": [
+        "Annex IV",
+        "EN 50126",
+        "EN 50128"
+      ],
       "target_persona": "Rolling Stock OEMs & Railway Engineers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.05"
     },
     {
       "id": "EP_31",
       "series": "SERIES_5",
       "episode_number": 31,
       "title": "Maritime & Port Automation: Shipboard Integrated Bridges & Autonomous Cranes",
-      "statutory_articles": ["Article 2(1)", "IACS UR E26/E27"],
+      "statutory_articles": [
+        "Article 2(1)",
+        "IACS UR E26/E27"
+      ],
       "target_persona": "Port Terminal Operators & Marine Integrators",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.06"
     },
     {
       "id": "EP_32",
       "series": "SERIES_5",
       "episode_number": 32,
       "title": "Pharmaceutical & Process Manufacturing: GxP, 21 CFR Part 11 & Cleanroom Automation",
-      "statutory_articles": ["Annex I Part I", "EU GMP Annex 11"],
+      "statutory_articles": [
+        "Annex I Part I",
+        "EU GMP Annex 11"
+      ],
       "target_persona": "Pharma Automation Leads & GxP Engineers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.07"
     },
     {
       "id": "EP_33",
       "series": "SERIES_5",
       "episode_number": 33,
       "title": "Automotive & Heavy Equipment: Machine-to-Machine Gateways & UN R155 Overlap",
-      "statutory_articles": ["Article 2(4)", "Machinery Reg 2023/1230", "UN R155"],
+      "statutory_articles": [
+        "Article 2(4)",
+        "Machinery Reg 2023/1230",
+        "UN R155"
+      ],
       "target_persona": "Heavy Machinery OEMs & AGV Engineers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 5,
+      "series_name": "Critical Sector Deep Dives",
+      "canonical_code": "EP_5.08"
     },
     {
       "id": "EP_34",
       "series": "SERIES_6",
       "episode_number": 34,
       "title": "The 24-Hour Early Warning Panic: Operationalizing the ENISA Single Reporting Platform",
-      "statutory_articles": ["Article 14(1) & (2)"],
+      "statutory_articles": [
+        "Article 14(1) & (2)"
+      ],
       "target_persona": "PSIRT Leads & Incident Responders",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 6,
+      "series_name": "Vulnerability Operations, PSIRT & 24h Clocks",
+      "canonical_code": "EP_6.01"
     },
     {
       "id": "EP_35",
       "series": "SERIES_6",
       "episode_number": 35,
       "title": "Building an Annex I Compliant PSIRT: Roles, Playbooks & Tooling for Hardware OEMs",
-      "statutory_articles": ["Annex I Part II", "Article 13(6)"],
+      "statutory_articles": [
+        "Annex I Part II",
+        "Article 13(6)"
+      ],
       "target_persona": "Product Security Directors & DevSecOps",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 6,
+      "series_name": "Vulnerability Operations, PSIRT & 24h Clocks",
+      "canonical_code": "EP_6.02"
     },
     {
       "id": "EP_36",
       "series": "SERIES_6",
       "episode_number": 36,
       "title": "Coordinated Vulnerability Disclosure (CVD): Handling Security Researchers Legally",
-      "statutory_articles": ["Annex I Part II Clause 5", "ISO/IEC 29147"],
+      "statutory_articles": [
+        "Annex I Part II Clause 5",
+        "ISO/IEC 29147"
+      ],
       "target_persona": "Corporate Legal & Bug Bounty Leads",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 6,
+      "series_name": "Vulnerability Operations, PSIRT & 24h Clocks",
+      "canonical_code": "EP_6.03"
     },
     {
       "id": "EP_37",
       "series": "SERIES_6",
       "episode_number": 37,
       "title": "The 72-Hour Full Notification: What Forensic Evidence Regulators Expect",
-      "statutory_articles": ["Article 14(3)"],
+      "statutory_articles": [
+        "Article 14(3)"
+      ],
       "target_persona": "Lead Forensic Analysts & Compliance Officers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 6,
+      "series_name": "Vulnerability Operations, PSIRT & 24h Clocks",
+      "canonical_code": "EP_6.04"
     },
     {
       "id": "EP_38",
       "series": "SERIES_6",
       "episode_number": 38,
       "title": "Customer Security Advisories: Drafting Bulletins Without Exposing Clients to Attack",
-      "statutory_articles": ["Article 13(6)", "Annex I Part II Clause 6"],
+      "statutory_articles": [
+        "Article 13(6)",
+        "Annex I Part II Clause 6"
+      ],
       "target_persona": "Customer Success & Product Security Writers",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 6,
+      "series_name": "Vulnerability Operations, PSIRT & 24h Clocks",
+      "canonical_code": "EP_6.05"
     },
     {
       "id": "EP_39",
       "series": "SERIES_6",
       "episode_number": 39,
       "title": "The 14-Day Final Closeout: Root-Cause Analysis & Technical File Updates",
-      "statutory_articles": ["Article 14(4)", "Annex VII"],
+      "statutory_articles": [
+        "Article 14(4)",
+        "Annex VII"
+      ],
       "target_persona": "Quality Directors & CTOs",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 6,
+      "series_name": "Vulnerability Operations, PSIRT & 24h Clocks",
+      "canonical_code": "EP_6.06"
     },
     {
       "id": "EP_40",
       "series": "SERIES_7",
       "episode_number": 40,
       "title": "Self-Assessment vs. Notified Body: Navigating Modules A, B+C, and H",
-      "statutory_articles": ["Article 24", "Annex VI"],
+      "statutory_articles": [
+        "Article 24",
+        "Annex VI"
+      ],
       "target_persona": "Compliance Directors & QA Leads",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 7,
+      "series_name": "Conformity Assessment, Audits & CE Marking",
+      "canonical_code": "EP_7.01"
     },
     {
       "id": "EP_41",
       "series": "SERIES_7",
       "episode_number": 41,
       "title": "The Notified Body Bottleneck: Preparing for the 2026 Testing Capacity Crunch",
-      "statutory_articles": ["Articles 29-39"],
+      "statutory_articles": [
+        "Articles 29-39"
+      ],
       "target_persona": "Hardware Operations VPs & Lab Directors",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 7,
+      "series_name": "Conformity Assessment, Audits & CE Marking",
+      "canonical_code": "EP_7.02"
     },
     {
       "id": "EP_42",
       "series": "SERIES_7",
       "episode_number": 42,
       "title": "Drafting the EU Declaration of Conformity: Statutory Requirements & Language Rules",
-      "statutory_articles": ["Article 28", "Annex V"],
+      "statutory_articles": [
+        "Article 28",
+        "Annex V"
+      ],
       "target_persona": "Regulatory Affairs Specialists & Legal Counsel",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 7,
+      "series_name": "Conformity Assessment, Audits & CE Marking",
+      "canonical_code": "EP_7.03"
     },
     {
       "id": "EP_43",
       "series": "SERIES_7",
       "episode_number": 43,
       "title": "The 10-Year Technical Documentation Archive: What Must Be Stored and How",
-      "statutory_articles": ["Article 13(9)", "Article 19(8)", "Annex VII"],
+      "statutory_articles": [
+        "Article 13(9)",
+        "Article 19(8)",
+        "Annex VII"
+      ],
       "target_persona": "Records Managers & Compliance Archivists",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 7,
+      "series_name": "Conformity Assessment, Audits & CE Marking",
+      "canonical_code": "EP_7.04"
     },
     {
       "id": "EP_44",
       "series": "SERIES_7",
       "episode_number": 44,
       "title": "Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)",
-      "statutory_articles": ["Article 34", "Standardisation Request M/596"],
+      "statutory_articles": [
+        "Article 34",
+        "Standardisation Request M/596"
+      ],
       "target_persona": "Standards Engineers & Chief Architects",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 7,
+      "series_name": "Conformity Assessment, Audits & CE Marking",
+      "canonical_code": "EP_7.05"
     },
     {
       "id": "EP_45",
       "series": "SERIES_7",
       "episode_number": 45,
       "title": "CE Nameplate Studio: Physical, Digital & Packaging Marking Rules",
-      "statutory_articles": ["Article 25", "Article 26", "Article 27"],
+      "statutory_articles": [
+        "Article 25",
+        "Article 26",
+        "Article 27"
+      ],
       "target_persona": "Industrial Designers & Packaging Leads",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 7,
+      "series_name": "Conformity Assessment, Audits & CE Marking",
+      "canonical_code": "EP_7.06"
     },
     {
       "id": "EP_46",
       "series": "SERIES_8",
       "episode_number": 46,
-      "title": "The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines",
-      "statutory_articles": ["Article 61", "Article 62"],
+      "title": "The \u20ac15,000,000 Calculation: Demystifying Article 61 Administrative Fines",
+      "statutory_articles": [
+        "Article 61",
+        "Article 62"
+      ],
       "target_persona": "CEOs, CFOs & Board Members",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 8,
+      "series_name": "Executive Liability, Penalties & Future Evolution",
+      "canonical_code": "EP_8.01"
     },
     {
       "id": "EP_47",
       "series": "SERIES_8",
       "episode_number": 47,
       "title": "Personal Executive Liability & Boardroom Governance: Can Directors Go to Jail?",
-      "statutory_articles": ["Article 61", "NIS2 Article 20"],
+      "statutory_articles": [
+        "Article 61",
+        "NIS2 Article 20"
+      ],
       "target_persona": "Board Directors & Risk Committees",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 8,
+      "series_name": "Executive Liability, Penalties & Future Evolution",
+      "canonical_code": "EP_8.02"
     },
     {
       "id": "EP_48",
       "series": "SERIES_8",
       "episode_number": 48,
       "title": "Market Surveillance Raids & Recalls: What Happens When Authorities Freeze a Product Line",
-      "statutory_articles": ["Articles 43-54"],
+      "statutory_articles": [
+        "Articles 43-54"
+      ],
       "target_persona": "COOs & Crisis Management Leads",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 8,
+      "series_name": "Executive Liability, Penalties & Future Evolution",
+      "canonical_code": "EP_8.03"
     },
     {
       "id": "EP_49",
       "series": "SERIES_8",
       "episode_number": 49,
       "title": "CRA meets NIS2 & EU AI Act: The Ultimate Tri-Directive Survival Guide",
-      "statutory_articles": ["CRA 2024/2847", "NIS2 2022/2555", "AI Act 2024/1689"],
+      "statutory_articles": [
+        "CRA 2024/2847",
+        "NIS2 2022/2555",
+        "AI Act 2024/1689"
+      ],
       "target_persona": "Group CISOs & Enterprise Architects",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 8,
+      "series_name": "Executive Liability, Penalties & Future Evolution",
+      "canonical_code": "EP_8.04"
     },
     {
       "id": "EP_50",
       "series": "SERIES_8",
       "episode_number": 50,
       "title": "The 2028 Horizon: How the CRA Is Transforming Global Industrial Product Design",
-      "statutory_articles": ["Full Regulation 2024/2847", "Delegated Acts"],
+      "statutory_articles": [
+        "Full Regulation 2024/2847",
+        "Delegated Acts"
+      ],
       "target_persona": "Global Technology Leaders & OT Innovators",
-      "status": "ready_for_scripting"
+      "status": "ready_for_scripting",
+      "series_id": 8,
+      "series_name": "Executive Liability, Penalties & Future Evolution",
+      "canonical_code": "EP_8.05"
     }
   ]
 }

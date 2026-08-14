@@ -28,6 +28,5 @@ Third: Automatically triggering ENISA notifications via the Single Reporting Pla
 
 If your company currently routes security reports to a generic info or support email address, you are unprepared for September 11, 2026. Building your PSIRT workflow now is the single most critical step you can take to safeguard market access in the EU.
 
-Assess your team's readiness with our free tool at oxot.ai slash cra-check.
 
 Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.

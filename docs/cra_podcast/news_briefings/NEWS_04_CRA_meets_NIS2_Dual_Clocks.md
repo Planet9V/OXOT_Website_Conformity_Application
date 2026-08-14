@@ -26,6 +26,5 @@ If an industrial gateway in a water treatment plant experiences a cyberattack, b
 
 To prevent duplicated efforts and conflicting reports, CISOs must establish a unified incident response triage framework that maps NIS2 operational impacts alongside CRA product vulnerability disclosures.
 
-Simplify your multi-regulation strategy at oxot.ai slash cra-check.
 
 Until next time: build secure by design, ship with confidence. I'm Jim Mckenney—thanks for listening.
