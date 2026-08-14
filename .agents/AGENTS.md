@@ -31,6 +31,10 @@ The following Antigravity skills and workflows MUST be automatically invoked bas
 - **Triggers**: Multi-domain or complex tasks where local skills are insufficient. Auto-queries the 2,000+ master catalog (`https://raw.githubusercontent.com/sickn33/antigravity-awesome-skills/main/CATALOG.md`).
 - **Skill Reference**: `file:///Users/jimmcknney/.gemini/config/skills/antigravity-skill-orchestrator/SKILL.md`
 
+### D. CRA Podcast Production Engine (`cra-podcast-engine`)
+- **Triggers**: Creating, modifying, auditing, or orchestrating Cyber Resilience Act (CRA) podcast episodes, audio scripts, news bulletins, or investigative series.
+- **Skill Reference**: `file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/.agents/skills/cra-podcast-engine/SKILL.md`
+
 ## 3. Skill Invocation Mandate
 - Always invoke `/using-superpowers` and load `andrej-karpathy` (`file:///Users/jimmcknney/.gemini/config/skills/andrej-karpathy/SKILL.md`) for AI architecture, code design, refactoring, and technical reviews.
 
