@@ -29,6 +29,17 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 25](http://localhost:8088/conformity/cra-wiki?tab=articles&num=25)
+- [CRA Statutory Wiki — Article 26](http://localhost:8088/conformity/cra-wiki?tab=articles&num=26)
+- [CRA Statutory Wiki — Article 27](http://localhost:8088/conformity/cra-wiki?tab=articles&num=27)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Industrial Designers & Packaging Leads`
+- **Executive Value Proposition:** Translates statutory requirements under Article 25, Article 26, Article 27 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

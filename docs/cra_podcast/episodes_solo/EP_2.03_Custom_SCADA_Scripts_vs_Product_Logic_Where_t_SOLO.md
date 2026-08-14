@@ -29,6 +29,16 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 2](http://localhost:8088/conformity/cra-wiki?tab=articles&num=2)
+- [CRA Statutory Wiki — Recital 6](http://localhost:8088/conformity/cra-wiki?tab=recitals&num=6)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `SCADA Developers & PLC Programmers`
+- **Executive Value Proposition:** Translates statutory requirements under Article 2(1), Recital 6 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

@@ -29,6 +29,15 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Annex IV](http://localhost:8088/conformity/cra-wiki?tab=annexes)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Rolling Stock OEMs & Railway Engineers`
+- **Executive Value Proposition:** Translates statutory requirements under Annex IV, EN 50126, EN 50128 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

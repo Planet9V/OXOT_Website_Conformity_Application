@@ -73,7 +73,6 @@ export default function PsirtPage() {
   // ENISA Statutory Reporting Modal Drawer State
   const [enisaModalOpen, setEnisaModalOpen] = useState(false);
   const [enisaFormKind, setEnisaFormKind] = useState<"early_warning" | "detailed_report" | "final_report">("early_warning");
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Form Fields
   const [incidentTitle, setIncidentTitle] = useState("CVE-2026-3891 HMS Anybus Driver Stack RCE");
@@ -86,15 +85,19 @@ export default function PsirtPage() {
     setEnisaModalOpen(true);
   };
 
+  // This application does not transmit to ENISA. There is no CRA submission API to
+  // integrate against, so the only honest thing this form can do is assemble the
+  // Article 14 package for a human to file via the ENISA Single Reporting Platform.
+  // Never word this as though a statutory notification has been made.
   const handleSubmitEnisaForm = () => {
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setEnisaModalOpen(false);
-      toast.success(
-        `ENISA Single Reporting Platform (${enisaFormKind === "early_warning" ? "≤24h Early Warning" : "≤72h Report"}) filed successfully! Reference #ENISA-CRA-2026-8819`
-      );
-    }, 1200);
+    setEnisaModalOpen(false);
+    toast.success(
+      `${enisaFormKind === "early_warning" ? "≤24h early warning" : "≤72h report"} draft prepared — NOT filed`,
+      {
+        description:
+          "Nothing has been sent. Copy this package into the ENISA Single Reporting Platform to file it, then record the submission reference against this incident.",
+      }
+    );
   };
 
   const handleIngestSupplierItem = (item: SupplierScanItem) => {
@@ -128,7 +131,7 @@ export default function PsirtPage() {
             onClick={() => handleLaunchEnisaForm("early_warning")}
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-xs gap-1.5 shadow-sm h-full px-5 py-3 rounded-lg cta-lift"
           >
-            <Flame className="h-4 w-4" /> File ENISA 24h Warning
+            <Flame className="h-4 w-4" /> Prepare 24h Early Warning
           </Button>
         </div>
       </div>
@@ -176,10 +179,10 @@ export default function PsirtPage() {
             <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 flex flex-col justify-between">
               <div>
                 <span className="oxot-kicker flex items-center gap-1.5 mb-1">
-                  <Zap className="h-3.5 w-3.5 text-primary" /> ENISA SINGLE REPORTING PLATFORM
+                  <Zap className="h-3.5 w-3.5 text-primary" /> ARTICLE 14 REPORTING PACKAGE
                 </span>
                 <p className="text-xs text-muted-foreground leading-relaxed font-sans">
-                  Direct statutory API interface connected to ENISA SRP and Member State CSIRT designated nodes.
+                  Assembles the 24h / 72h / final package for filing. You file it via the ENISA Single Reporting Platform — this app does not transmit.
                 </p>
               </div>
 
@@ -370,10 +373,10 @@ export default function PsirtPage() {
 
               <div className="flex flex-wrap items-center gap-2 pt-2">
                 <Button size="sm" onClick={() => handleLaunchEnisaForm("early_warning")} className="bg-orange-500 text-primary-foreground font-bold text-xs gap-1">
-                  <Flame className="h-3.5 w-3.5" /> Submit ENISA 24h Early Warning
+                  <Flame className="h-3.5 w-3.5" /> Prepare 24h Early Warning
                 </Button>
                 <Button size="sm" variant="outline" onClick={() => handleLaunchEnisaForm("detailed_report")} className="font-mono text-xs">
-                  File 72h Notification
+                  Prepare 72h Notification
                 </Button>
               </div>
             </div>
@@ -423,10 +426,10 @@ export default function PsirtPage() {
           <DialogHeader className="border-b pb-3">
             <DialogTitle className="text-xl font-display font-bold text-foreground flex items-center gap-2">
               <Flame className="h-5 w-5 text-orange-400 animate-pulse" />
-              ENISA Single Reporting Platform — {enisaFormKind === "early_warning" ? "CRA Art. 14(1) 24-Hour Early Warning" : "CRA Art. 14(2) 72-Hour Notification"}
+              Prepare {enisaFormKind === "early_warning" ? "CRA Art. 14(1) 24-Hour Early Warning" : "CRA Art. 14(2) 72-Hour Notification"}
             </DialogTitle>
             <DialogDescription className="text-xs font-mono text-muted-foreground">
-              Official statutory reporting package routed directly to ENISA and designated National CSIRT Single Point of Contact.
+              Drafts the statutory package for you to file with ENISA and your designated National CSIRT. Nothing is transmitted from this application.
             </DialogDescription>
           </DialogHeader>
 
@@ -465,10 +468,9 @@ export default function PsirtPage() {
             </Button>
             <Button
               onClick={handleSubmitEnisaForm}
-              disabled={formSubmitted}
               className="bg-orange-500 hover:bg-orange-600 text-primary-foreground font-bold gap-1.5"
             >
-              {formSubmitted ? "Transmitting to ENISA..." : "Transmit Statutory Package to ENISA"}
+              Prepare Article 14 Package
             </Button>
           </DialogFooter>
         </DialogContent>

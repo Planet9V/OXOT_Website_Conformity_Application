@@ -5,7 +5,7 @@ export const openSourceStewardRouter: IRouter = Router();
 
 /**
  * POST /api/steward/attestation
- * Generates an official Article 33 Voluntary Security Attestation for Open Source Stewards.
+ * Builds a self-declaration of an open-source steward's security practices (cf. Art. 24 duties).
  */
 openSourceStewardRouter.post("/attestation", (req, res) => {
   const b = req.body || {};
@@ -27,7 +27,7 @@ openSourceStewardRouter.post("/attestation", (req, res) => {
 
   const rawPayload = JSON.stringify({
     ...data,
-    statutoryBasis: "Regulation (EU) 2024/2847 Article 33 (Open-Source Software Stewards)",
+    statutoryBasis: "Regulation (EU) 2024/2847 Article 24 (Obligations of open-source software stewards)",
     issuedAt: new Date().toISOString(),
   });
 
@@ -42,11 +42,17 @@ openSourceStewardRouter.post("/attestation", (req, res) => {
 
   res.json({
     attestationHash,
-    status: isAttestationComplete ? "ATTESTATION_VALID_ARTICLE_33" : "INCOMPLETE_CRITERIA",
+    status: isAttestationComplete ? "SELF_DECLARATION_COMPLETE" : "INCOMPLETE_CRITERIA",
     statutoryRole: "OPEN_SOURCE_SOFTWARE_STEWARD",
-    legalLiabilityExemption: "Exempt from Article 20 Manufacturer obligations pursuant to CRA Recital 18 & Article 33",
+    // This is a SELF-DECLARATION, not a statutory instrument. Open-source steward
+    // duties sit at Art. 24; the voluntary security attestation power is Art. 25 and
+    // has not yet been created by delegated act. Nothing this endpoint returns
+    // confers, certifies or evidences any exemption. Do not reintroduce a
+    // `legalLiabilityExemption` field or any wording asserting a legal conclusion.
+    disclaimer:
+      "Self-declaration only. This document is not a statutory attestation, confers no exemption, and is not legal advice.",
     attestationDocument: {
-      documentId: `CRA-ART33-FOSS-${attestationHash.slice(0, 12).toUpperCase()}`,
+      documentId: `FOSS-SELFDECL-${attestationHash.slice(0, 12).toUpperCase()}`,
       stewardName: data.stewardName,
       stewardLegalEntity: data.stewardLegalEntity,
       foundationOrCollective: data.foundationOrCollective,
@@ -62,7 +68,7 @@ openSourceStewardRouter.post("/attestation", (req, res) => {
         cryptographicArtifactSigning: data.hasSignedReleases,
       },
       statutoryDeclaration:
-        "The software steward certifies that the open source component is developed in good faith under documented security policies and is provided without commercial manufacturer warranty in accordance with Article 33 of Regulation (EU) 2024/2847.",
+        "The steward states that this component is developed under documented security policies and supplied without commercial warranty. This is the steward's own statement; it is not issued, recognised or verified by any authority under Regulation (EU) 2024/2847.",
       issuedAt: new Date().toISOString(),
     },
   });

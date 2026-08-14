@@ -29,6 +29,17 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 24](http://localhost:8088/conformity/cra-wiki?tab=articles&num=24)
+- [CRA Statutory Wiki — Recital 10](http://localhost:8088/conformity/cra-wiki?tab=recitals&num=10)
+- [CRA Statutory Wiki — Recital 18](http://localhost:8088/conformity/cra-wiki?tab=recitals&num=18)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Open Source Maintainers, Foundation Directors & Dual-Licensing Software Execs`
+- **Executive Value Proposition:** Translates statutory requirements under Article 24, Recital 10, Recital 18 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

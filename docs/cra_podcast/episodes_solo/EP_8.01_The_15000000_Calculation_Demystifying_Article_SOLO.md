@@ -29,6 +29,16 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 61](http://localhost:8088/conformity/cra-wiki?tab=articles&num=61)
+- [CRA Statutory Wiki — Article 62](http://localhost:8088/conformity/cra-wiki?tab=articles&num=62)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `CEOs, CFOs & Board Members`
+- **Executive Value Proposition:** Translates statutory requirements under Article 61, Article 62 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

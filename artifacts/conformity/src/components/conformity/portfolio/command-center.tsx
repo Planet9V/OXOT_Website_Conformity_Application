@@ -46,7 +46,6 @@ import { CraAnalyticsSuite } from "./cra-analytics-suite";
 import { PersonaCockpit, type PersonaId } from "@/components/persona-cockpit";
 import { PersonaCopilotDrawer } from "@/components/persona-copilot-drawer";
 import { InteractiveFineSimulator } from "./interactive-fine-simulator";
-import { CsirtWebhookDispatcher } from "../psirt/csirt-webhook-dispatcher";
 
 import {
   Dialog,
@@ -575,7 +574,6 @@ export function CommandCenter() {
             </CardContent>
           </Card>
           <InteractiveFineSimulator defaultTurnover={1200} defaultMitigation={88} />
-          <CsirtWebhookDispatcher />
         </div>
       )}
 

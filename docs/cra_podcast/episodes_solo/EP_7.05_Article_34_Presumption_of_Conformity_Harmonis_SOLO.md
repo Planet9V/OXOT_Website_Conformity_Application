@@ -29,6 +29,15 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 34](http://localhost:8088/conformity/cra-wiki?tab=articles&num=34)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Standards Engineers & Chief Architects`
+- **Executive Value Proposition:** Translates statutory requirements under Article 34, Standardisation Request M/596 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

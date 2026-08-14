@@ -29,6 +29,17 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 13](http://localhost:8088/conformity/cra-wiki?tab=articles&num=13)
+- [CRA Statutory Wiki — Article 19](http://localhost:8088/conformity/cra-wiki?tab=articles&num=19)
+- [CRA Statutory Wiki — Annex VII](http://localhost:8088/conformity/cra-wiki?tab=annexes)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Records Managers & Compliance Archivists`
+- **Executive Value Proposition:** Translates statutory requirements under Article 13(9), Article 19(8), Annex VII into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

@@ -29,6 +29,15 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Full Text Explorer](http://localhost:8088/conformity/cra-wiki)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Hardware Operations VPs & Lab Directors`
+- **Executive Value Proposition:** Translates statutory requirements under Articles 29-39 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

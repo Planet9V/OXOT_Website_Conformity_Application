@@ -29,6 +29,15 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Annex I](http://localhost:8088/conformity/cra-wiki?tab=annexes)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Industrial AI Engineers, Robotics OEMs & Quality Automation Leads`
+- **Executive Value Proposition:** Translates statutory requirements under CRA Annex I Part I §2, EU AI Act Regulation (EU) 2024/1689 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

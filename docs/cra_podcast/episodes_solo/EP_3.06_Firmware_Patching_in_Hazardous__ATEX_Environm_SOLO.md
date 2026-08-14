@@ -29,6 +29,15 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Annex I](http://localhost:8088/conformity/cra-wiki?tab=annexes)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Hazardous Area Engineers & Refinery Ops`
+- **Executive Value Proposition:** Translates statutory requirements under Annex I Part II, ATEX 2014/34/EU into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

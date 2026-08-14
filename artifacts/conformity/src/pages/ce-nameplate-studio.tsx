@@ -22,7 +22,11 @@ export default function CeNameplateStudioPage() {
     modelNumber: 'IEC-400-PRO-X',
     manufacturerName: 'OXOT Cybersecurity Systems B.V.',
     manufacturerAddress: 'Keizersgracht 421, 1016 EK Amsterdam, Netherlands',
-    notifiedBodyNumber: '0035', // e.g. TÜV Rheinland
+    // Never ship a real NANDO number as a default. Affixing a CE mark bearing a
+    // notified body's identification number where that body performed no
+    // assessment is a marking offence. This must stay empty until the user
+    // enters the body that actually assessed their product.
+    notifiedBodyNumber: '',
     productionYear: '2026',
     serialBatch: 'SN-2026-EU-94821',
     supplyVoltage: '24V DC / 1.5A',
@@ -32,7 +36,15 @@ export default function CeNameplateStudioPage() {
 
   const [copied, setCopied] = useState(false);
 
-  const copySvg = () => {
+  // The preview below is HTML, not SVG — there is no vector artwork to export yet.
+  // Copy the nameplate field values so they can be handed to whoever produces the
+  // physical plate. Do not re-label this as an SVG/EPS/PDF export until one exists.
+  const copyNameplateFields = () => {
+    navigator.clipboard.writeText(
+      Object.entries(formData)
+        .map(([k, v]) => `${k}: ${v}`)
+        .join('\n')
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -245,13 +257,9 @@ export default function CeNameplateStudioPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Button onClick={copySvg} variant="outline" className="font-mono text-xs gap-1.5 flex-1">
+              <Button onClick={copyNameplateFields} variant="outline" className="font-mono text-xs gap-1.5 flex-1">
                 {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4 text-primary" />}
-                {copied ? 'Copied Vector XML' : 'Copy Vector SVG'}
-              </Button>
-              <Button className="bg-primary text-primary-foreground font-mono text-xs gap-1.5 flex-1">
-                <Download className="w-4 h-4" />
-                Download Print Ready (EPS / PDF)
+                {copied ? 'Copied' : 'Copy nameplate fields'}
               </Button>
             </div>
           </div>

@@ -225,8 +225,16 @@ export default function OpenSourceStewardPage() {
                 Article 33 Attestation Certificate
               </h2>
               {attestationResult && (
-                <span className="font-mono text-[10px] text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20 font-bold">
-                  VALID ARTICLE 33 ATTESTATION
+                <span
+                  className={`font-mono text-[10px] px-2 py-0.5 rounded-full border font-bold ${
+                    attestationResult.status === 'SELF_DECLARATION_COMPLETE'
+                      ? 'text-green-500 bg-green-500/10 border-green-500/20'
+                      : 'text-amber-500 bg-amber-500/10 border-amber-500/20'
+                  }`}
+                >
+                  {attestationResult.status === 'SELF_DECLARATION_COMPLETE'
+                    ? 'SELF-DECLARATION COMPLETE'
+                    : 'INCOMPLETE — CRITERIA UNMET'}
                 </span>
               )}
             </div>
@@ -238,8 +246,8 @@ export default function OpenSourceStewardPage() {
                   <div className="font-bold text-primary">{attestationResult.attestationDocument.documentId}</div>
                   <div className="text-muted-foreground text-[11px] mt-2">SHA-256 DIGITAL DIGEST:</div>
                   <div className="text-[10px] text-foreground break-all">{attestationResult.attestationHash}</div>
-                  <div className="text-muted-foreground text-[11px] mt-2">STATUTORY PROTECTION:</div>
-                  <div className="text-xs text-green-400 font-sans">{attestationResult.legalLiabilityExemption}</div>
+                  <div className="text-muted-foreground text-[11px] mt-2">STATUS:</div>
+                  <div className="text-xs text-amber-400 font-sans">{attestationResult.disclaimer}</div>
                 </div>
 
                 <div className="flex items-center gap-3">

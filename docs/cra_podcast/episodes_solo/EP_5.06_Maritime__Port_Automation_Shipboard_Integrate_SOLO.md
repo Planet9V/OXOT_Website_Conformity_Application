@@ -29,6 +29,15 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 2](http://localhost:8088/conformity/cra-wiki?tab=articles&num=2)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Port Terminal Operators & Marine Integrators`
+- **Executive Value Proposition:** Translates statutory requirements under Article 2(1), IACS UR E26/E27 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

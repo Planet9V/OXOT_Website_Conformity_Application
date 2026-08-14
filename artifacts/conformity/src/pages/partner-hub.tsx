@@ -922,12 +922,16 @@ export default function PartnerHubPage() {
                   {procResult && (
                     <span
                       className={`px-2 py-0.5 rounded-full font-bold ${
-                        procResult.scorecardStatus === 'APPROVED' || !procResult.dutyToRefrainTriggered
+                        procResult.scorecardStatus === 'APPROVED'
                           ? 'bg-green-500/20 text-green-500'
+                          : procResult.scorecardStatus === 'CONDITIONAL'
+                          ? 'bg-amber-500/20 text-amber-500'
                           : 'bg-red-500/20 text-red-500'
                       }`}
                     >
-                      {procResult.scorecardStatus || (procResult.dutyToRefrainTriggered ? 'HELD (DUTY TO REFRAIN)' : 'APPROVED FOR PURCHASE')}
+                      {procResult.scorecardStatus === 'REJECTED'
+                        ? 'HELD — DUTY TO REFRAIN'
+                        : procResult.scorecardStatus}
                     </span>
                   )}
                 </div>
@@ -937,18 +941,44 @@ export default function PartnerHubPage() {
                     <div className="flex items-center justify-between text-xs">
                       <span>Compliance Score:</span>
                       <span className="font-mono font-bold text-base text-primary">
-                        {procResult.evaluationScore ?? procResult.complianceScore ?? 100}%
+                        {procResult.evaluationScore}%
                       </span>
                     </div>
 
-                    <div className="space-y-1 text-xs">
-                      <div className="font-semibold text-foreground">Clauses & Findings:</div>
-                      <ul className="space-y-1 text-muted-foreground list-disc list-inside">
-                        {(procResult.contractualClauses || procResult.findings || ['Art. 13 5-Year Lifetime Guarantee Verified', 'Art. 10 Free Patches Warranty Active']).map((f: string, i: number) => (
-                          <li key={i}>{f}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    {procResult.rejectionReasons?.length > 0 && (
+                      <div className="space-y-1 text-xs">
+                        <div className="font-semibold text-red-500">
+                          Blocking — do not place on the market:
+                        </div>
+                        <ul className="space-y-1 text-red-400 list-disc list-inside">
+                          {procResult.rejectionReasons.map((f: string, i: number) => (
+                            <li key={i}>{f}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {procResult.conditionalRemediations?.length > 0 && (
+                      <div className="space-y-1 text-xs">
+                        <div className="font-semibold text-amber-500">Remediate before purchase:</div>
+                        <ul className="space-y-1 text-muted-foreground list-disc list-inside">
+                          {procResult.conditionalRemediations.map((f: string, i: number) => (
+                            <li key={i}>{f}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {procResult.contractualClauses?.length > 0 && (
+                      <div className="space-y-1 text-xs">
+                        <div className="font-semibold text-foreground">Contractual clauses earned:</div>
+                        <ul className="space-y-1 text-muted-foreground list-disc list-inside">
+                          {procResult.contractualClauses.map((f: string, i: number) => (
+                            <li key={i}>{f}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <div className="text-center py-8 text-xs text-muted-foreground">
@@ -1070,7 +1100,7 @@ export default function PartnerHubPage() {
                   Stage 1 Statutory Filing Window
                 </div>
                 <div className="font-display font-medium text-lg text-foreground">
-                  23 Hours, 44 Minutes Remaining from Awareness
+                  24 hours from the moment you became aware
                 </div>
               </div>
             </div>
@@ -1126,10 +1156,11 @@ export default function PartnerHubPage() {
 
               <Button
                 onClick={() => setCsirtDispatched(true)}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-mono text-xs py-2.5 gap-2"
+                variant="outline"
+                className="w-full font-mono text-xs py-2.5 gap-2"
               >
                 <Send className="w-4 h-4" />
-                Transmit 24h Early Warning to {csirtForm.authority} & ENISA
+                Build notification payload for {csirtForm.authority}
               </Button>
             </div>
 
@@ -1137,7 +1168,9 @@ export default function PartnerHubPage() {
             <div className="bg-muted/20 border border-border/60 p-5 rounded-xl space-y-3 font-mono text-xs">
               <div className="text-muted-foreground uppercase text-[11px] pb-2 border-b border-border/40 flex items-center justify-between">
                 <span>CSIRT Notification Payload (JSON / XML)</span>
-                {csirtDispatched && <span className="text-green-500 font-bold">TRANSMITTED TO CSIRT</span>}
+                {csirtDispatched && (
+                  <span className="text-amber-500 font-bold">DRAFT ONLY — NOT SENT</span>
+                )}
               </div>
               <pre className="text-[11px] text-muted-foreground overflow-x-auto p-3 bg-black/40 rounded-lg">
 {JSON.stringify(

@@ -29,6 +29,16 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 13](http://localhost:8088/conformity/cra-wiki?tab=articles&num=13)
+- [CRA Statutory Wiki — Article 21](http://localhost:8088/conformity/cra-wiki?tab=articles&num=21)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Industrial Plant CISOs & Utility Operators`
+- **Executive Value Proposition:** Translates statutory requirements under Article 13(8), NIS2 Article 21 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  

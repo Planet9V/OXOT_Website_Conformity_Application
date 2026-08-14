@@ -1274,10 +1274,16 @@ export function ProductPortfolioPage() {
 
               <Button
                 type="button"
-                onClick={() => toast.success("Statutory CRA Article 14 notifications dispatched to all impacted customer CISOs!")}
-                className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-xs gap-1.5 shadow-lg shadow-orange-500/20"
+                onClick={() =>
+                  toast.info("Impacted-customer list ready — nothing sent", {
+                    description:
+                      "This app does not contact your customers. Use this list to notify each impacted CISO yourself, then record the date you notified them.",
+                  })
+                }
+                variant="outline"
+                className="font-semibold text-xs gap-1.5"
               >
-                <Send className="h-4 w-4" /> Dispatch Encrypted CRA Notifications
+                <Send className="h-4 w-4" /> Export Impacted-Customer List
               </Button>
             </div>
 

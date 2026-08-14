@@ -29,6 +29,17 @@
 
 ---
 
+### 1.3 Interactive CRA Statutory Wiki Deep Links
+- [CRA Statutory Wiki — Article 43](http://localhost:8088/conformity/cra-wiki?tab=articles&num=43)
+- [CRA Statutory Wiki — Article 54](http://localhost:8088/conformity/cra-wiki?tab=articles&num=54)
+- [CRA Statutory Wiki — Annex I](http://localhost:8088/conformity/cra-wiki?tab=annexes)
+
+### 1.4 Target Persona & Executive Value Proposition
+- **Primary Audience:** `Global Sourcing Directors, Defense Contractors & Customs Compliance Officers`
+- **Executive Value Proposition:** Translates statutory requirements under Article 43, Article 54, Annex I Part II into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
+
+---
+
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
