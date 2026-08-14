@@ -25,6 +25,9 @@ import {
   BrainCircuit,
   Package,
   Flame,
+  Code2,
+  Archive,
+  ClipboardCheck,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -40,7 +43,7 @@ import { GradeDistribution } from "./grade-distribution";
 import { TriageBoard } from "./triage-board";
 import { CraAnalyticsSuite } from "./cra-analytics-suite";
 import { coverageTone } from "./theme";
-import { PersonaCockpit } from "@/components/persona-cockpit";
+import { PersonaCockpit, type PersonaId } from "@/components/persona-cockpit";
 
 import {
   Dialog,
@@ -183,6 +186,7 @@ export function CommandCenter() {
   const [newsRefreshing, setNewsRefreshing] = useState(false);
   const [modelUsed, setModelUsed] = useState<string>("perplexity/sonar-pro");
   const [expandedCardId, setExpandedCardId] = useState<string | number | null>(null);
+  const [activePersona, setActivePersona] = useState<PersonaId>("INTEGRATOR");
 
   const fetchNews = async (forceRefresh = false) => {
     if (forceRefresh) setNewsRefreshing(true);
@@ -258,59 +262,336 @@ export function CommandCenter() {
       </div>
 
       {/* 2. Unified Role-Based Persona Cockpit & Statutory Action Funnels */}
-      <PersonaCockpit initialPersona="INTEGRATOR" />
+      <PersonaCockpit
+        activePersona={activePersona}
+        onPersonaChange={setActivePersona}
+      />
 
-      {/* 3. Compact High-Density Metric Cards (Single Row) */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <MetricCard icon={ClipboardList} label="Active assessments" value={data.totals.assessments} tone="text-foreground" />
-        <MetricCard
-          icon={AlertTriangle}
-          label="Needs action now"
-          value={needsAction}
-          tone={needsAction > 0 ? "text-red-500" : "text-muted-foreground"}
-          sub={`${data.risk.overdueDeadlines} overdue · ${data.risk.openBlockers} blocker${data.risk.openBlockers === 1 ? "" : "s"}`}
-        />
-        <MetricCard
-          icon={ShieldCheck}
-          label="Ready for review"
-          value={data.totals.readyForReview}
-          tone={data.totals.readyForReview > 0 ? "text-green-600 font-bold" : "text-muted-foreground"}
-        />
-        <MetricCard
-          icon={Boxes}
-          label="Evidence coverage"
-          value={data.evidence.evidenceCoverage == null ? "n/a" : `${data.evidence.evidenceCoverage}%`}
-          tone={coverageTone(data.evidence.evidenceCoverage)}
-        />
-      </div>
-
-      {/* 3. PROMOTED TRIAGE BOARD & PRIORITY ACTIONS (MOVED UP HIGHER) */}
-      <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
-        <CardHeader className="pb-3 border-b">
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="bg-orange-500/10 text-orange-400 border-orange-500/30 font-mono text-xs">
-                  <Flame className="h-3.5 w-3.5 text-orange-400" /> Executive Intervention Triage Board
-                </Badge>
-                <Badge variant="secondary" className="font-mono text-xs">
-                  {needsAction} Items Requiring Action
-                </Badge>
+      {/* 3. DYNAMIC PRIMARY OPERATIONAL WORKSTATION (PERSONA-ALIGNED) */}
+      {activePersona === "INTEGRATOR" && (
+        <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
+          <CardHeader className="pb-3 border-b">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/30 font-mono text-xs">
+                    <ShieldCheck className="h-3.5 w-3.5 text-amber-400" /> Axians Brownfield Multi-Plant Modernization Board
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono text-xs">
+                    3 Plants Protected
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl font-bold">Customer Plant Portfolio &amp; Recital 34 Safe Harbor Shield</CardTitle>
+                <CardDescription className="text-xs">
+                  Automated brownfield gatekeeper ensuring plant maintenance does not trigger Article 21 substantial modification or €15M manufacturer liabilities.
+                </CardDescription>
               </div>
-              <CardTitle className="text-xl font-bold">Product Assessment &amp; Blocker Triage</CardTitle>
-              <CardDescription className="text-xs">
-                Direct intervention board for blocked requirements, overdue statutory deadlines, and CRA journey execution.
-              </CardDescription>
+              <a href="/conformity/partner-hub">
+                <Button size="sm" className="gap-1.5 font-mono text-xs">
+                  Open 5-Stage Plant Hub <ArrowRight className="h-3.5 w-3.5" />
+                </Button>
+              </a>
             </div>
-            <Badge variant="outline" className="bg-orange-500/10 text-orange-400 border-orange-500/30 font-mono text-[10px] hidden sm:inline-flex">
-              High Priority
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardContent className="pt-4">
-          <TriageBoard products={data.products} />
-        </CardContent>
-      </Card>
+          </CardHeader>
+          <CardContent className="pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Vopak Chemical Terminal</span>
+                  <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20 font-mono text-[10px]">Shield Active</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Rotterdam, NL • 420 OT Nodes • Legacy brownfield DCS/SCADA retrofitted under Recital 34 spare parts exemption.</p>
+                <div className="pt-1 font-mono text-[10px] text-primary">SHA-256: 7f8a9b2c... Sealed</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">BASF Chemical Production</span>
+                  <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20 font-mono text-[10px]">Annex III Class I</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Antwerp, BE • 680 OT Nodes • Network gateway retrofitted; 24h CSIRT emergency alert router operational.</p>
+                <div className="pt-1 font-mono text-[10px] text-primary">SHA-256: 4e3d2c1b... Sealed</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Stellantis Paint Shop</span>
+                  <Badge variant="outline" className="bg-amber-500/10 text-amber-500 border-amber-500/20 font-mono text-[10px]">Vendor Radar Block</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Sochaux, FR • 320 OT Nodes • Article 18(2) Duty to Refrain triggered on unpatched upstream OEM switch.</p>
+                <div className="pt-1 font-mono text-[10px] text-amber-500">Hold Order Active: PO-2026-881</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {activePersona === "MANUFACTURER" && (
+        <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
+          <CardHeader className="pb-3 border-b">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 font-mono text-xs">
+                    <Flame className="h-3.5 w-3.5 text-emerald-400" /> OEM Product Line Triage &amp; Standards Presumption
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono text-xs">
+                    {needsAction} Items Requiring Action
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl font-bold">Product Assessment, IEC 62443 Presumption &amp; CE Marking</CardTitle>
+                <CardDescription className="text-xs">
+                  Direct intervention board for blocked requirements, Annex I security evaluations, and CE nameplate production.
+                </CardDescription>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href="/conformity/standards">
+                  <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
+                    Standards Matrix (Art. 34)
+                  </Button>
+                </a>
+                <a href="/conformity/ce-studio">
+                  <Button size="sm" className="gap-1.5 font-mono text-xs">
+                    CE Nameplate Studio
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-4">
+            <TriageBoard products={data.products} />
+          </CardContent>
+        </Card>
+      )}
+
+      {activePersona === "STEWARD" && (
+        <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
+          <CardHeader className="pb-3 border-b">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30 font-mono text-xs">
+                    <Code2 className="h-3.5 w-3.5 text-purple-400" /> Open-Source Software Steward &amp; OpenVEX Studio
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono text-xs">
+                    Recital 18 FOSS Exemption
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl font-bold">Open-Source Repository Health &amp; Article 33 Attestations</CardTitle>
+                <CardDescription className="text-xs">
+                  Maintain non-commercial liability shields, issue OASIS OpenVEX vulnerability statements, and publish CVD policies.
+                </CardDescription>
+              </div>
+              <a href="/conformity/steward">
+                <Button size="sm" className="gap-1.5 font-mono text-xs">
+                  Open Steward Hub <ArrowRight className="h-3.5 w-3.5" />
+                </Button>
+              </a>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">OPC-UA Core Protocol (Rust)</span>
+                  <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/20 font-mono text-[10px]">Art. 33 Attested</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Industrial connectivity library • Documented security policy &amp; automated CVE disclosure pipeline.</p>
+                <div className="pt-1 font-mono text-[10px] text-green-500">Recital 18 Shield: Active</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Modbus-TCP Stack (C++)</span>
+                  <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 font-mono text-[10px]">OpenVEX Published</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">PLC driver stack • 3 upstream CVEs documented as non-exploitable via OASIS OpenVEX v1.0 standard.</p>
+                <div className="pt-1 font-mono text-[10px] text-primary">OpenVEX Hash: 8b7a6c...</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">CoAP IoT Sensor Hub (Go)</span>
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono text-[10px]">CVD Active</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Lightweight messaging protocol • RFC 9116 security.txt published; PGP security keys verified.</p>
+                <div className="pt-1 font-mono text-[10px] text-primary">RFC 9116: Compliant</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {activePersona === "IMPORTER" && (
+        <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
+          <CardHeader className="pb-3 border-b">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/30 font-mono text-xs">
+                    <Archive className="h-3.5 w-3.5 text-blue-400" /> 10-Year Statutory Compliance Archive &amp; Customs Gate
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono text-xs">
+                    Article 17 Retention Mandate
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl font-bold">Importer Evidence Vault &amp; Technical Dossier Retention</CardTitle>
+                <CardDescription className="text-xs">
+                  Maintain sealed technical documentation files at the disposal of Market Surveillance Authorities through 2037+.
+                </CardDescription>
+              </div>
+              <a href="/conformity/archive">
+                <Button size="sm" className="gap-1.5 font-mono text-xs">
+                  Open 10Y Archive Ledger <ArrowRight className="h-3.5 w-3.5" />
+                </Button>
+              </a>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Siemens Scalance XC-208</span>
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono text-[10px]">Valid to 2036-04</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Industrial Managed Switch • Annex VII technical file and Annex V DoC cryptographically sealed.</p>
+                <div className="pt-1 font-mono text-[10px] text-green-500">Customs Clearance: Approved</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Fortinet FortiGate 60F</span>
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono text-[10px]">Valid to 2036-03</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">OT Security Gateway • Pre-importation Article 17 due diligence verified; MSA audit token ready.</p>
+                <div className="pt-1 font-mono text-[10px] text-green-500">Customs Clearance: Approved</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Belden Hirschmann RS20</span>
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono text-[10px]">Valid to 2036-02</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Rail Switch • Complete supplier documentation bundle and CE test certificates archived.</p>
+                <div className="pt-1 font-mono text-[10px] text-green-500">Customs Clearance: Approved</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {activePersona === "PLANT_CISO" && (
+        <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
+          <CardHeader className="pb-3 border-b">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="bg-rose-500/10 text-rose-400 border-rose-500/30 font-mono text-xs">
+                    <Radar className="h-3.5 w-3.5 text-rose-400" /> NIS2 &amp; CRA Executive Risk Radar
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono text-xs">
+                    €15M Penalty Shield
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl font-bold">Article 61 Fine Exposure &amp; 24h CSIRT Early Warning Hub</CardTitle>
+                <CardDescription className="text-xs">
+                  Model financial liability across operational plants and maintain compliance with mandatory ENISA reporting deadlines.
+                </CardDescription>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href="/conformity/partner-hub">
+                  <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
+                    Exposure Calculator
+                  </Button>
+                </a>
+                <a href="/conformity/reports">
+                  <Button size="sm" className="gap-1.5 font-mono text-xs">
+                    Executive Briefing
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Turnover Fine Exposure</span>
+                  <Badge variant="outline" className="bg-rose-500/10 text-rose-400 border-rose-500/20 font-mono text-[10px]">Article 61</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">€15,000,000 or 2.5% global turnover statutory cap protected through continuous audit evidence.</p>
+                <div className="pt-1 font-mono text-[10px] text-green-500">Liability Shield: Active</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Mandatory 24h CSIRT Clock</span>
+                  <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/20 font-mono text-[10px]">Article 14</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Active integration with ANSSI, BSI, NCSC-NL and ENISA early warning notification routing.</p>
+                <div className="pt-1 font-mono text-[10px] text-amber-500">Mandate: 11 Sept 2026</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">NIS2 Supply Chain Gate</span>
+                  <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 font-mono text-[10px]">NIS2 Art. 21</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Direct correlation between CRA product CE conformity and plant-wide NIS2 essential entity audits.</p>
+                <div className="pt-1 font-mono text-[10px] text-primary">Audit Status: Compliant</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {activePersona === "AUDITOR" && (
+        <Card className="rounded-2xl border shadow-md bg-card/90" data-tour="triage-board">
+          <CardHeader className="pb-3 border-b">
+            <div className="flex items-center justify-between">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <Badge variant="outline" className="bg-zinc-500/10 text-zinc-400 border-zinc-500/30 font-mono text-xs">
+                    <ClipboardCheck className="h-3.5 w-3.5 text-zinc-400" /> Module H / B+C Examination Portal
+                  </Badge>
+                  <Badge variant="secondary" className="font-mono text-xs">
+                    Notified Body Audit Mode
+                  </Badge>
+                </div>
+                <CardTitle className="text-xl font-bold">Independent Conformity Assessment &amp; Technical File Verification</CardTitle>
+                <CardDescription className="text-xs">
+                  Examine Annex VII technical dossiers, verify cryptographic evidence hashes, and issue formal audit findings.
+                </CardDescription>
+              </div>
+              <a href="/conformity/auditor-portal">
+                <Button size="sm" className="gap-1.5 font-mono text-xs">
+                  Open Auditor Portal <ArrowRight className="h-3.5 w-3.5" />
+                </Button>
+              </a>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Scalance XC-208 Technical File</span>
+                  <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/20 font-mono text-[10px]">Ready for Review</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Annex VII sections 1-6 complete • Threat modeling and independent penetration test reports attached.</p>
+                <div className="pt-1 font-mono text-[10px] text-primary">SHA-256 Digest: Verified</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">FortiGate 60F Module B Dossier</span>
+                  <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/20 font-mono text-[10px]">1 Open RFI</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">EU-Type Examination in progress • Auditor inquiry issued regarding cryptographic hardware root of trust.</p>
+                <div className="pt-1 font-mono text-[10px] text-amber-500">RFI Response: Pending</div>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/40 border border-border/70 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-bold text-foreground">Belden RS20 Quality System</span>
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/20 font-mono text-[10px]">Module H Approved</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground">Full Quality Assurance certification granted under Regulation (EU) 2024/2847 Annex VIII.</p>
+                <div className="pt-1 font-mono text-[10px] text-green-500">Certificate: NB-2026-0881</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* 4. TWO-COLUMN HIGH-IMPACT ENGINE (LIVE REGULATORY NEWS & EVIDENCE COVERAGE) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">

@@ -49,31 +49,31 @@ async function run() {
 
     // 3. Switch to OEM Manufacturer Persona
     console.log('3. Switching to OEM Manufacturer Persona...');
-    await page.click('button:has-text("OEM Hardware & Software Manufacturer")');
+    await page.click('button[data-persona="MANUFACTURER"]');
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'persona_cockpit_manufacturer.png'), fullPage: true });
 
     // 4. Switch to Open-Source Steward Persona
     console.log('4. Switching to Open-Source Steward Persona...');
-    await page.click('button:has-text("Open-Source Software Steward & Maintainer")');
+    await page.click('button[data-persona="STEWARD"]');
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'persona_cockpit_steward.png'), fullPage: true });
 
     // 5. Switch to EU Importer Persona
     console.log('5. Switching to EU Importer Persona...');
-    await page.click('button:has-text("EU Importer & Industrial Distributor")');
+    await page.click('button[data-persona="IMPORTER"]');
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'persona_cockpit_importer.png'), fullPage: true });
 
     // 6. Switch to Plant CISO Persona
     console.log('6. Switching to Plant Owner & Industrial CISO Persona...');
-    await page.click('button:has-text("Downstream Plant Owner & Industrial CISO")');
+    await page.click('button[data-persona="PLANT_CISO"]');
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'persona_cockpit_ciso.png'), fullPage: true });
 
     // 7. Switch to Notified Body Auditor Persona
     console.log('7. Switching to Notified Body Auditor Persona...');
-    await page.click('button:has-text("European Notified Body & Regulatory Auditor")');
+    await page.click('button[data-persona="AUDITOR"]');
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'persona_cockpit_auditor.png'), fullPage: true });
 

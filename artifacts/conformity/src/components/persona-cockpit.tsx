@@ -400,15 +400,18 @@ export const PERSONA_CONFIGS: Record<PersonaId, PersonaConfig> = {
 
 export function PersonaCockpit({
   initialPersona = 'INTEGRATOR',
+  activePersona: controlledPersona,
   onPersonaChange,
 }: {
   initialPersona?: PersonaId;
+  activePersona?: PersonaId;
   onPersonaChange?: (persona: PersonaId) => void;
 }) {
-  const [selectedPersona, setSelectedPersona] = useState<PersonaId>(initialPersona);
+  const [internalPersona, setInternalPersona] = useState<PersonaId>(initialPersona);
+  const selectedPersona = controlledPersona ?? internalPersona;
 
   const handleSelect = (id: PersonaId) => {
-    setSelectedPersona(id);
+    setInternalPersona(id);
     onPersonaChange?.(id);
   };
 
@@ -441,6 +444,7 @@ export function PersonaCockpit({
             return (
               <button
                 key={key}
+                data-persona={key}
                 onClick={() => handleSelect(key)}
                 className={`p-3 rounded-xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
                   isSelected
