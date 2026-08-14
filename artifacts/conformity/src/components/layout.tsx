@@ -112,13 +112,7 @@ const REFERENCE: NavItem[] = [
   { href: "/requirements", label: "Requirements", icon: ListTree, description: "Unified requirement catalogue" },
   { href: "/mappings", label: "Matrix", icon: Grid3x3, description: "Cross-regulation mappings" },
   { href: "/sources", label: "Sources", icon: Database, description: "Underlying legal source texts" },
-  {
-    href: "/knowledge",
-    label: "Knowledge Hub",
-    icon: Book,
-    description: "Member education & reference library",
-    external: true,
-  },
+  { href: "/wiki", label: "Statutory Wiki", icon: BookOpen, description: "Regulation (EU) 2024/2847 corpus" },
 ];
 
 // Industrial System Integrator & Plant Operations Hub
@@ -137,7 +131,7 @@ const CRA_OPERATIONS: NavItem[] = [
   { href: "/steward", label: "Open-Source Steward (Art. 33)", icon: ListTree, description: "FOSS voluntary security attestations & OpenVEX statements" },
   { href: "/archive", label: "10-Year Archive Ledger (Art. 17)", icon: Database, description: "Statutory importer technical documentation vault (2037+)" },
   { href: "/wiki", label: "Full CRA Statutory Wiki", icon: Book, description: "Verbatim 71 articles, 128 recitals & 8 annexes" },
-  { href: "/auditor-portal", label: "Notified Body Auditor Portal", icon: ClipboardCheck, description: "Third-party Module H / B+C examination workbench", external: true },
+  { href: "/auditor-portal", label: "Notified Body Auditor Portal", icon: ClipboardCheck, description: "Third-party Module H / B+C examination workbench" },
 ];
 
 function useNavState() {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "wouter";
 import { useGetConformityPortfolio, useGetAdminSession, type ConformityPortfolio } from "@workspace/api-client-react";
 import {
   AlertTriangle,
@@ -85,7 +86,7 @@ function LaunchpadCard({
   actionText?: string;
 }) {
   return (
-    <a href={href} className="group block">
+    <Link href={href} className="group block">
       <div className="h-full rounded-2xl border border-border/70 bg-card/80 p-5 shadow-sm backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-card hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between gap-2 mb-3">
@@ -109,7 +110,7 @@ function LaunchpadCard({
           <ArrowRight className="h-4 w-4" />
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -280,16 +281,16 @@ export function CommandCenter() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 shrink-0 self-start md:self-auto">
-            <a href="/conformity/requirements">
+            <Link href="/requirements">
               <Button size="sm" className="gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-4 shadow-sm text-xs cta-lift">
                 Explore Requirements <ArrowRight className="h-3.5 w-3.5" />
               </Button>
-            </a>
-            <a href="/conformity/regulations">
+            </Link>
+            <Link href="/regulations">
               <Button size="sm" variant="outline" className="gap-1.5 border-border text-foreground hover:bg-muted font-medium text-xs cta-lift">
                 View Regulations
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -321,11 +322,11 @@ export function CommandCenter() {
                     Automated brownfield gatekeeper ensuring plant maintenance does not trigger Article 21 substantial modification or €15M manufacturer liabilities.
                   </CardDescription>
                 </div>
-                <a href="/conformity/partner-hub">
+                <Link href="/partner-hub">
                   <Button size="sm" className="gap-1.5 font-mono text-xs">
                     Open 5-Stage Plant Hub <ArrowRight className="h-3.5 w-3.5" />
                   </Button>
-                </a>
+                </Link>
               </div>
             </CardHeader>
             <CardContent className="pt-4">
@@ -380,16 +381,16 @@ export function CommandCenter() {
                 </CardDescription>
               </div>
               <div className="flex items-center gap-2">
-                <a href="/conformity/standards">
+                <Link href="/standards">
                   <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
                     Standards Matrix (Art. 34)
                   </Button>
-                </a>
-                <a href="/conformity/ce-studio">
+                </Link>
+                <Link href="/ce-studio">
                   <Button size="sm" className="gap-1.5 font-mono text-xs">
                     CE Nameplate Studio
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </CardHeader>
@@ -417,11 +418,11 @@ export function CommandCenter() {
                   Maintain non-commercial liability shields, issue OASIS OpenVEX vulnerability statements, and publish CVD policies.
                 </CardDescription>
               </div>
-              <a href="/conformity/steward">
+              <Link href="/steward">
                 <Button size="sm" className="gap-1.5 font-mono text-xs">
                   Open Steward Hub <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
-              </a>
+              </Link>
             </div>
           </CardHeader>
           <CardContent className="pt-4">
@@ -473,11 +474,11 @@ export function CommandCenter() {
                   Maintain sealed technical documentation files at the disposal of Market Surveillance Authorities through 2037+.
                 </CardDescription>
               </div>
-              <a href="/conformity/archive">
+              <Link href="/archive">
                 <Button size="sm" className="gap-1.5 font-mono text-xs">
                   Open 10Y Archive Ledger <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
-              </a>
+              </Link>
             </div>
           </CardHeader>
           <CardContent className="pt-4">
@@ -531,16 +532,16 @@ export function CommandCenter() {
                   </CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
-                  <a href="/conformity/partner-hub">
+                  <Link href="/partner-hub">
                     <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
                       Exposure Calculator
                     </Button>
-                  </a>
-                  <a href="/conformity/reports">
+                  </Link>
+                  <Link href="/reports">
                     <Button size="sm" className="gap-1.5 font-mono text-xs">
                       Executive Briefing
                     </Button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </CardHeader>
@@ -596,11 +597,11 @@ export function CommandCenter() {
                   Examine Annex VII technical dossiers, verify cryptographic evidence hashes, and issue formal audit findings.
                 </CardDescription>
               </div>
-              <a href="/conformity/auditor-portal">
+              <Link href="/auditor-portal">
                 <Button size="sm" className="gap-1.5 font-mono text-xs">
                   Open Auditor Portal <ArrowRight className="h-3.5 w-3.5" />
                 </Button>
-              </a>
+              </Link>
             </div>
           </CardHeader>
           <CardContent className="pt-4">

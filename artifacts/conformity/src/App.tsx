@@ -179,12 +179,22 @@ function ShellRoutes() {
           </Route>
           <Route path="/team" component={Team} />
           <Route path="/partner-hub" component={PartnerHubPage} />
+          <Route path="/partner-hub/*" component={PartnerHubPage} />
           <Route path="/standards" component={StandardsMatrixPage} />
+          <Route path="/standards-matrix" component={StandardsMatrixPage} />
           <Route path="/ce-studio" component={CeNameplateStudioPage} />
+          <Route path="/ce-nameplate" component={CeNameplateStudioPage} />
+          <Route path="/ce-nameplate-studio" component={CeNameplateStudioPage} />
           <Route path="/steward" component={OpenSourceStewardPage} />
+          <Route path="/open-source-steward" component={OpenSourceStewardPage} />
           <Route path="/archive" component={ImporterArchivePage} />
+          <Route path="/importer-archive" component={ImporterArchivePage} />
           <Route path="/wiki" component={CraWikiPage} />
           <Route path="/wiki/*" component={CraWikiPage} />
+          <Route path="/cra-wiki" component={CraWikiPage} />
+          <Route path="/cra-wiki/*" component={CraWikiPage} />
+          <Route path="/auditor-portal" component={AuditorPortalPage} />
+          <Route path="/auditor-portal/*" component={AuditorPortalPage} />
           <Route>
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center justify-center">
               <h2 className="text-2xl font-bold mb-2">404 — Page not found</h2>

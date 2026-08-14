@@ -244,13 +244,14 @@ export default function Regulations() {
               )}
 
               <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
-                {ARTICLE_SLUGS[selectedReg.key] && (
-                  <a href={`/${ARTICLE_SLUGS[selectedReg.key]}`} className="w-full sm:w-auto">
-                    <Button variant="outline" size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg">
-                      <BookOpen className="w-3.5 h-3.5" /> Full Guide
-                    </Button>
-                  </a>
-                )}
+                <Link
+                  href={selectedReg.key === "cra" ? "/wiki" : `/regulations/${selectedReg.key}`}
+                  className="w-full sm:w-auto"
+                >
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg">
+                    <BookOpen className="w-3.5 h-3.5" /> Full Guide
+                  </Button>
+                </Link>
                 <Link href={`/regulations/${selectedReg.key}`} className="w-full sm:w-auto">
                   <Button variant="secondary" size="sm" className="w-full sm:w-auto gap-2 text-xs rounded-lg">
                     View Details <ArrowRight className="w-3.5 h-3.5" />

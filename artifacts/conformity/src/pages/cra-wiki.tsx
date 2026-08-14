@@ -760,7 +760,7 @@ export default function EnterpriseCraWikiPage() {
                 )}
 
                 <Link
-                  href="/partner-hub"
+                  href="/"
                   className="w-full p-2.5 rounded-lg bg-muted/40 hover:bg-muted/80 border border-border/80 transition-all text-xs block text-center font-medium text-muted-foreground hover:text-foreground"
                 >
                   Return to Dashboard
