@@ -3,8 +3,6 @@ import { Link } from 'wouter';
 import {
   Tag,
   QrCode,
-  Download,
-  Printer,
   Copy,
   Check,
   ShieldCheck,
@@ -63,11 +61,11 @@ export default function CeNameplateStudioPage() {
                 Digital Product Passport & CE Nameplate Studio
               </h1>
               <span className="font-mono text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30 font-semibold">
-                Articles 22 & 23 Affixation Engine
+                Articles 29–30 (CE marking)
               </span>
             </div>
             <p className="text-xs font-mono text-muted-foreground mt-0.5">
-              Vector CE Marking Generator • 4-Digit Notified Body ID • Machine-Readable QR Link to Annex V DoC
+              Plan the CE rating plate fields. Notified body ID applies only where a body assessed the product. QR artwork is not generated yet.
             </p>
           </div>
         </div>
@@ -77,7 +75,7 @@ export default function CeNameplateStudioPage() {
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted border border-border/80 font-mono text-xs text-foreground hover:border-primary transition-all"
         >
           <Gavel className="w-3.5 h-3.5 text-primary" />
-          Statutory Ref: Articles 22 & 23
+          Statutory Ref: Arts. 29–30
         </Link>
       </div>
 
@@ -127,7 +125,7 @@ export default function CeNameplateStudioPage() {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="text-[11px] font-mono text-muted-foreground">Notified Body ID (Art. 22)</label>
+              <label className="text-[11px] font-mono text-muted-foreground">Notified Body ID (only if assessed)</label>
               <Input
                 value={formData.notifiedBodyNumber}
                 onChange={(e) => setFormData({ ...formData, notifiedBodyNumber: e.target.value })}
@@ -144,7 +142,7 @@ export default function CeNameplateStudioPage() {
               />
             </div>
             <div>
-              <label className="text-[11px] font-mono text-muted-foreground">Serial / Batch (Art. 10.7)</label>
+              <label className="text-[11px] font-mono text-muted-foreground">Serial / Batch</label>
               <Input
                 value={formData.serialBatch}
                 onChange={(e) => setFormData({ ...formData, serialBatch: e.target.value })}
@@ -174,7 +172,7 @@ export default function CeNameplateStudioPage() {
 
           <div>
             <label className="text-[11px] font-mono text-muted-foreground">
-              Digital Product Passport DoC URL (QR Code Target)
+              Public EU DoC URL (Art. 28)
             </label>
             <Input
               value={formData.docPublicUrl}
@@ -189,10 +187,10 @@ export default function CeNameplateStudioPage() {
           <div className="bg-card/80 border border-border/80 rounded-xl p-6 shadow-xs space-y-5">
             <div className="flex items-center justify-between border-b border-border/60 pb-2">
               <h2 className="font-display font-medium text-lg text-foreground">
-                Affixation Rating Plate Preview (Vector SVG)
+                Rating Plate Layout Preview
               </h2>
-              <span className="font-mono text-[10px] text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20 font-bold">
-                DIN / ISO 7000 & CRA Compliant
+              <span className="font-mono text-[10px] text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20 font-bold">
+                Draft layout — not print artwork
               </span>
             </div>
 
