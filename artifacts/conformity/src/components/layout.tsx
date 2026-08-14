@@ -96,8 +96,7 @@ const PRODUCT_PORTFOLIO: NavItem = {
   description: "CRA products, versions, CISA customer fleets & mass import",
 };
 
-// Named assessor accounts — admin-only (the link is hidden for other roles;
-// the page itself re-checks the role).
+// Named assessor accounts — admin-only
 const TEAM: NavItem = {
   href: "/team",
   label: "Team",
@@ -122,6 +121,25 @@ const REFERENCE: NavItem[] = [
   },
 ];
 
+// Industrial System Integrator & Plant Operations Hub
+const PARTNER_HUB: NavItem = {
+  href: "/partner-hub",
+  label: "Plant & SI Hub",
+  icon: Boxes,
+  description: "Axians 5-stage pipeline, Recital 34 safe harbor & 24h CSIRT dispatcher",
+};
+
+// Specialized statutory execution engines
+const CRA_OPERATIONS: NavItem[] = [
+  { href: "/partner-hub", label: "Plant & SI Pipeline", icon: Boxes, description: "Axians 5-stage OT portfolio workflow" },
+  { href: "/standards", label: "Standards Matrix (Art. 34)", icon: Layers, description: "IEC 62443 / ETSI EN 303 645 presumption of conformity" },
+  { href: "/ce-studio", label: "CE Nameplate Studio (Arts. 22/23)", icon: Grid3x3, description: "Vector CE rating plate & digital product passport generator" },
+  { href: "/steward", label: "Open-Source Steward (Art. 33)", icon: ListTree, description: "FOSS voluntary security attestations & OpenVEX statements" },
+  { href: "/archive", label: "10-Year Archive Ledger (Art. 17)", icon: Database, description: "Statutory importer technical documentation vault (2037+)" },
+  { href: "/wiki", label: "Full CRA Statutory Wiki", icon: Book, description: "Verbatim 71 articles, 128 recitals & 8 annexes" },
+  { href: "/auditor-portal", label: "Notified Body Auditor Portal", icon: ClipboardCheck, description: "Third-party Module H / B+C examination workbench", external: true },
+];
+
 function useNavState() {
   const [location] = useLocation();
   const productsActive =
@@ -131,8 +149,12 @@ function useNavState() {
   const teamActive = location.startsWith("/team");
   const psirtActive = location.startsWith("/psirt");
   const portfolioActive = location.startsWith("/product-portfolio");
+  const partnerActive = location.startsWith("/partner-hub");
   const isRef = (href: string) =>
     href === "/" ? location === "/" : location.startsWith(href);
+  const isCraOp = (href: string) => location.startsWith(href);
+  const craOperationsActive =
+    CRA_OPERATIONS.some((c) => isCraOp(c.href));
   const referenceActive =
     !productsActive &&
     !flowsActive &&
@@ -140,8 +162,22 @@ function useNavState() {
     !teamActive &&
     !psirtActive &&
     !portfolioActive &&
+    !craOperationsActive &&
     REFERENCE.some((r) => isRef(r.href));
-  return { location, productsActive, flowsActive, reportsActive, teamActive, psirtActive, portfolioActive, referenceActive, isRef };
+  return {
+    location,
+    productsActive,
+    flowsActive,
+    reportsActive,
+    teamActive,
+    psirtActive,
+    portfolioActive,
+    partnerActive,
+    craOperationsActive,
+    referenceActive,
+    isRef,
+    isCraOp,
+  };
 }
 
 function ThemeToggle() {
@@ -179,6 +215,61 @@ function navLinkClass(active: boolean) {
     active
       ? "text-primary-ink after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:rounded-full after:bg-primary"
       : "text-muted-foreground hover:text-foreground",
+  );
+}
+
+function CraOperationsMenu({
+  active,
+  isCraOp,
+}: {
+  active: boolean;
+  isCraOp: (href: string) => boolean;
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className={navLinkClass(active)} data-testid="nav-cra-operations">
+          CRA Operations
+          <ChevronDown className="w-3.5 h-3.5" aria-hidden="true" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="w-80">
+        <DropdownMenuLabel className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+          Regulation (EU) 2024/2847 Engines
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        {CRA_OPERATIONS.map((item) => {
+          const body = (
+            <>
+              <item.icon className="w-4 h-4 mt-0.5 text-primary shrink-0" />
+              <div className="flex flex-col gap-0.5">
+                <span className="text-sm font-medium leading-none text-foreground">{item.label}</span>
+                <span className="text-xs text-muted-foreground leading-snug">
+                  {item.description}
+                </span>
+              </div>
+            </>
+          );
+          return (
+            <DropdownMenuItem key={item.href} asChild>
+              {item.external ? (
+                <a href={item.href} className="flex items-start gap-3 cursor-pointer">
+                  {body}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="flex items-start gap-3 cursor-pointer"
+                  data-active={isCraOp(item.href) || undefined}
+                >
+                  {body}
+                </Link>
+              )}
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
@@ -361,8 +452,19 @@ function mobileItemClass(active: boolean) {
 }
 
 export function Header() {
-  const { productsActive, flowsActive, reportsActive, teamActive, psirtActive, portfolioActive, referenceActive, isRef } =
-    useNavState();
+  const {
+    productsActive,
+    flowsActive,
+    reportsActive,
+    teamActive,
+    psirtActive,
+    portfolioActive,
+    partnerActive,
+    craOperationsActive,
+    referenceActive,
+    isRef,
+    isCraOp,
+  } = useNavState();
   const { data: session } = useGetAdminSession();
   const isAdmin = session?.role === "admin";
   const [open, setOpen] = useState(false);
@@ -381,6 +483,10 @@ export function Header() {
             <Link href={PRIMARY.href} className={navLinkClass(productsActive)} data-testid="nav-products">
               {PRIMARY.label}
             </Link>
+            <Link href={PARTNER_HUB.href} className={navLinkClass(partnerActive)} data-testid="nav-partner-hub">
+              {PARTNER_HUB.label}
+            </Link>
+            <CraOperationsMenu active={craOperationsActive} isCraOp={isCraOp} />
             <Link href={PSIRT.href} className={navLinkClass(psirtActive)} data-testid="nav-psirt">
               {PSIRT.label}
             </Link>
@@ -451,6 +557,31 @@ export function Header() {
               <PRIMARY.icon className="w-4 h-4 shrink-0" />
               {PRIMARY.label}
             </Link>
+            <Link
+              href={PARTNER_HUB.href}
+              onClick={close}
+              className={mobileItemClass(partnerActive)}
+            >
+              <PARTNER_HUB.icon className="w-4 h-4 shrink-0" />
+              {PARTNER_HUB.label}
+            </Link>
+            <div className="px-5 pt-3 pb-1 text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+              CRA Statutory Operations
+            </div>
+            {CRA_OPERATIONS.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                onClick={close}
+                className={mobileItemClass(isCraOp(c.href))}
+              >
+                <c.icon className="w-4 h-4 shrink-0 text-primary" />
+                {c.label}
+              </Link>
+            ))}
+            <div className="px-5 pt-3 pb-1 text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+              Core Monitoring & Reports
+            </div>
             <Link
               href={PSIRT.href}
               onClick={close}

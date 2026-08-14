@@ -39,12 +39,18 @@ import { productPortfolioRouter } from "./productPortfolio";
 import { partnerScopeRouter } from "./partnerScope";
 import { ecosystemRouter } from "./ecosystemRoutes";
 import { craWikiRouter } from "./craWikiRoutes";
+import { harmonisedStandardsRouter } from "./harmonisedStandardsRoutes";
+import { openSourceStewardRouter } from "./openSourceStewardRoutes";
+import { importerArchiveRouter } from "./importerArchiveRoutes";
 
 const router: IRouter = Router();
 
 router.use("/portfolio", productPortfolioRouter);
 router.use("/ecosystem", ecosystemRouter);
 router.use("/wiki/cra", craWikiRouter);
+router.use("/standards", harmonisedStandardsRouter);
+router.use("/steward", openSourceStewardRouter);
+router.use("/archive", importerArchiveRouter);
 router.use(partnerScopeRouter);
 router.use(regulatoryNewsRouter);
 router.use(conformitySelfcheckRouter);

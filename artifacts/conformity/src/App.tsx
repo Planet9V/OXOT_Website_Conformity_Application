@@ -45,6 +45,10 @@ const ProductPortfolioPage = lazy(() =>
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const PartnerHubPage = lazy(() => import('./pages/partner-hub'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
+const StandardsMatrixPage = lazy(() => import('./pages/standards-matrix'));
+const CeNameplateStudioPage = lazy(() => import('./pages/ce-nameplate-studio'));
+const OpenSourceStewardPage = lazy(() => import('./pages/open-source-steward'));
+const ImporterArchivePage = lazy(() => import('./pages/importer-archive'));
 
 /** Minimal loading state shown only while a lazy chunk loads. */
 function RouteLoadingFallback() {
@@ -175,6 +179,10 @@ function ShellRoutes() {
           </Route>
           <Route path="/team" component={Team} />
           <Route path="/partner-hub" component={PartnerHubPage} />
+          <Route path="/standards" component={StandardsMatrixPage} />
+          <Route path="/ce-studio" component={CeNameplateStudioPage} />
+          <Route path="/steward" component={OpenSourceStewardPage} />
+          <Route path="/archive" component={ImporterArchivePage} />
           <Route path="/wiki" component={CraWikiPage} />
           <Route path="/wiki/*" component={CraWikiPage} />
           <Route>
