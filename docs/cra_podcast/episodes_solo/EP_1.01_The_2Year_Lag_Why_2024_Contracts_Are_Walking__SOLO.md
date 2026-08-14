@@ -1,14 +1,14 @@
 # [EP_1.01 - SOLO] The 2-Year Lag: Why 2024 Contracts Are Walking into a 2027 Regulatory Trap
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 1: The Procurement & Contracting Crisis
 > - **Canonical Code:** `EP_1.01` (Global Episode 01)
 > - **Statutory References:** Article 2, Article 71
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** EPC Contractors & Project Planners
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,53 +20,45 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: The 2-Year Lag: Why 2024 Contracts Are Walking into a 2027 Regulatory Trap
-01:30 - Statutory Architecture & Legal Breakdown (Article 2, Article 71)
+01:30 - Statutory Architecture & Requirements (Article 2, Article 71)
 05:15 - Operational Impact & Industry Analysis (EPC Contractors & Project Planners)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 2](http://localhost:8088/conformity/cra-wiki?tab=articles&num=2)
-- [CRA Statutory Wiki — Article 71](http://localhost:8088/conformity/cra-wiki?tab=articles&num=71)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `EPC Contractors & Project Planners`
-- **Executive Value Proposition:** Translates statutory requirements under Article 2, Article 71 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]
 Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial equipment manufacturers, system integrators, and infrastructure operators across Europe to align OT architectures with Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven], IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice.
 
-Today, we're cutting straight through the theoretical legal noise to address the single most expensive ticking clock in European industrial contracting: The 2-Year Procurement Time-Warp.
+Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The 2-Year Lag: Why 2024 Contracts Are Walking into a 2027 Regulatory Trap.
 
 Let's ground our discussion in the exact statutory text of Article 2, Article 71.
 
-When an EPC contractor or industrial operator tenders a major capital project—whether a chemical plant, a renewable substation, or a rail depot—the procurement cycle routinely spans 24 to 48 months. Contracts signed in 2024 or 2025 are specifying hardware baselines that won't be physically delivered to the job site until 2028.
+When we examine the operational, commercial, and engineering reality of EPC Contractors & Project Planners, the central challenge under Article 2, Article 71 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Here is the statutory reality: Under Article 71 of the Cyber Resilience Act, the date of physical 'placing on the market' governs, NOT the purchase order signing date. If your contract specified a pre-CRA PLC, RTU, or smart sensor, the manufacturer CANNOT legally deliver that hardware into the European Union after December 11, 2027 unless it bears a valid CE mark backed by full CRA conformity.
+Under European Union product harmonisation legislation, the obligations set forth in Article 2, Article 71 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
-What happens if you haven't updated your contracts? When the equipment lands at the site gate or customs clearance in Rotterdam or Antwerp, it is legally contraband. The project halts, liquidated damages start accruing at 50,000 euros a day, and a massive legal battle erupts over who pays for the mid-project engineering redesign.
+In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
+
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 2, Article 71, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step 1: Audit all active capital procurement contracts with delivery milestones scheduled between 2026 and 2029.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 2, Article 71.
 
-Step 2: Insert the Standard CRA Warranty Clause into all master equipment purchasing agreements.
+Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 
-Step 3: Demand formal written CRA readiness roadmaps and expected CE marking dates from all Tier-1 automation vendors.
+Step Three: Verify that technical documentation files, machine-readable SBOMs, and vulnerability disclosure channels are operational.
 
-Step 4: Establish a clear contract variation protocol allocating testing and re-design costs to suppliers.
+Step Four: Conduct an empirical baseline compliance audit across your active product and software portfolio, documenting all components, cryptographic dependencies, and SBOMs in your technical file.
 
 Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney—thank you for listening.
 ```

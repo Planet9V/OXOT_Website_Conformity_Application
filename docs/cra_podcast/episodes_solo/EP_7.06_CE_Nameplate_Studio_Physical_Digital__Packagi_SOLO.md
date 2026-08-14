@@ -1,14 +1,14 @@
 # [EP_7.06 - SOLO] CE Nameplate Studio: Physical, Digital & Packaging Marking Rules
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 7: Conformity Assessment, Audits & CE Marking
 > - **Canonical Code:** `EP_7.06` (Global Episode 45)
 > - **Statutory References:** Article 25, Article 26, Article 27
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** Industrial Designers & Packaging Leads
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,30 +20,19 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: CE Nameplate Studio: Physical, Digital & Packaging Marking Rules
-01:30 - Statutory Architecture & Legal Breakdown (Article 25, Article 26, Article 27)
+01:30 - Statutory Architecture & Requirements (Article 25, Article 26, Article 27)
 05:15 - Operational Impact & Industry Analysis (Industrial Designers & Packaging Leads)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 25](http://localhost:8088/conformity/cra-wiki?tab=articles&num=25)
-- [CRA Statutory Wiki — Article 26](http://localhost:8088/conformity/cra-wiki?tab=articles&num=26)
-- [CRA Statutory Wiki — Article 27](http://localhost:8088/conformity/cra-wiki?tab=articles&num=27)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `Industrial Designers & Packaging Leads`
-- **Executive Value Proposition:** Translates statutory requirements under Article 25, Article 26, Article 27 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]

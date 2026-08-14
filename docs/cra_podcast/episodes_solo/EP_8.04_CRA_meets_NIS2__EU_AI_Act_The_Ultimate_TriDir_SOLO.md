@@ -1,14 +1,14 @@
 # [EP_8.04 - SOLO] CRA meets NIS2 & EU AI Act: The Ultimate Tri-Directive Survival Guide
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 8: Executive Liability, Penalties & Future Evolution
 > - **Canonical Code:** `EP_8.04` (Global Episode 49)
 > - **Statutory References:** CRA 2024/2847, NIS2 2022/2555, AI Act 2024/1689
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** Group CISOs & Enterprise Architects
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,28 +20,19 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: CRA meets NIS2 & EU AI Act: The Ultimate Tri-Directive Survival Guide
-01:30 - Statutory Architecture & Legal Breakdown (CRA 2024/2847, NIS2 2022/2555, AI Act 2024/1689)
+01:30 - Statutory Architecture & Requirements (CRA 2024/2847, NIS2 2022/2555, AI Act 2024/1689)
 05:15 - Operational Impact & Industry Analysis (Group CISOs & Enterprise Architects)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Full Text Explorer](http://localhost:8088/conformity/cra-wiki)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `Group CISOs & Enterprise Architects`
-- **Executive Value Proposition:** Translates statutory requirements under CRA 2024/2847, NIS2 2022/2555, AI Act 2024/1689 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]

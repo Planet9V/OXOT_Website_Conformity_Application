@@ -1,14 +1,14 @@
 # [EP_3.04 - SOLO] Legacy Brownfield Integration: Connecting Pre-2027 PLCs to Modern Cloud SCADA
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 3: Brownfield OT, Spare Parts & Maintenance
 > - **Canonical Code:** `EP_3.04` (Global Episode 17)
 > - **Statutory References:** Article 2, Article 18, Annex I
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** Cloud OT Engineers & Industry 4.0 Leads
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,30 +20,19 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: Legacy Brownfield Integration: Connecting Pre-2027 PLCs to Modern Cloud SCADA
-01:30 - Statutory Architecture & Legal Breakdown (Article 2, Article 18, Annex I)
+01:30 - Statutory Architecture & Requirements (Article 2, Article 18, Annex I)
 05:15 - Operational Impact & Industry Analysis (Cloud OT Engineers & Industry 4.0 Leads)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 2](http://localhost:8088/conformity/cra-wiki?tab=articles&num=2)
-- [CRA Statutory Wiki — Article 18](http://localhost:8088/conformity/cra-wiki?tab=articles&num=18)
-- [CRA Statutory Wiki — Annex I](http://localhost:8088/conformity/cra-wiki?tab=annexes)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `Cloud OT Engineers & Industry 4.0 Leads`
-- **Executive Value Proposition:** Translates statutory requirements under Article 2, Article 18, Annex I into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]

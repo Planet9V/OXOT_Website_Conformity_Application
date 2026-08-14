@@ -1,14 +1,14 @@
 # [EP_8.01 - SOLO] The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 8: Executive Liability, Penalties & Future Evolution
 > - **Canonical Code:** `EP_8.01` (Global Episode 46)
 > - **Statutory References:** Article 61, Article 62
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** CEOs, CFOs & Board Members
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,58 +20,45 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines
-01:30 - Statutory Architecture & Legal Breakdown (Article 61, Article 62)
+01:30 - Statutory Architecture & Requirements (Article 61, Article 62)
 05:15 - Operational Impact & Industry Analysis (CEOs, CFOs & Board Members)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 61](http://localhost:8088/conformity/cra-wiki?tab=articles&num=61)
-- [CRA Statutory Wiki — Article 62](http://localhost:8088/conformity/cra-wiki?tab=articles&num=62)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `CEOs, CFOs & Board Members`
-- **Executive Value Proposition:** Translates statutory requirements under Article 61, Article 62 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]
 Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial equipment manufacturers, system integrators, and infrastructure operators across Europe to align OT architectures with Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven], IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice.
 
-Today, we are stepping directly into the boardroom and the C-suite to dissect the financial reality of non-compliance: Demystifying Article 61 Administrative Fines and Executive Liability.
+Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines.
 
 Let's ground our discussion in the exact statutory text of Article 61, Article 62.
 
-When European regulatory enforcement is discussed in boardrooms, executives often draw comparisons to GDPR fines. But under Article 61 of the Cyber Resilience Act, the financial penalties are structured to hit hardware and industrial companies with unprecedented severity.
+When we examine the operational, commercial, and engineering reality of CEOs, CFOs & Board Members, the central challenge under Article 61, Article 62 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Let's look at the three statutory fine tiers established in Article 61:
-Tier 1: Non-compliance with Essential Cybersecurity Requirements under Annex I or manufacturer obligations under Article 13 carries administrative fines of up to 15,000,000 euros or 2.5 percent of total worldwide annual turnover for the preceding financial year, whichever is higher.
-Tier 2: Breaches of other statutory obligations—including importer duties, distributor verification, and technical documentation maintenance—carry fines of up to 10,000,000 euros or 2 percent of global turnover.
-Tier 3: Supplying incorrect, incomplete, or misleading information to market surveillance authorities triggers fines of up to 5,000,000 euros or 1 percent of turnover.
+Under European Union product harmonisation legislation, the obligations set forth in Article 61, Article 62 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
-Notice that critical phrase: 'whichever is higher.' For a multinational industrial group generating 10 billion euros in global revenue, a single non-compliant product line puts 250 million euros at risk.
+In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-And the financial fine is only half the damage. Market surveillance authorities have the statutory power to issue Union-wide commercial stop-orders and mandatory product recalls, wiping out entire market segments overnight.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 61, Article 62, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step 1: Present a comprehensive CRA financial exposure and turnover impact model to your Board of Directors.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 61, Article 62.
 
-Step 2: Establish an executive product cybersecurity steering committee with direct board reporting lines.
+Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 
-Step 3: Review corporate Directors and Officers (D&O) insurance policies to verify coverage parameters.
+Step Three: Verify that technical documentation files, machine-readable SBOMs, and vulnerability disclosure channels are operational.
 
-Step 4: Fund internal CRA conformity programs by framing them as essential revenue protection and market access.
+Step Four: Conduct an empirical baseline compliance audit across your active product and software portfolio, documenting all components, cryptographic dependencies, and SBOMs in your technical file.
 
 Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney—thank you for listening.
 ```

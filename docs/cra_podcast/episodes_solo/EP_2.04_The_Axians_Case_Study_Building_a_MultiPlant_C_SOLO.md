@@ -1,14 +1,14 @@
 # [EP_2.04 - SOLO] The Axians Case Study: Building a Multi-Plant CRA Modernization Pipeline
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 2: The System Integrator & EPC Shield
 > - **Canonical Code:** `EP_2.04` (Global Episode 10)
 > - **Statutory References:** Article 21, Annex VII, Recital 34
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** Multi-Plant Engineering Directors
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,61 +20,45 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: The Axians Case Study: Building a Multi-Plant CRA Modernization Pipeline
-01:30 - Statutory Architecture & Legal Breakdown (Article 21, Annex VII, Recital 34)
+01:30 - Statutory Architecture & Requirements (Article 21, Annex VII, Recital 34)
 05:15 - Operational Impact & Industry Analysis (Multi-Plant Engineering Directors)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 21](http://localhost:8088/conformity/cra-wiki?tab=articles&num=21)
-- [CRA Statutory Wiki — Annex VII](http://localhost:8088/conformity/cra-wiki?tab=annexes)
-- [CRA Statutory Wiki — Recital 34](http://localhost:8088/conformity/cra-wiki?tab=recitals&num=34)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `Multi-Plant Engineering Directors`
-- **Executive Value Proposition:** Translates statutory requirements under Article 21, Annex VII, Recital 34 into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]
 Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial equipment manufacturers, system integrators, and infrastructure operators across Europe to align OT architectures with Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven], IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice.
 
-Today, we are taking you behind the scenes of the Axians multi-plant modernization blueprint—the industry benchmark for how enterprise system integrators execute massive industrial overhauls under bulletproof safe-harbor protection.
+Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The Axians Case Study: Building a Multi-Plant CRA Modernization Pipeline.
 
 Let's ground our discussion in the exact statutory text of Article 21, Annex VII, Recital 34.
 
-When Axians modernizes operations across critical European facilities—such as Vopak's chemical terminals in Rotterdam, BASF's chemical complexes in Antwerp, and Stellantis's automotive manufacturing lines in Sochaux—they manage over 1,400 connected industrial nodes spanning PLCs, RTUs, drives, and SCADA servers.
+When we examine the operational, commercial, and engineering reality of Multi-Plant Engineering Directors, the central challenge under Article 21, Annex VII, Recital 34 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-How do you modernize hundreds of legacy nodes without triggering Article 21 manufacturer reclassification on every single cabinet?
+Under European Union product harmonisation legislation, the obligations set forth in Article 21, Annex VII, Recital 34 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
-You build a structured 5-Stage Modernization Pipeline:
-Stage 1: Plant Digital Twin Asset Inventories, mapping every node to Purdue levels and CRA Annex III risk classifications.
-Stage 2: Article 21 Safe Harbor Clearance, running every modification through automated Recital 34 boundary tests and generating cryptographic SHA-256 liability shield certificates.
-Stage 3: Upstream OEM Hardware Radar, tracking vendor patch status and enforcing statutory Article 18(2) Duty to Refrain holds on unpatched components.
-Stage 4: Automated Annex VII Technical Dossiers, compiling SBOMs, network topologies, and risk assessments into a tamper-evident audit package.
-Stage 5: Live 24-Hour National CSIRT & ENISA Webhook Integration, streaming threat telemetry directly to NCSC-NL, BSI, and ANSSI.
+In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-This is how leading integrators turn regulatory complexity into a massive competitive advantage.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 21, Annex VII, Recital 34, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step 1: Establish a standardized 5-stage pipeline for all industrial brownfield retrofit proposals.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 21, Annex VII, Recital 34.
 
-Step 2: Deploy automated asset normalization to classify plant inventory into Annex III Class I/II buckets.
+Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 
-Step 3: Integrate cryptographic SHA-256 hashing into your project handover documentation.
+Step Three: Verify that technical documentation files, machine-readable SBOMs, and vulnerability disclosure channels are operational.
 
-Step 4: Set up automated vendor radar to track upstream OEM security advisories in real time.
+Step Four: Conduct an empirical baseline compliance audit across your active product and software portfolio, documenting all components, cryptographic dependencies, and SBOMs in your technical file.
 
 Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney—thank you for listening.
 ```

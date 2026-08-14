@@ -1,14 +1,14 @@
 # [EP_6.01 - SOLO] The 24-Hour Early Warning Panic: Operationalizing the ENISA Single Reporting Platform
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 6: Vulnerability Operations, PSIRT & 24h Clocks
 > - **Canonical Code:** `EP_6.01` (Global Episode 34)
 > - **Statutory References:** Article 14(1) & (2)
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** PSIRT Leads & Incident Responders
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,55 +20,45 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: The 24-Hour Early Warning Panic: Operationalizing the ENISA Single Reporting Platform
-01:30 - Statutory Architecture & Legal Breakdown (Article 14(1) & (2))
+01:30 - Statutory Architecture & Requirements (Article 14(1) & (2))
 05:15 - Operational Impact & Industry Analysis (PSIRT Leads & Incident Responders)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 14](http://localhost:8088/conformity/cra-wiki?tab=articles&num=14)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `PSIRT Leads & Incident Responders`
-- **Executive Value Proposition:** Translates statutory requirements under Article 14(1) & (2) into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]
 Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial equipment manufacturers, system integrators, and infrastructure operators across Europe to align OT architectures with Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven], IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice.
 
-Today, we are breaking down the most terrifying operational deadline in the Cyber Resilience Act: The 24-Hour Early Warning Panic and the ENISA Single Reporting Platform.
+Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The 24-Hour Early Warning Panic: Operationalizing the ENISA Single Reporting Platform.
 
 Let's ground our discussion in the exact statutory text of Article 14(1) & (2).
 
-Mark September 11, 2026 on your calendar in bold red ink. That is not the date for general CRA enforcement—that is the date when Article 14 mandatory vulnerability reporting becomes legally binding across all 27 EU member states.
+When we examine the operational, commercial, and engineering reality of PSIRT Leads & Incident Responders, the central challenge under Article 14(1) & (2) is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Here is how the statutory clock works under Article 14:
-The moment an OEM or software vendor identifies that a vulnerability in their product is being actively exploited in the wild, or detects a severe incident having an impact on the security of the product, the company has exactly TWENTY-FOUR HOURS to submit an Early Warning Notification to the ENISA Single Reporting Platform and the designated national CSIRT.
+Under European Union product harmonisation legislation, the obligations set forth in Article 14(1) & (2) attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
-Within 72 hours, a comprehensive notification containing forensic indicators of compromise, vulnerability classifications, and initial mitigation steps must be submitted. Within 14 days of a patch being released, a final closeout report is legally mandated.
+In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-If your organization does not have an active Product Security Incident Response Team (PSIRT) with pre-configured legal workflows and API integrations to the ENISA portal, a zero-day discovered on a Friday afternoon will result in a statutory violation by Saturday evening, opening your executive leadership to fines of up to 10 million euros under Article 61.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 14(1) & (2), it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step 1: Establish a formal Product Security Incident Response Team (PSIRT) charter and 24/7 on-call rotation.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 14(1) & (2).
 
-Step 2: Pre-register your organization on the ENISA Single Reporting Platform and national CSIRT notification portals.
+Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 
-Step 3: Develop pre-approved notification templates for Early Warning (24h) and Full Notification (72h) filings.
+Step Three: Verify that technical documentation files, machine-readable SBOMs, and vulnerability disclosure channels are operational.
 
-Step 4: Conduct quarterly incident simulation drills testing the 24-hour reporting clock from initial triage to submission.
+Step Four: Conduct an empirical baseline compliance audit across your active product and software portfolio, documenting all components, cryptographic dependencies, and SBOMs in your technical file.
 
 Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney—thank you for listening.
 ```

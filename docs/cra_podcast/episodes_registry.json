@@ -1,87 +1,31 @@
 {
-  "series_title": "The Cyber Resilience Act Briefing",
-  "version": "2.0.0",
+  "podcast_ecosystem": "The Cyber Resilience Act Audio Platform",
+  "version": "3.0.0",
   "last_updated": "2026-08-14",
-  "total_episodes": 50,
-  "miniseries_count": 8,
-  "miniseries": [
+  "formats": [
     {
-      "id": "SERIES_1",
-      "title": "The Procurement & Contracting Crisis",
-      "episodes_range": "01 - 06",
-      "target_personas": [
-        "EPC Contractors",
-        "Procurement Officers",
-        "General Counsel"
-      ]
+      "format_id": "standard_solo",
+      "name": "The CRA Briefing (Standard Series)",
+      "style": "Direct, Informative, Technical, Actionable (No FUD)",
+      "directory": "docs/cra_podcast/episodes_solo/",
+      "total_episodes": 50,
+      "catalogue": "docs/cra_podcast/episodes_solo/00-SOLO-EPISODES-CATALOGUE.md"
     },
     {
-      "id": "SERIES_2",
-      "title": "The System Integrator & EPC Shield",
-      "episodes_range": "07 - 13",
-      "target_personas": [
-        "Industrial Integrators (Axians/VINCI)",
-        "Automation Engineers"
-      ]
+      "format_id": "news_briefings",
+      "name": "The CRA News Stream (Executive Briefings)",
+      "style": "High-Energy, Current, Fast-Paced Headlines (2-Min)",
+      "directory": "docs/cra_podcast/news_briefings/",
+      "total_episodes": 5,
+      "catalogue": "docs/cra_podcast/news_briefings/00-NEWS-BRIEFINGS-OVERVIEW.md"
     },
     {
-      "id": "SERIES_3",
-      "title": "Brownfield OT, Spare Parts & Maintenance",
-      "episodes_range": "14 - 19",
-      "target_personas": [
-        "Maintenance Directors",
-        "Plant Asset Managers",
-        "Reliability Leads"
-      ]
-    },
-    {
-      "id": "SERIES_4",
-      "title": "Tier-2 Upstream Component Supplier Survival",
-      "episodes_range": "20 - 25",
-      "target_personas": [
-        "Embedded Hardware Vendors",
-        "FOSS Stewards",
-        "ODM Suppliers"
-      ]
-    },
-    {
-      "id": "SERIES_5",
-      "title": "Critical Sector Deep Dives",
-      "episodes_range": "26 - 33",
-      "target_personas": [
-        "Data Center, Energy, Water, Buildings, Rail, Marine & Pharma Leads"
-      ]
-    },
-    {
-      "id": "SERIES_6",
-      "title": "Vulnerability Operations, PSIRT & 24h Clocks",
-      "episodes_range": "34 - 39",
-      "target_personas": [
-        "PSIRT Leads",
-        "Incident Response Directors",
-        "Corporate CISOs"
-      ]
-    },
-    {
-      "id": "SERIES_7",
-      "title": "Conformity Assessment, Audits & CE Marking",
-      "episodes_range": "40 - 45",
-      "target_personas": [
-        "Quality Assurance Leads",
-        "Testing Lab Directors",
-        "Notified Bodies"
-      ]
-    },
-    {
-      "id": "SERIES_8",
-      "title": "Executive Liability, Penalties & Future Evolution",
-      "episodes_range": "46 - 50",
-      "target_personas": [
-        "CEOs",
-        "CFOs",
-        "Board Risk Committees",
-        "Group CISOs"
-      ]
+      "format_id": "truth_and_consequences",
+      "name": "CRA: Truth & Consequences",
+      "style": "Hard-Hitting Investigative Monologue (Just the Facts, Shattering Myths)",
+      "directory": "docs/cra_podcast/truth_and_consequences/",
+      "total_episodes": 12,
+      "catalogue": "docs/cra_podcast/truth_and_consequences/00-TRUTH-AND-CONSEQUENCES-CATALOGUE.md"
     }
   ],
   "episodes": [
@@ -837,210 +781,140 @@
       "series_id": 8,
       "series_name": "Executive Liability, Penalties & Future Evolution",
       "canonical_code": "EP_8.05"
-    },
+    }
+  ],
+  "investigative_episodes": [
     {
-      "id": "EP_9.01",
-      "season": 9,
-      "series_id": 9,
-      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
-      "canonical_code": "EP_9.01",
-      "episode_number": 51,
+      "num": 1,
+      "code": "TC_01",
       "title": "The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks",
-      "target_persona": "Industrial Cloud Architects, Edge Developers & IIoT Platform Leads",
-      "statutory_articles": [
-        "Article 3(2)",
-        "Article 21",
-        "Annex I Part I \u00a71"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_9.01_The_EdgetoCloud_Grey_Zone_When_Microservices__SOLO.md"
+      "statutes": "Article 3(2), Article 21, Annex I Part I \u00a71",
+      "myth": "Cloud container updates to an edge gateway are purely IT operations and have nothing to do with physical machine CE marking.",
+      "financial_truth": "A single unauthorized container push altering PLC communications voids the OEM's Declaration of Conformity and exposes the deploying cloud integrator to Article 61 fines up to \u20ac15,000,000 or 2.5% of global turnover.",
+      "perspectives": "Cloud developers view weekly OTA pushes as agile best practice. Plant engineers view non-deterministic microservice updates as unvetted cyber hazards. European market surveillance treats the container deployer as the new legal Manufacturer under Article 21.",
+      "facts": "Under Article 3(2) and Article 21, software updates that alter cybersecurity properties or intended use constitute Substantial Modifications. If an edge container changes how a physical skid responds to commands, the CE mark on that cabinet is legally dead.",
+      "inconvenient_truth": "There are no agile shortcuts. If you push containers to edge OT, you must maintain deterministic container signing, Purdue Level 2 isolation, and an immutable Annex VII technical dossier."
     },
     {
-      "id": "EP_9.02",
-      "season": 9,
-      "series_id": 9,
-      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
-      "canonical_code": "EP_9.02",
-      "episode_number": 52,
+      "num": 2,
+      "code": "TC_02",
       "title": "The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?",
-      "target_persona": "Critical Infrastructure CISOs, Utility Asset Owners & Risk Officers",
-      "statutory_articles": [
-        "Article 13(8)",
-        "Article 61",
-        "NIS2 Article 21"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_9.02_The_Defunct_OEM_Dilemma_Who_Patches_Brownfiel_SOLO.md"
+      "statutes": "Article 13(8), Article 61, NIS2 Article 21",
+      "myth": "If the automation manufacturer went out of business, the asset owner is legally off the hook for unpatched vulnerabilities.",
+      "financial_truth": "Under NIS2 Article 21, critical infrastructure operators face administrative fines up to \u20ac10,000,000 or 2% of turnover if they operate systems with known, unmitigated critical zero-days, regardless of whether the OEM is bankrupt or dead.",
+      "perspectives": "Asset owners blame the defunct OEM for abandoning support. European regulators state that operational entity security cannot be excused by vendor bankruptcy. Insurers refuse to pay out claims for unshielded orphan hardware.",
+      "facts": "Article 13(8) mandates 5-year patch support from manufacturers, but when an OEM enters liquidation, that statutory obligation is unenforceable. NIS2 shifts 100% of the operational risk onto the asset owner's balance sheet.",
+      "inconvenient_truth": "You cannot sue a bankrupt company to write a patch. Operators must deploy deep packet inspection, hardware micro-segmentation, and virtual patching gateways to insulate orphan hardware, or face mandatory plant shutdowns."
     },
     {
-      "id": "EP_9.03",
-      "season": 9,
-      "series_id": 9,
-      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
-      "canonical_code": "EP_9.03",
-      "episode_number": 53,
+      "num": 3,
+      "code": "TC_03",
       "title": "Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act",
-      "target_persona": "Industrial AI Engineers, Robotics OEMs & Quality Automation Leads",
-      "statutory_articles": [
-        "CRA Annex I Part I \u00a72",
-        "EU AI Act Regulation (EU) 2024/1689"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_9.03_Autonomous_AI__Neural_Weights_on_the_Plant_Fl_SOLO.md"
+      "statutes": "CRA Annex I Part I \u00a72, EU AI Act Regulation (EU) 2024/1689",
+      "myth": "AI model weights are mathematical parameters, not software, so continuous on-device learning doesn't trigger regulatory recertification.",
+      "financial_truth": "Model drift in autonomous industrial robotics invalidates both the CRA CE mark and the EU AI Act High-Risk conformity certificate, triggering dual-statute penalty exposure up to \u20ac35,000,000.",
+      "perspectives": "Data scientists celebrate adaptive on-device fine-tuning as cutting-edge AI. Safety and compliance officers see an unvetted, non-deterministic liability bomb violating both product safety and cybersecurity directives.",
+      "facts": "Under CRA Annex I and the AI Act, neural weights and inference runtimes are digital elements. When a model's behavior shifts beyond its tested baseline, it legally constitutes a Substantial Modification.",
+      "inconvenient_truth": "Continuous online learning on safety-critical industrial plant floors is a regulatory impossibility under current EU law. Production weights must be frozen, cryptographically signed, and retrained exclusively in gated sandbox environments."
     },
     {
-      "id": "EP_9.04",
-      "season": 9,
-      "series_id": 9,
-      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
-      "canonical_code": "EP_9.04",
-      "episode_number": 54,
+      "num": 4,
+      "code": "TC_04",
       "title": "The Open-Source Steward's Balance Sheet: How Foundations & Dual-License Models Survive CRA",
-      "target_persona": "Open Source Maintainers, Foundation Directors & Dual-Licensing Software Execs",
-      "statutory_articles": [
-        "Article 24",
-        "Recital 10",
-        "Recital 18"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_9.04_The_OpenSource_Stewards_Balance_Sheet_How_Fou_SOLO.md"
+      "statutes": "Article 24, Recital 10, Recital 18",
+      "myth": "Open source is 100% exempt from the CRA, so companies can build commercial products on unpaid GitHub libraries without legal risk.",
+      "financial_truth": "While pure non-commercial developers are exempt, commercial Open Source Stewards under Article 24 and OEMs incorporating FOSS inherit full statutory liability for unaddressed upstream CVEs.",
+      "perspectives": "FOSS maintainers fear personal liability and are threatening to geoblock European IP addresses. Enterprise OEMs expect free software to come with corporate-grade SBOMs and 24-hour vulnerability SLAs.",
+      "facts": "Recital 10 protects unpaid developers, but Article 24 creates strict duties for open-source foundations and commercial dual-licensing vendors that monetize enterprise distributions.",
+      "inconvenient_truth": "The era of free, unmanaged open source in commercial hardware is over. Companies must either fund foundations to act as certified Stewards or pay for commercial dual-licensed distributions backed by guaranteed vulnerability SLAs."
     },
     {
-      "id": "EP_9.05",
-      "season": 9,
-      "series_id": 9,
-      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
-      "canonical_code": "EP_9.05",
-      "episode_number": 55,
+      "num": 5,
+      "code": "TC_05",
       "title": "Cross-Border Supply Chain Sanctions: How EU Market Surveillance Intercepts Firmware with Backdoors",
-      "target_persona": "Global Sourcing Directors, Defense Contractors & Customs Compliance Officers",
-      "statutory_articles": [
-        "Article 43",
-        "Article 54",
-        "Annex I Part II"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_9.05_CrossBorder_Supply_Chain_Sanctions_How_EU_Mar_SOLO.md"
+      "statutes": "Article 43, Article 54, Annex I Part II",
+      "myth": "European customs only checks CE paper declarations and doesn't inspect actual microcontroller code or hardware circuits.",
+      "financial_truth": "Market surveillance authorities (BSI, ANSSI) have statutory authority to decompile firmware and execute JTAG hardware teardowns, freezing entire shipping containers at Rotterdam and Antwerp under Article 54.",
+      "perspectives": "Importers buy cheap overseas hardware to boost margins. European security agencies see foreign-manufactured RTUs and cellular gateways as severe national security and supply chain attack vectors.",
+      "facts": "Under Articles 43 and 54, when an authority detects an intentional backdoor, hardcoded credentials, or unmitigated critical vulnerability, they issue immediate Union-wide recall orders across all 27 member states.",
+      "inconvenient_truth": "If you import unvetted electronics from low-cost overseas ODMs, your company bears 100% of the importer liability under Article 19. If regulators find a backdoor, your stock is seized and your brand is publicly listed on the EU Safety Gate."
     },
     {
-      "id": "EP_9.06",
-      "season": 9,
-      "series_id": 9,
-      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
-      "canonical_code": "EP_9.06",
-      "episode_number": 56,
+      "num": 6,
+      "code": "TC_06",
       "title": "The Decommissioning & End-of-Life Handover: Legal Liabilities When Retiring Critical OT",
-      "target_persona": "Plant Decommissioning Leads, Corporate M&A Officers & Environmental Asset Managers",
-      "statutory_articles": [
-        "Article 13(9)",
-        "Annex VII",
-        "Recital 32"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_9.06_The_Decommissioning__EndofLife_Handover_Legal_SOLO.md"
+      "statutes": "Article 13(9), Annex VII, Recital 32",
+      "myth": "Once an industrial machine is decommissioned or auctioned off, the manufacturer and operator have zero ongoing CRA legal obligations.",
+      "financial_truth": "Article 13(9) legally mandates 10 years of technical dossier and SBOM retention after the last unit was placed on the market. Failure to produce records during an inquiry triggers Article 61 fines.",
+      "perspectives": "Plant managers view asset retirement as simple scrap removal. Legal and forensic authorities view retired machines as evidence vaults that can expose historical corporate non-compliance during investigations.",
+      "facts": "Retiring a product line does not extinguish the 10-year technical file retention rule, nor does it excuse failure to sanitize cryptographic credentials before equipment enters the secondary resale market.",
+      "inconvenient_truth": "You cannot shred your compliance files when you shut down a line. End-of-life requires cryptographic key zeroization certificates and immutable 10-year digital archiving."
     },
     {
-      "id": "EP_10.01",
-      "season": 10,
-      "series_id": 10,
-      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
-      "canonical_code": "EP_10.01",
-      "episode_number": 57,
+      "num": 7,
+      "code": "TC_07",
       "title": "Subsea & Space Infrastructure: Where Does the 'Product' End in Mega-Systems?",
-      "target_persona": "Subsea Telecommunications Engineers, Satellite Ground Station Architects, Offshore Energy Planners",
-      "statutory_articles": [
-        "Article 2(1)",
-        "Article 3(2)",
-        "Annex I"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_10.01_Subsea__Space_Infrastructure_Where_Does_the_P_SOLO.md"
+      "statutes": "Article 2(1), Article 3(2), Annex I",
+      "myth": "A 5,000-kilometer subsea cable or low-Earth-orbit satellite constellation is an infrastructure project, so individual sensors and repeaters don't need CRA conformity.",
+      "financial_truth": "Customs authorities and market surveillance treat uncertified embedded subsea repeaters and satellite payload controllers as discrete non-compliant PDEs, freezing port shipments and halting critical project deployments.",
+      "perspectives": "Telecommunications consortia treat subsea cables as integrated turnkey projects. Component suppliers refuse to afford third-party CE certifications for low-volume custom subsea electronics.",
+      "facts": "Article 2(1) applies to all products with digital elements whose intended use includes data connections. Unless product boundaries are contractually and architecturally defined before fabrication, every single sensor module is legally exposed.",
+      "inconvenient_truth": "Complex infrastructure projects cannot hide behind turnkey EPC contracts. Product boundaries must be legally defined and documented in advance, or the entire subsea installation becomes non-compliant."
     },
     {
-      "id": "EP_10.02",
-      "season": 10,
-      "series_id": 10,
-      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
-      "canonical_code": "EP_10.02",
-      "episode_number": 58,
+      "num": 8,
+      "code": "TC_08",
       "title": "Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Body Silos",
-      "target_persona": "Grid-Scale Battery Developers, Renewable Energy CISOs, Power Electronics OEMs",
-      "statutory_articles": [
-        "Annex III Class II",
-        "Article 24",
-        "IEC 61508",
-        "IEC 62443"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_10.02_Battery_Energy_Storage_Systems_BESS_CyberPhys_SOLO.md"
+      "statutes": "Annex III Class II, Article 24, IEC 61508",
+      "myth": "BESS battery containers only need standard electrical safety testing, and cyber risks are minor IT concerns.",
+      "financial_truth": "A compromised BMS firmware controller can override thermal thresholds, causing explosive battery runaway. Class II classification legally mandates third-party Notified Body audits, stopping grid interconnection if uncertified.",
+      "perspectives": "Battery OEMs certify inverters and BMS controllers in isolated silos. Grid operators refuse to connect multi-megawatt BESS sites where integrated cyber-physical safety cannot be empirically proven.",
+      "facts": "Under Annex III, grid-interfacing control software and industrial firewalls are Class II Important Products, legally requiring Module B+C or Module H third-party certification.",
+      "inconvenient_truth": "Siloed component certificates do not equal system safety. If your integrated BESS facility lacks end-to-end Notified Body verification, transmission system operators will deny grid interconnection."
     },
     {
-      "id": "EP_10.03",
-      "season": 10,
-      "series_id": 10,
-      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
-      "canonical_code": "EP_10.03",
-      "episode_number": 59,
+      "num": 9,
+      "code": "TC_09",
       "title": "Quantum-Safe Cryptography (PQC): Is Post-Quantum Crypto Now Mandatory for 30-Year MCUs?",
-      "target_persona": "Semiconductor Architects, Embedded Firmware Engineers, Long-Lifecycle Asset Planners",
-      "statutory_articles": [
-        "Annex I Part I \u00a71",
-        "Article 13(8)",
-        "BSI TR-02102"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_10.03_QuantumSafe_Cryptography_PQC_Is_PostQuantum_C_SOLO.md"
+      "statutes": "Annex I Part I \u00a71, Article 13(8), BSI TR-02102",
+      "myth": "Post-quantum cryptography is a distant theoretical issue for the 2040s and has no relevance to microcontrollers placed on the market today.",
+      "financial_truth": "Deploying 25-year infrastructure hardware today with static RSA/ECC keys that cannot be upgraded creates a foreseeable design defect under European product liability law, voiding CE compliance mid-lifecycle.",
+      "perspectives": "Semiconductor makers resist PQC on low-cost MCUs due to memory constraints. National security agencies (BSI, ANSSI) and long-lifecycle asset owners demand crypto-agility to prevent catastrophic future decryption.",
+      "facts": "Annex I mandates 'state-of-the-art' cybersecurity across the product's expected lifecycle. If an asset is built for 30 years, classical-only crypto with zero upgrade path violates the statutory standard of care.",
+      "inconvenient_truth": "Shipping hardware with non-upgradeable classical cryptography is building planned obsolescence into your product. Crypto-agility is now a baseline engineering requirement."
     },
     {
-      "id": "EP_10.04",
-      "season": 10,
-      "series_id": 10,
-      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
-      "canonical_code": "EP_10.04",
-      "episode_number": 60,
+      "num": 10,
+      "code": "TC_10",
       "title": "Hydrogen Electrolyzers & High-Hazard Energy: Balancing CRA Secure Boot with ATEX Explosive Safety",
-      "target_persona": "Hydrogen Plant Automation Engineers, Process Safety Managers, Hazardous Location Certifiers",
-      "statutory_articles": [
-        "Annex I Part II",
-        "ATEX Directive 2014/34/EU",
-        "Machinery Regulation (EU) 2023/1230"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_10.04_Hydrogen_Electrolyzers__HighHazard_Energy_Bal_SOLO.md"
+      "statutes": "Annex I Part II, ATEX Directive 2014/34/EU, Machinery Regulation (EU) 2023/1230",
+      "myth": "CRA emergency remote patching mandates override hazardous location ATEX hot-work safety rules.",
+      "financial_truth": "An uncoordinated over-the-air firmware update causing a transient controller reset in an ATEX Zone 1 hydrogen facility risks catastrophic deflagration, creating massive criminal negligence liability.",
+      "perspectives": "Cybersecurity teams demand immediate 72-hour zero-day patching. Chemical process safety managers strictly forbid software modifications without formal plant shutdowns and hot-work permits.",
+      "facts": "CRA Article 14 requires rapid vulnerability mitigation, but ATEX Directive 2014/34/EU and the Machinery Regulation mandate that functional explosive safety cannot be compromised.",
+      "inconvenient_truth": "You cannot push emergency patches to live hydrogen electrolyzers like they're smartphones. You must architect dual-bank flash memory and hardware-isolated safety trip loops to survive both regulations."
     },
     {
-      "id": "EP_10.05",
-      "season": 10,
-      "series_id": 10,
-      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
-      "canonical_code": "EP_10.05",
-      "episode_number": 61,
+      "num": 11,
+      "code": "TC_11",
       "title": "Autonomous Agriculture & Heavy Field Robots: When Machinery Safety Meets CRA Remote Control",
-      "target_persona": "Autonomous Vehicle Engineers, Agricultural Equipment Manufacturers (CEMA), Robotics Product Managers",
-      "statutory_articles": [
-        "Machinery Regulation (EU) 2023/1230",
-        "CRA Article 24",
-        "Annex I Part I"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_10.05_Autonomous_Agriculture__Heavy_Field_Robots_Wh_SOLO.md"
+      "statutes": "Machinery Regulation (EU) 2023/1230, CRA Article 24, Annex I Part I",
+      "myth": "Autonomous tractors are purely regulated under agricultural machinery rules, so telematics cybersecurity is optional.",
+      "financial_truth": "A remote exploit over a cellular IoT gateway overriding physical CAN bus steering can turn a 10-ton autonomous tractor into an unguided lethal hazard, triggering joint Machinery and CRA regulatory penalties.",
+      "perspectives": "Agricultural OEMs historically focused on hydraulic and mechanical reliability. Hackers and threat actors are demonstrating remote GPS spoofing and CAN bus injection on connected farm equipment.",
+      "facts": "Under the new Machinery Regulation (EU) 2023/1230 and the CRA, telematics gateways and autonomous control software are safety-critical digital elements requiring cryptographic message authentication (SecOC).",
+      "inconvenient_truth": "Physical machine safety is entirely dependent on cyber resilience. If your CAN bus messages aren't cryptographically authenticated, your autonomous vehicle is unsafe and non-compliant."
     },
     {
-      "id": "EP_10.06",
-      "season": 10,
-      "series_id": 10,
-      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
-      "canonical_code": "EP_10.06",
-      "episode_number": 62,
+      "num": 12,
+      "code": "TC_12",
       "title": "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies",
-      "target_persona": "Corporate Risk Managers, Chief Legal Officers, Industrial Insurance Underwriters",
-      "statutory_articles": [
-        "Article 61",
-        "EU Product Liability Directive",
-        "Recital 34"
-      ],
-      "status": "completed",
-      "file_path": "docs/cra_podcast/episodes_solo/EP_10.06_The_Insurance_Underwriting_Reckoning_How_CRA__SOLO.md"
+      "statutes": "Article 61, EU Product Liability Directive 2024, Recital 34",
+      "myth": "Corporate Cyber Insurance and Tech E&O policies will cover the costs if a product suffers a major security breach or regulatory fine.",
+      "financial_truth": "Insurance syndicates are adding explicit CRA Compliance Conditions Precedent: if forensic investigation proves an OEM failed to maintain an SBOM or missed the 24h ENISA clock, 100% of the claim is denied.",
+      "perspectives": "Corporate boards assume insurance provides a financial safety net. Underwriters are using CRA compliance records as strict warranty gates to deny payouts on non-compliant insureds.",
+      "facts": "Under the revised EU Product Liability Directive, software is a product, and a breach of CRA essential requirements creates a legal presumption of defect in court, while insurers legally exclude uncertified non-conformities.",
+      "inconvenient_truth": "Insurance will not bail out negligent product security. If your technical dossier and vulnerability disclosure workflows are incomplete, your balance sheet is completely exposed."
     }
   ]
 }

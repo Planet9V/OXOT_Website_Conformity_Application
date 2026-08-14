@@ -1,14 +1,14 @@
 # [EP_7.04 - SOLO] The 10-Year Technical Documentation Archive: What Must Be Stored and How
 
-> **Single-Voice Solo Briefing Architecture:**
+> **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
-> - **Format:** Single-Voice Executive & Technical Narrative
+> - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 7: Conformity Assessment, Audits & CE Marking
 > - **Canonical Code:** `EP_7.04` (Global Episode 43)
 > - **Statutory References:** Article 13(9), Article 19(8), Annex VII
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** Records Managers & Compliance Archivists
-> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% statutory & engineering facts)
+> - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
 
 ---
 
@@ -20,30 +20,19 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: The 10-Year Technical Documentation Archive: What Must Be Stored and How
-01:30 - Statutory Architecture & Legal Breakdown (Article 13(9), Article 19(8), Annex VII)
+01:30 - Statutory Architecture & Requirements (Article 13(9), Article 19(8), Annex VII)
 05:15 - Operational Impact & Industry Analysis (Records Managers & Compliance Archivists)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
-13:50 - Conclusion & Next Steps
+13:50 - Authoritative Closure & Sign-Off
 ```
-
----
-
-### 1.3 Interactive CRA Statutory Wiki Deep Links
-- [CRA Statutory Wiki — Article 13](http://localhost:8088/conformity/cra-wiki?tab=articles&num=13)
-- [CRA Statutory Wiki — Article 19](http://localhost:8088/conformity/cra-wiki?tab=articles&num=19)
-- [CRA Statutory Wiki — Annex VII](http://localhost:8088/conformity/cra-wiki?tab=annexes)
-
-### 1.4 Target Persona & Executive Value Proposition
-- **Primary Audience:** `Records Managers & Compliance Archivists`
-- **Executive Value Proposition:** Translates statutory requirements under Article 13(9), Article 19(8), Annex VII into defensible engineering architectures and contract safe-harbor clauses, eliminating Article 61 fine exposure.
 
 ---
 
 ## SECTION 2: SINGLE-VOICE SOLO TRANSCRIPT (JIM MCKENNEY)
 
 > **Speaker Assignment:** `[JIM MCKENNEY]` (Single voice narrative)  
-> **Audio Voice Target:** `Daniel` (macOS Male Voice) or custom ElevenLabs voice stream
+> **Audio Voice Target:** `Jim Mckenney English` (ElevenLabs Voice ID: `fh7rGvh0nJR3MFMkM9yd`) or local TTS
 
 ```dialogue
 [JIM MCKENNEY]
