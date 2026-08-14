@@ -20,6 +20,7 @@ const FUNNEL_NAV: { href: string }[] = [
   { href: '/product' },
   { href: '/pricing' },
   { href: '/deployment' },
+  { href: '/blog' },
   { href: '/resources' },
 ];
 
@@ -27,7 +28,7 @@ const FUNNEL_NAV: { href: string }[] = [
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'Pricing', 'Deployment', 'Resources'],
+    nav: ['Platform', 'Pricing', 'Deployment', 'Guides', 'Resources'],
     homeAria: 'OXOT Conformance Platform — home',
     lightMode: 'Switch to light mode',
     darkMode: 'Switch to dark mode',
@@ -41,7 +42,7 @@ const copy = {
     switchToNl: 'Schakel naar Nederlands',
   },
   nl: {
-    nav: ['Platform', 'Prijzen', 'Implementatie', 'Bronnen'],
+    nav: ['Platform', 'Prijzen', 'Implementatie', 'Gidsen', 'Bronnen'],
     homeAria: 'OXOT Conformance Platform — startpagina',
     lightMode: 'Schakel naar lichte modus',
     darkMode: 'Schakel naar donkere modus',

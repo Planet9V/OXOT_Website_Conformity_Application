@@ -9,6 +9,155 @@ const DOCS_CRA = path.join(BASE_DIR, "docs/cra_podcast");
 const REGISTRY_FILE = path.join(DOCS_CRA, "episodes_registry.json");
 const BLOGS_DIR = path.join(DOCS_CRA, "blogs");
 
+interface BlogPostSummary {
+  id: string;
+  slug: string;
+  filename: string;
+  title: string;
+  subtitle?: string;
+  code: string;
+  statutes: string[];
+  persona: string;
+  series: string;
+  readTime: string;
+  duration: string;
+  audioUrl: string;
+  summary: string;
+  publishedAt: string;
+  keywords: string[];
+}
+
+function parseBlogFile(filename: string): { summary: BlogPostSummary; rawContent: string } | null {
+  try {
+    const fullPath = path.join(BLOGS_DIR, filename);
+    if (!fs.existsSync(fullPath)) return null;
+    const content = fs.readFileSync(fullPath, "utf-8");
+
+    const titleMatch = content.match(/title:\s*"(.*?)"/);
+    const subtitleMatch = content.match(/subtitle:\s*"(.*?)"/);
+    const slugMatch = content.match(/slug:\s*"(.*?)"/);
+    const codeMatch = content.match(/canonical_code:\s*"(.*?)"/);
+    const seriesMatch = content.match(/series:\s*"(.*?)"/);
+    const personaMatch = content.match(/target_persona:\s*"(.*?)"/);
+    const readTimeMatch = content.match(/read_time:\s*"(.*?)"/);
+    const audioUrlMatch = content.match(/audio_url:\s*"(.*?)"/);
+    const dateMatch = content.match(/date:\s*"(.*?)"/);
+    
+    // Statutes array
+    let statutes: string[] = [];
+    const statutesMatch = content.match(/statutes:\s*(\[.*?\])/s);
+    if (statutesMatch) {
+      try {
+        statutes = JSON.parse(statutesMatch[1]);
+      } catch {
+        statutes = ["Regulation (EU) 2024/2847"];
+      }
+    }
+
+    // Extract summary section
+    let summaryText = "";
+    const summarySectionMatch = content.match(/## 1\. The Commercial Dilemma & Industrial Reality\s*\n\n(.*?)(?=\n\n---|\n\n##)/s);
+    if (summarySectionMatch) {
+      summaryText = summarySectionMatch[1].replace(/\*\*/g, '').replace(/`/g, '').trim();
+    } else {
+      summaryText = subtitleMatch ? subtitleMatch[1] : "Comprehensive technical and statutory analysis for industrial OT product manufacturers.";
+    }
+
+    const code = codeMatch ? codeMatch[1] : "CRA";
+    const slug = slugMatch ? slugMatch[1] : filename.replace("BLOG_", "").replace(".md", "");
+
+    return {
+      summary: {
+        id: code,
+        slug: slug,
+        filename: filename,
+        title: titleMatch ? titleMatch[1] : filename,
+        subtitle: subtitleMatch ? subtitleMatch[1] : undefined,
+        code: code,
+        statutes: statutes.length > 0 ? statutes : ["Regulation (EU) 2024/2847"],
+        persona: personaMatch ? personaMatch[1] : "OT & Product Security Leads",
+        series: seriesMatch ? seriesMatch[1] : "Industrial Product Security",
+        readTime: readTimeMatch ? readTimeMatch[1] : "8 min read",
+        duration: "14:15",
+        audioUrl: audioUrlMatch ? audioUrlMatch[1] : `https://oxot.ai/audio/cra_podcast/${code}.mp3`,
+        summary: summaryText,
+        publishedAt: dateMatch ? dateMatch[1] : "2026-08-14",
+        keywords: ["Cyber Resilience Act", "IEC 62443", "Industrial OT", "CE Marking"]
+      },
+      rawContent: content
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * GET /api/blogs
+ * Public REST API: Returns all published technical SEO blog posts with full search metadata.
+ */
+podcastStudioRouter.get(["/blogs", "/podcast/blogs"], (req: Request, res: Response) => {
+  try {
+    if (!fs.existsSync(BLOGS_DIR)) {
+      return res.json({ success: true, total: 0, items: [] });
+    }
+    const files = fs.readdirSync(BLOGS_DIR).filter(f => f.startsWith("BLOG_") && f.endsWith(".md"));
+    const items: BlogPostSummary[] = [];
+
+    for (const file of files) {
+      const parsed = parseBlogFile(file);
+      if (parsed) {
+        items.push(parsed.summary);
+      }
+    }
+
+    // Sort by code or date
+    items.sort((a, b) => a.code.localeCompare(b.code));
+
+    return res.json({
+      success: true,
+      total: items.length,
+      corpus_name: "CRA Technical Engineering & Compliance Guides",
+      last_updated: new Date().toISOString(),
+      items: items
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: "Failed to load blog corpus", detail: err.message });
+  }
+});
+
+/**
+ * GET /api/blogs/:slug
+ * Public REST API: Returns a single blog post by slug or code with full raw markdown content.
+ */
+podcastStudioRouter.get(["/blogs/:slug", "/podcast/blogs/:slug"], (req: Request, res: Response) => {
+  try {
+    const targetSlug = req.params.slug.toLowerCase();
+    if (!fs.existsSync(BLOGS_DIR)) {
+      return res.status(404).json({ error: "Blog corpus not found" });
+    }
+
+    const files = fs.readdirSync(BLOGS_DIR).filter(f => f.startsWith("BLOG_") && f.endsWith(".md"));
+    for (const file of files) {
+      const parsed = parseBlogFile(file);
+      if (parsed) {
+        if (parsed.summary.slug.toLowerCase() === targetSlug || 
+            parsed.summary.code.toLowerCase() === targetSlug ||
+            parsed.summary.filename.toLowerCase().includes(targetSlug)) {
+          return res.json({
+            success: true,
+            post: parsed.summary,
+            content: parsed.rawContent
+          });
+        }
+      }
+    }
+
+    return res.status(404).json({ error: `Blog post not found: ${req.params.slug}` });
+  } catch (err: any) {
+    return res.status(500).json({ error: "Failed to retrieve blog post", detail: err.message });
+  }
+});
+
 /**
  * GET /api/podcast/episodes
  * Returns all 67 episodes categorized across the 3 styles, plus metadata and RSS feed URLs.
@@ -20,7 +169,6 @@ podcastStudioRouter.get("/podcast/episodes", (req: Request, res: Response) => {
     }
     const registry = JSON.parse(fs.readFileSync(REGISTRY_FILE, "utf-8"));
     
-    // Count blogs
     let blogCount = 0;
     if (fs.existsSync(BLOGS_DIR)) {
       blogCount = fs.readdirSync(BLOGS_DIR).filter(f => f.startsWith("BLOG_") && f.endsWith(".md")).length;
@@ -50,34 +198,5 @@ podcastStudioRouter.get("/podcast/episodes", (req: Request, res: Response) => {
     });
   } catch (err: any) {
     return res.status(500).json({ error: "Failed to load podcast episodes", detail: err.message });
-  }
-});
-
-/**
- * GET /api/podcast/blogs
- * Returns list of technical SEO blogs.
- */
-podcastStudioRouter.get("/podcast/blogs", (req: Request, res: Response) => {
-  try {
-    if (!fs.existsSync(BLOGS_DIR)) {
-      return res.json({ success: true, blogs: [] });
-    }
-    const files = fs.readdirSync(BLOGS_DIR).filter(f => f.startsWith("BLOG_") && f.endsWith(".md"));
-    const blogs = files.map(f => {
-      const content = fs.readFileSync(path.join(BLOGS_DIR, f), "utf-8");
-      const titleMatch = content.match(/title:\s*"(.*?)"/);
-      const codeMatch = content.match(/canonical_code:\s*"(.*?)"/);
-      const personaMatch = content.match(/target_persona:\s*"(.*?)"/);
-      return {
-        filename: f,
-        title: titleMatch ? titleMatch[1] : f,
-        code: codeMatch ? codeMatch[1] : "CRA",
-        target_persona: personaMatch ? personaMatch[1] : "OT Leads",
-        read_time: "8 min read"
-      };
-    });
-    return res.json({ success: true, total: blogs.length, blogs });
-  } catch (err: any) {
-    return res.status(500).json({ error: "Failed to load blogs", detail: err.message });
   }
 });

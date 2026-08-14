@@ -39,6 +39,7 @@ import TrustCenterPage from '@/pages/trust-center-page';
 import NewsletterConfirm from '@/pages/newsletter-confirm';
 import NewsletterUnsubscribe from '@/pages/newsletter-unsubscribe';
 import PodcastAndBlogsPage from '@/pages/podcast-and-blogs';
+import BlogHubPage from '@/pages/blog-hub';
 import NotFound from '@/pages/not-found';
 import { PublicLayout } from '@/components/layout/public-layout';
 import { CookieConsentProvider } from '@/components/cookie-consent';
@@ -190,16 +191,22 @@ function PublicRoutes() {
         {() => <PublicRoute component={PodcastAndBlogsPage} />}
       </Route>
       <Route path="/blog">
-        {() => <PublicRoute component={PodcastAndBlogsPage} />}
+        {() => <PublicRoute component={BlogHubPage} />}
       </Route>
       <Route path="/blog/">
-        {() => <PublicRoute component={PodcastAndBlogsPage} />}
+        {() => <PublicRoute component={BlogHubPage} />}
       </Route>
       <Route path="/blogs">
-        {() => <PublicRoute component={PodcastAndBlogsPage} />}
+        {() => <PublicRoute component={BlogHubPage} />}
       </Route>
       <Route path="/blogs/">
-        {() => <PublicRoute component={PodcastAndBlogsPage} />}
+        {() => <PublicRoute component={BlogHubPage} />}
+      </Route>
+      <Route path="/blog/:slug">
+        {() => <PublicRoute component={BlogHubPage} />}
+      </Route>
+      <Route path="/blogs/:slug">
+        {() => <PublicRoute component={BlogHubPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}

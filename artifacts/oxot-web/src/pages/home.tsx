@@ -13,6 +13,7 @@ import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { JsonLd } from '@/components/json-ld';
 import { LiveRegulatoryNewsFeed } from '@/components/sections/live-regulatory-news-feed';
+import { LiveCraBlogGuidesFeed } from '@/components/sections/live-cra-blog-guides-feed';
 import { useLocale } from '@/providers/locale-provider';
 import { entranceVariants, revealVariants } from '@/lib/motion';
 
@@ -221,6 +222,9 @@ export default function CraHomePage() {
 
       {/* Live regulatory news — API-driven, degrades gracefully */}
       <LiveRegulatoryNewsFeed />
+
+      {/* In-depth CRA Engineering & Compliance Guides — dynamically served */}
+      <LiveCraBlogGuidesFeed />
 
       {/* Why teams stall */}
       <section className="border-t border-border">
