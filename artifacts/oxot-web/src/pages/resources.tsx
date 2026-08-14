@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { Library, Download, Newspaper, BookOpen, FileText, Scale, ArrowRight } from 'lucide-react';
+import { Library, Download, Newspaper, BookOpen, FileText, Scale, ArrowRight, Headphones } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
@@ -38,6 +38,7 @@ const copy = {
     referenceKicker: 'Reference',
     reference: [
       { name: 'CRA Primer', body: 'A plain-language walk through the Cyber Resilience Act.' },
+      { name: 'Podcast & Engineering Guides', body: '67-episode audio ecosystem and 50 technical guides with RSS syndication.' },
       { name: 'Regulatory news', body: 'A live corpus of CRA developments, refreshed daily.' },
       { name: 'Knowledge hub', body: 'Guides and analysis on getting products conformity-ready.' },
       { name: 'Source library', body: 'The primary legislation and technical annexes behind the requirements.' },
@@ -75,6 +76,7 @@ const copy = {
     referenceKicker: 'Naslag',
     reference: [
       { name: 'CRA-primer', body: 'Een uitleg van de Cyber Resilience Act in begrijpelijke taal.' },
+      { name: 'Podcast & Technische Gidsen', body: '67 audio-afleveringen en 50 technische gidsen met RSS-syndicatie.' },
       { name: 'Regelgevingsnieuws', body: 'Een live corpus van CRA-ontwikkelingen, dagelijks bijgewerkt.' },
       { name: 'Kenniscentrum', body: 'Handleidingen en analyses om producten conformiteitsklaar te maken.' },
       { name: 'Bronbibliotheek', body: 'De primaire wetgeving en technische bijlagen achter de vereisten.' },
@@ -97,6 +99,7 @@ const COLLATERAL_HREFS = [
 // Non-translatable, position-indexed: icon component + link target.
 const REFERENCE_META = [
   { icon: BookOpen, href: '/cra-primer' },
+  { icon: Headphones, href: '/podcast' },
   { icon: Newspaper, href: '/news' },
   { icon: Library, href: '/knowledge' },
   { icon: FileText, href: '/conformity-platform/sources' },
