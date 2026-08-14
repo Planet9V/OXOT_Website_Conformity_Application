@@ -402,10 +402,12 @@ export function PersonaCockpit({
   initialPersona = 'INTEGRATOR',
   activePersona: controlledPersona,
   onPersonaChange,
+  onOpenCopilot,
 }: {
   initialPersona?: PersonaId;
   activePersona?: PersonaId;
   onPersonaChange?: (persona: PersonaId) => void;
+  onOpenCopilot?: () => void;
 }) {
   const [internalPersona, setInternalPersona] = useState<PersonaId>(initialPersona);
   const selectedPersona = controlledPersona ?? internalPersona;
@@ -485,13 +487,25 @@ export function PersonaCockpit({
           </div>
         </div>
 
-        <Link
-          href="/wiki"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-muted/80 border border-border hover:border-primary text-xs font-mono text-foreground shrink-0 shadow-xs transition-all"
-        >
-          <Gavel className="w-4 h-4 text-primary" />
-          Statutory Ref: {current.statutoryRefCode}
-        </Link>
+        <div className="flex items-center gap-2 shrink-0">
+          {onOpenCopilot && (
+            <Button
+              size="sm"
+              onClick={onOpenCopilot}
+              data-tour="copilot-btn"
+              className="gap-1.5 font-mono text-xs shadow-xs bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30"
+            >
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> Ask Copilot
+            </Button>
+          )}
+          <Link
+            href="/wiki"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-muted/80 border border-border hover:border-primary text-xs font-mono text-foreground shadow-xs transition-all"
+          >
+            <Gavel className="w-4 h-4 text-primary" />
+            Statutory Ref: {current.statutoryRefCode}
+          </Link>
+        </div>
       </div>
 
       {/* 3. DYNAMICALLY MORPHED KPI METRICS (PERSONA-SPECIFIC) */}

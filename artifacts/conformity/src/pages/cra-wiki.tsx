@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "wouter";
 import {
   BookOpen,
@@ -39,6 +39,33 @@ export default function EnterpriseCraWikiPage() {
   const [selectedRecitalNum, setSelectedRecitalNum] = useState<number>(34);
   const [selectedAnnexNum, setSelectedAnnexNum] = useState<string>("I");
   const [copiedLink, setCopiedLink] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get("tab") || params.get("view");
+    const numParam = params.get("num") || params.get("article") || params.get("recital") || params.get("annex");
+    const qParam = params.get("q") || params.get("search");
+
+    if (tabParam === "recitals" || tabParam === "articles" || tabParam === "annexes") {
+      setSelectedType(tabParam);
+    }
+    if (numParam) {
+      if (tabParam === "recitals" || params.has("recital")) {
+        setSelectedRecitalNum(parseInt(numParam, 10) || 34);
+        setSelectedType("recitals");
+      } else if (tabParam === "annexes" || params.has("annex")) {
+        setSelectedAnnexNum(numParam.toUpperCase());
+        setSelectedType("annexes");
+      } else {
+        setSelectedArticleNum(parseInt(numParam, 10) || 21);
+        setSelectedType("articles");
+      }
+    }
+    if (qParam) {
+      setSearchQuery(qParam);
+    }
+  }, []);
 
   // Flatten all articles
   const allArticles = useMemo(() => {
