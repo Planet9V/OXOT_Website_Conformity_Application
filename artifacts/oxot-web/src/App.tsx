@@ -38,7 +38,7 @@ import CompetitorsPage from '@/pages/competitors-page';
 import TrustCenterPage from '@/pages/trust-center-page';
 import NewsletterConfirm from '@/pages/newsletter-confirm';
 import NewsletterUnsubscribe from '@/pages/newsletter-unsubscribe';
-import PodcastAndBlogsPage from '@/pages/podcast-and-blogs';
+import PodcastHubPage from '@/pages/podcast-hub';
 import BlogHubPage from '@/pages/blog-hub';
 import NotFound from '@/pages/not-found';
 import { PublicLayout } from '@/components/layout/public-layout';
@@ -185,10 +185,10 @@ function PublicRoutes() {
         {() => <PublicRoute component={CraWikiPage} />}
       </Route>
       <Route path="/podcast">
-        {() => <PublicRoute component={PodcastAndBlogsPage} />}
+        {() => <PublicRoute component={PodcastHubPage} />}
       </Route>
       <Route path="/podcast/">
-        {() => <PublicRoute component={PodcastAndBlogsPage} />}
+        {() => <PublicRoute component={PodcastHubPage} />}
       </Route>
       <Route path="/blog">
         {() => <PublicRoute component={BlogHubPage} />}
