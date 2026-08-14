@@ -938,6 +938,109 @@
       ],
       "status": "completed",
       "file_path": "docs/cra_podcast/episodes_solo/EP_9.06_The_Decommissioning__EndofLife_Handover_Legal_SOLO.md"
+    },
+    {
+      "id": "EP_10.01",
+      "season": 10,
+      "series_id": 10,
+      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
+      "canonical_code": "EP_10.01",
+      "episode_number": 57,
+      "title": "Subsea & Space Infrastructure: Where Does the 'Product' End in Mega-Systems?",
+      "target_persona": "Subsea Telecommunications Engineers, Satellite Ground Station Architects, Offshore Energy Planners",
+      "statutory_articles": [
+        "Article 2(1)",
+        "Article 3(2)",
+        "Annex I"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_10.01_Subsea__Space_Infrastructure_Where_Does_the_P_SOLO.md"
+    },
+    {
+      "id": "EP_10.02",
+      "season": 10,
+      "series_id": 10,
+      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
+      "canonical_code": "EP_10.02",
+      "episode_number": 58,
+      "title": "Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Body Silos",
+      "target_persona": "Grid-Scale Battery Developers, Renewable Energy CISOs, Power Electronics OEMs",
+      "statutory_articles": [
+        "Annex III Class II",
+        "Article 24",
+        "IEC 61508",
+        "IEC 62443"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_10.02_Battery_Energy_Storage_Systems_BESS_CyberPhys_SOLO.md"
+    },
+    {
+      "id": "EP_10.03",
+      "season": 10,
+      "series_id": 10,
+      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
+      "canonical_code": "EP_10.03",
+      "episode_number": 59,
+      "title": "Quantum-Safe Cryptography (PQC): Is Post-Quantum Crypto Now Mandatory for 30-Year MCUs?",
+      "target_persona": "Semiconductor Architects, Embedded Firmware Engineers, Long-Lifecycle Asset Planners",
+      "statutory_articles": [
+        "Annex I Part I \u00a71",
+        "Article 13(8)",
+        "BSI TR-02102"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_10.03_QuantumSafe_Cryptography_PQC_Is_PostQuantum_C_SOLO.md"
+    },
+    {
+      "id": "EP_10.04",
+      "season": 10,
+      "series_id": 10,
+      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
+      "canonical_code": "EP_10.04",
+      "episode_number": 60,
+      "title": "Hydrogen Electrolyzers & High-Hazard Energy: Balancing CRA Secure Boot with ATEX Explosive Safety",
+      "target_persona": "Hydrogen Plant Automation Engineers, Process Safety Managers, Hazardous Location Certifiers",
+      "statutory_articles": [
+        "Annex I Part II",
+        "ATEX Directive 2014/34/EU",
+        "Machinery Regulation (EU) 2023/1230"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_10.04_Hydrogen_Electrolyzers__HighHazard_Energy_Bal_SOLO.md"
+    },
+    {
+      "id": "EP_10.05",
+      "season": 10,
+      "series_id": 10,
+      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
+      "canonical_code": "EP_10.05",
+      "episode_number": 61,
+      "title": "Autonomous Agriculture & Heavy Field Robots: When Machinery Safety Meets CRA Remote Control",
+      "target_persona": "Autonomous Vehicle Engineers, Agricultural Equipment Manufacturers (CEMA), Robotics Product Managers",
+      "statutory_articles": [
+        "Machinery Regulation (EU) 2023/1230",
+        "CRA Article 24",
+        "Annex I Part I"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_10.05_Autonomous_Agriculture__Heavy_Field_Robots_Wh_SOLO.md"
+    },
+    {
+      "id": "EP_10.06",
+      "season": 10,
+      "series_id": 10,
+      "series_name": "Deep Tech, Energy & Extreme Infrastructure",
+      "canonical_code": "EP_10.06",
+      "episode_number": 62,
+      "title": "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies",
+      "target_persona": "Corporate Risk Managers, Chief Legal Officers, Industrial Insurance Underwriters",
+      "statutory_articles": [
+        "Article 61",
+        "EU Product Liability Directive",
+        "Recital 34"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_10.06_The_Insurance_Underwriting_Reckoning_How_CRA__SOLO.md"
     }
   ]
 }

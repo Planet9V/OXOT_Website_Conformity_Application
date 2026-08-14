@@ -21,6 +21,7 @@
 | Series 7: Conformity Assessment, Audits & CE Marking (EP_7.01 - EP_7.06)                           |
 | Series 8: Executive Liability, Penalties & Future Evolution (EP_8.01 - EP_8.05)                     |
 | Series 9: The CRA Frontier & Market Uncertainty (EP_9.01 - EP_9.06)                                |
+| Series 10: Deep Tech, Energy & Extreme Infra (EP_10.01 - EP_10.06)                                 |
 +----------------------------------------------------------------------------------------------------+
 ```
 
@@ -92,3 +93,12 @@
 - **[EP_9.04](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_9.04_The_OpenSource_Stewards_Balance_Sheet_How_Fou_SOLO.md)**: *The Open-Source Steward's Balance Sheet: How Foundations & Dual-License Models Survive CRA* (Article 24, Recital 10, Recital 18)
 - **[EP_9.05](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_9.05_CrossBorder_Supply_Chain_Sanctions_How_EU_Mar_SOLO.md)**: *Cross-Border Supply Chain Sanctions: How EU Market Surveillance Intercepts Firmware with Backdoors* (Article 43, Article 54, Annex I Part II)
 - **[EP_9.06](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_9.06_The_Decommissioning__EndofLife_Handover_Legal_SOLO.md)**: *The Decommissioning & End-of-Life Handover: Legal Liabilities When Retiring Critical OT* (Article 13(9), Annex VII, Recital 32)
+
+
+### Series 10: Deep Tech, Energy & Extreme Infrastructure
+- **[EP_10.01](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_10.01_Subsea__Space_Infrastructure_Where_Does_the_P_SOLO.md)**: *Subsea & Space Infrastructure: Where Does the 'Product' End in Mega-Systems?* (Article 2(1), Article 3(2), Annex I)
+- **[EP_10.02](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_10.02_Battery_Energy_Storage_Systems_BESS_CyberPhys_SOLO.md)**: *Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Body Silos* (Annex III Class II, Article 24, IEC 61508, IEC 62443)
+- **[EP_10.03](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_10.03_QuantumSafe_Cryptography_PQC_Is_PostQuantum_C_SOLO.md)**: *Quantum-Safe Cryptography (PQC): Is Post-Quantum Crypto Now Mandatory for 30-Year MCUs?* (Annex I Part I §1, Article 13(8), BSI TR-02102)
+- **[EP_10.04](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_10.04_Hydrogen_Electrolyzers__HighHazard_Energy_Bal_SOLO.md)**: *Hydrogen Electrolyzers & High-Hazard Energy: Balancing CRA Secure Boot with ATEX Explosive Safety* (Annex I Part II, ATEX Directive 2014/34/EU, Machinery Regulation (EU) 2023/1230)
+- **[EP_10.05](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_10.05_Autonomous_Agriculture__Heavy_Field_Robots_Wh_SOLO.md)**: *Autonomous Agriculture & Heavy Field Robots: When Machinery Safety Meets CRA Remote Control* (Machinery Regulation (EU) 2023/1230, CRA Article 24, Annex I Part I)
+- **[EP_10.06](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_10.06_The_Insurance_Underwriting_Reckoning_How_CRA__SOLO.md)**: *The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies* (Article 61, EU Product Liability Directive, Recital 34)

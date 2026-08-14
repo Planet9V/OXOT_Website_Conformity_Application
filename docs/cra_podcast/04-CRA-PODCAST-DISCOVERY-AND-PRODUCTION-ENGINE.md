@@ -1,76 +1,73 @@
 # Universal CRA Podcast Discovery, Brainstorming & Production Engine
 ## Automated Workflow Specification for Continuous Topic Discovery & Script Generation
+### Upgraded with `/kaizen` Multi-Perspective Stochastic Research & Uncertainty Discovery
 
-> **Workflow Classification:** Multi-Agent Validated Production Engine (Research $\rightarrow$ Review $\rightarrow$ Copy $\rightarrow$ De-Slop $\rightarrow$ Output)  
+> **Workflow Classification:** Continuous Improvement Discovery & Production Pipeline  
 > **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant)  
-> **Universal Episode Code Scheme:** `EP_S.EE` (Series 1 to 9+)  
-> **Execution Engine:** `/multi-agent-brainstorming` + `/copywriting` + `/marketing-psychology` + `/avoid-ai-writing`
+> **Universal Episode Code Scheme:** `EP_S.EE` (Series 1 to 10+, 62 Episodes Total)  
+> **Integrated Tooling:** Perplexity AI (`perplexity-ask`) + Web Search + `/multi-agent-brainstorming` + `/copywriting` + `/marketing-psychology` + `/avoid-ai-writing`
 
 ---
 
-## 1. The 5-Phase End-to-End Discovery & Production Pipeline
+## 1. Kaizen Multi-Perspective Discovery Engine Architecture
 
 ```mermaid
 graph TD
-    A["Phase 1: Deep Research & Uncertainty Ingestion"] --> B["Phase 2: Multi-Agent Brainstorming Gate (5 Roles)"]
-    B --> C["Phase 3: Conversion Copywriting & Behavioral Framing"]
-    C --> D["Phase 4: De-Slop & Spoken Humanize Pass (/avoid-ai-writing)"]
-    D --> E["Phase 5: Automated Script Generation & Registry Lock"]
+    A["Stochastic Ingestion: 5 Divergent Perspectives"] --> B["Multi-Agent Brainstorming Gate (5 Specialized Roles)"]
+    B --> C["Conversion Copywriting & Behavioral Framing"]
+    C --> D["De-Slop & Spoken Humanize Pass (/avoid-ai-writing)"]
+    D --> E["Automated Script Generation & Central Registry Lock"]
+```
+
+```
++----------------------------------------------------------------------------------------------------+
+| 5 DIVERGENT RESEARCH PERSPECTIVES (STOCHASTIC SAMPLING)                                            |
++---------------------+------------------------------------------------------------------------------+
+| Perspective 1:      | Real-world JTAG dumping, binary decompilation, backdoor detection, firmware  |
+| Red Team & Exploits | memory corruption, CAN bus injection, and supply chain tampering.           |
++---------------------+------------------------------------------------------------------------------+
+| Perspective 2:      | VDMA, ZVEI, BDI, ANSSI, and BSI positions on Notified Body lab shortages,   |
+| Conservative OEMs   | certification cost inflation, and international export friction.             |
++---------------------+------------------------------------------------------------------------------+
+| Perspective 3:      | Dusty 1995 serial Modbus skids, ATEX explosive zones, midnight commissioning  |
+| Field Integrators   | retrofits, and stopping customer delay liquidated damages.                   |
++---------------------+------------------------------------------------------------------------------+
+| Perspective 4:      | Port of Rotterdam / Antwerp customs seizures, EU Safety Gate alerts,         |
+| Market Surveillance | and Article 61 corporate turnover fine modeling (up to €15M / 2.5%).         |
++---------------------+------------------------------------------------------------------------------+
+| Perspective 5:      | Lloyd's / Munich Re underwriting conditions precedent, Product Liability    |
+| Insurers & PE M&A   | Directive 2024 strict fault presumptions, and M&A cyber debt audits.         |
++---------------------+------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 2. Detailed Phase Breakdowns
+## 2. Multi-Agent Review & Decision Log Standard (`/multi-agent-brainstorming`)
 
-### Phase 1: Deep Research & Market Uncertainty Ingestion
-* **Objective:** Identify genuine market confusion, non-obvious regulatory friction, and emerging technical edge cases under Regulation (EU) 2024/2847.
-* **Input Sources:**
-  1. Statutory Edge Cases: Interactions between CRA, NIS2, EU AI Act, Machinery Regulation (EU) 2023/1230, and ATEX Directive 2014/34/EU.
-  2. Industrial OT Realities: Cloud/edge hybrid microservices, defunct OEM bankruptcies, AI neural weights in firmware, and cross-border firmware supply chain interception.
-  3. Market Surveillance Precedents: ICS-CERT advisories, BSI, ANSSI, and NCSC-NL enforcement patterns.
-* **Gate Check:** Must verify that the topic is NOT already covered in the existing 50-episode baseline.
-
-### Phase 2: Multi-Agent Brainstorming & Review Loop (`/multi-agent-brainstorming`)
-Every new series or episode must pass through 5 sequential agent gates with an explicit Decision Log:
-
-1. **Primary Designer (Lead Strategy):** Drafts the episode concept, core statutory hook, and target engineering persona.
-2. **Skeptic / Challenger:** Stress-tests the concept: *"Assume an asset owner or vendor ignores this episode. Why would they say this is irrelevant, and what empirical counter-argument proves them wrong?"*
-3. **Constraint Guardian:** Enforces non-functional boundaries: strict compliance with `EP_S.EE` naming, 12–15 min audio duration, exact statutory citations, and zero legal hallucinations.
-4. **User Advocate:** Audits cognitive load from the perspective of plant engineers, procurement directors, and CISOs: *"Is this too abstract? Does it provide concrete, shop-floor action steps?"*
-5. **Integrator / Arbiter (Decision Lock):** Issues the formal disposition (`APPROVED`, `REVISE`, or `REJECT`) and signs off on the final outline.
-
-### Phase 3: Conversion Copywriting & Psychological Framing (`/copywriting` & `/marketing-psychology`)
-* **Core Framing Principles:**
-  * **Loss Aversion:** Frame costs around unmitigated regulatory fines (Article 61: €15M / 2.5% turnover) and project stop-work orders.
-  * **Status-Quo Bias Disruption:** Shatter legacy assumptions (*"You think cloud container updates are outside CRA scope? Here is why your CE mark just vanished."*).
-  * **Clarity Over Cleverness:** Direct, benefit-first episode titles that rank for high-intent B2B search terms.
-  * **Zeigarnik Open Loops:** Structuring the narrative around unsolved industrial dilemmas that resolve into 4-step action checklists.
-
-### Phase 4: De-Slop & Editorial Polishing (`/avoid-ai-writing`)
-* **Mandatory Rules:**
-  * Strip all 21 categories of AI tells: *delve, leverage, pivotal landscape, testament to, seamlessly, robust, holistic, crucial, foster, embark*.
-  * **0% Inline Marketing:** Never include website URLs or software sales pitches in the spoken dialogue body.
-  * **Phonetic Pronunciation Guides:** Explicit bracketed notation for complex statutes (`[pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven]`).
-  * **Clean Sign-Off:** *"Until next time: build secure by design, protect your supply chain, and ship with confidence. I'm Jim Mckenney—thank you for listening."*
-
-### Phase 5: Automated Generation & Registry State Lock
-* **Automated Output Artifacts:**
-  1. Spoken markdown transcript in `docs/cra_podcast/episodes_solo/EP_S.EE_<Slug>_SOLO.md`.
-  2. Updated `episodes_registry.json` tracking canonical codes, series metadata, and completion status.
-  3. Updated master catalogue `docs/cra_podcast/episodes_solo/00-SOLO-EPISODES-CATALOGUE.md`.
-  4. Git commit and central memory persistence.
+Every synthesized series passes sequentially through 5 constrained agent roles:
+1. **Primary Designer:** Ingests research signals and proposes 6 structured episode blueprints.
+2. **Skeptic / Challenger:** Challenges non-obvious failure modes (*"Assume industry ignores this topic. What concrete event forces them to comply?"*).
+3. **Constraint Guardian:** Enforces the `EP_S.EE` naming convention, exact statutory citations (Articles, Recitals, Annexes), and 12–15 minute spoken duration.
+4. **User Advocate:** Verifies shop-floor engineering realism and Purdue model level accuracy.
+5. **Integrator / Arbiter:** Issues formal disposition (`APPROVED`, `REVISE`, or `REJECT`) and updates central registers.
 
 ---
 
-## 3. Decision Log Template for New Series Conception
+## 3. Production & Distribution Portfolio Overview (62 Total Episodes)
 
-```markdown
-### Multi-Agent Decision Log: Series [X] Conception
-- **Series Code & Title:** Series X: [Title]
-- **Target Persona:** [Primary Stakeholder]
-- **Core Market Uncertainty:** [What question does this series answer?]
-- **Skeptic Challenge & Resolution:** [Key objection resolved]
-- **Constraint Guardian Verification:** [Format, length & citation checks verified]
-- **User Advocate Validation:** [Shop-floor engineering reality verified]
-- **Final Disposition:** APPROVED by Integrator / Arbiter
+```
++----------------------------------------------------------------------------------------------------+
+| THE 10 MASTER MINISERIES (62 EPISODES TOTAL)                                                       |
++----------------------------------------------------------------------------------------------------+
+| Series 1: The Procurement & Contracting Crisis (EP_1.01 - EP_1.06)                                 |
+| Series 2: The System Integrator & EPC Shield (EP_2.01 - EP_2.07)                                   |
+| Series 3: Brownfield OT, Spare Parts & Maintenance (EP_3.01 - EP_3.06)                              |
+| Series 4: Tier-2 Upstream Component Supplier Survival (EP_4.01 - EP_4.06)                          |
+| Series 5: Critical Sector Deep Dives (EP_5.01 - EP_5.08)                                           |
+| Series 6: Vulnerability Operations, PSIRT & 24h Clocks (EP_6.01 - EP_6.06)                          |
+| Series 7: Conformity Assessment, Audits & CE Marking (EP_7.01 - EP_7.06)                           |
+| Series 8: Executive Liability, Penalties & Future Evolution (EP_8.01 - EP_8.05)                     |
+| Series 9: The CRA Frontier & Market Uncertainty (EP_9.01 - EP_9.06)                                |
+| Series 10: Deep Tech, Energy & Extreme Infrastructure (EP_10.01 - EP_10.06)                         |
++----------------------------------------------------------------------------------------------------+
 ```
