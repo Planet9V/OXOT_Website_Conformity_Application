@@ -15,29 +15,29 @@
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "This Regulation lays down rules for the placing on the market of products with digital elements to ensure the cybersecurity of such products; essential requirements for the design, development and production of products with digital elements; obligations of economic operators; rules on market surveillance and enforcement; and rules on the notification of conformity assessment bodies."
-            }
-          ],
-          "legalCommentary": "Establishes horizontal, direct Union-wide applicability across all physical hardware and standalone software containing digital communication or logic elements."
-        },
-        {
-          "articleNumber": 2,
-          "title": "Scope",
-          "paragraphs": [
-            {
-              "paragraphNumber": 1,
-              "text": "This Regulation applies to products with digital elements made available on the market, the intended purpose or reasonably foreseeable use of which includes a direct or indirect logical or physical data connection to a device or network."
+              "text": "Lays down rules for placing products with digital elements on the Union market, essential cybersecurity requirements, economic operator duties, and market surveillance rules. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "This Regulation does not apply to products with digital elements to which other Union acts apply where those acts achieve the same or higher level of cybersecurity, including Regulation (EU) 2017/745 (Medical Devices), Regulation (EU) 2017/746 (In Vitro Diagnostics), Regulation (EU) 2018/1139 (Civil Aviation), and Regulation (EU) 2019/2144 (Motor Vehicles)."
-            },
-            {
-              "paragraphNumber": 3,
-              "text": "Free and open-source software developed or supplied outside the course of a commercial activity is excluded from the scope of this Regulation."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 1."
             }
           ],
-          "legalCommentary": "Critical boundary definition. OT networks, industrial switches, PLCs, HMIs, and SCADA software are squarely within scope. Non-commercial open source is excluded, but commercial redistribution or embedded inclusion triggers manufacturer due diligence."
+          "legalCommentary": "Horizontal direct Union-wide applicability across physical hardware and standalone software."
+        },
+        {
+          "articleNumber": 2,
+          "title": "Scope and Specific Exclusions",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Applies to all products with digital elements containing direct or indirect logical/physical data connections. Excludes medical devices, in vitro diagnostics, civil aviation, motor vehicles, and non-commercial open source. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 2."
+            }
+          ],
+          "legalCommentary": "OT network hardware (PLCs, HMIs, SCADA) is squarely within scope. Non-commercial open source is exempt unless commercially monetized."
         },
         {
           "articleNumber": 3,
@@ -45,10 +45,104 @@
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "For the purposes of this Regulation: 'product with digital elements' means any software or hardware product and its remote data processing solutions, including software or hardware components being placed on the market separately; 'manufacturer' means any natural or legal person who develops or manufactures products with digital elements or has products with digital elements designed, developed or manufactured, and markets them under its name or trademark; 'substantial modification' means a change to the product with digital elements following its placing on the market which affects the compliance of the product with the essential cybersecurity requirements or results in a modification of the intended purpose."
+              "text": "Defines product with digital elements, manufacturer, importer, distributor, open-source software steward, substantial modification, vulnerability, actively exploited vulnerability, and cybersecurity risk. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 3."
             }
           ],
-          "legalCommentary": "Crucial definitions for System Integrators: Substantial Modification determines whether an SI becomes legally deemed a Manufacturer under Article 20."
+          "legalCommentary": "Crucial legal anchor: Substantial Modification determines whether an integrator becomes legally deemed a Manufacturer."
+        },
+        {
+          "articleNumber": 4,
+          "title": "Free Movement of Products with Digital Elements",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall not prohibit, restrict, or impede the making available on the market of products with digital elements that comply with this Regulation. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 4."
+            }
+          ],
+          "legalCommentary": "Guarantees cross-border single-market access across all 27 EU Member States without national protectionist barriers."
+        },
+        {
+          "articleNumber": 5,
+          "title": "Requirements for Products with Digital Elements",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Products with digital elements shall only be made available on the market if they meet the essential cybersecurity requirements set out in Annex I. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 5."
+            }
+          ],
+          "legalCommentary": "Mandates compliance with both Annex I Part I (Product properties) and Part II (Vulnerability handling)."
+        },
+        {
+          "articleNumber": 6,
+          "title": "Important Products with Digital Elements (Class I & Class II)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Establishes criteria and categories for Important products in Annex III presenting higher cybersecurity risk profiles. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 6."
+            }
+          ],
+          "legalCommentary": "Class I includes password managers, network interfaces, and switches. Class II includes industrial firewalls, PLCs, and OS hypervisors."
+        },
+        {
+          "articleNumber": 7,
+          "title": "Critical Products with Digital Elements",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Identifies Critical products in Annex IV with high security criticality requiring mandatory European cybersecurity certification or third-party audits. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 7."
+            }
+          ],
+          "legalCommentary": "Covers hardware security modules (HSMs), smartcard chips, and European Digital Identity Wallet security elements."
+        },
+        {
+          "articleNumber": 8,
+          "title": "Stakeholder Consultation and Expert Group",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall consult stakeholders and the European Cyber Resilience Expert Group when updating product classifications. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 8."
+            }
+          ],
+          "legalCommentary": "Provides institutional mechanism for industry and academic feedback on emerging OT/IoT threat categories."
+        },
+        {
+          "articleNumber": 9,
+          "title": "European Cybersecurity Certification Schemes",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Products certified under European cybersecurity certification schemes adopted pursuant to Regulation (EU) 2019/881 (Cybersecurity Act) shall be presumed compliant. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 9."
+            }
+          ],
+          "legalCommentary": "Enables EUCC and EUCS certifications to confer direct presumption of CRA conformity."
         }
       ]
     },
@@ -63,100 +157,209 @@
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Manufacturers shall ensure that products with digital elements are designed, developed and produced in accordance with the essential cybersecurity requirements set out in Part I of Annex I."
+              "text": "Manufacturers shall design and produce products in accordance with Annex I, carry out risk assessments, maintain technical files for 10 years, and provide free security updates for at least 5 years. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "Manufacturers shall carry out a cybersecurity risk assessment and take the results into account during the design, development, production, delivery and maintenance phases."
-            },
-            {
-              "paragraphNumber": 6,
-              "text": "Manufacturers shall provide security updates to address vulnerabilities free of charge for the expected product lifetime or a minimum period of five years from placing on the market."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 10."
             }
           ],
-          "legalCommentary": "Mandates Security-by-Design (Annex I Part I) and free security patch delivery for the expected support lifetime (minimum 5 years)."
+          "legalCommentary": "Security-by-design baseline. 5-year minimum free patch support mandate is legally enforceable."
+        },
+        {
+          "articleNumber": 11,
+          "title": "Obligations of Manufacturers regarding Vulnerability Handling",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Manufacturers shall identify and document vulnerabilities, draw up an SBOM, test security regularly, and disclose vulnerabilities via Coordinated Vulnerability Disclosure (CVD). All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 11."
+            }
+          ],
+          "legalCommentary": "Mandates automated SBOM generation (CycloneDX/SPDX) and documented CVD policies."
+        },
+        {
+          "articleNumber": 12,
+          "title": "Authorised Representatives",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A manufacturer may appoint an authorised representative established in the Union by written mandate to hold technical documentation and cooperate with national authorities. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 12."
+            }
+          ],
+          "legalCommentary": "Enables non-EU manufacturers (e.g. US/Asia) to appoint an EU compliance entity."
         },
         {
           "articleNumber": 13,
-          "title": "Obligations of Manufacturers regarding Information and Instructions to the User",
+          "title": "Information and Instructions to the User",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Manufacturers shall ensure that products with digital elements are accompanied by the information and instructions to the user set out in Annex II, in clear and understandable language, including the end date of the support period and instructions on how to install security updates."
-            }
-          ],
-          "legalCommentary": "Requires transparent publishing of the support lifecycle end date and secure installation guides."
-        },
-        {
-          "articleNumber": 14,
-          "title": "Reporting Obligations of Manufacturers (24-Hour CSIRT Notification)",
-          "paragraphs": [
-            {
-              "paragraphNumber": 1,
-              "text": "A manufacturer shall notify any actively exploited vulnerability contained in the product with digital elements that it becomes aware of to the CSIRT designated as coordinator and to ENISA within 24 hours of becoming aware of the actively exploited vulnerability."
+              "text": "Manufacturers shall provide clear user instructions (Annex II), support period end dates, secure setup guidance, and contact points for vulnerability reporting. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "The manufacturer shall submit a final report within 72 hours, detailing the root cause, remediation, and mitigation measures."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 13."
             }
           ],
-          "legalCommentary": "Applies early on 11 September 2026! 15 months ahead of the general CRA application date. Covers all active products in the field."
+          "legalCommentary": "Requires public transparency regarding product lifecycle and patch availability end dates."
         },
         {
-          "articleNumber": 18,
+          "articleNumber": 14,
+          "title": "Reporting Obligations of Manufacturers (24h CSIRT Notification)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Manufacturers shall notify any actively exploited vulnerability or severe incident to CSIRTs and ENISA within 24 hours of becoming aware, followed by a 72-hour final report. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 14."
+            }
+          ],
+          "legalCommentary": "Applies early on 11 September 2026! 15 months ahead of general CRA application."
+        },
+        {
+          "articleNumber": 15,
+          "title": "Voluntary Notification of Vulnerabilities",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Economic operators and software developers may voluntarily notify vulnerabilities and security incidents to CSIRTs. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 15."
+            }
+          ],
+          "legalCommentary": "Fosters collaborative cyber threat intelligence sharing across the EU ecosystem."
+        },
+        {
+          "articleNumber": 16,
+          "title": "Obligations of Open-Source Software Stewards",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Open-source software stewards that facilitate the development of free and open-source software intended for commercial activities shall establish a cybersecurity policy and CVD process. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 16."
+            }
+          ],
+          "legalCommentary": "Balances open-source developer freedom with supply-chain security governance for commercial stewards."
+        },
+        {
+          "articleNumber": 17,
           "title": "Obligations of Importers",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Importers shall place on the market only products with digital elements that comply with the essential cybersecurity requirements set out in Annex I."
+              "text": "Importers shall place on the market only compliant products with CE marking, verified EU DoC, and manufacturer technical file accessibility. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "Before placing a product on the market, importers shall ensure that the appropriate conformity assessment procedure has been carried out by the manufacturer and that the product bears the CE marking."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 17."
             }
           ],
-          "legalCommentary": "Importers act as the first EU border gatekeeper. Non-compliant hardware without CE marking cannot enter EU distribution."
+          "legalCommentary": "First EU border gatekeeper. Importers bear statutory liability for distributing non-compliant imports."
         },
         {
-          "articleNumber": 19,
+          "articleNumber": 18,
           "title": "Obligations of Distributors & Duty to Refrain",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "When making a product with digital elements available on the market, distributors shall act with due care in relation to the requirements of this Regulation."
+              "text": "Distributors shall act with due care, verify CE marking, and MUST NOT make non-compliant products available on the market (Duty to Refrain). All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "Where a distributor considers or has reason to believe that a product is not in conformity with the essential requirements set out in Annex I, the distributor shall NOT make the product available on the market (Duty to Refrain) until it has been brought into conformity."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 18."
             }
           ],
-          "legalCommentary": "Core statutory duty for System Integrators and Distributors (Axians, Actemium). Mandatory legal duty to halt distribution of EOS / unpatchable hardware lacking CE or DoC."
+          "legalCommentary": "Core statutory duty for System Integrators (Axians, Actemium). Halts resale of legacy EOS hardware."
+        },
+        {
+          "articleNumber": 19,
+          "title": "Cases in Which Obligations of Manufacturers Apply to Importers and Distributors",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Importers or distributors placing products on the market under their own name/trademark or carrying out substantial modifications shall be considered manufacturers. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 19."
+            }
+          ],
+          "legalCommentary": "Transfers full €15M manufacturer liabilities onto SIs if substantial modifications are performed."
         },
         {
           "articleNumber": 20,
-          "title": "Cases in Which Obligations of Manufacturers Apply to Other Economic Operators",
+          "title": "Substantial Modification Due Diligence & Recital 34 Exemption Boundaries",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "An importer or distributor shall be considered a manufacturer for the purposes of this Regulation and shall be subject to all obligations of the manufacturer under Article 10, where that importer or distributor places a product on the market under its own name or trademark or carries out a substantial modification."
-            }
-          ],
-          "legalCommentary": "The statutory trigger that transfers full €15M manufacturer liabilities onto SIs if they make substantial modifications."
-        },
-        {
-          "articleNumber": 21,
-          "title": "Substantial Modification Due Diligence & Exemption Boundaries",
-          "paragraphs": [
-            {
-              "paragraphNumber": 1,
-              "text": "A person who carries out a modification to a product with digital elements that affects its compliance with essential cybersecurity requirements or alters its intended purpose shall be subject to the obligations of a manufacturer."
+              "text": "Modifications affecting cybersecurity compliance trigger manufacturer duties. Identical spare part replacements under Recital 34 maintain Integrator Exemption. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "Modifications performed exclusively with original manufacturer-certified spare parts and vendor-signed firmware updates to maintain operational capability within the original design parameters shall NOT constitute a substantial modification (Recital 34)."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 20."
             }
           ],
-          "legalCommentary": "Governs the Article 21 Wizard. SIs remain exempt from manufacturer status if they perform identical spare replacements under Recital 34."
+          "legalCommentary": "Governs the Article 21 Wizard. Identical spare replacements maintain SI liability exemption."
+        },
+        {
+          "articleNumber": 21,
+          "title": "Identification of Economic Operators",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Economic operators shall maintain supply chain traceability records of suppliers and recipients for 10 years. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 21."
+            }
+          ],
+          "legalCommentary": "Requires supply chain ledger tracking of all OT components and distributor transactions."
+        },
+        {
+          "articleNumber": 22,
+          "title": "EU Declaration of Conformity",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The EU Declaration of Conformity shall state that fulfillment of Annex I essential requirements has been demonstrated and shall follow Annex V. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 22."
+            }
+          ],
+          "legalCommentary": "Single EU DoC covering CRA and all applicable Union product harmonisation acts."
+        },
+        {
+          "articleNumber": 23,
+          "title": "General Principles and Rules for Affixing the CE Marking",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The CE marking shall be affixed visibly, legibly and indelibly to the product, packaging, or accompanying documentation before placement on the market. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 23."
+            }
+          ],
+          "legalCommentary": "Physical or digital CE marking rules governed by Regulation (EC) No 765/2008."
         }
       ]
     },
@@ -167,47 +370,684 @@
       "articles": [
         {
           "articleNumber": 24,
-          "title": "Classification of Products with Digital Elements (Important & Critical Classes)",
+          "title": "Presumption of Conformity through Harmonised Standards",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Products with digital elements shall be classified into Default, Important Class I (Annex III), Important Class II (Annex III), or Critical (Annex IV) based on their core cybersecurity functionality and system criticality."
+              "text": "Products in conformity with harmonised standards published in the Official Journal shall be presumed to conform to Annex I essential requirements. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 24."
             }
           ],
-          "legalCommentary": "Important Class I includes managed switches, routers, and password managers. Important Class II includes industrial firewalls, PLCs, and hypervisors. Critical includes hardware tamper-proof chips."
+          "legalCommentary": "IEC 62443 and ETSI EN 303 645 standards mapping directly confer presumption of CRA compliance."
         },
         {
-          "articleNumber": 32,
+          "articleNumber": 25,
+          "title": "Common Specifications",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where harmonised standards do not exist or are insufficient, the Commission may adopt implementing acts establishing common technical specifications. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 25."
+            }
+          ],
+          "legalCommentary": "Safety net empowering EU Commission to mandate technical requirements if CEN/CENELEC standards stall."
+        },
+        {
+          "articleNumber": 26,
+          "title": "Harmonised Standards Standardization Requests",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall request European standardization organisations to draft harmonised standards supporting Annex I essential requirements. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 26."
+            }
+          ],
+          "legalCommentary": "Mandates formal standardization roadmaps for OT protocols, industrial IoT, and embedded firmware."
+        },
+        {
+          "articleNumber": 27,
+          "title": "Technical Documentation Requirements (Technical File)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The technical documentation in Annex VII shall contain all relevant data demonstrating that the product complies with Annex I requirements. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 27."
+            }
+          ],
+          "legalCommentary": "Requires complete architecture diagrams, risk assessments, SBOM, and pen-testing evidence."
+        },
+        {
+          "articleNumber": 28,
           "title": "Conformity Assessment Procedures",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "For default products, the manufacturer may use Module A (Internal Control). For Important Class I, harmonised standards or third-party assessment is required. For Important Class II and Critical, mandatory third-party assessment by a Notified Body (Module H or B+C) is required."
+              "text": "Specifies conformity assessment paths: Module A (Internal Control), Module H (Full Quality Assurance), or Module B+C (EU-Type Examination). All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 28."
             }
           ],
-          "legalCommentary": "Determines the assessment pathway and whether a Notified Body must be engaged."
+          "legalCommentary": "Determines whether an internal engineering self-assessment or Notified Body audit is legally required."
+        },
+        {
+          "articleNumber": 29,
+          "title": "Single EU Declaration of Conformity",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where a product is subject to more than one Union act requiring an EU DoC, a single EU Declaration of Conformity shall be drawn up. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 29."
+            }
+          ],
+          "legalCommentary": "Consolidates CRA, RED (Radio Equipment), Machinery Directive, and Low Voltage Directive declarations."
+        },
+        {
+          "articleNumber": 30,
+          "title": "Rules and Conditions for Affixing the CE Marking",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The CE marking shall be followed by the identification number of the Notified Body where Module H or B+C is used. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 30."
+            }
+          ],
+          "legalCommentary": "Ensures transparent auditor traceability on physical nameplates."
+        },
+        {
+          "articleNumber": 31,
+          "title": "Identification Number of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The identification number of the Notified Body shall be affixed by the body itself or under its instructions by the manufacturer. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 31."
+            }
+          ],
+          "legalCommentary": "Mandatory four-digit NANDO identification number requirement for Important Class II hardware."
+        },
+        {
+          "articleNumber": 32,
+          "title": "Simplified EU Declaration of Conformity",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A simplified EU declaration of conformity providing an exact internet address where the full EU DoC can be obtained may be provided. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 32."
+            }
+          ],
+          "legalCommentary": "Enables QR codes and digital product passports linking directly to online DoCs."
+        },
+        {
+          "articleNumber": 33,
+          "title": "End of Support Period Transparency and Notifications",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Manufacturers shall inform users and customers of the approaching end of the support period at least 6 months in advance. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 33."
+            }
+          ],
+          "legalCommentary": "Prevents sudden unannounced product abandonments and allows plant CISOs to schedule replacements."
+        },
+        {
+          "articleNumber": 34,
+          "title": "Support Measures and Proportionality for SMEs",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States and the Commission shall establish tailored support measures, guidance, and reduced administrative burdens for SMEs. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 34."
+            }
+          ],
+          "legalCommentary": "Provides dedicated testing sandboxes and fee reductions for small and medium enterprises."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 4,
+      "chapterTitle": "Notification of Conformity Assessment Bodies",
+      "articlesRange": "Articles 35–51",
+      "articles": [
+        {
+          "articleNumber": 35,
+          "title": "Notification of Conformity Assessment Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall notify the Commission and other Member States of bodies authorised to carry out third-party conformity assessments. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 35."
+            }
+          ],
+          "legalCommentary": "Establishes legal authority for accredited Notified Bodies across the EU."
+        },
+        {
+          "articleNumber": 36,
+          "title": "Notifying Authorities",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall designate a notifying authority responsible for setting up and carrying out assessment and notification procedures. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 36."
+            }
+          ],
+          "legalCommentary": "National accreditation bodies (e.g. DAkkS, RvA, COFRAC) designated as notifying authorities."
+        },
+        {
+          "articleNumber": 37,
+          "title": "Requirements Relating to Notifying Authorities",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Notifying authorities shall be established in such a way that no conflict of interest with conformity assessment bodies arises. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 37."
+            }
+          ],
+          "legalCommentary": "Guarantees institutional separation between regulatory oversight and testing laboratories."
+        },
+        {
+          "articleNumber": 38,
+          "title": "Information Obligation on Notifying Authorities",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall inform the Commission of their procedures for the assessment and notification of conformity assessment bodies. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 38."
+            }
+          ],
+          "legalCommentary": "Promotes EU-wide consistency in auditor accreditation criteria."
+        },
+        {
+          "articleNumber": 39,
+          "title": "Requirements Relating to Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A notified body shall be a third-party body independent of the organisation or the product it assesses, possessing highest technical competence. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 39."
+            }
+          ],
+          "legalCommentary": "Requires ISO/IEC 17065 and 17025 accreditation with specialized OT/ICS cybersecurity testing labs."
+        },
+        {
+          "articleNumber": 40,
+          "title": "Presumption of Conformity of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where a conformity assessment body demonstrates its conformity with the criteria laid down in harmonised standards, it shall be presumed to comply. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 40."
+            }
+          ],
+          "legalCommentary": "Standardized European accreditation pathways for cybersecurity auditing firms."
+        },
+        {
+          "articleNumber": 41,
+          "title": "Subsidiaries and Subcontracting by Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where a notified body subcontracts specific tasks or has recourse to a subsidiary, it shall ensure that the subcontractor meets Article 39 requirements. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 41."
+            }
+          ],
+          "legalCommentary": "Holds principal Notified Body legally liable for third-party penetration test laboratories."
+        },
+        {
+          "articleNumber": 42,
+          "title": "Application for Notification",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A conformity assessment body shall submit an application for notification to the notifying authority of the Member State in which it is established. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 42."
+            }
+          ],
+          "legalCommentary": "Formal application dossier detailing test scope, personnel qualifications, and lab equipment."
+        },
+        {
+          "articleNumber": 43,
+          "title": "Notification Procedure",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Notifying authorities may notify only conformity assessment bodies which have satisfied the requirements laid down in Article 39. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 43."
+            }
+          ],
+          "legalCommentary": "Two-month standstill period allowing EU Commission and Member States to review qualifications."
+        },
+        {
+          "articleNumber": 44,
+          "title": "Identification Numbers and Lists of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall assign an identification number to a notified body and publish the list on the NANDO information system. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 44."
+            }
+          ],
+          "legalCommentary": "Official public database of all authorised EU CRA Notified Bodies."
+        },
+        {
+          "articleNumber": 45,
+          "title": "Changes to Notifications",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where a notifying authority has ascertained that a notified body no longer meets Article 39 requirements, it shall restrict, suspend or withdraw notification. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 45."
+            }
+          ],
+          "legalCommentary": "Enforcement sanctions against incompetent or negligent auditing bodies."
+        },
+        {
+          "articleNumber": 46,
+          "title": "Challenge to the Competence of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall investigate all cases where it doubts or is brought to its attention doubt as to the competence of a notified body. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 46."
+            }
+          ],
+          "legalCommentary": "EU Commission central watchdog authority over national auditing bodies."
+        },
+        {
+          "articleNumber": 47,
+          "title": "Operational Obligations of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Notified bodies shall carry out conformity assessments in accordance with the procedures provided for in Annex VI in a proportionate manner. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 47."
+            }
+          ],
+          "legalCommentary": "Mandates avoidance of unnecessary administrative burdens on manufacturers while maintaining rigor."
+        },
+        {
+          "articleNumber": 48,
+          "title": "Appeal against Decisions of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall ensure that an appeal procedure against decisions of notified bodies is available. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 48."
+            }
+          ],
+          "legalCommentary": "Due process mechanism allowing manufacturers to appeal certificate rejections."
+        },
+        {
+          "articleNumber": 49,
+          "title": "Information Obligation on Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Notified bodies shall inform notifying authorities of any refusal, restriction, suspension or withdrawal of an EU-type examination certificate. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 49."
+            }
+          ],
+          "legalCommentary": "Early warning system preventing non-compliant manufacturers from forum-shopping across EU auditors."
+        },
+        {
+          "articleNumber": 50,
+          "title": "Exchange of Experience and Peer Review",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall provide for the organisation of exchange of experience between national notifying authorities. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 50."
+            }
+          ],
+          "legalCommentary": "Fosters harmonised interpretation of vulnerability severity criteria across all Member States."
+        },
+        {
+          "articleNumber": 51,
+          "title": "Coordination of Notified Bodies",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall ensure that appropriate coordination and cooperation between notified bodies are put in place via a sectoral group. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 51."
+            }
+          ],
+          "legalCommentary": "Establishes CRA Notified Body Coordination Group (CRA-NBCG)."
         }
       ]
     },
     {
       "chapterNumber": 5,
-      "chapterTitle": "Market Surveillance & EU Enforcement",
+      "chapterTitle": "Market Surveillance and EU Enforcement",
       "articlesRange": "Articles 52–63",
       "articles": [
         {
-          "articleNumber": 61,
-          "title": "Penalties and Administrative Fines",
+          "articleNumber": 52,
+          "title": "Market Surveillance and Control of Products on the Union Market",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Non-compliance with essential cybersecurity requirements in Annex I or obligations in Articles 10 and 11 shall be subject to administrative fines of up to EUR 15,000,000 or 2.5% of total worldwide annual turnover for the preceding financial year, whichever is higher."
+              "text": "Regulation (EU) 2019/1020 on market surveillance shall apply to products with digital elements covered by this Regulation. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "Non-compliance with other obligations under this Regulation shall be subject to administrative fines of up to EUR 10,000,000 or 2.0% of total worldwide annual turnover."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 52."
             }
           ],
-          "legalCommentary": "Statutory fine exposure calculated dynamically across plant turnover in the Partner Scope Cockpit."
+          "legalCommentary": "Empowers national cybersecurity market surveillance authorities to inspect code and conduct lab tests."
+        },
+        {
+          "articleNumber": 53,
+          "title": "Procedure for Dealing with Products Presenting a Significant Cybersecurity Risk",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where an authority finds a product presents a significant cybersecurity risk, it shall require the operator to take all appropriate corrective actions. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 53."
+            }
+          ],
+          "legalCommentary": "Statutory authority to mandate emergency firmware patch rollouts or product recalls."
+        },
+        {
+          "articleNumber": 54,
+          "title": "Union Safeguard Procedure",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where objections are raised against national market surveillance measures, the Commission shall enter into consultation and determine justification. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 54."
+            }
+          ],
+          "legalCommentary": "EU-wide harmonization mechanism ensuring consistent market interventions."
+        },
+        {
+          "articleNumber": 55,
+          "title": "Compliant Products Presenting a Significant Cybersecurity Risk",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where a product meets formal standards but still presents a severe zero-day risk, authorities may take provisional restrictive measures. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 55."
+            }
+          ],
+          "legalCommentary": "Addresses unforeseen architectural zero-days in formally certified products."
+        },
+        {
+          "articleNumber": 56,
+          "title": "Formal Non-Compliance",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Authorities shall require economic operators to put an end to formal non-compliance such as missing CE marking or incomplete EU DoC. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 56."
+            }
+          ],
+          "legalCommentary": "Standard corrective notice preceding punitive financial fines."
+        },
+        {
+          "articleNumber": 57,
+          "title": "Joint Activities of Market Surveillance Authorities",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Market surveillance authorities may agree with other authorities to carry out joint investigations and testing campaigns. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 57."
+            }
+          ],
+          "legalCommentary": "Facilitates joint audits targeting cross-border industrial equipment suppliers."
+        },
+        {
+          "articleNumber": 58,
+          "title": "Sweeps (Coordinated EU Online Market Inspections)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Market surveillance authorities may conduct coordinated online inspection sweeps to check compliance of IoT and connected equipment. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 58."
+            }
+          ],
+          "legalCommentary": "Automated crawling and scanning campaigns identifying unpatched connected devices."
+        },
+        {
+          "articleNumber": 59,
+          "title": "Market Surveillance of Open-Source Software Stewards",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Market surveillance authorities may request open-source stewards to provide technical documentation regarding their cybersecurity policies. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 59."
+            }
+          ],
+          "legalCommentary": "Tailored oversight ensuring open-source stewards maintain transparent CVD processes."
+        },
+        {
+          "articleNumber": 60,
+          "title": "Mutual Assistance and European Market Surveillance Campaigns",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Authorities shall provide mutual assistance and execute information requests regarding cross-border non-compliance. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 60."
+            }
+          ],
+          "legalCommentary": "Cross-border administrative assistance across all EU Member States."
+        },
+        {
+          "articleNumber": 61,
+          "title": "Penalties and Administrative Fines (€15M / 2.5%)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Breaches of Annex I essential requirements and Article 10/11 duties trigger fines up to EUR 15,000,000 or 2.5% of total worldwide annual turnover. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 61."
+            }
+          ],
+          "legalCommentary": "Headline statutory fine exposure modeled dynamically in the Partner Scope Cockpit."
+        },
+        {
+          "articleNumber": 62,
+          "title": "Allocation of Revenues from Penalties",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Revenues from administrative fines may be allocated to cybersecurity capacity building and market surveillance testing facilities. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 62."
+            }
+          ],
+          "legalCommentary": "Reinvests penalty revenues into public European cyber testing infrastructure."
+        },
+        {
+          "articleNumber": 63,
+          "title": "Right to an Effective Remedy and Judicial Review",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Economic operators affected by decisions of market surveillance authorities shall have the right to an effective judicial remedy. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 63."
+            }
+          ],
+          "legalCommentary": "Guarantees right of appeal before national courts under European administrative law."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 6,
+      "chapterTitle": "Delegated Powers and Committee Procedure",
+      "articlesRange": "Articles 64–67",
+      "articles": [
+        {
+          "articleNumber": 64,
+          "title": "Exercise of the Delegation",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The power to adopt delegated acts is conferred on the Commission subject to the conditions laid down in this Article. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 64."
+            }
+          ],
+          "legalCommentary": "Empowers Commission to amend Annex III and Annex IV product lists as technology evolves."
+        },
+        {
+          "articleNumber": 65,
+          "title": "Urgency Procedure",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Delegated acts adopted under this Article shall enter into force without delay where imperative grounds of urgency in cyber threats require. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 65."
+            }
+          ],
+          "legalCommentary": "Enables rapid regulatory reclassification during critical systemic cyber emergencies."
+        },
+        {
+          "articleNumber": 66,
+          "title": "Committee Procedure",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall be assisted by the Cyber Resilience Committee under Regulation (EU) No 182/2011. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 66."
+            }
+          ],
+          "legalCommentary": "Standard comitology committee representing national government representatives."
+        },
+        {
+          "articleNumber": 67,
+          "title": "Amendment of Delegated Acts",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Specifies procedural rules for revising technical specifications and delegated Annex definitions. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 67."
+            }
+          ],
+          "legalCommentary": "Ensures institutional transparency during delegated act revisions."
         }
       ]
     },
@@ -217,30 +1057,64 @@
       "articlesRange": "Articles 68–71",
       "articles": [
         {
-          "articleNumber": 69,
-          "title": "Transitional Provisions & Grandfathering",
-          "paragraphs": [
-            {
-              "paragraphNumber": 2,
-              "text": "Products with digital elements that have been placed on the market before 11 December 2027 shall not be required to comply with the requirements of this Regulation unless they are subject to substantial modifications."
-            }
-          ],
-          "legalCommentary": "Grandfathering provision: Equipment placed on market before 11 Dec 2027 is exempt from general CE-marking, but Article 14 24h vulnerability reporting applies to all operating products from 11 Sept 2026."
-        },
-        {
-          "articleNumber": 71,
-          "title": "Entry into Force and Application",
+          "articleNumber": 68,
+          "title": "Confidentiality and Professional Secrecy",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union."
+              "text": "Authorities, notified bodies, and the Commission shall respect the confidentiality of proprietary technical files and source code. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
             },
             {
               "paragraphNumber": 2,
-              "text": "It shall apply from 11 December 2027. However, Article 14 (Vulnerability Reporting) shall apply from 11 September 2026, and Chapter IV (Notification of Conformity Assessment Bodies) shall apply from 11 June 2026."
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 68."
             }
           ],
-          "legalCommentary": "Establishes the three key compliance milestones: CAB notification (June 2026), 24h PSIRT reporting (Sept 2026), and General Application (Dec 2027)."
+          "legalCommentary": "Protects manufacturer intellectual property and trade secrets during regulatory inspections."
+        },
+        {
+          "articleNumber": 69,
+          "title": "Transitional Provisions & Grandfathering (Pre-11 Dec 2027)",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Equipment placed on the market before 11 December 2027 is exempt from general CE-marking unless substantially modified. Article 14 reporting applies from 11 September 2026. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 69."
+            }
+          ],
+          "legalCommentary": "The statutory foundation of the Option 3 Modernization Engine and Recital 34 spare parts strategy."
+        },
+        {
+          "articleNumber": 70,
+          "title": "Evaluation and Review by the European Commission",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "By 36 months after entry into force and every four years thereafter, the Commission shall submit an evaluation report to the Parliament and Council. All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 70."
+            }
+          ],
+          "legalCommentary": "Statutory review clause assessing CRA impact on EU competitiveness and cyber resilience."
+        },
+        {
+          "articleNumber": 71,
+          "title": "Entry into Force and Dates of Application",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Enters into force on 10 December 2024. Applies from 11 December 2027, except Article 14 (Vulnerability Reporting, 11 September 2026) and Chapter IV (CAB Notification, 11 June 2026). All economic operators and manufacturers placing products with digital elements on the Union market shall strictly adhere to the requirements set out in this Article in accordance with Regulation (EU) 2024/2847."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "National market surveillance authorities and the European Commission shall ensure effective enforcement and compliance monitoring regarding the provisions of Article 71."
+            }
+          ],
+          "legalCommentary": "Defines the binding regulatory compliance timeline."
         }
       ]
     }

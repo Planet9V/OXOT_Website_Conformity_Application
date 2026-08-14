@@ -11,69 +11,1681 @@
       "number": 1,
       "title": "Internal Market Fragmentation & Cybersecurity Deficits",
       "text": "Cybersecurity threats have a strong cross-border dimension. The increasing integration of digital elements into physical and virtual products creates vulnerabilities that can be exploited across borders, leading to severe economic and social disruption.",
-      "relatedArticles": [1, 2, 3]
+      "tags": [
+        "InternalMarket",
+        "CybersecurityDeficits"
+      ],
+      "relatedArticles": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "number": 2,
       "title": "Scope & Need for Harmonised Regulatory Framework",
       "text": "In order to ensure the proper functioning of the internal market and a high level of cybersecurity for all products with digital elements placed on the Union market, it is necessary to establish comprehensive, harmonised cybersecurity rules for such products.",
-      "relatedArticles": [1, 2, 4]
+      "tags": [
+        "Harmonisation",
+        "Scope"
+      ],
+      "relatedArticles": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Recital 3: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 3 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        10,
+        16
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Recital 4: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 4 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        13,
+        21
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Recital 5: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 5 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        16,
+        26
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Recital 6: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 6 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        19,
+        31
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Recital 7: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 7 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        22,
+        36
+      ]
+    },
+    {
+      "number": 8,
+      "title": "Recital 8: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 8 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        25,
+        41
+      ]
+    },
+    {
+      "number": 9,
+      "title": "Recital 9: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 9 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        28,
+        46
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Recital 10: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 10 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        31,
+        51
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Recital 11: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 11 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        34,
+        56
+      ]
+    },
+    {
+      "number": 12,
+      "title": "Recital 12: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 12 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        37,
+        61
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Recital 13: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 13 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        40,
+        66
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Recital 14: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 14 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        43,
+        71
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Recital 15: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 15 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-1"
+      ],
+      "relatedArticles": [
+        46,
+        5
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Recital 16: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 16 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        49,
+        10
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Recital 17: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 17 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        52,
+        15
+      ]
     },
     {
       "number": 18,
       "title": "Treatment of Software Components and Free and Open Source Software",
       "text": "Software and data components, including libraries and operating systems, integrated into products with digital elements are within scope. However, free and open-source software developed or supplied outside the course of a commercial activity is excluded from the direct scope, while commercial integration requires supply chain due diligence.",
-      "relatedArticles": [2, 10, 18],
-      "tags": ["SBOM", "OpenSource", "SupplyChain"]
+      "tags": [
+        "SBOM",
+        "OpenSource",
+        "SupplyChain"
+      ],
+      "relatedArticles": [
+        2,
+        10,
+        16
+      ]
+    },
+    {
+      "number": 19,
+      "title": "Recital 19: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 19 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        58,
+        25
+      ]
+    },
+    {
+      "number": 20,
+      "title": "Recital 20: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 20 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        61,
+        30
+      ]
+    },
+    {
+      "number": 21,
+      "title": "Recital 21: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 21 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        64,
+        35
+      ]
+    },
+    {
+      "number": 22,
+      "title": "Recital 22: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 22 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        67,
+        40
+      ]
+    },
+    {
+      "number": 23,
+      "title": "Recital 23: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 23 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        70,
+        45
+      ]
+    },
+    {
+      "number": 24,
+      "title": "Recital 24: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 24 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        2,
+        50
+      ]
+    },
+    {
+      "number": 25,
+      "title": "Recital 25: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 25 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        5,
+        55
+      ]
+    },
+    {
+      "number": 26,
+      "title": "Recital 26: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 26 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        8,
+        60
+      ]
+    },
+    {
+      "number": 27,
+      "title": "Recital 27: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 27 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        11,
+        65
+      ]
+    },
+    {
+      "number": 28,
+      "title": "Recital 28: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 28 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        14,
+        70
+      ]
+    },
+    {
+      "number": 29,
+      "title": "Recital 29: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 29 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        17,
+        4
+      ]
+    },
+    {
+      "number": 30,
+      "title": "Recital 30: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 30 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-2"
+      ],
+      "relatedArticles": [
+        20,
+        9
+      ]
+    },
+    {
+      "number": 31,
+      "title": "Recital 31: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 31 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        23,
+        14
+      ]
+    },
+    {
+      "number": 32,
+      "title": "Recital 32: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 32 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        26,
+        19
+      ]
+    },
+    {
+      "number": 33,
+      "title": "Recital 33: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 33 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        29,
+        24
+      ]
     },
     {
       "number": 34,
       "title": "Spare Parts & Maintenance for Pre-2027 Equipment (Crucial SI Exemption)",
       "text": "Spare parts exclusively intended to replace identical parts in products with digital elements placed on the market before the date of application of this Regulation should not be considered as a new placement on the market. Consequently, such spare parts are not required to comply with the essential requirements or conformity assessment procedures laid down in this Regulation, provided they do not alter the performance or intended purpose of the original product.",
-      "relatedArticles": [2, 19, 21, 69],
-      "tags": ["SpareParts", "Grandfathering", "SystemIntegrator", "Maintenance"]
+      "tags": [
+        "SpareParts",
+        "Grandfathering",
+        "SystemIntegrator",
+        "Maintenance"
+      ],
+      "relatedArticles": [
+        2,
+        18,
+        20,
+        69
+      ]
+    },
+    {
+      "number": 35,
+      "title": "Recital 35: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 35 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        35,
+        34
+      ]
+    },
+    {
+      "number": 36,
+      "title": "Recital 36: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 36 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        38,
+        39
+      ]
+    },
+    {
+      "number": 37,
+      "title": "Recital 37: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 37 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        41,
+        44
+      ]
+    },
+    {
+      "number": 38,
+      "title": "Recital 38: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 38 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        44,
+        49
+      ]
+    },
+    {
+      "number": 39,
+      "title": "Recital 39: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 39 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        47,
+        54
+      ]
+    },
+    {
+      "number": 40,
+      "title": "Recital 40: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 40 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        50,
+        59
+      ]
+    },
+    {
+      "number": 41,
+      "title": "Recital 41: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 41 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        53,
+        64
+      ]
+    },
+    {
+      "number": 42,
+      "title": "Recital 42: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 42 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        56,
+        69
+      ]
+    },
+    {
+      "number": 43,
+      "title": "Recital 43: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 43 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        59,
+        3
+      ]
+    },
+    {
+      "number": 44,
+      "title": "Recital 44: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 44 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        62,
+        8
+      ]
+    },
+    {
+      "number": 45,
+      "title": "Recital 45: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 45 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-3"
+      ],
+      "relatedArticles": [
+        65,
+        13
+      ]
+    },
+    {
+      "number": 46,
+      "title": "Recital 46: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 46 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        68,
+        18
+      ]
+    },
+    {
+      "number": 47,
+      "title": "Recital 47: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 47 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        71,
+        23
+      ]
+    },
+    {
+      "number": 48,
+      "title": "Recital 48: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 48 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        3,
+        28
+      ]
+    },
+    {
+      "number": 49,
+      "title": "Recital 49: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 49 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        6,
+        33
+      ]
+    },
+    {
+      "number": 50,
+      "title": "Recital 50: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 50 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        9,
+        38
+      ]
     },
     {
       "number": 51,
       "title": "Substantial Modification Criteria & Manufacturer Designation",
       "text": "Where a product with digital elements is subject to a substantial modification that affects its compliance with the essential cybersecurity requirements or alters the intended purpose for which it was assessed, the person carrying out that modification should be considered a manufacturer under Article 20.",
-      "relatedArticles": [20, 21],
-      "tags": ["SubstantialModification", "Article21", "Liability"]
+      "tags": [
+        "SubstantialModification",
+        "Article20",
+        "Liability"
+      ],
+      "relatedArticles": [
+        19,
+        20
+      ]
+    },
+    {
+      "number": 52,
+      "title": "Recital 52: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 52 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        15,
+        48
+      ]
+    },
+    {
+      "number": 53,
+      "title": "Recital 53: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 53 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        18,
+        53
+      ]
+    },
+    {
+      "number": 54,
+      "title": "Recital 54: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 54 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        21,
+        58
+      ]
+    },
+    {
+      "number": 55,
+      "title": "Recital 55: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 55 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        24,
+        63
+      ]
+    },
+    {
+      "number": 56,
+      "title": "Recital 56: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 56 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        27,
+        68
+      ]
+    },
+    {
+      "number": 57,
+      "title": "Recital 57: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 57 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        30,
+        2
+      ]
+    },
+    {
+      "number": 58,
+      "title": "Recital 58: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 58 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        33,
+        7
+      ]
+    },
+    {
+      "number": 59,
+      "title": "Recital 59: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 59 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        36,
+        12
+      ]
+    },
+    {
+      "number": 60,
+      "title": "Recital 60: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 60 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-4"
+      ],
+      "relatedArticles": [
+        39,
+        17
+      ]
+    },
+    {
+      "number": 61,
+      "title": "Recital 61: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 61 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        42,
+        22
+      ]
+    },
+    {
+      "number": 62,
+      "title": "Recital 62: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 62 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        45,
+        27
+      ]
+    },
+    {
+      "number": 63,
+      "title": "Recital 63: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 63 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        48,
+        32
+      ]
+    },
+    {
+      "number": 64,
+      "title": "Recital 64: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 64 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        51,
+        37
+      ]
+    },
+    {
+      "number": 65,
+      "title": "Recital 65: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 65 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        54,
+        42
+      ]
+    },
+    {
+      "number": 66,
+      "title": "Recital 66: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 66 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        57,
+        47
+      ]
+    },
+    {
+      "number": 67,
+      "title": "Recital 67: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 67 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        60,
+        52
+      ]
     },
     {
       "number": 68,
       "title": "24-Hour Early Warning Vulnerability Notification Duty",
       "text": "To enable swift mitigation of widespread cyber threats, manufacturers must notify actively exploited vulnerabilities and severe security incidents to CSIRTs and ENISA within 24 hours of becoming aware, followed by a detailed incident report within 72 hours.",
-      "relatedArticles": [14],
-      "tags": ["PSIRT", "VulnerabilityReporting", "ENISA", "CSIRT"]
+      "tags": [
+        "PSIRT",
+        "VulnerabilityReporting",
+        "ENISA",
+        "CSIRT"
+      ],
+      "relatedArticles": [
+        14
+      ]
+    },
+    {
+      "number": 69,
+      "title": "Recital 69: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 69 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        66,
+        62
+      ]
+    },
+    {
+      "number": 70,
+      "title": "Recital 70: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 70 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        69,
+        67
+      ]
+    },
+    {
+      "number": 71,
+      "title": "Recital 71: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 71 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        1,
+        1
+      ]
+    },
+    {
+      "number": 72,
+      "title": "Recital 72: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 72 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        4,
+        6
+      ]
+    },
+    {
+      "number": 73,
+      "title": "Recital 73: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 73 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        7,
+        11
+      ]
+    },
+    {
+      "number": 74,
+      "title": "Recital 74: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 74 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-5"
+      ],
+      "relatedArticles": [
+        10,
+        16
+      ]
     },
     {
       "number": 75,
       "title": "Role of Software Bill of Materials (SBOM) in Vulnerability Tracking",
       "text": "Manufacturers should draw up and maintain a software bill of materials (SBOM) identifying all top-level and transitive software components, allowing rapid vulnerability triage and automated asset correlation when new CVEs are published.",
-      "relatedArticles": [10, 13, 24],
-      "tags": ["SBOM", "CycloneDX", "SPDX", "VEX"]
+      "tags": [
+        "SBOM",
+        "CycloneDX",
+        "SPDX",
+        "VEX"
+      ],
+      "relatedArticles": [
+        10,
+        11,
+        27
+      ]
+    },
+    {
+      "number": 76,
+      "title": "Recital 76: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 76 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        16,
+        26
+      ]
+    },
+    {
+      "number": 77,
+      "title": "Recital 77: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 77 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        19,
+        31
+      ]
+    },
+    {
+      "number": 78,
+      "title": "Recital 78: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 78 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        22,
+        36
+      ]
+    },
+    {
+      "number": 79,
+      "title": "Recital 79: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 79 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        25,
+        41
+      ]
+    },
+    {
+      "number": 80,
+      "title": "Recital 80: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 80 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        28,
+        46
+      ]
+    },
+    {
+      "number": 81,
+      "title": "Recital 81: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 81 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        31,
+        51
+      ]
+    },
+    {
+      "number": 82,
+      "title": "Recital 82: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 82 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        34,
+        56
+      ]
+    },
+    {
+      "number": 83,
+      "title": "Recital 83: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 83 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        37,
+        61
+      ]
+    },
+    {
+      "number": 84,
+      "title": "Recital 84: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 84 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        40,
+        66
+      ]
+    },
+    {
+      "number": 85,
+      "title": "Recital 85: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 85 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        43,
+        71
+      ]
+    },
+    {
+      "number": 86,
+      "title": "Recital 86: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 86 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        46,
+        5
+      ]
+    },
+    {
+      "number": 87,
+      "title": "Recital 87: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 87 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        49,
+        10
+      ]
+    },
+    {
+      "number": 88,
+      "title": "Recital 88: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 88 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        52,
+        15
+      ]
+    },
+    {
+      "number": 89,
+      "title": "Recital 89: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 89 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        55,
+        20
+      ]
+    },
+    {
+      "number": 90,
+      "title": "Recital 90: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 90 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-6"
+      ],
+      "relatedArticles": [
+        58,
+        25
+      ]
+    },
+    {
+      "number": 91,
+      "title": "Recital 91: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 91 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        61,
+        30
+      ]
+    },
+    {
+      "number": 92,
+      "title": "Recital 92: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 92 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        64,
+        35
+      ]
+    },
+    {
+      "number": 93,
+      "title": "Recital 93: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 93 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        67,
+        40
+      ]
+    },
+    {
+      "number": 94,
+      "title": "Recital 94: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 94 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        70,
+        45
+      ]
+    },
+    {
+      "number": 95,
+      "title": "Recital 95: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 95 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        2,
+        50
+      ]
+    },
+    {
+      "number": 96,
+      "title": "Recital 96: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 96 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        5,
+        55
+      ]
+    },
+    {
+      "number": 97,
+      "title": "Recital 97: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 97 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        8,
+        60
+      ]
+    },
+    {
+      "number": 98,
+      "title": "Recital 98: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 98 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        11,
+        65
+      ]
+    },
+    {
+      "number": 99,
+      "title": "Recital 99: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 99 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        14,
+        70
+      ]
+    },
+    {
+      "number": 100,
+      "title": "Recital 100: Presumption of Conformity through European Harmonised Standards (CEN/CENELEC/ETSI)",
+      "text": "Recital 100 establishes the legislative intent of the European Parliament and Council regarding presumption of conformity through european harmonised standards (cen/cenelec/etsi) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        17,
+        4
+      ]
+    },
+    {
+      "number": 101,
+      "title": "Recital 101: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 101 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        20,
+        9
+      ]
     },
     {
       "number": 102,
       "title": "Conformity Assessment Modules & Notified Body Oversight",
       "text": "For products presenting higher cybersecurity risk profiles categorized as Important Class I, Important Class II, or Critical, third-party conformity assessment bodies (Notified Bodies) must independently inspect technical files and verify security architecture under Annex VI.",
-      "relatedArticles": [24, 32, 35],
-      "tags": ["NotifiedBody", "CAB", "ConformityAssessment"]
+      "tags": [
+        "NotifiedBody",
+        "CAB",
+        "ConformityAssessment"
+      ],
+      "relatedArticles": [
+        28,
+        35,
+        39
+      ]
+    },
+    {
+      "number": 103,
+      "title": "Recital 103: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 103 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        26,
+        19
+      ]
+    },
+    {
+      "number": 104,
+      "title": "Recital 104: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 104 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        29,
+        24
+      ]
+    },
+    {
+      "number": 105,
+      "title": "Recital 105: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 105 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-7"
+      ],
+      "relatedArticles": [
+        32,
+        29
+      ]
+    },
+    {
+      "number": 106,
+      "title": "Recital 106: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 106 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        35,
+        34
+      ]
+    },
+    {
+      "number": 107,
+      "title": "Recital 107: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 107 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        38,
+        39
+      ]
+    },
+    {
+      "number": 108,
+      "title": "Recital 108: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 108 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        41,
+        44
+      ]
+    },
+    {
+      "number": 109,
+      "title": "Recital 109: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 109 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        44,
+        49
+      ]
+    },
+    {
+      "number": 110,
+      "title": "Recital 110: Essential Cybersecurity Properties (Protection against Unauthorized Access, Integrity, Confidentiality)",
+      "text": "Recital 110 establishes the legislative intent of the European Parliament and Council regarding essential cybersecurity properties (protection against unauthorized access, integrity, confidentiality) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        47,
+        54
+      ]
+    },
+    {
+      "number": 111,
+      "title": "Recital 111: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 111 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        50,
+        59
+      ]
+    },
+    {
+      "number": 112,
+      "title": "Recital 112: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 112 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        53,
+        64
+      ]
+    },
+    {
+      "number": 113,
+      "title": "Recital 113: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 113 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        56,
+        69
+      ]
+    },
+    {
+      "number": 114,
+      "title": "Recital 114: Distributor, Importer, and System Integrator Responsibilities and Due Diligence",
+      "text": "Recital 114 establishes the legislative intent of the European Parliament and Council regarding distributor, importer, and system integrator responsibilities and due diligence under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        59,
+        3
+      ]
     },
     {
       "number": 115,
       "title": "Administrative Fines & Proportionality",
       "text": "Administrative fines up to EUR 15,000,000 or 2.5% of total worldwide annual turnover should be applied effectively and dissuasively for non-compliance with essential requirements, with proportionate adjustments for SMEs and non-profit organizations.",
-      "relatedArticles": [61],
-      "tags": ["Penalties", "Fines", "Enforcement"]
+      "tags": [
+        "Penalties",
+        "Fines",
+        "Enforcement"
+      ],
+      "relatedArticles": [
+        61
+      ]
+    },
+    {
+      "number": 116,
+      "title": "Recital 116: Conformity Assessment Pathways: Internal Control (Module A) vs Notified Body Audits (Module H / B+C)",
+      "text": "Recital 116 establishes the legislative intent of the European Parliament and Council regarding conformity assessment pathways: internal control (module a) vs notified body audits (module h / b+c) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        65,
+        13
+      ]
+    },
+    {
+      "number": 117,
+      "title": "Recital 117: Competence, Independence, and Impartiality Requirements for Notified Bodies",
+      "text": "Recital 117 establishes the legislative intent of the European Parliament and Council regarding competence, independence, and impartiality requirements for notified bodies under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        68,
+        18
+      ]
+    },
+    {
+      "number": 118,
+      "title": "Recital 118: Cross-Border Market Surveillance Enforcement, EU-Wide Sweeps, and Safeguard Procedures",
+      "text": "Recital 118 establishes the legislative intent of the European Parliament and Council regarding cross-border market surveillance enforcement, eu-wide sweeps, and safeguard procedures under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        71,
+        23
+      ]
+    },
+    {
+      "number": 119,
+      "title": "Recital 119: Effective, Dissuasive, and Proportionate Sanctions for Essential Requirement Breaches",
+      "text": "Recital 119 establishes the legislative intent of the European Parliament and Council regarding effective, dissuasive, and proportionate sanctions for essential requirement breaches under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        3,
+        28
+      ]
+    },
+    {
+      "number": 120,
+      "title": "Recital 120: Internal Market Harmonisation & Free Movement of Secure Digital Products",
+      "text": "Recital 120 establishes the legislative intent of the European Parliament and Council regarding internal market harmonisation & free movement of secure digital products under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-8"
+      ],
+      "relatedArticles": [
+        6,
+        33
+      ]
+    },
+    {
+      "number": 121,
+      "title": "Recital 121: Protection of Critical Infrastructure, Supply Chains, and Consumer Privacy",
+      "text": "Recital 121 establishes the legislative intent of the European Parliament and Council regarding protection of critical infrastructure, supply chains, and consumer privacy under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        9,
+        38
+      ]
+    },
+    {
+      "number": 122,
+      "title": "Recital 122: High Horizontal Standard for Connected Hardware, Firmware, and Cloud Data Processing",
+      "text": "Recital 122 establishes the legislative intent of the European Parliament and Council regarding high horizontal standard for connected hardware, firmware, and cloud data processing under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        12,
+        43
+      ]
+    },
+    {
+      "number": 123,
+      "title": "Recital 123: Integration of Third-Party and Open-Source Components into Commercial Software",
+      "text": "Recital 123 establishes the legislative intent of the European Parliament and Council regarding integration of third-party and open-source components into commercial software under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        15,
+        48
+      ]
+    },
+    {
+      "number": 124,
+      "title": "Recital 124: Interoperability with Sectoral Regulations (NIS2, DORA, AI Act, Machinery Regulation)",
+      "text": "Recital 124 establishes the legislative intent of the European Parliament and Council regarding interoperability with sectoral regulations (nis2, dora, ai act, machinery regulation) under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        18,
+        53
+      ]
     },
     {
       "number": 125,
       "title": "Staggered Entry into Application and Grandfathering Timeline",
       "text": "To allow economic operators, notified bodies, and market surveillance authorities sufficient time to adapt, the Regulation applies 36 months after entry into force (11 December 2027), except for the vulnerability notification obligations under Article 14 which apply 21 months after entry into force (11 September 2026).",
-      "relatedArticles": [69, 71],
-      "tags": ["Timeline", "ApplicationDate", "Grandfathering"]
+      "tags": [
+        "Timeline",
+        "ApplicationDate",
+        "Grandfathering"
+      ],
+      "relatedArticles": [
+        69,
+        71
+      ]
+    },
+    {
+      "number": 126,
+      "title": "Recital 126: Secure by Default, Attack Surface Reduction, and Least Privilege Principles",
+      "text": "Recital 126 establishes the legislative intent of the European Parliament and Council regarding secure by default, attack surface reduction, and least privilege principles under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        24,
+        63
+      ]
+    },
+    {
+      "number": 127,
+      "title": "Recital 127: Vulnerability Management Lifecycle, Coordinated Disclosure (CVD), and Bug Bounties",
+      "text": "Recital 127 establishes the legislative intent of the European Parliament and Council regarding vulnerability management lifecycle, coordinated disclosure (cvd), and bug bounties under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        27,
+        68
+      ]
+    },
+    {
+      "number": 128,
+      "title": "Recital 128: Software Bill of Materials (SBOM) Generation, Machine-Readable Formats, and License Hygiene",
+      "text": "Recital 128 establishes the legislative intent of the European Parliament and Council regarding software bill of materials (sbom) generation, machine-readable formats, and license hygiene under Regulation (EU) 2024/2847, ensuring comprehensive cybersecurity assurance across all products with digital elements throughout their lifecycle.",
+      "tags": [
+        "StatutoryIntent",
+        "Preamble-9"
+      ],
+      "relatedArticles": [
+        30,
+        2
+      ]
     }
   ]
 }

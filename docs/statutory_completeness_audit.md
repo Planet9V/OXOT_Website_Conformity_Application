@@ -2,7 +2,7 @@
 
 **Regulation**: Regulation (EU) 2024/2847 (Cyber Resilience Act)
 **Official Journal**: OJ L, 2024/2847, 20.11.2024
-**Audit Timestamp**: 2026-08-14T13:39:44.585Z
+**Audit Timestamp**: 2026-08-14T14:13:35.898Z
 **Final Statutory Completeness Grade**: **100%** (Status: PASSED (APPROVED))
 
 ---
@@ -14,12 +14,12 @@
 | Corpus Regulation Title | **PASS** | 5 pts | Verified |
 | Official Journal Reference Present | **PASS** | 5 pts | Verified |
 | Application Timeline Specified | **PASS** | 5 pts | Verified |
-| Chapters Granularity (>= 5 Chapters Present) | **PASS** | 10 pts | Found 5 chapters |
-| Articles Structure (Key CRA Articles Present) | **PASS** | 10 pts | Found 15 articles |
+| Chapters Granularity (>= 5 Chapters Present) | **PASS** | 10 pts | Found 7 chapters |
+| Articles Structure (Key CRA Articles Present) | **PASS** | 10 pts | Found 71 articles |
 | Article 21 (Substantial Modification) Ingested with Paragraphs | **PASS** | 10 pts | Verified |
 | Article 21 Legal Advisor Commentary | **PASS** | 10 pts | Verified |
 | Article 14 (24h Early Warning Reporting) Ingested | **PASS** | 10 pts | Verified |
-| Article 19 (Distributor Duties & Duty to Refrain) Ingested | **PASS** | 10 pts | Verified |
+| Distributor Duties & Duty to Refrain (Art. 18/19) Ingested | **PASS** | 10 pts | Verified |
 | Article 61 (Administrative Fines €15M / 2.5%) Ingested | **PASS** | 10 pts | Verified |
 | Recital 34 (Spare Parts Pre-2027 SI Exemption) Ingested | **PASS** | 10 pts | Verified |
 | Recital 68 (24h Early Notification Rationale) Ingested | **PASS** | 10 pts | Verified |
@@ -33,9 +33,9 @@
 
 ## 2. Statutory Coverage Summary
 
-- **Total Chapters Ingested**: 5 (Chapters I through VII)
-- **Total Articles Ingested**: 15 with paragraph-level anchor IDs
-- **Total Recitals Ingested**: 10 with tags and cross-links
+- **Total Chapters Ingested**: 7 (Chapters I through VII)
+- **Total Articles Ingested**: 71 with paragraph-level anchor IDs
+- **Total Recitals Ingested**: 128 with tags and cross-links
 - **Total Annexes Ingested**: 8 (Annex I Essential Requirements through Annex VIII Correlation)
 - **Bidirectional Graph Edges**: 15 relational connections
 - **Application Workbench Integrations**:

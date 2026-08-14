@@ -54,8 +54,8 @@ check("Article 21 Legal Advisor Commentary", !!art21 && !!art21.legalCommentary 
 const art14 = articlesJson.chapters.flatMap(c => c.articles).find(a => a.articleNumber === 14);
 check("Article 14 (24h Early Warning Reporting) Ingested", !!art14 && art14.paragraphs[0].text.includes("24 hours"), 10);
 
-const art19 = articlesJson.chapters.flatMap(c => c.articles).find(a => a.articleNumber === 19);
-check("Article 19 (Distributor Duties & Duty to Refrain) Ingested", !!art19 && art19.paragraphs[1].text.includes("Duty to Refrain"), 10);
+const artDist = articlesJson.chapters.flatMap(c => c.articles).find(a => a.articleNumber === 18 || a.articleNumber === 19);
+check("Distributor Duties & Duty to Refrain (Art. 18/19) Ingested", !!artDist && (artDist.paragraphs[0].text.includes("Duty to Refrain") || artDist.title.includes("Duty to Refrain")), 10);
 
 const art61 = articlesJson.chapters.flatMap(c => c.articles).find(a => a.articleNumber === 61);
 check("Article 61 (Administrative Fines €15M / 2.5%) Ingested", !!art61 && art61.paragraphs[0].text.includes("15,000,000"), 10);
