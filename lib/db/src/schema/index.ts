@@ -91,3 +91,8 @@ export * from "./productPortfolio";
 export * from "./partnerSpareParts";
 export * from "./networkScopeAssessments";
 export * from "./supplierCompliance";
+// Multi-Persona CRA Ecosystem Extensions
+export * from "./craProcurement";
+export * from "./craArticle21";
+export * from "./craComposite";
+export * from "./craCsaf";

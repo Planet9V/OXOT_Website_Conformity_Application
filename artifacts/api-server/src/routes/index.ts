@@ -37,10 +37,12 @@ import regulatoryNewsRouter from "./regulatoryNews";
 import conformitySelfcheckRouter from "./conformitySelfcheck";
 import { productPortfolioRouter } from "./productPortfolio";
 import { partnerScopeRouter } from "./partnerScope";
+import { ecosystemRouter } from "./ecosystemRoutes";
 
 const router: IRouter = Router();
 
 router.use("/portfolio", productPortfolioRouter);
+router.use("/ecosystem", ecosystemRouter);
 router.use(partnerScopeRouter);
 router.use(regulatoryNewsRouter);
 router.use(conformitySelfcheckRouter);

@@ -1133,7 +1133,7 @@ export async function seedDemo(): Promise<void> {
   try {
     await db.execute(sql`SELECT setval(pg_get_serial_sequence('conformity_members', 'id'), COALESCE((SELECT max(id) FROM conformity_members), 1));`);
     await db.execute(sql`SELECT setval(pg_get_serial_sequence('conformity_activity', 'id'), COALESCE((SELECT max(id) FROM conformity_activity), 1));`);
-    await db.execute(sql`SELECT setval(pg_get_serial_sequence('cra_products', 'id'), COALESCE((SELECT max(id) FROM cra_products), 1));`);
+    await db.execute(sql`SELECT setval(pg_get_serial_sequence('conformity_products', 'id'), COALESCE((SELECT max(id) FROM conformity_products), 1));`);
     await db.execute(sql`SELECT setval(pg_get_serial_sequence('conformity_assessments', 'id'), COALESCE((SELECT max(id) FROM conformity_assessments), 1));`);
     console.log("[seed:demo] PostgreSQL sequences synchronized successfully.");
   } catch (seqErr) {

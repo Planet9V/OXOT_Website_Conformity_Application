@@ -38,6 +38,7 @@ import { useLocale } from '@/providers/locale-provider';
 import { entranceVariants, revealVariants } from '@/lib/motion';
 import { Button } from '@/components/ui/button';
 import { parseAndSanitizeBOMText, type SanitizedAssetInput } from '@/lib/sanitizeAssetBOM';
+import { normalizeAndSanitizeAssetInput, type NormalizationResult } from '@/lib/assetNormalizer';
 
 interface HardwarePreset {
   vendor: string;
@@ -227,6 +228,7 @@ export default function PartnerScopePage() {
   const [activeTab, setActiveTab] = useState<'vertical' | 'matrix' | 'bom' | 'results' | 'suppliers'>('vertical');
   const [selectedPresets, setSelectedPresets] = useState<HardwarePreset[]>(VERTICALS[0].presets);
   const [customBOMText, setCustomBOMText] = useState('');
+  const [normalizationInfo, setNormalizationInfo] = useState<NormalizationResult | null>(null);
   const [turnoverEur, setTurnoverEur] = useState<number>(VERTICALS[0].defaultTurnover);
   const [clientCompany, setClientCompany] = useState<string>('Client Industrial Operations');
   const [copiedSection, setCopiedSection] = useState<string | null>(null);
@@ -258,21 +260,23 @@ export default function PartnerScopePage() {
 
   const handleApplyBOM = () => {
     if (!customBOMText.trim()) return;
-    const sanitized = parseAndSanitizeBOMText(customBOMText);
-    if (sanitized.length) {
+    const normResult = normalizeAndSanitizeAssetInput(customBOMText);
+    setNormalizationInfo(normResult);
+    
+    if (normResult.assets.length) {
       const grouped: Record<string, HardwarePreset> = {};
-      sanitized.forEach((item: SanitizedAssetInput) => {
+      normResult.assets.forEach((item) => {
         const k = `${item.vendor} ${item.model}`;
         if (!grouped[k]) {
           grouped[k] = {
             vendor: item.vendor,
             model: item.model,
-            category: item.category,
-            installYear: item.installYear || 2016,
-            count: 1,
+            category: (item.role as any) || 'switch',
+            installYear: 2016,
+            count: item.qty || 1,
           };
         } else {
-          grouped[k].count++;
+          grouped[k].count += item.qty || 1;
         }
       });
       setSelectedPresets(Object.values(grouped));
@@ -578,6 +582,21 @@ export default function PartnerScopePage() {
                 {isNl ? 'Verwerk en Evalueer Gegevens' : 'Sanitize & Run Scope Evaluation'}
               </Button>
             </div>
+
+            {normalizationInfo && (
+              <div className="mt-4 rounded-lg border border-primary/20 bg-primary/5 p-3 flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-foreground">Source Detected:</span>
+                  <span className="rounded bg-primary/10 text-primary px-2 py-0.5 font-mono font-medium">
+                    {normalizationInfo.sourceDetected}
+                  </span>
+                  <span className="text-muted-foreground">({normalizationInfo.totalRowsProcessed} lines parsed)</span>
+                </div>
+                <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                  ✓ {normalizationInfo.sanitizationReport.replacedCount} sensitive IPs/MACs redacted client-side
+                </span>
+              </div>
+            )}
           </div>
         </motion.div>
       )}
@@ -585,6 +604,25 @@ export default function PartnerScopePage() {
       {/* Tab 4: Results, Commercial Plan & AI Copilot */}
       {activeTab === 'results' && (
         <motion.div {...revealVariants(0)} className="mt-6 space-y-6">
+          {/* Executive Export Bar */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-primary/30 bg-primary/10 p-4">
+            <div>
+              <span className="text-xs font-bold uppercase text-primary tracking-wider">
+                {isNl ? 'Directie & CISO Dossier' : 'Executive & CISO Board Dossier'}
+              </span>
+              <h3 className="text-base font-bold text-foreground">
+                {clientCompany} — CRA Modernization Business Case
+              </h3>
+            </div>
+            <Button
+              onClick={() => window.print()}
+              className="flex items-center gap-2 bg-primary text-primary-foreground shadow-md hover:opacity-90"
+            >
+              <Download className="h-4 w-4" />
+              <span>{isNl ? '1-Click Dossier Exporteren (PDF)' : '1-Click Export Executive Dossier (PDF)'}</span>
+            </Button>
+          </div>
+
           {/* Executive Metrics Overview */}
           <div className="grid gap-4 sm:grid-cols-4">
             <div className="rounded-xl border border-border bg-card p-4">
