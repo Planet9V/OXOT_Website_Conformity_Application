@@ -837,6 +837,107 @@
       "series_id": 8,
       "series_name": "Executive Liability, Penalties & Future Evolution",
       "canonical_code": "EP_8.05"
+    },
+    {
+      "id": "EP_9.01",
+      "season": 9,
+      "series_id": 9,
+      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
+      "canonical_code": "EP_9.01",
+      "episode_number": 51,
+      "title": "The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks",
+      "target_persona": "Industrial Cloud Architects, Edge Developers & IIoT Platform Leads",
+      "statutory_articles": [
+        "Article 3(2)",
+        "Article 21",
+        "Annex I Part I \u00a71"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_9.01_The_EdgetoCloud_Grey_Zone_When_Microservices__SOLO.md"
+    },
+    {
+      "id": "EP_9.02",
+      "season": 9,
+      "series_id": 9,
+      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
+      "canonical_code": "EP_9.02",
+      "episode_number": 52,
+      "title": "The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?",
+      "target_persona": "Critical Infrastructure CISOs, Utility Asset Owners & Risk Officers",
+      "statutory_articles": [
+        "Article 13(8)",
+        "Article 61",
+        "NIS2 Article 21"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_9.02_The_Defunct_OEM_Dilemma_Who_Patches_Brownfiel_SOLO.md"
+    },
+    {
+      "id": "EP_9.03",
+      "season": 9,
+      "series_id": 9,
+      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
+      "canonical_code": "EP_9.03",
+      "episode_number": 53,
+      "title": "Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act",
+      "target_persona": "Industrial AI Engineers, Robotics OEMs & Quality Automation Leads",
+      "statutory_articles": [
+        "CRA Annex I Part I \u00a72",
+        "EU AI Act Regulation (EU) 2024/1689"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_9.03_Autonomous_AI__Neural_Weights_on_the_Plant_Fl_SOLO.md"
+    },
+    {
+      "id": "EP_9.04",
+      "season": 9,
+      "series_id": 9,
+      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
+      "canonical_code": "EP_9.04",
+      "episode_number": 54,
+      "title": "The Open-Source Steward's Balance Sheet: How Foundations & Dual-License Models Survive CRA",
+      "target_persona": "Open Source Maintainers, Foundation Directors & Dual-Licensing Software Execs",
+      "statutory_articles": [
+        "Article 24",
+        "Recital 10",
+        "Recital 18"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_9.04_The_OpenSource_Stewards_Balance_Sheet_How_Fou_SOLO.md"
+    },
+    {
+      "id": "EP_9.05",
+      "season": 9,
+      "series_id": 9,
+      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
+      "canonical_code": "EP_9.05",
+      "episode_number": 55,
+      "title": "Cross-Border Supply Chain Sanctions: How EU Market Surveillance Intercepts Firmware with Backdoors",
+      "target_persona": "Global Sourcing Directors, Defense Contractors & Customs Compliance Officers",
+      "statutory_articles": [
+        "Article 43",
+        "Article 54",
+        "Annex I Part II"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_9.05_CrossBorder_Supply_Chain_Sanctions_How_EU_Mar_SOLO.md"
+    },
+    {
+      "id": "EP_9.06",
+      "season": 9,
+      "series_id": 9,
+      "series_name": "The CRA Frontier & Market Uncertainty Deep Dives",
+      "canonical_code": "EP_9.06",
+      "episode_number": 56,
+      "title": "The Decommissioning & End-of-Life Handover: Legal Liabilities When Retiring Critical OT",
+      "target_persona": "Plant Decommissioning Leads, Corporate M&A Officers & Environmental Asset Managers",
+      "statutory_articles": [
+        "Article 13(9)",
+        "Annex VII",
+        "Recital 32"
+      ],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes_solo/EP_9.06_The_Decommissioning__EndofLife_Handover_Legal_SOLO.md"
     }
   ]
 }
