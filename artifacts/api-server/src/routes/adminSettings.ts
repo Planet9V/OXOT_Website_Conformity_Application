@@ -302,8 +302,9 @@ router.post("/admin/settings/regulatory-news/run", requireAdmin, async (_req, re
 router.post("/admin/settings/llm/test-model", requireAdmin, async (req, res) => {
   try {
     const { modelId } = req.body || {};
-    const targetModel = typeof modelId === "string" && modelId ? modelId : "~deepseek/deepseek-v4-flash-latest";
-    const apiKey = await getDbOpenRouterApiKey();
+    const targetModel = typeof modelId === "string" && modelId ? modelId : "deepseek/deepseek-v4-flash-0731";
+    const llm = await getLlmConfig(false);
+    const apiKey = llm.openrouterApiKey || process.env.OPENROUTER_API_KEY;
 
     if (!apiKey) {
       res.status(400).json({ success: false, error: "No OpenRouter API Key configured" });

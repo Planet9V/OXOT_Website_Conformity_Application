@@ -605,10 +605,10 @@ export function ProductPortfolioPage() {
 
           <button
             type="button"
-            onClick={() => setActiveTab("psirt")}
+            onClick={() => setActiveTab("psirt-triage")}
             className={cn(
               "flex items-center justify-center gap-2 p-2.5 px-4 rounded-xl font-sans text-xs font-semibold transition-all border cursor-pointer",
-              activeTab === "psirt"
+              activeTab === "psirt-triage"
                 ? "bg-primary text-primary-foreground shadow-sm border-primary/40"
                 : "bg-muted/40 text-muted-foreground hover:bg-muted border-transparent"
             )}
@@ -1342,7 +1342,7 @@ Robot Vision Pro, CRA-IIoT-9920, Robotics, Class II, Airbus Defence, c.dubois@ai
               <div className="flex items-center justify-end gap-3">
                 <Button
                   type="button"
-                  onClick={handleBulkUpload}
+                  onClick={handleCommitAiParsedItems}
                   disabled={isImporting}
                   className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs gap-2 shadow-md"
                 >

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -144,8 +144,6 @@ const PRODUCTS_DATA: ProductCraProfile[] = [
     ],
   },
 ];
-
-import { useState, useEffect } from "react";
 
 export function CraAnalyticsSuite() {
   const [selectedProductId, setSelectedProductId] = useState<string>("all");

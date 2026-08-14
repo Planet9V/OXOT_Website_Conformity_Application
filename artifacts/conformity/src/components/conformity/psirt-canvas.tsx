@@ -42,11 +42,26 @@ export interface StepNode {
   title: string;
   role: string;
   assignee: string;
+  position?: string;
+  department?: string;
+  email?: string;
+  telephone?: string;
   sla: string;
   status: "completed" | "in_progress" | "pending";
   actionLabel: string;
   actionType: "early_warning" | "detailed_report" | "vex" | "advisory" | "customer_notice" | "final_report";
   description: string;
+}
+
+export interface SupplierScanItem {
+  id: string;
+  vendor: string;
+  component: string;
+  cveId: string;
+  cvss: number;
+  detectedAt: string;
+  status: "active" | "mitigated" | "investigating";
+  affectedProducts: string[];
 }
 
 const DEFAULT_FLOW_STEPS: StepNode[] = [

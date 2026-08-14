@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useGetConformityPortfolio, useGetAdminSession } from "@workspace/api-client-react";
+import { useGetConformityPortfolio, useGetAdminSession, type ConformityPortfolio } from "@workspace/api-client-react";
 import {
   AlertTriangle,
   ShieldCheck,
@@ -107,21 +107,29 @@ function LaunchpadCard({
   );
 }
 
-const MOCK_PORTFOLIO_DATA = {
-  totals: { assessments: 14, ready: 6, blocked: 2, inProgress: 6, draft: 0 },
-  risk: { openBlockers: 2, overdueDeadlines: 1, criticalFindings: 0 },
-  evidence: { evidenceCoverage: 88 },
-  regulations: [
-    { key: "cra", name: "EU Cyber Resilience Act", shortName: "CRA", requirementCount: 42 },
-    { key: "iec", name: "IEC 62443-4-2 Industrial Security", shortName: "IEC 62443", requirementCount: 38 },
-    { key: "ai_act", name: "EU AI Act High-Risk AI Systems", shortName: "AI Act", requirementCount: 24 },
+const MOCK_PORTFOLIO_DATA: ConformityPortfolio = {
+  generatedAt: new Date().toISOString(),
+  totals: { products: 10, assessments: 14, notStarted: 0, inProgress: 6, blocked: 2, readyForReview: 6 },
+  risk: { openBlockers: 2, highRiskGaps: 1, openIncidents: 0, overdueDeadlines: 1, dueSoonDeadlines: 2, silencedDeadlines: 0 },
+  evidence: {
+    requirementCoverage: 85,
+    evidenceCoverage: 88,
+    documentationCoverage: 75,
+    totalRequirements: 100,
+    resolvedRequirements: 85,
+    applicableRequirements: 90,
+    evidencedRequirements: 80,
+    totalSections: 20,
+    completeSections: 15,
+  },
+  grades: [
+    { grade: "A", count: 5 },
+    { grade: "B", count: 6 },
+    { grade: "C", count: 2 },
+    { grade: "D", count: 1 },
   ],
-  deadlineHorizon: [
-    { id: 1, label: "ENISA Vulnerability Disclosure Window", daysRemaining: 45, date: "2026-09-21" },
-    { id: 2, label: "CRA Article 10 Technical Documentation Audit", daysRemaining: 180, date: "2027-02-15" }
-  ],
-  coverage: { assessed: 88, total: 100 },
-  readinessGrades: { a: 5, b: 6, c: 2, d: 1 },
+  deadlines: [],
+  products: [],
 };
 
 const DEFAULT_FALLBACK_NEWS: NewsItem[] = [

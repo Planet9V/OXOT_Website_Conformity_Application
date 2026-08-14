@@ -944,10 +944,11 @@ router.post("/conformity/products/quick-start", requireAuth, async (req, res): P
         .insert(conformityAssessmentsTable)
         .values({
           productId: prod!.id,
-          name: `${name} - Baseline Assessment`,
+          regulationKey: "cra",
           status: "in_progress",
-          classification,
-          module: classification === "important_class_2" ? "module_b_plus_c" : "module_a",
+          currentStage: "classification",
+          classKey: classification,
+          routeKey: classification === "important_class_2" ? "module_b_plus_c" : "module_a",
         })
         .returning();
 

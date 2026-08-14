@@ -43,6 +43,7 @@ const ProductPortfolioPage = lazy(() =>
   import('./pages/product-portfolio').then((m) => ({ default: m.ProductPortfolioPage })),
 );
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
+const PartnerHubPage = lazy(() => import('./pages/partner-hub'));
 
 /** Minimal loading state shown only while a lazy chunk loads. */
 function RouteLoadingFallback() {
@@ -172,6 +173,7 @@ function ShellRoutes() {
             </ErrorBoundary>
           </Route>
           <Route path="/team" component={Team} />
+          <Route path="/partner-hub" component={PartnerHubPage} />
           <Route>
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center justify-center">
               <h2 className="text-2xl font-bold mb-2">404 — Page not found</h2>

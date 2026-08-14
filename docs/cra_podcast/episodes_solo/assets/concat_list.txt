@@ -1,0 +1,3 @@
+file '/Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/assets/MASTER_INTRO_WITH_MUSIC.mp3'
+file '/Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/assets/EP_1.01_body_voice.mp3'
+file '/Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/assets/MASTER_OUTRO_WITH_MUSIC.mp3'

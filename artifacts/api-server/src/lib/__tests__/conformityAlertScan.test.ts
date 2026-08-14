@@ -50,10 +50,12 @@ let originalConfig: ConformityAlertsConfig | null | undefined;
 
 async function setConfig(cfg: ConformityAlertsConfig): Promise<void> {
   const row = await getAppSettings();
-  await db
-    .update(appSettingsTable)
-    .set({ conformityAlertsConfig: cfg })
-    .where(eq(appSettingsTable.id, row.id));
+  if (row) {
+    await db
+      .update(appSettingsTable)
+      .set({ conformityAlertsConfig: cfg })
+      .where(eq(appSettingsTable.id, row.id));
+  }
 }
 
 /** sendEmail calls (since last mockClear) about THIS test's incident. */
@@ -63,7 +65,7 @@ function myAlertSends() {
 
 beforeAll(async () => {
   const settings = await getAppSettings();
-  originalConfig = settings.conformityAlertsConfig;
+  originalConfig = settings?.conformityAlertsConfig;
 
   const [product] = await db
     .insert(conformityProductsTable)
@@ -104,10 +106,12 @@ afterAll(async () => {
     .where(gte(conformityAlertStateTable.createdAt, testStartedAt));
   await db.delete(conformityProductsTable).where(eq(conformityProductsTable.id, productId));
   const row = await getAppSettings();
-  await db
-    .update(appSettingsTable)
-    .set({ conformityAlertsConfig: originalConfig ?? {} })
-    .where(eq(appSettingsTable.id, row.id));
+  if (row) {
+    await db
+      .update(appSettingsTable)
+      .set({ conformityAlertsConfig: originalConfig ?? {} })
+      .where(eq(appSettingsTable.id, row.id));
+  }
 });
 
 beforeEach(() => {

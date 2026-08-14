@@ -1,0 +1,182 @@
+{
+  "series_title": "The Cyber Resilience Act Briefing",
+  "total_episodes": 16,
+  "episodes": [
+    {
+      "id": "EP_1.01",
+      "season": 1,
+      "episode_number": 1,
+      "title": "Is Your Product In Scope? Decoding Article 2 & Remote Data Processing",
+      "slug": "EP_1.01_Is_Your_Product_In_Scope",
+      "target_persona": "Software & Hardware OEMs",
+      "statutory_articles": ["Article 2", "Article 3", "Recitals 4-7"],
+      "status": "completed",
+      "file_path": "docs/cra_podcast/episodes/EP_1.01_Is_Your_Product_In_Scope.md"
+    },
+    {
+      "id": "EP_1.02",
+      "season": 1,
+      "episode_number": 2,
+      "title": "Uncritical vs. Class I vs. Class II: Navigating Annex III Taxonomies",
+      "slug": "EP_1.02_Uncritical_vs_Class_I_Class_II",
+      "target_persona": "Hardware OEMs & Component Vendors",
+      "statutory_articles": ["Article 6", "Annex III", "Annex IV"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_1.02_Uncritical_vs_Class_I_Class_II.md"
+    },
+    {
+      "id": "EP_1.03",
+      "season": 1,
+      "episode_number": 3,
+      "title": "Open Source Software & The CRA: What Commercial Stewards Must Know",
+      "slug": "EP_1.03_Open_Source_Software_and_The_CRA",
+      "target_persona": "SaaS & Open Source Maintainers",
+      "statutory_articles": ["Recital 10", "Article 13"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_1.03_Open_Source_Software_and_The_CRA.md"
+    },
+    {
+      "id": "EP_1.04",
+      "season": 1,
+      "episode_number": 4,
+      "title": "Substantial Modifications: When Does a Patch Trigger Re-certification?",
+      "slug": "EP_1.04_Substantial_Modifications_Patching",
+      "target_persona": "System Integrators & Maintenance Engineers",
+      "statutory_articles": ["Article 18", "Recital 24"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_1.04_Substantial_Modifications_Patching.md"
+    },
+    {
+      "id": "EP_2.01",
+      "season": 2,
+      "episode_number": 1,
+      "title": "Secure by Default: Demystifying Annex I Section 1 Essential Requirements",
+      "slug": "EP_2.01_Secure_by_Default_Annex_I",
+      "target_persona": "Software Developers & Product Security Leads",
+      "statutory_articles": ["Annex I Part I", "Article 13"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_2.01_Secure_by_Default_Annex_I.md"
+    },
+    {
+      "id": "EP_2.02",
+      "season": 2,
+      "episode_number": 2,
+      "title": "The 24h/72h Reporting Clock: Article 14 Incident Notification to ENISA & CSIRTs",
+      "slug": "EP_2.02_Article_14_Incident_Notification",
+      "target_persona": "PSIRT Leads & CISOs",
+      "statutory_articles": ["Article 14", "Recital 54"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_2.02_Article_14_Incident_Notification.md"
+    },
+    {
+      "id": "EP_2.03",
+      "season": 2,
+      "episode_number": 3,
+      "title": "SBOMs in Practice: Machine-Readable Dependency Tracking (CycloneDX/SPDX)",
+      "slug": "EP_2.03_SBOMs_in_Practice",
+      "target_persona": "Software Engineers & DevSecOps",
+      "statutory_articles": ["Annex I Part II", "Article 13(1)"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_2.03_SBOMs_in_Practice.md"
+    },
+    {
+      "id": "EP_2.04",
+      "season": 2,
+      "episode_number": 4,
+      "title": "Support Periods & EOL: Defining Mandatory Patching Lifecycles",
+      "slug": "EP_2.04_Support_Periods_and_EOL",
+      "target_persona": "Product Managers & Engineering Leads",
+      "statutory_articles": ["Article 13(8)", "Article 10"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_2.04_Support_Periods_and_EOL.md"
+    },
+    {
+      "id": "EP_3.01",
+      "season": 3,
+      "episode_number": 1,
+      "title": "Self-Assessment vs. Third-Party Audits: Choosing Module A, B+C, or H",
+      "slug": "EP_3.01_Self_Assessment_vs_Third_Party_Audits",
+      "target_persona": "Compliance Managers & Regulatory Leads",
+      "statutory_articles": ["Article 24", "Annex VI"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_3.01_Self_Assessment_vs_Third_Party_Audits.md"
+    },
+    {
+      "id": "EP_3.02",
+      "season": 3,
+      "episode_number": 2,
+      "title": "The €15,000,000 Risk: Article 61 Fines & Executive Liability Explained",
+      "slug": "EP_3.02_Article_61_Fines_Executive_Liability",
+      "target_persona": "CISOs & Executive Leadership",
+      "statutory_articles": ["Article 61", "Article 62"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_3.02_Article_61_Fines_Executive_Liability.md"
+    },
+    {
+      "id": "EP_3.03",
+      "season": 3,
+      "episode_number": 3,
+      "title": "CE Marking Mechanics: Technical Documentation & EU Declaration of Conformity",
+      "slug": "EP_3.03_CE_Marking_Mechanics",
+      "target_persona": "Quality Assurance & Compliance Engineers",
+      "statutory_articles": ["Article 25", "Article 28", "Annex V"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_3.03_CE_Marking_Mechanics.md"
+    },
+    {
+      "id": "EP_3.04",
+      "season": 3,
+      "episode_number": 4,
+      "title": "Notified Bodies & Testing Labs: Avoiding the 2026 Conformity Bottleneck",
+      "slug": "EP_3.04_Notified_Bodies_Testing_Labs",
+      "target_persona": "Hardware OEMs & Lab Directors",
+      "statutory_articles": ["Articles 29-39"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_3.04_Notified_Bodies_Testing_Labs.md"
+    },
+    {
+      "id": "EP_4.01",
+      "season": 4,
+      "episode_number": 1,
+      "title": "Harmonised European Standards: How Presumption of Conformity Works",
+      "slug": "EP_4.01_Harmonised_European_Standards",
+      "target_persona": "Standards Engineers & Regulatory Officers",
+      "statutory_articles": ["Article 27", "CEN/CENELEC JTC 13"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_4.01_Harmonised_European_Standards.md"
+    },
+    {
+      "id": "EP_4.02",
+      "season": 4,
+      "episode_number": 2,
+      "title": "CRA meets NIS2 & EU AI Act: Navigating Overlapping EU Regulations",
+      "slug": "EP_4.02_CRA_meets_NIS2_and_AI_Act",
+      "target_persona": "Group CISOs & Legal Counsel",
+      "statutory_articles": ["Article 2(4)", "NIS2 Art 21", "AI Act Art 15"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_4.02_CRA_meets_NIS2_and_AI_Act.md"
+    },
+    {
+      "id": "EP_4.03",
+      "season": 4,
+      "episode_number": 3,
+      "title": "Market Surveillance & Recalls: What Happens When a Product is Non-Compliant",
+      "slug": "EP_4.03_Market_Surveillance_and_Recalls",
+      "target_persona": "Distributors, Importers & Supply Chain Directors",
+      "statutory_articles": ["Articles 43-54"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_4.03_Market_Surveillance_and_Recalls.md"
+    },
+    {
+      "id": "EP_4.04",
+      "season": 4,
+      "episode_number": 4,
+      "title": "Global Impact: How Non-EU Manufacturers Selling into the EU Must Adapt",
+      "slug": "EP_4.04_Global_Impact_Non_EU_Manufacturers",
+      "target_persona": "Global Sales & International Trade Directors",
+      "statutory_articles": ["Article 19", "Article 20"],
+      "status": "pending",
+      "file_path": "docs/cra_podcast/episodes/EP_4.04_Global_Impact_Non_EU_Manufacturers.md"
+    }
+  ]
+}

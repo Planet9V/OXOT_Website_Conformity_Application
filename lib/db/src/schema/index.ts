@@ -87,3 +87,7 @@ export * from "./conformityAiModels";
 export * from "./conformityBomDifferentials";
 export * from "./conformityProductRevisions";
 export * from "./productPortfolio";
+// Partner / SI CRA Modernization & Spare Parts Engine
+export * from "./partnerSpareParts";
+export * from "./networkScopeAssessments";
+export * from "./supplierCompliance";

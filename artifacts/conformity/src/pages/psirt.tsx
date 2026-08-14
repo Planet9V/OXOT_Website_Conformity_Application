@@ -52,8 +52,8 @@ import {
   Tooltip,
 } from "recharts";
 
-import { PsirtCanvas, SupplierScanItem } from "@/components/conformity/psirt-canvas";
-import { PsirtSupplierIntel } from "@/components/conformity/psirt-supplier-intel";
+import { PsirtCanvas } from "@/components/conformity/psirt-canvas";
+import { PsirtSupplierIntel, type SupplierScanItem } from "@/components/conformity/psirt-supplier-intel";
 import { PsirtSbomKev } from "@/components/conformity/psirt-sbom-kev";
 import { PsirtAdvisories } from "@/components/conformity/psirt-advisories";
 

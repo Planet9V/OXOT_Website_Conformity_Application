@@ -4,7 +4,7 @@ import {
   ReindexContentResponse,
 } from "@workspace/api-zod";
 import { requireAdmin } from "../lib/adminAuth";
-import { getIndexStatus, scheduleReindex } from "../lib/rag";
+import { getIndexStatus, scheduleReindex, runReindexLoop } from "../lib/rag";
 
 const router: IRouter = Router();
 
@@ -20,8 +20,6 @@ router.get("/admin/content/index-status", requireAdmin, async (req, res): Promis
     res.status(500).json({ error: "Failed to read index status" });
   }
 });
-
-import { getIndexStatus, runReindexLoop } from "../lib/rag";
 
 // Manually trigger a full rebuild. Runs synchronously so the response reports the newly indexed count.
 router.post("/admin/content/reindex", requireAdmin, async (req, res): Promise<void> => {

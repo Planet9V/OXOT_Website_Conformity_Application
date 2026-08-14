@@ -390,12 +390,12 @@ productPortfolioRouter.get("/customers", requireAuth, async (req, res) => {
   }
 });
 
-// 3. POST /api/portfolio/upload-bulk - Mass CSV / Markdown table bulk parser & upsert
-productPortfolioRouter.post("/upload-bulk", requireAuth, async (req, res) => {
+productPortfolioRouter.post("/upload-bulk", requireAuth, async (req, res): Promise<void> => {
   try {
     const { fileContent, fileType } = req.body;
     if (!fileContent || typeof fileContent !== "string") {
-      return res.status(400).json({ success: false, error: "Missing or invalid fileContent string" });
+      res.status(400).json({ success: false, error: "Missing or invalid fileContent string" });
+      return;
     }
 
     let parsedRows: Array<{
@@ -449,7 +449,8 @@ productPortfolioRouter.post("/upload-bulk", requireAuth, async (req, res) => {
     }
 
     if (parsedRows.length === 0) {
-      return res.status(400).json({ success: false, error: "Could not parse any valid product rows from uploaded file content." });
+      res.status(400).json({ success: false, error: "Could not parse any valid product rows from uploaded file content." });
+      return;
     }
 
     // Insert parsed records into Postgres DB
@@ -525,9 +526,9 @@ productPortfolioRouter.post("/upload-bulk", requireAuth, async (req, res) => {
 });
 
 // 4. PUT /api/portfolio/customers/:id - Update enterprise customer details & deployment
-productPortfolioRouter.put("/customers/:id", requireAuth, async (req, res) => {
+productPortfolioRouter.put("/customers/:id", requireAuth, async (req, res): Promise<void> => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = parseInt(String(req.params.id), 10);
     const { orgName, contactName, contactTitle, contactEmail, region, cisaSector, deploymentId, productId, deployedVersion, quantity, isOutdatedVersion } = req.body;
 
     // Update customer table
@@ -584,12 +585,13 @@ productPortfolioRouter.put("/customers/:id", requireAuth, async (req, res) => {
 });
 
 // 5. POST /api/portfolio/customers - Create new customer and optional deployment
-productPortfolioRouter.post("/customers", requireAuth, async (req, res) => {
+productPortfolioRouter.post("/customers", requireAuth, async (req, res): Promise<void> => {
   try {
     const { orgName, contactName, contactTitle, contactEmail, region, cisaSector, productId, deployedVersion, quantity } = req.body;
 
     if (!orgName || !contactEmail) {
-      return res.status(400).json({ success: false, error: "orgName and contactEmail are required" });
+      res.status(400).json({ success: false, error: "orgName and contactEmail are required" });
+      return;
     }
 
     // Sync sequence generator to max(id) to avoid duplicate primary key collisions
@@ -636,9 +638,9 @@ productPortfolioRouter.post("/customers", requireAuth, async (req, res) => {
 });
 
 // 6. DELETE /api/portfolio/customers/:id - Delete customer and deployments
-productPortfolioRouter.delete("/customers/:id", requireAuth, async (req, res) => {
+productPortfolioRouter.delete("/customers/:id", requireAuth, async (req, res): Promise<void> => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = parseInt(String(req.params.id), 10);
     await db.delete(customerDeploymentsTable).where(eq(customerDeploymentsTable.customerId, id));
     await db.delete(enterpriseCustomersTable).where(eq(enterpriseCustomersTable.id, id));
     res.json({ success: true, message: `Customer #${id} deleted.` });
@@ -648,11 +650,12 @@ productPortfolioRouter.delete("/customers/:id", requireAuth, async (req, res) =>
 });
 
 // 7. POST /api/portfolio/ai-parse-file - Prescriptive AI Parsing for raw text (MD, CSV, Excel text)
-productPortfolioRouter.post("/ai-parse-file", requireAuth, async (req, res) => {
+productPortfolioRouter.post("/ai-parse-file", requireAuth, async (req, res): Promise<void> => {
   try {
     const { rawText, fileName } = req.body;
     if (!rawText || typeof rawText !== "string") {
-      return res.status(400).json({ success: false, error: "rawText string is required" });
+      res.status(400).json({ success: false, error: "rawText string is required" });
+      return;
     }
 
     const lines = rawText.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
@@ -703,12 +706,12 @@ productPortfolioRouter.post("/ai-parse-file", requireAuth, async (req, res) => {
 });
 
 // 8. GET /api/portfolio/psirt-impact/:cveId - Returns impacted products and customer accounts
-productPortfolioRouter.get("/psirt-impact/:cveId", requireAuth, async (req, res) => {
+productPortfolioRouter.get("/psirt-impact/:cveId", requireAuth, async (req, res): Promise<void> => {
   try {
-    const { cveId } = req.params;
+    const cveId = String(req.params.cveId || "");
     const products = await db.select().from(craProductsTable);
     const impactedProducts = products.filter(
-      (p) => p.hasActivePsirtIncident || (cveId && p.activeIncidentCve.toLowerCase().includes(cveId.toLowerCase()))
+      (p) => p.hasActivePsirtIncident || (cveId && (p.activeIncidentCve || "").toLowerCase().includes(cveId.toLowerCase()))
     );
 
     const deployments = await db.select().from(customerDeploymentsTable);
@@ -749,12 +752,12 @@ productPortfolioRouter.get("/psirt-impact/:cveId", requireAuth, async (req, res)
 // ============================================================================
 
 // 9. GET /api/portfolio/products/:id/documents - List paginated documents for a product
-productPortfolioRouter.get("/products/:id/documents", requireAuth, async (req, res) => {
+productPortfolioRouter.get("/products/:id/documents", requireAuth, async (req, res): Promise<void> => {
   try {
-    const productId = parseInt(req.params.id, 10);
-    const page = Math.max(1, parseInt(req.query.page as string, 10) || 1);
-    const limit = Math.max(1, parseInt(req.query.limit as string, 10) || 20);
-    const category = req.query.category as string;
+    const productId = parseInt(String(req.params.id), 10);
+    const page = Math.max(1, parseInt(String(req.query.page || "1"), 10) || 1);
+    const limit = Math.max(1, parseInt(String(req.query.limit || "20"), 10) || 20);
+    const category = typeof req.query.category === "string" ? req.query.category : undefined;
 
     // Reset sequence if needed
     try {
@@ -801,9 +804,9 @@ productPortfolioRouter.get("/products/:id/documents", requireAuth, async (req, r
 });
 
 // 10. POST /api/portfolio/products/:id/documents - Upload & register product document with SHA-256 provenance
-productPortfolioRouter.post("/products/:id/documents", requireAuth, async (req, res) => {
+productPortfolioRouter.post("/products/:id/documents", requireAuth, async (req, res): Promise<void> => {
   try {
-    const productId = parseInt(req.params.id, 10);
+    const productId = parseInt(String(req.params.id), 10);
     const {
       title,
       docCategory,
@@ -816,7 +819,8 @@ productPortfolioRouter.post("/products/:id/documents", requireAuth, async (req, 
     } = req.body;
 
     if (!title || !originalFileName) {
-      return res.status(400).json({ success: false, error: "title and originalFileName are required" });
+      res.status(400).json({ success: false, error: "title and originalFileName are required" });
+      return;
     }
 
     const contentStr = fileContentText || `Official Statutory Compliance Document for Product #${productId}: ${title}`;
@@ -870,16 +874,17 @@ productPortfolioRouter.post("/products/:id/documents", requireAuth, async (req, 
 });
 
 // 11. DELETE /api/portfolio/documents/:docId - Remove document record and file
-productPortfolioRouter.delete("/documents/:docId", requireAuth, async (req, res) => {
+productPortfolioRouter.delete("/documents/:docId", requireAuth, async (req, res): Promise<void> => {
   try {
-    const docId = parseInt(req.params.docId, 10);
+    const docId = parseInt(String(req.params.docId), 10);
     const [existing] = await db
       .select()
       .from(productDocumentsTable)
       .where(eq(productDocumentsTable.id, docId));
 
     if (!existing) {
-      return res.status(404).json({ success: false, error: "Document not found" });
+      res.status(404).json({ success: false, error: "Document not found" });
+      return;
     }
 
     // Delete database record
@@ -904,28 +909,31 @@ productPortfolioRouter.delete("/documents/:docId", requireAuth, async (req, res)
 });
 
 // 12. GET /api/portfolio/documents/:docId/download - Stream/download file attachment
-productPortfolioRouter.get("/documents/:docId/download", requireAuth, async (req, res) => {
+productPortfolioRouter.get("/documents/:docId/download", requireAuth, async (req, res): Promise<void> => {
   try {
-    const docId = parseInt(req.params.docId, 10);
+    const docId = parseInt(String(req.params.docId), 10);
     const [existing] = await db
       .select()
       .from(productDocumentsTable)
       .where(eq(productDocumentsTable.id, docId));
 
     if (!existing) {
-      return res.status(404).json({ success: false, error: "Document not found" });
+      res.status(404).json({ success: false, error: "Document not found" });
+      return;
     }
 
     res.setHeader("Content-Type", existing.mimeType || "application/octet-stream");
     res.setHeader("Content-Disposition", `attachment; filename="${existing.originalFileName}"`);
 
     if (existing.fileContentText) {
-      return res.send(existing.fileContentText);
+      res.send(existing.fileContentText);
+      return;
     }
 
     const diskPath = path.join(process.cwd(), existing.storagePath);
     if (fs.existsSync(diskPath)) {
-      return res.sendFile(diskPath);
+      res.sendFile(diskPath);
+      return;
     }
 
     res.status(404).json({ success: false, error: "Physical file binary not found on disk" });

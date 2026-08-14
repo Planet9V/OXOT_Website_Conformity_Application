@@ -73,9 +73,9 @@ auditorRouter.get("/conformity/auditor/workspace", async (req, res): Promise<voi
       },
       assessment: {
         id: assessment.id,
-        name: assessment.name,
-        classification: assessment.classification,
-        module: assessment.module,
+        regulationKey: assessment.regulationKey,
+        classKey: assessment.classKey,
+        routeKey: assessment.routeKey,
         status: assessment.status,
       },
       product,

@@ -104,7 +104,16 @@ function TwitterEmbed({ handle, loadingPosts }: { handle: string; loadingPosts: 
   );
 }
 
-function LinkedInCard({ url, t }: { url: string; t: (typeof copy)['en'] }) {
+interface SocialFeedCopy {
+  loadingPosts: string;
+  followLinkedInTitle: string;
+  followLinkedInBody: string;
+  followLinkedInCta: string;
+  heading: string;
+  subheading: string;
+}
+
+function LinkedInCard({ url, t }: { url: string; t: SocialFeedCopy }) {
   return (
     <div className="w-full rounded-xl border bg-card p-6 flex flex-col items-center gap-4 text-center">
       <div className="w-12 h-12 rounded-full bg-[#0077B5] flex items-center justify-center">

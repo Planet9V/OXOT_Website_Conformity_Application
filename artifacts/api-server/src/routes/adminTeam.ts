@@ -175,7 +175,7 @@ router.post("/admin/team", requireAdmin, async (req, res): Promise<void> => {
 
 router.patch("/admin/team/:id", requireAdmin, async (req, res): Promise<void> => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const id = parseInt(String(req.params.id), 10);
     const body = req.body;
     const [existing] = await db
       .select()

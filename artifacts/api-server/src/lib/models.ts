@@ -89,7 +89,7 @@ export async function syncLiveOpenRouterToDb(): Promise<ModelCatalogEntry[]> {
     });
 
     if (res.ok) {
-      const body = await res.json();
+      const body = (await res.json()) as any;
       const items = body.data || [];
 
       if (Array.isArray(items) && items.length > 0) {
@@ -228,7 +228,7 @@ export async function getLlmConfig(masked = true): Promise<LlmConfig> {
     chatModel: rawConfig.chatModel || REASONING_MODEL,
     briefModel: rawConfig.briefModel || REASONING_MODEL,
     longContextModel: rawConfig.longContextModel || REASONING_MODEL,
-    embeddingsModel: rawConfig.embeddingsModel || EMBEDDING_MODEL,
+    embeddingModel: rawConfig.embeddingModel || EMBEDDING_MODEL,
     searchModel: rawConfig.searchModel || REASONING_MODEL,
     translationModel: rawConfig.translationModel || REASONING_MODEL,
   };
@@ -249,7 +249,7 @@ export async function saveLlmConfig(config: Partial<LlmConfig>): Promise<LlmConf
     chatModel: config.chatModel ?? existingLlm.chatModel ?? REASONING_MODEL,
     briefModel: config.briefModel ?? existingLlm.briefModel ?? REASONING_MODEL,
     longContextModel: config.longContextModel ?? existingLlm.longContextModel ?? REASONING_MODEL,
-    embeddingsModel: config.embeddingsModel ?? existingLlm.embeddingsModel ?? EMBEDDING_MODEL,
+    embeddingModel: config.embeddingModel ?? existingLlm.embeddingModel ?? EMBEDDING_MODEL,
     searchModel: config.searchModel ?? existingLlm.searchModel ?? REASONING_MODEL,
     translationModel: config.translationModel ?? existingLlm.translationModel ?? REASONING_MODEL,
   };
@@ -272,10 +272,15 @@ export async function saveLlmConfig(config: Partial<LlmConfig>): Promise<LlmConf
   return getLlmConfig(true);
 }
 
-export function resolveGenerationModel(config: LlmConfig, role: keyof LlmConfig): string {
-  const selected = config[role];
-  if (typeof selected === "string" && selected && !selected.includes("••••")) {
-    return selected;
+export function resolveGenerationModel(configOrModel?: string | LlmConfig, role?: keyof LlmConfig): string {
+  if (typeof configOrModel === "string" && configOrModel && !configOrModel.includes("••••")) {
+    return configOrModel;
+  }
+  if (configOrModel && typeof configOrModel === "object" && role) {
+    const selected = configOrModel[role];
+    if (typeof selected === "string" && selected && !selected.includes("••••")) {
+      return selected;
+    }
   }
   return REASONING_MODEL;
 }

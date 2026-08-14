@@ -229,11 +229,11 @@ function maskConformityAlerts(
 export async function getIntegrationSettingsMasked(): Promise<MaskedIntegrationSettings> {
   const row = await getAppSettings();
   return {
-    email: maskEmail(row.emailConfig ?? {}),
-    linkedin: maskLinkedin(row.linkedinConfig ?? {}),
-    x: maskX(row.xConfig ?? {}),
-    slack: maskSlack(row.slackConfig ?? {}),
-    conformityAlerts: maskConformityAlerts(row.conformityAlertsConfig ?? {}, row.emailConfig ?? {}),
+    email: maskEmail(row?.emailConfig ?? {}),
+    linkedin: maskLinkedin(row?.linkedinConfig ?? {}),
+    x: maskX(row?.xConfig ?? {}),
+    slack: maskSlack(row?.slackConfig ?? {}),
+    conformityAlerts: maskConformityAlerts(row?.conformityAlertsConfig ?? {}, row?.emailConfig ?? {}),
   };
 }
 
@@ -257,10 +257,18 @@ function mergePreservingSecrets<T extends Record<string, unknown>>(
   return merged;
 }
 
+async function requireAppSettings(): Promise<import("@workspace/db").AppSettingsRow> {
+  const row = await getAppSettings();
+  if (!row) {
+    throw new Error("Application settings have not been initialized.");
+  }
+  return row;
+}
+
 // ---------- Save (returns the full masked settings) ----------
 
 export async function saveEmailConfig(patch: Partial<EmailConfig>): Promise<MaskedIntegrationSettings> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const merged = mergePreservingSecrets(row.emailConfig ?? {}, patch, ["smtpPassword"]);
   await db.update(appSettingsTable).set({ emailConfig: merged }).where(eq(appSettingsTable.id, row.id));
   return getIntegrationSettingsMasked();
@@ -269,7 +277,7 @@ export async function saveEmailConfig(patch: Partial<EmailConfig>): Promise<Mask
 export async function saveLinkedinConfig(
   patch: Partial<LinkedinConfig>,
 ): Promise<MaskedIntegrationSettings> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const merged = mergePreservingSecrets(row.linkedinConfig ?? {}, patch, [
     "accessToken",
     "clientSecret",
@@ -287,7 +295,7 @@ export async function saveLinkedinToken(
   accessToken: string,
   expiresAt: number | null,
 ): Promise<void> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const merged: LinkedinConfig = {
     ...(row.linkedinConfig ?? {}),
     accessToken,
@@ -311,7 +319,7 @@ export async function claimLinkedinExpiryWarning(
   key: string,
   when: number,
 ): Promise<boolean> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const res = await db.execute(sql`
     update app_settings
     set linkedin_config = jsonb_set(
@@ -326,9 +334,9 @@ export async function claimLinkedinExpiryWarning(
       true
     )
     where id = ${row.id}
-      and coalesce(linkedin_config->>'lastExpiryWarningKey', '') is distinct from ${key}
+      and (linkedin_config->>'lastExpiryWarningKey' is distinct from ${key})
   `);
-  return (res.rowCount ?? 0) > 0;
+  return ((res as { rowCount?: number }).rowCount ?? 0) > 0;
 }
 
 /**
@@ -340,7 +348,7 @@ export async function releaseLinkedinExpiryWarning(
   key: string,
   previousKey: string | null,
 ): Promise<void> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   await db.execute(sql`
     update app_settings
     set linkedin_config = jsonb_set(
@@ -369,7 +377,7 @@ export async function getAlertRecipient(): Promise<string | null> {
 }
 
 export async function saveXConfig(patch: Partial<XConfig>): Promise<MaskedIntegrationSettings> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const merged = mergePreservingSecrets(row.xConfig ?? {}, patch, [
     "apiKey",
     "apiSecret",
@@ -381,7 +389,7 @@ export async function saveXConfig(patch: Partial<XConfig>): Promise<MaskedIntegr
 }
 
 export async function saveSlackConfig(patch: Partial<SlackConfig>): Promise<MaskedIntegrationSettings> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const merged = mergePreservingSecrets(row.slackConfig ?? {}, patch, ["webhookUrl"]);
   await db.update(appSettingsTable).set({ slackConfig: merged }).where(eq(appSettingsTable.id, row.id));
   return getIntegrationSettingsMasked();
@@ -391,7 +399,7 @@ export async function saveSlackConfig(patch: Partial<SlackConfig>): Promise<Mask
 export async function saveConformityAlertsConfig(
   patch: Partial<ConformityAlertsConfig>,
 ): Promise<MaskedIntegrationSettings> {
-  const row = await getAppSettings();
+  const row = await requireAppSettings();
   const merged = mergePreservingSecrets(row.conformityAlertsConfig ?? {}, patch, []);
   await db
     .update(appSettingsTable)
@@ -414,6 +422,7 @@ export async function recordIntegrationHealth(
 ): Promise<void> {
   try {
     const row = await getAppSettings();
+    if (!row) return;
     const now = Date.now();
     const buildHealth = (prev: IntegrationHealth | undefined): IntegrationHealth => {
       const prevHealth = prev ?? {};

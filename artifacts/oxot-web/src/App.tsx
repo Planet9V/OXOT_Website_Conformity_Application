@@ -26,6 +26,7 @@ import StatutoryWorkbench from '@/pages/statutory-workbench';
 import KnowledgeHubPage from '@/pages/knowledge-hub';
 import RegulatoryNewsPage from '@/pages/regulatory-news';
 import CraCheckPage from '@/pages/cra-check';
+import PartnerScopePage from '@/pages/partner-scope';
 import CraHomePage from '@/pages/home';
 import DemoPage from '@/pages/demo';
 import PricingPage from '@/pages/pricing';
@@ -155,6 +156,18 @@ function PublicRoutes() {
       </Route>
       <Route path="/cra-check">
         {() => <PublicRoute component={CraCheckPage} />}
+      </Route>
+      <Route path="/partner-scope">
+        {() => <PublicRoute component={PartnerScopePage} />}
+      </Route>
+      <Route path="/partner-scope/">
+        {() => <PublicRoute component={PartnerScopePage} />}
+      </Route>
+      <Route path="/axians">
+        {() => <PublicRoute component={PartnerScopePage} />}
+      </Route>
+      <Route path="/axians/">
+        {() => <PublicRoute component={PartnerScopePage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}

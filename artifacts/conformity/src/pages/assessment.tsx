@@ -391,11 +391,11 @@ export default function Assessment() {
         </TabsContent>
 
         <TabsContent value="boms">
-          <BomVaultPanel assessmentId={id} />
+          <BomVaultPanel assessmentId={id} productName={detail?.product.name || "Product"} />
         </TabsContent>
 
         <TabsContent value="flows">
-          <FlowRunnerPanel assessmentId={id} flowKey={flow?.key} />
+          <FlowRunnerPanel assessmentId={id} />
         </TabsContent>
 
         <TabsContent value="provenance">
@@ -403,11 +403,11 @@ export default function Assessment() {
         </TabsContent>
 
         <TabsContent value="reports">
-          <ReportsPanel assessmentId={id} meta={artifactMeta} />
+          <ReportsPanel assessmentId={id} />
         </TabsContent>
       </Tabs>
 
-      <AssistantDock assessmentId={id} />
+      <AssistantDock assessmentId={id} productName={detail?.product.name || "Product"} />
     </div>
   );
 }
