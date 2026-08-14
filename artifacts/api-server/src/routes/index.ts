@@ -42,9 +42,11 @@ import { craWikiRouter } from "./craWikiRoutes";
 import { harmonisedStandardsRouter } from "./harmonisedStandardsRoutes";
 import { openSourceStewardRouter } from "./openSourceStewardRoutes";
 import { importerArchiveRouter } from "./importerArchiveRoutes";
+import { podcastStudioRouter } from "./podcastStudio";
 
 const router: IRouter = Router();
 
+router.use(podcastStudioRouter);
 router.use("/portfolio", productPortfolioRouter);
 router.use("/ecosystem", ecosystemRouter);
 router.use("/wiki/cra", craWikiRouter);

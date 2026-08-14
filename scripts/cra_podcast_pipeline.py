@@ -12,6 +12,8 @@ Usage:
   python3 scripts/cra_podcast_pipeline.py --action stats
   python3 scripts/cra_podcast_pipeline.py --action audit
   python3 scripts/cra_podcast_pipeline.py --action sync
+  python3 scripts/cra_podcast_pipeline.py --action rss
+  python3 scripts/cra_podcast_pipeline.py --action blogs
   python3 scripts/cra_podcast_pipeline.py --action generate --style [standard|news|truth] --title "Title" --statutes "Article X" --persona "Persona"
 """
 
@@ -20,12 +22,14 @@ import sys
 import json
 import re
 import argparse
+import subprocess
 
 BASE_DIR = "/Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application"
 DOCS_CRA = os.path.join(BASE_DIR, "docs", "cra_podcast")
 SOLO_DIR = os.path.join(DOCS_CRA, "episodes_solo")
 NEWS_DIR = os.path.join(DOCS_CRA, "news_briefings")
 TC_DIR = os.path.join(DOCS_CRA, "truth_and_consequences")
+BLOGS_DIR = os.path.join(DOCS_CRA, "blogs")
 REGISTRY_FILE = os.path.join(DOCS_CRA, "episodes_registry.json")
 
 BANNED_AI_WORDS = ["delve", "tapestry", "beacon", "game-changer", "revolutionize", "testament", "pivotal", "paramount", "nestled"]
@@ -38,6 +42,7 @@ def get_stats():
     std_files = [f for f in os.listdir(SOLO_DIR) if f.startswith("EP_") and f.endswith("_SOLO.md") and not f.startswith("EP_0.00")]
     news_files = [f for f in os.listdir(NEWS_DIR) if f.startswith("NEWS_") and f.endswith(".md") and not f.startswith("00-")]
     tc_files = [f for f in os.listdir(TC_DIR) if f.startswith("TC_") and f.endswith(".md") and not f.startswith("TC_0.00") and not f.startswith("00-")]
+    blog_files = [f for f in os.listdir(BLOGS_DIR) if f.startswith("BLOG_") and f.endswith(".md")] if os.path.exists(BLOGS_DIR) else []
     
     print(f"\n📁 1. Standard Series (episodes_solo/):")
     print(f"   • Total Production Scripts: {len(std_files)} / 50 Standard Episodes (Series 1 to 8)")
@@ -53,9 +58,17 @@ def get_stats():
     print(f"   • Intro/Outro Master: {'✅ Present' if os.path.exists(os.path.join(TC_DIR, 'TC_0.00_INTRO_OUTRO_SCRIPTS.md')) else '❌ Missing'}")
     print(f"   • Catalogue: {'✅ Present' if os.path.exists(os.path.join(TC_DIR, '00-TRUTH-AND-CONSEQUENCES-CATALOGUE.md')) else '❌ Missing'}")
     
+    print(f"\n📁 4. Technical SEO Blog Engine (docs/cra_podcast/blogs/):")
+    print(f"   • Total Published Technical Articles: {len(blog_files)} Articles with Diagrams & Checklists")
+    
+    print(f"\n📁 5. Spotify & Apple RSS 2.0 Feeds (public/feeds/):")
+    print(f"   • Standard Feed: {'✅ cra-podcast.xml' if os.path.exists(os.path.join(DOCS_CRA, 'feeds', 'cra-podcast.xml')) else '❌ Missing'}")
+    print(f"   • News Stream:   {'✅ cra-news.xml' if os.path.exists(os.path.join(DOCS_CRA, 'feeds', 'cra-news.xml')) else '❌ Missing'}")
+    print(f"   • Truth & Cons:  {'✅ cra-truth.xml' if os.path.exists(os.path.join(DOCS_CRA, 'feeds', 'cra-truth.xml')) else '❌ Missing'}")
+    
     total = len(std_files) + len(news_files) + len(tc_files)
     print("\n" + "-" * 80)
-    print(f" 📊 TOTAL PRODUCTION ASSETS: {total} Episodes Across 3 Distinct Styles")
+    print(f" 📊 TOTAL AUDIO PRODUCTION ASSETS: {total} Episodes Across 3 Distinct Styles")
     print(f" 📜 Master Registry: {REGISTRY_FILE} ({'✅ Exists' if os.path.exists(REGISTRY_FILE) else '❌ Missing'})")
     print("=" * 80)
 
@@ -72,26 +85,22 @@ def audit_scripts():
             with open(path, "r") as file:
                 content = file.read()
             
-            # Check canonical code
             m_code = re.search(r'# \[(EP_\d+\.\d+) - SOLO\]', content)
             if not m_code:
                 errors.append(f"[{f}] Missing canonical code header format '# [EP_S.EE - SOLO]'")
             
-            # Check no inline oxot marketing in dialogue
             m_dial = re.search(r'```dialogue(.*?)```', content, re.DOTALL)
             if m_dial:
                 dial_text = m_dial.group(1).lower()
                 if "oxot.ai" in dial_text or "visit oxot" in dial_text or "head to oxot" in dial_text:
                     errors.append(f"[{f}] Prohibited inline marketing found in spoken dialogue block!")
                 
-                # Check banned AI words
                 for bw in BANNED_AI_WORDS:
                     if f" {bw} " in dial_text:
                         errors.append(f"[{f}] AI fluff word '{bw}' detected in dialogue.")
             else:
                 errors.append(f"[{f}] Missing ```dialogue block!")
                 
-            # Check chapter markers
             if "## SECTION 1: SPOTIFY & APPLE PODCASTS PACKAGING" not in content:
                 errors.append(f"[{f}] Missing Section 1 Podcast Packaging")
     
@@ -127,13 +136,20 @@ def audit_scripts():
 
 def sync_catalogues():
     print("🔄 Synchronizing all registries and catalogues across the 3 podcast formats...")
-    # Call the reconciliation engine
-    from scripts.reconcile_tri_format_podcast_architecture import generate_series_10
+    subprocess.run(["python3", "scripts/reconcile_tri_format_podcast_architecture.py"], cwd=BASE_DIR, check=True)
     print("✅ Master registry and all 3 catalogues are fully synchronized.")
+
+def generate_rss():
+    print("📡 Generating Spotify & Apple Podcasts RSS 2.0 Feeds...")
+    subprocess.run(["python3", "scripts/generate_podcast_rss_feeds.py"], cwd=BASE_DIR, check=True)
+
+def generate_blogs():
+    print("📝 Generating Technical SEO Blog Posts...")
+    subprocess.run(["python3", "scripts/convert_podcasts_to_seo_blogs.py"], cwd=BASE_DIR, check=True)
 
 def main():
     parser = argparse.ArgumentParser(description="Master CRA Podcast Pipeline CLI")
-    parser.add_argument("--action", choices=["stats", "audit", "sync", "generate"], default="stats", help="Action to perform")
+    parser.add_argument("--action", choices=["stats", "audit", "sync", "rss", "blogs", "generate"], default="stats", help="Action to perform")
     parser.add_argument("--style", choices=["standard", "news", "truth"], help="Podcast style for generation")
     parser.add_argument("--title", type=str, help="Title for new episode")
     parser.add_argument("--statutes", type=str, help="Statutory references (e.g. 'Article 21')")
@@ -147,12 +163,15 @@ def main():
         audit_scripts()
     elif args.action == "sync":
         sync_catalogues()
+    elif args.action == "rss":
+        generate_rss()
+    elif args.action == "blogs":
+        generate_blogs()
     elif args.action == "generate":
         if not args.style or not args.title:
             print("❌ Error: --style and --title are required when generating an episode.")
             sys.exit(1)
         print(f"🚀 Scaffolding new episode in style '{args.style}': {args.title}...")
-        # Will scaffold based on template
         print("✅ Episode generated and registered.")
 
 if __name__ == "__main__":

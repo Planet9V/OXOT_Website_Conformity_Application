@@ -49,6 +49,7 @@ const StandardsMatrixPage = lazy(() => import('./pages/standards-matrix'));
 const CeNameplateStudioPage = lazy(() => import('./pages/ce-nameplate-studio'));
 const OpenSourceStewardPage = lazy(() => import('./pages/open-source-steward'));
 const ImporterArchivePage = lazy(() => import('./pages/importer-archive'));
+const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
 /** Minimal loading state shown only while a lazy chunk loads. */
 function RouteLoadingFallback() {
@@ -193,6 +194,12 @@ function ShellRoutes() {
           <Route path="/wiki/*" component={CraWikiPage} />
           <Route path="/cra-wiki" component={CraWikiPage} />
           <Route path="/cra-wiki/*" component={CraWikiPage} />
+          <Route path="/podcast" component={PodcastStudioPage} />
+          <Route path="/podcast/*" component={PodcastStudioPage} />
+          <Route path="/podcast-studio" component={PodcastStudioPage} />
+          <Route path="/podcast-studio/*" component={PodcastStudioPage} />
+          <Route path="/blogs" component={PodcastStudioPage} />
+          <Route path="/blogs/*" component={PodcastStudioPage} />
           <Route path="/auditor-portal" component={AuditorPortalPage} />
           <Route path="/auditor-portal/*" component={AuditorPortalPage} />
           <Route>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CRA: Truth & Consequences | Jim Mckenney</title>
+    <link>https://oxot.ai/podcast/truth</link>
+    <language>en-us</language>
+    <copyright>Copyright 2026 OXOT / Jim Mckenney</copyright>
+    <itunes:author>Jim Mckenney</itunes:author>
+    <itunes:summary>Uncompromising, hard-hitting investigative monologues on the hidden commercial liabilities, conflicting stakeholder perspectives, and raw statutory facts of EU product cybersecurity.</itunes:summary>
+    <description>Uncompromising, hard-hitting investigative monologues on the hidden commercial liabilities, conflicting stakeholder perspectives, and raw statutory facts of EU product cybersecurity.</description>
+    <itunes:image href="https://oxot.ai/assets/podcast_cover_art_truth.png"/>
+    <itunes:category text="Technology">
+      <itunes:category text="Tech News"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <lastBuildDate>Fri, 14 Aug 2026 21:49:36 GMT</lastBuildDate>
+    <item>
+      <title>[TC_01] The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks</title>
+      <link>https://oxot.ai/podcast/truth/tc_01</link>
+      <guid isPermaLink="false">tc_01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks. Shattering the myth: 'Cloud container updates to an edge gateway are purely IT operations and have nothing to do with physical machine CE marking.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_02] The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?</title>
+      <link>https://oxot.ai/podcast/truth/tc_02</link>
+      <guid isPermaLink="false">tc_02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?. Shattering the myth: 'If the automation manufacturer went out of business, the asset owner is legally off the hook for unpatched vulnerabilities.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_03] Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act</title>
+      <link>https://oxot.ai/podcast/truth/tc_03</link>
+      <guid isPermaLink="false">tc_03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act. Shattering the myth: 'AI model weights are mathematical parameters, not software, so continuous on-device learning doesn't trigger regulatory recertification.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_04] The Open-Source Steward's Balance Sheet: How Foundations & Dual-License Models Survive CRA</title>
+      <link>https://oxot.ai/podcast/truth/tc_04</link>
+      <guid isPermaLink="false">tc_04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: The Open-Source Steward's Balance Sheet: How Foundations & Dual-License Models Survive CRA. Shattering the myth: 'Open source is 100% exempt from the CRA, so companies can build commercial products on unpaid GitHub libraries without legal risk.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_05] Cross-Border Supply Chain Sanctions: How EU Market Surveillance Intercepts Firmware with Backdoors</title>
+      <link>https://oxot.ai/podcast/truth/tc_05</link>
+      <guid isPermaLink="false">tc_05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Cross-Border Supply Chain Sanctions: How EU Market Surveillance Intercepts Firmware with Backdoors. Shattering the myth: 'European customs only checks CE paper declarations and doesn't inspect actual microcontroller code or hardware circuits.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_06] The Decommissioning & End-of-Life Handover: Legal Liabilities When Retiring Critical OT</title>
+      <link>https://oxot.ai/podcast/truth/tc_06</link>
+      <guid isPermaLink="false">tc_06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: The Decommissioning & End-of-Life Handover: Legal Liabilities When Retiring Critical OT. Shattering the myth: 'Once an industrial machine is decommissioned or auctioned off, the manufacturer and operator have zero ongoing CRA legal obligations.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_07] Subsea & Space Infrastructure: Where Does the 'Product' End in Mega-Systems?</title>
+      <link>https://oxot.ai/podcast/truth/tc_07</link>
+      <guid isPermaLink="false">tc_07</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_07.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Subsea & Space Infrastructure: Where Does the 'Product' End in Mega-Systems?. Shattering the myth: 'A 5,000-kilometer subsea cable or low-Earth-orbit satellite constellation is an infrastructure project, so individual sensors and repeaters don't need CRA conformity.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_08] Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Body Silos</title>
+      <link>https://oxot.ai/podcast/truth/tc_08</link>
+      <guid isPermaLink="false">tc_08</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_08.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Body Silos. Shattering the myth: 'BESS battery containers only need standard electrical safety testing, and cyber risks are minor IT concerns.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_09] Quantum-Safe Cryptography (PQC): Is Post-Quantum Crypto Now Mandatory for 30-Year MCUs?</title>
+      <link>https://oxot.ai/podcast/truth/tc_09</link>
+      <guid isPermaLink="false">tc_09</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_09.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Quantum-Safe Cryptography (PQC): Is Post-Quantum Crypto Now Mandatory for 30-Year MCUs?. Shattering the myth: 'Post-quantum cryptography is a distant theoretical issue for the 2040s and has no relevance to microcontrollers placed on the market today.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_10] Hydrogen Electrolyzers & High-Hazard Energy: Balancing CRA Secure Boot with ATEX Explosive Safety</title>
+      <link>https://oxot.ai/podcast/truth/tc_10</link>
+      <guid isPermaLink="false">tc_10</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_10.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Hydrogen Electrolyzers & High-Hazard Energy: Balancing CRA Secure Boot with ATEX Explosive Safety. Shattering the myth: 'CRA emergency remote patching mandates override hazardous location ATEX hot-work safety rules.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_11] Autonomous Agriculture & Heavy Field Robots: When Machinery Safety Meets CRA Remote Control</title>
+      <link>https://oxot.ai/podcast/truth/tc_11</link>
+      <guid isPermaLink="false">tc_11</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_11.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: Autonomous Agriculture & Heavy Field Robots: When Machinery Safety Meets CRA Remote Control. Shattering the myth: 'Autonomous tractors are purely regulated under agricultural machinery rules, so telematics cybersecurity is optional.' with cold statutory facts.]]></description>
+    </item>
+    <item>
+      <title>[TC_12] The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies</title>
+      <link>https://oxot.ai/podcast/truth/tc_12</link>
+      <guid isPermaLink="false">tc_12</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/TC_12.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Hard-hitting investigative case study: The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies. Shattering the myth: 'Corporate Cyber Insurance and Tech E&O policies will cover the costs if a product suffers a major security breach or regulatory fine.' with cold statutory facts.]]></description>
+    </item>
+  </channel>
+</rss>

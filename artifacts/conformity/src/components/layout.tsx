@@ -25,6 +25,7 @@ import {
   Compass,
   Boxes,
   Search,
+  Headphones,
   type LucideIcon,
 } from "lucide-react";
 import { useGetAdminSession, useAdminLogout } from "@workspace/api-client-react";
@@ -131,6 +132,7 @@ const CRA_OPERATIONS: NavItem[] = [
   { href: "/steward", label: "Open-Source Steward (Art. 33)", icon: ListTree, description: "FOSS voluntary security attestations & OpenVEX statements" },
   { href: "/archive", label: "10-Year Archive Ledger (Art. 17)", icon: Database, description: "Statutory importer technical documentation vault (2037+)" },
   { href: "/wiki", label: "Full CRA Statutory Wiki", icon: Book, description: "Verbatim OJ text — 71 articles, 130 recitals & 8 annexes" },
+  { href: "/podcast-studio", label: "Podcast Studio & Media Hub", icon: Headphones, description: "Manage, listen, and syndicate 67 episodes across 3 styles + RSS" },
   { href: "/auditor-portal", label: "Notified Body Auditor Portal", icon: ClipboardCheck, description: "Third-party Module H / B+C examination workbench" },
 ];
 

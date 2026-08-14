@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>The CRA News Stream | Executive Regulatory Bulletins</title>
+    <link>https://oxot.ai/podcast/news</link>
+    <language>en-us</language>
+    <copyright>Copyright 2026 OXOT / Jim Mckenney</copyright>
+    <itunes:author>Jim Mckenney</itunes:author>
+    <itunes:summary>Rapid 2-minute executive bulletins on breaking EU Cyber Resilience Act milestones, CSIRT deadlines, and market surveillance alerts.</itunes:summary>
+    <description>Rapid 2-minute executive bulletins on breaking EU Cyber Resilience Act milestones, CSIRT deadlines, and market surveillance alerts.</description>
+    <itunes:image href="https://oxot.ai/assets/podcast_cover_art_news.png"/>
+    <itunes:category text="Technology">
+      <itunes:category text="Tech News"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <lastBuildDate>Fri, 14 Aug 2026 21:49:36 GMT</lastBuildDate>
+    <item>
+      <title>[NEWS_01] ENISA Single Reporting Platform 24h Incident Clock Activated</title>
+      <link>https://oxot.ai/podcast/news/news_01</link>
+      <guid isPermaLink="false">news_01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>02:30</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/NEWS_01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Breaking regulatory update on Article 14 mandatory early warning reporting requirements.]]></description>
+    </item>
+    <item>
+      <title>[NEWS_02] First Batch of Notified Body Designations Announced for Class II Products</title>
+      <link>https://oxot.ai/podcast/news/news_02</link>
+      <guid isPermaLink="false">news_02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>02:45</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/NEWS_02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Analysis of designated conformity assessment bodies across Germany, France, and Netherlands.]]></description>
+    </item>
+    <item>
+      <title>[NEWS_03] European Commission Issues Guidance on Substantial Modifications for Field Retrofits</title>
+      <link>https://oxot.ai/podcast/news/news_03</link>
+      <guid isPermaLink="false">news_03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>03:10</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/NEWS_03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Breaking legal interpretation of Article 21 for industrial automation retrofits.]]></description>
+    </item>
+    <item>
+      <title>[NEWS_04] Market Surveillance Port Interception Protocols Finalized at Rotterdam and Antwerp</title>
+      <link>https://oxot.ai/podcast/news/news_04</link>
+      <guid isPermaLink="false">news_04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>02:50</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/NEWS_04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Customs inspection procedures under Article 54 for imported industrial hardware.]]></description>
+    </item>
+    <item>
+      <title>[NEWS_05] Standardization Mandate M/606 Timeline Update: EN 40000 First Drafts Released</title>
+      <link>https://oxot.ai/podcast/news/news_05</link>
+      <guid isPermaLink="false">news_05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>03:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/NEWS_05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[CEN/CENELEC JTC 13 WG 9 releases draft horizontal standards for presumption of conformity.]]></description>
+    </item>
+  </channel>
+</rss>

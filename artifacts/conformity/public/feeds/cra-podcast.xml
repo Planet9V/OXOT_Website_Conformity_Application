@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>The Cyber Resilience Act Briefing | Jim Mckenney</title>
+    <link>https://oxot.ai/podcast</link>
+    <language>en-us</language>
+    <copyright>Copyright 2026 OXOT / Jim Mckenney</copyright>
+    <itunes:author>Jim Mckenney</itunes:author>
+    <itunes:summary>Authoritative, single-voice technical analysis of the EU Cyber Resilience Act (Regulation 2024/2847), IEC 62443, and industrial OT compliance by Jim Mckenney.</itunes:summary>
+    <description>Authoritative, single-voice technical analysis of the EU Cyber Resilience Act (Regulation 2024/2847), IEC 62443, and industrial OT compliance by Jim Mckenney.</description>
+    <itunes:image href="https://oxot.ai/assets/podcast_cover_art_standard.png"/>
+    <itunes:category text="Technology">
+      <itunes:category text="Tech News"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <lastBuildDate>Fri, 14 Aug 2026 21:49:36 GMT</lastBuildDate>
+    <item>
+      <title>[EP_1.01] The 2-Year Lag: Why 2024 Contracts Are Walking into a 2027 Regulatory Trap</title>
+      <link>https://oxot.ai/podcast/ep_1.01</link>
+      <guid isPermaLink="false">ep_1.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_1.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The 2-Year Lag: Why 2024 Contracts Are Walking into a 2027 Regulatory Trap under Article 2, Article 71 for EPC Contractors & Project Planners.]]></description>
+    </item>
+    <item>
+      <title>[EP_1.02] Writing the Bulletproof CRA RFP: Specification Language for Asset Owners</title>
+      <link>https://oxot.ai/podcast/ep_1.02</link>
+      <guid isPermaLink="false">ep_1.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_1.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Writing the Bulletproof CRA RFP: Specification Language for Asset Owners under Article 13, Annex I Part I for Procurement Directors & CISOs.]]></description>
+    </item>
+    <item>
+      <title>[EP_1.03] Variation Orders & Cost Shifts: Who Pays When CRA Forces a Mid-Project Redesign?</title>
+      <link>https://oxot.ai/podcast/ep_1.03</link>
+      <guid isPermaLink="false">ep_1.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_1.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Variation Orders & Cost Shifts: Who Pays When CRA Forces a Mid-Project Redesign? under Article 13, Article 18 for General Contractors & Project Managers.]]></description>
+    </item>
+    <item>
+      <title>[EP_1.04] The Importer's Due Diligence Checklist: Buying Non-EU Hardware Legally</title>
+      <link>https://oxot.ai/podcast/ep_1.04</link>
+      <guid isPermaLink="false">ep_1.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_1.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Importer's Due Diligence Checklist: Buying Non-EU Hardware Legally under Article 19, Article 22 for Hardware Importers & Supply Chain Teams.]]></description>
+    </item>
+    <item>
+      <title>[EP_1.05] Distributor Gatekeeping: What Stock Must Be Purged Before December 2027?</title>
+      <link>https://oxot.ai/podcast/ep_1.05</link>
+      <guid isPermaLink="false">ep_1.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_1.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Distributor Gatekeeping: What Stock Must Be Purged Before December 2027? under Article 20, Article 69 for Electrical Wholesalers & Distributors.]]></description>
+    </item>
+    <item>
+      <title>[EP_1.06] The Public Tender Playbook: Navigating EU Public Procurement Directives under CRA</title>
+      <link>https://oxot.ai/podcast/ep_1.06</link>
+      <guid isPermaLink="false">ep_1.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_1.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Public Tender Playbook: Navigating EU Public Procurement Directives under CRA under Article 57, Directive 2014/24/EU for Municipal Utilities & Public Bodies.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.01] The Accidental Manufacturer: How System Integrators Trigger Article 21 Liability</title>
+      <link>https://oxot.ai/podcast/ep_2.01</link>
+      <guid isPermaLink="false">ep_2.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Accidental Manufacturer: How System Integrators Trigger Article 21 Liability under Article 21, Recital 24 for System Integrators & Automation Engineers.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.02] Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments</title>
+      <link>https://oxot.ai/podcast/ep_2.02</link>
+      <guid isPermaLink="false">ep_2.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments under Article 18(2) for EPC Commissioning Leads & Field Engineers.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.03] Custom SCADA Scripts vs. Product Logic: Where the CRA Regulatory Line Is Drawn</title>
+      <link>https://oxot.ai/podcast/ep_2.03</link>
+      <guid isPermaLink="false">ep_2.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Custom SCADA Scripts vs. Product Logic: Where the CRA Regulatory Line Is Drawn under Article 2(1), Recital 6 for SCADA Developers & PLC Programmers.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.04] The Axians Case Study: Building a Multi-Plant CRA Modernization Pipeline</title>
+      <link>https://oxot.ai/podcast/ep_2.04</link>
+      <guid isPermaLink="false">ep_2.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Axians Case Study: Building a Multi-Plant CRA Modernization Pipeline under Article 21, Annex VII, Recital 34 for Multi-Plant Engineering Directors.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.05] Composite Systems & Brownfield Plant CE Marking: Who Owns the Nameplate?</title>
+      <link>https://oxot.ai/podcast/ep_2.05</link>
+      <guid isPermaLink="false">ep_2.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Composite Systems & Brownfield Plant CE Marking: Who Owns the Nameplate? under Article 25, Article 26 for Skid Builders & OEM Integrators.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.06] Drafting the Integrator Safe Harbor Agreement: BAA & Contract Scaffolding</title>
+      <link>https://oxot.ai/podcast/ep_2.06</link>
+      <guid isPermaLink="false">ep_2.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Drafting the Integrator Safe Harbor Agreement: BAA & Contract Scaffolding under Article 21, Article 61 for EPC General Counsel & Contract Negotiators.]]></description>
+    </item>
+    <item>
+      <title>[EP_2.07] The FAT/SAT Revolution: Updating Factory & Site Acceptance Testing for CRA</title>
+      <link>https://oxot.ai/podcast/ep_2.07</link>
+      <guid isPermaLink="false">ep_2.07</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_2.07.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The FAT/SAT Revolution: Updating Factory & Site Acceptance Testing for CRA under Annex I Part I & II, Article 24 for QA Engineers & Plant Inspectors.]]></description>
+    </item>
+    <item>
+      <title>[EP_3.01] The Spare Parts Illusion: Demystifying Article 2(6) & Recital 29 Exemption</title>
+      <link>https://oxot.ai/podcast/ep_3.01</link>
+      <guid isPermaLink="false">ep_3.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_3.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Spare Parts Illusion: Demystifying Article 2(6) & Recital 29 Exemption under Article 2(6), Recital 29 for Maintenance Managers & Asset Owners.]]></description>
+    </item>
+    <item>
+      <title>[EP_3.02] When Maintenance Becomes Redesign: The 4-Step Test for Brownfield Retrofits</title>
+      <link>https://oxot.ai/podcast/ep_3.02</link>
+      <guid isPermaLink="false">ep_3.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_3.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on When Maintenance Becomes Redesign: The 4-Step Test for Brownfield Retrofits under Article 21, Recital 24 for Plant Asset Managers & Systems Engineers.]]></description>
+    </item>
+    <item>
+      <title>[EP_3.03] Bridging the 5-Year OEM Gap: Keeping 20-Year Industrial Assets Compliant under NIS2</title>
+      <link>https://oxot.ai/podcast/ep_3.03</link>
+      <guid isPermaLink="false">ep_3.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_3.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Bridging the 5-Year OEM Gap: Keeping 20-Year Industrial Assets Compliant under NIS2 under Article 13(8), NIS2 Article 21 for Industrial Plant CISOs & Utility Operators.]]></description>
+    </item>
+    <item>
+      <title>[EP_3.04] Legacy Brownfield Integration: Connecting Pre-2027 PLCs to Modern Cloud SCADA</title>
+      <link>https://oxot.ai/podcast/ep_3.04</link>
+      <guid isPermaLink="false">ep_3.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_3.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Legacy Brownfield Integration: Connecting Pre-2027 PLCs to Modern Cloud SCADA under Article 2, Article 18, Annex I for Cloud OT Engineers & Industry 4.0 Leads.]]></description>
+    </item>
+    <item>
+      <title>[EP_3.05] The Obsolescence Stockpile Strategy: Buying Spares in Bulk Before December 2027</title>
+      <link>https://oxot.ai/podcast/ep_3.05</link>
+      <guid isPermaLink="false">ep_3.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_3.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Obsolescence Stockpile Strategy: Buying Spares in Bulk Before December 2027 under Article 2(6), Article 69 for Supply Chain Managers & Inventory Controllers.]]></description>
+    </item>
+    <item>
+      <title>[EP_3.06] Firmware Patching in Hazardous & ATEX Environments: The Safety vs. Security Showdown</title>
+      <link>https://oxot.ai/podcast/ep_3.06</link>
+      <guid isPermaLink="false">ep_3.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_3.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Firmware Patching in Hazardous & ATEX Environments: The Safety vs. Security Showdown under Annex I Part II, ATEX 2014/34/EU for Hazardous Area Engineers & Refinery Ops.]]></description>
+    </item>
+    <item>
+      <title>[EP_4.01] The Tier-2 Dilemma: How Embedded Board Makers Survive Without Going Bankrupt</title>
+      <link>https://oxot.ai/podcast/ep_4.01</link>
+      <guid isPermaLink="false">ep_4.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_4.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Tier-2 Dilemma: How Embedded Board Makers Survive Without Going Bankrupt under Article 13, Article 14, Annex I for Embedded Hardware Designers & PCB Houses.]]></description>
+    </item>
+    <item>
+      <title>[EP_4.02] Generating SBOMs That Satisfy Tier-1 OEMs: CycloneDX & SPDX in Embedded Systems</title>
+      <link>https://oxot.ai/podcast/ep_4.02</link>
+      <guid isPermaLink="false">ep_4.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_4.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Generating SBOMs That Satisfy Tier-1 OEMs: CycloneDX & SPDX in Embedded Systems under Annex I Part II, Article 13(1) for Embedded Firmware Developers & DevSecOps.]]></description>
+    </item>
+    <item>
+      <title>[EP_4.03] Vulnerability Data Sharing Agreements: Protecting IP While Enabling OEM Compliance</title>
+      <link>https://oxot.ai/podcast/ep_4.03</link>
+      <guid isPermaLink="false">ep_4.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_4.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Vulnerability Data Sharing Agreements: Protecting IP While Enabling OEM Compliance under Article 13(6), Article 14 for Component Legal Counsel & VP of Engineering.]]></description>
+    </item>
+    <item>
+      <title>[EP_4.04] Open-Source Firmware & Commercial Stewards: Monetizing CRA Compliance</title>
+      <link>https://oxot.ai/podcast/ep_4.04</link>
+      <guid isPermaLink="false">ep_4.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_4.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Open-Source Firmware & Commercial Stewards: Monetizing CRA Compliance under Recital 10, Article 13 for FOSS Maintainers & Commercial Stewards.]]></description>
+    </item>
+    <item>
+      <title>[EP_4.05] White-Label Hardware & ODM Contracts: Shifting the CE Nameplate Burden</title>
+      <link>https://oxot.ai/podcast/ep_4.05</link>
+      <guid isPermaLink="false">ep_4.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_4.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on White-Label Hardware & ODM Contracts: Shifting the CE Nameplate Burden under Article 16, Article 28 for ODM Manufacturers & Brand Owners.]]></description>
+    </item>
+    <item>
+      <title>[EP_4.06] The Component Supplier's Minimum Viable Security Kit (MVSK)</title>
+      <link>https://oxot.ai/podcast/ep_4.06</link>
+      <guid isPermaLink="false">ep_4.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_4.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Component Supplier's Minimum Viable Security Kit (MVSK) under Annex I Part I for Hardware Startups & Sensor Vendors.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.01] Data Centers & Hyperscalers: BMS, EPMS, UPS & PDU Firmware Under the Microscope</title>
+      <link>https://oxot.ai/podcast/ep_5.01</link>
+      <guid isPermaLink="false">ep_5.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Data Centers & Hyperscalers: BMS, EPMS, UPS & PDU Firmware Under the Microscope under Annex III, Annex I for Data Center Infrastructure Directors.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.02] Smart Buildings & Real Estate: BACnet, Modbus, Access Control & Elevators</title>
+      <link>https://oxot.ai/podcast/ep_5.02</link>
+      <guid isPermaLink="false">ep_5.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Smart Buildings & Real Estate: BACnet, Modbus, Access Control & Elevators under Article 6, Annex III for Smart Building Systems Integrators (MSI).]]></description>
+    </item>
+    <item>
+      <title>[EP_5.03] Power Grids & Renewable Substation Automation: IEC 61850 Relays & DERMS</title>
+      <link>https://oxot.ai/podcast/ep_5.03</link>
+      <guid isPermaLink="false">ep_5.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Power Grids & Renewable Substation Automation: IEC 61850 Relays & DERMS under Annex IV, IEC 62443, IEC 61850 for Grid Automation Leads & Solar/Wind Operators.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.04] Water & Wastewater Utilities: SCADA, Remote Telemetry & Dosing Controllers</title>
+      <link>https://oxot.ai/podcast/ep_5.04</link>
+      <guid isPermaLink="false">ep_5.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Water & Wastewater Utilities: SCADA, Remote Telemetry & Dosing Controllers under Annex III, NIS2 Annex I for Municipal Water Engineers & SCADA Leads.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.05] Rail & Public Transit: ETCS On-Board Units, Wayside Signaling & Train Control</title>
+      <link>https://oxot.ai/podcast/ep_5.05</link>
+      <guid isPermaLink="false">ep_5.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Rail & Public Transit: ETCS On-Board Units, Wayside Signaling & Train Control under Annex IV, EN 50126, EN 50128 for Rolling Stock OEMs & Railway Engineers.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.06] Maritime & Port Automation: Shipboard Integrated Bridges & Autonomous Cranes</title>
+      <link>https://oxot.ai/podcast/ep_5.06</link>
+      <guid isPermaLink="false">ep_5.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Maritime & Port Automation: Shipboard Integrated Bridges & Autonomous Cranes under Article 2(1), IACS UR E26/E27 for Port Terminal Operators & Marine Integrators.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.07] Pharmaceutical & Process Manufacturing: GxP, 21 CFR Part 11 & Cleanroom Automation</title>
+      <link>https://oxot.ai/podcast/ep_5.07</link>
+      <guid isPermaLink="false">ep_5.07</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.07.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Pharmaceutical & Process Manufacturing: GxP, 21 CFR Part 11 & Cleanroom Automation under Annex I Part I, EU GMP Annex 11 for Pharma Automation Leads & GxP Engineers.]]></description>
+    </item>
+    <item>
+      <title>[EP_5.08] Automotive & Heavy Equipment: Machine-to-Machine Gateways & UN R155 Overlap</title>
+      <link>https://oxot.ai/podcast/ep_5.08</link>
+      <guid isPermaLink="false">ep_5.08</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_5.08.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Automotive & Heavy Equipment: Machine-to-Machine Gateways & UN R155 Overlap under Article 2(4), Machinery Reg 2023/1230, UN R155 for Heavy Machinery OEMs & AGV Engineers.]]></description>
+    </item>
+    <item>
+      <title>[EP_6.01] The 24-Hour Early Warning Panic: Operationalizing the ENISA Single Reporting Platform</title>
+      <link>https://oxot.ai/podcast/ep_6.01</link>
+      <guid isPermaLink="false">ep_6.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_6.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The 24-Hour Early Warning Panic: Operationalizing the ENISA Single Reporting Platform under Article 14(1) & (2) for PSIRT Leads & Incident Responders.]]></description>
+    </item>
+    <item>
+      <title>[EP_6.02] Building an Annex I Compliant PSIRT: Roles, Playbooks & Tooling for Hardware OEMs</title>
+      <link>https://oxot.ai/podcast/ep_6.02</link>
+      <guid isPermaLink="false">ep_6.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_6.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Building an Annex I Compliant PSIRT: Roles, Playbooks & Tooling for Hardware OEMs under Annex I Part II, Article 13(6) for Product Security Directors & DevSecOps.]]></description>
+    </item>
+    <item>
+      <title>[EP_6.03] Coordinated Vulnerability Disclosure (CVD): Handling Security Researchers Legally</title>
+      <link>https://oxot.ai/podcast/ep_6.03</link>
+      <guid isPermaLink="false">ep_6.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_6.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Coordinated Vulnerability Disclosure (CVD): Handling Security Researchers Legally under Annex I Part II Clause 5, ISO/IEC 29147 for Corporate Legal & Bug Bounty Leads.]]></description>
+    </item>
+    <item>
+      <title>[EP_6.04] The 72-Hour Full Notification: What Forensic Evidence Regulators Expect</title>
+      <link>https://oxot.ai/podcast/ep_6.04</link>
+      <guid isPermaLink="false">ep_6.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_6.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The 72-Hour Full Notification: What Forensic Evidence Regulators Expect under Article 14(3) for Lead Forensic Analysts & Compliance Officers.]]></description>
+    </item>
+    <item>
+      <title>[EP_6.05] Customer Security Advisories: Drafting Bulletins Without Exposing Clients to Attack</title>
+      <link>https://oxot.ai/podcast/ep_6.05</link>
+      <guid isPermaLink="false">ep_6.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_6.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Customer Security Advisories: Drafting Bulletins Without Exposing Clients to Attack under Article 13(6), Annex I Part II Clause 6 for Customer Success & Product Security Writers.]]></description>
+    </item>
+    <item>
+      <title>[EP_6.06] The 14-Day Final Closeout: Root-Cause Analysis & Technical File Updates</title>
+      <link>https://oxot.ai/podcast/ep_6.06</link>
+      <guid isPermaLink="false">ep_6.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_6.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The 14-Day Final Closeout: Root-Cause Analysis & Technical File Updates under Article 14(4), Annex VII for Quality Directors & CTOs.]]></description>
+    </item>
+    <item>
+      <title>[EP_7.01] Self-Assessment vs. Notified Body: Navigating Modules A, B+C, and H</title>
+      <link>https://oxot.ai/podcast/ep_7.01</link>
+      <guid isPermaLink="false">ep_7.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_7.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Self-Assessment vs. Notified Body: Navigating Modules A, B+C, and H under Article 24, Annex VI for Compliance Directors & QA Leads.]]></description>
+    </item>
+    <item>
+      <title>[EP_7.02] The Notified Body Bottleneck: Preparing for the 2026 Testing Capacity Crunch</title>
+      <link>https://oxot.ai/podcast/ep_7.02</link>
+      <guid isPermaLink="false">ep_7.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_7.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The Notified Body Bottleneck: Preparing for the 2026 Testing Capacity Crunch under Articles 29-39 for Hardware Operations VPs & Lab Directors.]]></description>
+    </item>
+    <item>
+      <title>[EP_7.03] Drafting the EU Declaration of Conformity: Statutory Requirements & Language Rules</title>
+      <link>https://oxot.ai/podcast/ep_7.03</link>
+      <guid isPermaLink="false">ep_7.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_7.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Drafting the EU Declaration of Conformity: Statutory Requirements & Language Rules under Article 28, Annex V for Regulatory Affairs Specialists & Legal Counsel.]]></description>
+    </item>
+    <item>
+      <title>[EP_7.04] The 10-Year Technical Documentation Archive: What Must Be Stored and How</title>
+      <link>https://oxot.ai/podcast/ep_7.04</link>
+      <guid isPermaLink="false">ep_7.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_7.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The 10-Year Technical Documentation Archive: What Must Be Stored and How under Article 13(9), Article 19(8), Annex VII for Records Managers & Compliance Archivists.]]></description>
+    </item>
+    <item>
+      <title>[EP_7.05] Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)</title>
+      <link>https://oxot.ai/podcast/ep_7.05</link>
+      <guid isPermaLink="false">ep_7.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_7.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13) under Article 34, Standardisation Request M/596 for Standards Engineers & Chief Architects.]]></description>
+    </item>
+    <item>
+      <title>[EP_7.06] CE Nameplate Studio: Physical, Digital & Packaging Marking Rules</title>
+      <link>https://oxot.ai/podcast/ep_7.06</link>
+      <guid isPermaLink="false">ep_7.06</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_7.06.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on CE Nameplate Studio: Physical, Digital & Packaging Marking Rules under Article 25, Article 26, Article 27 for Industrial Designers & Packaging Leads.]]></description>
+    </item>
+    <item>
+      <title>[EP_8.01] The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines</title>
+      <link>https://oxot.ai/podcast/ep_8.01</link>
+      <guid isPermaLink="false">ep_8.01</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_8.01.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines under Article 61, Article 62 for CEOs, CFOs & Board Members.]]></description>
+    </item>
+    <item>
+      <title>[EP_8.02] Personal Executive Liability & Boardroom Governance: Can Directors Go to Jail?</title>
+      <link>https://oxot.ai/podcast/ep_8.02</link>
+      <guid isPermaLink="false">ep_8.02</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_8.02.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Personal Executive Liability & Boardroom Governance: Can Directors Go to Jail? under Article 61, NIS2 Article 20 for Board Directors & Risk Committees.]]></description>
+    </item>
+    <item>
+      <title>[EP_8.03] Market Surveillance Raids & Recalls: What Happens When Authorities Freeze a Product Line</title>
+      <link>https://oxot.ai/podcast/ep_8.03</link>
+      <guid isPermaLink="false">ep_8.03</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_8.03.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on Market Surveillance Raids & Recalls: What Happens When Authorities Freeze a Product Line under Articles 43-54 for COOs & Crisis Management Leads.]]></description>
+    </item>
+    <item>
+      <title>[EP_8.04] CRA meets NIS2 & EU AI Act: The Ultimate Tri-Directive Survival Guide</title>
+      <link>https://oxot.ai/podcast/ep_8.04</link>
+      <guid isPermaLink="false">ep_8.04</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_8.04.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on CRA meets NIS2 & EU AI Act: The Ultimate Tri-Directive Survival Guide under CRA 2024/2847, NIS2 2022/2555, AI Act 2024/1689 for Group CISOs & Enterprise Architects.]]></description>
+    </item>
+    <item>
+      <title>[EP_8.05] The 2028 Horizon: How the CRA Is Transforming Global Industrial Product Design</title>
+      <link>https://oxot.ai/podcast/ep_8.05</link>
+      <guid isPermaLink="false">ep_8.05</guid>
+      <pubDate>Fri, 14 Aug 2026 21:49:36 GMT</pubDate>
+      <itunes:author>Jim Mckenney</itunes:author>
+      <itunes:duration>14:15</itunes:duration>
+      <enclosure url="https://oxot.ai/audio/cra_podcast/EP_8.05.mp3" length="25000000" type="audio/mpeg"/>
+      <description><![CDATA[Standard briefing on The 2028 Horizon: How the CRA Is Transforming Global Industrial Product Design under Full Regulation 2024/2847, Delegated Acts for Global Technology Leaders & OT Innovators.]]></description>
+    </item>
+  </channel>
+</rss>
