@@ -46,22 +46,23 @@ and `task_plan.md` Phases 6–7.
 be needed; the corpus does not settle a legal question; the same approach has
 failed twice; or `git log` shows an unexpected HEAD move.
 
-**First task — Phase 6.1: model the four team roles as data, not free text.**
+**First task — Phase 6.3: scope work by team role.**
 
-The honesty-gate task that previously opened this file is done (2026-08-15):
-the CSIRT "TRANSMITTED" claim turned out to have been fixed in `857e91a` the
-day before it was reported, the gate was proven by positive control to catch
-that class, the two `persona-cockpit.tsx` false positives are annotated, and
-the G4 baseline is lowered 9 → 7. The lasting lesson is in `HANDOVER.md`:
-the defect report itself was written without re-verifying the working tree.
+Done before this point (2026-08-15, see task_plan.md and the commit log):
+the honesty-gate correction (G4 baseline 9 → 7, positive-control proven),
+6.1 (four team roles as validated data — `TEAM_ROLES` in `@workspace/db`,
+nullable `team_role`, seeded, editable, drift-guarded), and 6.2 (plaintext
+`plainPassword` removed everywhere; the scrypt hash is the only credential).
 
-Phase 6 (task_plan.md) is the prerequisite for the shell redesign's D12 —
-today only `admin`/`member` exist plus a free-text `roleResponsibility`, so
-"the home differs by role" has nothing to branch on. Order: 6.1 roles as data →
-6.2 fix `conformityMembers.plainPassword` (plaintext passwords; the table is
-being touched anyway) → 6.3 scope obligations and evidence requests by role.
-Acceptance: a user's role determines what their home surfaces, and no password
-is readable in the database.
+6.3 closes Phase 6: scope obligations and evidence requests by role, and
+expose `teamRole` on `/me` (its response schema is generated — regenerate,
+don't hand-edit) so the home can branch. Phase acceptance: a user's role
+determines what their home surfaces, and no password is readable in the
+database (the second half already holds).
+
+Remember the framing correction in memory: unwired surfaces such as the
+partner-hub CSIRT payload builder are DONORS that Phase 7 re-homes onto the
+real engines — describe them as "not yet wired", never "fake".
 
 **Then:** Phase 7 (shell redesign — nine destinations, drives G8 to 0 orphans).
 Close every phase with G7 — update `lessons.md`, then re-tune the next phase's
