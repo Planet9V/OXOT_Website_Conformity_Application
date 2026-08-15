@@ -46,7 +46,7 @@ Run v2 applies the newly baked-in **100% AST Data Mirroring** and **Deep Statuto
 2. **Chapter II (Articles 6–17)**: Deep expansion of **Article 11** (other entities acting as manufacturers) and **Article 17** (support period guidelines with expected product lifetime documentation).
 3. **Chapter III (Articles 18–34)**: Deep expansion of **Article 24 & 25** (Class I vs Class II Important Products list under Annex III) and **Article 26** (mandatory EUCC certification triggers).
 4. **Chapter IV (Articles 35–51)**: Detailed operational requirements for notified bodies under **Articles 38 & 46** (impartiality, technical competence, and sub-contracting safeguards).
-5. **Chapter V (Articles 52–63)**: Complete breakdown of administrative fines under **Article 61** (€15M or 2.5% global turnover for essential requirements; €10M or 2% for other obligations).
+5. **Chapter V (Articles 52–63)**: Complete breakdown of administrative fines under **Article 64** (€15M or 2.5% global turnover for essential requirements; €10M or 2% for other obligations).
 6. **Chapters VI–VIII (Articles 64–71)**: Timeline mechanics for Article 14 (21-month application date: 10 Sept 2026) vs general CRA application date (36-month application date: 10 Dec 2027).
 
 ---

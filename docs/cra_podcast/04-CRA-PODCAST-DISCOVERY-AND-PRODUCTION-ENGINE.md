@@ -33,7 +33,7 @@ graph TD
 | Field Integrators   | retrofits, and stopping customer delay liquidated damages.                   |
 +---------------------+------------------------------------------------------------------------------+
 | Perspective 4:      | Port of Rotterdam / Antwerp customs seizures, EU Safety Gate alerts,         |
-| Market Surveillance | and Article 61 corporate turnover fine modeling (up to €15M / 2.5%).         |
+| Market Surveillance | and Article 64 corporate turnover fine modeling (up to €15M / 2.5%).         |
 +---------------------+------------------------------------------------------------------------------+
 | Perspective 5:      | Lloyd's / Munich Re underwriting conditions precedent, Product Liability    |
 | Insurers & PE M&A   | Directive 2024 strict fault presumptions, and M&A cyber debt audits.         |

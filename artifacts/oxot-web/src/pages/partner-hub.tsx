@@ -363,7 +363,7 @@ export default function OxotPartnerHubPage() {
 
               <div className="bg-card/80 border border-border/80 p-4 rounded-xl shadow-xs space-y-1">
                 <div className="font-mono text-[11px] uppercase tracking-wider text-red-500 font-semibold flex items-center justify-between">
-                  <span>Art. 61 Fine Exposure</span>
+                  <span>Art. 64 Fine Exposure</span>
                   <button
                     onClick={() => setStatutoryFlyout({ type: 'article', number: 61 })}
                     className="hover:underline text-[10px]"
@@ -473,7 +473,7 @@ export default function OxotPartnerHubPage() {
           <div className="bg-card/80 border border-border/80 rounded-xl p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-border/60 pb-3">
               <h2 className="font-display font-medium text-xl text-foreground">
-                Article 18(2) Duty to Refrain Radar
+                Article 20(2) Duty to Refrain Radar
               </h2>
               <button
                 onClick={() => setStatutoryFlyout({ type: 'article', number: 18 })}

@@ -132,7 +132,7 @@ export function evaluateNetworkScope(
     };
   });
 
-  // Calculate Article 61 Administrative Fine Liability (up to €15M or 2.5% global turnover)
+  // Calculate Article 64 Administrative Fine Liability (up to €15M or 2.5% global turnover)
   const turnover = annualTurnoverEur || 50_000_000;
   const article61FineExposureEur = Math.min(15_000_000, turnover * 0.025);
 

@@ -29,10 +29,10 @@
   - `Article 2 & Recital 34`: Scope & identical spare parts exemption.
   - `Article 13`: Manufacturer duties, SBOMs, support periods.
   - `Article 14 & 69(3)`: Mandatory 24-hour vulnerability reporting (11 Sept 2026).
-  - `Article 18 & 19`: Importer and Distributor obligations, Duty to Refrain (Art 19(2)).
+  - `Article 20 & 19`: Importer and Distributor obligations, Duty to Refrain (Art 19(2)).
   - `Article 20`: 10-year traceability and transaction recordkeeping.
   - `Article 21`: Substantial Modification boundary preventing SI liability creep.
-  - `Article 61`: Fines up to €15,000,000 / 2.5% turnover.
+  - `Article 64`: Fines up to €15,000,000 / 2.5% turnover.
 * **Rating**: **10 / 10** (Full statutory alignment).
 
 ---

@@ -98,7 +98,7 @@ To deliver an enterprise-grade, zero-hallucination platform module with extreme 
   - **Annex III Part I (Class I)**: Industrial switches, edge routers, managed Wi-Fi APs, network management software.
   - **Annex III Part II (Class II)**: Industrial firewalls, VPN concentrators, IDS/IPS appliances, PLCs/PACs, safety controllers.
   - **Article 13(6) & 14 Lifecycle Gaps**: Cross-references firmware versions against known CVEs and manufacturer End-of-Life (EOL) / End-of-Support (EOS) milestone dates.
-  - **Article 61 Fine Liability Calculator**:
+  - **Article 64 Fine Liability Calculator**:
     $$\text{Statutory Fine Liability} = \min(€15{,}000{,}000, \, 2.5\% \times \text{Global Annual Turnover})$$
 
 ---

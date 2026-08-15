@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Article 18, Recital 24. The regulation
 Translating that into engineering terms: Defines substantial modification thresholds under Article 18. Differentiates routine security patches vs major feature updates requiring new conformity assessment.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

@@ -24,7 +24,7 @@ This v2 enhanced catalogue provides exhaustive legal text coverage, technical re
 - **Article 7 (Authorised representatives)**: Non-EU manufacturers shall designate a written authorized representative within the Union. [`OJ L 2024/2847, Art 7`]
 - **Article 8 (Obligations of importers)**: Verify manufacturer compliance, CE marking, and technical documentation before placing products on the market. [`OJ L 2024/2847, Art 8`]
 - **Article 9 (Obligations of distributors)**: Verify CE marking and user instructions with due care before distribution. [`OJ L 2024/2847, Art 9`]
-- **Article 10 & 11 (Modification / Own Trademark)**: Importers or distributors modifying a product or selling under their own brand assume full manufacturer obligations. [`OJ L 2024/2847, Art 10-11`]
+- **Article 13 & 11 (Modification / Own Trademark)**: Importers or distributors modifying a product or selling under their own brand assume full manufacturer obligations. [`OJ L 2024/2847, Art 10-11`]
 - **Article 12 (Identification of economic operators)**: Maintain supply chain traceability records for 10 years. [`OJ L 2024/2847, Art 12`]
 - **Article 13 (Vulnerability handling obligations)**: Document vulnerabilities, maintain machine-readable SBOM (SPDX/CycloneDX), distribute free security updates without delay, enforce public CVD policy, and conduct regular testing. [`OJ L 2024/2847, Art 13`]
 - **Article 14 (Reporting obligations)**: Notify national CSIRT coordinator and ENISA of actively exploited vulnerabilities within 24h (early warning) and 72h (vulnerability notification); final report within 1 month. [`OJ L 2024/2847, Art 14`]
@@ -47,7 +47,7 @@ This v2 enhanced catalogue provides exhaustive legal text coverage, technical re
 
 ### Chapter V: Market Surveillance & EU Enforcement (Articles 52–63)
 - **Articles 52–60**: Market surveillance procedures under Regulation (EU) 2019/1020, safeguard mechanisms, joint surveillance sweeps, and emergency intervention powers. [`OJ L 2024/2847, Art 52-60`]
-- **Article 61 (Penalties & Fines)**:
+- **Article 64 (Penalties & Fines)**:
   - Fines up to **€15,000,000 or 2.5% of total global annual turnover** for non-compliance with Annex I essential requirements.
   - Fines up to **€10,000,000 or 2% of global annual turnover** for non-compliance with economic operator obligations.
   - Fines up to **€5,000,000 or 1% of global annual turnover** for supplying incorrect, incomplete, or misleading information to authorities. [`OJ L 2024/2847, Art 61`]

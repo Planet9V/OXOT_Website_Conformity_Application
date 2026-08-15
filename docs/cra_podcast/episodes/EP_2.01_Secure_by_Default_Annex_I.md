@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Annex I Part I, Article 13. The regula
 Translating that into engineering terms: Breaks down 13 technical essential requirements in Annex I Section 1: zero hardcoded secrets, memory safety, attack surface reduction, and encrypted data in transit/rest.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

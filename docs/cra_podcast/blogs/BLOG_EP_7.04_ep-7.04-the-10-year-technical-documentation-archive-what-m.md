@@ -70,7 +70,7 @@ graph LR
     B --> C["EN 40000 Series (Horizontal Cybersecurity)"]
     B --> D["IEC 62443 Series (Industrial OT Integration)"]
     C & D --> E["Harmonized European Standards (hEN)"]
-    E --> F["Full Presumption of Conformity (Article 34)"]
+    E --> F["Full Presumption of Conformity (Article 27)"]
 ```
 
 ---

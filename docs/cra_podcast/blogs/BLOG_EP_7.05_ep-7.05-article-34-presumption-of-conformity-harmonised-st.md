@@ -1,7 +1,7 @@
 ---
 id: "EP_7.05"
 canonical_code: "EP_7.05"
-title: "Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)"
+title: "Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)"
 subtitle: "When CEN/CENELEC publishes harmonised European standards, complying with them grants legal "Presumption of Conformity." How to align product development with emerging JTC 13 drafts?"
 slug: "ep-7.05-article-34-presumption-of-conformity-harmonised-st"
 series_id: 7
@@ -22,7 +22,7 @@ keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "Article 34", "Q
 takeaways: ["Status of CEN/CENELEC JTC 13 working groups", "mapping IEC 62443-4-1/4-2 to CRA standards", "anticipating final Official Journal publications"]
 ---
 
-# Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
+# Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
 *By Jim Mckenney — Digital Product Security Consultant & Industrial OT Architect*
 
 > **Executive Technical Memorandum:**
@@ -36,7 +36,7 @@ takeaways: ["Status of CEN/CENELEC JTC 13 working groups", "mapping IEC 62443-4-
 
 ## 1. The Commercial Dilemma & Industrial Reality
 
-`[EP_7.05 - Strategic Technical Briefing] Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13) | Jim Mckenney`
+`[EP_7.05 - Strategic Technical Briefing] Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13) | Jim Mckenney`
 
 **The Core Industry Problem:** When CEN/CENELEC publishes harmonised European standards, complying with them grants legal "Presumption of Conformity." How to align product development with emerging JTC 13 drafts?
 

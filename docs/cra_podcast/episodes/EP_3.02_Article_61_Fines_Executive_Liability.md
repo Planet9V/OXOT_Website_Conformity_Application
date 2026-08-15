@@ -1,4 +1,4 @@
-# [EP_3.02] The €15,000,000 Risk: Article 61 Fines & Executive Liability Explained
+# [EP_3.02] The €15,000,000 Risk: Article 64 Fines & Executive Liability Explained
 
 > **Episode Metadata:**
 > - **Series:** The Cyber Resilience Act Briefing
@@ -13,7 +13,7 @@
 ## SECTION 1: SPOTIFY PACKAGING
 
 ### 1.1 SEO Episode Title
-`[EP_3.02] The €15,000,000 Risk: Article 61 Fines & Executive Liability Explained | EU CRA Compliance Guide`
+`[EP_3.02] The €15,000,000 Risk: Article 64 Fines & Executive Liability Explained | EU CRA Compliance Guide`
 
 ### 1.2 Spotify Chapter Markers
 ```text
@@ -27,7 +27,7 @@
 ### 1.3 Spotify Show Notes
 In this episode of The Cyber Resilience Act Briefing, we break down Article 61, Article 62 of Regulation (EU) 2024/2847. 
 
-Administrative fines up to €15M or 2.5% global turnover under Article 61. Personal executive liability, market surveillance authority enforcement, and financial risk models.
+Administrative fines up to €15M or 2.5% global turnover under Article 64. Personal executive liability, market surveillance authority enforcement, and financial risk models.
 
 ⏱️ TIMESTAMPS:
 00:00 - Intro
@@ -47,16 +47,16 @@ Administrative fines up to €15M or 2.5% global turnover under Article 61. Pers
 Welcome to EP_3.02 of The Cyber Resilience Act Briefing. I'm Marcus, covering regulatory law and statutory compliance.
 
 [HOST 2 - NOVA]
-And I'm Elena, product security engineer. Today we're diving into The €15,000,000 Risk: Article 61 Fines & Executive Liability Explained.
+And I'm Elena, product security engineer. Today we're diving into The €15,000,000 Risk: Article 64 Fines & Executive Liability Explained.
 
 [HOST 1 - ONYX]
 Let's examine the statutory foundation in Article 61, Article 62. The regulation requires clear evidence of compliance before placing products on the EU market.
 
 [HOST 2 - NOVA]
-Translating that into engineering terms: Administrative fines up to €15M or 2.5% global turnover under Article 61. Personal executive liability, market surveillance authority enforcement, and financial risk models.
+Translating that into engineering terms: Administrative fines up to €15M or 2.5% global turnover under Article 64. Personal executive liability, market surveillance authority enforcement, and financial risk models.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

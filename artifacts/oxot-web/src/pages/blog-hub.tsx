@@ -149,7 +149,7 @@ const FEATURED_SPOTLIGHTS = [
   },
   {
     code: 'TC_04',
-    title: 'The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties',
+    title: 'The €15M Calculation: Dissecting the Math Behind Article 64 Global Turnover Penalties',
     subtitle: 'How European market surveillance authorities calculate the 2.5% global turnover fine and personal corporate officer liability.',
     slug: 'tc-04-the-15m-calculation-dissecting-the-math-behind-art',
     statutes: ['Article 61', 'Recital 78'],
@@ -214,12 +214,12 @@ const STATUTE_OPTIONS = [
   { id: 'Article 10', label: 'Art 10/11 (Essential Requirements)' },
   { id: 'Article 13', label: 'Art 13 (Technical Documentation)' },
   { id: 'Article 14', label: 'Art 14 (24h Incident Notification)' },
-  { id: 'Article 18', label: 'Art 18 (Duty to Refrain)' },
+  { id: 'Article 20', label: 'Art 18 (Duty to Refrain)' },
   { id: 'Article 21', label: 'Art 21 (Substantial Modification)' },
   { id: 'Article 24', label: 'Art 24 (Conformity Assessment Modules)' },
   { id: 'Annex I', label: 'Annex I (Security by Design)' },
   { id: 'Annex III', label: 'Annex III (Class I / II Classification)' },
-  { id: 'Article 61', label: 'Art 61 (€15M Penalties)' }
+  { id: 'Article 64', label: 'Art 61 (€15M Penalties)' }
 ];
 
 export default function BlogHubPage() {

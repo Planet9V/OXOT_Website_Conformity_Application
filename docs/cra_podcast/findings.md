@@ -10,7 +10,7 @@
 * **Key Dates:**
   * **10 September 2026:** Article 14 mandatory vulnerability & incident reporting obligations take effect (21 months post-entry into force).
   * **10 December 2027:** Full enforcement of all CRA obligations, CE marking requirements, and market surveillance penalties (36 months post-entry into force).
-* **Penalty Caps (Article 61):**
+* **Penalty Caps (Article 64):**
   * Essential Requirements breach: up to **€15,000,000 or 2.5% of total worldwide annual turnover**.
   * Other obligations breach: up to **€10,000,000 or 2.0% of total worldwide annual turnover**.
   * Misleading information: up to **€5,000,000 or 1.0% of total worldwide annual turnover**.

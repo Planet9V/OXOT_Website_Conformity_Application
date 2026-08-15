@@ -1,7 +1,7 @@
 ---
 id: "EP_8.01"
 canonical_code: "EP_8.01"
-title: "The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines"
+title: "The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines"
 subtitle: "How European market surveillance authorities calculate fines: €15M or 2.5% of total worldwide turnover for non-compliance with essential requirements; €10M or 2% for obligation breaches; €5M or 1% for false information."
 slug: "ep-8.01-the-15-000-000-calculation-demystifying-article-61"
 series_id: 8
@@ -22,7 +22,7 @@ keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "Article 61", "P
 takeaways: ["Interactive fine exposure model", "SME mitigation clauses", "defending against maximum statutory penalties"]
 ---
 
-# The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines
+# The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines
 *By Jim Mckenney — Digital Product Security Consultant & Industrial OT Architect*
 
 > **Executive Technical Memorandum:**
@@ -36,7 +36,7 @@ takeaways: ["Interactive fine exposure model", "SME mitigation clauses", "defend
 
 ## 1. The Commercial Dilemma & Industrial Reality
 
-`[EP_8.01 - Strategic Technical Briefing] The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines | Jim Mckenney`
+`[EP_8.01 - Strategic Technical Briefing] The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines | Jim Mckenney`
 
 **The Core Industry Problem:** How European market surveillance authorities calculate fines: €15M or 2.5% of total worldwide turnover for non-compliance with essential requirements; €10M or 2% for obligation breaches; €5M or 1% for false information.
 
@@ -66,7 +66,7 @@ The following domain-specific architecture illustrates the compliant engineering
 
 ```mermaid
 graph TD
-    A["Market Surveillance Authority Non-Compliance Finding"] --> B["Administrative Fine Calculation (Article 61)"]
+    A["Market Surveillance Authority Non-Compliance Finding"] --> B["Administrative Fine Calculation (Article 64)"]
     B --> C{"Violation Severity Level"}
     C -->|"Annex I Essential Baseline Breach"| D["Up to €15,000,000 or 2.5% Worldwide Turnover"]
     C -->|"Article 14 Incident Reporting Failure"| E["Up to €10,000,000 or 2.0% Worldwide Turnover"]

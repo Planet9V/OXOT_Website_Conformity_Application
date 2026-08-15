@@ -125,7 +125,7 @@ export const standardClauseMappings: StandardClauseMapping[] = [
 harmonisedStandardsRouter.get("/matrix", (_req, res) => {
   res.json({
     totalMappings: standardClauseMappings.length,
-    statutoryBasis: "Regulation (EU) 2024/2847 Article 34 (Presumption of Conformity)",
+    statutoryBasis: "Regulation (EU) 2024/2847 Article 27 (Presumption of Conformity)",
     mappings: standardClauseMappings,
   });
 });
@@ -170,6 +170,6 @@ harmonisedStandardsRouter.post("/evaluate-presumption", (req, res) => {
         ? filteredMappings
             .filter((m) => !verifiedClauses.includes(m.clauseId))
             .map((m) => `Complete verification of ${m.standard} ${m.clauseId} (${m.clauseTitle}) to gain presumption for ${m.craAnnexIRef}`)
-        : ["All harmonised standard clauses satisfied. Product benefits from Article 34 Presumption of Conformity."],
+        : ["All harmonised standard clauses satisfied. Product benefits from Article 27 Presumption of Conformity."],
   });
 });

@@ -65,7 +65,7 @@ const PERSONA_PRESETS: Record<
       "Does modifying this SCADA HMI script trigger Article 21 substantial modification?",
       "How do we preserve our Recital 34 Safe Harbor Shield during a brownfield PLC upgrade?",
       "When does adding an industrial firewall trigger Annex VII composite assessment?",
-      "What are our Article 18(2) duty to refrain requirements for unpatched vendor RTUs?",
+      "What are our Article 20(2) duty to refrain requirements for unpatched vendor RTUs?",
     ],
     defaultContext:
       "You are advising an OT System Integrator configuring industrial automation plants. Emphasize Recital 34 Safe Harbor, Article 21 non-modification boundaries, and Annex VII composite documentation.",
@@ -90,7 +90,7 @@ const PERSONA_PRESETS: Record<
       "Does accepting donations or corporate sponsorships void our non-commercial exemption?",
     ],
     defaultContext:
-      "You are advising an open-source software steward. Emphasize Recital 18 non-commercial exemptions, Article 33 security attestations, and lightweight Coordinated Vulnerability Disclosure (CVD).",
+      "You are advising an open-source software steward. Emphasize Recital 18 non-commercial exemptions, Article 24 security attestations, and lightweight Coordinated Vulnerability Disclosure (CVD).",
   },
   IMPORTER: {
     roleName: "EU Importer & Industrial Distributor (Arrow / Avnet)",
@@ -108,7 +108,7 @@ const PERSONA_PRESETS: Record<
     quickPrompts: [
       "What is the exact 24-hour early warning timeline to CSIRT under Article 14(1)?",
       "How does our CRA conformity status mitigate NIS2 Article 21 supply chain liability?",
-      "How are Article 61 maximum fines calculated against our global turnover?",
+      "How are Article 64 maximum fines calculated against our global turnover?",
       "What evidence satisfies the 11-year operational audit retention rule under NIS2?",
     ],
     defaultContext:
@@ -248,7 +248,7 @@ export function PersonaCopilotDrawer({
       } else if (q.includes("csirt") || q.includes("24-hour") || q.includes("14")) {
         riskLevel = "CRITICAL";
         responseAdvice =
-          "Article 14(1) mandates an early warning notification to your designated national CSIRT (e.g. NCSC-NL, CERT-FR, CERT-Bund) within 24 hours of becoming aware of any actively exploited vulnerability or severe incident. A full notification must follow within 72 hours. Failure risks administrative penalties under Article 61.";
+          "Article 14(1) mandates an early warning notification to your designated national CSIRT (e.g. NCSC-NL, CERT-FR, CERT-Bund) within 24 hours of becoming aware of any actively exploited vulnerability or severe incident. A full notification must follow within 72 hours. Failure risks administrative penalties under Article 64.";
       } else if (q.includes("fine") || q.includes("61") || q.includes("penalty")) {
         riskLevel = "CRITICAL";
         responseAdvice =
@@ -256,7 +256,7 @@ export function PersonaCopilotDrawer({
       } else if (q.includes("steward") || q.includes("open-source") || q.includes("foss") || q.includes("33")) {
         riskLevel = "LOW";
         responseAdvice =
-          "Article 33 creates a specialized, lightweight framework for open-source software stewards who sustain non-commercial projects. Under Recital 18, purely non-commercial development is completely exempt from CE marking, requiring only documented vulnerability reporting policies and OpenVEX attestations.";
+          "Article 24 creates a specialized, lightweight framework for open-source software stewards who sustain non-commercial projects. Under Recital 18, purely non-commercial development is completely exempt from CE marking, requiring only documented vulnerability reporting policies and OpenVEX attestations.";
       } else {
         responseAdvice = `Based on Regulation (EU) 2024/2847 and the ${personaConfig.roleName} operational profile, compliance requires maintaining verifiable technical evidence, mapping security controls against harmonised standards, and preserving an immutable 10-year audit trail.`;
       }

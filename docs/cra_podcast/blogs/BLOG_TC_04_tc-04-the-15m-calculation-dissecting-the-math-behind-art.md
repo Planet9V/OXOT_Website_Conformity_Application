@@ -1,7 +1,7 @@
 ---
 id: "TC_04"
 canonical_code: "TC_04"
-title: "The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties"
+title: "The €15M Calculation: Dissecting the Math Behind Article 64 Global Turnover Penalties"
 subtitle: "Demystifying statutory fine mechanics: how market surveillance authorities aggregate corporate global turnover, supply chain failure scopes, and board liability."
 slug: "tc-04-the-15m-calculation-dissecting-the-math-behind-art"
 series_id: 9
@@ -19,10 +19,10 @@ audio_url: "https://oxot.ai/audio/cra_podcast/TC_04.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-podcast.xml"
 date: "2026-08-14"
 keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "Article 61", "Procurement & Legal Counsel", "Industrial OT Security", "CE Marking"]
-takeaways: ["Article 61 fines are calculated against the parent entity's total worldwide consolidated annual turnover, not European subsidiary revenue.", "Non-compliance with essential cybersecurity requirements triggers up to \u20ac15,000,000 or 2.5% of annual revenue, whichever is higher.", "Corporate directors face personal liability under national transposition laws for systemic failures to maintain SBOM archives."]
+takeaways: ["Article 64 fines are calculated against the parent entity's total worldwide consolidated annual turnover, not European subsidiary revenue.", "Non-compliance with essential cybersecurity requirements triggers up to \u20ac15,000,000 or 2.5% of annual revenue, whichever is higher.", "Corporate directors face personal liability under national transposition laws for systemic failures to maintain SBOM archives."]
 ---
 
-# The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties
+# The €15M Calculation: Dissecting the Math Behind Article 64 Global Turnover Penalties
 *By Jim Mckenney — Digital Product Security Consultant & Industrial OT Architect*
 
 > **Executive Technical Memorandum:**
@@ -36,11 +36,11 @@ takeaways: ["Article 61 fines are calculated against the parent entity's total w
 
 ## 1. The Commercial Dilemma & Industrial Reality
 
-`[TC_04 - Strategic Technical Briefing] The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties | Jim Mckenney`
+`[TC_04 - Strategic Technical Briefing] The €15M Calculation: Dissecting the Math Behind Article 64 Global Turnover Penalties | Jim Mckenney`
 
 **The Core Industry Problem:** Demystifying statutory fine mechanics: how market surveillance authorities aggregate corporate global turnover, supply chain failure scopes, and board liability.
 
-> *"Article 61 penalties do not care about your regional profit margins—they calculate fines against your multinational parent company's gross worldwide turnover."*
+> *"Article 64 penalties do not care about your regional profit margins—they calculate fines against your multinational parent company's gross worldwide turnover."*
 
 In industrial engineering and critical infrastructure operations, the arrival of **Regulation (EU) 2024/2847 (Cyber Resilience Act)** shatters historical procurement and maintenance assumptions. Stakeholders must recognize that commercial contracts, variation orders, and legacy supply chain models can no longer disclaim statutory cybersecurity conformity.
 
@@ -52,7 +52,7 @@ Under **Article 61, Recital 78**, equipment placed on the European Single Market
 
 <div className="space-y-3 my-4">
 
-1. **Article 61 fines are calculated against the parent entity's total worldwide consolidated annual turnover, not European subsidiary revenue.**
+1. **Article 64 fines are calculated against the parent entity's total worldwide consolidated annual turnover, not European subsidiary revenue.**
 2. **Non-compliance with essential cybersecurity requirements triggers up to €15,000,000 or 2.5% of annual revenue, whichever is higher.**
 3. **Corporate directors face personal liability under national transposition laws for systemic failures to maintain SBOM archives.**
 

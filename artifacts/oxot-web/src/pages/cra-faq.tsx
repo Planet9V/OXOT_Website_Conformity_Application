@@ -118,7 +118,7 @@ const STATUTE_OPTIONS = [
   { id: 'Article 10', label: 'Art 10/11 (Essential Requirements)' },
   { id: 'Article 13', label: 'Art 13 (Technical Dossier 10-Yr)' },
   { id: 'Article 14', label: 'Art 14 (24h Incident Clock)' },
-  { id: 'Article 18', label: 'Art 18 (Duty to Refrain)' },
+  { id: 'Article 20', label: 'Art 18 (Duty to Refrain)' },
   { id: 'Article 21', label: 'Art 21 (Substantial Modification)' },
   { id: 'Article 24', label: 'Art 24 (Conformity Assessment Modules)' },
   { id: 'Annex I', label: 'Annex I (Security by Design)' },

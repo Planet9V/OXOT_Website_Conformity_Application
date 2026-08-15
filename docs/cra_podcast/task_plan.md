@@ -27,7 +27,7 @@ To write, validate, produce, and publish an authoritative 16-episode B2B podcast
 
 - [ ] **Phase 4: Season 3 Script Generation (Episodes 3.01 – 3.04)** `status: pending`
   - Ep 3.01: *Self-Assessment vs. Third-Party Audits: Modules A, B+C, and H*
-  - Ep 3.02: *The €15M Penalty Risk: Article 61 Fines & Executive Liability*
+  - Ep 3.02: *The €15M Penalty Risk: Article 64 Fines & Executive Liability*
   - Ep 3.03: *CE Marking Mechanics: Technical Documentation & Declarations of Conformity*
   - Ep 3.04: *Notified Bodies & Testing Labs: Avoiding the 2026 Audit Bottleneck*
 

@@ -219,11 +219,11 @@ export function computeGrade(
 }
 
 // ---------------------------------------------------------------------------
-// Article 61 Financial Penalty Risk Engine
+// Article 64 Financial Penalty Risk Engine
 // ---------------------------------------------------------------------------
 
 /**
- * Calculates statutory fine risk exposure under CRA Article 61.
+ * Calculates statutory fine risk exposure under CRA Article 64.
  * Article 61(1): Non-compliance with Annex I essential requirements triggers
  * administrative fines up to €15,000,000 or 2.5% of worldwide annual turnover,
  * whichever is higher.

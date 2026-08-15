@@ -111,7 +111,7 @@ Based on extensive sector research across industrial OT, energy, data centers, b
 |    | How do small board & sensor makers support tier-1   | CE marks, but tier-1s legally CANNOT buy     |
 |    | OEMs without bearing the full cost of CRA audit?    | without SBOM, vulnerability, and test proof. |
 +----+-----------------------------------------------------+----------------------------------------------+
-| 5  | Article 18(2) "Duty to Refrain" Enforcement         | Integrators/distributors MUST freeze stock or|
+| 5  | Article 20(2) "Duty to Refrain" Enforcement         | Integrators/distributors MUST freeze stock or|
 |    | When is an integrator legally required to halt an   | refuse integration if they know an OEM has   |
 |    | installation due to an unpatched upstream flaw?     | an unaddressed active vulnerability.         |
 +----+-----------------------------------------------------+----------------------------------------------+
@@ -216,7 +216,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 - **Actionable Takeaways:** The 4-part Substantial Modification test; safe-harbor integration architectures; customer acceptance sign-offs.
 
 #### EP_2.02 (Episode 08): *Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments*
-- **Core Statute:** Article 18(2) (Integrator/Distributor Obligations).
+- **Core Statute:** Article 20(2) (Integrator/Distributor Obligations).
 - **Target Persona & Sector:** EPC Commissioning Leads, Field Service Engineers, Industrial Contractors.
 - **The Central Dilemma:** An integrator discovers an unpatched critical flaw in an OEM switch during plant commissioning. If they power it on and hand over the keys, they violate federal law.
 - **Key Spoken Hook:** *"Under Article 18(2), installing equipment you know is vulnerable isn't bad practice—it's a statutory violation with personal executive exposure."*
@@ -244,7 +244,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 - **Actionable Takeaways:** Skid nameplate protocols; Declaration of Incorporation vs. Declaration of Conformity; Machinery Regulation 2023/1230 alignment.
 
 #### EP_2.06 (Episode 12): *Drafting the Integrator Safe Harbor Agreement: BAA & Contract Scaffolding*
-- **Core Statute:** Article 21, Article 61 (Penalties).
+- **Core Statute:** Article 21, Article 64 (Penalties).
 - **Target Persona & Sector:** EPC General Counsel, Contract Negotiators, Commercial Operations.
 - **The Central Dilemma:** How to contractually protect an engineering firm when clients demand configurations that push equipment outside secure baselines.
 - **Key Spoken Hook:** *"The exact contractual clause that prevents a client's reckless security demands from turning your integration firm into a liable manufacturer."*
@@ -506,7 +506,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 ### Series 8: Executive Liability, Penalties & Future Evolution (Episodes 46–50)
 
 #### EP_8.01 (Episode 46): *The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines*
-- **Core Statute:** Article 61 (Administrative Fines), Article 62 (Penalties for Small & Medium Enterprises).
+- **Core Statute:** Article 64 (Administrative Fines), Article 62 (Penalties for Small & Medium Enterprises).
 - **Target Persona & Sector:** Chief Executive Officers, Chief Financial Officers, Board Members, General Counsel.
 - **The Central Dilemma:** How European market surveillance authorities calculate fines: €15M or 2.5% of total worldwide turnover for non-compliance with essential requirements; €10M or 2% for obligation breaches; €5M or 1% for false information.
 - **Key Spoken Hook:** *"Inside the fine calculation formula: why a single non-compliant product line can jeopardize 2.5% of your global group revenue."*

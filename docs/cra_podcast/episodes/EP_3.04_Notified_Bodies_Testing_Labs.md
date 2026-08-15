@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Articles 29-39. The regulation require
 Translating that into engineering terms: Notified Body designation process, testing lab capacity shortages across Europe, scheduling third-party audits before the Dec 2027 deadline.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

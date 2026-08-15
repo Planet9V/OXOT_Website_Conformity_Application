@@ -44,7 +44,7 @@
 │ 4. "What if our suppliers don't   │ Article 19 Duty to Refrain tracking and automated  │
 │    provide CE / DoC records?"     │ customer advisory notifications & contract clauses.│
 ├───────────────────────────────────┼────────────────────────────────────────────────────┤
-│ 5. "How do we justify Capex to    │ Article 61 fine liability modeling (€15M / 2.5%)   │
+│ 5. "How do we justify Capex to    │ Article 64 fine liability modeling (€15M / 2.5%)   │
 │    our CFO before 2027?"          │ and 10-year continuity ROI business cases.         │
 └───────────────────────────────────┴────────────────────────────────────────────────────┘
 ```

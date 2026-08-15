@@ -1,4 +1,4 @@
-# [EP_8.01 - SOLO] The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines
+# [EP_8.01 - SOLO] The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines
 
 > **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
@@ -15,11 +15,11 @@
 ## SECTION 1: SPOTIFY & APPLE PODCASTS PACKAGING
 
 ### 1.1 SEO Episode Title
-`[EP_8.01 - Solo Briefing] The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines | Jim Mckenney`
+`[EP_8.01 - Solo Briefing] The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines | Jim Mckenney`
 
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
-00:00 - Introduction: The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines
+00:00 - Introduction: The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines
 01:30 - Statutory Architecture & Requirements (Article 61, Article 62)
 05:15 - Operational Impact & Industry Analysis (CEOs, CFOs & Board Members)
 08:45 - Engineering Mitigation & Supply Chain Governance
@@ -38,7 +38,7 @@
 [JIM MCKENNEY]
 Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial equipment manufacturers, system integrators, and infrastructure operators across Europe to align OT architectures with Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven], IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice.
 
-Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines.
+Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines.
 
 Let's ground our discussion in the exact statutory text of Article 61, Article 62.
 
@@ -48,7 +48,7 @@ Under European Union product harmonisation legislation, the obligations set fort
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 61, Article 62, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 64, Article 62, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 64 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 

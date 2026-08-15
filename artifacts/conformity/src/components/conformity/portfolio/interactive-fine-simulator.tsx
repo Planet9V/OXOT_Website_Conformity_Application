@@ -107,7 +107,7 @@ export function InteractiveFineSimulator({
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <Badge variant="outline" className="bg-red-500/10 text-red-400 border-red-500/30 font-mono text-xs">
-                <Scale className="h-3.5 w-3.5 text-red-400 mr-1" /> Article 61 What-If Fine Simulation Engine
+                <Scale className="h-3.5 w-3.5 text-red-400 mr-1" /> Article 64 What-If Fine Simulation Engine
               </Badge>
               <Badge variant="secondary" className="font-mono text-xs">
                 Recital 119 Mitigations
@@ -117,7 +117,7 @@ export function InteractiveFineSimulator({
               Dynamic Statutory Penalty &amp; Liability Shield Modeling
             </CardTitle>
             <CardDescription className="text-xs text-muted-foreground">
-              Simulate enterprise fine exposures under Regulation (EU) 2024/2847 Article 61 against corporate turnover and compliance posture.
+              Simulate enterprise fine exposures under Regulation (EU) 2024/2847 Article 64 against corporate turnover and compliance posture.
             </CardDescription>
           </div>
 

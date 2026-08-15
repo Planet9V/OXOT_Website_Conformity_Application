@@ -114,11 +114,44 @@ const WAIVER = /citation-ok:\s*(.+)$/;
 // Other instruments cited by article number — not CRA articles.
 const OTHER_INSTRUMENT = /NIS2|2022\/2555|2019\/1020|2019\/881|765\/2008|1182\/71|IEC|ETSI|ISO|GDPR|2016\/679|AI Act|2024\/1689/i;
 
+/**
+ * A whole file can be about another instrument. `ai-act.md` cites the AI Act's
+ * Articles 99 and 101 for penalties — correct there, and nothing on those lines
+ * says "AI Act", so line-level context is not enough. Checking article numbers
+ * from such a file against the CRA produced 13 false positives that, if
+ * "fixed", would have turned correct citations into wrong ones.
+ */
+const FILE_IS_ANOTHER_INSTRUMENT = [
+  { re: /ai[-_]act/i, name: "EU AI Act" },
+  { re: /machinery/i, name: "Machinery Regulation" },
+  { re: /\bnis2\b/i, name: "NIS2 Directive" },
+  { re: /\bgdpr\b/i, name: "GDPR" },
+  { re: /\bdora\b/i, name: "DORA" },
+  { re: /\bgpsr\b/i, name: "GPSR" },
+  { re: /\bcer\b/i, name: "CER Directive" },
+  { re: /data[-_]act/i, name: "Data Act" },
+  { re: /radio[-_]equipment|\bred\b/i, name: "Radio Equipment Directive" },
+];
+
+/** Which instrument is this file about, judged by its path? */
+function otherInstrumentFor(relPath) {
+  const base = relPath.split("/").pop() ?? relPath;
+  for (const i of FILE_IS_ANOTHER_INSTRUMENT) if (i.re.test(base)) return i.name;
+  return null;
+}
+
 const violations = [];
 const waived = [];
+const skippedFiles = [];
 
 for (const dir of SCAN_DIRS) {
   for (const file of walk(path.join(ROOT, dir))) {
+    const relFile = path.relative(ROOT, file);
+    const other = otherInstrumentFor(relFile);
+    if (other) {
+      skippedFiles.push({ file: relFile, instrument: other });
+      continue;
+    }
     const lines = fs.readFileSync(file, "utf8").split("\n");
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
@@ -165,6 +198,11 @@ for (const dir of SCAN_DIRS) {
  */
 const baselineArg = process.argv.indexOf("--baseline");
 const BASELINE = baselineArg !== -1 ? Number(process.argv[baselineArg + 1]) : 0;
+
+if (skippedFiles.length) {
+  console.log(`\n${skippedFiles.length} file(s) skipped as being about another instrument:`);
+  for (const f of skippedFiles.slice(0, 10)) console.log(`  ${f.file} — ${f.instrument}`);
+}
 
 if (waived.length) {
   console.log(`\n${waived.length} waived:`);

@@ -25,5 +25,5 @@
 ---
 
 ## 3. Industrial Anxiety & Market Opportunity for our Podcast
-* **The "Standards Void" Panic:** With full application mandated for **11 December 2027**, European industrial OEMs must architect hardware and firmware now, yet the official harmonized standards (granting Article 34 Presumption of Conformity) will only appear in the OJEU months before the deadline.
+* **The "Standards Void" Panic:** With full application mandated for **11 December 2027**, European industrial OEMs must architect hardware and firmware now, yet the official harmonized standards (granting Article 27 Presumption of Conformity) will only appear in the OJEU months before the deadline.
 * **Why Our Podcast Wins:** By providing deep, predictive mapping between **existing IEC 62443 parts and CRA Annex I**, we give engineering teams an immediate, audit-proof roadmap today, positioning our show as the single definitive authority on OT CRA conformity.

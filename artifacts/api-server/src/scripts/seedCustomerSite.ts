@@ -153,7 +153,7 @@ The CRA establishes clear, differentiated legal responsibilities across all econ
 ### 2. Importers (Article 17) & Distributors (Article 18)
 
 - **Verification Mandate:** Must verify that the manufacturer has completed the appropriate conformity assessment, compiled the technical file, and affixed the CE mark.
-- **Duty to Refrain (Article 18(2)):** If an importer or distributor knows or has reason to believe that a product does not comply with Annex I, they **must not** place or make the product available on the market until it is brought into conformity.
+- **Duty to Refrain (Article 20(2)):** If an importer or distributor knows or has reason to believe that a product does not comply with Annex I, they **must not** place or make the product available on the market until it is brought into conformity.
 
 ### 3. Substantial Modification & System Integrators (Article 21)
 

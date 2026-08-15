@@ -30,7 +30,7 @@ System Integrators and Managed Service Providers maintaining industrial OT and e
 * **Article 69(3) Vulnerability Reporting Exception**: The 24h/72h notification obligations under Article 14 take effect on **11 September 2026** for all in-scope digital products, irrespective of when they were placed on the market.
 * **Article 21 Substantial Modification Boundary**: A modification is "substantial" if it changes the intended function or cybersecurity characteristics of the device. Replacing firmware with an uncertified custom OS, or adding uncertified remote telemetry, converts the modifier into the legal "Manufacturer."
 * **Recital 34 & Article 2(2) Spare Parts Mechanics**: Components supplied exclusively as spare parts for the replacement of **identical components** in legacy systems do not trigger a new product placement on the market and can be purchased and installed post-December 2027 without re-certification.
-* **Article 61 Fine Liability**: Administrative fines up to **€15,000,000 or 2.5% of annual global turnover** for non-compliance with reporting or essential safety obligations.
+* **Article 64 Fine Liability**: Administrative fines up to **€15,000,000 or 2.5% of annual global turnover** for non-compliance with reporting or essential safety obligations.
 
 ### 💼 B2B Marketing & Sales Council (Commercial Economics & Capex Acceleration)
 * **Pulling Forward Capex (Pre-2027 Spend Acceleration)**:

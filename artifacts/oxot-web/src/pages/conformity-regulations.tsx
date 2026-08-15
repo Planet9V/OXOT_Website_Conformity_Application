@@ -40,7 +40,7 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
     key: 'cra',
     officialRef: 'Regulation (EU) 2024/2847',
     statutoryScope: 'All products with digital elements placed on the EU market (hardware, software, embedded OT controllers, IIoT gateways).',
-    penaltyClause: 'Up to €15,000,000 or 2.5% of total worldwide annual turnover (Article 61).',
+    penaltyClause: 'Up to €15,000,000 or 2.5% of total worldwide annual turnover (Article 64).',
     keyArticles: [
       'Article 14: 24h Incident & Actively Exploited Vulnerability Notification',
       'Article 21: Substantial Modification & Importer Obligations',
@@ -77,7 +77,7 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
     key: 'iec_62443',
     officialRef: 'IEC 62443 Industrial Cybersecurity Series',
     statutoryScope: 'International standard for Industrial Automation and Control Systems (IACS). Mandated under CEN/CENELEC M/606 for CRA Presumption of Conformity.',
-    penaltyClause: 'Commercial disqualification in EU tenders and loss of CRA Presumption of Conformity under Article 34.',
+    penaltyClause: 'Commercial disqualification in EU tenders and loss of CRA Presumption of Conformity under Article 27.',
     keyArticles: [
       'IEC 62443-4-1: Secure Product Development Lifecycle (CRA Annex I Part II)',
       'IEC 62443-4-2: Technical Security Requirements for IACS Components (Annex I Part I)',

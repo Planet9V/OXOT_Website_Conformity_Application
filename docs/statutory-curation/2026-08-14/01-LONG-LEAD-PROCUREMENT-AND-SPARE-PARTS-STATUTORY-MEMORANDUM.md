@@ -23,7 +23,7 @@
 +---------------------+-----------------------------------------------------------------------------------+
 | Article 13(8)       | Support Periods: Mandatory security updates for at least 5 years post-market.    |
 +---------------------+-----------------------------------------------------------------------------------+
-| Article 18(2)       | Duty to Refrain: Integrators/distributors must refrain from supplying/installing  |
+| Article 20(2)       | Duty to Refrain: Integrators/distributors must refrain from supplying/installing  |
 |                     | equipment known to contain unaddressed critical vulnerabilities.                  |
 +---------------------+-----------------------------------------------------------------------------------+
 | Article 21 &        | Substantial Modification: Anyone carrying out modifications that affect security  |

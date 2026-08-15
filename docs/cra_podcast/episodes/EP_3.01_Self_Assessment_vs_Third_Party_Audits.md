@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Article 24, Annex VI. The regulation r
 Translating that into engineering terms: Conformity assessment module breakdown under Annex VI: Internal Control Module A, Type Examination Module B+C, and Full Quality Assurance Module H.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

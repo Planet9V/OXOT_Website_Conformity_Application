@@ -1,4 +1,4 @@
-# [EP_7.05 - SOLO] Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
+# [EP_7.05 - SOLO] Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
 
 > **Single-Voice Solo Briefing Architecture (Standard Series):**
 > - **Host & Presenter:** Jim Mckenney (Digital Product Security Consultant — Industrial OT, CRA, IEC 62443, EU AI Act, Machinery Regulation)
@@ -15,11 +15,11 @@
 ## SECTION 1: SPOTIFY & APPLE PODCASTS PACKAGING
 
 ### 1.1 SEO Episode Title
-`[EP_7.05 - Solo Briefing] Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13) | Jim Mckenney`
+`[EP_7.05 - Solo Briefing] Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13) | Jim Mckenney`
 
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
-00:00 - Introduction: Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
+00:00 - Introduction: Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
 01:30 - Statutory Architecture & Requirements (Article 34, Standardisation Request M/596)
 05:15 - Operational Impact & Industry Analysis (Standards Engineers & Chief Architects)
 08:45 - Engineering Mitigation & Supply Chain Governance
@@ -38,7 +38,7 @@
 [JIM MCKENNEY]
 Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital product security consultant. I work directly with industrial equipment manufacturers, system integrators, and infrastructure operators across Europe to align OT architectures with Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven], IEC 62443, the EU AI Act, and the Machinery Regulation. Standard disclaimer: this podcast provides technical and strategic engineering analysis, not formal legal advice.
 
-Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13).
+Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13).
 
 Let's ground our discussion in the exact statutory text of Article 34, Standardisation Request M/596.
 
@@ -48,7 +48,7 @@ Under European Union product harmonisation legislation, the obligations set fort
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 34, Standardisation Request M/596, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 34, Standardisation Request M/596, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 64 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 

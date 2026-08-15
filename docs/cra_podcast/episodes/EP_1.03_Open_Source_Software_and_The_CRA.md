@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Recital 10, Article 13. The regulation
 Translating that into engineering terms: Explains Recital 10 open-source exemptions vs commercial open-source stewardship liabilities, foundation obligations, and supply-chain security.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

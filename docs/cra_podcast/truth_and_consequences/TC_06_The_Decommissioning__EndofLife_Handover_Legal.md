@@ -45,7 +45,7 @@ Let's start with the convenient myth that industry executives tell themselves:
 "Once an industrial machine is decommissioned or auctioned off, the manufacturer and operator have zero ongoing CRA legal obligations."
 
 Now let's look at the shocking financial and legal truth:
-Article 13(9) legally mandates 10 years of technical dossier and SBOM retention after the last unit was placed on the market. Failure to produce records during an inquiry triggers Article 61 fines.
+Article 13(9) legally mandates 10 years of technical dossier and SBOM retention after the last unit was placed on the market. Failure to produce records during an inquiry triggers Article 64 fines.
 
 How did we get here? Look at the conflict of perspectives that created this disaster:
 Plant managers view asset retirement as simple scrap removal. Legal and forensic authorities view retired machines as evidence vaults that can expose historical corporate non-compliance during investigations.

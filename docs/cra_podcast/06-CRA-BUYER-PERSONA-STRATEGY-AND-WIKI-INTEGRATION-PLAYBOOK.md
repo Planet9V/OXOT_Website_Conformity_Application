@@ -29,7 +29,7 @@ To build genuine credibility and command attention across European industry, eve
 |    - Core Job: "Show me how to defend legacy plant controllers using compensating network controls."|
 +----------------------------------------------------------------------------------------------------+
 | 4. General Counsel, Chief Risk Officer & Board Director                                            |
-|    - Anxiety: Article 61 turnover fines (2.5% global turnover), personal D&O liability, insurance.  |
+|    - Anxiety: Article 64 turnover fines (2.5% global turnover), personal D&O liability, insurance.  |
 |    - Core Job: "Protect the balance sheet from catastrophic regulatory sanctions and stop-orders." |
 +----------------------------------------------------------------------------------------------------+
 | 5. Tier-2 Embedded Component & Sensor Supplier                                                     |

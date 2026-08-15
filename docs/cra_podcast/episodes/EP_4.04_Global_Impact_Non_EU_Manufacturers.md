@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Article 19, Article 20. The regulation
 Translating that into engineering terms: Brussels Effect of CRA for US, UK, and Asian manufacturers. Appointing EU Authorized Representatives, importer verification, and global supply chain impacts.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

@@ -124,7 +124,7 @@ function parseBlogFile(filename: string): { summary: BlogPostSummary; rawContent
         personaCategory: personaCatMatch ? personaCatMatch[1] : "OT & Product Security Leads",
         statutoryDomain: statutoryDomainMatch ? statutoryDomainMatch[1] : "Industrial Product Security",
         difficulty: difficultyMatch ? difficultyMatch[1] : "Advanced Engineering",
-        keyMetric: keyMetricMatch ? keyMetricMatch[1] : "Article 61 Fine Risk",
+        keyMetric: keyMetricMatch ? keyMetricMatch[1] : "Article 64 Fine Risk",
         series: seriesMatch ? seriesMatch[1] : "Industrial Product Security",
         seriesId: seriesIdMatch ? parseInt(seriesIdMatch[1], 10) : 1,
         episodeNumber: epNumMatch ? parseInt(epNumMatch[1], 10) : 1,

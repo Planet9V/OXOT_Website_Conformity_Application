@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Article 13(8), Article 10. The regulat
 Translating that into engineering terms: Article 13(8) support period obligations. Defining expected product lifetime (minimum 5 years or expected use), security update delivery, and end-of-life disclosure.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

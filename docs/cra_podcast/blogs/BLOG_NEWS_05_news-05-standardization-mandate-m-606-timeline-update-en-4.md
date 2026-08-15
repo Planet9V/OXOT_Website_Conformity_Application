@@ -53,7 +53,7 @@ Under **Article 34, Standardization Mandate M/606**, equipment placed on the Eur
 <div className="space-y-3 my-4">
 
 1. **CEN-CENELEC Joint Technical Committee 21 released initial drafts of the EN 40000 harmonized European standard series.**
-2. **Compliance with published harmonized standards confers automatic 'Presumption of Conformity' under Article 34.**
+2. **Compliance with published harmonized standards confers automatic 'Presumption of Conformity' under Article 27.**
 3. **Working groups are mapping existing IEC 62443-4-1 and IEC 62443-4-2 clauses directly into the CRA Annex I essential requirements.**
 
 </div>

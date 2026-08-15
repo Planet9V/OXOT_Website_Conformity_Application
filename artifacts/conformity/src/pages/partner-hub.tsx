@@ -464,7 +464,7 @@ export default function PartnerHubPage() {
 
             <div className="bg-card/80 border border-border/80 p-4 rounded-xl shadow-xs space-y-1">
               <div className="font-mono text-[11px] uppercase tracking-wider text-red-500 font-semibold flex items-center justify-between">
-                <span>Art. 61 Fine Exposure</span>
+                <span>Art. 64 Fine Exposure</span>
                 <button
                   onClick={() => setStatutoryFlyout({ type: 'article', number: 61 })}
                   className="hover:underline text-[10px]"
@@ -815,7 +815,7 @@ export default function PartnerHubPage() {
                   Stage 3: Distributor Statutory Radar
                 </span>
                 <h2 className="font-display font-medium text-lg text-foreground mt-0.5">
-                  Article 18(2) "Duty to Refrain" Procurement Screener
+                  Article 20(2) "Duty to Refrain" Procurement Screener
                 </h2>
                 <p className="text-xs text-muted-foreground">
                   Automated gate blocking hardware purchases lacking CE markings, valid DoCs, or with unpatched critical CVEs.

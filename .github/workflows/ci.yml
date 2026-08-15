@@ -61,7 +61,7 @@ jobs:
         # Covers application code AND published material (blogs, podcast
         # scripts, FAQs) — a wrong article number misleads a reader wherever it
         # appears. Baseline is the backlog on the day the scan was widened.
-        run: node scripts/check_citations.mjs --baseline 183
+        run: node scripts/check_citations.mjs --baseline 4
 
       # THE source-of-truth check. One command, deterministic, three states
       # (PASS / FAIL / "----" could-not-verify). This is the only sanctioned way

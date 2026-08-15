@@ -1,7 +1,7 @@
 ---
 id: "EP_2.02"
 canonical_code: "EP_2.02"
-title: "Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments"
+title: "Article 20(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments"
 subtitle: "An integrator discovers an unpatched critical flaw in an OEM switch during plant commissioning. If they power it on and hand over the keys, they violate federal law."
 slug: "ep-2.02-article-18-2-duty-to-refrain-when-integrators-must"
 series_id: 2
@@ -22,7 +22,7 @@ keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "Article 18(2)",
 takeaways: ["Stop-work notification templates", "OEM escalation protocols", "client indemnity agreements"]
 ---
 
-# Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments
+# Article 20(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments
 *By Jim Mckenney — Digital Product Security Consultant & Industrial OT Architect*
 
 > **Executive Technical Memorandum:**
@@ -36,7 +36,7 @@ takeaways: ["Stop-work notification templates", "OEM escalation protocols", "cli
 
 ## 1. The Commercial Dilemma & Industrial Reality
 
-`[EP_2.02 - Strategic Technical Briefing] Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments | Jim Mckenney`
+`[EP_2.02 - Strategic Technical Briefing] Article 20(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments | Jim Mckenney`
 
 **The Core Industry Problem:** An integrator discovers an unpatched critical flaw in an OEM switch during plant commissioning. If they power it on and hand over the keys, they violate federal law.
 
@@ -68,7 +68,7 @@ The following domain-specific architecture illustrates the compliant engineering
 graph LR
     A["Integrator On-Site Commissioning"] --> B["Pre-Commissioning Security Vulnerability Scan"]
     B --> C{"Active Zero-Day or Annex I Defect?"}
-    C -->|"Critical Flaw Found"| D["Article 18(2) Mandatory 'Duty to Refrain'"]
+    C -->|"Critical Flaw Found"| D["Article 20(2) Mandatory 'Duty to Refrain'"]
     D --> E["Commissioning Freeze & Halt Deployment"]
     D --> F["Immediate Formal Notice to OEM & Asset Owner"]
     C -->|"Clean Scan"| G["Proceed to Site Acceptance Test (SAT)"]

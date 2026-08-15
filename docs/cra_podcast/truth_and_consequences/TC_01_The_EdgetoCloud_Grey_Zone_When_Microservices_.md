@@ -45,7 +45,7 @@ Let's start with the convenient myth that industry executives tell themselves:
 "Cloud container updates to an edge gateway are purely IT operations and have nothing to do with physical machine CE marking."
 
 Now let's look at the shocking financial and legal truth:
-A single unauthorized container push altering PLC communications voids the OEM's Declaration of Conformity and exposes the deploying cloud integrator to Article 61 fines up to €15,000,000 or 2.5% of global turnover.
+A single unauthorized container push altering PLC communications voids the OEM's Declaration of Conformity and exposes the deploying cloud integrator to Article 64 fines up to €15,000,000 or 2.5% of global turnover.
 
 How did we get here? Look at the conflict of perspectives that created this disaster:
 Cloud developers view weekly OTA pushes as agile best practice. Plant engineers view non-deterministic microservice updates as unvetted cyber hazards. European market surveillance treats the container deployer as the new legal Manufacturer under Article 21.

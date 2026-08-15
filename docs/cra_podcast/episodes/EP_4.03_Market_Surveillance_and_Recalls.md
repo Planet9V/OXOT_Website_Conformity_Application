@@ -56,7 +56,7 @@ Let's examine the statutory foundation in Articles 43-54. The regulation require
 Translating that into engineering terms: Market surveillance procedures under Chapter V. Product recall triggers, EU safeguard procedures, distributor liability, and corrective action plans.
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:
