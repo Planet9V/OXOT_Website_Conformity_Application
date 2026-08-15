@@ -12,6 +12,33 @@ on:
 jobs:
   gates:
     runs-on: ubuntu-latest
+
+    # The conformity suites are integration tests against a real database.
+    # Without one, 26 of 51 files could not even collect, which hid every real
+    # assertion inside them. pgvector matches the image docker-compose uses.
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: oxot
+          POSTGRES_PASSWORD: oxot
+          POSTGRES_DB: oxot
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U oxot"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgres://oxot:oxot@localhost:5432/oxot
+      # Test-only value; must be >= 32 chars and not the 'change-me' placeholder.
+      SESSION_SECRET: ci-test-session-secret-not-a-real-secret-000000
+      ADMIN_USERNAME: ci-admin
+      ADMIN_PASSWORD: ci-admin-password-for-tests-only
+      NODE_ENV: test
+
     steps:
       - uses: actions/checkout@v4
 
@@ -51,6 +78,9 @@ jobs:
       # without a database are a known gap tracked in the plan; they must not
       # mask a genuine assertion failure, so the run is not allowed to pass
       # merely because collection errored.
+      - name: Provision the test database schema
+        run: pnpm --filter @workspace/db run push-force
+
       - name: G2 tests
         run: pnpm --filter @workspace/api-server exec vitest run
 
