@@ -25,6 +25,7 @@ export const recitalsData = {
     {
       "ojRef": "OJ L, 2025/90555, 2.7.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
       "note": "Page 65, Article 64(10), introductory wording. Widens the fine exemption to cover paragraph 2 — the EUR 15 000 000 / 2,5 % tier — so the Art. 64(10)(b) exemption for open-source software stewards is complete rather than partial.",
       "article": 64,
       "paragraph": 10,
@@ -1581,6 +1582,7 @@ export const articlesData = {
     {
       "ojRef": "OJ L, 2025/90555, 2.7.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
       "note": "Page 65, Article 64(10), introductory wording. Widens the fine exemption to cover paragraph 2 — the EUR 15 000 000 / 2,5 % tier — so the Art. 64(10)(b) exemption for open-source software stewards is complete rather than partial.",
       "article": 64,
       "paragraph": 10,
@@ -4223,6 +4225,7 @@ export const annexesData = {
     {
       "ojRef": "OJ L, 2025/90555, 2.7.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
       "note": "Page 65, Article 64(10), introductory wording. Widens the fine exemption to cover paragraph 2 — the EUR 15 000 000 / 2,5 % tier — so the Art. 64(10)(b) exemption for open-source software stewards is complete rather than partial.",
       "article": 64,
       "paragraph": 10,
