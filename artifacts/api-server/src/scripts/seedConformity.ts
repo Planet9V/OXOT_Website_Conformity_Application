@@ -340,6 +340,17 @@ const cra: Req[] = [
   { refCode: "Art 14", themeKey: "incident_reporting", title: "Report exploited vulnerabilities and severe incidents", description: "Notify an actively exploited vulnerability or a severe incident: an early warning within 24 hours and a notification within 72 hours to the CSIRT and ENISA.", obligationType: "reporting", appliesTo: ["manufacturer"] },
   { refCode: "Annex V", themeKey: "conformity_declaration", title: "EU Declaration of Conformity", description: "Draw up an EU declaration of conformity stating that the essential requirements have been fulfilled, and affix the CE marking.", obligationType: "documentation", appliesTo: ["manufacturer"] },
   { refCode: "Art 13(8)", themeKey: "post_market", title: "Support period and updates over lifetime", description: "Ensure that vulnerabilities are handled effectively during a defined support period reflecting the expected product lifetime.", obligationType: "process", appliesTo: ["manufacturer"] },
+  { refCode: "Art 13(13)", themeKey: "post_market", title: "Keep the technical documentation and EU DoC for ten years", description: "Keep the technical documentation and the EU declaration of conformity at the disposal of the market surveillance authorities for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer.", obligationType: "documentation", appliesTo: ["manufacturer"] },
+  { refCode: "Art 13(18)", themeKey: "post_market", title: "Keep the Annex II user information for ten years", description: "Keep the information and instructions to the user set out in Annex II at the disposal of users and market surveillance authorities — and, where provided online, accessible and available online — for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer.", obligationType: "documentation", appliesTo: ["manufacturer"] },
+  /**
+   * Art. 23 binds every economic operator, not only the manufacturer. Art. 3(12)
+   * defines that as the manufacturer, authorised representative, importer and
+   * distributor. It is deliberately not extended to open-source stewards,
+   * system integrators or operators: a steward's status as an economic operator
+   * is genuinely contested, an integrator acquires manufacturer duties only via
+   * the Art. 22 route, and an operator is a downstream user.
+   */
+  { refCode: "Art 23", themeKey: "sbom_supply_chain", title: "Identify who supplied you, and who you supplied", description: "On request, provide the market surveillance authorities with the name and address of any economic operator who has supplied you with a product with digital elements and, where available, of any economic operator you have supplied. You must be able to present that information for 10 years after you were supplied and for 10 years after you supplied.", obligationType: "process", appliesTo: ["manufacturer", "authorised_representative", "importer", "distributor"] },
 ];
 
 const aiAct: Req[] = [
