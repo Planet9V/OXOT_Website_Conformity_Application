@@ -32,7 +32,9 @@ jobs:
       # not its source (lessons.md, L15).
       - name: G1 typecheck
         run: |
-          pnpm --filter @workspace/db exec tsc -b
+          # --force: a committed tsbuildinfo would otherwise make this a no-op
+          # on a fresh clone where dist/ is gitignored (TS6305).
+          pnpm --filter @workspace/db exec tsc -b --force
           pnpm --filter @workspace/api-server exec tsc --noEmit
           pnpm --filter @workspace/conformity exec tsc --noEmit
           pnpm --filter @workspace/oxot-web exec tsc --noEmit
