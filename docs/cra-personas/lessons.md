@@ -346,3 +346,64 @@ Art. 22 anchor-by-anchor rather than assuming the shared "substantial
 modification" wording means a shared rule (L24).
 
 **New lessons:** L23-L29.
+
+### L30 — A fabricated citation is easier to spot than a fabricated PREMISE
+Phase 1 fixed 30 wrong article numbers. Phase 2 found something worse: a whole
+feature built on a legal premise that does not exist. "Recital 34 Safe Harbor"
+was not a mis-numbered citation — Recital 34 is real, and it is about a
+manufacturer's due diligence over third-party components. The number resolved;
+the proposition did not.
+**Apply:** when a feature rests on one provision, read that provision in full and
+ask what it is ABOUT, not just whether the number exists. G5 cannot catch this.
+
+### L31 — Invented proxy questions are how a wizard launders a guess
+The Art. 21 wizard asked four plausible engineering questions ("identical OEM
+replacement part", "manufacturer-signed firmware", "performance envelope
+maintained") and treated four yeses as a legal conclusion. None of them appears
+in Art. 3(30), whose actual test is a change following placing on the market
+that either affects Annex I Part I compliance or modifies the assessed intended
+purpose.
+**Apply:** ask the statutory question in the statute's own words. If a proxy is
+genuinely needed, say it is a proxy and show the real test beside it.
+
+### L32 — Tri-state or the blank field becomes a clearance
+Every boolean in the old wizard defaulted to true. Unanswered read as
+"compliant", so leaving a field alone produced a favourable determination. Every
+fact input in Phase 2 is boolean|null and null is reported as unanswered.
+**Apply:** in any compliance determination, unanswered is its own state and must
+never collapse into the favourable value.
+
+### L33 — The gate you widened is the one that had already failed you
+claims-exemption-granted existed and did not fire on "is exempt from Article 20
+Manufacturer obligations", because its pattern only knew "exemption granted" and
+"legally exempt". The rule looked like coverage and was not.
+**Apply:** when removing a fabricated claim, check whether the gate that should
+have caught it actually matches the exact string, then widen it — and check the
+widening does not force a waiver for a legitimate future statement.
+
+---
+
+## Phase 2 — Deemed manufacturer (Arts. 21 & 22) — completed 2026-08-15
+
+**What worked:** Reading Arts. 21, 22 AND the Art. 3(30) definition before
+touching code. The definition is where the whole test lives, and the old
+implementation had clearly never been checked against it. Rule-as-pure-function
+again paid: 17 rule tests, one fix cycle, and the integration tests then only had
+to prove persistence and the transition.
+
+**What cost time:** The frontend. The Art. 21 tab was ~200 lines of UI built
+around a determination shape that no longer exists, and the partner hub carried
+three fabricated customer plants wired into the same tab.
+
+**Surprises:** The worst defect was not a wrong number — it was a feature resting
+on a premise the regulation does not contain (L30). And the honesty gate rule
+that should have caught the exemption claim existed but did not match it (L33).
+
+**Re-tuning applied to Phase 3:** Art. 19 and Art. 20 have their own definitions
+to read first (Art. 19 has 8 operative paragraphs, Art. 20 has 6) — read both in
+full before splitting the persona, and check specifically whether the duty to
+refrain differs between them, because the app currently conflates them. Expect
+the same tri-state discipline (L32) for every verification question in 3.3.
+
+**New lessons:** L30-L33.
+
