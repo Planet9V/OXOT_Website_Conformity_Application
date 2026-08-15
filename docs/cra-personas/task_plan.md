@@ -338,7 +338,22 @@ in the app: it invents an "Article 33 attestation", asserts an exemption from
 - **4.2** Art. 24(2): CVD process and MSA cooperation record.
 - **4.3** State the Art. 64(10)(b) fine exemption plainly in the steward cockpit.
 - **4.4** Keep the Art. 25 attestation clearly marked as **not yet enacted** by
-  delegated act — do not present it as available.
+  delegated act — do not present it as available. Art. 25 empowers the
+  Commission to establish VOLUNTARY attestation programmes; none exists.
+- **4.5** **ADDED after reading Art. 24 in full.** The plan covered 24(1) and
+  24(2) and missed **Art. 24(3)** entirely, which applies Art. 14 reporting to
+  stewards on two conditional limbs:
+    - Art. 14(1) — actively exploited vulnerabilities — applies "to the extent
+      that they are involved in the development of the products".
+    - Art. 14(3) and (8) — severe incidents — apply "to the extent that severe
+      incidents ... affect network and information systems provided by the
+      open-source software steward for the development of such products".
+  Calling this phase "smallest real scope" understated it: stewards do have
+  reporting duties, scoped by what they actually do.
+- **4.6** Correct the definitional error in the current implementation. It asks
+  for a "non-commercial open-source steward declaration", but Art. 3(14) defines
+  a steward as supporting FOSS **"intended for commercial activities"**. The
+  checkbox contradicts the definition of the role it claims to record.
 
 ### Acceptance criteria
 - A steward can write, version and export a cybersecurity policy that persists.
