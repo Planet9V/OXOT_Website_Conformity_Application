@@ -7,11 +7,14 @@ import {
   regulationsTable,
   requirementsTable,
   conformityEvaluationsTable,
+  conformityIncidentsTable,
+  conformityIncidentSubmissionsTable,
   CANONICAL_ROLES,
   CANONICAL_ROLE_KEYS,
   termForRole,
 } from "@workspace/db";
 import { requireAuth } from "../lib/adminAuth";
+import { assessReportingObligation } from "../lib/reportingObligation";
 
 /**
  * The organisation's own profile: what it does, and which acts it is subject to.
@@ -178,10 +181,20 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
     return;
   }
 
-  const [reqRows, evalRows] = await Promise.all([
+  const [reqRows, evalRows, incidentRows, submissionRows] = await Promise.all([
     db.select().from(requirementsTable).where(inArray(requirementsTable.regulationKey, regs)),
     db.select().from(conformityEvaluationsTable),
+    db.select().from(conformityIncidentsTable),
+    db.select().from(conformityIncidentSubmissionsTable),
   ]);
+
+  /**
+   * Article 14 is the one obligation whose status can be derived from the record
+   * rather than typed by a person: either the reports were filed by their
+   * deadlines or they were not. Deriving it stops an evaluation row reading
+   * "met" while a 24-hour early warning sits unfiled and overdue.
+   */
+  const reporting = assessReportingObligation(incidentRows, submissionRows, new Date());
 
   // Group evaluation state by the natural key the reference layer uses.
   const byRef = new Map<string, typeof evalRows>();
@@ -202,6 +215,7 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
     .map((r) => {
       const evals = byRef.get(`${r.regulationKey}::${r.refCode}`) ?? [];
       const appliesTo = Array.isArray(r.appliesTo) ? (r.appliesTo as string[]) : [];
+      const isArt14 = r.regulationKey === "cra" && r.refCode === "Art 14";
       return {
         regulationKey: r.regulationKey,
         refCode: r.refCode,
@@ -212,7 +226,24 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
         appliesTo,
         // The regulator's own word for the role, so the UI can speak its language.
         roleTerms: appliesTo.map((a) => termForRole(a, r.regulationKey)),
-        status: worstStatus(evals.map((e) => e.status)),
+        // Art. 14 is evidenced by filings, not by a typed status. Everything
+        // else still aggregates the evaluation rows.
+        status: isArt14
+          ? reporting.status === "no_reportable_events"
+            ? "not_started"
+            : reporting.status
+          : worstStatus(evals.map((e) => e.status)),
+        derivedFrom: isArt14
+          ? {
+              source: "conformity_incident_submissions",
+              citation: reporting.citation,
+              status: reporting.status,
+              incidentCount: reporting.incidentCount,
+              overdueCount: reporting.overdueCount,
+              unevidencedCount: reporting.unevidencedCount,
+              message: reporting.message,
+            }
+          : null,
         evaluationCount: evals.length,
         owners: [...new Set(evals.map((e) => e.owner).filter(Boolean))],
         nextDueDate:
