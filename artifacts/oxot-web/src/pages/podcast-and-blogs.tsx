@@ -55,7 +55,7 @@ export default function PodcastAndBlogsPage() {
   useSeo({
     title: 'The Cyber Resilience Act Podcast & Technical Blog Hub | OXOT',
     description: 'Authoritative single-voice podcast briefings, hard-hitting investigative case studies, and long-form engineering guides on EU Regulation 2024/2847 and IEC 62443.',
-    canonicalPath: '/podcast',
+    canonicalUrl: '/podcast',
   });
 
   const episodes: Episode[] = useMemo(() => [
@@ -120,8 +120,8 @@ export default function PodcastAndBlogsPage() {
         {/* Page Header */}
         <PageHeader
           kicker="KNOWLEDGE & MEDIA HUB"
-          heading="The Cyber Resilience Act Podcast & Engineering Guides"
-          subheading="Direct, no-FUD regulatory briefings, hard-hitting case studies, and long-form technical guides on EU Regulation 2024/2847 and industrial OT compliance."
+          title="The Cyber Resilience Act Podcast & Engineering Guides"
+          description="Direct, no-FUD regulatory briefings, hard-hitting case studies, and long-form technical guides on EU Regulation 2024/2847 and industrial OT compliance."
         />
 
         {/* External Syndication Badges */}

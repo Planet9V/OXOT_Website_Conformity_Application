@@ -88,7 +88,7 @@ export default function PodcastHubPage() {
   useSeo({
     title: 'The Cyber Resilience Act Podcast Network | OXOT',
     description: 'Structured, sequential audio briefings, investigative case studies, and regulatory news on EU Regulation 2024/2847 and industrial OT compliance.',
-    canonicalPath: '/podcast',
+    canonicalUrl: '/podcast',
   });
 
   useEffect(() => {
@@ -192,8 +192,8 @@ export default function PodcastHubPage() {
         {/* Page Header */}
         <PageHeader
           kicker="AUDIO INTELLIGENCE PLATFORM"
-          heading="The Cyber Resilience Act Podcast Network"
-          subheading="Structured, sequential audio briefings, investigative myth-busting case studies, and fast-paced regulatory news bulletins on EU Regulation 2024/2847."
+          title="The Cyber Resilience Act Podcast Network"
+          description="Structured, sequential audio briefings, investigative myth-busting case studies, and fast-paced regulatory news bulletins on EU Regulation 2024/2847."
         />
 
         {/* 3 Formats Navigation Tabs */}

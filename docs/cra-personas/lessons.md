@@ -197,6 +197,35 @@ all.
 New defects push the count above the baseline and fail immediately; the backlog
 is burned down by lowering the number. The baseline may only ever decrease.
 
+## Phase 0 — Role model foundation — completed 2026-08-15
+
+**What worked:** Reading `lib/db/src/schema` before specifying tables cut the
+phase to roughly a third (L13). Per-step live verification caught two defects a
+typecheck-and-commit loop would have shipped: stale seeded data, and a seed
+image built from a different Docker target. Fix cycles stayed inside the
+3-attempt limit every time; the limit was reached once and resolved on that
+cycle.
+
+**What cost time:** Four separate batches of pre-existing breakage from the
+concurrent blog/podcast workstream — `craFaqRoutes.ts`, `podcastStudio.ts`,
+`podcast-studio.tsx`, then four oxot-web pages. All were blocking gate G1 for
+work unrelated to them. Roughly a third of the phase went to clearing someone
+else's red baseline.
+
+**Surprises:** The obligation catalogue, the instance model **and** the
+CRA↔IEC 62443 mapping table already existed and were better designed than the
+plan. The good half of this codebase is genuinely good.
+
+**Re-tuning applied to Phase 1:** tasks 1.7 and 1.8 added after research showed
+the Art. 27 presumption is unavailable to everyone today; both now require
+citation status to be modelled as data rather than hardcoded.
+
+**New lessons:** L13–L20.
+
+**Gate result:** G1 pass (all three apps) · G2 181 passed, 0 failed · G3 pass ·
+G4 pass at baseline 13 · G5 pass at baseline 36 · G6 44 obligations live from
+real declarations.
+
 ---
 
 ## Phase retros

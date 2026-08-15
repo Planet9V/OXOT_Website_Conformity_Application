@@ -148,7 +148,7 @@ export default function CraFaqPage() {
   useSeo({
     title: t.seoTitle,
     description: t.seoDescription,
-    canonicalPath: '/faq',
+    canonicalUrl: '/faq',
   });
 
   useEffect(() => {

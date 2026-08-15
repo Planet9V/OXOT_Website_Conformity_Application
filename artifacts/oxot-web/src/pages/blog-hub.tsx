@@ -260,7 +260,7 @@ export default function BlogHubPage() {
   useSeo({
     title: t.seoTitle,
     description: t.seoDescription,
-    canonicalPath: '/blog',
+    canonicalUrl: '/blog',
   });
 
   // Load blog corpus
