@@ -92,12 +92,13 @@ craFaqRouter.get("/faqs/raw-markdown", (_req: Request, res: Response) => {
 // GET /api/faqs/:id
 craFaqRouter.get("/faqs/:id", (req: Request, res: Response) => {
   const data = getFaqData();
-  const targetId = req.params.id;
+  const targetId = String(req.params.id);
   const item = (data.items || []).find((f: any) => f.id === targetId || f.number === targetId || f.id === `cra-faq-${targetId.replace(/\./g, '-')}`);
-  
+
   if (!item) {
-    return res.status(404).json({ error: "FAQ entry not found" });
+    res.status(404).json({ error: "FAQ entry not found" });
+    return;
   }
-  
+
   res.json(item);
 });

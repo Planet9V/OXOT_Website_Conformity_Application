@@ -205,7 +205,7 @@ podcastStudioRouter.get(["/blogs", "/podcast/blogs"], (req: Request, res: Respon
  */
 podcastStudioRouter.get(["/blogs/:slug", "/podcast/blogs/:slug"], (req: Request, res: Response) => {
   try {
-    const targetSlug = req.params.slug.toLowerCase();
+    const targetSlug = String(req.params.slug).toLowerCase();
     const blogsDir = getBlogsDir();
     if (!fs.existsSync(blogsDir)) {
       return res.status(404).json({ error: "Blog corpus not found" });
