@@ -538,3 +538,50 @@ for what the Directive says and silent on what any entity must do.
 | Phase | Error | Attempt | Resolution |
 |-------|-------|---------|------------|
 | — | (none yet) | | |
+
+---
+
+# Phase 6 — Team role model (added 2026-08-15)
+
+Prerequisite for the shell redesign's D12 (two equal daily users). Today
+`conformityMembers` carries a free-text `roleResponsibility` and the only real
+roles are `admin` and `member`, so "the home differs by role" has nothing to
+branch on.
+
+- **6.1** Model the four team roles as data, not free text.
+- **6.2** Fix `conformityMembers.plainPassword` — passwords are stored in
+  plaintext. This table is being touched anyway; it is not acceptable to leave.
+- **6.3** Scope obligations and evidence requests by role, so an inbox can be
+  role-scoped rather than showing everyone everything.
+
+Acceptance: a user's role determines what their home surfaces, and no password
+is readable in the database.
+
+# Phase 7 — Shell redesign (added 2026-08-15)
+
+Per `DESIGN_five_shapes.md` iteration 2. Nine destinations in four groups,
+replacing 34 pages and 51 route registrations. Built **on** the existing 181
+design tokens and 57 UI primitives — structure and surfaces are new, the visual
+language is not discarded.
+
+- **7.1** Navigation shell and routing for the nine destinations; retire the
+  route aliases.
+- **7.2** Home, role-aware (depends on Phase 6).
+- **7.3** Products as the polymorphic subject file — renders per the product's
+  role, absorbing notified body, CE, versions, end-of-support, BOM evidence.
+- **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.
+- **7.5** Authorities, Signatures, Projects, Organisation — the four surfaces
+  that give the six orphaned capabilities a home.
+- **7.6** Library with the universal statutory flyout; retire the nine
+  reference pages.
+
+Acceptance: every capability in the iteration 2 orphan table is reachable, the
+seven design principles hold, and G6 verifies each surface live.
+
+## Sequencing note — the accepted risk
+
+Phase 6 before Phase 7 means an extended period with nothing visible shipping,
+and three personas (importer/distributor, steward, authorised representative)
+stay unusable throughout. This was chosen deliberately over shipping a
+compromised single home. Mitigation: 7.1 and 7.3 should land as early as
+possible so the manufacturer journey stays demonstrable while the rest is built.

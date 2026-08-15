@@ -328,3 +328,131 @@ decided by the implementation.
 3. Does the assurance shape need its own NIS2 obligation engine, or does it
    reuse P1 with a NIS2 regulation key? (Leaning: reuse — `org_regulations`
    already supports multiple acts.)
+
+---
+
+# Iteration 2 — the shell, revisited (2026-08-15)
+
+Iteration 1's `33 → 8` was written **before** NIS2, before Phases 3/4/5, and
+before W1.3 made the backend act-agnostic. It is a good single-act manufacturer
+information architecture and it does not survive what has since been built.
+
+## What the audit found
+
+Measured against the working tree, not against this document:
+
+- **6 of 11 shipped API capabilities have no working UI.** `msa-engagements`,
+  `notified-body`, `operator-checks` and `steward-policy` have no frontend
+  reference at all. `attestations` and `mandates` appear only as navigation
+  labels and copilot prompt chips — **zero API calls**.
+- **NIS2 exists in the UI as two string literals**: a search keyword array and a
+  navigation description. There is no NIS2 surface.
+- **34 pages, 51 route registrations.** `/ce-studio`, `/ce-nameplate` and
+  `/ce-nameplate-studio` all resolve to one page.
+- Iteration 1 **contradicts itself**: it lists eight surfaces, then says "the
+  signature surface stays its own thing" — a ninth.
+- Four of the five shapes have no named surface. Stewardship is
+  "project-centric, not a page", which is not a decision.
+
+Rated against its own goal: reference collapse 9/10, subtlety guard 9/10,
+manufacturer journey 7/10, multi-persona 4/10, multi-act 2/10, provenance 3/10.
+
+## Constraints now locked (D10-D12)
+
+- **D10 — Act is a dimension, not a section.** Obligations carry an act badge;
+  a global act filter spans everything. There is no per-act navigation. CRA and
+  NIS2 now; `ai_act`, `machinery`, `iec_62443` and `red` are **already seeded**
+  in `regulationsTable`, so adding one is seeding plus deriver registration —
+  never a new page.
+- **D11 — Roles are tags with a filter, never a switcher.** A customer such as
+  Axians holds manufacturer, importer and operator roles *simultaneously*. Any
+  "acting as..." switcher hides obligations the customer actually owes. Unified
+  by default, filterable on demand, every item badged with the role it arises
+  from.
+- **D12 — Two equal daily users.** The compliance coordinator (deadlines,
+  chasing evidence, clocks) and the product/engineering lead (one product's
+  file, BOM, assessment) are different jobs. The home surface differs by team
+  role rather than one home compromising for both.
+
+## The nine destinations
+
+    WORK                 (deadline-driven; arrives from outside)
+      Home               role-aware per D12
+      Incidents          CRA Art. 14 + NIS2 Art. 23 clocks, one surface
+      Authorities        Chapter V engagements + NIS2 competent authority
+      Signatures         the attestation / provenance ledger
+
+    REGISTERS            (what you are responsible for)
+      Products           polymorphic per role; BOM and supplier evidence,
+                         notified body, CE, versions, end-of-support inside
+      Projects           OSS stewardship (Art. 24) — explicitly NOT products
+      Organisation       declarations, NIS2 entity measures (Art. 21),
+                         mandates held (Art. 18), notified-body relationships
+
+    REFERENCE
+      Library            dual mode: read linearly, or flyout at point of use
+
+    ADMIN
+      Settings           team, users, security
+
+**Incidents becomes cross-act.** Art. 14 and NIS2 Art. 23 are both staged
+incident reporting on statutory clocks. One act-badged surface is *more*
+correct than iteration 1's CRA-only page, and is the clearest evidence the
+multi-act engine earns its keep.
+
+**Organisation is where NIS2 finally lives.** An operator has no products; they
+have an entity carrying Art. 21 measures. Iteration 1 had nowhere to put them.
+Organisation holds exactly four things — declarations, entity measures,
+mandates, notified-body relationships — and nothing may be added to it without
+a decision entry, because it is the surface most likely to become a junk drawer.
+
+## Every orphan gets a home
+
+| Capability | Home |
+|---|---|
+| `msa-engagements` | Authorities |
+| `notified-body` | Products → Assess stage; relationship in Organisation |
+| `operator-checks` | Products → Verify stage (importer/distributor rendering) |
+| `steward-policy` | Projects |
+| `attestations` | Signatures |
+| `mandates` | Organisation → Mandates |
+
+## Design principles (D13)
+
+Seven rules the shell must obey. Each exists because the engine already
+computes something the UI can get wrong.
+
+1. **The law at the point of the question.** Never navigate away to read
+   Art. 13(8). The statutory flyout is universal.
+2. **Unanswered is not compliant.** Tri-state everywhere. An empty field must
+   never render in the same colour as a met obligation. This is the single most
+   important visual rule in the application.
+3. **Clocks are never decoration.** A running 24-hour statutory deadline is
+   visible from anywhere in the app, at all times.
+4. **Every determination shows its provenance.** Derived and recorded statuses
+   are visually distinct — `derivedFrom` (W1.3) exists precisely for this.
+5. **Role tags, not role modes.** Per D11.
+6. **Act badges, always.** No obligation ever renders without its act.
+7. **Nothing claims conformity the engine has not computed.** The honesty gate,
+   expressed visually.
+
+## Scope: full shell redesign, on the existing foundation
+
+New navigation, new surfaces, new shell. **Not** a new visual language: the
+181 design tokens in `index.css` and the 57 UI primitives in `components/ui`
+are kept and built upon. "Full redesign" means structure and surfaces, not
+discarding the design system.
+
+## Dependencies and risks — stated, not hidden
+
+1. **Team roles are not modelled.** `conformityMembers` carries a free-text
+   `roleResponsibility`; the only real roles are `admin` and `member`. D12
+   requires a genuine role model, and the decision is to **build it first**.
+2. **Consequence, accepted:** three personas (importer/distributor, steward,
+   authorised representative) stay unusable for longer, and there is an
+   extended period with nothing visible shipping. Sequencing must shorten that
+   window deliberately.
+3. **Unrelated but blocking-adjacent:** `conformityMembers.plainPassword` stores
+   passwords in plaintext. The role model touches this table; fix it there.
+4. **This design has been validated against the statute and the codebase, not
+   against a real user's workflow.** That remains the weakest link.
