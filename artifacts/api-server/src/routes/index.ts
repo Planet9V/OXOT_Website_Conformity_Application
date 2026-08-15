@@ -43,6 +43,7 @@ import { harmonisedStandardsRouter } from "./harmonisedStandardsRoutes";
 import { openSourceStewardRouter } from "./openSourceStewardRoutes";
 import { importerArchiveRouter } from "./importerArchiveRoutes";
 import orgProfileRouter from "./orgProfile";
+import msaEngagementsRouter from "./msaEngagements";
 import { podcastStudioRouter } from "./podcastStudio";
 import { craFaqRouter } from "./craFaqRoutes";
 
@@ -69,6 +70,7 @@ router.use(conformityFlowsRouter);
 router.use(conformityAssistantRouter);
 router.use(conformityMeRouter);
 router.use(orgProfileRouter);
+router.use(msaEngagementsRouter);
 router.use(conformityReportsRouter);
 router.use(conformityPsirtRouter);
 router.use(conformityIntelligenceRouter);

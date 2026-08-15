@@ -65,6 +65,7 @@ export * from "./conformityBomDependencies";
 export * from "./conformityBomLicenses";
 export * from "./conformityEngItems";
 export * from "./conformityIncidentSubmissions";
+export * from "./conformityMsaEngagements";
 export * from "./conformityFlows";
 export * from "./conformityFlowRuns";
 export * from "./conformityActivity";
