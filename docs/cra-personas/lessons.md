@@ -131,6 +131,36 @@ than a from-scratch spec written without looking.
 (Evidence: `lib/db/src/schema/{requirements,conformityEvaluations}.ts`;
 `seedConformity.ts` refCodes include `4-1 SM`, `4-1 DM`, `4-2 FR1`.)
 
+### L14 — `git stash` is not a safe way to test a baseline
+Used twice this session to answer "does this error pre-exist"; both times the
+pop restored incompletely and silently dropped an edit (the honesty-pass changes,
+then the `schema/index.ts` export). Both recovered, but only because the loss was
+noticed.
+**Apply:** to decide whether a failure is yours, check whether you touched the
+file (`git log -1 -- <path>`), not whether it disappears when your work does.
+Never stash a dirty tree mid-task.
+
+### L15 — Composite project references serve stale declarations
+Adding a table to `lib/db/src/schema` and exporting it correctly still failed to
+typecheck in api-server: `Module '@workspace/db' has no exported member`. The
+package resolves through TypeScript project references, so consumers read
+`lib/db/dist/*.d.ts`, not `src`. Source was right; the emitted declarations were
+old.
+**Apply:** after any change to `lib/db/src/schema`, run `cd lib/db && npx tsc -b`
+before typechecking anything that imports it. Two of the three fix cycles on
+Phase 0.3 went to this.
+
+### L16 — Editing a seed file changes nothing until the seed is re-run
+`/obligations` correctly returned zero IEC 62443 rows after IEC was declared,
+because the DB still held the pre-migration `appliesTo` values. The code was
+right and the data was stale — a failure mode that looks exactly like a logic
+bug.
+**Apply:** any change to `seedConformity.ts` needs
+`docker compose run --rm --user root --entrypoint sh api -c "cd /app/artifacts/api-server && npm run seed:conformity"`.
+The `--user root` matters: the container user cannot write `dist/`.
+Verify against the DB (`select regulation_key, applies_to, count(*) from requirements group by 1,2`),
+not against the source file.
+
 ---
 
 ## Phase retros
