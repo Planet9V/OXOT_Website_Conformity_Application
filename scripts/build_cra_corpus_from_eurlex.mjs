@@ -174,6 +174,59 @@ function tagsFor(text) {
   return KEYWORDS.filter(([, re]) => re.test(text)).map(([t]) => t);
 }
 
+
+/**
+ * Corrigenda published after the original OJ text.
+ *
+ * The base HTML EUR-Lex serves at the OJ:L_202402847 URL is the text **as
+ * originally published on 20 November 2024**. It does NOT incorporate later
+ * corrigenda, and there is no consolidated version of this regulation. Building
+ * only from that URL therefore yields superseded text — which is what happened
+ * here until 2026-08-15.
+ *
+ * Each correction is applied as an exact string substitution and VERIFIED: if
+ * the `from` text is not found, the build fails rather than silently skipping.
+ * That way a future re-parse cannot quietly drop a correction.
+ */
+const CORRIGENDA = [
+  {
+    ojRef: "OJ L, 2025/90555, 2.7.2025",
+    eli: "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
+    url: "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
+    corrections: [
+      {
+        note: "Page 65, Article 64(10), introductory wording. Widens the fine exemption to cover paragraph 2 — the EUR 15 000 000 / 2,5 % tier — so the Art. 64(10)(b) exemption for open-source software stewards is complete rather than partial.",
+        article: 64,
+        paragraph: 10,
+        from: "By way of derogation from paragraphs 3 to 9,",
+        to: "By way of derogation from paragraphs 2 to 9,",
+      },
+    ],
+  },
+];
+
+function applyCorrigenda(articles) {
+  const applied = [];
+  for (const c of CORRIGENDA) {
+    for (const fix of c.corrections) {
+      const art = articles.find((a) => a.articleNumber === fix.article);
+      if (!art) throw new Error(`Corrigendum ${c.ojRef}: Article ${fix.article} not found`);
+      const para = art.paragraphs.find((p) => p.paragraphNumber === fix.paragraph);
+      if (!para) throw new Error(`Corrigendum ${c.ojRef}: Article ${fix.article}(${fix.paragraph}) not found`);
+      if (!para.text.includes(fix.from)) {
+        throw new Error(
+          `Corrigendum ${c.ojRef} does not apply cleanly to Article ${fix.article}(${fix.paragraph}): ` +
+            `expected to find ${JSON.stringify(fix.from)}. The source text may have changed — ` +
+            `re-check the corrigendum before continuing.`,
+        );
+      }
+      para.text = para.text.replace(fix.from, fix.to);
+      applied.push({ ojRef: c.ojRef, eli: c.eli, ...fix });
+    }
+  }
+  return applied;
+}
+
 // ---------------------------------------------------------------- parse
 
 function parseRecitals(html) {
@@ -327,6 +380,7 @@ function main() {
     const chapters = parseChapters(html);
     const articles = parseArticles(html, chapters);
     const annexes = parseAnnexes(html);
+    const corrigendaApplied = applyCorrigenda(articles);
     const graph = buildGraph(recitals, articles, annexes);
 
     const chapterList = chapters.map((c) => {
@@ -344,14 +398,15 @@ function main() {
       };
     });
 
-    const recitalsFull = { ...REG, totalRecitals: recitals.length, recitals };
+    const provenance = { ...REG, corrigenda: corrigendaApplied };
+    const recitalsFull = { ...provenance, totalRecitals: recitals.length, recitals };
     const articlesFull = {
-      ...REG,
+      ...provenance,
       chaptersCount: chapterList.length,
       totalArticles: articles.length,
       chapters: chapterList,
     };
-    const annexesFull = { ...REG, totalAnnexes: annexes.length, annexes };
+    const annexesFull = { ...provenance, totalAnnexes: annexes.length, annexes };
 
     fs.mkdirSync(CORPUS_DIR, { recursive: true });
     const write = (f, o) =>
@@ -366,7 +421,7 @@ function main() {
     process.stdout.write(
       `Recitals ${recitals.length} · Chapters ${chapterList.length} · Articles ${articles.length} ` +
         `(${articles.reduce((n, a) => n + a.paragraphs.length, 0)} paragraphs, ${numberedParas} numbered) · ` +
-        `Annexes ${annexes.length} · Graph edges ${graph.edges.length}\n` +
+        `Annexes ${annexes.length} · Graph edges ${graph.edges.length} · Corrigenda applied ${corrigendaApplied.length}\n` +
         `Wrote JSON to ${path.relative(ROOT, CORPUS_DIR)} — now run scripts/sync_cra_corpus_data.mjs\n`
     );
   });

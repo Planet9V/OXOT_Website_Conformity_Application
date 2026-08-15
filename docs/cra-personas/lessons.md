@@ -226,6 +226,32 @@ citation status to be modelled as data rather than hardcoded.
 G4 pass at baseline 13 · G5 pass at baseline 36 · G6 44 obligations live from
 real declarations.
 
+### L21 — "Fetched from EUR-Lex" is provenance, not correctness. Check for corrigenda.
+The corpus was built from `OJ:L_202402847`, which serves the text **as originally
+published on 20 November 2024**. It does not incorporate corrigenda, and there is
+no consolidated version of this regulation. Corrigendum **OJ L, 2025/90555 of
+2 July 2025** corrects Article 64(10) from "paragraphs 3 to 9" to "paragraphs
+2 to 9" — widening the fine exemption to cover the EUR 15M / 2,5 % tier. The
+corpus therefore carried superseded text for the single provision most cited to
+the user, and the claim "stewards are exempt from fines outright" was only true
+under the corrected wording.
+Found because the user asked what guaranteed the source was correct. It would not
+have been found by any gate: G5 checks that numbers resolve, not that the text is
+current.
+**Apply:** for every instrument, check the ELI corrigendum path
+(`/eli/reg/<year>/<num>/corrigendum/<date>/oj/eng`) before trusting the base text,
+and re-check when re-fetching. Corrections are applied by
+`applyCorrigenda()` in the builder as verified substitutions that **fail the
+build** if the `from` text is absent, and are recorded in the corpus provenance.
+
+### L22 — Reproducibility is testable; test it rather than assert it
+Re-fetching the OJ HTML 13 hours later produced a different sha256. The delta was
+two WAF session tokens in a tracking script; the legal body was byte-identical
+and the rebuilt corpus was identical. Worth knowing both facts: the *file* is not
+byte-stable, the *content* is.
+**Apply:** verify a cached source by rebuilding from a fresh fetch and diffing the
+built artefacts, not by comparing file hashes.
+
 ---
 
 ## Phase retros
