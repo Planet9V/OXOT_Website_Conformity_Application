@@ -74,6 +74,13 @@ jobs:
           pnpm --filter @workspace/conformity exec tsc --noEmit
           pnpm --filter @workspace/oxot-web exec tsc --noEmit
 
+      # Every gate below runs with `if: always()`. G2 currently fails on a
+      # backlog of ~69 pre-existing failures (object storage, demo-role 401 vs
+      # 403, OPENROUTER_API_KEY), and because a failing step halts the job by
+      # default, G3, G4, G5 and the corpus verifier were SKIPPED on every run —
+      # the entire quality apparatus was in the repo but had never executed.
+      # A gate that never runs is not a gate.
+      #
       # G2 — tests. Fails on any failing test. Suites that cannot collect
       # without a database are a known gap tracked in the plan; they must not
       # mask a genuine assertion failure, so the run is not allowed to pass
@@ -99,11 +106,14 @@ jobs:
       # G3 — the local build. Deliberately not the Docker build: Docker installs
       # its own dependencies and masked a broken local build for weeks (L7).
       - name: G3 build
+        # Independent of G2: a failing test must not silently disable the build check.
+        if: always()
         run: pnpm --filter @workspace/conformity exec vite build
 
       # G4 — no UI string may assert a legal act was performed, a status
       # verified, or an exemption granted, unless code computed it.
       - name: G4 honesty gate
+        if: always()
         # Baseline is the known backlog on the day the gate landed. It may only
         # ever go down. A new finding pushes the count above it and fails the build.
         run: node scripts/check_honesty.mjs --baseline 11
@@ -111,6 +121,7 @@ jobs:
       # G5 — every CRA article citation must resolve against the corpus built
       # from the Official Journal text.
       - name: G5 citation gate
+        if: always()
         # Covers application code AND published material (blogs, podcast
         # scripts, FAQs) — a wrong article number misleads a reader wherever it
         # appears. Baseline is the backlog on the day the scan was widened.
@@ -121,11 +132,13 @@ jobs:
       # to assert that the CRA text this repo ships is the published text.
       # See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md.
       - name: CRA source of truth
+        if: always()
         run: node scripts/verify_cra_corpus.mjs
 
       # Belt and braces: the corpus must also be reproducible byte-for-byte, so
       # a hand-edit of craCorpusData.ts cannot survive.
       - name: Corpus is reproducible from the Official Journal source
+        if: always()
         run: |
           node scripts/build_cra_corpus_from_eurlex.mjs
           node scripts/sync_cra_corpus_data.mjs
