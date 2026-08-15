@@ -55,6 +55,16 @@ const RULES = [
     re: /["'`>][^"'`<]*\b(100\s*%\s*(?:verified|protected|compliant|conformant|audit ready|machine-readable|cleared)|fully compliant|zero known (?:vulnerabilities|gaps))\b/i,
   },
   {
+    id: "concludes-conformity",
+    why: "renders a verdict on conformity — Art. 32 reserves that to the manufacturer or a notified body, not to this tool",
+    re: /\b(you are (?:now )?compliant|is (?:now )?compliant with|conformity (?:achieved|confirmed|verified|established)|CRA[-\s]compliant\b|fully conformant|meets all (?:essential )?requirements)\b/i,
+  },
+  {
+    id: "grants-presumption",
+    why: "asserts an Art. 27 presumption of conformity, which requires a harmonised standard cited in the OJEU — none exists for the CRA yet",
+    re: /(FULL_STATUTORY_PRESUMPTION|presumption of conformity (?:achieved|granted|active|unlocked|established)|benefits from (?:the )?(?:Article \d+ )?presumption)/i,
+  },
+  {
     id: "empty-string-sha256",
     why: "SHA-256 of the empty string presented as a real digest",
     re: /e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855/i,

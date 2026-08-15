@@ -27,6 +27,22 @@ corpus). Different journeys per role.**
    from persisted data. Enforced by `scripts/check_honesty.mjs` at every gate.
 4. **Grounded citations only.** Every article/recital/annex reference must
    resolve in `docs/cra_statutory_corpus/`. No hand-typed article numbers.
+5. **The application never concludes conformity.** It enumerates obligations
+   from verbatim text, records who owns each, holds the evidence, and shows what
+   is missing. It does **not** render a verdict on whether the user is
+   compliant. This is both the safety property that bounds the damage from any
+   mistake, and the legally correct position: conformity is assessed by the
+   manufacturer under Art. 32 or by a notified body — a tool's opinion has no
+   standing. Phrase outputs as *"these obligations have evidence, these do
+   not"*, never *"you are compliant"*.
+6. **IEC 62443 is the evidence framework, not a presumption.** OT is the target
+   market and 62443 is its de facto security standard, so obligations map onto
+   62443 processes and artifacts. But **no part of IEC 62443 is cited in the
+   OJEU under the CRA**, so it confers **no Art. 27 presumption of conformity**.
+   It is used under **Route 4** — direct demonstration against Annex I — where
+   Annex VII expressly provides for listing "other relevant technical
+   specifications applied". Every 62443 reference in the UI must carry that
+   caveat. See "IEC 62443 mapping" below.
 
 ## Karpathy discipline applied to this programme
 
@@ -60,6 +76,45 @@ re-tune before the next phase starts.
 phase, write what actually happened, then edit the *next* phase's task list
 before starting it. If a phase revealed a better pattern, the next phase adopts
 it. If a phase hit a trap, the next phase's plan names it.
+
+## Circuit breaker (autonomous execution)
+
+Halt means **stop, write state to `progress.md`, and escalate** — never retry.
+Burning tokens on a loop that cannot converge is itself a failure mode.
+
+| Level | Trip condition | Action |
+|---|---|---|
+| Task | 3 failed attempts, or the same approach tried twice | Halt task, log, move to next task |
+| Gate | Same gate red twice after a fix attempt | Halt phase |
+| Phase | Phase exceeds its token ceiling | Halt, write state, stop |
+| Waiver | Any *new* `honesty-ok:` or `citation-ok:` waiver is needed | **Halt** — a waiver is a human decision |
+| Legal | A task needs an interpretation not settled by the corpus text | **Halt** — queue for review, do not guess |
+| Repo | `git log` shows an unexpected HEAD move | Halt — concurrent writer is back |
+
+The Waiver and Legal breakers are the important ones. They are the seam where
+autonomous work would otherwise quietly invent a legal position.
+
+## IEC 62443 mapping (OT evidence framework)
+
+Used to structure evidence, **not** to claim conformity. Parts in scope:
+
+| Part | What it gives us | Maps to |
+|---|---|---|
+| **62443-4-1** | Secure development lifecycle practices: SM, SR, SD, SI, SVV, DM, SUM, SG | Annex I **Part II** (vulnerability handling) and Art. 13(1)–(2) process duties |
+| **62443-4-2** | Component requirements (CRs/REs) across FR1–FR7 | Annex I **Part I** (product properties) |
+| **62443-3-3** | System security requirements and target security levels (SL-T) | System-level context where the org integrates |
+| **62443-3-2** | Risk assessment, zones and conduits | Art. 13(2) cybersecurity risk assessment |
+| **62443-2-1** | IACS security programme | Org-level programme evidence |
+
+Rules for using it:
+- A 62443 artifact is **evidence attached to an obligation**, never a substitute
+  for the obligation. The obligation is always the CRA article/annex point.
+- Mappings are **claims we make**, not law. Each carries a rationale and is
+  reviewable. Never render a mapping as "satisfies" — render it as
+  "offered as evidence for".
+- The DM (defect management) and SUM (security update management) practices of
+  62443-4-1 are the natural spine for Annex I Part II and Art. 13(8) support
+  period work in Phase 1.
 
 ---
 
