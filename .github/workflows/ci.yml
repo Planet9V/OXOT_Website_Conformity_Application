@@ -132,6 +132,16 @@ jobs:
         # appears. Baseline is the backlog on the day the scan was widened.
         run: node scripts/check_citations.mjs --baseline 0
 
+      - name: G8 UI reach gate
+        if: always()
+        # A capability no screen calls is invisible to the customer, however
+        # green its tests are. Baseline 6 is the orphan count on the day the
+        # gate was written (msa engagements, notified body, operator checks,
+        # steward policy, mandates, attestations) — each is scheduled a home in
+        # DESIGN_five_shapes.md iteration 2. Phase 7 drives this to 0.
+        # Do not raise the baseline to make a failure go away.
+        run: node scripts/check_ui_reach.mjs --baseline 6
+
       # THE source-of-truth check. One command, deterministic, three states
       # (PASS / FAIL / "----" could-not-verify). This is the only sanctioned way
       # to assert that the CRA text this repo ships is the published text.
