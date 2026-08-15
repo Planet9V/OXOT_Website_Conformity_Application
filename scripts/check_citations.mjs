@@ -14,15 +14,20 @@
  * Waiver: append "citation-ok: <reason>" to the line or the line above.
  * Use it for citations to *other* instruments (NIS2, Reg. 2019/1020, etc.).
  *
- * Usage: node scripts/check_citations.mjs [--map]
+ * Multi-act. Each act brings its own corpus, article range and concept table.
+ * Attribution decides which act a citation belongs to, because the same number
+ * means different things in different instruments: Article 21 is the deemed
+ * manufacturer in the CRA and cybersecurity risk-management measures in NIS2.
+ *
+ * Usage: node scripts/check_citations.mjs [--map] [--act cra|nis2]
  */
 import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = process.cwd();
-const CORPUS = path.join(ROOT, "docs/cra_statutory_corpus/02_articles_full.json");
+
 /**
- * Every surface that cites the CRA to a human, not just application code.
+ * Every surface that cites a regulation to a human, not just application code.
  * Blogs, podcast scripts and FAQs are published material: a wrong article
  * number there misleads a reader exactly as a wrong number in the UI does.
  */
@@ -33,20 +38,24 @@ const SCAN_DIRS = [
   "docs",
 ];
 const EXT = new Set([".ts", ".tsx", ".md", ".mdx"]);
-// The corpus and its cached source are the reference, not a citation site.
+// Corpora and their cached sources are the reference, not citation sites.
 // docs/cra-personas records historical wrong numbers on purpose, as lessons.
-const SKIP = /node_modules|\/dist\/|craCorpusData\.ts|cra_statutory_corpus|docs\/cra-personas/;
+const SKIP =
+  /node_modules|\/dist\/|craCorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|docs\/cra-personas/;
 
-if (!fs.existsSync(CORPUS)) {
-  console.error(`Corpus not found at ${path.relative(ROOT, CORPUS)}.`);
-  console.error("Run: node scripts/build_cra_corpus_from_eurlex.mjs");
-  process.exit(1);
+/** Load an act's article titles from its grounded corpus. */
+function loadCorpus(relPath, actKey) {
+  const abs = path.join(ROOT, relPath);
+  if (!fs.existsSync(abs)) {
+    console.error(`Corpus for "${actKey}" not found at ${relPath}.`);
+    console.error(`Run the corresponding build_*_corpus_from_eurlex.mjs first.`);
+    process.exit(1);
+  }
+  const corpus = JSON.parse(fs.readFileSync(abs, "utf8"));
+  const titles = new Map();
+  for (const c of corpus.chapters) for (const a of c.articles) titles.set(a.articleNumber, a.title);
+  return titles;
 }
-
-const corpus = JSON.parse(fs.readFileSync(CORPUS, "utf8"));
-const titles = new Map();
-for (const c of corpus.chapters) for (const a of c.articles) titles.set(a.articleNumber, a.title);
-const MAX = Math.max(...titles.keys());
 
 /**
  * Concept → the article that actually governs it, per the corpus titles above.
@@ -67,7 +76,7 @@ const MAX = Math.max(...titles.keys());
  * A line is flagged only when it cites a `wrong` number and cites none of the
  * `articles`.
  */
-const CONCEPTS = [
+const CRA_CONCEPTS = [
   { id: "manufacturer obligations", articles: [13], wrong: [10], re: /obligations of manufacturers|manufacturer obligations/i },
   { id: "reporting obligations", articles: [14], wrong: [], re: /reporting obligations|24[- ]?h(?:our)? early warning|early warning/i },
   { id: "authorised representative", articles: [18], wrong: [12], re: /authoris(?:ed|ed) representative/i },
@@ -96,6 +105,84 @@ const CONCEPTS = [
 ];
 
 /**
+ * NIS2 concepts, grounded in the article titles of the built corpus.
+ *
+ * `wrong` is empty for every entry, deliberately. The CRA's wrong-number lists
+ * are a record of errors this codebase actually made over two years; NIS2 has
+ * never been checked here, so there is no such history to encode. Inventing
+ * plausible wrong numbers would flag citations nobody has miscited yet and
+ * teach people to ignore the gate. Entries earn a `wrong` list when a real
+ * miscitation is found.
+ *
+ * This means NIS2 concept checking is currently INERT: only the range check
+ * bites for NIS2 until real miscitations are observed and recorded here. That is
+ * stated rather than hidden, because a table that looks like coverage and is not
+ * is worse than an empty one.
+ *
+ * A cross-concept rule was tried — flag a line naming concept A while citing an
+ * article this table assigns to concept B — and REMOVED. It fired on
+ * "the ten Article 21 measures, 24/72-hour...", a correct Article 21 citation on
+ * a line that also mentions reporting. Prose routinely spans two concepts and
+ * cites one. A gate that flags correct citations teaches people to "fix" them
+ * into wrong ones, which is the 44-false-positive lesson (lessons.md, L25).
+ */
+const NIS2_CONCEPTS = [
+  { id: "scope", articles: [2], wrong: [], re: /scope of (?:this|the) directive/i },
+  { id: "essential and important entities", articles: [3], wrong: [], re: /essential (?:and|or) important entit|important entit(?:y|ies)|essential entit(?:y|ies)/i },
+  { id: "CSIRT tasks", articles: [11], wrong: [], re: /tasks of (?:the )?CSIRTs?|CSIRT (?:requirements|capabilities)/i },
+  { id: "coordinated vulnerability disclosure", articles: [12], wrong: [], re: /coordinated vulnerability disclosure|european vulnerability database/i },
+  { id: "Cooperation Group", articles: [14], wrong: [], re: /cooperation group/i },
+  { id: "CSIRTs network", articles: [15], wrong: [], re: /CSIRTs network/i },
+  { id: "EU-CyCLONe", articles: [16], wrong: [], re: /CyCLONe|cyber crisis liaison organisation/i },
+  { id: "peer reviews", articles: [19], wrong: [], re: /peer review/i },
+  { id: "governance", articles: [20], wrong: [], re: /management bod(?:y|ies)|governance obligations/i },
+  { id: "risk-management measures", articles: [21], wrong: [], re: /cybersecurity risk[- ]management measures|risk[- ]management measures/i },
+  { id: "supply chain risk assessments", articles: [22], wrong: [], re: /coordinated security risk assessments|critical supply chains/i },
+  { id: "reporting obligations", articles: [23], wrong: [], re: /reporting obligations|significant incident|early warning|72[- ]?h(?:our)?/i },
+  { id: "certification schemes", articles: [24], wrong: [], re: /european cybersecurity certification scheme/i },
+  { id: "jurisdiction", articles: [26], wrong: [], re: /jurisdiction and territorial|main establishment/i },
+  { id: "registry of entities", articles: [27], wrong: [], re: /registry of entities/i },
+  { id: "supervision of essential entities", articles: [32], wrong: [], re: /supervis\w* .{0,40}essential entit/i },
+  { id: "supervision of important entities", articles: [33], wrong: [], re: /supervis\w* .{0,40}important entit/i },
+  { id: "administrative fines", articles: [34], wrong: [], re: /administrative fine/i },
+  { id: "penalties", articles: [36], wrong: [], re: /\bpenalt(?:y|ies)\b/i },
+  { id: "transposition", articles: [41], wrong: [], re: /transposition|transpose/i },
+];
+
+/**
+ * The acts this gate knows about.
+ *
+ * `names` is what marks a citation as belonging to this act when a line is
+ * ambiguous. It matters because the same number means different things:
+ * Article 21 is the deemed manufacturer in the CRA and cybersecurity
+ * risk-management measures in NIS2, and Article 34 is mutual recognition in the
+ * CRA and administrative fines in NIS2.
+ */
+const ACTS = {
+  cra: {
+    label: "Regulation (EU) 2024/2847 (CRA)",
+    corpus: "docs/cra_statutory_corpus/02_articles_full.json",
+    names: /2024\/2847|\bCRA\b|Cyber Resilience Act/i,
+    concepts: CRA_CONCEPTS,
+    /** Only the CRA has a paragraph-level rule so far. */
+    paragraphRule: true,
+  },
+  nis2: {
+    label: "Directive (EU) 2022/2555 (NIS2)",
+    corpus: "docs/nis2_statutory_corpus/02_articles_full.json",
+    names: /2022\/2555|\bNIS ?2\b|NIS2 Directive|network and information systems/i,
+    concepts: NIS2_CONCEPTS,
+    paragraphRule: false,
+  },
+};
+
+for (const [key, act] of Object.entries(ACTS)) {
+  act.key = key;
+  act.titles = loadCorpus(act.corpus, key);
+  act.maxArticle = Math.max(...act.titles.keys());
+}
+
+/**
  * Which paragraphs of Article 13 actually impose a retention duty. The concept
  * table above only reads article numbers, so it cannot catch "Article 13(4)" or
  * "Article 13(14)" — right article, wrong paragraph. Both were live in this
@@ -114,8 +201,11 @@ const ART13_PARA = /\bArt(?:icle|\.)\s*13\s*\((\d{1,2})\)/gi;
 const RETENTION_DURATION = /\b(?:10|ten)[- ]years?\b|retention (?:period|vault|mandate|expiry|until)|statutory retention/i;
 
 if (process.argv.includes("--map")) {
-  for (const c of CONCEPTS) {
-    console.log(`  ${c.articles.join("/").padStart(5)} — ${c.id}  (flags: ${c.wrong.join(", ") || "—"})`);
+  for (const act of Object.values(ACTS)) {
+    console.log(`\n${act.label} — articles 1..${act.maxArticle}`);
+    for (const c of act.concepts) {
+      console.log(`  ${c.articles.join("/").padStart(6)} — ${c.id}  (flags: ${c.wrong.join(", ") || "—"})`);
+    }
   }
   process.exit(0);
 }
@@ -148,8 +238,6 @@ const WAIVER = /citation-ok:\s*(.+)$/;
  * the line claiming Article 61 went unflagged because it also mentioned IEC.
  */
 const OTHER_INSTRUMENT = /NIS2|2022\/2555|2019\/1020|2019\/881|765\/2008|1182\/71|GDPR|2016\/679|AI Act|2024\/1689|Machinery Regulation|2023\/1230|RED\b|2014\/53|\bMDR\b|2017\/745|\bIVDR\b|2017\/746|\bDORA\b|2022\/2554|\bCER\b|2022\/2557|\bGPSR\b|2023\/988|Data Act|2023\/2854/i;
-/** An explicit CRA reference on the line — the CRA is unambiguously in play. */
-const NAMES_THE_CRA = /2024\/2847|\bCRA\b|Cyber Resilience Act/i;
 /**
  * How close another instrument's name must be to a citation to be taken as its
  * referent. "Article 21 of NIS2" attributes; a passing mention 200 characters
@@ -158,11 +246,15 @@ const NAMES_THE_CRA = /2024\/2847|\bCRA\b|Cyber Resilience Act/i;
 const ATTRIBUTION_WINDOW = 60;
 
 /** Is this specific citation plausibly attributed to another instrument? */
-function attributedElsewhere(line, matchIndex) {
-  if (NAMES_THE_CRA.test(line)) return false;
+function attributedElsewhere(line, matchIndex, namesThisAct) {
+  if (namesThisAct.test(line)) return false;
   const from = Math.max(0, matchIndex - ATTRIBUTION_WINDOW);
   const to = Math.min(line.length, matchIndex + ATTRIBUTION_WINDOW);
-  return OTHER_INSTRUMENT.test(line.slice(from, to));
+  const near = line.slice(from, to);
+  // NIS2 appears in OTHER_INSTRUMENT, so when we ARE checking NIS2 a nearby
+  // "NIS2" must not disqualify the citation — it confirms it.
+  if (namesThisAct.test(near)) return false;
+  return OTHER_INSTRUMENT.test(near);
 }
 
 /**
@@ -172,31 +264,48 @@ function attributedElsewhere(line, matchIndex) {
  * from such a file against the CRA produced 13 false positives that, if
  * "fixed", would have turned correct citations into wrong ones.
  */
-const FILE_IS_ANOTHER_INSTRUMENT = [
-  { re: /ai[-_]act/i, name: "EU AI Act" },
-  { re: /machinery/i, name: "Machinery Regulation" },
-  { re: /\bnis2\b/i, name: "NIS2 Directive" },
-  { re: /\bgdpr\b/i, name: "GDPR" },
-  { re: /\bdora\b/i, name: "DORA" },
-  { re: /\bgpsr\b/i, name: "GPSR" },
-  { re: /\bcer\b/i, name: "CER Directive" },
-  { re: /data[-_]act/i, name: "Data Act" },
-  { re: /radio[-_]equipment|\bred\b/i, name: "Radio Equipment Directive" },
+/**
+ * A whole file can be about one instrument. Where we HAVE a corpus for that
+ * instrument, the file is now checked against it instead of being skipped —
+ * that is the point of going multi-act. nis2.md was previously skipped
+ * wholesale, so every article number in it was unverified.
+ *
+ * Where we do NOT yet have a corpus, the file is still skipped, because
+ * checking an AI Act article number against the CRA's range would flag correct
+ * citations as wrong.
+ */
+const FILE_ACT = [
+  { re: /\bnis2\b/i, act: "nis2" },
+  { re: /ai[-_]act/i, act: null, name: "EU AI Act" },
+  { re: /machinery/i, act: null, name: "Machinery Regulation" },
+  { re: /\bgdpr\b/i, act: null, name: "GDPR" },
+  { re: /\bdora\b/i, act: null, name: "DORA" },
+  { re: /\bgpsr\b/i, act: null, name: "GPSR" },
+  { re: /\bcer\b/i, act: null, name: "CER Directive" },
+  { re: /data[-_]act/i, act: null, name: "Data Act" },
+  { re: /radio[-_]equipment|\bred\b/i, act: null, name: "Radio Equipment Directive" },
 ];
 
 /**
- * The verbatim source material the corpus is built and verified from. These
+ * The verbatim source material the corpora are built and verified from. These
  * files quote EUR-Lex and the Commission FAQ exactly; every article number in
  * them is correct by definition, and "correcting" one would corrupt the very
  * thing every other citation is checked against. Never scan the source of truth.
  */
-const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus)\//;
+const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus)\//;
 
-/** Which instrument is this file about, judged by its path? */
-function otherInstrumentFor(relPath) {
+/**
+ * Which act does this file default to? Returns the act, or a skip reason.
+ * Files with no instrument in their name default to the CRA, which is what this
+ * codebase is mostly about.
+ */
+function actForFile(relPath) {
   const base = relPath.split("/").pop() ?? relPath;
-  for (const i of FILE_IS_ANOTHER_INSTRUMENT) if (i.re.test(base)) return i.name;
-  return null;
+  for (const f of FILE_ACT) {
+    if (!f.re.test(base)) continue;
+    return f.act ? { act: ACTS[f.act] } : { skip: f.name };
+  }
+  return { act: ACTS.cra };
 }
 
 const violations = [];
@@ -210,7 +319,8 @@ for (const dir of SCAN_DIRS) {
       skippedFiles.push({ file: relFile, instrument: "the CRA source of truth — verbatim, never edited" });
       continue;
     }
-    const other = otherInstrumentFor(relFile);
+    const { act, skip } = actForFile(relFile);
+    const other = skip;
     if (other) {
       skippedFiles.push({ file: relFile, instrument: other });
       continue;
@@ -225,7 +335,7 @@ for (const dir of SCAN_DIRS) {
       // Each citation is judged on its own attribution, not the whole line's.
       const citations = [...line.matchAll(CITE)]
         .map((m) => ({ n: Number(m[1]), index: m.index ?? 0 }))
-        .filter((c) => !attributedElsewhere(line, c.index));
+        .filter((c) => !attributedElsewhere(line, c.index, act.names));
       const cited = citations.map((c) => c.n);
       if (!cited.length) continue;
 
@@ -236,8 +346,8 @@ for (const dir of SCAN_DIRS) {
 
       // 1. Range — `cited` already excludes citations attributed elsewhere.
       for (const n of cited) {
-        if (n < 1 || n > MAX) {
-          record("range", `Article ${n} does not exist — the CRA has ${MAX} articles.`);
+        if (n < 1 || n > act.maxArticle) {
+          record("range", `Article ${n} does not exist — ${act.label} has ${act.maxArticle} articles.`);
         }
       }
 
@@ -256,19 +366,20 @@ for (const dir of SCAN_DIRS) {
        * citation must be right, whatever else is mentioned alongside it.
        */
       if (!cited.length) continue;
-      for (const c of CONCEPTS) {
+      for (const c of act.concepts) {
         if (!c.re.test(line)) continue;
         // Citing any governing article is correct — do not flag.
         if (c.articles.some((n) => cited.includes(n))) continue;
+        const govern = c.articles.map((n) => `Article ${n} (${act.titles.get(n)})`).join(" or ");
         const wrong = cited.filter((n) => c.wrong.includes(n));
         if (wrong.length) {
-          const govern = c.articles.map((n) => `Article ${n} (${titles.get(n)})`).join(" or ");
           record("concept", `"${c.id}" is governed by ${govern}, not Article ${wrong.join("/")}.`);
         }
+
       }
 
       // 3. Right article, wrong paragraph — Article 13 retention only.
-      if (RETENTION_DURATION.test(line)) {
+      if (act.paragraphRule && RETENTION_DURATION.test(line)) {
         for (const m of line.matchAll(ART13_PARA)) {
           const para = Number(m[1]);
           if (!ART13_RETENTION_PARAGRAPHS.includes(para)) {
@@ -321,5 +432,8 @@ if (violations.length) {
   );
   for (const v of violations) console.log(`  ${v.file}:${v.line} [${v.kind}]`);
 } else {
-  console.log(`Citation gate passed — all CRA article citations resolve against the corpus (1..${MAX}).`);
+  console.log(
+    `Citation gate passed — every citation resolves against its act's corpus ` +
+      `(${Object.values(ACTS).map((a) => `${a.key} 1..${a.maxArticle}`).join(", ")}).`,
+  );
 }
