@@ -215,7 +215,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 - **Key Spoken Hook:** *"You thought you were billing engineering hours as an integrator. The EU Commission sees you as a hardware manufacturer with 5-year CE liabilities."*
 - **Actionable Takeaways:** The 4-part Substantial Modification test; safe-harbor integration architectures; customer acceptance sign-offs.
 
-#### EP_2.02 (Episode 08): *Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments*
+#### EP_2.02 (Episode 08): *Article 20(3) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments*
 - **Core Statute:** Article 20(2) (Integrator/Distributor Obligations).
 - **Target Persona & Sector:** EPC Commissioning Leads, Field Service Engineers, Industrial Contractors.
 - **The Central Dilemma:** An integrator discovers an unpatched critical flaw in an OEM switch during plant commissioning. If they power it on and hand over the keys, they violate federal law.
@@ -487,7 +487,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 - **Key Spoken Hook:** *"How to build a tamper-evident, cryptographic 10-year regulatory archive that survives corporate acquisitions, cloud migrations, and audits."*
 - **Actionable Takeaways:** Technical file contents checklist; cryptographic hashing of compliance packages; automated archival infrastructure.
 
-#### EP_7.05 (Episode 44): *Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)*
+#### EP_7.05 (Episode 44): *Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)*
 - **Core Statute:** Article 34, European Commission Standardisation Request M/596.
 - **Target Persona & Sector:** Standards Engineers, Chief Architects, Regulatory Officers.
 - **The Central Dilemma:** When CEN/CENELEC publishes harmonised European standards, complying with them grants legal "Presumption of Conformity." How to align product development with emerging JTC 13 drafts?
@@ -505,7 +505,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 
 ### Series 8: Executive Liability, Penalties & Future Evolution (Episodes 46–50)
 
-#### EP_8.01 (Episode 46): *The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines*
+#### EP_8.01 (Episode 46): *The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines*
 - **Core Statute:** Article 64 (Administrative Fines), Article 62 (Penalties for Small & Medium Enterprises).
 - **Target Persona & Sector:** Chief Executive Officers, Chief Financial Officers, Board Members, General Counsel.
 - **The Central Dilemma:** How European market surveillance authorities calculate fines: €15M or 2.5% of total worldwide turnover for non-compliance with essential requirements; €10M or 2% for obligation breaches; €5M or 1% for false information.

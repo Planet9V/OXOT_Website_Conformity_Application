@@ -127,7 +127,7 @@ const PARTNER_HUB: NavItem = {
 // Specialized statutory execution engines
 const CRA_OPERATIONS: NavItem[] = [
   { href: "/partner-hub", label: "Plant & SI Pipeline", icon: Boxes, description: "Axians 5-stage OT portfolio workflow" },
-  { href: "/standards", label: "Standards Matrix (Art. 34)", icon: Layers, description: "IEC 62443 / ETSI EN 303 645 presumption of conformity" },
+  { href: "/standards", label: "Standards Matrix (Art. 27)", icon: Layers, description: "IEC 62443 / ETSI EN 303 645 presumption of conformity" },
   { href: "/ce-studio", label: "CE Nameplate Studio (Arts. 22/23)", icon: Grid3x3, description: "Vector CE rating plate & digital product passport generator" },
   { href: "/steward", label: "Open-Source Steward (Art. 33)", icon: ListTree, description: "FOSS voluntary security attestations & OpenVEX statements" },
   { href: "/archive", label: "10-Year Archive Ledger (Art. 17)", icon: Database, description: "Statutory importer technical documentation vault (2037+)" },

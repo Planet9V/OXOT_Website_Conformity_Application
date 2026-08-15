@@ -301,7 +301,7 @@ export function InteractiveFineSimulator({
                 Affirmative Defense Guidance:
               </div>
               <p className="text-muted-foreground leading-snug">
-                Under <strong>Recital 119</strong>, national market surveillance authorities must account for proactive mitigation, voluntary cooperation, and verifiable harmonised standard adherence (IEC 62443) when assessing administrative fines under Article 61.
+                Under <strong>Recital 119</strong>, national market surveillance authorities must account for proactive mitigation, voluntary cooperation, and verifiable harmonised standard adherence (IEC 62443) when assessing administrative fines under Article 64.
               </p>
             </div>
           </div>

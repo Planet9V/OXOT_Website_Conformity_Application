@@ -65,7 +65,7 @@ const PERSONA_PRESETS: Record<
       "Does modifying this SCADA HMI script trigger Article 21 substantial modification?",
       "How do we preserve our Recital 34 Safe Harbor Shield during a brownfield PLC upgrade?",
       "When does adding an industrial firewall trigger Annex VII composite assessment?",
-      "What are our Article 20(2) duty to refrain requirements for unpatched vendor RTUs?",
+      "What are our Article 20(3) duty to refrain requirements for unpatched vendor RTUs?",
     ],
     defaultContext:
       "You are advising an OT System Integrator configuring industrial automation plants. Emphasize Recital 34 Safe Harbor, Article 21 non-modification boundaries, and Annex VII composite documentation.",
@@ -74,34 +74,34 @@ const PERSONA_PRESETS: Record<
     roleName: "OEM Hardware & Software Manufacturer (Siemens / Cisco)",
     quickPrompts: [
       "Which IEC 62443-4-2 CRs provide presumption of conformity for Annex I Part I?",
-      "What are the mandatory CE marking nameplate requirements under Article 22?",
+      "What are the mandatory CE marking nameplate requirements under Articles 29 and 30?",
       "How do we format a compliant CycloneDX 1.6 SBOM under Annex II Section 2?",
       "What is the exact 10-year technical dossier retention rule under Article 13(13)?",
     ],
     defaultContext:
-      "You are advising an OEM product manufacturer. Emphasize Article 10 obligations, Annex I cybersecurity requirements, IEC 62443 presumption of conformity, and CE marking rules under Article 22.",
+      "You are advising an OEM product manufacturer. Emphasize Article 13 obligations, Annex I cybersecurity requirements, IEC 62443 presumption of conformity, and CE marking rules under Articles 29 and 30.",
   },
   STEWARD: {
     roleName: "Open-Source Software Steward (Apache / Linux Fdn)",
     quickPrompts: [
       "How does Recital 18 protect our open-source project from commercial manufacturer liability?",
-      "What is required in an Article 33 FOSS Security Attestation document?",
+      "What is required in an Article 25 FOSS Security Attestation document?",
       "How do we publish machine-readable OASIS OpenVEX vulnerability notices?",
       "Does accepting donations or corporate sponsorships void our non-commercial exemption?",
     ],
     defaultContext:
-      "You are advising an open-source software steward. Emphasize Recital 18 non-commercial exemptions, Article 24 security attestations, and lightweight Coordinated Vulnerability Disclosure (CVD).",
+      "You are advising an open-source software steward. Emphasize Recital 18 non-commercial exemptions, Article 24 steward obligations and the Article 25 attestation, and lightweight Coordinated Vulnerability Disclosure (CVD).",
   },
   IMPORTER: {
     roleName: "EU Importer & Industrial Distributor (Arrow / Avnet)",
     quickPrompts: [
-      "What pre-market verification is required under Article 17 before customs clearance?",
-      "How do we legally structure the 10-year statutory compliance archive under Article 19?",
+      "What pre-market verification is required under Article 19 before customs clearance?",
+      "How do we legally structure the 10-year statutory compliance archive under Article 19(6)?",
       "What happens if an overseas vendor refuses to share their technical documentation?",
       "What are our obligations if we discover an unpatched critical CVE in imported stock?",
     ],
     defaultContext:
-      "You are advising an EU importer. Emphasize Article 17 due diligence, Article 19 10-year archiving requirements, and Article 18 distributor verification mandates.",
+      "You are advising an EU importer. Emphasize Article 19 importer duties, the Article 19(6) 10-year archive, and Article 20 distributor verification mandates.",
   },
   PLANT_CISO: {
     roleName: "Downstream Plant Owner & Industrial CISO (BASF / Vopak)",
@@ -112,7 +112,7 @@ const PERSONA_PRESETS: Record<
       "What evidence satisfies the 11-year operational audit retention rule under NIS2?",
     ],
     defaultContext:
-      "You are advising a critical infrastructure plant CISO. Emphasize Article 14 24h CSIRT notifications, Article 61 administrative fines (€15M or 2.5% turnover), and NIS2 supply chain synergy.",
+      "You are advising a critical infrastructure plant CISO. Emphasize Article 14 24h CSIRT notifications, Article 64 administrative fines (€15M or 2.5% turnover), and NIS2 supply chain synergy.",
   },
   AUDITOR: {
     roleName: "Notified Body Compliance Auditor (TÜV / DEKRA / BSI)",
@@ -184,11 +184,11 @@ export function PersonaCopilotDrawer({
           (q.includes("scada") && art.articleNumber === 21) ||
           (q.includes("csirt") && art.articleNumber === 14) ||
           (q.includes("24-hour") && art.articleNumber === 14) ||
-          (q.includes("fine") && art.articleNumber === 61) ||
-          (q.includes("ce mark") && art.articleNumber === 22) ||
-          (q.includes("importer") && art.articleNumber === 17) ||
-          (q.includes("steward") && art.articleNumber === 33) ||
-          (q.includes("harmonised") && art.articleNumber === 34)
+          (q.includes("fine") && art.articleNumber === 64) ||
+          (q.includes("ce mark") && (art.articleNumber === 29 || art.articleNumber === 30)) ||
+          (q.includes("importer") && art.articleNumber === 19) ||
+          (q.includes("steward") && art.articleNumber === 24) ||
+          (q.includes("harmonised") && art.articleNumber === 27)
         ) {
           matchedCitations.push({
             type: "article",
@@ -252,7 +252,7 @@ export function PersonaCopilotDrawer({
       } else if (q.includes("fine") || q.includes("61") || q.includes("penalty")) {
         riskLevel = "CRITICAL";
         responseAdvice =
-          "Article 61 establishes maximum penalties of up to €15,000,000 or 2.5% of total worldwide annual turnover for breaches of Annex I essential requirements. Documentation failures incur up to €10,000,000 or 2.0%. Proactive alignment with Harmonised Standards (IEC 62443 / ETSI EN 303 645) acts as an affirmative mitigating factor.";
+          "Article 64(2) sets administrative fines of up to €15,000,000 or, for an undertaking, 2.5% of total worldwide annual turnover, for non-compliance with the Annex I essential requirements and the obligations in Articles 13 and 14. Article 64(3) sets up to €10,000,000 or 2% for the obligations in Articles 18 to 23 and others. IEC 62443 and ETSI EN 303 645 are not harmonised standards for this Regulation — no CRA harmonised standard has been cited in the Official Journal — so conformity with them is evidence of diligence, not a presumption of conformity.";
       } else if (q.includes("steward") || q.includes("open-source") || q.includes("foss") || q.includes("33")) {
         riskLevel = "LOW";
         responseAdvice =

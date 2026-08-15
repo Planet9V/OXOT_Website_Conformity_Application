@@ -139,7 +139,31 @@ function walk(dir, out = []) {
 const CITE = /\bArt(?:icle|\.)\s*(\d{1,3})\b/gi;
 const WAIVER = /citation-ok:\s*(.+)$/;
 // Other instruments cited by article number — not CRA articles.
-const OTHER_INSTRUMENT = /NIS2|2022\/2555|2019\/1020|2019\/881|765\/2008|1182\/71|IEC|ETSI|ISO|GDPR|2016\/679|AI Act|2024\/1689/i;
+/**
+ * Instruments that HAVE articles, and can therefore be the referent of an
+ * "Article N" citation. Standards bodies are deliberately excluded: IEC, ETSI
+ * and ISO documents have clauses and requirements, never Articles. Treating a
+ * mention of "IEC 62443" as evidence that "Article 61" belongs to another
+ * instrument suppressed a real error — the CRA's penalties are Article 64, and
+ * the line claiming Article 61 went unflagged because it also mentioned IEC.
+ */
+const OTHER_INSTRUMENT = /NIS2|2022\/2555|2019\/1020|2019\/881|765\/2008|1182\/71|GDPR|2016\/679|AI Act|2024\/1689|Machinery Regulation|2023\/1230|RED\b|2014\/53|\bMDR\b|2017\/745|\bIVDR\b|2017\/746|\bDORA\b|2022\/2554|\bCER\b|2022\/2557|\bGPSR\b|2023\/988|Data Act|2023\/2854/i;
+/** An explicit CRA reference on the line — the CRA is unambiguously in play. */
+const NAMES_THE_CRA = /2024\/2847|\bCRA\b|Cyber Resilience Act/i;
+/**
+ * How close another instrument's name must be to a citation to be taken as its
+ * referent. "Article 21 of NIS2" attributes; a passing mention 200 characters
+ * away in the same sentence does not.
+ */
+const ATTRIBUTION_WINDOW = 60;
+
+/** Is this specific citation plausibly attributed to another instrument? */
+function attributedElsewhere(line, matchIndex) {
+  if (NAMES_THE_CRA.test(line)) return false;
+  const from = Math.max(0, matchIndex - ATTRIBUTION_WINDOW);
+  const to = Math.min(line.length, matchIndex + ATTRIBUTION_WINDOW);
+  return OTHER_INSTRUMENT.test(line.slice(from, to));
+}
 
 /**
  * A whole file can be about another instrument. `ai-act.md` cites the AI Act's
@@ -198,7 +222,11 @@ for (const dir of SCAN_DIRS) {
       const above = i > 0 ? WAIVER.exec(lines[i - 1]) : null;
       const waiver = here || above;
       const rel = path.relative(ROOT, file);
-      const cited = [...line.matchAll(CITE)].map((m) => Number(m[1]));
+      // Each citation is judged on its own attribution, not the whole line's.
+      const citations = [...line.matchAll(CITE)]
+        .map((m) => ({ n: Number(m[1]), index: m.index ?? 0 }))
+        .filter((c) => !attributedElsewhere(line, c.index));
+      const cited = citations.map((c) => c.n);
       if (!cited.length) continue;
 
       const record = (kind, msg) => {
@@ -206,15 +234,28 @@ for (const dir of SCAN_DIRS) {
         else violations.push({ file: rel, line: i + 1, kind, msg, text: line.trim().slice(0, 140) });
       };
 
-      // 1. Range
+      // 1. Range — `cited` already excludes citations attributed elsewhere.
       for (const n of cited) {
-        if ((n < 1 || n > MAX) && !OTHER_INSTRUMENT.test(line)) {
+        if (n < 1 || n > MAX) {
           record("range", `Article ${n} does not exist — the CRA has ${MAX} articles.`);
         }
       }
 
-      // 2. Concept contradiction
-      if (OTHER_INSTRUMENT.test(line)) continue;
+      /**
+       * 2. Concept contradiction.
+       *
+       * A line naming another instrument is normally ambiguous — "Article 21"
+       * next to "NIS2" probably means NIS2's Article 21 — so such lines are
+       * skipped. But the escape hatch was too broad: it fired on ANY mention of
+       * another instrument or standard, so a line reading "Article 61
+       * administrative fines ... and NIS2 supply chain synergy" was skipped
+       * wholesale, hiding a real CRA error (penalties are Article 64). The word
+       * "IEC" did the same for another.
+       *
+       * If the line explicitly names the CRA, the CRA is in play and the
+       * citation must be right, whatever else is mentioned alongside it.
+       */
+      if (!cited.length) continue;
       for (const c of CONCEPTS) {
         if (!c.re.test(line)) continue;
         // Citing any governing article is correct — do not flag.

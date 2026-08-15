@@ -19,7 +19,7 @@ audio_url: "https://oxot.ai/audio/cra_podcast/NEWS_05.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-podcast.xml"
 date: "2026-08-14"
 keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "Article 34", "Quality & Notified Bodies", "Industrial OT Security", "CE Marking"]
-takeaways: ["CEN-CENELEC Joint Technical Committee 21 released initial drafts of the EN 40000 harmonized European standard series.", "Compliance with published harmonized standards confers automatic 'Presumption of Conformity' under Article 34.", "Working groups are mapping existing IEC 62443-4-1 and IEC 62443-4-2 clauses directly into the CRA Annex I essential requirements."]
+takeaways: ["CEN-CENELEC Joint Technical Committee 21 released initial drafts of the EN 40000 harmonized European standard series.", "Compliance with published harmonized standards confers automatic 'Presumption of Conformity' under Article 27.", "Working groups are mapping existing IEC 62443-4-1 and IEC 62443-4-2 clauses directly into the CRA Annex I essential requirements."]
 ---
 
 # Standardization Mandate M/606 Timeline Update: EN 40000 First Drafts Released

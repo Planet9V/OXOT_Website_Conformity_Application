@@ -884,7 +884,7 @@ export default function PartnerHubPage() {
                       onChange={(e) => setProcForm({ ...procForm, ceMarkVerified: e.target.checked })}
                       className="rounded text-primary"
                     />
-                    <span>CE Marking Affixed & Physically Verified (Art. 23)</span>
+                    <span>CE Marking Affixed &amp; Physically Verified (Art. 30)</span>
                   </label>
                   <label className="flex items-center gap-2 text-xs">
                     <input

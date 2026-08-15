@@ -102,7 +102,7 @@ Every episode script in [`docs/cra_podcast/episodes_solo/`](file:///Users/jimmck
 - **Expert Strengths:** Perfect application of the 4-gate Substantial Modification test. High resonance with engineering contractors who mistakenly view themselves as pure service providers.
 - **Recommendation for Improvement:** Keep this episode front and center in marketing campaigns; it represents the highest commercial pain point for system integrators.
 
-#### [EP_2.02: Article 18(2) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_2.02_Article_18(2)_Duty_to_Refrain_When_Integrator_SOLO.md)
+#### [EP_2.02: Article 20(3) 'Duty to Refrain': When Integrators Must Freeze Customer Deployments](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_2.02_Article_18(2)_Duty_to_Refrain_When_Integrator_SOLO.md)
 - **Scores:** Statutory Rigor: 9.9/10 | OT Realism: 9.8/10 | Copy Hook: 9.7/10 | Persuasion Psych: 9.7/10
 - **Overall Grade:** **A+ (9.8/10)**
 - **Expert Strengths:** Nails the dilemma between client delay penalties and federal statutory stop-work mandates.
@@ -338,7 +338,7 @@ Every episode script in [`docs/cra_podcast/episodes_solo/`](file:///Users/jimmck
 - **Expert Strengths:** Solves the 10-year archival challenge across corporate acquisitions and cloud migrations.
 - **Recommendation for Improvement:** Advocate for cryptographic SHA-256 evidence hashing.
 
-#### [EP_7.05: Article 34 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_7.05_Article_34_Presumption_of_Conformity_Harmonis_SOLO.md)
+#### [EP_7.05: Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_7.05_Article_34_Presumption_of_Conformity_Harmonis_SOLO.md)
 - **Scores:** Statutory Rigor: 9.9/10 | OT Realism: 9.8/10 | Copy Hook: 9.6/10 | Persuasion Psych: 9.6/10
 - **Overall Grade:** **A+ (9.7/10)**
 - **Expert Strengths:** Explains how Standardisation Request M/596 grants automatic legal presumption of conformity.
@@ -354,7 +354,7 @@ Every episode script in [`docs/cra_podcast/episodes_solo/`](file:///Users/jimmck
 
 ### Series 8: Executive Liability, Penalties & Future Evolution (Episodes 46–50)
 
-#### [EP_8.01: The €15,000,000 Calculation: Demystifying Article 61 Administrative Fines](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_8.01_The_€15000000_Calculation_Demystifying_Articl_SOLO.md)
+#### [EP_8.01: The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_8.01_The_€15000000_Calculation_Demystifying_Articl_SOLO.md)
 - **Scores:** Statutory Rigor: 10/10 | OT Realism: 10/10 | Copy Hook: 10/10 | Persuasion Psych: 10/10
 - **Overall Grade:** **A+ (10.0/10) — MASTER BENCHMARK**
 - **Expert Strengths:** Unflinching financial breakdown of the 2.5% global turnover rule and its existential threat to industrial conglomerates.

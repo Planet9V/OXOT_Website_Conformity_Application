@@ -44,7 +44,7 @@ Let's ground our discussion in the exact statutory text of Article 20, Article 6
 
 When we examine the operational, commercial, and engineering reality of Electrical Wholesalers & Distributors, the central challenge under Article 20, Article 69 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Under European Union product harmonisation legislation, the obligations set forth in Article 20, Article 69 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
+Under European Union product harmonisation legislation, the obligations set forth in Article 20, and Article 21 where a distributor substantially modifies a product, attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 

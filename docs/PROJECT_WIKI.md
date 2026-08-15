@@ -32,7 +32,7 @@ The application directly satisfies statutory obligations under:
 * **Executive Portfolio Command Center**: Aggregated regulatory posture grades, grade distributions (A+ to F), and statutory deadline countdown timers.
 * **PSIRT & Vulnerability Engine**: ISO 29147 / ISO 30111 vulnerability intake, CVE/CVSS 3.1 scoring, and statutory 24h/72h SLA breach tracking.
 * **Cryptographic Dossier Generator**: AI-assisted executive report section drafting, Markdown customization, and SHA-256 digital signature sealing.
-* **Statutory Document Vault**: 10-year product-isolated technical documentation vault satisfying CRA Article 10(7) retention laws.
+* **Statutory Document Vault**: 10-year product-isolated technical documentation vault satisfying CRA Article 13(13) retention laws.
 
 ---
 

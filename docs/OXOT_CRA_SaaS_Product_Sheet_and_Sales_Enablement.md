@@ -33,7 +33,7 @@ The first enterprise SaaS platform engineered specifically for hardware and soft
 
 | **~320 Hours** | **78% Reuse** | **24h / 72h** | **10 Years** |
 | :--- | :--- | :--- | :--- |
-| Saved per Product Dossier | NIS2 & IEC 62443 Evidence Harmonization | Automated PSIRT SLA Breach Tracking | CRA Article 10 Audit Vault Retention |
+| Saved per Product Dossier | NIS2 & IEC 62443 Evidence Harmonization | Automated PSIRT SLA Breach Tracking | CRA Article 13(13) Audit Vault Retention |
 
 ---
 
@@ -58,7 +58,7 @@ OXOT combines a state-of-the-art SaaS execution workbench with deep Operational 
    - Coordinated vulnerability disclosure intake, CVSS 3.1 severity scoring, and automated 24h early warning / 72h detailed notification SLA tracking.
 
 4. **10-Year Statutory Technical Vault & Cryptographic Dossier**
-   - Product-isolated technical file repository satisfying CRA Article 10(7) retention laws.
+   - Product-isolated technical file repository satisfying CRA Article 13(13) retention laws.
    - SHA-256 digital signature sealing for executive compliance dossiers.
 
 ---
@@ -73,7 +73,7 @@ OXOT combines a state-of-the-art SaaS execution workbench with deep Operational 
 
 #### CONFORMITY ASSESSMENT PATHWAY SUPPORT
 
-OXOT guides your products through the exact statutory route required under CRA Article 24:
+OXOT guides your products through the exact statutory route required under CRA Article 32:
 
 ```
 [ Product Catalog ] ───► [ CRA Class Check ]
@@ -150,7 +150,7 @@ Stop re-auditing the same controls. OXOT automatically harmonizes evidence acros
 #### PERSONA C: HEAD OF REGULATORY COMPLIANCE / LEGAL
 * **Goal**: Ensure 100% legal compliance with Regulation (EU) 2024/2847 and Article 13(13) retention.
 * **Key Pain**: Worrying about evidence loss, missing Notified Body deadlines, or audit exposure.
-* **Winning Pitch**: *"OXOT seals your technical dossiers with SHA-256 digital signatures and maintains a 10-year immutable audit vault matching CRA Article 10(7)."*
+* **Winning Pitch**: *"OXOT seals your technical dossiers with SHA-256 digital signatures and maintains a 10-year immutable audit vault matching CRA Article 13(13)."*
 
 ---
 
