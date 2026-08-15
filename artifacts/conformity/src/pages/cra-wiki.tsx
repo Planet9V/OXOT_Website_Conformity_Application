@@ -132,6 +132,14 @@ export default function EnterpriseCraWikiPage() {
     return annexesData.annexes.find((a: any) => a.annexNumber === selectedAnnexNum) || annexesData.annexes[0];
   }, [selectedAnnexNum]);
 
+  // Corrigenda that touch the article on screen. Read from the corpus
+  // provenance so this can never drift from the text actually displayed.
+  const articleCorrigenda = useMemo(() => {
+    const all = (articlesData as any).corrigenda ?? [];
+    if (selectedType !== "articles") return [];
+    return all.filter((c: any) => c.article === currentArticle.articleNumber);
+  }, [currentArticle, selectedType]);
+
   // Bidirectional backlinks for current article
   const activeBacklinks = useMemo(() => {
     if (selectedType !== "articles") return { recitals: [], annexes: [], features: [] };
@@ -182,6 +190,15 @@ export default function EnterpriseCraWikiPage() {
             </div>
             <p className="text-xs font-mono text-muted-foreground mt-0.5">
               Official Journal Reference: OJ L, 2024/2847 • CELEX 32024R2847
+              {(articlesData as any).corrigenda?.length > 0 && (
+                <>
+                  {" "}
+                  • as corrected by{" "}
+                  {(articlesData as any).corrigenda
+                    .map((c: any) => c.ojRef)
+                    .join(", ")}
+                </>
+              )}
             </p>
           </div>
         </div>
@@ -443,6 +460,19 @@ export default function EnterpriseCraWikiPage() {
                   <FileCode className="w-3.5 h-3.5 text-primary" />
                   Official Statutory Text (Verbatim)
                 </div>
+                {articleCorrigenda.length > 0 && (
+                  <div className="rounded-lg border border-amber-500/30 bg-amber-500/5 p-3 text-[11px] space-y-1">
+                    {articleCorrigenda.map((c: any, i: number) => (
+                      <p key={i} className="text-foreground/90 leading-relaxed">
+                        <span className="font-mono font-semibold text-amber-600 dark:text-amber-500">
+                          Paragraph {c.paragraph} as corrected
+                        </span>{" "}
+                        by {c.ojRef}. Cite that corrigendum, not the original
+                        publication, for this wording.
+                      </p>
+                    ))}
+                  </div>
+                )}
                 {currentArticle.paragraphs.map((para: any) => (
                   <div
                     key={para.paragraphNumber}
