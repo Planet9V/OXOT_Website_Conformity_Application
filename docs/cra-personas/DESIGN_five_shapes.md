@@ -53,6 +53,7 @@
 | D6 | **Operator = assurance shape, not a CRA conformance profile** | Build an operator CRA journey | An operator has **no CRA obligations**. Building them would fabricate duties |
 | D7 | Product-file-centric UI on six shared primitives | Obligation-centric; keep persona pages | Nobody thinks "I am working on Article 13(13)"; they think "I am getting the S7-1500 shipped" |
 | D8 | NIS2: **Directive corpus + guard now**, national transpositions later | Full NIS2 first; overlap map only | Unblocks the assurance shape and guards existing NIS2 material without stalling the persona phases |
+| D9 | **Registry-driven multi-act engine**; reuse P1 for NIS2 rather than a second engine | Per-act engines; if/else branching in the obligations endpoint | Ten acts are already seeded. Adding an act must mean registering content, never editing the engine |
 
 ---
 
@@ -237,6 +238,65 @@ Sequence (D8):
 Until transpositions land, the app shows the **Directive baseline** and says
 plainly that national law governs, naming the Member State as an unanswered
 input. It must never state a national obligation it cannot source.
+
+---
+
+## The multi-act engine
+
+Ten acts are already seeded — CRA, AI Act, Machinery, IEC 62443, NIS2, RED,
+GDPR, CER, DORA, GPSR — and `CANONICAL_ROLES.termFor` already translates the
+canonical role into each act's own word (CRA "manufacturer", AI Act "provider",
+IEC 62443 "product supplier"). The multi-act foundation exists.
+
+CRA hardcoding across the engine is three lines, and the one that matters was
+introduced in Phase 1.5:
+
+```ts
+// orgProfile.ts:218
+const isArt14 = r.regulationKey === "cra" && r.refCode === "Art 14";
+```
+
+That special-case derives Art. 14 status from real filings instead of a typed
+field, which is right — but NIS2 Art. 23 has its own 24h/72h/one-month reporting
+and the AI Act has serious-incident reporting under Art. 73. Three acts, three
+branches, and the obligations endpoint becomes an if/else chain that grows with
+every act added.
+
+### Registries, not branches
+
+An obligation declares where its status comes from: evaluations (a human records
+it) or a **registered deriver** (computed from data).
+
+```
+DERIVERS = {
+  "cra::Art 14":    deriveFromIncidentFilings,
+  "nis2::Art 23":   deriveFromNis2Notifications,
+  "ai_act::Art 73": deriveFromSeriousIncidents,
+}
+```
+
+Four registries, keyed by `regulationKey`. Adding an act means **registering**
+content — never editing the engine.
+
+| Registry | CRA today | Expands to |
+|---|---|---|
+| **Determinations** (P4) | scope, classification, Art. 32 route, Art. 21/22 | AI Act risk tier; Machinery Annex I category |
+| **Clocks** (P5) | 13(8), 13(9)/(13)/(18), Art. 14 | NIS2 Art. 23; AI Act Art. 73 |
+| **Status derivers** | Art. 14 from filings | any obligation computable from data |
+| **Artifacts** (P3) | 7 CRA types | AI Act technical documentation; Machinery DoC |
+
+The six primitives stay generic. Only the content is per-act.
+
+### The guard generalises too
+
+`check_citations.mjs` is CRA-shaped: `MAX = 71` articles, one `CONCEPTS` table,
+one corpus. Multi-act means per-act corpora and per-act concept tables —
+`verify_corpus.mjs --act cra|nis2|ai_act` — so a NIS2 citation is checked against
+NIS2 and an AI Act citation against the AI Act.
+
+Today a NIS2 article number in a blog post is simply **unchecked**. That is how
+"Article 34" survived in CRA material until the gate was widened, and the same
+blind spot currently covers every non-CRA act.
 
 ---
 
