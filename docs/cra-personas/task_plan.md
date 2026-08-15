@@ -397,7 +397,7 @@ Scope as delegated access, not a cockpit persona.
 | 1B — Manufacturer deepening | **complete** | G1/G4/G5 pass; G6 pending | 1B.1-1B.5 done incl. provenance ledger |
 | W1 — Multi-act engine | in_progress | — | corpus + guard done; registries open |
 | W2 — NIS2 | in_progress | — | Directive corpus + verifier done |
-| 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |
+| 3 — Importer / Distributor | **rules complete** | G1/G4/G5 pass | 3.1-3.5 done; UI + G6 open |
 | 4 — Steward | not_started | — | Depends on 0 |
 | 5 — Authorised rep | not_started | — | Depends on 0, reuses 1.3 |
 
