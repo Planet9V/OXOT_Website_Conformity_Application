@@ -1,4 +1,5 @@
 import { Router, type IRouter } from "express";
+import { assessPresumption, STANDARD_CITATIONS } from "../lib/presumption";
 
 export const harmonisedStandardsRouter: IRouter = Router();
 
@@ -123,10 +124,35 @@ export const standardClauseMappings: StandardClauseMapping[] = [
  * Returns all harmonised standards clause mappings and their CRA Annex I presumption equivalents.
  */
 harmonisedStandardsRouter.get("/matrix", (_req, res) => {
+  /**
+   * The presumption position for the standards this matrix maps, derived from
+   * the citation register rather than asserted. Sent with the matrix so the
+   * client never has to infer a legal status from a coverage percentage.
+   */
+  const presumption = assessPresumption({
+    claimedStandards: Array.from(new Set(standardClauseMappings.map((m) => m.standard))),
+  });
+
   res.json({
     totalMappings: standardClauseMappings.length,
     statutoryBasis: "Regulation (EU) 2024/2847 Article 27 (Presumption of Conformity)",
     mappings: standardClauseMappings,
+    presumption: {
+      available: presumption.presumptionAvailable,
+      basis: presumption.basis,
+      citation: presumption.citation,
+      coversAnnexI: presumption.coversAnnexI,
+      message: presumption.message,
+      evidenceOnly: presumption.evidenceOnly,
+    },
+    /** What was checked, when, and against what — so the claim is auditable. */
+    citationRegister: STANDARD_CITATIONS.map((s) => ({
+      standard: s.key,
+      title: s.title,
+      craOjReference: s.craOjReference,
+      verifiedOn: s.verifiedOn,
+      note: s.note,
+    })),
   });
 });
 
@@ -153,23 +179,48 @@ harmonisedStandardsRouter.post("/evaluate-presumption", (req, res) => {
 
   const coveredAnnexIReqs = Array.from(new Set(matched.map((m) => m.craAnnexIRef)));
 
+  /**
+   * Coverage against a standard's clauses is real, useful information — it is
+   * how a manufacturer shows in Annex VII that it has addressed each Annex I
+   * requirement. What it is NOT is a presumption of conformity. That is granted
+   * by Art. 27 alone, and only where a reference has been published in the OJEU,
+   * a common specification adopted, or a European cybersecurity certificate
+   * issued. A percentage cannot substitute for any of those.
+   *
+   * honesty-ok: describes the false claim this code removed; it does not make it.
+   * This endpoint previously returned FULL_STATUTORY_PRESUMPTION_ARTICLE_34 once
+   * the score passed 95%. Article 34 is not the presumption article, and the
+   * claim itself was false for every product: no CRA harmonised standard has
+   * been cited. Acting on it — self-assessing an important Class I product on
+   * the strength of a score — would have been a breach of Art. 32(2).
+   */
+  const presumption = assessPresumption({
+    claimedStandards: Array.from(new Set(matched.map((m) => m.standard))),
+  });
+
   res.json({
-    presumptionScore,
+    clauseCoverageScore: presumptionScore,
     verifiedCount,
     totalPossible,
-    isFullPresumptionAchieved: presumptionScore >= 95,
     coveredAnnexIRequirements: coveredAnnexIReqs,
-    statutoryPresumptionStatus:
-      presumptionScore >= 95
-        ? "FULL_STATUTORY_PRESUMPTION_ARTICLE_34"
-        : presumptionScore >= 60
-        ? "PARTIAL_PRESUMPTION_SUPPLEMENTAL_AUDIT_REQUIRED"
-        : "INSUFFICIENT_STANDARDS_EVIDENCE",
-    recommendations:
-      presumptionScore < 95
-        ? filteredMappings
-            .filter((m) => !verifiedClauses.includes(m.clauseId))
-            .map((m) => `Complete verification of ${m.standard} ${m.clauseId} (${m.clauseTitle}) to gain presumption for ${m.craAnnexIRef}`)
-        : ["All harmonised standard clauses satisfied. Product benefits from Article 27 Presumption of Conformity."],
+    presumption: {
+      available: presumption.presumptionAvailable,
+      basis: presumption.basis,
+      citation: presumption.citation,
+      coversAnnexI: presumption.coversAnnexI,
+      message: presumption.message,
+      evidenceOnly: presumption.evidenceOnly,
+    },
+    /**
+     * What clause coverage actually buys you, stated without overclaiming.
+     */
+    effect:
+      "Clause coverage is evidence towards the Annex VII technical documentation. It demonstrates how each Annex I essential requirement has been addressed; it does not confer a presumption of conformity.",
+    recommendations: filteredMappings
+      .filter((m) => !verifiedClauses.includes(m.clauseId))
+      .map(
+        (m) =>
+          `Evidence ${m.standard} ${m.clauseId} (${m.clauseTitle}) to support ${m.craAnnexIRef} in the technical documentation.`,
+      ),
   });
 });

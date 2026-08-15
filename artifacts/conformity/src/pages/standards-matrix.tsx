@@ -29,6 +29,20 @@ interface StandardClauseMapping {
   securityLevelTarget?: 'SL1' | 'SL2' | 'SL3' | 'SL4';
 }
 
+/**
+ * Whether Art. 27 grants a presumption is decided by the server against the
+ * OJEU citation register. The client renders that verdict; it never derives one
+ * from clause coverage.
+ */
+interface PresumptionStatus {
+  available: boolean;
+  basis: string;
+  citation: string;
+  coversAnnexI: string[];
+  message: string;
+  evidenceOnly: { key: string; reason: string }[];
+}
+
 export default function StandardsMatrixPage() {
   const [selectedStandard, setSelectedStandard] = useState<string>('ALL');
   const [verifiedClauses, setVerifiedClauses] = useState<string[]>([
@@ -41,7 +55,11 @@ export default function StandardsMatrixPage() {
     'DM-1 / DM-4',
   ]);
 
-  const { data, isLoading } = useQuery<{ totalMappings: number; mappings: StandardClauseMapping[] }>({
+  const { data, isLoading } = useQuery<{
+    totalMappings: number;
+    mappings: StandardClauseMapping[];
+    presumption?: PresumptionStatus;
+  }>({
     queryKey: ['/api/standards/matrix'],
     queryFn: async () => {
       const res = await fetch('/api/standards/matrix');
@@ -73,6 +91,8 @@ export default function StandardsMatrixPage() {
   const filteredMappings = (data?.mappings || []).filter((m) =>
     selectedStandard === 'ALL' ? true : m.standard === selectedStandard
   );
+
+  const presumption = data?.presumption;
 
   const presumptionScore = Math.round(
     ((data?.mappings || []).filter((m) => verifiedClauses.includes(m.clauseId)).length /
@@ -108,7 +128,7 @@ export default function StandardsMatrixPage() {
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted border border-border/80 font-mono text-xs text-foreground hover:border-primary transition-all"
         >
           <Gavel className="w-3.5 h-3.5 text-primary" />
-          Statutory Ref: Article 34
+          Statutory Ref: Article 27
         </Link>
       </div>
 
@@ -116,7 +136,7 @@ export default function StandardsMatrixPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-card/80 border border-border/80 p-5 rounded-xl shadow-xs space-y-1">
           <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-            Presumption of Conformity Score
+            Clause Coverage
           </div>
           <div className="flex items-baseline gap-2">
             <span className="font-display font-medium text-3xl text-primary">{presumptionScore}%</span>
@@ -136,17 +156,19 @@ export default function StandardsMatrixPage() {
           <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
             Legal Presumption Status
           </div>
+          {/*
+            Art. 27(1) grants a presumption only where the reference to a
+            harmonised standard has been published in the Official Journal. None
+            has been for the CRA, so no score on this page can produce one. The
+            server is the authority on this; the client never infers it from a
+            percentage.
+          */}
           <div className="font-display font-medium text-lg text-foreground mt-1">
-            {presumptionScore >= 90
-              ? 'Full Presumption (Art. 34)'
-              : presumptionScore >= 50
-              ? 'Partial Presumption'
-              : 'Audit Evidence Required'}
+            {presumption?.available ? 'Presumption applies' : 'No presumption available'}
           </div>
           <p className="text-[11px] text-muted-foreground">
-            {presumptionScore >= 90
-              ? 'Exempts product from full Notified Body re-testing on matching Annex I properties.'
-              : 'Supplementary testing required for non-presumed Annex I requirements.'}
+            {presumption?.message ??
+              'Conformity with a standard confers a presumption only once its reference is published in the Official Journal (Art. 27(1)), a common specification is adopted (Art. 27(5)), or a European cybersecurity certificate is issued (Art. 27(8)).'}
           </p>
         </div>
 

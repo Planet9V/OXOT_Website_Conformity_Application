@@ -28,6 +28,8 @@ import type {
 } from "@workspace/db";
 import type { AnswerMap } from "./craFlow";
 import { assessSupportPeriod } from "./supportPeriod";
+import { selectConformityRoutes, type ProductClassKey } from "./conformityRoute";
+import { STANDARD_CITATIONS } from "./presumption";
 
 // ---------------------------------------------------------------------------
 // Route resolution (Article 32)
@@ -67,6 +69,11 @@ export type AllowedRoute = {
 export type ResolvedRoutes = {
   allowed: AllowedRoute[];
   recommendedRouteKey: string | null;
+  /** Why each route is open or closed, in the regulation's own terms. */
+  rationale: { key: string; available: boolean; reason: string }[];
+  /** The Article 32 paragraph that governs this product's class. */
+  citation: string;
+  message: string;
 };
 
 export function resolveRoutes(
@@ -74,24 +81,43 @@ export function resolveRoutes(
   appliesHarmonised: boolean | undefined,
   routes: ConformityRouteRow[],
   productClass: ProductClassRow | undefined,
+  options: { isFreeAndOpenSource?: boolean; technicalDocumentationPublic?: boolean } = {},
 ): ResolvedRoutes {
-  let allowed = routes.filter((r) =>
-    ((r.appliesToClasses as string[]) ?? []).includes(classKey),
-  );
+  /**
+   * Art. 32 decides which routes are open; the seeded table only supplies each
+   * route's name and description.
+   *
+   * The subtlety this fixes: `appliesHarmonised` is the manufacturer's own
+   * answer, and the previous logic let a "yes" unlock module A for an important
+   * Class I product. But Art. 32(2) closes internal control both where the
+   * manufacturer has not applied such a basis AND "where such ... do not exist".
+   * No CRA harmonised standard has been cited and no common specification
+   * adopted, so today the second limb bites regardless of the answer given — a
+   * manufacturer cannot have applied a standard that does not exist. Availability
+   * is therefore derived from the citation register, not from the questionnaire.
+   */
+  const art27BasisExists = STANDARD_CITATIONS.some((s) => s.craOjReference !== null);
+  const selection = selectConformityRoutes({
+    classKey: classKey as ProductClassKey,
+    appliedArt27BasisInFull: appliesHarmonised === true,
+    art27BasisExists,
+    isFreeAndOpenSource: options.isFreeAndOpenSource,
+    technicalDocumentationPublic: options.technicalDocumentationPublic,
+  });
 
-  // A Class I important product may only self-assess (Module A) when harmonised
-  // standards / common specs / a certification scheme are fully applied.
-  if (classKey === "important_class_i" && appliesHarmonised !== true) {
-    allowed = allowed.filter((r) => r.key !== "module_a");
-  }
-  // Class II important products (Art 32(3)) and Critical products (Art 32(4)) may NEVER use Module A.
-  if (classKey === "important_class_ii" || classKey === "critical") {
-    allowed = allowed.filter((r) => r.key !== "module_a");
-  }
+  /**
+   * Availability comes from Art. 32, and the seeded table supplies only each
+   * route's name and description. Intersecting the two would reintroduce the
+   * bug: module A's class list is ["default", "important_class_i"], so under the
+   * Art. 32(5) FOSS carve-out — which opens module A to an Annex III product —
+   * the table would veto a route the regulation allows. The statute wins.
+   */
+  const availableKeys = new Set<string>(selection.availableRoutes);
+  const allowed = routes.filter((r) => availableKeys.has(r.key));
 
   let recommendedRouteKey: string | null = productClass?.defaultRouteKey ?? null;
   if (classKey === "important_class_i") {
-    recommendedRouteKey = appliesHarmonised === true ? "module_a" : "module_b_c";
+    recommendedRouteKey = availableKeys.has("module_a") ? "module_a" : "module_b_c";
   }
   if (recommendedRouteKey && !allowed.some((r) => r.key === recommendedRouteKey)) {
     recommendedRouteKey = allowed[0]?.key ?? null;
@@ -108,6 +134,13 @@ export function resolveRoutes(
         thirdPartyRequired: r.thirdPartyRequired,
       })),
     recommendedRouteKey,
+    rationale: selection.options.map((o) => ({
+      key: o.key,
+      available: o.available,
+      reason: o.reason,
+    })),
+    citation: selection.citation,
+    message: selection.message,
   };
 }
 
