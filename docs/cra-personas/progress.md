@@ -51,3 +51,62 @@ Check `git log --oneline -3` at the start of each phase (lesson L8).
 | Phase | Error | Attempt | Resolution |
 |-------|-------|---------|------------|
 | plan | `check_honesty.mjs` walk() used `e.key ?? e.name` | 1 | Corrected to `e.name`; verified against real tree |
+
+---
+
+## Phase 1 — Manufacturer — COMPLETE (2026-08-15)
+
+All eight tasks implemented, each as a pure tested rule then wired, verified in
+both directions. Fix cap of 3 never reached; worst case 2.
+
+| # | Task | Article | Tests | Fix cycles |
+|---|------|---------|-------|-----------|
+| 1.1 | Support period, both limbs | 13(8) | 15 | 2 |
+| 1.2 | Three retention clocks | 13(9), 13(13), 13(18) | 12 | 1 |
+| 1.3 | Economic-operator traceability | 23 | 11 | 2 |
+| 1.4 | Market surveillance workflow | 53, 54 | 11 | 0 |
+| 1.5 | Reporting obligation from filings | 14 | 8 | 0 |
+| 1.6 | Cockpit literals retired | — | — | 0 |
+| 1.7 | Presumption as data | 27 | 8 | 0 |
+| 1.8 | Route selection derived | 32 | 21 | 0 |
+
+**Defects fixed beyond the task list**
+
+- The standards matrix asserted `FULL_STATUTORY_PRESUMPTION_ARTICLE_34` and the
+  UI rendered "Exempts product from full Notified Body re-testing". False for
+  every product on the market, and acting on it would breach Art. 32(2).
+- `/products/:id/revisions` ran both statutory clocks off `product.createdAt`
+  with 5*365 and 10*365 days — wrong anchor, wrong articles, wrong arithmetic.
+- The importer archive computed retention from the deposit date.
+- `persona-copilot-drawer.tsx` selected legal text by bare numeral: fines to
+  Art. 61, steward to 33, importer to 17 — each a real but unrelated article,
+  quoted back to the user as authority. Invisible to any citation scanner.
+- 30 wrong citations across code and published material, burned down to 0.
+
+**Gate movement**
+
+| Gate | Before | After |
+|------|--------|-------|
+| Citations | 4 (weak gate; 30 with the corrected gate) | **0** |
+| Honesty | 13 | 11 |
+| Tests passing | 216 | 287 |
+| Corpus verifier | PASS | PASS |
+
+CI baselines ratcheted: citations 4 → 0, honesty 13 → 11.
+
+**Schema added:** `placed_on_market_date`, `expected_use_time_months`,
+`support_period_rationale` on `conformity_products`; new
+`conformity_msa_engagements`. All applied to the dev database.
+
+**Regression caught by CI:** the e2e walk asserted the Art. 32(2) defect
+("applying harmonised standards unlocks Module A"). Corrected — the test was
+encoding the bug, not the law.
+
+**Outstanding:** CI has ~70 pre-existing failures unrelated to Phase 1 (demo-role
+403 tests, OPENROUTER_API_KEY, object storage). These predate this work and are
+the next thing worth fixing, since they mask real regressions — only a
+name-by-name diff against an earlier run revealed that exactly one failure was
+mine.
+
+**Status:** Phase 1 complete. Phase 2 (deemed manufacturer, Arts. 21-22) ready.
+
