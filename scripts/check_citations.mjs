@@ -21,13 +21,21 @@ import path from "node:path";
 
 const ROOT = process.cwd();
 const CORPUS = path.join(ROOT, "docs/cra_statutory_corpus/02_articles_full.json");
+/**
+ * Every surface that cites the CRA to a human, not just application code.
+ * Blogs, podcast scripts and FAQs are published material: a wrong article
+ * number there misleads a reader exactly as a wrong number in the UI does.
+ */
 const SCAN_DIRS = [
   "artifacts/conformity/src",
   "artifacts/oxot-web/src",
   "artifacts/api-server/src",
+  "docs",
 ];
-const EXT = new Set([".ts", ".tsx"]);
-const SKIP = /node_modules|\/dist\/|craCorpusData\.ts/;
+const EXT = new Set([".ts", ".tsx", ".md", ".mdx"]);
+// The corpus and its cached source are the reference, not a citation site.
+// docs/cra-personas records historical wrong numbers on purpose, as lessons.
+const SKIP = /node_modules|\/dist\/|craCorpusData\.ts|cra_statutory_corpus|docs\/cra-personas/;
 
 if (!fs.existsSync(CORPUS)) {
   console.error(`Corpus not found at ${path.relative(ROOT, CORPUS)}.`);

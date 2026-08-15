@@ -221,7 +221,7 @@ function applyCorrigenda(articles) {
         );
       }
       para.text = para.text.replace(fix.from, fix.to);
-      applied.push({ ojRef: c.ojRef, eli: c.eli, ...fix });
+      applied.push({ ojRef: c.ojRef, eli: c.eli, url: c.url, ...fix });
     }
   }
   return applied;
