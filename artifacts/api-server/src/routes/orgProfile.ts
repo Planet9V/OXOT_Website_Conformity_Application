@@ -15,6 +15,7 @@ import {
 } from "@workspace/db";
 import { requireAuth } from "../lib/adminAuth";
 import { assessReportingObligation } from "../lib/reportingObligation";
+import { deriveStatus } from "../lib/statusDerivers";
 
 /**
  * The organisation's own profile: what it does, and which acts it is subject to.
@@ -215,7 +216,13 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
     .map((r) => {
       const evals = byRef.get(`${r.regulationKey}::${r.refCode}`) ?? [];
       const appliesTo = Array.isArray(r.appliesTo) ? (r.appliesTo as string[]) : [];
-      const isArt14 = r.regulationKey === "cra" && r.refCode === "Art 14";
+      /**
+       * A few obligations can be DERIVED from what the system holds rather than
+       * from a status somebody typed. Which ones is a question about each act,
+       * so it lives in the registry — adding an act means registering a deriver,
+       * not editing this function.
+       */
+      const derived = deriveStatus(r.regulationKey, r.refCode, { reporting });
       return {
         regulationKey: r.regulationKey,
         refCode: r.refCode,
@@ -226,24 +233,10 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
         appliesTo,
         // The regulator's own word for the role, so the UI can speak its language.
         roleTerms: appliesTo.map((a) => termForRole(a, r.regulationKey)),
-        // Art. 14 is evidenced by filings, not by a typed status. Everything
-        // else still aggregates the evaluation rows.
-        status: isArt14
-          ? reporting.status === "no_reportable_events"
-            ? "not_started"
-            : reporting.status
-          : worstStatus(evals.map((e) => e.status)),
-        derivedFrom: isArt14
-          ? {
-              source: "conformity_incident_submissions",
-              citation: reporting.citation,
-              status: reporting.status,
-              incidentCount: reporting.incidentCount,
-              overdueCount: reporting.overdueCount,
-              unevidencedCount: reporting.unevidencedCount,
-              message: reporting.message,
-            }
-          : null,
+        // Derived where a deriver is registered; otherwise the worst recorded
+        // evaluation, so nothing is flattered.
+        status: derived ? derived.status : worstStatus(evals.map((e) => e.status)),
+        derivedFrom: derived ? derived.derivedFrom : null,
         evaluationCount: evals.length,
         owners: [...new Set(evals.map((e) => e.owner).filter(Boolean))],
         nextDueDate:

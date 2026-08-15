@@ -381,6 +381,27 @@ Manufacturer obligations", because its pattern only knew "exemption granted" and
 have caught it actually matches the exact string, then widen it — and check the
 widening does not force a waiver for a legitimate future statement.
 
+### L34 — Build the registry for the branch that exists, not the three that might
+W1.3 specified four registries: determinations, clocks, status derivers,
+artifacts. Exactly one if/else had actually formed — `isArt14` in `orgProfile.ts`
+— so exactly one registry was built. The other three would each have held a
+single entry and taught the next reader that the codebase works a way it does
+not.
+**Apply:** a registry is justified by a branch that exists, not by a branch that
+is forecast. When the plan asks for more than the code has grown into, build the
+part that removes real duplication and write the omission down as a decision, in
+the plan, with what would trigger it — otherwise "not built" is indistinguishable
+from "forgotten".
+
+### L35 — The citation gate reads the line, not the paragraph
+The new module's comment said "the AI Act has serious-incident reporting" on one
+line and "under Art. 73" on the next. Attribution is per-line, so Art. 73 was
+checked against the CRA's 1..71 and flagged. The gate was right: nothing on that
+line said which act it meant.
+**Apply:** name the instrument on the same line as its article number. That is
+also better prose — a reader scanning a comment has no more context than the
+gate does.
+
 ---
 
 ## Phase 2 — Deemed manufacturer (Arts. 21 & 22) — completed 2026-08-15

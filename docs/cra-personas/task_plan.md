@@ -503,10 +503,21 @@ the engine.
   behaviour-preserving by the CRA reproducibility gate, which caught a real
   regression during the extraction (graph edges 230 -> 181).
 - **W1.2 Per-act citation guard** — **DONE**. NIS2 checked for the first time.
-- **W1.3 Registries** — open. Determinations, clocks, status derivers and
-  artifacts keyed by `regulationKey`. The concrete trigger is
-  `orgProfile.ts:218`, where Phase 1.5 special-cased `cra::Art 14`; NIS2 Art. 23
-  and AI Act Art. 73 need the same treatment and would become an if/else chain.
+- **W1.3 Registries** — **DONE**, narrower than planned, deliberately.
+  `lib/statusDerivers.ts` holds derivers keyed `${regulationKey}::${refCode}`;
+  `orgProfile.ts` looks up instead of branching, and the `cra::Art 14` special
+  case is gone. Adding NIS2 Art. 23 or AI Act Art. 73 is now a registration.
+
+  The plan also named registries for determinations, clocks and artifacts.
+  **Not built.** Those are not if/else chains today — they are modules called
+  directly — so three registries holding one entry each would be architecture
+  with nothing to hold. They get built when a second act needs them, and this
+  line is the record of the decision rather than a forgotten item.
+
+  Verified: 7 new tests, gates green (citations 0, honesty 9), typecheck clean,
+  and G6 live on :8088 — one derived obligation (`cra Art 14 -> not_met` from
+  `conformity_incident_submissions`), the other 46 falling through to their
+  recorded evaluations. Identical to the pre-refactor behaviour.
 
 # Workstream W2 — NIS2 (added 2026-08-15)
 
@@ -517,7 +528,9 @@ for what the Directive says and silent on what any entity must do.
   from the authentic OJ text.
 - **W2.2 Verifier** — **DONE**. Ten checks; also exposed and fixed a vacuous
   check in the CRA verifier (B3 passed having detected nothing).
-- **W2.3 NIS2 obligations via the shared primitive** — open. Blocked on W1.3.
+- **W2.3 NIS2 obligations via the shared primitive** — open. No longer blocked:
+  W1.3 landed, so a NIS2 Art. 23 deriver is a registration once NIS2
+  obligations are seeded. Seeding them is the remaining work.
 - **W2.4 National transpositions** — deferred. NL then DE.
 
 ## Errors encountered
