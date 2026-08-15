@@ -110,3 +110,50 @@ mine.
 
 **Status:** Phase 1 complete. Phase 2 (deemed manufacturer, Arts. 21-22) ready.
 
+---
+
+## BLOCKED — NIS2 Directive corpus (2026-08-15)
+
+Cannot fetch the authoritative source. EUR-Lex is serving this environment a
+**202 bot-challenge with an empty body**, to curl as well as to Node.
+
+Three distinct approaches tried, then halted per the circuit breaker rather than
+retried:
+
+1. `curl` direct on CELEX:32022L2555 → 0 bytes, HTTP 202
+2. Alternative URL forms (OJ TOC, ELI `data.europa.eu`) → 0 bytes
+3. `WebFetch` (different mechanism entirely) → returns a challenge page
+
+The **known-good CRA URL also returns 0 bytes right now**, which proves this is
+an environment/network condition and not a NIS2-specific problem. The cached CRA
+source is committed, so the CRA corpus and its verifier are unaffected.
+
+### What was deliberately NOT done
+
+No corpus was built from a secondary source. Summary sites, law-firm briefings
+and aggregators are exactly what produced the synthetic CRA corpus that started
+this programme. A NIS2 guard built on a non-authoritative text would be worse
+than no guard, because it would carry the authority of a verifier.
+
+No parser was written either — the CRA parser was written against the real OJ
+HTML structure, and writing one for a document nobody has seen is speculation.
+
+### To unblock
+
+Fetch the source into the expected path, from a network EUR-Lex will answer:
+
+    mkdir -p docs/nis2_statutory_corpus/source
+    curl -sL -A "Mozilla/5.0" \
+      "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555" \
+      -o docs/nis2_statutory_corpus/source/CELEX_32022L2555_EN.html
+
+Or save the page from a browser to that path. Sanity check before trusting it:
+the file should be well over 500 KB and contain "Directive (EU) 2022/2555".
+
+Then the pipeline mirrors the CRA exactly: build → verify → per-act citation
+gate. Watch for corrigenda, as the CRA had one (OJ L 2025/90555) that changed
+the meaning of Art. 64(10).
+
+**Reference:** Directive (EU) 2022/2555, CELEX 32022L2555, OJ L 333,
+27.12.2022, p. 80.
+
