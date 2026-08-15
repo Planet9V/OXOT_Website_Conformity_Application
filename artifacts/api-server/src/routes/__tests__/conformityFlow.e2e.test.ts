@@ -18,8 +18,8 @@
  *
  * The walk:
  *   create product → create assessment → save scoping (in_scope) →
- *   save classification (important_class_i) → route fork (recommended route
- *   changes) → select route (stage advances) → instantiate (evaluations
+ *   save classification (important_class_i) → route fork (Art. 32(2) keeps the
+ *   recommendation off Module A) → select route (stage advances) → instantiate (evaluations
  *   created) → update evaluation → add evidence → generate artifacts →
  *   compute grade → create incident → delete evidence/incident/assessment/
  *   product (each 200 + { success: true }, row actually gone).
@@ -161,14 +161,31 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     const recommendedAfterFork = (
       forked.json as { recommendedRouteKey: string | null }
     ).recommendedRouteKey;
-    // Fully applying harmonised standards unlocks Module A self-assessment.
-    expect(recommendedAfterFork).toBe("module_a");
-    expect(recommendedAfterFork).not.toBe(recommendedBeforeFork);
+    /**
+     * This assertion used to read "fully applying harmonised standards unlocks
+     * Module A self-assessment", and it was wrong on the law.
+     *
+     * Art. 32(2) closes internal control for an important Class I product in
+     * three cases: the manufacturer has not applied a basis under Art. 27, has
+     * applied one only in part, OR "where such harmonised standards, common
+     * specifications or European cybersecurity certification schemes DO NOT
+     * EXIST". No CRA harmonised standard has been cited in the Official Journal
+     * and no common specification adopted, so the third limb bites today
+     * regardless of the answer given — a manufacturer cannot have applied a
+     * standard that does not exist.
+     *
+     * The answer therefore cannot unlock Module A, and the recommendation stays
+     * on a third-party route. If a citation is ever published, the register in
+     * lib/presumption.ts gains a reference and this flips back on its own.
+     */
+    expect(recommendedAfterFork).not.toBe("module_a");
+    expect(recommendedAfterFork).toBe(recommendedBeforeFork);
 
     const allowedRoutes = (
       forked.json as { allowedRoutes: { key: string }[] }
     ).allowedRoutes;
-    expect(allowedRoutes.some((r) => r.key === "module_a")).toBe(true);
+    expect(allowedRoutes.some((r) => r.key === "module_a")).toBe(false);
+    expect(allowedRoutes.some((r) => r.key === "module_b_c")).toBe(true);
 
     // ---- select route → stage advances ------------------------------------
     const stageBefore = (forked.json as { assessment: { currentStage: string } })
@@ -176,19 +193,21 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     const routed = await api(
       "PUT",
       `/conformity/assessments/${assessmentId}/route`,
-      { routeKey: "module_a" },
+      // Module A is not on offer for this product — see the Art. 32(2) note
+      // above — so the walk continues down the route the Regulation leaves open.
+      { routeKey: "module_b_c" },
     );
     expect(routed.status, JSON.stringify(routed.json)).toBe(200);
     const routedJson = routed.json as {
       assessment: { currentStage: string; routeKey: string | null };
     };
-    expect(routedJson.assessment.routeKey).toBe("module_a");
+    expect(routedJson.assessment.routeKey).toBe("module_b_c");
     expect(routedJson.assessment.currentStage).toBe("gap_assessment");
     expect(routedJson.assessment.currentStage).not.toBe(stageBefore);
 
     // ---- applied standards ledger (Art 32) → advisory clears ---------------
-    // Class I + Module A with nothing (or only partial coverage) on record
-    // must carry the Art 32(2) advisory; one fully-applied standard clears it.
+    // Class I with nothing (or only partial coverage) on record must carry the
+    // Art 32(2) advisory; one fully-applied standard clears it.
     expect(
       (routed.json as { standardsAdvisory: string | null }).standardsAdvisory,
     ).toBeTruthy();
