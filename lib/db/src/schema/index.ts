@@ -96,3 +96,5 @@ export * from "./craProcurement";
 export * from "./craArticle21";
 export * from "./craComposite";
 export * from "./craCsaf";
+// CRA economic-operator roles this organisation declares it holds
+export * from "./orgCraRoles";
