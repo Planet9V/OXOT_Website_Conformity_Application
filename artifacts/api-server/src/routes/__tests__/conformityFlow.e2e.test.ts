@@ -205,12 +205,24 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     expect(routedJson.assessment.currentStage).toBe("gap_assessment");
     expect(routedJson.assessment.currentStage).not.toBe(stageBefore);
 
-    // ---- applied standards ledger (Art 32) → advisory clears ---------------
-    // Class I with nothing (or only partial coverage) on record must carry the
-    // Art 32(2) advisory; one fully-applied standard clears it.
+    // ---- applied standards ledger (Art 32) --------------------------------
+    /**
+     * The Art. 32(2) advisory warns a Class I manufacturer who has selected
+     * Module A that no standard is fully applied. It is deliberately scoped to
+     * Module A, so on a third-party route there is nothing to advise — the
+     * manufacturer is already doing what Art. 32(2) would have directed them to.
+     *
+     * That advisory is currently dormant rather than dead: Module A cannot be
+     * selected for a Class I product while no harmonised standard has been
+     * cited, so nothing reaches it. It becomes live again the moment a citation
+     * is published and Module A reopens, which is why it is kept.
+     *
+     * The ledger itself must still work on any route — that is what the rest of
+     * this section exercises.
+     */
     expect(
       (routed.json as { standardsAdvisory: string | null }).standardsAdvisory,
-    ).toBeTruthy();
+    ).toBeNull();
     const partialStd = await api(
       "PUT",
       `/conformity/assessments/${assessmentId}/standards`,
@@ -219,7 +231,11 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     expect(partialStd.status, JSON.stringify(partialStd.json)).toBe(200);
     expect(
       (partialStd.json as { standardsAdvisory: string | null }).standardsAdvisory,
-    ).toBeTruthy();
+    ).toBeNull();
+    expect(
+      (partialStd.json as { assessment: { appliedStandards: unknown } }).assessment
+        .appliedStandards,
+    ).toEqual([{ reference: "ETSI EN 303 645", coverage: "partial" }]);
     const fullStd = await api(
       "PUT",
       `/conformity/assessments/${assessmentId}/standards`,
@@ -291,12 +307,25 @@ describe("CRA conformity flow — full end-to-end walk", () => {
       `/conformity/assessments/${assessmentId}/instantiate`,
     );
     expect(instantiated.status, JSON.stringify(instantiated.json)).toBe(200);
-    // The complete CRA requirement library: Annex I Part I (13) + Part II (8)
-    // + Art 13 / 13(5) / 13(6) / 13(8) / Art 14 + Annex II / V / VII = 30.
+    /**
+     * The complete CRA requirement library for a manufacturer:
+     *   Annex I Part I (13) + Part II (8)                        = 21
+     *   Art 13 / 13(5) / 13(6) / 13(8) / 13(13) / 13(18) / 14    =  7
+     *   Annex II / V / VII                                       =  3
+     *   Art 23 (economic-operator traceability)                  =  1
+     *                                                              ---
+     *                                                               32
+     * plus IEC 62443, which is also a declared regulation here.
+     *
+     * Deliberately an exact number rather than "greater than zero": the point of
+     * this assertion is to catch instantiation silently dropping requirements.
+     * It must be updated whenever the seeded library changes — the last change
+     * added Art 13(13), 13(18) and 23.
+     */
     expect(
       (instantiated.json as { counts: { evaluationsTotal: number } }).counts
         .evaluationsTotal,
-    ).toBe(30);
+    ).toBe(33);
 
     const evalList = await api(
       "GET",
@@ -332,7 +361,7 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     expect(
       (topUp.json as { counts: { evaluationsTotal: number } }).counts
         .evaluationsTotal,
-    ).toBe(30);
+    ).toBe(33);
     const evalsAfterTopUp = await api(
       "GET",
       `/conformity/assessments/${assessmentId}/evaluations`,
@@ -543,5 +572,13 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     expect((delProduct.json as { success: boolean }).success).toBe(true);
     const productAfter = await api("GET", `/conformity/products/${productId}`);
     expect(productAfter.status).toBe(404);
-  }, 30_000);
+    /**
+     * This walk drives ~30 requests through the real app and a real database.
+     * On its own it takes about 18 seconds; sharing a machine with the rest of
+     * the suite it regularly passed 30 and failed on the clock rather than on an
+     * assertion. Seeding three more CRA requirements (Art. 13(13), 13(18) and
+     * 23) added evaluations to instantiate and pushed a marginal budget over.
+     * Raised rather than trimmed: every step here guards a real regression.
+     */
+  }, 120_000);
 });
