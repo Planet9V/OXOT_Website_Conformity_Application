@@ -38,41 +38,225 @@ interface SeedPage {
 }
 
 const PAGES: SeedPage[] = [
-  {
+    {
     slug: "cra-primer",
-    title: "The EU Cyber Resilience Act — A Primer",
-    seoTitle: "CRA Primer | What the Cyber Resilience Act Requires",
-    seoDescription:
-      "A plain-language introduction to the EU Cyber Resilience Act: who it applies to, what it demands, and the deadlines that matter.",
-    excerpt:
-      "The Cyber Resilience Act makes cybersecurity a legal condition for selling products with digital elements in the EU. Here is what that means in practice.",
+    title: "The EU Cyber Resilience Act \u2014 Comprehensive Regulatory & Engineering Primer",
+    seoTitle: "EU CRA Primer | Comprehensive Guide to Regulation (EU) 2024/2847",
+    seoDescription: "Authoritative technical and statutory primer on the EU Cyber Resilience Act (Regulation (EU) 2024/2847): scope, 4-tier classification, Annex I essential requirements, Article 14 clocks, and conformity assessment.",
+    excerpt: "Regulation (EU) 2024/2847 establishes mandatory cybersecurity requirements as an ex-ante market-access condition for all products with digital elements placed on the EU market. This primer provides the complete statutory architecture, risk tiers, essential requirements, reporting timelines, and conformity assessment routes.",
     visibility: "public",
     regulationKeys: ["cra"],
-    markdown: `## What the CRA is
+    markdown: `## Statutory Foundation & Regulatory Architecture
 
-The **Cyber Resilience Act (Regulation (EU) 2024/2847)** is the first EU law that makes cybersecurity a *market-access condition* for products with digital elements — hardware and software alike. If your product connects, computes, or communicates, the CRA almost certainly applies to it.
+The **Cyber Resilience Act (Regulation (EU) 2024/2847)** is the European Union's foundational regulation establishing horizontal cybersecurity requirements for hardware and software products. Formally adopted by the European Parliament and Council on 23 October 2024, published in the Official Journal of the European Union on 20 November 2024 (OJ L 2024/2847), and entered into force on 10 December 2024, the CRA fundamentally alters European product law.
 
-## Who it applies to
+Prior to the CRA, European cybersecurity legislation primarily addressed critical infrastructure operators (NIS/NIS2 Directive) or specific consumer radio devices (Radio Equipment Directive delegated acts). The CRA introduces an **ex-ante market-access regime**: cybersecurity is no longer a post-incident liability issue or a voluntary best practice—it is a non-negotiable legal prerequisite for placing products on the EU Single Market and affixing the **CE mark**.
 
-- **Manufacturers** placing products with digital elements on the EU market — wherever they are based.
-- **Importers and distributors**, who must verify the manufacturer's compliance.
-- **Open-source stewards** have a lighter, dedicated regime.
+> [!IMPORTANT]
+> **Statutory Citation:** Regulation (EU) 2024/2847 of the European Parliament and of the Council on horizontal cybersecurity requirements for products with digital elements and amending Regulations (EU) No 168/2013 and (EU) 2019/1020 and Directive (EU) 2020/1828. Consult the full legal text in the [CRA Legal Wiki](/wiki/cra).
 
-## The core obligations
+---
 
-1. **Essential cybersecurity requirements (Annex I, Part I)** — secure-by-design development, no known exploitable vulnerabilities at release, secure default configuration, protection of data, attack-surface minimisation.
-2. **Vulnerability handling (Annex I, Part II)** — a coordinated vulnerability disclosure policy, a software bill of materials (SBOM), timely security updates for the support period.
-3. **Reporting (Article 14)** — actively exploited vulnerabilities and severe incidents must be reported to ENISA/your CSIRT: **early warning within 24 hours**, a notification within 72 hours, and a final report on a fixed clock.
-4. **Technical documentation and conformity assessment (Annexes V–VIII)** — evidence that the requirements are met, an EU Declaration of Conformity, and CE marking.
+## Scope of Application: Products with Digital Elements
 
-## The deadlines that matter
+The CRA applies across the entire supply chain to all **Products with Digital Elements (PDEs)** placed on the EU market, irrespective of whether the manufacturer is established within the Union or in a third country (Article 2(1)).
 
-- **Reporting obligations (Article 14)** apply from **September 2026**.
-- **Full application** — all essential requirements and conformity assessment — from **December 2027**.
+### 1. Statutory Definitions
 
-## How this deployment helps
+- **Product with Digital Elements (Article 3(1)):** Any software or hardware product and its remote data processing solutions, including software or hardware components being placed on the market separately.
+- **Data Connection (Article 3(9) & Recital 12):** Any logical or physical data connection through which data can be transferred, processed, or communicated, including wireless interfaces (Wi-Fi, Bluetooth, cellular, Zigbee), wired network interfaces (Ethernet, Industrial Ethernet, CAN bus, Modbus, RS-485), and direct physical bus connections (USB, PCIe, JTAG).
+- **Remote Data Processing (Article 3(2)):** Any data processing at a distance for which the software is designed and developed by the manufacturer, or under the manufacturer's control, the absence of which would prevent the PDE from performing one of its primary functions (e.g., cloud control planes, companion telemetry backends, mobile companion applications).
 
-This platform operationalises those obligations: a guided assessment against every CRA requirement, SBOM and vulnerability tracking, Article 14 incident clocks, and generated conformity documentation. Read [our conformance process](/conformance-process) to see how the pieces fit, or [the artifacts we produce](/artifacts-coverage) to see what evidence comes out.`,
+### 2. Statutory Exclusions & Lex Specialis Carve-Outs
+
+The CRA explicitly excludes products governed by established sectoral safety and cybersecurity legislation (Article 2(2)–(4)):
+
+| Product Category | Governing EU Regulation | CRA Status |
+| :--- | :--- | :--- |
+| **Medical Devices & IVDs** | Regulation (EU) 2017/745 (MDR) & 2017/746 (IVDR) | Excluded (Lex Specialis) |
+| **Civil Aviation Systems** | Regulation (EU) 2018/1139 | Excluded (Lex Specialis) |
+| **Motor Vehicles & Components** | Regulation (EU) 2019/2144 | Excluded (Lex Specialis) |
+| **Defense & National Security** | Products developed exclusively for national security or military defense | Excluded (Article 2(5)) |
+| **Open-Source Software** | Free and open-source software developed or supplied outside the course of a commercial activity | Excluded (Recitals 18–21) |
+| **Pure Cloud SaaS** | Cloud services independent of a physical or standalone software product | Governed by NIS2 / DORA |
+
+> [!NOTE]
+> Review all 76 official European Commission scope determinations in our [Official EU CRA FAQ Directory](/faq).
+
+---
+
+## The 4-Tier Risk Classification Architecture
+
+The CRA classifies products into four distinct regulatory tiers based on their cybersecurity risk profile, their intended functionality, and the systemic impact of potential exploitation (Articles 6 & 7, Annexes III & IV).
+
+| Classification Tier | Regulatory Basis | Typical Product Types | Conformity Assessment Route |
+| :--- | :--- | :--- | :--- |
+| **Standard PDEs** *(~90% of Market)* | Default (Article 6(1)) | Smart sensors, connected consumer devices, office peripherals, general software tools, industrial monitoring gauges | **Module A** *(Internal Production Control / Self-Assessment)* |
+| **Important Class I** | Annex III | Identity management systems, standalone web browsers, password managers, antivirus software, network interfaces, SIEM tools, microcontrollers/microprocessors | **Module A** (if harmonised standards applied) **OR Module B+C / Module H** *(Notified Body)* |
+| **Important Class II** | Annex IV | Hypervisors, firewalls, tamper-resistant chips, industrial automation PLCs, SCADA gateways, secure cryptoprocessors | **Mandatory Third-Party:** **Module B+C** *(EU-Type Examination)* **OR Module H** *(Full QA)* |
+| **Critical Products** | Article 7 & Annex IV (Sec 2) | Hardware security modules (HSMs), smart meter gateways, advanced critical infrastructure controllers | **Mandatory European Cybersecurity Certificate** (under ENISA EUCC scheme at Level HIGH) |
+
+\`\`\`
+┌────────────────────────────────────────────────────────────────────────┐
+│                   CRA 4-TIER RISK CLASSIFICATION                       │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  CRITICAL PDEs (Art 7) ──────────────► Mandatory EUCC Certificate     │
+│  (HSMs, Smart Meter Gateways)          (High Assurance Level)          │
+│                                                                        │
+│  IMPORTANT CLASS II (Annex IV) ──────► Mandatory Notified Body Audit  │
+│  (PLCs, Firewalls, Hypervisors)        (Module B+C or Module H)        │
+│                                                                        │
+│  IMPORTANT CLASS I (Annex III) ──────► Harmonised Standards / Module A │
+│  (ID Management, Password Mgrs, SIEM)  (Fallback to Notified Body)     │
+│                                                                        │
+│  STANDARD PDEs (Default, ~90%) ──────► Module A Self-Assessment        │
+│  (Connected Sensors, Apps, General SW) (Internal Production Control)   │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## Annex I Essential Cybersecurity Requirements
+
+All PDEs placed on the EU market must satisfy the **Essential Requirements** set out in Annex I. These requirements are divided into two mandatory pillars:
+
+### Pillar 1: Security by Design & Lifecycle Properties (Annex I, Part I)
+
+1. **Security by Default (Requirement 1):** Products must be delivered with a secure baseline configuration. Factory-default passwords are prohibited; unique per-device credentials or mandatory first-boot credential changes are required. Unnecessary ports, protocols, and interfaces must be disabled by default.
+2. **Data Protection & Cryptography (Requirements 2 & 3):** Confidentiality and integrity of data at rest, in transit, and in processing must be protected using state-of-the-art cryptographic mechanisms.
+3. **Attack Surface Minimisation (Requirement 4):** Interfaces must be restricted to essential functions, applying the principle of least privilege across all hardware and software components.
+4. **Exploitation Mitigation & Memory Safety (Requirement 5):** Products must incorporate modern mitigation techniques (e.g., address space layout randomization, buffer overflow protection, structured exception handling) to limit the impact of potential vulnerabilities.
+5. **Security Logging & Monitoring (Requirement 6):** Products must record relevant security events (access attempts, privilege changes, configuration modifications) with tamper-resistant audit logs.
+
+### Pillar 2: Vulnerability Handling & Supply Chain Transparency (Annex I, Part II)
+
+1. **Software Bill of Materials (SBOM) (Requirement 1):** Manufacturers must identify and document all components, libraries, and dependencies included in the product—including top-level and transitive dependencies—in a machine-readable format (e.g., CycloneDX or SPDX).
+2. **Coordinated Vulnerability Disclosure (CVD) (Requirement 2):** Manufacturers must establish and publish a transparent vulnerability disclosure policy, including a designated contact address (e.g., \`security.txt\`) for security researchers.
+3. **Due Diligence in Component Integration (Article 13(6)):** Manufacturers must conduct rigorous due diligence when integrating third-party and open-source software, verifying that components do not contain known exploitable vulnerabilities.
+4. **Timely, Free Security Updates (Requirements 3 & 4):** Security patches and updates must be made available promptly and free of charge throughout the entire determined support period (Article 13(8)), and must be delivered separately from feature enhancements.
+
+---
+
+## Economic Operator Obligations & Article 21 Liabilities
+
+The CRA establishes clear, differentiated legal responsibilities across all economic operators in the supply chain (Chapter II, Articles 13–24):
+
+### 1. Manufacturers (Article 13)
+
+- **Lifecycle Risk Assessment:** Conduct and document a comprehensive cybersecurity risk assessment before placing the product on the market (Article 13(2)).
+- **Technical File Preservation:** Maintain the complete Annex VII Technical Documentation for **10 years** after the product has been placed on the market, or for the duration of the support period, whichever is longer (Article 13(4)).
+- **Support Period Determination:** Explicitly determine and state the support period (minimum of 5 years unless product lifecycle is shorter) during which security updates will be provided (Article 13(8)).
+- **EU Declaration of Conformity & CE Mark:** Draw up the legal Declaration of Conformity (Annex V) and affix the CE marking visibly and legibly (Article 13(15)–(16)).
+
+### 2. Importers (Article 17) & Distributors (Article 18)
+
+- **Verification Mandate:** Must verify that the manufacturer has completed the appropriate conformity assessment, compiled the technical file, and affixed the CE mark.
+- **Duty to Refrain (Article 18(2)):** If an importer or distributor knows or has reason to believe that a product does not comply with Annex I, they **must not** place or make the product available on the market until it is brought into conformity.
+
+### 3. Substantial Modification & System Integrators (Article 21)
+
+> [!WARNING]
+> **The Article 21 Integrator Trap:** Any natural or legal person that carries out a **substantial modification** to a PDE—such as modifying software architecture, altering security parameters, or retrofitting legacy equipment—is legally deemed the **Manufacturer** under Article 21. They assume full liability for CRA conformity, Annex VII technical documentation, and CE re-certification.
+>
+> Learn more in our technical memorandum: [The 2-Year Lag: Why Turnkey Contracts Face Article 21 Traps](/blog/ep-01-the-2-year-lag-why-2024-contracts-are-walking-into-a-2027-regulatory-trap).
+
+### 4. Open-Source Software Stewards (Article 24)
+
+Entities that provide sustained support for the development of open-source software intended for commercial activities without themselves being commercial manufacturers are classified as **Open Source Software Stewards**. They are subject to a tailored, proportionate governance framework focusing on coordinated vulnerability disclosure and security cooperation rather than full manufacturing liability.
+
+---
+
+## Article 14 Mandatory Incident & Exploit Reporting Clocks
+
+Article 14 establishes strict, legally binding timelines for notifying competent authorities when security incidents or active exploits occur. Notifications are submitted via the ENISA Single Reporting Platform to both the national Computer Security Incident Response Team (CSIRT) and ENISA.
+
+\`\`\`
+┌────────────────────────────────────────────────────────────────────────┐
+│               ARTICLE 14 STATUTORY REPORTING TIMELINES                 │
+├────────────────────────────────────────────────────────────────────────┤
+│                                                                        │
+│  [Hour 0] ── Awareness of Active Exploit or Severe Incident            │
+│     │                                                                  │
+│  [Hour 24] ──► EARLY WARNING NOTIFICATION (Art 14(1)(a) / 14(3)(a))     │
+│     │          - Exploit indicator, suspected severity, initial scope  │
+│     │                                                                  │
+│  [Hour 72] ──► DETAILED INCIDENT NOTIFICATION (Art 14(1)(b) / 14(3)(b))│
+│     │          - General description, risk assessment, mitigations     │
+│     │                                                                  │
+│  FINAL CLOSING REPORT:                                                 │
+│     ├── Track A: Actively Exploited Vulnerability (Art 14(1)(c))       │
+│     │   └── Within 14 DAYS after corrective patch/workaround available │
+│     │                                                                  │
+│     └── Track B: Severe Incident (Art 14(3)(c))                        │
+│         └── Within 1 MONTH after the 72-hour notification              │
+│                                                                        │
+└────────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+| Reporting Stage | Statutory Deadline | Required Information Content |
+| :--- | :--- | :--- |
+| **Early Warning** | **Within 24 Hours** of awareness | Indicates whether the vulnerability is actively exploited by malicious actors, initial assessment of severity, and whether other Member States are affected. |
+| **Detailed Notification** | **Within 72 Hours** of awareness | Description of the vulnerability or incident, root-cause indicators, affected product versions, applied mitigations, and corrective measures. |
+| **Final Report (Vulnerabilities)** | **Within 14 Days** of fix availability | Full vulnerability analysis, technical details of the corrective security update, and guidance for end-users. |
+| **Final Report (Incidents)** | **Within 1 Month** of notification | Comprehensive incident post-mortem, severity metrics, impact scope, and long-term remediation roadmap. |
+
+---
+
+## Technical Dossier (Annex VII) & CE Marking Protocol
+
+To legally affix the CE mark and access the EU Single Market, manufacturers must compile a comprehensive **Technical Documentation File** before product release (Article 28 & Annex VII).
+
+### Required Contents of the Annex VII Technical File
+
+1. **System Description & Architecture:** General description of the PDE, block diagrams, operational context, network interface definitions, and hardware/software execution environments.
+2. **Cybersecurity Risk Assessment:** Documented risk assessment according to Article 13(2), identifying potential threats, threat actors, attack surfaces, and corresponding technical mitigations.
+3. **Annex I Conformity Mapping:** Point-by-point demonstration of compliance with every applicable requirement in Annex I Part I and Part II.
+4. **Machine-Readable SBOM:** Complete, structured Software Bill of Materials (CycloneDX / SPDX) with component hashes, package URLs (purl), and dependency hierarchies.
+5. **Vulnerability Handling Records:** Evidence of coordinated vulnerability disclosure processes, testing logs, static/dynamic code analysis reports, and penetration test certificates.
+6. **EU Declaration of Conformity (Annex V):** Signed legal instrument declaring compliance with Regulation (EU) 2024/2847 and identifying applied harmonised European standards (CEN/CENELEC).
+
+---
+
+## Statutory Timelines & Non-Compliance Penalties
+
+The CRA establishes a phased implementation schedule and substantial administrative fines for non-compliance (Articles 64 & 69).
+
+### Phased Implementation Milestones
+
+- **10 December 2024:** Regulation (EU) 2024/2847 enters into force.
+- **11 June 2026 (18 Months):** Notification of conformity assessment bodies (Notified Bodies) begins.
+- **11 September 2026 (21 Months):** **Article 14 Reporting Obligations become legally enforceable.** Manufacturers must operate 24h/72h incident reporting systems.
+- **11 December 2027 (36 Months):** **Full Application.** All Annex I essential requirements, conformity assessment procedures, and CE marking rules become mandatory for market entry.
+
+### Administrative Sanctions (Article 64)
+
+| Violation Category | Statutory Basis | Maximum Administrative Penalty |
+| :--- | :--- | :--- |
+| **Non-compliance with Annex I Essential Requirements** | Article 64(1) | Up to **€15,000,000** or **2.5% of total worldwide annual turnover**, whichever is higher. |
+| **Non-compliance with other CRA obligations (e.g., Technical File, SBOM)** | Article 64(2) | Up to **€10,000,000** or **2.0% of total worldwide annual turnover**, whichever is higher. |
+| **Supplying incorrect, incomplete, or misleading information to authorities** | Article 64(3) | Up to **€5,000,000** or **1.0% of total worldwide annual turnover**, whichever is higher. |
+
+---
+
+## Operationalizing CRA Conformance with OXOT
+
+The OXOT Conformance Platform transforms complex statutory mandates into an automated, auditable, and continuous operational workflow:
+
+- **Unified Requirement Catalogue:** Cross-maps all 70+ CRA requirements against NIS2, IEC 62443, and the EU AI Act in our [Conformity Requirements Explorer](/conformity/requirements).
+- **Automated SBOM & Vulnerability Tracking:** Continuous CycloneDX SBOM ingestion, vulnerability scanning, and upstream component monitoring in the [Conformity Dashboard](/conformity).
+- **Article 14 Incident Automation:** Built-in statutory countdown clocks and automated dispatch templates for CSIRT/ENISA reporting.
+- **Annex VII Technical Dossier Generation:** Automated assembly of audit-ready conformity packages with end-to-end evidence citation.
+
+### Next Steps for Engineering & Compliance Teams
+
+1. **Assess Your Exposure:** Run the interactive [2-Minute CRA Readiness Check](/cra-check) to benchmark your product against mandatory requirements.
+2. **Explore the Legal Text:** Search articles, recitals, and annexes in the [CRA Statutory Wiki](/wiki/cra).
+3. **Review Official Guidance:** Consult the [76 Official European Commission FAQs](/faq).
+4. **Deepen Technical Knowledge:** Read authoritative engineering blueprints in the [CRA Technical Journal](/blog).
+5. **Schedule an Architecture Review:** [Book a Demo](/demo) with our technical compliance specialists.
+`,
   },
   {
     slug: "conformance-process",

@@ -43,9 +43,11 @@ import { harmonisedStandardsRouter } from "./harmonisedStandardsRoutes";
 import { openSourceStewardRouter } from "./openSourceStewardRoutes";
 import { importerArchiveRouter } from "./importerArchiveRoutes";
 import { podcastStudioRouter } from "./podcastStudio";
+import { craFaqRouter } from "./craFaqRoutes";
 
 const router: IRouter = Router();
 
+router.use(craFaqRouter);
 router.use(podcastStudioRouter);
 router.use("/portfolio", productPortfolioRouter);
 router.use("/ecosystem", ecosystemRouter);

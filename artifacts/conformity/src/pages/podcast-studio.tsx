@@ -26,8 +26,10 @@ import {
   Lock,
   Globe,
   Share2,
-  Sliders
+  Sliders,
+  ArrowRight
 } from 'lucide-react';
+import { MermaidRenderer } from '@/components/mermaid-renderer';
 
 interface Episode {
   id: string;
@@ -48,9 +50,19 @@ export default function PodcastStudioPage() {
   const [currentPlaying, setCurrentPlaying] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<'1.0x' | '1.25x' | '1.5x'>('1.0x');
-  const [copiedFeed, setCopiedFeed] = useState<string | null>(null);
-  const [selectedScript, setSelectedScript] = useState<Episode | null>(null);
   const [selectedBlog, setSelectedBlog] = useState<Episode | null>(null);
+  const [selectedBlogContent, setSelectedBlogContent] = useState<string | null>(null);
+
+  const handleSelectBlog = (blog: Episode) => {
+    setSelectedBlog(blog);
+    setSelectedBlogContent(null);
+    fetch(`/api/blogs/${encodeURIComponent(blog.code || blog.id)}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (d?.content) setSelectedBlogContent(d.content);
+      })
+      .catch(() => {});
+  };
 
   // The 67 registered production podcast assets
   const episodes: Episode[] = useMemo(() => [
@@ -405,7 +417,7 @@ export default function PodcastStudioPage() {
                     <FileText className="w-4 h-4" />
                   </button>
                   <button 
-                    onClick={() => setSelectedBlog(ep)}
+                    onClick={() => handleSelectBlog(ep)}
                     className="p-2 rounded-xl bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                     title="View Technical SEO Blog"
                   >
@@ -538,9 +550,30 @@ export default function PodcastStudioPage() {
               <p className="text-muted-foreground">{selectedBlog.summary}</p>
               
               <h3 className="text-lg font-bold text-foreground">2. Technical Architecture & Purdue Zone Isolation</h3>
-              <div className="p-4 rounded-xl bg-muted/40 border border-border font-mono text-xs text-primary">
-                [Mermaid Diagram: OT Firmware Build -&gt; CycloneDX SBOM -&gt; Code Signing -&gt; CE Nameplate]
-              </div>
+              <MermaidRenderer 
+                chart={
+                  (selectedBlogContent && selectedBlogContent.match(/```mermaid\s*\n([\s\S]*?)\n```/)?.[1]?.trim()) ||
+                  (selectedBlog.category === 'truth' || selectedBlog.code.startsWith('TC_')
+                    ? `graph LR
+    subgraph VoidedPath["The Shadow Cloud Trap"]
+        A1["Brownfield Controller"] --> B1["Unsigned OTA Cloud Push"]
+        B1 --> C1["Substantial Modification (Art 21)"]
+        C1 --> D1["CE Declaration Legally Voided"]
+    end
+    
+    subgraph CompliantPath["The Defensible Framework"]
+        A2["Controlled Firmware Build"] --> B2["Formal Modification Review"]
+        B2 --> C2["Updated Annex VII Technical File"]
+        C2 --> D2["Re-issued CE Declaration of Conformity"]
+    end`
+                    : `graph TD
+    A["Raw OT Firmware / Source Code"] --> B["Automated CI/CD Build Pipeline"]
+    B --> C["CycloneDX v1.6 Machine-Readable SBOM"]
+    C --> D["Cryptographic Code Signing (Hardware HSM)"]
+    D --> E["Annex VII Technical Dossier Archive (10-Year)"]
+    E --> F["CE Marking Declaration & Field Deployment"]`)
+                }
+              />
 
               <h3 className="text-lg font-bold text-foreground">3. 4-Step Engineering Action Sprint</h3>
               <ol className="list-decimal list-inside space-y-2 text-muted-foreground text-xs md:text-sm">

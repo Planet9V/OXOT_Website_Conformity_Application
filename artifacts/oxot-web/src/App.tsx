@@ -40,6 +40,8 @@ import NewsletterConfirm from '@/pages/newsletter-confirm';
 import NewsletterUnsubscribe from '@/pages/newsletter-unsubscribe';
 import PodcastHubPage from '@/pages/podcast-hub';
 import BlogHubPage from '@/pages/blog-hub';
+import BlogPostPage from '@/pages/blog-post';
+import CraFaqPage from '@/pages/cra-faq';
 import NotFound from '@/pages/not-found';
 import { PublicLayout } from '@/components/layout/public-layout';
 import { CookieConsentProvider } from '@/components/cookie-consent';
@@ -107,6 +109,11 @@ function PublicRoute({ component: Component }: { component: any }) {
   );
 }
 
+const CraFaqRoute = () => <PublicRoute component={CraFaqPage} />;
+const BlogHubRoute = () => <PublicRoute component={BlogHubPage} />;
+const BlogPostRoute = () => <PublicRoute component={BlogPostPage} />;
+const PodcastHubRoute = () => <PublicRoute component={PodcastHubPage} />;
+
 // Public content routes. Mounted twice: once at the site root (English) and once
 // nested under "/nl" (Dutch). Because the "/nl" mount is a nested wouter Router,
 // every <Link> and useLocation inside these routes is automatically relative to
@@ -149,6 +156,20 @@ function PublicRoutes() {
       <Route path="/demo">
         {() => <PublicRoute component={DemoPage} />}
       </Route>
+      <Route path="/faq" component={CraFaqRoute} />
+      <Route path="/faq/" component={CraFaqRoute} />
+      <Route path="/faqs" component={CraFaqRoute} />
+      <Route path="/faqs/" component={CraFaqRoute} />
+      <Route path="/conformity/cra-faq" component={CraFaqRoute} />
+      <Route path="/conformity/cra-faq/" component={CraFaqRoute} />
+      <Route path="/blog" component={BlogHubRoute} />
+      <Route path="/blog/" component={BlogHubRoute} />
+      <Route path="/blogs" component={BlogHubRoute} />
+      <Route path="/blogs/" component={BlogHubRoute} />
+      <Route path="/blog/:slug" component={BlogPostRoute} />
+      <Route path="/blogs/:slug" component={BlogPostRoute} />
+      <Route path="/podcast" component={PodcastHubRoute} />
+      <Route path="/podcast/" component={PodcastHubRoute} />
 
       {/* Frameworks section — registered before /:slug so /frameworks isn't swallowed */}
       <Route path="/knowledge">
@@ -183,30 +204,6 @@ function PublicRoutes() {
       </Route>
       <Route path="/wiki/">
         {() => <PublicRoute component={CraWikiPage} />}
-      </Route>
-      <Route path="/podcast">
-        {() => <PublicRoute component={PodcastHubPage} />}
-      </Route>
-      <Route path="/podcast/">
-        {() => <PublicRoute component={PodcastHubPage} />}
-      </Route>
-      <Route path="/blog">
-        {() => <PublicRoute component={BlogHubPage} />}
-      </Route>
-      <Route path="/blog/">
-        {() => <PublicRoute component={BlogHubPage} />}
-      </Route>
-      <Route path="/blogs">
-        {() => <PublicRoute component={BlogHubPage} />}
-      </Route>
-      <Route path="/blogs/">
-        {() => <PublicRoute component={BlogHubPage} />}
-      </Route>
-      <Route path="/blog/:slug">
-        {() => <PublicRoute component={BlogHubPage} />}
-      </Route>
-      <Route path="/blogs/:slug">
-        {() => <PublicRoute component={BlogHubPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}

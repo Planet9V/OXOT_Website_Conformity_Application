@@ -57,3 +57,5 @@ coverage/
 
 # Superpowers brainstorm mockups (local, ephemeral)
 .superpowers/
+.claude/
+.claude-flow/

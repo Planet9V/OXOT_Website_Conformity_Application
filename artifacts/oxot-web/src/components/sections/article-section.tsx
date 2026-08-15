@@ -524,16 +524,25 @@ export function ArticleSection({ data }: { data: ArticleSectionData }) {
         </div>
       )}
       {!hasHeader && title && (
-        <h1 className="oxot-h1 mb-6 text-foreground">
-          {title}
-        </h1>
+        <div className="mb-8 space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono font-bold border border-primary/20">
+              OFFICIAL REGULATORY PRIMER
+            </span>
+          </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-tight text-foreground leading-[1.15]">
+            {title}
+          </h1>
+        </div>
       )}
       {!hasHeader && excerpt && (
-        <p className="mb-10 border-l-2 border-primary/40 pl-4 text-lg text-muted-foreground md:text-xl">
-          {excerpt}
-        </p>
+        <div className="mb-10 p-5 rounded-2xl bg-card/60 border border-primary/25 backdrop-blur-sm shadow-xs">
+          <p className="text-base md:text-lg text-foreground/90 leading-relaxed font-sans">
+            {excerpt}
+          </p>
+        </div>
       )}
-      <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:font-medium prose-a:underline prose-a:underline-offset-2 prose-th:text-left prose-img:rounded-xl">
+      <div className="prose prose-invert max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-b prose-h2:border-border/40 prose-h2:pb-3 prose-h3:text-lg md:prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-base prose-p:leading-relaxed prose-p:text-foreground/90 prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-code:text-primary prose-code:bg-muted/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-blockquote:border-l-4 prose-blockquote:border-primary/60 prose-blockquote:bg-card/40 prose-blockquote:p-5 prose-blockquote:rounded-r-2xl prose-blockquote:text-muted-foreground prose-li:text-foreground/90 prose-strong:text-foreground prose-strong:font-bold">
         <ReactMarkdown remarkPlugins={[remarkGfm, remarkAlert]} components={buildComponents(headings)}>
           {markdown}
         </ReactMarkdown>

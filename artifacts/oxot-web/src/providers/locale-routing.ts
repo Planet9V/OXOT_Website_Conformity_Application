@@ -40,7 +40,27 @@ export function localeHref(currentPath: string, next: Locale): string {
  * These render identically in both locales regardless of any `pages` row, so
  * the language switcher must never treat them as translatable content.
  */
-const RESERVED_SLUGS = new Set(['frameworks', 'conformity-platform']);
+const RESERVED_SLUGS = new Set([
+  'frameworks',
+  'conformity-platform',
+  'faq',
+  'faqs',
+  'blog',
+  'blogs',
+  'podcast',
+  'podcasts',
+  'product',
+  'pricing',
+  'deployment',
+  'resources',
+  'demo',
+  'axians',
+  'partner-scope',
+  'wiki',
+  'news',
+  'knowledge',
+  'cra-check',
+]);
 
 /**
  * The CMS slug a path resolves to, or `null` when the path is not a

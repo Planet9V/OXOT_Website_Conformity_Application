@@ -1,24 +1,21 @@
 #!/usr/bin/env python3
 """
-convert_podcasts_to_seo_blogs.py
-Generates 67 authoritative, high-ranking programmatic SEO blog articles
-from the complete CRA podcast corpus (50 Standard + 12 Truth & Consequences + 5 News).
-
-Strictly adheres to:
-- /copywriting (Benefits over features, concrete customer problems)
+Convert CRA Podcast Monologue Scripts to 50+ High-Density Technical SEO Blog Articles.
+Adheres strictly to:
+- /copywriting (High-converting, benefit-driven, strong headers)
+- /avoid-ai-writing (0% AI fluff, 100% statutory & engineering reality)
+- /programmatic-seo (Structured JSON-LD schema, canonical tags, role-targeted keywords)
 - /blog-writing-guide (Jim Mckenney's voice, zero buzzwords, working Mermaid diagrams, trade-offs)
-- /programmatic-seo (Subfolder URLs, rich schema, statutory wiki deep links)
-- /avoid-ai-writing (Zero banned AI phrases)
 """
 
 import os
 import json
 import re
 
-BASE_DIR = "/Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_CRA = os.path.join(BASE_DIR, "docs", "cra_podcast")
-BLOGS_DIR = os.path.join(DOCS_CRA, "blogs")
 REGISTRY_FILE = os.path.join(DOCS_CRA, "episodes_registry.json")
+BLOGS_DIR = os.path.join(DOCS_CRA, "blogs")
 
 os.makedirs(BLOGS_DIR, exist_ok=True)
 
@@ -39,6 +36,19 @@ def clean_slug(text):
     s = re.sub(r'[^a-zA-Z0-9\s-]', '', text.lower())
     return re.sub(r'[\s-]+', '-', s).strip('-')[:65]
 
+def clean_extracted_paragraph(text):
+    lines = []
+    for line in text.splitlines():
+        line_str = line.strip()
+        if not line_str:
+            continue
+        if line_str.startswith(">") or line_str.startswith("#") or line_str.startswith("-") or line_str.startswith("["):
+            continue
+        if "Host & Presenter:" in line_str or "De-Slop Status:" in line_str or "Target Audio Duration:" in line_str:
+            continue
+        lines.append(line_str)
+    return " ".join(lines)
+
 def generate_standard_blog(ep):
     code = ep["canonical_code"]
     title = ep["title"]
@@ -56,13 +66,15 @@ def generate_standard_blog(ep):
     # Extract core quote / insight from script if present
     extracted_dialogue = ""
     if script_text:
-        # Extract monologue paragraphs
-        paragraphs = [p.strip() for p in script_text.split("\n\n") if len(p.strip()) > 100 and not p.strip().startswith("#") and not p.strip().startswith("-") and not p.strip().startswith("[")]
-        if paragraphs:
-            extracted_dialogue = paragraphs[0].replace("[JIM MCKENNEY]", "").replace("[HOST]", "").strip()
+        paragraphs = [p.strip() for p in script_text.split("\n\n")]
+        for p in paragraphs:
+            cleaned = clean_extracted_paragraph(p)
+            if len(cleaned) > 80:
+                extracted_dialogue = cleaned
+                break
 
     if not extracted_dialogue:
-        extracted_dialogue = f"Industrial product manufacturers face an unavoidable regulatory shift under {statutes_str}. Placing connected industrial devices on the European single market without verified technical documentation and a 10-year SBOM archive is now an existential business risk."
+        extracted_dialogue = f"Industrial product manufacturers and system integrators face an unavoidable regulatory shift under {statutes_str}. Placing connected industrial devices on the European single market without verified technical documentation and a 10-year SBOM archive is now an immediate commercial liability."
 
     content = f"""---
 title: "{title}"
@@ -96,7 +108,8 @@ keywords: ["Cyber Resilience Act", "CRA Compliance", "IEC 62443", "{statutes[0] 
 
 {extracted_dialogue}
 
-When engineering teams and plant managers examine their supply chain obligations under **{statutes_str}**, the central conflict is almost never theoretical—it is operational:
+When engineering teams and plant managers examine their supply chain obligations under **{statutes_str}**, the central conflict is operational:
+
 1. **The 10-Year Liability Horizon:** Hardware sold today remains subject to market surveillance scrutiny, mandatory vulnerability remediation, and documentation retention for up to a decade.
 2. **Sub-tier Blindspots:** Over 70% of firmware running on modern programmable logic controllers (PLCs), remote terminal units (RTUs), and edge gateways originates from third-party open-source libraries or opaque silicon vendor board support packages (BSPs).
 3. **The CE Mark Invalidation Risk:** Failure to demonstrate essential cybersecurity requirements under Annex I automatically voids the product's CE declaration of conformity, making commercial distribution across the 27 EU member states illegal.
@@ -178,15 +191,10 @@ Stream the full 14-minute single-voice audio walkthrough hosted by **Jim Mckenne
 """
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
-    return filepath
+    return filename
 
-def generate_truth_blog(ep):
-    code = ep["code"]
-    title = ep["title"]
-    statutes = ep.get("statutes", ["Regulation (EU) 2024/2847"])
+def generate_truth_blog(code, title, statutes, persona):
     statutes_str = ", ".join(statutes)
-    target = ep.get("persona", "Plant CISOs & Executive Directors")
-    
     script_text = find_script_content(code, os.path.join(DOCS_CRA, "truth_and_consequences"))
     
     slug = clean_slug(f"{code}-{title}")
@@ -195,16 +203,19 @@ def generate_truth_blog(ep):
 
     extracted_dialogue = ""
     if script_text:
-        paragraphs = [p.strip() for p in script_text.split("\n\n") if len(p.strip()) > 100 and not p.strip().startswith("#") and not p.strip().startswith("-") and not p.strip().startswith("[")]
-        if paragraphs:
-            extracted_dialogue = paragraphs[0].replace("[JIM MCKENNEY]", "").replace("[HOST]", "").strip()
+        paragraphs = [p.strip() for p in script_text.split("\n\n")]
+        for p in paragraphs:
+            cleaned = clean_extracted_paragraph(p)
+            if len(cleaned) > 80:
+                extracted_dialogue = cleaned
+                break
 
     if not extracted_dialogue:
-        extracted_dialogue = f"The industry has spent years indulging half-truths about industrial software liability. In this investigation of {statutes_str}, we strip away marketing reassurance and analyze the harsh statutory reality."
+        extracted_dialogue = f"In the industrial automation sector, widespread assumptions regarding legacy brownfield exclusions and distributor indemnification are shattered under {statutes_str}. Regulators across EU member states have established strict product liability standards."
 
     content = f"""---
 title: "{title}"
-subtitle: "CRA Truth & Consequences: Hard-Hitting Investigative Analysis"
+subtitle: "An Investigative Case Study on Statutory Liability under Regulation (EU) 2024/2847"
 slug: "{slug}"
 date: "2026-08-14"
 author: "Jim Mckenney"
@@ -212,21 +223,21 @@ author_title: "Digital Product Security Consultant (Industrial OT & CRA)"
 series: "CRA: Truth & Consequences"
 canonical_code: "{code}"
 statutes: {json.dumps(statutes)}
-target_persona: "{target}"
-read_time: "9 min read"
+target_persona: "{persona}"
+read_time: "10 min read"
 audio_url: "https://oxot.ai/audio/cra_podcast/{code}.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-truth.xml"
-keywords: ["CRA Truth & Consequences", "Cyber Resilience Act", "OT Liability", "{statutes[0] if statutes else 'Article 21'}", "Market Surveillance", "Industrial Security"]
+keywords: ["CRA Truth and Consequences", "OT Cybersecurity Risk", "{statutes[0]}", "Industrial Automation Penalties", "CE Mark Voidance"]
 ---
 
 # {title}
 *By Jim Mckenney — Digital Product Security Consultant*
 
-> **Investigative Case Study:**
-> - **Statute in Focus:** `{statutes_str}`
-> - **Primary Stakeholder:** `{target}`
-> - **Podcast Series:** [CRA: Truth & Consequences](https://oxot.ai/podcast) | [Truth RSS Feed](https://oxot.ai/feeds/cra-truth.xml)
-> - **Statutory Reference:** [View Verbatim Legal Text on CRA Wiki](https://oxot.ai/wiki/cra)
+> **Investigative Deep-Dive Summary:**
+> - **Statutory Articles:** `{statutes_str}`
+> - **Target Audience:** `{persona}`
+> - **Case Style:** Investigative, Confrontational, Fact-First
+> - **Audio Investigation:** [{code} - Truth & Consequences](https://oxot.ai/podcast) | [RSS Feed](https://oxot.ai/feeds/cra-truth.xml)
 
 ---
 
@@ -234,46 +245,45 @@ keywords: ["CRA Truth & Consequences", "Cyber Resilience Act", "OT Liability", "
 
 {extracted_dialogue}
 
-Across European factory floors, supply chain meetings, and boardroom discussions, a dangerous set of half-truths continues to circulate:
-- *Myth 1:* "If we use an isolated VLAN or air-gap, the Cyber Resilience Act does not apply to our machines."
-- *Myth 2:* "Our third-party cloud microservices can be updated over-the-air without affecting our local controller's CE marking."
-- *Myth 3:* "If an upstream OEM goes bankrupt, we have zero legal duty to remediate unpatched vulnerabilities in the field."
+The prevailing myth in plant operations is that existing installations are grandfathered indefinitely. Under **{statutes_str}**, any subsequent software update, security patch, or cloud connector deployment that alters the intended purpose or security risk profile constitutes a **Substantial Modification (Article 21)**.
 
-Every one of these statements is demonstrably false under European product liability law.
+### The Real-World Failure Cascade:
+- **Immediate Re-classification:** The modifying entity (whether an EPC contractor, system integrator, or the plant owner themselves) legally becomes the *de facto* manufacturer.
+- **Strict Joint Liability:** Under the revised EU Product Liability Directive, commercial contracts cannot disclaim statutory cybersecurity conformity.
+- **Market Interception:** Customs authorities and market surveillance bodies have the power to impound non-compliant shipments and order mandatory recalls.
 
 ---
 
-## 2. The Hard Legal Reality under {statutes_str}
+## 2. Statutory Forensic Analysis
 
 ```
 +----------------------------------------------------------------------------------------------------+
-| STATUTORY COGNISANCE: WHY THE COMMON ASSUMPTIONS FAIL                                              |
+| FORENSIC STATUTORY BREAKDOWN: {statutes_str.upper()}                                               |
 +---------------------+------------------------------------------------------------------------------+
-| Article 3(2) Scope  | Products with digital elements include ANY software or hardware device with  |
-|                     | a logical or physical data connection, regardless of network isolation.     |
+| The Legal Trap      | Uncontrolled field patches that alter performance bounds void original CE    |
+| (Article 21)        | declarations and transfer full manufacturer liability to the modifier.       |
 +---------------------+------------------------------------------------------------------------------+
-| Article 21 Liability| Substantial modification (e.g. major cloud OTA or logic rewrite) legally     |
-|                     | reclassifies the modifier as the 'manufacturer' carrying full penalties.     |
-+---------------------+------------------------------------------------------------------------------+
-| Article 61 Fines    | Market surveillance penalties reach up to €15,000,000 or 2.5% of total      |
-|                     | worldwide annual turnover—whichever is higher.                               |
+| Penalty Exposure    | Administrative fines up to €15,000,000 or 2.5% of total worldwide annual     |
+| (Article 61)        | turnover, whichever is higher, plus immediate commercial stop-sales.         |
 +---------------------+------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. The Failure vs. Compliant Architecture
+## 3. Reference Architecture: Defensible Field Modification Boundary
+
+To prevent unauthorized field modifications from triggering Article 21 manufacturer liability, implement a cryptographically isolated zone boundary:
 
 ```mermaid
 graph LR
-    subgraph FlawedAssumption["The Dangerous Assumption"]
-        A1["Brownfield Controller"] --> B1["Unsigned OTA Cloud Patch"]
-        B1 --> C1["Silent Modification"]
-        C1 --> D1["CE Marking Legally Voided"]
+    subgraph VoidedPath["The Uncontrolled Cloud Trap"]
+        A1["Brownfield Controller"] --> B1["Unsigned OTA Cloud Connector"]
+        B1 --> C1["Substantial Modification Triggered (Art 21)"]
+        C1 --> D1["CE Declaration Legally Voided"]
     end
     
-    subgraph DefensibleFramework["The Compliant Framework"]
-        A2["Controlled Firmware Skid"] --> B2["Formal Substantial Modification Review"]
+    subgraph CompliantPath["The Defensible Architecture"]
+        A2["Controlled Firmware Build"] --> B2["Formal Modification Review Gate"]
         B2 --> C2["Updated Annex VII Technical File"]
         C2 --> D2["Re-issued CE Declaration of Conformity"]
     end
@@ -281,39 +291,36 @@ graph LR
 
 ---
 
-## 4. 4-Step Remediation Plan
+## 4. Remediation Playbook: 4 Immediate Safeguards
 
-1. **Conduct a Brutally Honest Portfolio Audit:** Identify all shadow software components, cloud-to-edge tunnels, and unmanaged microservices across your product line.
-2. **Review Cloud-to-Edge Deployment Pipelines:** Ensure every over-the-air update package is cryptographically signed and tracked against the product's Annex VII technical file.
-3. **Establish Clear Ownership for Orphaned Assets:** Build contractual safe-harbors with system integrators to define who owns patching duties when third-party components reach end-of-life.
-4. **Prepare for Market Surveillance Demands:** Ensure your technical documentation and SBOMs can be delivered to national authorities within 10 days of formal request.
+1. **Audit Modification Clauses in SI Agreements:** Ensure contracts explicitly define who bears CE re-certification costs if field changes exceed original specification boundaries.
+2. **Quarantine Unmanaged Cloud Connectors:** Disconnect direct internet-facing telemetry taps on legacy controllers that lack hardware root-of-trust authentication.
+3. **Lock Down Field Engineering Tools:** Enforce cryptographic signature verification on all PLC project uploads and configuration downloads.
+4. **Conduct an Article 61 Financial Exposure Simulation:** Calculate your organization's maximum theoretical penalty exposure under EU market turnover rules.
 
 ---
 
-## 5. Listen to the Full Investigative Monologue
+## 5. Stream the Audio Investigation
+
+Listen to the complete single-voice investigative monologue on the OXOT Media Hub:
 
 - **Audio Asset:** [`https://oxot.ai/audio/cra_podcast/{code}.mp3`](https://oxot.ai/audio/cra_podcast/{code}.mp3)
-- **RSS Syndication:** [CRA: Truth & Consequences RSS](https://oxot.ai/feeds/cra-truth.xml)
-- **CRA Conformance Cockpit:** [Launch the Platform](http://localhost:8088/conformity/dashboard)
+- **Investigation Feed:** [Truth & Consequences RSS](https://oxot.ai/feeds/cra-truth.xml)
+- **Legal Text Reference:** [Explore the Interactive CRA Legal Wiki](http://localhost:8088/wiki/cra)
 """
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
-    return filepath
+    return filename
 
-def generate_news_blog(item):
-    code = item["code"]
-    title = item["title"]
-    statutes = ["Regulation (EU) 2024/2847", "Article 14"]
+def generate_news_blog(code, title, statutes, persona):
     statutes_str = ", ".join(statutes)
-    target = "CISO, PSIRT Leads & Regulatory Officers"
-    
     slug = clean_slug(f"{code}-{title}")
     filename = f"BLOG_{code}_{slug}.md"
     filepath = os.path.join(BLOGS_DIR, filename)
 
     content = f"""---
 title: "{title}"
-subtitle: "The CRA News Stream: Breaking Regulatory & Enforcement Bulletins"
+subtitle: "Regulatory Bulletin & Enforcement Alert on EU Cyber Resilience Act"
 slug: "{slug}"
 date: "2026-08-14"
 author: "Jim Mckenney"
@@ -321,86 +328,99 @@ author_title: "Digital Product Security Consultant (Industrial OT & CRA)"
 series: "The CRA News Stream"
 canonical_code: "{code}"
 statutes: {json.dumps(statutes)}
-target_persona: "{target}"
-read_time: "4 min read"
+target_persona: "{persona}"
+read_time: "3 min read"
 audio_url: "https://oxot.ai/audio/cra_podcast/{code}.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-news.xml"
-keywords: ["CRA News", "Cyber Resilience Act", "ENISA", "Market Surveillance", "Notified Bodies"]
+keywords: ["CRA News", "ENISA Reporting", "Notified Bodies", "{statutes[0]}", "Cyber Resilience Act Bulletin"]
 ---
 
 # {title}
 *By Jim Mckenney — Digital Product Security Consultant*
 
-> **Breaking Regulatory Bulletin:**
-> - **Regulatory Topic:** `{title}`
-> - **Statutory Baseline:** `{statutes_str}`
-> - **Podcast Series:** [The CRA News Stream](https://oxot.ai/podcast) | [News RSS Feed](https://oxot.ai/feeds/cra-news.xml)
+> **Fast-Paced News Bulletin:**
+> - **Statute Ref:** `{statutes_str}`
+> - **Target Stakeholders:** `{persona}`
+> - **Audio Duration:** 2–3 Minutes
+> - **News Stream:** [{code} - Audio Bulletin](https://oxot.ai/podcast) | [News RSS](https://oxot.ai/feeds/cra-news.xml)
 
 ---
 
 ## 1. Executive Headline & Immediate Impact
 
-This regulatory intelligence briefing covers the latest enforcement and standardization developments across the European Union single market regarding **Regulation (EU) 2024/2847**.
+European regulatory authorities and ENISA have issued operational directives concerning `{title}`. Stakeholders operating across industrial control and connected hardware markets must align incident management pipelines immediately.
 
-As European authorities and standardisation bodies (CEN/CENELEC and ETSI) accelerate execution under Mandate M/606, economic operators must monitor critical implementation milestones.
-
----
-
-## 2. Key Takeaways for Industrial Operators
-
-1. **Enforcement Timelines:** Statutory notification windows under Article 14 become enforceable in late 2026—15 months ahead of full general application.
-2. **Harmonised Standards:** The draft EN 40000 series standards will provide presumption of conformity for horizontal cybersecurity requirements.
-3. **Notified Body Designation:** Testing laboratories across key member states are rapidly securing accreditation for Annex III Class I and Class II third-party audits.
+### Critical Takeaways:
+- **Mandatory Reporting Window:** All actively exploited vulnerabilities must be formally triaged and communicated within the strict statutory deadline.
+- **Cross-Border Harmonization:** National CSIRTs are now operating integrated single-window reporting endpoints.
+- **Audit Verification:** Market surveillance teams are initiating unannounced portfolio technical file reviews.
 
 ---
 
-## 3. Action Items
+## 2. Reference Timeline & Enforcement SLA
 
-- Verify your team's access to the ENISA Single Reporting Platform staging test environment.
-- Review your internal incident escalation procedures to ensure 24-hour early warning compliance.
-- Subscribe to the [CRA News Stream RSS Feed](https://oxot.ai/feeds/cra-news.xml) for weekly statutory updates.
+```
++----------------------------------------------------------------------------------------------------+
+| REGULATORY ENFORCEMENT SLA: {statutes_str.upper()}                                                 |
++---------------------+------------------------------------------------------------------------------+
+| 24-Hour Gate        | Early warning notification of severe incident or active exploit.             |
++---------------------+------------------------------------------------------------------------------+
+| 72-Hour Gate        | Full incident assessment and initial remediation roadmap.                   |
++---------------------+------------------------------------------------------------------------------+
+| 14-Day Final Report | Complete root-cause analysis, SBOM revision, and permanent patch issuance.  |
++---------------------+------------------------------------------------------------------------------+
+```
+
+---
+
+## 3. Listen to the 2-Minute News Bulletin
+
+- **Audio File:** [`https://oxot.ai/audio/cra_podcast/{code}.mp3`](https://oxot.ai/audio/cra_podcast/{code}.mp3)
+- **News RSS Feed:** [The CRA News Stream RSS](https://oxot.ai/feeds/cra-news.xml)
+- **Regulatory Wiki:** [Check Live Statutes on OXOT](http://localhost:8088/wiki/cra)
 """
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
-    return filepath
+    return filename
 
-# 1. Generate standard solo blogs
-generated_count = 0
+print("Compiling Standard Solo Series Blog Articles (50)...")
+count = 0
 for ep in registry_data.get("episodes", []):
     generate_standard_blog(ep)
-    generated_count += 1
+    count += 1
 
-# 2. Generate investigative truth blogs
-investigative = [
-    { "code": "TC_01", "title": "The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks", "statutes": ["Article 3(2)", "Article 21"], "persona": "Cloud-OT Architects & Plant CISOs" },
-    { "code": "TC_02", "title": "The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?", "statutes": ["Article 13(8)", "NIS2 Article 21"], "persona": "Critical Infrastructure Operators" },
-    { "code": "TC_03", "title": "Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act", "statutes": ["CRA Annex I", "EU AI Act 2024/1689"], "persona": "Industrial Robotics Engineers" },
-    { "code": "TC_04", "title": "The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties", "statutes": ["Article 61", "Recital 78"], "persona": "Chief Financial Officers & General Counsel" },
-    { "code": "TC_05", "title": "The Open Source Stewardship Illusion: Navigating Article 24 Non-Commercial Safe Harbors", "statutes": ["Article 24", "Recital 18"], "persona": "Open Source Maintainers & CTOs" },
-    { "code": "TC_06", "title": "Maritime OT & Navigational Radar: The Clash Between CRA and the Marine Equipment Directive", "statutes": ["CRA Article 2", "MED 2014/90/EU"], "persona": "Marine Systems Integrators" },
-    { "code": "TC_07", "title": "Smart Metering & Grid Substations: Demystifying NIS2 Essential Entities vs CRA Class II Assets", "statutes": ["CRA Annex III Class II", "NIS2 Annex I"], "persona": "Utility Security Directors" },
-    { "code": "TC_08", "title": "Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Bodies", "statutes": ["Annex III Class II", "IEC 61508"], "persona": "Grid Battery Developers & Power OEMs" },
-    { "code": "TC_09", "title": "The Distributor's Trap: Why Selling Unmarked Spares on European Marketplaces Is Strict Liability", "statutes": ["Article 18", "Article 19"], "persona": "Industrial Supply Distributors" },
-    { "code": "TC_10", "title": "Legacy Protocol Converters: Why Modbus-to-MQTT Gateways Are the Number One CRA Target", "statutes": ["Annex I Part I", "Article 10"], "persona": "SCADA Engineers & System Integrators" },
-    { "code": "TC_11", "title": "The Port Surveillance Playbook: How Customs Inspects Software Bill of Materials at Antwerp and Rotterdam", "statutes": ["Article 54", "Article 55"], "persona": "Importers & Logistics Directors" },
-    { "code": "TC_12", "title": "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies", "statutes": ["Article 61", "EU Product Liability Directive"], "persona": "Corporate Risk Officers & Legal Counsel" }
+print(f"Generated {count} Standard Series Blogs.")
+
+truth_episodes = [
+    ("TC_01", "The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks", ["Article 3(2)", "Article 21"], "Cloud-OT Architects & Plant CISOs"),
+    ("TC_02", "The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?", ["Article 13(8)", "NIS2 Article 21"], "Critical Infrastructure Operators"),
+    ("TC_03", "Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act", ["CRA Annex I", "EU AI Act 2024/1689"], "Industrial Robotics Engineers"),
+    ("TC_04", "The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties", ["Article 61", "Recital 78"], "Chief Financial Officers & General Counsel"),
+    ("TC_05", "The Open Source Stewardship Illusion: Navigating Article 24 Non-Commercial Safe Harbors", ["Article 24", "Recital 18"], "Open Source Maintainers & CTOs"),
+    ("TC_06", "Maritime OT & Navigational Radar: The Clash Between CRA and the Marine Equipment Directive", ["CRA Article 2", "MED 2014/90/EU"], "Marine Systems Integrators"),
+    ("TC_07", "Smart Metering & Grid Substations: Demystifying NIS2 Essential Entities vs CRA Class II Assets", ["CRA Annex III Class II", "NIS2 Annex I"], "Utility Security Directors"),
+    ("TC_08", "Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Bodies", ["Annex III Class II", "IEC 61508"], "Grid Battery Developers & Power OEMs"),
+    ("TC_09", "The Distributor's Trap: Why Selling Unmarked Spares on European Marketplaces Is Strict Liability", ["Article 18", "Article 19"], "Industrial Supply Distributors"),
+    ("TC_10", "Legacy Protocol Converters: Why Modbus-to-MQTT Gateways Are the Number One CRA Target", ["Annex I Part I", "Article 10"], "SCADA Engineers & System Integrators"),
+    ("TC_11", "The Port Surveillance Playbook: How Customs Inspects Software Bill of Materials at Antwerp and Rotterdam", ["Article 54", "Article 55"], "Importers & Logistics Directors"),
+    ("TC_12", "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies", ["Article 61", "EU Product Liability Directive"], "Corporate Risk Officers & Legal Counsel")
 ]
 
-for tc in investigative:
-    generate_truth_blog(tc)
-    generated_count += 1
+print("Compiling Truth & Consequences Case Studies (12)...")
+for code, title, statutes, persona in truth_episodes:
+    generate_truth_blog(code, title, statutes, persona)
 
-# 3. Generate news blogs
-news = [
-    { "code": "NEWS_01", "title": "ENISA Single Reporting Platform 24h Incident Clock Activated" },
-    { "code": "NEWS_02", "title": "First Batch of Notified Body Designations Announced for Class II Products" },
-    { "code": "NEWS_03", "title": "European Commission Issues Guidance on Substantial Modifications for Field Retrofits" },
-    { "code": "NEWS_04", "title": "Market Surveillance Port Interception Protocols Finalized at Rotterdam and Antwerp" },
-    { "code": "NEWS_05", "title": "Standardization Mandate M/606 Timeline Update: EN 40000 First Drafts Released" }
+news_episodes = [
+    ("NEWS_01", "ENISA Single Reporting Platform 24h Incident Clock Activated", ["Article 14"], "PSIRT & Risk Officers"),
+    ("NEWS_02", "First Batch of Notified Body Designations Announced for Class II Products", ["Article 41"], "Quality & Regulatory Leads"),
+    ("NEWS_03", "European Commission Issues Guidance on Substantial Modifications for Field Retrofits", ["Article 21"], "System Integrators"),
+    ("NEWS_04", "Market Surveillance Port Interception Protocols Finalized at Rotterdam and Antwerp", ["Article 54"], "Supply Chain Directors"),
+    ("NEWS_05", "Standardization Mandate M/606 Timeline Update: EN 40000 First Drafts Released", ["Article 34", "M/606"], "Standards & Compliance Architects")
 ]
 
-for nw in news:
-    generate_news_blog(nw)
-    generated_count += 1
+print("Compiling CRA News Stream Bulletins (5)...")
+for code, title, statutes, persona in news_episodes:
+    generate_news_blog(code, title, statutes, persona)
 
-print(f"Successfully generated {generated_count} technical SEO blog posts in {BLOGS_DIR}!")
+total_generated = len(os.listdir(BLOGS_DIR))
+print(f"COMPLETE: {total_generated} pristine markdown guides published in {BLOGS_DIR}.")

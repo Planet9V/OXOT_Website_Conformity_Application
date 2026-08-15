@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { Library, Download, Newspaper, BookOpen, FileText, Scale, ArrowRight, Headphones } from 'lucide-react';
+import { Library, Download, Newspaper, BookOpen, Scale, ArrowRight, Headphones, HelpCircle } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
@@ -14,11 +14,11 @@ const copy = {
   en: {
     seoTitle: 'Resources — OXOT Conformance Platform',
     seoDescription:
-      'Spec sheet and sales sheet for the CRA Conformance Application, plus the CRA primer, live regulatory news, knowledge hub and source library.',
+      'Spec sheet and sales sheet for the CRA Conformance Application, plus the CRA primer, live regulatory news, knowledge hub and official European Commission CRA FAQs.',
     headerKicker: 'RESOURCES',
     headerTitle: 'Collateral and reference',
     headerDescription:
-      'Download the spec and sales sheets for the CRA Conformance Application, or dig into the underlying reference: the CRA primer, a live regulatory-news corpus, the knowledge hub and the primary source library.',
+      'Download the spec and sales sheets for the CRA Conformance Application, or dig into the underlying reference: the CRA primer, a live regulatory-news corpus, the knowledge hub and the official European Commission CRA FAQs.',
     downloadKicker: 'Download',
     collateral: [
       {
@@ -41,7 +41,7 @@ const copy = {
       { name: 'Podcast & Engineering Guides', body: '67-episode audio ecosystem and 50 technical guides with RSS syndication.' },
       { name: 'Regulatory news', body: 'A live corpus of CRA developments, refreshed daily.' },
       { name: 'Knowledge hub', body: 'Guides and analysis on getting products conformity-ready.' },
-      { name: 'Source library', body: 'The primary legislation and technical annexes behind the requirements.' },
+      { name: 'Official EU CRA FAQs', body: '76 authoritative questions, statutory interpretations, and implementation guidance from DG CONNECT.' },
       { name: 'Regulations', body: 'Browse every regulation and its mapped obligations.' },
     ],
     ctaTitle: 'Rather see it live?',
@@ -52,11 +52,11 @@ const copy = {
   nl: {
     seoTitle: 'Bronnen — OXOT Conformance Platform',
     seoDescription:
-      'Specificatieblad en verkoopblad voor de CRA Conformance-applicatie, plus de CRA-primer, live regelgevingsnieuws, kenniscentrum en bronbibliotheek.',
+      'Specificatieblad en verkoopblad voor de CRA Conformance-applicatie, plus de CRA-primer, live regelgevingsnieuws, kenniscentrum en officiële Europese Commissie CRA-veelgestelde vragen.',
     headerKicker: 'BRONNEN',
     headerTitle: 'Materiaal en naslag',
     headerDescription:
-      'Download het specificatieblad en het verkoopblad voor de CRA Conformance-applicatie, of verdiep u in de onderliggende naslag: de CRA-primer, een live corpus met regelgevingsnieuws, het kenniscentrum en de primaire bronbibliotheek.',
+      'Download het specificatieblad en het verkoopblad voor de CRA Conformance-applicatie, of verdiep u in de onderliggende naslag: de CRA-primer, een live corpus met regelgevingsnieuws, het kenniscentrum en de officiële CRA-veelgestelde vragen van de Europese Commissie.',
     downloadKicker: 'Download',
     collateral: [
       {
@@ -79,7 +79,7 @@ const copy = {
       { name: 'Podcast & Technische Gidsen', body: '67 audio-afleveringen en 50 technische gidsen met RSS-syndicatie.' },
       { name: 'Regelgevingsnieuws', body: 'Een live corpus van CRA-ontwikkelingen, dagelijks bijgewerkt.' },
       { name: 'Kenniscentrum', body: 'Handleidingen en analyses om producten conformiteitsklaar te maken.' },
-      { name: 'Bronbibliotheek', body: 'De primaire wetgeving en technische bijlagen achter de vereisten.' },
+      { name: 'Officiële EU CRA Veelgestelde Vragen', body: '76 gezaghebbende vragen, wettelijke interpretaties en richtlijnen van DG CONNECT.' },
       { name: 'Regelgeving', body: 'Blader door elke verordening en de bijbehorende verplichtingen.' },
     ],
     ctaTitle: 'Liever live zien?',
@@ -102,7 +102,7 @@ const REFERENCE_META = [
   { icon: Headphones, href: '/podcast' },
   { icon: Newspaper, href: '/news' },
   { icon: Library, href: '/knowledge' },
-  { icon: FileText, href: '/conformity-platform/sources' },
+  { icon: HelpCircle, href: '/faq' },
   { icon: Scale, href: '/conformity-platform/regulations' },
 ];
 

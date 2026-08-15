@@ -16,7 +16,7 @@ import { useLocale } from '@/providers/locale-provider';
 // is hardcoded (no CMS / navigation table dependency) — a flat set of funnel
 // pages, each pointing back to the single "Book a demo" ask. Labels are looked up
 // by index from the locale copy object below so the nav renders per-locale.
-const FUNNEL_NAV: { href: string }[] = [
+const FUNNEL_NAV = [
   { href: '/product' },
   { href: '/pricing' },
   { href: '/deployment' },
@@ -28,7 +28,7 @@ const FUNNEL_NAV: { href: string }[] = [
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'Pricing', 'Deployment', 'Guides', 'Resources'],
+    nav: ['Platform', 'Pricing', 'Deployment', 'Blogs', 'Resources'],
     homeAria: 'OXOT Conformance Platform — home',
     lightMode: 'Switch to light mode',
     darkMode: 'Switch to dark mode',
@@ -42,7 +42,7 @@ const copy = {
     switchToNl: 'Schakel naar Nederlands',
   },
   nl: {
-    nav: ['Platform', 'Prijzen', 'Implementatie', 'Gidsen', 'Bronnen'],
+    nav: ['Platform', 'Prijzen', 'Implementatie', 'Blogs', 'Bronnen'],
     homeAria: 'OXOT Conformance Platform — startpagina',
     lightMode: 'Schakel naar lichte modus',
     darkMode: 'Schakel naar donkere modus',

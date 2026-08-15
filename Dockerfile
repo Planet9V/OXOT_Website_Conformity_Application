@@ -20,6 +20,7 @@ COPY pnpm-workspace.yaml pnpm-lock.yaml package.json tsconfig.json tsconfig.base
 COPY artifacts ./artifacts
 COPY lib ./lib
 COPY scripts ./scripts
+COPY docs ./docs
 RUN pnpm install --frozen-lockfile
 
 # Build shared libs (tsc --build emits dist/.d.ts consumed by the apps),
