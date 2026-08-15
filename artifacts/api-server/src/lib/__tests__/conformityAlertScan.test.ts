@@ -48,6 +48,16 @@ let productId: number;
 let incidentId: number;
 let originalConfig: ConformityAlertsConfig | null | undefined;
 
+/**
+ * Write the alerts config, creating the settings row if it does not exist.
+ *
+ * This used to be a silent no-op when `app_settings` was empty: the update was
+ * skipped, and every assertion then ran against whatever the default config
+ * happened to be. On a database seeded only with the reference layer — which is
+ * what CI provisions — that meant eight tests asserting `enabled: true` against
+ * a config nobody had ever written. The failure looked like a bug in the scan;
+ * it was the fixture never taking effect.
+ */
 async function setConfig(cfg: ConformityAlertsConfig): Promise<void> {
   const row = await getAppSettings();
   if (row) {
@@ -55,7 +65,9 @@ async function setConfig(cfg: ConformityAlertsConfig): Promise<void> {
       .update(appSettingsTable)
       .set({ conformityAlertsConfig: cfg })
       .where(eq(appSettingsTable.id, row.id));
+    return;
   }
+  await db.insert(appSettingsTable).values({ conformityAlertsConfig: cfg });
 }
 
 /** sendEmail calls (since last mockClear) about THIS test's incident. */

@@ -275,8 +275,24 @@ export function reservedUsernames(): string[] {
  * Demo sessions are rejected — this gates the site-admin/config surfaces.
  */
 export function requireAdmin(req: Request, res: Response, next: NextFunction): void {
-  if (getSession(req)?.role === "admin") {
+  const session = getSession(req);
+  if (session?.role === "admin") {
     next();
+    return;
+  }
+  /**
+   * 401 and 403 are different answers to different questions, and this used to
+   * give 401 to both: "who are you?" and "you may not do that".
+   *
+   * A signed-in demo user pressing an admin-only control is authenticated —
+   * their session is valid — they simply lack the role. Answering 401 tells the
+   * client the session is bad, which is how a read-only user ends up bounced to
+   * a login screen instead of being told they cannot do this. Every test in the
+   * suite asserting 403 for a demo mutation was asserting the correct behaviour
+   * against an implementation that did not provide it.
+   */
+  if (session) {
+    res.status(403).json({ error: "Forbidden" });
     return;
   }
   res.status(401).json({ error: "Unauthorized" });
