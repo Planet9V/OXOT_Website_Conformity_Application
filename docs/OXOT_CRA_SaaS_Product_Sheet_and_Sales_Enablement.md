@@ -148,7 +148,7 @@ Stop re-auditing the same controls. OXOT automatically harmonizes evidence acros
 * **Winning Pitch**: *"OXOT automates 80% of technical file assembly and xBOM vulnerability mapping, saving your engineering team ~320 hours per product."*
 
 #### PERSONA C: HEAD OF REGULATORY COMPLIANCE / LEGAL
-* **Goal**: Ensure 100% legal compliance with EU Directive 2024/2847 and Article 10 retention.
+* **Goal**: Ensure 100% legal compliance with Regulation (EU) 2024/2847 and Article 13(13) retention.
 * **Key Pain**: Worrying about evidence loss, missing Notified Body deadlines, or audit exposure.
 * **Winning Pitch**: *"OXOT seals your technical dossiers with SHA-256 digital signatures and maintains a 10-year immutable audit vault matching CRA Article 10(7)."*
 

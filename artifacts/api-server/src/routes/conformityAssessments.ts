@@ -161,6 +161,12 @@ import {
   type BuildArtifactsInput,
 } from "../lib/conformityEngine";
 import { computePortfolio } from "../lib/portfolioRollup";
+import { assessSupportPeriod } from "../lib/supportPeriod";
+import {
+  technicalDocumentationRetention,
+  userInformationRetention,
+  daysUntil,
+} from "../lib/retention";
 import { embedText } from "../lib/embeddings";
 
 const router: IRouter = Router();
@@ -997,21 +1003,58 @@ router.get("/conformity/products/:id/revisions", requireAuth, async (req, res): 
       return;
     }
 
-    // Compute statutory CRA dates: 5 years support (Art. 10(12)) & 10 years technical file retention (Art. 13(14))
-    const createdDate = new Date(product.createdAt);
-    const supportExpiryDate = new Date(createdDate.getTime() + 5 * 365 * 24 * 60 * 60 * 1000);
-    const retentionExpiryDate = new Date(createdDate.getTime() + 10 * 365 * 24 * 60 * 60 * 1000);
+    /**
+     * The statutory timers, each from its own article and its own anchor.
+     *
+     * This previously ran both clocks off product.createdAt — the moment the row
+     * was inserted — with a flat five and ten years of 365 days. Every part of
+     * that was wrong: the support period is what the manufacturer determined
+     * under Art. 13(8) (five years is the default, not a fixed term), retention
+     * runs from placing on the market under Art. 13(13)/13(18), and calendar
+     * years are not 365 days.
+     */
+    const now = new Date();
+    const support = assessSupportPeriod({
+      supportPeriodStart: product.supportPeriodStart,
+      supportPeriodEnd: product.supportPeriodEnd,
+      expectedUseTimeMonths: product.expectedUseTimeMonths,
+      supportPeriodRationale: product.supportPeriodRationale,
+    });
+    const retentionArgs = {
+      placedOnMarket: product.placedOnMarketDate,
+      supportPeriodEnd: product.supportPeriodEnd,
+    };
+    const techDoc = technicalDocumentationRetention(retentionArgs);
+    const userInfo = userInformationRetention(retentionArgs);
 
     res.json({
       productId,
       currentVersion: product.version,
       statutoryTimers: {
-        craSupportPeriodYears: 5,
-        supportPeriodStartDate: createdDate.toISOString(),
-        supportPeriodExpiryDate: supportExpiryDate.toISOString(),
-        isSupportActive: new Date() < supportExpiryDate,
-        craRetentionYears: 10,
-        technicalFileRetentionExpiryDate: retentionExpiryDate.toISOString(),
+        supportPeriod: {
+          citation: "Article 13(8)",
+          startDate: product.supportPeriodStart,
+          endDate: product.supportPeriodEnd,
+          status: support.status,
+          message: support.message,
+          isActive:
+            product.supportPeriodEnd !== null &&
+            now.toISOString().slice(0, 10) <= product.supportPeriodEnd,
+        },
+        technicalDocumentationRetention: {
+          citation: techDoc.citation,
+          until: techDoc.until,
+          basis: techDoc.basis,
+          message: techDoc.message,
+          daysRemaining: daysUntil(techDoc.until, now),
+        },
+        userInformationRetention: {
+          citation: userInfo.citation,
+          until: userInfo.until,
+          basis: userInfo.basis,
+          message: userInfo.message,
+          daysRemaining: daysUntil(userInfo.until, now),
+        },
       },
     });
   } catch (err: any) {

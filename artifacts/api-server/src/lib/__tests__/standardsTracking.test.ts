@@ -93,6 +93,7 @@ function product(): ConformityProductRow {
     productType: "hardware",
     version: "2.0",
     intendedUse: "Smart home control",
+    placedOnMarketDate: null,
     supportPeriodStart: null,
     supportPeriodEnd: null,
   expectedUseTimeMonths: null,

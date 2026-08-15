@@ -34,6 +34,7 @@ function product(over: Partial<ConformityProductRow> = {}): ConformityProductRow
     productType: "software",
     version: "",
     intendedUse: "",
+    placedOnMarketDate: null,
     supportPeriodStart: null,
     supportPeriodEnd: null,
   expectedUseTimeMonths: null,

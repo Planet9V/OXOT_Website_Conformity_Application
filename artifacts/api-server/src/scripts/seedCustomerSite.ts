@@ -146,7 +146,7 @@ The CRA establishes clear, differentiated legal responsibilities across all econ
 ### 1. Manufacturers (Article 13)
 
 - **Lifecycle Risk Assessment:** Conduct and document a comprehensive cybersecurity risk assessment before placing the product on the market (Article 13(2)).
-- **Technical File Preservation:** Maintain the complete Annex VII Technical Documentation for **10 years** after the product has been placed on the market, or for the duration of the support period, whichever is longer (Article 13(4)).
+- **Technical File Preservation:** Maintain the complete Annex VII Technical Documentation for **10 years** after the product has been placed on the market, or for the duration of the support period, whichever is longer (Article 13(13)).
 - **Support Period Determination:** Explicitly determine and state the support period (minimum of 5 years unless product lifecycle is shorter) during which security updates will be provided (Article 13(8)).
 - **EU Declaration of Conformity & CE Mark:** Draw up the legal Declaration of Conformity (Annex V) and affix the CE marking visibly and legibly (Article 13(15)–(16)).
 

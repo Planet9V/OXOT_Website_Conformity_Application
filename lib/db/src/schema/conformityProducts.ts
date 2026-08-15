@@ -26,6 +26,14 @@ export const conformityProductsTable = pgTable("conformity_products", {
   supportPeriodStart: text("support_period_start"),
   supportPeriodEnd: text("support_period_end"),
   /**
+   * ISO date the product was placed on the market, or null before it has been.
+   * This is the anchor for the Art. 13(13) and 13(18) retention clocks. It is
+   * NOT the date this record was created — a row created during design work says
+   * nothing about when the product was placed on the market, and using the row's
+   * createdAt produced retention dates that were simply wrong.
+   */
+  placedOnMarketDate: text("placed_on_market_date"),
+  /**
    * How long the product is expected to be in use, in months. This is what makes
    * a support period under five years lawful under Art. 13(8), so it is recorded
    * rather than inferred.

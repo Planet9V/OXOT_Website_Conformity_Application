@@ -423,7 +423,7 @@ export default function ProductDetail() {
                   <FileText className="h-3.5 w-3.5" /> Product Provenance &amp; Compliance Vault
                 </Badge>
                 <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/30 font-mono text-xs gap-1">
-                  <Lock className="h-3 w-3" /> CRA Art. 10(7) 10-Year Statutory Retention
+                  <Lock className="h-3 w-3" /> CRA Art. 13(13) 10-Year Statutory Retention
                 </Badge>
               </div>
               <CardTitle className="text-xl font-display font-bold text-foreground">

@@ -1,12 +1,14 @@
 import { Router, type IRouter } from "express";
 import { createHash } from "node:crypto";
+import { importerRecordRetention } from "../lib/retention";
 
 export const importerArchiveRouter: IRouter = Router();
 
 export interface StatutoryDossierArchiveItem {
   id: string;
   depositDate: string;
-  retentionUntil: string;
+  /** Null where the placing-on-the-market date is unknown — see Art. 19(6). */
+  retentionUntil: string | null;
   productName: string;
   oemManufacturer: string;
   importerEntity: string;
@@ -66,7 +68,8 @@ const mockArchiveLedger: StatutoryDossierArchiveItem[] = [
 importerArchiveRouter.get("/dossiers", (_req, res) => {
   res.json({
     totalDossiers: mockArchiveLedger.length,
-    statutoryBasis: "Regulation (EU) 2024/2847 Article 17(2) & 19 (10-Year Retention Mandate)",
+    statutoryBasis:
+      "Regulation (EU) 2024/2847 Article 19(6) — importers keep a copy of the EU declaration of conformity at the disposal of the market surveillance authorities, and ensure the technical documentation can be made available on request, for at least 10 years after the product has been placed on the market or for the support period, whichever is longer.",
     dossiers: mockArchiveLedger,
   });
 });
@@ -83,12 +86,21 @@ importerArchiveRouter.post("/deposit", (req, res) => {
   const docReferenceNumber = String(b.docReferenceNumber || "DOC-EU-CRA-2026-0000");
   const technicalFileZipName = String(b.technicalFileZipName || "technical_file.zip");
 
-  const depositDateObj = new Date();
-  const retentionUntilObj = new Date();
-  retentionUntilObj.setFullYear(depositDateObj.getFullYear() + 10);
+  const depositDate = new Date().toISOString().split("T")[0];
 
-  const depositDate = depositDateObj.toISOString().split("T")[0];
-  const retentionUntil = retentionUntilObj.toISOString().split("T")[0];
+  /**
+   * Art. 19(6) runs from the date the product was PLACED ON THE MARKET, not from
+   * the date the importer happened to deposit the file, and it takes the longer
+   * of ten years and the support period. Depositing late does not extend the
+   * duty; depositing early does not shorten it. Where the importer has not told
+   * us when the product was placed on the market, the date is unknown — the
+   * archive says so rather than asserting a date it cannot derive.
+   */
+  const retention = importerRecordRetention({
+    placedOnMarket: b.placedOnMarket ? String(b.placedOnMarket) : null,
+    supportPeriodEnd: b.supportPeriodEnd ? String(b.supportPeriodEnd) : null,
+  });
+  const retentionUntil = retention.until;
 
   const rawHashPayload = `${productName}:${oemManufacturer}:${importerEntity}:${docReferenceNumber}:${technicalFileZipName}:${depositDate}`;
   const sha256Digest = createHash("sha256").update(rawHashPayload).digest("hex");
@@ -114,6 +126,7 @@ importerArchiveRouter.post("/deposit", (req, res) => {
     success: true,
     message: "Annex VII Technical Dossier deposited in 10-Year Statutory Compliance Archive.",
     dossier: newItem,
-    statutoryRetentionGuarantee: "Stored under cryptographic seal until " + retentionUntil + " (10 years minimum pursuant to Article 17).",
+    statutoryRetentionGuarantee: retention.message,
+    statutoryBasis: retention.citation,
   });
 });

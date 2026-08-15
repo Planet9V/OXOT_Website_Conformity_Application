@@ -60,7 +60,7 @@ const copy = {
         meter: 'Unlimited product dossiers',
         features: [
           'Everything in Professional',
-          'SSO and custom retention beyond Article 10(7)',
+          'SSO and custom retention beyond Article 13(13)',
           'Reports: full + board + custom',
           'On-premise with a local AI model',
         ],

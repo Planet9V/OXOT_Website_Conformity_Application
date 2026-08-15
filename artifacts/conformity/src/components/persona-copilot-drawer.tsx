@@ -76,7 +76,7 @@ const PERSONA_PRESETS: Record<
       "Which IEC 62443-4-2 CRs provide presumption of conformity for Annex I Part I?",
       "What are the mandatory CE marking nameplate requirements under Article 22?",
       "How do we format a compliant CycloneDX 1.6 SBOM under Annex II Section 2?",
-      "What is the exact 10-year technical dossier retention rule under Article 10(9)?",
+      "What is the exact 10-year technical dossier retention rule under Article 13(13)?",
     ],
     defaultContext:
       "You are advising an OEM product manufacturer. Emphasize Article 10 obligations, Annex I cybersecurity requirements, IEC 62443 presumption of conformity, and CE marking rules under Article 22.",

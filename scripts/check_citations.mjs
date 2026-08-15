@@ -84,7 +84,34 @@ const CONCEPTS = [
   { id: "technical documentation", articles: [31], wrong: [27], re: /technical documentation/i },
   { id: "conformity assessment procedures", articles: [32], wrong: [28], re: /conformity assessment procedure/i },
   { id: "penalties", articles: [64], wrong: [61], re: /penalt(?:y|ies)|administrative fine|\bfines?\b/i },
+  // Retention is actor-specific: manufacturer 13(13)/13(18), authorised rep
+  // 18(3), importer 19(6), economic-operator traceability 23(2). Art. 10 and
+  // Art. 17 are the draft-numbering errors this catches.
+  {
+    id: "record retention",
+    articles: [13, 18, 19, 23],
+    wrong: [10, 17],
+    re: /retention|retain(?:ed|ing)?\b|keep (?:a copy|the|it) .{0,60}at the disposal|at the disposal of .{0,60}authorit/i,
+  },
 ];
+
+/**
+ * Which paragraphs of Article 13 actually impose a retention duty. The concept
+ * table above only reads article numbers, so it cannot catch "Article 13(4)" or
+ * "Article 13(14)" — right article, wrong paragraph. Both were live in this
+ * codebase, so retention gets a paragraph-level rule of its own.
+ */
+const ART13_RETENTION_PARAGRAPHS = [9, 13, 18];
+const ART13_PARA = /\bArt(?:icle|\.)\s*13\s*\((\d{1,2})\)/gi;
+
+/**
+ * The rule fires only where a retention DURATION is stated. Bare "retain" is too
+ * loose: Art. 13(2) is cited correctly for the risk assessment on lines that
+ * happen to contain the word, and flagging those invites "fixing" a correct
+ * citation into a wrong one — the same trap that produced 44 false positives
+ * when the concept table over-matched substantial modification.
+ */
+const RETENTION_DURATION = /\b(?:10|ten)[- ]years?\b|retention (?:period|vault|mandate|expiry|until)|statutory retention/i;
 
 if (process.argv.includes("--map")) {
   for (const c of CONCEPTS) {
@@ -133,6 +160,14 @@ const FILE_IS_ANOTHER_INSTRUMENT = [
   { re: /radio[-_]equipment|\bred\b/i, name: "Radio Equipment Directive" },
 ];
 
+/**
+ * The verbatim source material the corpus is built and verified from. These
+ * files quote EUR-Lex and the Commission FAQ exactly; every article number in
+ * them is correct by definition, and "correcting" one would corrupt the very
+ * thing every other citation is checked against. Never scan the source of truth.
+ */
+const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus)\//;
+
 /** Which instrument is this file about, judged by its path? */
 function otherInstrumentFor(relPath) {
   const base = relPath.split("/").pop() ?? relPath;
@@ -147,6 +182,10 @@ const skippedFiles = [];
 for (const dir of SCAN_DIRS) {
   for (const file of walk(path.join(ROOT, dir))) {
     const relFile = path.relative(ROOT, file);
+    if (SOURCE_OF_TRUTH.test(relFile)) {
+      skippedFiles.push({ file: relFile, instrument: "the CRA source of truth — verbatim, never edited" });
+      continue;
+    }
     const other = otherInstrumentFor(relFile);
     if (other) {
       skippedFiles.push({ file: relFile, instrument: other });
@@ -184,6 +223,19 @@ for (const dir of SCAN_DIRS) {
         if (wrong.length) {
           const govern = c.articles.map((n) => `Article ${n} (${titles.get(n)})`).join(" or ");
           record("concept", `"${c.id}" is governed by ${govern}, not Article ${wrong.join("/")}.`);
+        }
+      }
+
+      // 3. Right article, wrong paragraph — Article 13 retention only.
+      if (RETENTION_DURATION.test(line)) {
+        for (const m of line.matchAll(ART13_PARA)) {
+          const para = Number(m[1]);
+          if (!ART13_RETENTION_PARAGRAPHS.includes(para)) {
+            record(
+              "paragraph",
+              `Article 13(${para}) does not impose a retention duty — retention is 13(9) for security updates, 13(13) for the technical documentation and DoC, 13(18) for the Annex II user information.`,
+            );
+          }
         }
       }
     }
