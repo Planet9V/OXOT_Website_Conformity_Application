@@ -96,6 +96,7 @@ export * from "./supplierCompliance";
 export * from "./craProcurement";
 export * from "./craDeemedManufacturer";
 export * from "./conformityNotifiedBody";
+export * from "./conformityProductVersions";
 export * from "./craComposite";
 export * from "./craCsaf";
 // What this organisation does, and which regulations apply to it

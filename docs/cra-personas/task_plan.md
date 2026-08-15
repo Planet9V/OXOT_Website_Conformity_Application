@@ -383,7 +383,7 @@ Scope as delegated access, not a cockpit persona.
 | 0 — Role model | **complete** | G1-G5 pass; G6 verified live | 0.1-0.6, 0.8 done |
 | 1 — Manufacturer | **complete** | G1-G7 pass; G6 verified live | 1.1-1.8; citations 30→0 |
 | 2 — Deemed manufacturer | **complete** | G1-G7 pass; G6 verified live | 2.1-2.5 |
-| 1B — Manufacturer deepening | in_progress | — | 1B.1 done; 1B.2-1B.5 open |
+| 1B — Manufacturer deepening | **rules complete** | G1/G4/G5 pass | 1B.1-1B.5 rule modules done; UI wiring open |
 | W1 — Multi-act engine | in_progress | — | corpus + guard done; registries open |
 | W2 — NIS2 | in_progress | — | Directive corpus + verifier done |
 | 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |
@@ -428,7 +428,7 @@ is precisely the drift the plan is supposed to prevent.
   nameplate studio had as the broader "only if assessed". Annex VIII II.3/6/7/10
   implemented; the single-body rule enforced structurally with a 409.
 
-- **1B.2 Supplier / component due diligence (Art. 13(5), Recital 34).**
+- **1B.2 Supplier / component due diligence (Art. 13(5), Recital 34).** — RULE DONE
   The BOM skeleton exists — `parentComponentId`, `tierLevel`, `supplier`,
   `manufacturer`, `partNumber`, `firmwareVersion`, hashes, dependency graph.
   What is missing is the **evidence layer**: per component, what CRA evidence is
@@ -437,19 +437,19 @@ is precisely the drift the plan is supposed to prevent.
   Bidirectional per the design: collect upstream, publish downstream, and the
   Art. 21 rebrand case where the OEM holds the design evidence.
 
-- **1B.3 Versions and variants.**
+- **1B.3 Versions and variants.** — RULE DONE
   One product row is currently one of everything. A substantial modification
   applies to a *specific version*; SBOM, DoC and support period are per version;
   a vulnerability affects some versions and not others; the retention clock runs
   from when *that version* was placed on the market.
 
-- **1B.4 Provenance (P6).**
+- **1B.4 Provenance (P6).** — RULE DONE
   The gap D1 creates. A system of record without provenance is a filing cabinet
   with no lock. Who attested, when, over exactly what bytes, and unchanged since.
   Evidence, artifacts and determinations all need it; the signature surface for
   the Annex V DoC depends on it.
 
-- **1B.5 End of support / EOL.**
+- **1B.5 End of support / EOL.** — RULE DONE
   Support period ends, Annex II communication is owed, obligations change — and
   retention under 13(13)/13(18) continues for years afterwards. Nothing currently
   marks a product as past support.
