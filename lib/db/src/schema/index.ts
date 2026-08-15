@@ -100,6 +100,7 @@ export * from "./conformityProductVersions";
 export * from "./conformityAttestations";
 export * from "./conformityImporterDossiers";
 export * from "./conformityOperatorChecks";
+export * from "./conformityStewardPolicies";
 export * from "./craComposite";
 export * from "./craCsaf";
 // What this organisation does, and which regulations apply to it

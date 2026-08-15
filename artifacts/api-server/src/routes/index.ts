@@ -49,6 +49,7 @@ import notifiedBodyRouter from "./notifiedBody";
 import statutoryFileRouter from "./statutoryFile";
 import attestationsRouter from "./attestations";
 import operatorChecksRouter from "./operatorChecks";
+import stewardPolicyRouter from "./stewardPolicy";
 import { podcastStudioRouter } from "./podcastStudio";
 import { craFaqRouter } from "./craFaqRoutes";
 
@@ -81,6 +82,7 @@ router.use(notifiedBodyRouter);
 router.use(statutoryFileRouter);
 router.use(attestationsRouter);
 router.use(operatorChecksRouter);
+router.use(stewardPolicyRouter);
 router.use(conformityReportsRouter);
 router.use(conformityPsirtRouter);
 router.use(conformityIntelligenceRouter);
