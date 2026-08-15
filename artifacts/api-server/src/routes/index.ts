@@ -47,6 +47,7 @@ import msaEngagementsRouter from "./msaEngagements";
 import deemedManufacturerRouter from "./deemedManufacturer";
 import notifiedBodyRouter from "./notifiedBody";
 import statutoryFileRouter from "./statutoryFile";
+import attestationsRouter from "./attestations";
 import { podcastStudioRouter } from "./podcastStudio";
 import { craFaqRouter } from "./craFaqRoutes";
 
@@ -77,6 +78,7 @@ router.use(msaEngagementsRouter);
 router.use(deemedManufacturerRouter);
 router.use(notifiedBodyRouter);
 router.use(statutoryFileRouter);
+router.use(attestationsRouter);
 router.use(conformityReportsRouter);
 router.use(conformityPsirtRouter);
 router.use(conformityIntelligenceRouter);

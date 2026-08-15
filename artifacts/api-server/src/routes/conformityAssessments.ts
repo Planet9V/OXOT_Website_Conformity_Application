@@ -161,6 +161,7 @@ import {
   type BuildArtifactsInput,
 } from "../lib/conformityEngine";
 import { computePortfolio } from "../lib/portfolioRollup";
+import { recordAttestation, subjectFor } from "../lib/attestationStore";
 import { assessSupportPeriod } from "../lib/supportPeriod";
 import {
   technicalDocumentationRetention,
@@ -1672,6 +1673,36 @@ router.post("/conformity/assessments/:id/evidence", requireAuth, async (req, res
     return inserted!;
   });
 
+  /**
+   * P6 — attest to the evidence as it lands.
+   *
+   * The attestation covers the fingerprint of the bytes where we have one, and
+   * the metadata where the object could not be fingerprinted. Which of the two
+   * it covers is stated in the statement rather than left ambiguous: an
+   * attestation over metadata proves the record has not changed, NOT that the
+   * file behind it is the same file.
+   *
+   * Outside the transaction and best-effort: failing to attest must not lose
+   * the evidence someone just uploaded. A missing attestation is visible on the
+   * ledger; a lost upload is not.
+   */
+  try {
+    const attestedOverBytes = Boolean(fileHash);
+    await recordAttestation({
+      kind: "evidence_upload",
+      subject: subjectFor.evidence(row.id),
+      actor: actorOf(req),
+      content: attestedOverBytes
+        ? fileHash
+        : JSON.stringify({ title: row.title, url: row.url, fileName: row.fileName }),
+      statement: attestedOverBytes
+        ? `Uploaded evidence "${row.title}", attested over the SHA-256 of the stored object.`
+        : `Uploaded evidence "${row.title}". The object could not be fingerprinted, so this attests to the record only, not to the bytes behind it.`,
+    });
+  } catch (err) {
+    req.log.warn({ err, evidenceId: row.id }, "Could not record the evidence attestation");
+  }
+
   // Best-effort auto-embed the evidence so the assistant can retrieve it as
   // workspace context. Never block or 500 the request on an embedding failure.
   try {
@@ -1883,6 +1914,34 @@ router.post("/conformity/assessments/:id/artifacts/generate", requireAuth, async
     });
     return artifactRows;
   });
+
+  /**
+   * P6 — attest to each generated artifact over its rendered content.
+   *
+   * This is a machine attestation: it records that the application generated
+   * these bytes from the assessment as it stood, and lets a later reader prove
+   * the document has not been altered since. It is NOT an approval, and the
+   * statement says so — approval is a separate human act, and the EU
+   * declaration of conformity additionally needs the Annex V signature.
+   */
+  await Promise.all(
+    rows.map(async (row) => {
+      try {
+        const sections = row.content?.sections ?? [];
+        await recordAttestation({
+          kind: "artifact_generated",
+          subject: subjectFor.artifact(id, row.artifactType),
+          actor: actorOf(req),
+          content: JSON.stringify(sections),
+          statement:
+            `Generated ${ARTIFACT_LABELS[row.artifactType as ArtifactType] ?? row.artifactType} ` +
+            `(version ${row.version}) from the assessment as it stood. This records what was generated; it is not an approval.`,
+        });
+      } catch (err) {
+        req.log.warn({ err, artifactType: row.artifactType }, "Could not record the artifact attestation");
+      }
+    }),
+  );
 
   // Best-effort auto-embed each generated artifact so the assistant can draw on
   // the compiled documents. Never block or 500 the request on an embedding

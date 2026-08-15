@@ -383,7 +383,7 @@ Scope as delegated access, not a cockpit persona.
 | 0 — Role model | **complete** | G1-G5 pass; G6 verified live | 0.1-0.6, 0.8 done |
 | 1 — Manufacturer | **complete** | G1-G7 pass; G6 verified live | 1.1-1.8; citations 30→0 |
 | 2 — Deemed manufacturer | **complete** | G1-G7 pass; G6 verified live | 2.1-2.5 |
-| 1B — Manufacturer deepening | **rules complete** | G1/G4/G5 pass | 1B.1-1B.5 rule modules done; UI wiring open |
+| 1B — Manufacturer deepening | **complete** | G1/G4/G5 pass; G6 pending | 1B.1-1B.5 done incl. provenance ledger |
 | W1 — Multi-act engine | in_progress | — | corpus + guard done; registries open |
 | W2 — NIS2 | in_progress | — | Directive corpus + verifier done |
 | 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |
@@ -443,7 +443,7 @@ is precisely the drift the plan is supposed to prevent.
   a vulnerability affects some versions and not others; the retention clock runs
   from when *that version* was placed on the market.
 
-- **1B.4 Provenance (P6).** — RULE DONE
+- **1B.4 Provenance (P6).** — **DONE** (rule, ledger, wiring, Annex V signature)
   The gap D1 creates. A system of record without provenance is a filing cabinet
   with no lock. Who attested, when, over exactly what bytes, and unchanged since.
   Evidence, artifacts and determinations all need it; the signature surface for
