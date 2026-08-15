@@ -94,3 +94,44 @@ describe("when nothing is recorded", () => {
     expect(r.message).toMatch(/neither its expiry nor what survives it/);
   });
 });
+
+describe("survivors are counted, not merely 'continuing'", () => {
+  /**
+   * Caught live on the product file, not by these tests: with a support period
+   * but NO placing-on-market date, both retention clocks return null, and the
+   * only obligation carrying a date was vulnerability handling — whose date IS
+   * the support end. The message became self-contradictory: "3 obligations will
+   * continue after that date, the last until <that same date>".
+   *
+   * Every fixture above sets placedOnMarket, so none of them could reach it.
+   */
+  it("does not count vulnerability handling as surviving its own end date", () => {
+    const r = assessEndOfSupport(
+      {
+        supportPeriodStart: "2026-01-01",
+        supportPeriodEnd: "2031-08-15",
+        placedOnMarket: null,
+        endDateCommunicatedToUsers: true,
+      },
+      new Date("2027-01-01T00:00:00Z"),
+    );
+    expect(r.state).toBe("in_support");
+    // Nothing outlives the support period on these facts, so the message must
+    // not name the support date as the last surviving obligation.
+    expect(r.message).not.toMatch(/the last until 2031-08-15/);
+  });
+
+  it("still counts the retention clocks once a placing date exists", () => {
+    const r = assessEndOfSupport(
+      {
+        supportPeriodStart: "2026-01-01",
+        supportPeriodEnd: "2031-08-15",
+        placedOnMarket: "2026-01-01",
+        endDateCommunicatedToUsers: true,
+      },
+      new Date("2027-01-01T00:00:00Z"),
+    );
+    // 10 years from placing (2036) genuinely outlasts support (2031).
+    expect(r.message).toMatch(/the last until 2036-01-01/);
+  });
+});

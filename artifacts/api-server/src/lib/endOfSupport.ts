@@ -154,8 +154,25 @@ export function assessEndOfSupport(
     });
   }
 
-  const continuing = obligations.filter((o) => o.state === "continues");
-  const latest = continuing
+  /**
+   * "Survives the support period" is not the same as "state: continues".
+   *
+   * While the product is still in support, vulnerability handling is marked as
+   * continuing — it is running right now. But it is precisely the obligation
+   * that ENDS at the support date, so counting it among the duties that outlast
+   * the support period produced a self-contradictory message: "3 obligations
+   * will continue after that date, the last until <the support date itself>".
+   *
+   * Survivors are the ones with no end date at all, or one strictly later than
+   * the support period.
+   */
+  const survivors = obligations.filter(
+    (o) =>
+      o.state === "continues" &&
+      (!input.supportPeriodEnd || o.until === null || o.until > input.supportPeriodEnd),
+  );
+  const continuing = survivors;
+  const latest = survivors
     .map((o) => o.until)
     .filter((d): d is string => Boolean(d))
     .sort()
