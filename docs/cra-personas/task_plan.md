@@ -65,7 +65,7 @@ re-tune before the next phase starts.
 | # | Check | Command / criterion |
 |---|-------|---------------------|
 | G1 | Typecheck | `npx tsc --noEmit` clean in api-server, conformity, oxot-web |
-| G2 | Tests | `cd artifacts/api-server && npx vitest run` — **0 failed tests**, and phase's new tests present |
+| G2 | Tests | `cd artifacts/api-server && npx vitest run` — **no NEW failures vs the recorded baseline**, and the phase's new tests present and passing |
 | G3 | Build | `cd artifacts/conformity && npx vite build` succeeds |
 | G4 | Honesty | `node scripts/check_honesty.mjs` exits 0 |
 | G5 | Citations | `node scripts/check_citations.mjs` exits 0 — every cited article resolves |
@@ -381,11 +381,30 @@ Scope as delegated access, not a cockpit persona.
 | Phase | Status | Gate | Notes |
 |-------|--------|------|-------|
 | 0 — Role model | **complete** | G1-G5 pass; G6 verified live | 0.1-0.6, 0.8 done |
-| 1 — Manufacturer | not_started | — | Depends on 0 |
-| 2 — Deemed manufacturer | not_started | — | Depends on 1 |
+| 1 — Manufacturer | **complete** | G1-G7 pass; G6 verified live | 1.1-1.8; citations 30→0 |
+| 2 — Deemed manufacturer | in_progress | — | Depends on 1 |
 | 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |
 | 4 — Steward | not_started | — | Depends on 0 |
 | 5 — Authorised rep | not_started | — | Depends on 0, reuses 1.3 |
+
+### G2 baseline (re-tuned after Phase 1)
+
+"0 failed tests" was unsatisfiable: 32 failures pre-date this programme and are
+tracked in issue #62, deferred by decision until the persona phases are done.
+A gate that can never go green is not a gate, and worse, it hides the one
+failure that IS yours — during Phase 1 exactly one real regression was
+introduced and it was indistinguishable from the noise.
+
+The gate is therefore **no new failures against the baseline**, measured by
+name, not by count. Counts drift with flaky shared-state suites; names do not.
+
+    gh run view <baseline-run> --log-failed > old.txt
+    gh run view <new-run>      --log-failed > new.txt
+    # strip ANSI, take the text after "×", drop the trailing duration, diff sets
+
+Baseline at the start of Phase 2: **32 failed / 523 passed / 555 total**, with
+`DEMO_READONLY=true` set. Any name not in that set is a Phase 2 regression and
+halts the phase.
 
 ## Errors encountered
 
