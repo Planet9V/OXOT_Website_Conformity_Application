@@ -8,6 +8,12 @@ following the exact single-voice Jim Mckenney narrative format in docs/cra_podca
 import os
 import json
 
+# CRA citations are resolved and validated against the Official Journal corpus.
+# See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md — do not hand-type article numbers.
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
+from cra_corpus import cite, article_title, check_text, write_checked  # noqa: F401
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 SOLO_DIR = os.path.join(BASE_DIR, "docs", "cra_podcast", "episodes_solo")
@@ -289,8 +295,7 @@ for ep in registry["episodes"]:
     filepath = os.path.join(SOLO_DIR, filename)
     
     content = generate_full_episode_script(ep)
-    with open(filepath, "w") as f:
-        f.write(content)
+    write_checked(filepath, content)
     written_count += 1
 
 print(f"🎉 Successfully generated and saved all {written_count} bespoke solo scripts in {SOLO_DIR}!")

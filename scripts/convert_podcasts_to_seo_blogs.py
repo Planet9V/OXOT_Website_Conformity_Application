@@ -12,6 +12,12 @@ import os
 import json
 import re
 
+# CRA citations are resolved and validated against the Official Journal corpus.
+# See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md — do not hand-type article numbers.
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
+from cra_corpus import cite, article_title, check_text, write_checked  # noqa: F401
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_CRA = os.path.join(BASE_DIR, "docs", "cra_podcast")
 REGISTRY_FILE = os.path.join(DOCS_CRA, "episodes_registry.json")
@@ -189,8 +195,7 @@ Stream the full 14-minute single-voice audio walkthrough hosted by **Jim Mckenne
 - **RSS Syndication:** [Standard Podcast Feed](https://oxot.ai/feeds/cra-podcast.xml) | [Apple Podcasts](https://podcasts.apple.com) | [Spotify](https://open.spotify.com)
 - **Interactive Workbench:** [Open the CRA Conformance Application](http://localhost:8088/conformity/dashboard)
 """
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
+    write_checked(filepath, content)
     return filename
 
 def generate_truth_blog(code, title, statutes, persona):
@@ -308,8 +313,7 @@ Listen to the complete single-voice investigative monologue on the OXOT Media Hu
 - **Investigation Feed:** [Truth & Consequences RSS](https://oxot.ai/feeds/cra-truth.xml)
 - **Legal Text Reference:** [Explore the Interactive CRA Legal Wiki](http://localhost:8088/wiki/cra)
 """
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
+    write_checked(filepath, content)
     return filename
 
 def generate_news_blog(code, title, statutes, persona):
@@ -379,8 +383,7 @@ European regulatory authorities and ENISA have issued operational directives con
 - **News RSS Feed:** [The CRA News Stream RSS](https://oxot.ai/feeds/cra-news.xml)
 - **Regulatory Wiki:** [Check Live Statutes on OXOT](http://localhost:8088/wiki/cra)
 """
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
+    write_checked(filepath, content)
     return filename
 
 print("Compiling Standard Solo Series Blog Articles (50)...")

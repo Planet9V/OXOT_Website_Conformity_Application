@@ -8,6 +8,12 @@ following the exact single-voice Jim Mckenney narrative format in docs/cra_podca
 import os
 import json
 
+# CRA citations are resolved and validated against the Official Journal corpus.
+# See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md — do not hand-type article numbers.
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
+from cra_corpus import cite, article_title, check_text, write_checked  # noqa: F401
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 SOLO_DIR = os.path.join(BASE_DIR, "docs", "cra_podcast", "episodes_solo")
@@ -327,13 +333,17 @@ generated_files = []
 for ep in registry["episodes"]:
     ep_id = ep["id"]
     ep_num = ep["episode_number"]
-    slug = f"EP_{ep_num:02d}_{ep['title'].replace(' ', '_').replace(':', '').replace('?', '').replace('/', '_').replace('-', '_').replace(\"'\", '')[:50]}"
+    # Built outside the f-string: an f-string expression may not contain a
+    # backslash before Python 3.12, and this file would not compile on 3.9.
+    _title = ep["title"]
+    for _from, _to in ((" ", "_"), (":", ""), ("?", ""), ("/", "_"), ("-", "_"), ("'", "")):
+        _title = _title.replace(_from, _to)
+    slug = f"EP_{ep_num:02d}_{_title[:50]}"
     filename = f"{slug}_SOLO.md"
     filepath = os.path.join(SOLO_DIR, filename)
     
     content = generate_script_content(ep_id, ep)
-    with open(filepath, "w") as f:
-        f.write(content)
+    write_checked(filepath, content)
     generated_files.append(filename)
 
 print(f"✅ Successfully generated all {len(generated_files)} solo episode scripts in {SOLO_DIR}.")

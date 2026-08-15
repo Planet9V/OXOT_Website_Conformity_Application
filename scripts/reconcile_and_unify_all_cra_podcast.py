@@ -9,6 +9,12 @@ import os
 import json
 import re
 
+# CRA citations are resolved and validated against the Official Journal corpus.
+# See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md — do not hand-type article numbers.
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
+from cra_corpus import cite, article_title, check_text, write_checked  # noqa: F401
+
 BASE_DIR = "/Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application"
 DOCS_CRA = os.path.join(BASE_DIR, "docs", "cra_podcast")
 SOLO_DIR = os.path.join(DOCS_CRA, "episodes_solo")
@@ -325,8 +331,7 @@ Until next time: build secure by design, protect your supply chain, and ship wit
 A dedicated single-voice audio generator script has been created at:  
 `docs/cra_podcast/scripts/generate_spoken_podcast_solo.sh`
 """
-    with open(filepath, "w") as f:
-        f.write(script_content)
+    write_checked(filepath, script_content)
     
     generated_files_map.append({
         "code": code,

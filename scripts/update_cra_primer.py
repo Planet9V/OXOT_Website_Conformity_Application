@@ -11,6 +11,12 @@ import json
 import os
 import subprocess
 
+# CRA citations are resolved and validated against the Official Journal corpus.
+# See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md — do not hand-type article numbers.
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
+from cra_corpus import cite, article_title, check_text, write_checked  # noqa: F401
+
 EN_TITLE = "The EU Cyber Resilience Act — Comprehensive Regulatory & Engineering Primer"
 EN_SEO_TITLE = "EU CRA Primer | Comprehensive Guide to Regulation (EU) 2024/2847"
 EN_SEO_DESC = "Authoritative technical and statutory primer on the EU Cyber Resilience Act (Regulation (EU) 2024/2847): scope, 4-tier classification, Annex I essential requirements, Article 14 clocks, and conformity assessment."
@@ -480,8 +486,7 @@ def update_seed_customer_site():
     markdown: `{escaped_markdown}`,
   }},\n"""
             content = content[:start_idx] + new_en_entry + content[end_idx:]
-            with open(seed_file, "w", encoding="utf-8") as f:
-                f.write(content)
+            write_checked(seed_file, content)
             print("Updated seedCustomerSite.ts successfully!")
 
 def update_postgres():
@@ -553,8 +558,7 @@ BEGIN
 END $$;
 """
     sql_path = "/tmp/update_cra_primer.sql"
-    with open(sql_path, "w", encoding="utf-8") as f:
-        f.write(sql_script)
+    write_checked(sql_path, sql_script)
 
     subprocess.run(["docker", "cp", sql_path, "oxot_website_conformity_application-db-1:/tmp/update_cra_primer.sql"], check=True)
     subprocess.run(["docker", "exec", "oxot_website_conformity_application-db-1", "psql", "-U", "oxot", "-d", "oxot", "-f", "/tmp/update_cra_primer.sql"], check=True)

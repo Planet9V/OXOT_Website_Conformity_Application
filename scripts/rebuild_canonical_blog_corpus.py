@@ -28,6 +28,12 @@ for f in os.listdir(BLOGS_DIR):
 sys.path.insert(0, os.path.join(BASE_DIR, "scripts"))
 from build_bespoke_mermaid_corpus import BESPOKE_MERMAID_DIAGRAMS
 
+# CRA citations are resolved and validated against the Official Journal corpus.
+# See docs/cra-personas/CRA_SOURCE_OF_TRUTH.md — do not hand-type article numbers.
+import sys as _sys, pathlib as _pathlib
+_sys.path.insert(0, str(_pathlib.Path(__file__).resolve().parent))
+from cra_corpus import cite, article_title, check_text, write_checked  # noqa: F401
+
 # Load detailed blueprints from 02-CRA-MARKET-UNCERTAINTY-INDEX-AND-50-EPISODE-BLUEPRINTS.md
 BLUEPRINTS_FILE = os.path.join(DOCS_CRA, "02-CRA-MARKET-UNCERTAINTY-INDEX-AND-50-EPISODE-BLUEPRINTS.md")
 blueprints_raw = ""
@@ -220,8 +226,7 @@ To ensure defensible compliance with **{statutes_str}**, organizations must exec
 - **Audio Intelligence Platform:** [Listen to the Full Audio Episode](https://oxot.ai/podcast)
 - **Technical Consultation:** [Schedule an Architecture Review with OXOT Advisory](http://localhost:8088/contact)
 """
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write(content)
+    write_checked(filepath, content)
     return filename
 
 print("Generating 50 Standard Solo Series Blogs from Master Blueprints...")

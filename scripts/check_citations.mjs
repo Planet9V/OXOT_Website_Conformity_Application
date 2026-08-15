@@ -53,26 +53,42 @@ const MAX = Math.max(...titles.keys());
  * Each entry lists the wrong numbers this codebase has historically used, so the
  * error message can say precisely what happened.
  */
+/**
+ * Concept -> the article(s) that actually govern it.
+ *
+ * `articles` may hold MORE THAN ONE, because the regulation genuinely splits
+ * some concepts. Substantial modification is the clearest case: Art. 21 covers
+ * an importer or distributor who modifies, Art. 22 covers any other person.
+ * Treating 21 as wrong there was a defect in this table and would have turned
+ * correct citations into incorrect ones.
+ *
+ * `wrong` lists numbers this codebase has historically used that are not
+ * governing for the concept, so the error message can say what happened.
+ * A line is flagged only when it cites a `wrong` number and cites none of the
+ * `articles`.
+ */
 const CONCEPTS = [
-  { id: "manufacturer obligations", article: 13, formerly: [10], re: /obligations of manufacturers|manufacturer obligations/i },
-  { id: "reporting obligations", article: 14, formerly: [], re: /reporting obligations|24[- ]?h(?:our)? early warning|early warning/i },
-  { id: "authorised representative", article: 18, formerly: [12], re: /authoris(?:ed|ed) representative/i },
-  { id: "importer obligations", article: 19, formerly: [17], re: /obligations of importers|importer obligations/i },
-  { id: "distributor obligations", article: 20, formerly: [18], re: /obligations of distributors|distributor obligations|duty to refrain/i },
-  { id: "substantial modification", article: 22, formerly: [20, 21], re: /substantial(?:ly)? modif/i },
-  { id: "identification of economic operators", article: 23, formerly: [21], re: /identification of economic operators/i },
-  { id: "open-source steward obligations", article: 24, formerly: [16, 33], re: /open[- ]source software steward|steward obligations/i },
-  { id: "EU declaration of conformity", article: 28, formerly: [22], re: /EU declaration of conformity/i },
-  { id: "CE marking", article: 29, formerly: [22, 23], re: /CE marking/i },
-  { id: "presumption of conformity", article: 27, formerly: [24, 34], re: /presumption of conformity/i },
-  { id: "technical documentation", article: 31, formerly: [27], re: /technical documentation/i },
-  { id: "conformity assessment procedures", article: 32, formerly: [28], re: /conformity assessment procedure/i },
-  { id: "penalties", article: 64, formerly: [61], re: /penalt(?:y|ies)|administrative fine/i },
+  { id: "manufacturer obligations", articles: [13], wrong: [10], re: /obligations of manufacturers|manufacturer obligations/i },
+  { id: "reporting obligations", articles: [14], wrong: [], re: /reporting obligations|24[- ]?h(?:our)? early warning|early warning/i },
+  { id: "authorised representative", articles: [18], wrong: [12], re: /authoris(?:ed|ed) representative/i },
+  { id: "importer obligations", articles: [19], wrong: [17], re: /obligations of importers|importer obligations/i },
+  { id: "distributor obligations", articles: [20], wrong: [18], re: /obligations of distributors|distributor obligations|duty to refrain/i },
+  // Art. 21 (importer/distributor) and Art. 22 (any other person) both apply.
+  { id: "substantial modification", articles: [21, 22], wrong: [20], re: /substantial(?:ly)? modif/i },
+  { id: "identification of economic operators", articles: [23], wrong: [21], re: /identification of economic operators/i },
+  { id: "open-source steward obligations", articles: [24], wrong: [16, 33], re: /open[- ]source software steward|steward obligations/i },
+  { id: "presumption of conformity", articles: [27], wrong: [24, 34], re: /presumption of conformity/i },
+  { id: "EU declaration of conformity", articles: [28], wrong: [22], re: /EU declaration of conformity/i },
+  // Art. 29 general principles, Art. 30 rules for affixing — both govern CE marking.
+  { id: "CE marking", articles: [29, 30], wrong: [22, 23], re: /CE marking/i },
+  { id: "technical documentation", articles: [31], wrong: [27], re: /technical documentation/i },
+  { id: "conformity assessment procedures", articles: [32], wrong: [28], re: /conformity assessment procedure/i },
+  { id: "penalties", articles: [64], wrong: [61], re: /penalt(?:y|ies)|administrative fine|\bfines?\b/i },
 ];
 
 if (process.argv.includes("--map")) {
   for (const c of CONCEPTS) {
-    console.log(`  ${String(c.article).padStart(2)} — ${c.id}  (was: ${c.formerly.join(", ") || "—"})`);
+    console.log(`  ${c.articles.join("/").padStart(5)} — ${c.id}  (flags: ${c.wrong.join(", ") || "—"})`);
   }
   process.exit(0);
 }
@@ -129,13 +145,12 @@ for (const dir of SCAN_DIRS) {
       if (OTHER_INSTRUMENT.test(line)) continue;
       for (const c of CONCEPTS) {
         if (!c.re.test(line)) continue;
-        if (cited.includes(c.article)) continue;
-        const wrong = cited.filter((n) => c.formerly.includes(n));
+        // Citing any governing article is correct — do not flag.
+        if (c.articles.some((n) => cited.includes(n))) continue;
+        const wrong = cited.filter((n) => c.wrong.includes(n));
         if (wrong.length) {
-          record(
-            "concept",
-            `"${c.id}" is Article ${c.article} (${titles.get(c.article)}), not Article ${wrong.join("/")}.`
-          );
+          const govern = c.articles.map((n) => `Article ${n} (${titles.get(n)})`).join(" or ");
+          record("concept", `"${c.id}" is governed by ${govern}, not Article ${wrong.join("/")}.`);
         }
       }
     }
