@@ -38,6 +38,11 @@ jobs:
       ADMIN_USERNAME: ci-admin
       ADMIN_PASSWORD: ci-admin-password-for-tests-only
       NODE_ENV: test
+      # The conformity suite asserts that the read-only role cannot mutate.
+      # That guard is gated on DEMO_READONLY, so without this the guard is
+      # inactive and 23 correct assertions fail against a correctly-written
+      # application. This is the configuration under test, not a workaround.
+      DEMO_READONLY: "true"
 
     steps:
       - uses: actions/checkout@v4
