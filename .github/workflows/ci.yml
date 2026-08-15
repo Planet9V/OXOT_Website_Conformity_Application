@@ -30,11 +30,19 @@ jobs:
       # G1 — typecheck. lib/db must build first: consumers resolve @workspace/db
       # through TypeScript project references and read its emitted declarations,
       # not its source (lessons.md, L15).
+      # Build every composite library before typechecking anything that
+      # consumes them. Consumers resolve @workspace/* through TypeScript project
+      # references and read the EMITTED declarations, not the source, so a lib
+      # that has not been built makes every consumer fail with TS6305.
+      # --force because a stray tsbuildinfo would otherwise make this a no-op.
+      - name: Build workspace libraries
+        run: |
+          pnpm --filter @workspace/db exec tsc -b --force
+          pnpm --filter @workspace/api-zod exec tsc -b --force
+          pnpm --filter @workspace/api-client-react exec tsc -b --force
+
       - name: G1 typecheck
         run: |
-          # --force: a committed tsbuildinfo would otherwise make this a no-op
-          # on a fresh clone where dist/ is gitignored (TS6305).
-          pnpm --filter @workspace/db exec tsc -b --force
           pnpm --filter @workspace/api-server exec tsc --noEmit
           pnpm --filter @workspace/conformity exec tsc --noEmit
           pnpm --filter @workspace/oxot-web exec tsc --noEmit
