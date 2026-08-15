@@ -162,6 +162,26 @@ async function checkCorrigenda(articlesJson) {
     if (!looksLikeOjDocument(page, "2024/2847")) return meh("B3", "EUR-Lex act page unavailable — unknown-corrigenda check NOT performed");
     const found = [...page.matchAll(/corrigendum\/(\d{4}-\d{2}-\d{2})/g)].map((m) => m[1]);
     const known = applied.map((c) => c.eli.match(/corrigendum\/(\d{4}-\d{2}-\d{2})/)?.[1]).filter(Boolean);
+
+    /**
+     * POSITIVE CONTROL. This check used to pass whenever `found` came back
+     * empty — which is exactly what happens when EUR-Lex changes its markup or
+     * serves a page without the corrigendum links. It reported "no unaccounted
+     * corrigenda" having detected nothing at all: a check that could not fail.
+     *
+     * If the page does not surface the corrigenda we ALREADY KNOW about, the
+     * detection method is not working, and the honest answer is "could not
+     * verify" — not "clean". Silence is not success.
+     */
+    const missingKnown = known.filter((d) => !found.includes(d));
+    if (missingKnown.length) {
+      return meh(
+        "B3",
+        `detection method unverified: the act page does not surface known corrigendum date(s) ${missingKnown.join(", ")}, ` +
+          `so an UNKNOWN corrigendum would not be detected either — NOT verified`,
+      );
+    }
+
     const unknown = [...new Set(found)].filter((d) => !known.includes(d));
     if (unknown.length) {
       bad("B3", `EUR-Lex lists corrigendum date(s) not applied here: ${unknown.join(", ")}`);
