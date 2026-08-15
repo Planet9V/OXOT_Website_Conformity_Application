@@ -42,7 +42,18 @@ const RULES = [
   {
     id: "claims-exemption-granted",
     why: "asserts a legal exemption or immunity was conferred",
-    re: /\b(liability exemption granted|exemption granted|legally exempt|zero (?:manufacturer )?liability|safe harbou?r (?:shield )?(?:enabled|active|granted)|indemnif)\b/i,
+    /**
+     * "is/are exempt from" is the construction that slipped through: the Art. 21
+     * engine told a system integrator it "is exempt from Article 20 Manufacturer
+     * obligations", which is both an exemption this application cannot confer
+     * and an obligation set that Article 20 does not contain.
+     *
+     * Deliberately does NOT match "<Article> exempts ...", so that a correct
+     * statement of a real statutory exemption — Art. 64(10)(b) exempts
+     * open-source stewards from administrative fines — reads as describing the
+     * law rather than granting anything, and needs no waiver.
+     */
+    re: /\b(liability exemption granted|exemption granted|legally exempt|(?:is|are|you are) exempt from|zero (?:manufacturer )?liability|safe harbou?r (?:shield )?(?:enabled|active|granted)|indemnif)\b/i,
   },
   {
     id: "claims-certified",

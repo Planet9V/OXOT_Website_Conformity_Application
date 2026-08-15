@@ -43,148 +43,29 @@ import { Input } from '../components/ui/input';
 import { articlesData, recitalsData, annexesData } from '@/data/craCorpusData';
 
 // --- Types ---
-interface PlantAsset {
-  id: string;
+/** As returned by GET /api/conformity/products. */
+interface ProductRow {
+  id: number;
   name: string;
-  manufacturer: string;
-  model: string;
-  firmware: string;
-  installationDate: string;
-  craCategory: 'DEFAULT' | 'IMPORTANT_CLASS_I' | 'IMPORTANT_CLASS_II' | 'CRITICAL';
-  conformityRoute: 'MODULE_A_INTERNAL' | 'MODULE_H_FULL_QA' | 'MODULE_B_PLUS_C_NOTIFIED_BODY';
-  dutyToRefrainStatus: 'APPROVED' | 'HELD_DUTY_TO_REFRAIN' | 'RECALLED';
-  recital34SafeHarbor: boolean;
-  activeCVEs: number;
+  description: string;
+  manufacturerName: string;
+  productType: string;
+  version: string;
+  supportPeriodStart: string | null;
+  supportPeriodEnd: string | null;
+  placedOnMarketDate?: string | null;
 }
 
-interface PlantProject {
-  id: string;
-  name: string;
-  clientName: string;
-  clientIndustry: string;
-  clientTurnoverEur: number;
-  location: string;
-  totalAssets: number;
-  fineExposureEur: number;
-  assets: PlantAsset[];
-}
-
-const mockPlants: PlantProject[] = [
-  {
-    id: 'PLANT-01',
-    name: 'Rotterdam Petrochemical Terminal',
-    clientName: 'Vopak Energy Logistics',
-    clientIndustry: 'Chemical & Energy Storage',
-    clientTurnoverEur: 1450000000,
-    location: 'Rotterdam, Netherlands',
-    totalAssets: 48,
-    fineExposureEur: 36250000,
-    assets: [
-      {
-        id: 'AST-01',
-        name: 'Main SCADA Gateway',
-        manufacturer: 'Hirschmann',
-        model: 'RS20-0800M2M2SDAE',
-        firmware: 'v09.1.04',
-        installationDate: '2024-02-10',
-        craCategory: 'IMPORTANT_CLASS_I',
-        conformityRoute: 'MODULE_A_INTERNAL',
-        dutyToRefrainStatus: 'APPROVED',
-        recital34SafeHarbor: true,
-        activeCVEs: 0,
-      },
-      {
-        id: 'AST-02',
-        name: 'Distillation Safety PLC',
-        manufacturer: 'Siemens AG',
-        model: 'SIMATIC S7-1500F',
-        firmware: 'v3.1.2',
-        installationDate: '2023-11-15',
-        craCategory: 'IMPORTANT_CLASS_II',
-        conformityRoute: 'MODULE_H_FULL_QA',
-        dutyToRefrainStatus: 'APPROVED',
-        recital34SafeHarbor: true,
-        activeCVEs: 0,
-      },
-      {
-        id: 'AST-03',
-        name: 'Legacy Fieldbus Coupler',
-        manufacturer: 'Phoenix Contact',
-        model: 'FL IL 24 BK-PAC',
-        firmware: 'v1.4.0 (EOS)',
-        installationDate: '2021-05-20',
-        craCategory: 'IMPORTANT_CLASS_I',
-        conformityRoute: 'MODULE_A_INTERNAL',
-        dutyToRefrainStatus: 'HELD_DUTY_TO_REFRAIN',
-        recital34SafeHarbor: false,
-        activeCVEs: 3,
-      },
-      {
-        id: 'AST-04',
-        name: 'OT Perimeter Firewall',
-        manufacturer: 'Fortinet',
-        model: 'FortiGate 60F Industrial',
-        firmware: 'FortiOS 7.4.2',
-        installationDate: '2025-01-18',
-        craCategory: 'IMPORTANT_CLASS_II',
-        conformityRoute: 'MODULE_H_FULL_QA',
-        dutyToRefrainStatus: 'APPROVED',
-        recital34SafeHarbor: false,
-        activeCVEs: 0,
-      },
-    ],
-  },
-  {
-    id: 'PLANT-02',
-    name: 'Antwerp Chemical Facility 4',
-    clientName: 'BASF Antwerpen NV',
-    clientIndustry: 'Specialty Chemicals',
-    clientTurnoverEur: 3800000000,
-    location: 'Antwerp, Belgium',
-    totalAssets: 124,
-    fineExposureEur: 95000000,
-    assets: [
-      {
-        id: 'AST-05',
-        name: 'Cracker DCS Controller',
-        manufacturer: 'Schneider Electric',
-        model: 'Modicon M580',
-        firmware: 'v4.10',
-        installationDate: '2024-08-01',
-        craCategory: 'IMPORTANT_CLASS_II',
-        conformityRoute: 'MODULE_H_FULL_QA',
-        dutyToRefrainStatus: 'APPROVED',
-        recital34SafeHarbor: true,
-        activeCVEs: 0,
-      },
-    ],
-  },
-  {
-    id: 'PLANT-03',
-    name: 'Sochaux Automotive Paint Shop',
-    clientName: 'Stellantis Group',
-    clientIndustry: 'Automotive Manufacturing',
-    clientTurnoverEur: 189000000000,
-    location: 'Sochaux, France',
-    totalAssets: 310,
-    fineExposureEur: 15000000,
-    assets: [
-      {
-        id: 'AST-06',
-        name: 'Robotic Cell Safety Gateway',
-        manufacturer: 'Cisco Systems',
-        model: 'Catalyst IE3400 Heavy Duty',
-        firmware: 'IOS-XE 17.9.3',
-        installationDate: '2024-10-12',
-        craCategory: 'IMPORTANT_CLASS_I',
-        conformityRoute: 'MODULE_A_INTERNAL',
-        dutyToRefrainStatus: 'APPROVED',
-        recital34SafeHarbor: true,
-        activeCVEs: 0,
-      },
-    ],
-  },
-];
+/**
+ * The three "customer plants" that used to live here — Vopak, BASF, Stellantis,
+ * each with an invented annual turnover and an invented "Art. 64 fine exposure"
+ * down to the euro — have been removed. None of it was computed from anything,
+ * and presenting a named third party's fine exposure as a figure is not a thing
+ * this application can honestly do.
+ *
+ * The inventory below is the organisation's real products, from
+ * /api/conformity/products. Where there are none, it says so.
+ */
 
 export default function PartnerHubPage() {
   // 5-Stage Pipeline Tabs
@@ -197,43 +78,69 @@ export default function PartnerHubPage() {
     number: number | string;
   } | null>(null);
 
-  const selectedPlant = useMemo(() => {
-    return mockPlants.find((p) => p.id === selectedPlantId) || mockPlants[0];
-  }, [selectedPlantId]);
+  const productsQuery = useQuery<ProductRow[]>({
+    queryKey: ['/api/conformity/products'],
+    queryFn: async () => {
+      const res = await fetch('/api/conformity/products');
+      if (!res.ok) throw new Error('Failed to load products');
+      return res.json();
+    },
+  });
+  const products = productsQuery.data ?? [];
+  const selectedProduct = useMemo(
+    () => products.find((p) => String(p.id) === selectedPlantId) ?? products[0],
+    [products, selectedPlantId],
+  );
 
-  // Tab 2: Article 21 State
-  const [art21Form, setArt21Form] = useState({
-    siName: 'Axians Industrial Solutions (VINCI Energies)',
-    clientSite: 'Rotterdam Petrochemical Terminal',
-    projectName: 'OT Core Modernization Phase II',
-    targetModel: 'SIMATIC S7-1500F (6ES7516-3FN02-0AB0)',
-    targetSku: '6ES7516-3FN02-0AB0-OEM',
-    engineerName: 'Jean-Marc Laurent, Lead OT Systems Architect',
-    q1: true,
-    q2: true,
-    q3: true,
-    q4: true,
+  /**
+   * Tab 2: the Art. 21 / 22 deemed-manufacturer transition.
+   *
+   * Every question below is one the Regulation actually asks. The four that
+   * used to be here ("identical OEM replacement part", "manufacturer-signed
+   * firmware", "performance envelope maintained") were invented proxies for the
+   * Art. 3(30) test, and answering them all "yes" produced a "Recital 34 Safe
+   * Harbor Certificate" — a document for an exemption that does not exist.
+   * Recital 34 concerns a MANUFACTURER'S due diligence over third-party
+   * components and confers nothing on an integrator.
+   *
+   * Answers are tri-state. Unanswered must not collapse into "no", or the
+   * wizard tells someone they are in the clear because a field was left blank.
+   */
+  const [art21Form, setArt21Form] = useState<{
+    subjectName: string;
+    siteName: string;
+    projectName: string;
+    actorRole: 'importer' | 'distributor' | 'other_person' | 'manufacturer';
+    placedUnderOwnNameOrTrademark: boolean | null;
+    modificationMade: boolean | null;
+    changeFollowsPlacingOnMarket: boolean | null;
+    affectsAnnexIPartICompliance: boolean | null;
+    modifiesAssessedIntendedPurpose: boolean | null;
+    makesAvailableOnMarket: boolean | null;
+    cybersecurityImpactIsProductWide: boolean | null;
+  }>({
+    subjectName: '',
+    siteName: '',
+    projectName: '',
+    actorRole: 'other_person',
+    placedUnderOwnNameOrTrademark: null,
+    modificationMade: null,
+    changeFollowsPlacingOnMarket: null,
+    affectsAnnexIPartICompliance: null,
+    modifiesAssessedIntendedPurpose: null,
+    makesAvailableOnMarket: null,
+    cybersecurityImpactIsProductWide: null,
   });
   const [art21Result, setArt21Result] = useState<any | null>(null);
 
   const evaluateArt21Mutation = useMutation({
     mutationFn: async (payload: typeof art21Form) => {
-      const res = await fetch('/api/ecosystem/article21/assess', {
+      const res = await fetch('/api/conformity/deemed-manufacturer/assess', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemIntegratorName: payload.siName,
-          clientSiteName: payload.clientSite,
-          projectName: payload.projectName,
-          targetHardwareModel: payload.targetModel,
-          targetSku: payload.targetSku,
-          q1IdenticalReplacement: payload.q1,
-          q2OemSignedFirmware: payload.q2,
-          q3IntendedPurposeUnchanged: payload.q3,
-          q4PerformanceEnvelopeConstant: payload.q4,
-        }),
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error('Failed to assess Article 21');
+      if (!res.ok) throw new Error('Failed to record the assessment');
       return res.json();
     },
     onSuccess: (data) => setArt21Result(data),
@@ -427,306 +334,277 @@ export default function PartnerHubPage() {
         </button>
       </div>
 
-      {/* STAGE 1: Plant Inventory & Automated Classification Engine */}
+      {/* STAGE 1: Product inventory, from real data */}
       {activeTab === 'plants' && (
         <div className="space-y-6">
-          {/* Plant Selector & Metric Ribbon */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="md:col-span-2 bg-card/80 border border-border/80 p-4 rounded-xl shadow-xs">
-              <label className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
-                <span>Active Customer Plant Project</span>
-                <span className="text-primary font-normal text-[11px]">{mockPlants.length} Managed Plants</span>
-              </label>
+          <div className="bg-card/80 border border-border/80 p-4 rounded-xl shadow-xs">
+            <label className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+              <span>Product</span>
+              <span className="text-primary font-normal text-[11px]">
+                {products.length} {products.length === 1 ? 'product' : 'products'}
+              </span>
+            </label>
+            {products.length > 0 ? (
               <select
-                value={selectedPlantId}
+                value={selectedProduct ? String(selectedProduct.id) : ''}
                 onChange={(e) => setSelectedPlantId(e.target.value)}
                 className="mt-2 w-full p-2.5 rounded-lg bg-muted/40 border border-border text-sm font-medium focus:border-primary outline-none"
               >
-                {mockPlants.map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name} ({p.clientName} — {p.location})
+                {products.map((p) => (
+                  <option key={p.id} value={String(p.id)}>
+                    {p.name}
+                    {p.manufacturerName ? ` — ${p.manufacturerName}` : ''}
                   </option>
                 ))}
               </select>
-            </div>
-
-            <div className="bg-card/80 border border-border/80 p-4 rounded-xl shadow-xs space-y-1">
-              <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                Client Annual Turnover
-              </div>
-              <div className="font-display font-medium text-2xl text-foreground">
-                €{(selectedPlant.clientTurnoverEur / 1000000).toLocaleString()}M
-              </div>
-              <div className="text-[11px] text-muted-foreground font-mono">
-                {selectedPlant.clientIndustry}
-              </div>
-            </div>
-
-            <div className="bg-card/80 border border-border/80 p-4 rounded-xl shadow-xs space-y-1">
-              <div className="font-mono text-[11px] uppercase tracking-wider text-red-500 font-semibold flex items-center justify-between">
-                <span>Art. 64 Fine Exposure</span>
-                <button
-                  onClick={() => setStatutoryFlyout({ type: 'article', number: 61 })}
-                  className="hover:underline text-[10px]"
-                >
-                  Art. 61
-                </button>
-              </div>
-              <div className="font-display font-medium text-2xl text-red-500">
-                €{(selectedPlant.fineExposureEur / 1000000).toLocaleString()}M
-              </div>
-              <div className="text-[10px] text-muted-foreground font-mono">
-                Max of €15M or 2.5% Turnover
-              </div>
-            </div>
+            ) : (
+              <p className="mt-2 text-xs text-muted-foreground">
+                {productsQuery.isLoading
+                  ? 'Loading products…'
+                  : 'No products yet. Add one in the workbench and it will appear here.'}
+              </p>
+            )}
           </div>
 
-          {/* Plant Asset Table */}
           <div className="bg-card/80 border border-border/80 rounded-xl p-5 shadow-xs space-y-4">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-border/60 pb-3">
               <div>
                 <h2 className="font-display font-medium text-lg text-foreground">
-                  Equipment Line Inventory & CRA Statutory Classification
+                  Product inventory
                 </h2>
                 <p className="text-xs text-muted-foreground">
-                  Automated Annex III risk mapping and conformity pathway resolution for {selectedPlant.name}
+                  The organisation&apos;s products, as recorded in the workbench. Select one to
+                  assess whether Article 21 or 22 has made you its manufacturer.
                 </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" className="font-mono text-xs gap-1">
-                  <FileSpreadsheet className="w-3.5 h-3.5 text-primary" />
-                  Import CSV / Nozomi
-                </Button>
-                <Button size="sm" className="font-mono text-xs gap-1 bg-primary text-primary-foreground">
-                  <Plus className="w-3.5 h-3.5" />
-                  Add Equipment
-                </Button>
               </div>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-border/60 text-muted-foreground font-mono uppercase text-[11px]">
-                    <th className="py-2.5 px-3">Asset ID / Name</th>
-                    <th className="py-2.5 px-3">OEM / Model</th>
-                    <th className="py-2.5 px-3">Firmware</th>
-                    <th className="py-2.5 px-3">CRA Classification</th>
-                    <th className="py-2.5 px-3">Conformity Route</th>
-                    <th className="py-2.5 px-3">Duty to Refrain</th>
-                    <th className="py-2.5 px-3">Recital 34</th>
-                    <th className="py-2.5 px-3 text-right">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/40">
-                  {selectedPlant.assets.map((asset) => (
-                    <tr key={asset.id} className="hover:bg-muted/20 transition-colors">
-                      <td className="py-3 px-3">
-                        <div className="font-mono font-bold text-foreground">{asset.id}</div>
-                        <div className="text-muted-foreground text-[11px]">{asset.name}</div>
-                      </td>
-                      <td className="py-3 px-3">
-                        <span className="font-medium text-foreground">{asset.manufacturer}</span>
-                        <div className="text-muted-foreground text-[11px]">{asset.model}</div>
-                      </td>
-                      <td className="py-3 px-3 font-mono text-[11px] text-muted-foreground">
-                        {asset.firmware}
-                      </td>
-                      <td className="py-3 px-3">
-                        <span
-                          className={`font-mono text-[10px] px-2 py-0.5 rounded-full border font-semibold ${
-                            asset.craCategory === 'IMPORTANT_CLASS_II'
-                              ? 'bg-orange-500/10 text-orange-500 border-orange-500/30'
-                              : asset.craCategory === 'IMPORTANT_CLASS_I'
-                              ? 'bg-primary/10 text-primary border-primary/30'
-                              : 'bg-muted text-muted-foreground border-border'
-                          }`}
-                        >
-                          {asset.craCategory.replace('_', ' ')}
-                        </span>
-                      </td>
-                      <td className="py-3 px-3 font-mono text-[11px] text-muted-foreground">
-                        {asset.conformityRoute.replace(/_/g, ' ')}
-                      </td>
-                      <td className="py-3 px-3">
-                        <span
-                          className={`font-mono text-[10px] px-2 py-0.5 rounded-md font-semibold ${
-                            asset.dutyToRefrainStatus === 'APPROVED'
-                              ? 'bg-green-500/10 text-green-500 border border-green-500/20'
-                              : 'bg-red-500/10 text-red-500 border border-red-500/20'
-                          }`}
-                        >
-                          {asset.dutyToRefrainStatus}
-                        </span>
-                      </td>
-                      <td className="py-3 px-3">
-                        {asset.recital34SafeHarbor ? (
-                          <span className="inline-flex items-center gap-1 font-mono text-[10px] text-green-500">
-                            <CheckCircle2 className="w-3 h-3" /> Safe Harbor
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 font-mono text-[10px] text-muted-foreground">
-                            <XCircle className="w-3 h-3" /> Standard
-                          </span>
-                        )}
-                      </td>
-                      <td className="py-3 px-3 text-right">
-                        <button
-                          onClick={() => {
-                            setArt21Form((prev) => ({
-                              ...prev,
-                              targetModel: `${asset.manufacturer} ${asset.model}`,
-                              clientSite: selectedPlant.name,
-                            }));
-                            setActiveTab('article21');
-                          }}
-                          className="font-mono text-[11px] text-primary hover:underline"
-                        >
-                          Clear Art. 21 →
-                        </button>
-                      </td>
+            {products.length === 0 ? (
+              <div className="py-10 text-center space-y-2">
+                <Boxes className="w-8 h-8 text-muted-foreground mx-auto" />
+                <h3 className="font-display font-medium text-base text-foreground">
+                  Nothing to show yet
+                </h3>
+                <p className="text-xs text-muted-foreground max-w-sm mx-auto">
+                  This page reads the real product catalogue. It does not display sample data.
+                </p>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="border-b border-border/60 text-muted-foreground font-mono uppercase text-[11px]">
+                      <th className="py-2.5 px-3">Product</th>
+                      <th className="py-2.5 px-3">Manufacturer</th>
+                      <th className="py-2.5 px-3">Type</th>
+                      <th className="py-2.5 px-3">Version</th>
+                      <th className="py-2.5 px-3">Support period</th>
+                      <th className="py-2.5 px-3 text-right">Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="divide-y divide-border/40">
+                    {products.map((product) => (
+                      <tr key={product.id} className="hover:bg-muted/20 transition-colors">
+                        <td className="py-3 px-3">
+                          <div className="font-medium text-foreground">{product.name}</div>
+                          {product.description && (
+                            <div className="text-muted-foreground text-[11px]">{product.description}</div>
+                          )}
+                        </td>
+                        <td className="py-3 px-3 text-foreground">
+                          {product.manufacturerName || <span className="text-muted-foreground">—</span>}
+                        </td>
+                        <td className="py-3 px-3 font-mono text-[11px] text-muted-foreground">
+                          {product.productType}
+                        </td>
+                        <td className="py-3 px-3 font-mono text-[11px] text-muted-foreground">
+                          {product.version || '—'}
+                        </td>
+                        <td className="py-3 px-3 font-mono text-[11px] text-muted-foreground">
+                          {product.supportPeriodEnd
+                            ? `until ${product.supportPeriodEnd}`
+                            : <span className="text-amber-500">not set (Art. 13(8))</span>}
+                        </td>
+                        <td className="py-3 px-3 text-right">
+                          <button
+                            onClick={() => {
+                              setSelectedPlantId(String(product.id));
+                              setArt21Form((prev) => ({
+                                ...prev,
+                                subjectName: product.manufacturerName || prev.subjectName,
+                                projectName: product.name,
+                              }));
+                              setActiveTab('article21');
+                            }}
+                            className="font-mono text-[11px] text-primary hover:underline"
+                          >
+                            Assess Art. 21 / 22 →
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       )}
 
-      {/* STAGE 2: Article 21 & Recital 34 Safe Harbor Clearance */}
+      {/* STAGE 2: Articles 21 & 22 — the deemed-manufacturer transition */}
       {activeTab === 'article21' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-7 bg-card/80 border border-border/80 rounded-xl p-6 shadow-xs space-y-5">
             <div className="border-b border-border/60 pb-3">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-primary">
-                  Stage 2: Statutory Decision Wizard
+                  Stage 2: Deemed-manufacturer assessment
                 </span>
                 <button
                   onClick={() => setStatutoryFlyout({ type: 'article', number: 21 })}
                   className="font-mono text-xs text-muted-foreground hover:text-primary flex items-center gap-1"
                 >
                   <Gavel className="w-3 h-3" />
-                  Read Art. 21(2) & Recital 34
+                  Read Art. 21 &amp; 22
                 </button>
               </div>
               <h2 className="font-display font-medium text-xl text-foreground mt-1">
-                Substantial Modification & Integrator Liability Demarcation
+                Have you become the manufacturer?
               </h2>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Verify whether plant maintenance interventions qualify for the Recital 34 Safe Harbor or trigger Article 20 Manufacturer liabilities.
+                Article 21 covers importers and distributors. Article 22 covers anyone else who
+                substantially modifies a product and makes it available. Either way the consequence
+                is the same: Articles 13 and 14 apply to you.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-[11px] font-mono text-muted-foreground">System Integrator Entity</label>
+                <label className="text-[11px] font-mono text-muted-foreground">Who is being assessed</label>
                 <Input
-                  value={art21Form.siName}
-                  onChange={(e) => setArt21Form({ ...art21Form, siName: e.target.value })}
+                  value={art21Form.subjectName}
+                  onChange={(e) => setArt21Form({ ...art21Form, subjectName: e.target.value })}
                   className="mt-1 text-xs"
+                  placeholder="Legal entity"
                 />
               </div>
               <div>
-                <label className="text-[11px] font-mono text-muted-foreground">Target Plant / Site</label>
+                <label className="text-[11px] font-mono text-muted-foreground">Site</label>
                 <Input
-                  value={art21Form.clientSite}
-                  onChange={(e) => setArt21Form({ ...art21Form, clientSite: e.target.value })}
+                  value={art21Form.siteName}
+                  onChange={(e) => setArt21Form({ ...art21Form, siteName: e.target.value })}
                   className="mt-1 text-xs"
                 />
               </div>
-              <div>
-                <label className="text-[11px] font-mono text-muted-foreground">Target Equipment SKU / Model</label>
+              <div className="col-span-2">
+                <label className="text-[11px] font-mono text-muted-foreground">Project</label>
                 <Input
-                  value={art21Form.targetModel}
-                  onChange={(e) => setArt21Form({ ...art21Form, targetModel: e.target.value })}
-                  className="mt-1 text-xs"
-                />
-              </div>
-              <div>
-                <label className="text-[11px] font-mono text-muted-foreground">Lead Certifying Engineer</label>
-                <Input
-                  value={art21Form.engineerName}
-                  onChange={(e) => setArt21Form({ ...art21Form, engineerName: e.target.value })}
+                  value={art21Form.projectName}
+                  onChange={(e) => setArt21Form({ ...art21Form, projectName: e.target.value })}
                   className="mt-1 text-xs"
                 />
               </div>
             </div>
 
-            {/* 4 Statutory Questions */}
+            {/* The role decides which article applies — Art. 22 is expressly for
+                anyone who is NOT the manufacturer, importer or distributor. */}
+            <div className="pt-2 border-t border-border/60">
+              <label className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">
+                Your role for this product
+              </label>
+              <select
+                value={art21Form.actorRole}
+                onChange={(e) =>
+                  setArt21Form({ ...art21Form, actorRole: e.target.value as typeof art21Form.actorRole })
+                }
+                className="mt-1 w-full text-xs bg-background border border-border/60 rounded-lg px-3 py-2"
+              >
+                <option value="importer">Importer — Article 21</option>
+                <option value="distributor">Distributor — Article 21</option>
+                <option value="other_person">Any other person (e.g. system integrator) — Article 22</option>
+                <option value="manufacturer">Manufacturer — neither article applies</option>
+              </select>
+            </div>
+
             <div className="space-y-3 pt-2 border-t border-border/60">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Statutory Engineering Checklist
+                Statutory questions
               </span>
+              <p className="text-[11px] text-muted-foreground -mt-1">
+                Leave a question unanswered and no determination is made. An unanswered question is
+                not a "no".
+              </p>
 
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-muted/20 border border-border/60 cursor-pointer hover:bg-muted/40">
-                <input
-                  type="checkbox"
-                  checked={art21Form.q1}
-                  onChange={(e) => setArt21Form({ ...art21Form, q1: e.target.checked })}
-                  className="mt-0.5 rounded text-primary focus:ring-primary"
-                />
-                <div className="text-xs">
-                  <div className="font-medium text-foreground">
-                    1. Identical OEM Replacement Part (Recital 34)
+              {[
+                {
+                  key: 'placedUnderOwnNameOrTrademark' as const,
+                  label: 'Placed on the market under your own name or trademark?',
+                  help: 'Article 21, first limb. For an importer or distributor this alone makes you the manufacturer, with or without any modification.',
+                  showFor: ['importer', 'distributor'],
+                },
+                {
+                  key: 'modificationMade' as const,
+                  label: 'Was any change made to the product?',
+                  help: 'Article 3(30) begins here. No change means no substantial modification.',
+                  showFor: null,
+                },
+                {
+                  key: 'changeFollowsPlacingOnMarket' as const,
+                  label: 'Did the change come after the product was placed on the market?',
+                  help: 'Article 3(30). A change made before that is part of manufacturing the product, not a modification of it.',
+                  showFor: null,
+                },
+                {
+                  key: 'affectsAnnexIPartICompliance' as const,
+                  label: 'Does the change affect compliance with the essential cybersecurity requirements in Annex I, Part I?',
+                  help: 'Article 3(30), first limb. Either this or the next question is enough.',
+                  showFor: null,
+                },
+                {
+                  key: 'modifiesAssessedIntendedPurpose' as const,
+                  label: 'Does the change modify the intended purpose the product was assessed for?',
+                  help: 'Article 3(30), second limb.',
+                  showFor: null,
+                },
+                {
+                  key: 'makesAvailableOnMarket' as const,
+                  label: 'Do you make the modified product available on the market?',
+                  help: 'Article 22(1) requires this as well as a substantial modification. Modifying a product you operate yourself does not make you its manufacturer.',
+                  showFor: ['other_person'],
+                },
+                {
+                  key: 'cybersecurityImpactIsProductWide' as const,
+                  label: 'Does the modification affect the cybersecurity of the product as a whole?',
+                  help: 'Article 22(2). This decides whether the obligations cover only the modified part or the entire product.',
+                  showFor: ['other_person'],
+                },
+              ]
+                .filter((q) => !q.showFor || q.showFor.includes(art21Form.actorRole))
+                .map((q) => (
+                  <div key={q.key} className="p-3 rounded-lg bg-muted/20 border border-border/60 space-y-2">
+                    <div className="text-xs font-medium text-foreground">{q.label}</div>
+                    <div className="text-[11px] text-muted-foreground">{q.help}</div>
+                    <div className="flex gap-2">
+                      {[
+                        { v: null, l: 'Unanswered' },
+                        { v: true, l: 'Yes' },
+                        { v: false, l: 'No' },
+                      ].map((opt) => (
+                        <button
+                          key={String(opt.v)}
+                          onClick={() => setArt21Form({ ...art21Form, [q.key]: opt.v })}
+                          className={`font-mono text-[11px] px-3 py-1 rounded-full border transition-colors ${
+                            art21Form[q.key] === opt.v
+                              ? 'bg-primary text-primary-foreground border-primary'
+                              : 'bg-background text-muted-foreground border-border/60 hover:border-primary/50'
+                          }`}
+                        >
+                          {opt.l}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                  <div className="text-muted-foreground text-[11px]">
-                    The replacement unit matches the original manufacturer form, fit, and certified SKU.
-                  </div>
-                </div>
-              </label>
-
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-muted/20 border border-border/60 cursor-pointer hover:bg-muted/40">
-                <input
-                  type="checkbox"
-                  checked={art21Form.q2}
-                  onChange={(e) => setArt21Form({ ...art21Form, q2: e.target.checked })}
-                  className="mt-0.5 rounded text-primary focus:ring-primary"
-                />
-                <div className="text-xs">
-                  <div className="font-medium text-foreground">
-                    2. Manufacturer-Signed Firmware Verification
-                  </div>
-                  <div className="text-muted-foreground text-[11px]">
-                    Firmware updates are cryptographically signed by the OEM without custom unsigned code modifications.
-                  </div>
-                </div>
-              </label>
-
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-muted/20 border border-border/60 cursor-pointer hover:bg-muted/40">
-                <input
-                  type="checkbox"
-                  checked={art21Form.q3}
-                  onChange={(e) => setArt21Form({ ...art21Form, q3: e.target.checked })}
-                  className="mt-0.5 rounded text-primary focus:ring-primary"
-                />
-                <div className="text-xs">
-                  <div className="font-medium text-foreground">
-                    3. Intended Purpose & Safety Boundary Constant (Art. 21(1))
-                  </div>
-                  <div className="text-muted-foreground text-[11px]">
-                    The operational purpose, safety interlocks, and network routing boundaries remain unchanged.
-                  </div>
-                </div>
-              </label>
-
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-muted/20 border border-border/60 cursor-pointer hover:bg-muted/40">
-                <input
-                  type="checkbox"
-                  checked={art21Form.q4}
-                  onChange={(e) => setArt21Form({ ...art21Form, q4: e.target.checked })}
-                  className="mt-0.5 rounded text-primary focus:ring-primary"
-                />
-                <div className="text-xs">
-                  <div className="font-medium text-foreground">
-                    4. Performance & Threat Envelope Maintained
-                  </div>
-                  <div className="text-muted-foreground text-[11px]">
-                    No new network protocols, wireless bridges, or cloud telemetry forwarders introduced.
-                  </div>
-                </div>
-              </label>
+                ))}
             </div>
 
             <Button
@@ -734,70 +612,100 @@ export default function PartnerHubPage() {
               disabled={evaluateArt21Mutation.isPending}
               className="w-full bg-primary text-primary-foreground font-medium text-xs py-2.5 shadow-sm"
             >
-              {evaluateArt21Mutation.isPending ? 'Evaluating Statutory Basis...' : 'Execute Article 21 Statutory Clearance'}
+              {evaluateArt21Mutation.isPending ? 'Recording assessment...' : 'Record assessment'}
             </Button>
           </div>
 
-          {/* Right Column: Clearance Certificate Output */}
+          {/* Right column: the determination. Not a certificate. */}
           <div className="lg:col-span-5 space-y-4">
             {art21Result ? (
               <div
                 className={`p-6 rounded-xl border shadow-sm space-y-4 ${
-                  art21Result.classification === 'INTEGRATOR_EXEMPT'
-                    ? 'bg-green-500/[0.04] border-green-500/40'
-                    : 'bg-red-500/[0.04] border-red-500/40'
+                  art21Result.determination?.deemedManufacturer
+                    ? 'bg-red-500/[0.04] border-red-500/40'
+                    : 'bg-muted/20 border-border/60'
                 }`}
               >
                 <div className="flex items-center justify-between pb-3 border-b border-border/60">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-                    Statutory Determination Result
+                    Assessment record
                   </span>
                   <span
                     className={`font-mono text-xs px-2.5 py-0.5 rounded-full font-bold ${
-                      art21Result.classification === 'INTEGRATOR_EXEMPT'
-                        ? 'bg-green-500/20 text-green-500 border border-green-500/40'
-                        : 'bg-red-500/20 text-red-500 border border-red-500/40'
+                      art21Result.determination?.deemedManufacturer
+                        ? 'bg-red-500/20 text-red-500 border border-red-500/40'
+                        : 'bg-muted text-muted-foreground border border-border/60'
                     }`}
                   >
-                    {art21Result.classification}
+                    {art21Result.determination?.deemedManufacturer
+                      ? 'MANUFACTURER OBLIGATIONS APPLY'
+                      : 'NO TRANSITION ON THESE FACTS'}
                   </span>
                 </div>
 
                 <div>
                   <h3 className="font-display font-medium text-lg text-foreground">
-                    {art21Result.classification === 'INTEGRATOR_EXEMPT'
-                      ? 'Recital 34 Safe Harbor Certificate Granted'
-                      : 'Manufacturer Status Triggered (Art. 20)'}
+                    {art21Result.determination?.governingArticle
+                      ? `${art21Result.determination.governingArticle}: you are considered to be the manufacturer`
+                      : 'No determination that you are the manufacturer'}
                   </h3>
                   <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                    {art21Result.statutoryBasis}
+                    {art21Result.determination?.message}
                   </p>
                 </div>
 
+                {art21Result.determination?.obligationScope && (
+                  <div className="p-3 rounded-lg bg-card/60 border border-border/60 text-xs">
+                    <div className="font-mono text-[10px] text-muted-foreground uppercase">Scope of obligations</div>
+                    <div className="text-foreground mt-0.5">
+                      {art21Result.determination.obligationScope === 'entire_product'
+                        ? 'The entire product'
+                        : 'Only the part affected by the modification (Article 22(2))'}
+                    </div>
+                  </div>
+                )}
+
+                {art21Result.determination?.unanswered?.length > 0 && (
+                  <div className="p-3 rounded-lg bg-amber-500/[0.06] border border-amber-500/40 text-xs space-y-1">
+                    <div className="font-mono text-[10px] text-amber-600 uppercase">Still needed</div>
+                    {art21Result.determination.unanswered.map((u: string, i: number) => (
+                      <div key={i} className="text-muted-foreground leading-relaxed">{u}</div>
+                    ))}
+                  </div>
+                )}
+
+                {art21Result.openedAssessmentId && (
+                  <Link
+                    href={`/assessments/${art21Result.openedAssessmentId}`}
+                    className="flex items-center justify-between p-3 rounded-lg bg-primary/[0.06] border border-primary/40 text-xs hover:bg-primary/[0.1]"
+                  >
+                    <span className="text-foreground">
+                      A manufacturer obligation set has been opened for this product.
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-primary shrink-0" />
+                  </Link>
+                )}
+
                 <div className="p-3 rounded-lg bg-card/60 border border-border/60 space-y-1 text-xs">
-                  <div className="font-mono text-[10px] text-muted-foreground uppercase">Cryptographic Audit Hash:</div>
+                  <div className="font-mono text-[10px] text-muted-foreground uppercase">
+                    Record hash · assessed {art21Result.assessment?.assessedAt?.slice(0, 19).replace('T', ' ')}
+                  </div>
                   <div className="font-mono text-[11px] text-primary break-all">
-                    {art21Result.certificateHash}
+                    {art21Result.assessment?.recordHash}
                   </div>
                 </div>
 
-                <div className="text-xs text-muted-foreground leading-relaxed">
-                  <strong>Recommendation:</strong> {art21Result.recommendationText}
+                <div className="text-[11px] text-muted-foreground leading-relaxed">
+                  Cited: {art21Result.determination?.citations?.join(', ')}. This is a record of what
+                  was assessed on the facts supplied. It confers nothing and grants no exemption.
                 </div>
-
-                {art21Result.classification === 'INTEGRATOR_EXEMPT' && (
-                  <Button variant="outline" className="w-full font-mono text-xs gap-1.5">
-                    <FileDown className="w-4 h-4 text-primary" />
-                    Download Signed Recital 34 Certificate (PDF)
-                  </Button>
-                )}
               </div>
             ) : (
               <div className="p-8 rounded-xl bg-muted/20 border border-border/60 text-center space-y-2">
                 <Scale className="w-8 h-8 text-muted-foreground mx-auto" />
-                <h3 className="font-display font-medium text-base text-foreground">Awaiting Assessment Execution</h3>
+                <h3 className="font-display font-medium text-base text-foreground">No assessment yet</h3>
                 <p className="text-xs text-muted-foreground max-w-xs mx-auto">
-                  Complete the 4 statutory questions on the left and click execute to generate a verified Recital 34 Safe Harbor Certificate.
+                  Answer the statutory questions to record a determination under Article 21 or 22.
                 </p>
               </div>
             )}
@@ -1003,7 +911,7 @@ export default function PartnerHubPage() {
                 Annex VII Technical Documentation Compiler
               </h2>
               <p className="text-xs text-muted-foreground">
-                Assembles the 6 statutory documentation sections for {selectedPlant.name} required by European Notified Bodies.
+                Assembles the Annex VII documentation sections for {selectedProduct?.name ?? 'the selected product'}.
               </p>
             </div>
             <button
