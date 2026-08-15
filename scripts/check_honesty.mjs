@@ -130,6 +130,15 @@ function scan() {
   return { violations, waivers };
 }
 
+/**
+ * Baseline ratchet. These gates start red on a codebase that predates them, and
+ * a permanently-red CI is one everybody learns to ignore. `--baseline <n>` fails
+ * only when the count EXCEEDS n, so new defects are blocked immediately while the
+ * known backlog is burned down. The number must only ever go down.
+ */
+const baselineArg = process.argv.indexOf("--baseline");
+const BASELINE = baselineArg !== -1 ? Number(process.argv[baselineArg + 1]) : 0;
+
 const { violations, waivers } = scan();
 
 if (process.argv.includes("--list")) {
@@ -142,8 +151,10 @@ if (waivers.length) {
   for (const w of waivers) console.log(`  ${w.file}:${w.line} [${w.rule}] — ${w.reason}`);
 }
 
-if (violations.length) {
-  console.error(`\nHONESTY GATE FAILED — ${violations.length} unearned claim(s):\n`);
+if (violations.length > BASELINE) {
+  console.error(
+    `\nHONESTY GATE FAILED — ${violations.length} unearned claim(s), baseline ${BASELINE}:\n`,
+  );
   for (const v of violations) {
     console.error(`  ${v.file}:${v.line}`);
     console.error(`    rule : ${v.rule} — ${v.why}`);
@@ -155,4 +166,13 @@ if (violations.length) {
   process.exit(1);
 }
 
-console.log(`\nHonesty gate passed — no unearned statutory claims found.`);
+if (violations.length) {
+  // At or under baseline: report the backlog without failing, and refuse to let
+  // it grow. Lower the baseline in .github/workflows/ci.yml as these are fixed.
+  console.log(
+    `\nHonesty gate: ${violations.length} known finding(s), at or under baseline ${BASELINE}. Not failing.`,
+  );
+  for (const v of violations) console.log(`  ${v.file}:${v.line} [${v.rule}]`);
+} else {
+  console.log(`\nHonesty gate passed — no unearned statutory claims found.`);
+}

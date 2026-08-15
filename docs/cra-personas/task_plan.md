@@ -362,7 +362,7 @@ Scope as delegated access, not a cockpit persona.
 
 | Phase | Status | Gate | Notes |
 |-------|--------|------|-------|
-| 0 — Role model | not_started | — | Blocks all others |
+| 0 — Role model | **complete** | G1-G5 pass; G6 verified live | 0.1-0.6, 0.8 done |
 | 1 — Manufacturer | not_started | — | Depends on 0 |
 | 2 — Deemed manufacturer | not_started | — | Depends on 1 |
 | 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |

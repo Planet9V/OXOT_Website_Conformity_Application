@@ -134,13 +134,24 @@ for (const dir of SCAN_DIRS) {
   }
 }
 
+/**
+ * Baseline ratchet. These gates start red on a codebase that predates them, and
+ * a permanently-red CI is one everybody learns to ignore. `--baseline <n>` fails
+ * only when the count EXCEEDS n, so new defects are blocked immediately while the
+ * known backlog is burned down. The number must only ever go down.
+ */
+const baselineArg = process.argv.indexOf("--baseline");
+const BASELINE = baselineArg !== -1 ? Number(process.argv[baselineArg + 1]) : 0;
+
 if (waived.length) {
   console.log(`\n${waived.length} waived:`);
   for (const w of waived) console.log(`  ${w.file}:${w.line} [${w.kind}] — ${w.reason}`);
 }
 
-if (violations.length) {
-  console.error(`\nCITATION GATE FAILED — ${violations.length} citation(s) contradict the corpus:\n`);
+if (violations.length > BASELINE) {
+  console.error(
+    `\nCITATION GATE FAILED — ${violations.length} citation(s) contradict the corpus, baseline ${BASELINE}:\n`,
+  );
   for (const v of violations) {
     console.error(`  ${v.file}:${v.line}  [${v.kind}]`);
     console.error(`    ${v.msg}`);
@@ -150,4 +161,11 @@ if (violations.length) {
   process.exit(1);
 }
 
-console.log(`Citation gate passed — all CRA article citations resolve against the corpus (1..${MAX}).`);
+if (violations.length) {
+  console.log(
+    `\nCitation gate: ${violations.length} known finding(s), at or under baseline ${BASELINE}. Not failing.`,
+  );
+  for (const v of violations) console.log(`  ${v.file}:${v.line} [${v.kind}]`);
+} else {
+  console.log(`Citation gate passed — all CRA article citations resolve against the corpus (1..${MAX}).`);
+}

@@ -179,6 +179,24 @@ after `build api` succeeded. Re-seeding then faithfully restored the old data.
 image, run the seed, then verify against the DB — three separate steps, none of
 which the others imply.
 
+### L19 — Count the findings, not the output lines
+Reported the citation gate at "40 findings" for two sessions. The real number is
+36; `grep -c` was counting output *lines* and each violation prints several. The
+error only surfaced when the CI ratchet behaved differently from expectation at
+the boundary.
+**Apply:** have the tool print its own count and read that, rather than grepping
+its rendering. Any number quoted to the user should come from the program, not
+from a pipe.
+
+### L20 — A gate that is red on day one gets ignored
+Both gates fail on a codebase that predates them (13 and 36). Landing that in CI
+unchanged would make every build red, and a permanently-red build teaches people
+to skip it — which is exactly how the original 36 defects survived with no CI at
+all.
+**Apply:** ship gates with a `--baseline <n>` ratchet set to the known backlog.
+New defects push the count above the baseline and fail immediately; the backlog
+is burned down by lowering the number. The baseline may only ever decrease.
+
 ---
 
 ## Phase retros
