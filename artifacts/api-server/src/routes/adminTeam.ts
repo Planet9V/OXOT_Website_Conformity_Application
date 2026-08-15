@@ -42,18 +42,10 @@ function toDto(m: ConformityMemberRow) {
     roleResponsibility: m.roleResponsibility || "Lead Assessor & PSIRT Coordinator",
     // One of TEAM_ROLES, or null while unassigned — never defaulted (D12).
     teamRole: m.teamRole ?? null,
-    plainPassword: m.plainPassword || "Password123!",
     active: m.active,
     createdAt: safeIsoString(m.createdAt),
     updatedAt: safeIsoString(m.updatedAt),
   };
-}
-
-// Non-admin surfaces (PSIRT canvas, dropdowns) only need identity fields —
-// never expose plainPassword outside the admin team-management page.
-function toPublicDto(m: ConformityMemberRow) {
-  const { plainPassword: _plainPassword, ...rest } = toDto(m);
-  return rest;
 }
 
 /**
@@ -81,15 +73,15 @@ function isUniqueViolation(err: unknown): boolean {
   return isUniqueViolation((err as { cause?: unknown }).cause);
 }
 
-// Public or session GET for PSIRT canvas & dropdowns — identity fields only,
-// never plainPassword (that's an admin-only surface, see /admin/team below).
+// Session GET for PSIRT canvas & dropdowns — identity fields only. No route
+// returns a password: plain_password was removed from the table entirely (6.2).
 router.get("/team", requireAuth, async (_req, res): Promise<void> => {
   try {
     const rows = await db
       .select()
       .from(conformityMembersTable)
       .orderBy(desc(conformityMembersTable.active), asc(conformityMembersTable.displayName));
-    res.json(rows.map(toPublicDto));
+    res.json(rows.map(toDto));
   } catch (err: any) {
     res.status(500).json({ error: err?.message || "Failed to list team members" });
   }
@@ -168,7 +160,6 @@ router.post("/admin/team", requireAdmin, async (req, res): Promise<void> => {
           organization: organization || "OXOT Engineering B.V.",
           roleResponsibility: roleResponsibility || "Lead Assessor & PSIRT Coordinator",
           teamRole: teamRole.value,
-          plainPassword: userPassword,
           passwordHash: hashPassword(userPassword),
         })
         .returning();
@@ -237,7 +228,6 @@ router.patch("/admin/team/:id", requireAdmin, async (req, res): Promise<void> =>
       }
     }
     if (body.password !== undefined && body.password.length > 0) {
-      set.plainPassword = body.password;
       set.passwordHash = hashPassword(body.password);
       changes.push("password updated");
     }

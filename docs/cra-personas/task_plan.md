@@ -554,6 +554,9 @@ branch on.
   and badged on the team page. Drift-guarded by `teamRoles.test.ts`.
 - **6.2** Fix `conformityMembers.plainPassword` — passwords are stored in
   plaintext. This table is being touched anyway; it is not acceptable to leave.
+  — **done 2026-08-15**: column removed from schema, routes, seeds and dropped
+  from the database; scrypt hash is the only stored credential; verified live
+  (create → login → rotate → old password 401, DTOs carry no password field).
 - **6.3** Scope obligations and evidence requests by role, so an inbox can be
   role-scoped rather than showing everyone everything.
 

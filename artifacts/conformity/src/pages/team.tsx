@@ -328,7 +328,9 @@ function EditMemberDialog({
   const [organization, setOrganization] = useState(member.organization || "OXOT Engineering B.V.");
   const [roleResponsibility, setRoleResponsibility] = useState(member.roleResponsibility || "Lead Assessor & PSIRT Coordinator");
   const [teamRole, setTeamRole] = useState(member.teamRole ?? "unassigned");
-  const [password, setPassword] = useState(member.plainPassword || "Password123!");
+  // Passwords are stored only as hashes (6.2) — there is nothing to prefill.
+  // Blank means "keep the current password"; handleSave omits it when empty.
+  const [password, setPassword] = useState("");
 
   const update = useUpdateTeamMember({
     mutation: {
@@ -413,7 +415,14 @@ function EditMemberDialog({
 
           <div className="space-y-1 sm:col-span-2">
             <Label htmlFor="edit-member-password">Update Password</Label>
-            <Input id="edit-member-password" className="h-8 text-xs font-mono" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Input
+              id="edit-member-password"
+              type="password"
+              className="h-8 text-xs font-mono"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Leave blank to keep current password"
+            />
           </div>
         </div>
 

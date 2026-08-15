@@ -330,7 +330,6 @@ export async function seedDemoMembers(targetDb: any = db): Promise<void> {
         organization: m.organization,
         roleResponsibility: m.roleResponsibility,
         teamRole: m.teamRole,
-        plainPassword: m.plainPassword,
         passwordHash: hashPassword(m.plainPassword),
         active: true,
       })
@@ -345,7 +344,6 @@ export async function seedDemoMembers(targetDb: any = db): Promise<void> {
           organization: m.organization,
           roleResponsibility: m.roleResponsibility,
           teamRole: m.teamRole,
-          plainPassword: m.plainPassword,
           passwordHash: hashPassword(m.plainPassword),
           active: true,
         },

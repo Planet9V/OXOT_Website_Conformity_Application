@@ -46,7 +46,9 @@ export const conformityMembersTable = pgTable("conformity_members", {
   /** One of TEAM_ROLES, or null while unassigned. Routes validate the value;
    * `roleResponsibility` above stays as free-text description alongside it. */
   teamRole: text("team_role").$type<TeamRole>(),
-  plainPassword: text("plain_password").notNull().default("Password123!"),
+  // plain_password (a plaintext copy of every member's password) lived here
+  // until 2026-08-15. Removed under task 6.2 — the hash below is the only
+  // stored credential, and no route may ever return a password.
   passwordHash: text("password_hash").notNull(),
   active: boolean("active").notNull().default(true),
   /**
