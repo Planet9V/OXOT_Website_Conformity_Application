@@ -1,36 +1,27 @@
-# Loki Mode CONTINUITY.md - Working Memory & Master Log
+# CONTINUITY — pointer file
 
-> **Current Phase**: Operations & Maintenance
-> **Status**: Docker Production Local Stack 100% Operational (Port 8088)
+**This is not the source of truth.** The CRA persona programme is planned and
+tracked in `docs/cra-personas/`, which lives with the code and is committed:
 
----
+| File | Purpose |
+|------|---------|
+| `docs/cra-personas/task_plan.md` | Phases, tasks, acceptance criteria, gates G1–G7, circuit breaker |
+| `docs/cra-personas/lessons.md`   | **Read first every phase.** Carry-forward lessons L1–L18 |
+| `docs/cra-personas/findings.md`  | Verified state of the codebase and the statute |
+| `docs/cra-personas/progress.md`  | Session log and error table |
 
-## Active Status & Memory
+Maintaining a second copy of this state under `.loki/` would create two
+competing sources of truth — the defect this programme exists to remove (see
+lessons L13, and the two contradictory CRA corpora that shipped before it).
 
-- **All 5 Docker Services Running Healthy**:
-  - `db`: `pgvector/pgvector:pg16` with auto-initialized `vector` extension.
-  - `migrate`: Drizzle schema push completed (`exit 0`).
-  - `seed`: Conformity engine + demo workspace seeded (`exit 0`).
-  - `api`: Express API server listening on internal port 8080 (`status: ok`).
-  - `web`: Nginx 1.27 web proxy listening on host port 8088 (`200 OK`).
+## Current position
+Phase 0 (role model foundation). 0.1–0.4 complete and committed. Remaining:
+0.5 cockpit from real data, 0.6 kill silent fallbacks, 0.8 CI.
 
-- **Verified URLs**:
-  - OXOT Public Site: `http://localhost:8088/`
-  - Competitor Comparison: `http://localhost:8088/compare`
-  - Conformity Workbench: `http://localhost:8088/conformity/`
-  - Briefing Deck: `http://localhost:8088/conformity-briefing/`
-  - API Health: `http://localhost:8088/api/healthz`
-  - API Regulations: `http://localhost:8088/api/conformity/regulations`
+## Halt conditions that stay in force
+Autonomy applies to implementation. Two breakers still stop the loop and ask:
+- a new `honesty-ok:` or `citation-ok:` waiver is needed
+- a task requires a legal interpretation not settled by the corpus text
 
-- **Database Architect & RAG Optimizations**:
-  - Added B-tree and `pgvector` indexes to `conformity_embeddings` (`assessment_id` and `source_type`).
-  - Added SHA-256 binary hashing for audit proofs in `conformity_evidence`.
-  - Added statutory 24h/72h SLA clock fields to `conformity_incidents`.
-
----
-
-## Mistakes & Learnings
-
-1. **Host Port Collisions**: Port 8081 was bound on host machine by legacy `bloodhound` container. Solved by binding `web` to port **8088:80**.
-2. **Postgres Vector Extension**: `pgvector` requires `CREATE EXTENSION IF NOT EXISTS vector;` in `/docker-entrypoint-initdb.d/init-pgvector.sql`.
-3. **Bundled Runtime Copies**: Multi-stage Docker build for ESM workspace requires copying `/app` workspace into stage `api` to preserve node_modules resolution.
+Both exist because this is a compliance tool: a wrong obligation mapping shipped
+unattended is the failure mode that harms a user.
