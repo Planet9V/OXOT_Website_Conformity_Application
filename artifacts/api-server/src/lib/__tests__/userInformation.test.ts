@@ -36,6 +36,8 @@ function product(over: Partial<ConformityProductRow> = {}): ConformityProductRow
     intendedUse: "",
     supportPeriodStart: null,
     supportPeriodEnd: null,
+  expectedUseTimeMonths: null,
+  supportPeriodRationale: "",
     createdAt: NOW,
     updatedAt: NOW,
     ...over,

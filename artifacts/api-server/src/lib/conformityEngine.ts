@@ -27,6 +27,7 @@ import type {
   ArtifactScore,
 } from "@workspace/db";
 import type { AnswerMap } from "./craFlow";
+import { assessSupportPeriod } from "./supportPeriod";
 
 // ---------------------------------------------------------------------------
 // Route resolution (Article 32)
@@ -920,14 +921,34 @@ function buildSupportStatement(i: BuildArtifactsInput): ArtifactSection[] {
   const p = i.product;
   const end = fmtDate(p.supportPeriodEnd);
   const updateReq = evalByRef(i.evaluations, "Annex I(2)(c)");
+
+  // Art. 13(8) has two limbs: a five-year default, and a shorter period where
+  // the product is expected to be in use for less than five years. Assessed in
+  // lib/supportPeriod.ts so the rule is unit-tested in both directions.
+  const support = assessSupportPeriod({
+    supportPeriodStart: p.supportPeriodStart,
+    supportPeriodEnd: p.supportPeriodEnd,
+    expectedUseTimeMonths: p.expectedUseTimeMonths,
+    supportPeriodRationale: p.supportPeriodRationale,
+  });
+
+  const supportBody = (() => {
+    if (support.status === "not_set") return `${NEEDED}${support.message}`;
+    if (!support.satisfiesArticle13_8) return `${NEEDED}${support.message}`;
+    const dates = `Security updates are provided from ${fmtDate(p.supportPeriodStart) || "placing on the market"} until ${end}. `;
+    const basis =
+      support.status === "short_justified" && support.hasRationale
+        ? ` Basis recorded for the Annex VII file: ${p.supportPeriodRationale}`
+        : "";
+    return `${dates}${support.message}${basis}`;
+  })();
+
   return [
     {
       key: "support_period",
       label: "Support period (Art 13(8))",
-      body: end
-        ? `Security updates are provided from ${fmtDate(p.supportPeriodStart) || "placing on the market"} until ${end}.`
-        : `${NEEDED}set the support period end date on the product (minimum reflecting the expected lifetime, generally at least 5 years).`,
-      complete: !!end,
+      body: supportBody,
+      complete: support.satisfiesArticle13_8,
     },
     {
       key: "update_policy",

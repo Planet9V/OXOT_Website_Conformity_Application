@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
@@ -20,9 +20,24 @@ export const conformityProductsTable = pgTable("conformity_products", {
   productType: text("product_type").notNull().default("software"),
   version: text("version").notNull().default(""),
   intendedUse: text("intended_use").notNull().default(""),
-  // ISO date (YYYY-MM-DD) or null; the CRA support period (>= 5 years / lifetime).
+  // ISO date (YYYY-MM-DD) or null. Art. 13(8): five years is the default, not an
+  // absolute floor — a shorter period is lawful where the product is expected to
+  // be in use for less than five years and the period corresponds to that.
   supportPeriodStart: text("support_period_start"),
   supportPeriodEnd: text("support_period_end"),
+  /**
+   * How long the product is expected to be in use, in months. This is what makes
+   * a support period under five years lawful under Art. 13(8), so it is recorded
+   * rather than inferred.
+   */
+  expectedUseTimeMonths: integer("expected_use_time_months"),
+  /**
+   * What the manufacturer took into account when determining the support period
+   * — user expectations, nature and intended purpose, comparable products,
+   * component support, ADCO guidance. Art. 13(8) requires this information in the
+   * Annex VII technical documentation, so it is evidence, not a note.
+   */
+  supportPeriodRationale: text("support_period_rationale").notNull().default(""),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .notNull()

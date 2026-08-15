@@ -95,6 +95,8 @@ function product(): ConformityProductRow {
     intendedUse: "Smart home control",
     supportPeriodStart: null,
     supportPeriodEnd: null,
+  expectedUseTimeMonths: null,
+  supportPeriodRationale: "",
     createdAt: NOW,
     updatedAt: NOW,
   };
