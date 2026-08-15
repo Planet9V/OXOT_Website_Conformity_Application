@@ -254,6 +254,60 @@ built artefacts, not by comparing file hashes.
 
 ---
 
+### L23 — Read the paragraph, not the article
+Three of Phase 1's defects were "right article, wrong paragraph": Art. 13(4) and
+13(14) cited for retention (it is 13(13)), and the plan itself citing 13(12).
+Article-level checking cannot see these. The citation gate now has a
+paragraph-level rule for Art. 13 retention.
+**Apply:** when a duty is paragraph-specific, cite and check the paragraph.
+
+### L24 — One phrase, three duties: check the anchor, not the wording
+Arts. 13(9), 13(13) and 13(18) all read "10 years or the support period,
+whichever is longer", which invites one shared field. They run from different
+dates, so one product owes three different end dates. Art. 23(2) reads similarly
+again but has no support-period limb at all.
+**Apply:** identical wording is not an identical rule. Compare the ANCHOR and the
+LIMBS before reusing a function.
+
+### L25 — An over-broad exemption hides more than it excuses
+The citation gate skipped any line mentioning another instrument. That single
+escape hatch concealed 26 real errors, because a line saying "NIS2" or "IEC" was
+skipped wholesale. Standards bodies were the worst offenders — IEC/ETSI/ISO
+documents have clauses, never Articles, so they can never be the referent of an
+"Article N" citation.
+**Apply:** scope an exemption as narrowly as its justification. Attribution is
+per-citation and proximity-based, not per-line.
+
+### L26 — The dangerous errors are the ones no scanner can see
+persona-copilot-drawer.tsx mapped keywords to article NUMBERS and quoted the
+matched article back as the authority: fines to 61, steward to 33, importer to
+17 — each a real but unrelated article. Bare numerals, invisible to any citation
+scanner, and the user sees a confident answer citing the wrong law.
+**Apply:** grep for the numerals too, wherever a number selects a legal text.
+
+### L27 — Never compute a deadline the law leaves to someone else
+Art. 54(1) sets the corrective-action period as "as the market surveillance
+authority may prescribe". There is no number to derive. A default would have
+been invented law that eventually reassures someone who is late.
+**Apply:** where the law defers to an actor, the value is an INPUT. Its absence
+is a gap in the record, never a reason to substitute one.
+
+### L28 — Pin the rule in tests, pin the facts in data
+"No CRA harmonised standard has been cited" is true today and will not be
+forever. Tests assert against a fixture register; the live register holds dated,
+sourced records. A test asserting today's fact would fail the day the Commission
+publishes — reporting a correct change in the world as a broken build.
+**Apply:** tests pin behaviour; dated data holds facts about the world.
+
+### L29 — "No events" is not "compliant"
+Art. 14 with no incidents recorded is not met, and not breached — it has not been
+engaged. Reporting "met" would tell a reader the organisation is discharging a
+duty it has never been called on to discharge.
+**Apply:** an empty record needs its own status. Absence of evidence is not
+evidence of compliance.
+
+---
+
 ## Phase retros
 
 *(Appended at G7. Format below.)*
@@ -267,3 +321,28 @@ built artefacts, not by comparing file hashes.
 **Re-tuning applied to Phase N+1:** … (name the specific task edits)
 **New lessons:** Lnn — … (evidence: file:line)
 -->
+
+## Phase 1 — Manufacturer (Art. 13, 14, 23, 27, 32, Ch. V) — completed 2026-08-15
+
+**What worked:** Reading the article verbatim from the corpus BEFORE writing the
+rule caught two defects in the plan itself (1.1's "block <5 years" criterion was
+legally wrong; 1.2 cited Art. 13(12) for retention). Rule-as-pure-function then
+wire-then-verify-both-directions held up: 7 of 8 task rule-modules passed their
+tests on the first run, and the fix cap of 3 was never reached (worst case 2).
+
+**What cost time:** The citation gate's escape hatch. Widening it surfaced 26
+hidden errors that then had to be classified and burned down — but this was the
+single highest-value hour of the phase, and it ended with the gate at zero.
+
+**Surprises:** The most dangerous defects were not the ones the gates found. The
+copilot drawer's keyword-to-article map returned real but unrelated articles as
+legal authority, and no citation scanner would ever have seen it. Separately, the
+Art. 14 clocks were already correct and track-aware — the gap was that nothing
+fed them back into obligation status.
+
+**Re-tuning applied to Phase 2:** Before implementing any deemed-manufacturer
+rule, grep for bare numerals selecting legal text (L26), and diff Art. 21 against
+Art. 22 anchor-by-anchor rather than assuming the shared "substantial
+modification" wording means a shared rule (L24).
+
+**New lessons:** L23-L29.
