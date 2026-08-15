@@ -382,7 +382,7 @@ Scope as delegated access, not a cockpit persona.
 |-------|--------|------|-------|
 | 0 — Role model | **complete** | G1-G5 pass; G6 verified live | 0.1-0.6, 0.8 done |
 | 1 — Manufacturer | **complete** | G1-G7 pass; G6 verified live | 1.1-1.8; citations 30→0 |
-| 2 — Deemed manufacturer | in_progress | — | Depends on 1 |
+| 2 — Deemed manufacturer | **complete** | G1-G7 pass; G6 verified live | 2.1-2.5 |
 | 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |
 | 4 — Steward | not_started | — | Depends on 0 |
 | 5 — Authorised rep | not_started | — | Depends on 0, reuses 1.3 |
