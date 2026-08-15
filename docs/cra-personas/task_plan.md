@@ -383,6 +383,9 @@ Scope as delegated access, not a cockpit persona.
 | 0 — Role model | **complete** | G1-G5 pass; G6 verified live | 0.1-0.6, 0.8 done |
 | 1 — Manufacturer | **complete** | G1-G7 pass; G6 verified live | 1.1-1.8; citations 30→0 |
 | 2 — Deemed manufacturer | **complete** | G1-G7 pass; G6 verified live | 2.1-2.5 |
+| 1B — Manufacturer deepening | in_progress | — | 1B.1 done; 1B.2-1B.5 open |
+| W1 — Multi-act engine | in_progress | — | corpus + guard done; registries open |
+| W2 — NIS2 | in_progress | — | Directive corpus + verifier done |
 | 3 — Importer / Distributor | not_started | — | Depends on 0, reuses 1.2 |
 | 4 — Steward | not_started | — | Depends on 0 |
 | 5 — Authorised rep | not_started | — | Depends on 0, reuses 1.3 |
@@ -405,6 +408,91 @@ name, not by count. Counts drift with flaky shared-state suites; names do not.
 Baseline at the start of Phase 2: **32 failed / 523 passed / 555 total**, with
 `DEMO_READONLY=true` set. Any name not in that set is a Phase 2 regression and
 halts the phase.
+
+---
+
+# Phase 1B — Manufacturer deepening (added 2026-08-15)
+
+Phase 1 made the manufacturer's *statutory rules* correct. It did not make the
+manufacturer's *journey* complete. `DESIGN_five_shapes.md` (D1, D3) committed to
+the system-of-record posture and to four areas the app did not cover at all.
+
+This phase existed only in the design doc and commit messages until now, which
+is precisely the drift the plan is supposed to prevent.
+
+### Tasks
+
+- **1B.1 Notified body engagement** — **DONE** (commit c25225a).
+  Art. 32(2) forces this on most important Class I products today. Art. 30(4)
+  attaches the body's number to the CE marking on **Module H only**, which the
+  nameplate studio had as the broader "only if assessed". Annex VIII II.3/6/7/10
+  implemented; the single-body rule enforced structurally with a 409.
+
+- **1B.2 Supplier / component due diligence (Art. 13(5), Recital 34).**
+  The BOM skeleton exists — `parentComponentId`, `tierLevel`, `supplier`,
+  `manufacturer`, `partNumber`, `firmwareVersion`, hashes, dependency graph.
+  What is missing is the **evidence layer**: per component, what CRA evidence is
+  needed from that supplier, whether it has been obtained, whether it is current,
+  and what was done when a component maker disappeared.
+  Bidirectional per the design: collect upstream, publish downstream, and the
+  Art. 21 rebrand case where the OEM holds the design evidence.
+
+- **1B.3 Versions and variants.**
+  One product row is currently one of everything. A substantial modification
+  applies to a *specific version*; SBOM, DoC and support period are per version;
+  a vulnerability affects some versions and not others; the retention clock runs
+  from when *that version* was placed on the market.
+
+- **1B.4 Provenance (P6).**
+  The gap D1 creates. A system of record without provenance is a filing cabinet
+  with no lock. Who attested, when, over exactly what bytes, and unchanged since.
+  Evidence, artifacts and determinations all need it; the signature surface for
+  the Annex V DoC depends on it.
+
+- **1B.5 End of support / EOL.**
+  Support period ends, Annex II communication is owed, obligations change — and
+  retention under 13(13)/13(18) continues for years afterwards. Nothing currently
+  marks a product as past support.
+
+### Acceptance criteria
+
+- A component with no supplier evidence is visibly a gap against Art. 13(5), and
+  the gap names what is missing rather than scoring it.
+- A substantial modification recorded against version 2.1 does not silently
+  change version 1.0's obligations.
+- Every artifact and evidence item carries who/when/what-bytes, and a changed
+  byte is detectable.
+- A product past its support period reports obligations that have ENDED
+  separately from those that continue (retention), rather than going quiet.
+
+---
+
+# Workstream W1 — Multi-act engine (added 2026-08-15)
+
+`DESIGN_five_shapes.md` D9. Ten acts are seeded and the role vocabulary already
+translates per act. Adding an act must mean registering content, never editing
+the engine.
+
+- **W1.1 Shared OJ parser** — **DONE**. `scripts/lib/eu_oj_parser.mjs`, proven
+  behaviour-preserving by the CRA reproducibility gate, which caught a real
+  regression during the extraction (graph edges 230 -> 181).
+- **W1.2 Per-act citation guard** — **DONE**. NIS2 checked for the first time.
+- **W1.3 Registries** — open. Determinations, clocks, status derivers and
+  artifacts keyed by `regulationKey`. The concrete trigger is
+  `orgProfile.ts:218`, where Phase 1.5 special-cased `cra::Art 14`; NIS2 Art. 23
+  and AI Act Art. 73 need the same treatment and would become an if/else chain.
+
+# Workstream W2 — NIS2 (added 2026-08-15)
+
+`DESIGN_five_shapes.md` D8. NIS2 is a **Directive**: the corpus is authoritative
+for what the Directive says and silent on what any entity must do.
+
+- **W2.1 Directive corpus** — **DONE**. 144 recitals, 46 articles, 3 annexes,
+  from the authentic OJ text.
+- **W2.2 Verifier** — **DONE**. Ten checks; also exposed and fixed a vacuous
+  check in the CRA verifier (B3 passed having detected nothing).
+- **W2.3 NIS2 obligations via the shared primitive** — open. Blocked on W1.3.
+- **W2.4 National transpositions** — deferred. NL then DE.
 
 ## Errors encountered
 
