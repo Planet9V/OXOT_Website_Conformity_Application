@@ -119,6 +119,22 @@ including end-of-month clamping per Reg. 1182/71.
 - **1.5** Wire the Art. 14 reporting package to `obligation_instances` so a
   filing is evidenced (drafted here, filed by the human, reference recorded).
 - **1.6** Retire the manufacturer persona's remaining hardcoded highlights.
+- **1.7** **Presumption of conformity must reflect reality (Art. 27).** The
+  standards matrix currently returns `FULL_STATUTORY_PRESUMPTION_ARTICLE_34` —
+  wrong article (real: **27**) and, more seriously, **asserting a presumption
+  that does not currently exist for any product**, because no CRA harmonised
+  standard has been cited in the OJEU. Art. 27(1) grants the presumption only
+  for standards "the references of which have been published in the Official
+  Journal". Model the citation status as data with a source and a checked-on
+  date; when nothing is cited, the page must say the presumption is
+  unavailable and point the user at Route 4 (direct demonstration against
+  Annex I, documented per Annex VII).
+- **1.8** **Conformity route selection (Art. 32).** Derive the available routes
+  from citation status, not from a hardcoded table. Today Art. 32(2) means an
+  important **Class I** manufacturer cannot self-assess, because the condition
+  that unlocks it — applying a harmonised standard, common specification or
+  recognised certification scheme — cannot currently be met. This flips the
+  moment a standard is cited, so it must be computed, never baked in.
 
 ### Acceptance criteria
 - Saving a 12-month support period on an Annex III Class II product **blocks**
@@ -128,6 +144,12 @@ including end-of-month clamping per Reg. 1182/71.
 - Every Art. 13 paragraph with an operative duty maps to an obligation row, or
   is explicitly marked out-of-scope with a reason in `findings.md`.
 - Manufacturer cockpit KPIs all trace to a query. Zero literals.
+- With zero cited standards in the dataset, the standards matrix reports the
+  presumption as **unavailable** and offers Route 4. Adding a cited standard to
+  the dataset flips it to available. Regression test covers both directions —
+  this is the check that stops us baking today's legal position into code.
+- Route selection for an important Class I product with no applied standard
+  resolves to a third-party route, citing Art. 32(2).
 
 ---
 

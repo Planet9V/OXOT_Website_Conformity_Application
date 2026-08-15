@@ -106,3 +106,27 @@ else.
 **Re-tuning applied to Phase N+1:** … (name the specific task edits)
 **New lessons:** Lnn — … (evidence: file:line)
 -->
+
+### L11 — Check whether the legal precondition is met, not just whether the rule exists
+The app asserts `FULL_STATUTORY_PRESUMPTION` under the presumption-of-conformity
+rule. The rule is real (Art. 27), but its precondition is not met: Art. 27(1)
+grants the presumption only for harmonised standards "the references of which
+have been published in the Official Journal", and **no CRA harmonised standard
+has been cited yet**. So the app grants a legal benefit that currently exists
+for nobody. The knock-on: Art. 32(2) means an important Class I manufacturer
+cannot self-assess today, because the condition that unlocks self-assessment
+cannot be met.
+**Apply:** for every legal benefit the app confers, find the precondition in the
+text and model it as data with a source and a checked-on date. Never hardcode
+today's answer — this one flips the moment the first standard is cited.
+(Evidence: Art. 27(1) and Art. 32(2) in the local corpus; `harmonisedStandardsRoutes.ts:128,173`.)
+
+### L12 — Rank your sources, and say which tier you used
+Research on standards status returned mostly vendor trackers and law-firm
+guides. Those are fine for "has anything been published yet" but cannot ground
+an obligation. The operative legal logic here was confirmed straight from the
+local verbatim corpus instead, which made the secondary sources unnecessary for
+anything load-bearing.
+**Apply:** primary = the OJ text we hold, plus Commission pages. Secondary =
+everything else, indicative only. State which tier a claim rests on whenever it
+lands in the product or the plan.

@@ -74,6 +74,58 @@ node scripts/sync_cra_corpus_data.mjs
 Annexes are `{annexNumber, title, blocks: string[]}`. Article paragraphs use
 `paragraphNumber: 0` for unnumbered lead-in text.
 
+## Standards landscape — changes what "conformity" can mean today (researched 2026-08-14)
+
+**No harmonised standard for the CRA has been cited in the Official Journal yet.**
+Therefore **the Article 27 presumption of conformity is not currently available
+for any product category.**
+
+Corroborated directly from our own primary corpus, so this does not rest on
+secondary sources:
+- **Art. 27(1)** grants the presumption only for standards "the references of
+  which **have been published in the Official Journal of the European Union**".
+- **Art. 32(2)** imposes a stricter route on important Class I products where
+  the manufacturer "has not applied or has applied only in part harmonised
+  standards, common specifications or European cybersecurity certification
+  schemes".
+
+Consequence: **an important Class I manufacturer cannot self-assess today**,
+because the condition that unlocks self-assessment (applying a harmonised
+standard) cannot currently be met. Any route-selection logic we build must
+derive this from whether a cited standard exists, not hardcode today's answer —
+the position changes the moment the first citation lands.
+
+The four compliance routes under Art. 27, in the order they become available:
+1. Harmonised standards cited in the OJEU — **none yet**.
+2. Commission common specifications by implementing act — Art. 27(2), none yet
+   for the CRA.
+3. European cybersecurity certification schemes via delegated act — EUCC
+   delegated act indicated for Q4 2026.
+4. **Direct demonstration against Annex I**, documented per Annex VII — this is
+   the *only* route fully available today, and it is what the existing
+   assessment workbench already does. That validates Phase 1 as the priority.
+
+### Source discipline
+- **Primary (authoritative):** the OJ text itself (CELEX 32024R2847) — held
+  locally and verbatim; the Commission's CRA pages at
+  `digital-strategy.ec.europa.eu` (`/cra-standardisation`, `/cra-summary`,
+  `/factpages/cyber-resilience-act-implementation`).
+- **Secondary (indicative only — do NOT ground an obligation on these):**
+  standards trackers (craevidence.com, solidwaretools/cracheck), vendor and law
+  firm guides. Used here only for the factual question "has anything been cited
+  yet", which the Commission's own standardisation page corroborates by listing
+  none.
+- Standardisation request is **M/606** to CEN/CENELEC/ETSI; drafts exist
+  (CEN EN 40000 series horizontal; ETSI EN 304 6xx product-specific) at enquiry
+  or approval stage. Draft ≠ cited. Only OJEU citation triggers Art. 27.
+- Commission published a first practical guidance package on **27 July 2026**;
+  draft guidance was consulted March–April 2026. Guidance is interpretive, not
+  binding, and confers no presumption.
+
+**Watch item:** re-check OJEU citation status at the start of every phase. When
+the first standard is cited, Art. 27 and Art. 32(2) behaviour changes for real
+users, and the app must follow.
+
 ## Known-good foundations to build on, not replace
 
 - Annex I catalogue seeded verbatim with correct sub-lettering (`seedConformity.ts`).

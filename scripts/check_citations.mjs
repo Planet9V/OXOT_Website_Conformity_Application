@@ -56,6 +56,7 @@ const CONCEPTS = [
   { id: "open-source steward obligations", article: 24, formerly: [16, 33], re: /open[- ]source software steward|steward obligations/i },
   { id: "EU declaration of conformity", article: 28, formerly: [22], re: /EU declaration of conformity/i },
   { id: "CE marking", article: 29, formerly: [22, 23], re: /CE marking/i },
+  { id: "presumption of conformity", article: 27, formerly: [24, 34], re: /presumption of conformity/i },
   { id: "technical documentation", article: 31, formerly: [27], re: /technical documentation/i },
   { id: "conformity assessment procedures", article: 32, formerly: [28], re: /conformity assessment procedure/i },
   { id: "penalties", article: 64, formerly: [61], re: /penalt(?:y|ies)|administrative fine/i },
