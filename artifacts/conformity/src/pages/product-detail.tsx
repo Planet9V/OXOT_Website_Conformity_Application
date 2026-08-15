@@ -1,5 +1,5 @@
 import { useParams, Link, useLocation } from "wouter";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import {
   useGetConformityProduct,
   getGetConformityProductQueryKey,
@@ -59,6 +59,144 @@ function InfoRow({ label, value, onEdit }: { label: string; value?: string | nul
         )}
       </dd>
     </div>
+  );
+}
+
+
+/**
+ * The statutory file — everything the CRA asks of this product, derived from
+ * the rules rather than stored as a status.
+ *
+ * Reports GAPS and CITATIONS, never a score. A percentage reads as reassurance
+ * while the missing part is the part that matters.
+ */
+function StatutoryFile({ productId }: { productId: number }) {
+  const { data, isLoading } = useQuery<any>({
+    queryKey: [`/api/conformity/products/${productId}/statutory-file`],
+    queryFn: async () => {
+      const res = await fetch(`/api/conformity/products/${productId}/statutory-file`);
+      if (!res.ok) throw new Error("Failed to load the statutory file");
+      return res.json();
+    },
+    enabled: Boolean(productId),
+  });
+
+  if (isLoading) return <Skeleton className="h-40 w-full" />;
+  if (!data) return null;
+
+  const eos = data.endOfSupport;
+  const continuing = (eos?.obligations ?? []).filter((o: any) => o.state === "continues");
+  const ended = (eos?.obligations ?? []).filter((o: any) => o.state === "ended");
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-base">Statutory file</CardTitle>
+        <CardDescription>
+          Derived from the Regulation, not from a stored status. {data.gapCount} item
+          {data.gapCount === 1 ? "" : "s"} outstanding.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-5 text-xs">
+        {/* Support lifecycle — what ends and, more importantly, what does not */}
+        <div>
+          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+            Support lifecycle
+          </div>
+          <p className="text-foreground leading-relaxed">{eos?.message}</p>
+          {continuing.length > 0 && (
+            <ul className="mt-2 space-y-1">
+              {continuing.map((o: any, i: number) => (
+                <li key={i} className="flex gap-2">
+                  <span className="font-mono text-[10px] text-primary shrink-0 mt-0.5">{o.citation}</span>
+                  <span className="text-muted-foreground">
+                    {o.subject}
+                    {o.until ? ` — until ${o.until}` : ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {ended.length > 0 && (
+            <p className="mt-2 text-muted-foreground">
+              Ended: {ended.map((o: any) => `${o.subject} (${o.citation})`).join(", ")}
+            </p>
+          )}
+        </div>
+
+        {/* Versions — each with its own clocks */}
+        <div>
+          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+            Versions
+          </div>
+          {data.versions?.length ? (
+            <ul className="space-y-1">
+              {data.versions.map((v: any) => (
+                <li key={v.id} className="text-muted-foreground">
+                  <span className="text-foreground font-medium">{v.label}</span>
+                  {v.placedOnMarket ? ` — placed ${v.placedOnMarket}` : " — not yet placed on the market"}
+                  {v.technicalDocumentationRetention?.until
+                    ? `, technical file retained until ${v.technicalDocumentationRetention.until}`
+                    : ""}
+                  {v.supportPeriodSource === "product" && (
+                    <span className="text-[10px]"> (support period inherited from the product)</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-muted-foreground">
+              No versions recorded. Retention runs from when a version was placed on the market,
+              so the product line&apos;s dates are standing in.
+            </p>
+          )}
+        </div>
+
+        {/* Article 13(5) due diligence — counts, never a percentage */}
+        <div>
+          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+            Third-party components — Article 13(5)
+          </div>
+          <p className="text-muted-foreground leading-relaxed">{data.dueDiligence?.summary?.message}</p>
+        </div>
+
+        {/* Notified body, where the route needs one */}
+        {data.notifiedBody && (
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+              Notified body
+            </div>
+            <p className="text-muted-foreground leading-relaxed">
+              {data.notifiedBody.body || "Not yet chosen"}
+              {data.notifiedBody.number ? ` (${data.notifiedBody.number})` : ""} —{" "}
+              {data.notifiedBody.certificate?.message}
+            </p>
+            <p className="mt-1 text-[11px] text-muted-foreground">
+              {data.notifiedBody.ceMarkingCarriesNumber
+                ? "The CE marking must carry this body's identification number (Article 30(4))."
+                : "The CE marking must NOT carry a notified body number on this route (Article 30(4) applies it to Module H only)."}
+            </p>
+          </div>
+        )}
+
+        {/* What is missing */}
+        {data.gaps?.length > 0 && (
+          <div className="pt-3 border-t border-border/60">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-amber-600 mb-1">
+              Outstanding
+            </div>
+            <ul className="space-y-1.5">
+              {data.gaps.map((g: any, i: number) => (
+                <li key={i} className="flex gap-2">
+                  <span className="font-mono text-[10px] text-amber-600 shrink-0 mt-0.5">{g.citation}</span>
+                  <span className="text-muted-foreground leading-relaxed">{g.gap}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   );
 }
 
@@ -290,6 +428,8 @@ export default function ProductDetail() {
           </Button>
         </div>
       </Card>
+
+      <StatutoryFile productId={id} />
 
       <div className="space-y-4">
         <div className="flex items-center justify-between gap-4 border-b border-border pb-4">

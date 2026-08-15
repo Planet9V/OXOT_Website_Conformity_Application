@@ -1,4 +1,4 @@
-import { pgTable, serial, text, integer, jsonb, index } from "drizzle-orm/pg-core";
+import { pgTable, boolean, serial, text, integer, jsonb, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 import { conformityBomsTable } from "./conformityBoms";
@@ -45,6 +45,25 @@ export const conformityBomComponentsTable = pgTable("conformity_bom_components",
   tierLevel: integer("tier_level").notNull().default(1),
   chipsetArchitecture: text("chipset_architecture").notNull().default(""),
   pqcReadinessScore: integer("pqc_readiness_score").notNull().default(100),
+
+  /**
+   * Article 13(5) due diligence over this third-party component.
+   *
+   * Recital 34 makes the appropriate level depend on the component's
+   * cybersecurity risk, and offers four actions as ALTERNATIVES ("one or
+   * more"). So risk is recorded, the actions actually taken are recorded, and
+   * neither is defaulted — an unassessed component must read as unassessed
+   * rather than as low risk with nothing required.
+   */
+  dueDiligenceRisk: text("due_diligence_risk"),
+  /** Subset of: conformity_verified, update_history_verified,
+   *  vulnerability_database_checked, additional_security_testing. */
+  dueDiligenceActions: jsonb("due_diligence_actions").$type<string[]>().notNull().default([]),
+  /** Recital 34 follow-through where diligence found a vulnerability. */
+  dueDiligenceVulnerabilityFound: boolean("due_diligence_vulnerability_found"),
+  dueDiligenceMaintainerInformedAt: text("due_diligence_maintainer_informed_at"),
+  dueDiligenceRemediatedAt: text("due_diligence_remediated_at"),
+  dueDiligenceFixProvided: boolean("due_diligence_fix_provided"),
   raw: jsonb("raw").$type<Record<string, unknown>>().notNull().default({}),
 }, (table) => [
   index("conformity_bom_components_bom_id_idx").on(table.bomId),
