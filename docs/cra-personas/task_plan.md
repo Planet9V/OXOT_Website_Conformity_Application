@@ -304,7 +304,18 @@ nothing.
   CE marking, EU DoC, technical documentation accessible.
 - **3.4** Art. 19(4)/20 duty-to-refrain: persist the determination and block
   downstream actions on a held product.
-- **3.5** Retention against the same clock built in 1.2.
+- **3.5** Retention — CORRECTED before execution. The plan said "the same clock
+  built in 1.2" for both roles. **Article 20 contains no retention paragraph.**
+  Verified against the corpus: a distributor has no retention duty under Art. 20.
+    - Importer: **Art. 19(6)** — copy of the EU DoC at the disposal of market
+      surveillance authorities, and technical documentation made available on
+      request, for 10 years after placing on the market or the support period,
+      whichever is longer. Same clock as Art. 13(13), already built.
+    - Distributor: **Art. 23(2)** only — the economic-operator traceability
+      clock, a FLAT ten years from each supply event with no support-period
+      limb. Different rule, already built in Phase 1.3.
+  Same class of error as Phase 1's "Art. 13(12) for retention": a plan
+  assumption not checked against the text.
 
 ### Acceptance criteria
 - Deposited dossier survives `docker compose restart api`.
