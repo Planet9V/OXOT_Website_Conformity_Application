@@ -28,7 +28,7 @@ Everything below is verifiable; if a claim here contradicts the working tree,
     npx tsc --noEmit                                  # G1, per package
     cd artifacts/api-server && npx vitest run         # G2 — see the trap below
     cd artifacts/conformity && npx vite build         # G3
-    node scripts/check_honesty.mjs   --baseline 9     # G4
+    node scripts/check_honesty.mjs   --baseline 7     # G4
     node scripts/check_citations.mjs --baseline 0     # G5
     node scripts/check_ui_reach.mjs  --baseline 6     # G8
     node scripts/verify_cra_corpus.mjs                # corpus
@@ -75,19 +75,17 @@ design principles hold.
 
 ## Known-bad state, so nobody rediscovers it
 
-- **The CSIRT "transmit" button is fake, and the honesty gate does not catch
-  it.** `artifacts/conformity/src/pages/partner-hub.tsx:1066` is
-  `onClick={() => setCsirtDispatched(true)}` — local state only. partner-hub
-  makes no incident or submission API call at all, yet the UI then renders
-  "TRANSMITTED TO CSIRT". A user could believe they discharged a 24-hour
-  statutory reporting duty that never happened. `check_honesty.mjs` reports 9
-  findings and **none is in partner-hub**, so the gate has a real gap here.
-  This is the highest-severity known issue in the tree — fix it before Phase 7
-  work begins, and widen the honesty rule so it cannot recur.
-- Two of the 9 honesty findings are false positives on `persona-cockpit.tsx:12`,
-  a *comment* that documents the fabricated strings a previous session removed.
-  Annotate it the way `presumption.ts:23` is annotated rather than leaving the
-  baseline inflated.
+- **The CSIRT "transmit" claim was already fixed — an earlier version of this
+  file reported it as live.** Commit `c6d3c02` introduced a button that rendered
+  "TRANSMITTED TO CSIRT" from local state only; commit `857e91a` (2026-08-14)
+  replaced it with "Build notification payload" and an amber
+  "DRAFT ONLY — NOT SENT" badge. The honesty gate was never blind to the class:
+  its `claims-statutory-filing` rule has matched "TRANSMITTED TO" since the gate
+  landed (`d579e9c`), verified 2026-08-15 by positive control — a planted
+  violation in the scan tree fails the gate. It reported nothing in partner-hub
+  because there was nothing left to report. The button still *sends* nothing
+  (partner-hub makes no incident API call), but the UI now says so; wiring real
+  submission is Phase 7 work, where partner-hub is retired anyway.
 - 31 G2 failures (issue #62), deferred by decision until the persona phases end.
 - 6 orphaned capabilities — enumerated by `check_ui_reach.mjs`, each with a
   scheduled home in iteration 2.

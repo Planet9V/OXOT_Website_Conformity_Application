@@ -46,28 +46,23 @@ and `task_plan.md` Phases 6–7.
 be needed; the corpus does not settle a legal question; the same approach has
 failed twice; or `git log` shows an unexpected HEAD move.
 
-**First task — sharpen the honesty gate, then fix what it catches.**
+**First task — Phase 6.1: model the four team roles as data, not free text.**
 
-The gate currently carries no information: it is inflated by two false positives
-and blind to one real defect.
+The honesty-gate task that previously opened this file is done (2026-08-15):
+the CSIRT "TRANSMITTED" claim turned out to have been fixed in `857e91a` the
+day before it was reported, the gate was proven by positive control to catch
+that class, the two `persona-cockpit.tsx` false positives are annotated, and
+the G4 baseline is lowered 9 → 7. The lasting lesson is in `HANDOVER.md`:
+the defect report itself was written without re-verifying the working tree.
 
-- `artifacts/conformity/src/pages/partner-hub.tsx:1066` renders
-  "TRANSMITTED TO CSIRT" from `onClick={() => setCsirtDispatched(true)}`, and
-  the file makes no incident or submission API call at all. A user could believe
-  they discharged a 24-hour statutory reporting duty that never happened.
-  `check_honesty.mjs` does not flag it.
-- Two of the nine known findings are false positives on
-  `persona-cockpit.tsx:12` — a *comment* documenting fabricated strings a
-  previous session removed. Annotate it the way `presumption.ts:23` is
-  annotated.
+Phase 6 (task_plan.md) is the prerequisite for the shell redesign's D12 —
+today only `admin`/`member` exist plus a free-text `roleResponsibility`, so
+"the home differs by role" has nothing to branch on. Order: 6.1 roles as data →
+6.2 fix `conformityMembers.plainPassword` (plaintext passwords; the table is
+being touched anyway) → 6.3 scope obligations and evidence requests by role.
+Acceptance: a user's role determines what their home surfaces, and no password
+is readable in the database.
 
-Order: widen the rule so a UI element claiming a statutory transmission with no
-corresponding API call is caught → confirm it now fires on partner-hub →
-fix the defect → annotate the two false positives → re-baseline downward.
-
-This is first because Phase 7 writes nine new surfaces, and a blunt honesty gate
-during that rebuild is how fabricated claims get in at scale.
-
-**Then:** Phase 6 (team role model, plus `conformityMembers.plainPassword`,
-which stores passwords in plaintext), then Phase 7. Close every phase with G7 —
-update `lessons.md`, then re-tune the next phase's tasks before starting it.
+**Then:** Phase 7 (shell redesign — nine destinations, drives G8 to 0 orphans).
+Close every phase with G7 — update `lessons.md`, then re-tune the next phase's
+tasks before starting it.

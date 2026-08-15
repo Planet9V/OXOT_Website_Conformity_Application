@@ -9,6 +9,7 @@ import { Building2, ArrowRight, AlertTriangle, Gavel } from "lucide-react";
  * The cockpit, derived entirely from what the organisation has declared.
  *
  * This file previously held PERSONA_CONFIGS: 333 lines of string literals —
+ * honesty-ok: quotes the fabricated strings this file removed; it does not make them.
  * "100% Protected", "€285,000,000", "Zero Manufacturer Liability", "VERIFIED" —
  * none of it computed from anything, and several of it citing articles that do
  * not say what it claimed. Every number below now comes from
