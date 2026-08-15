@@ -16,6 +16,11 @@
  * Usage:  node scripts/build_cra_corpus_from_eurlex.mjs [--refetch]
  */
 import fs from "node:fs";
+import {
+  decode, textOf, blocks, sliceById,
+  referencedArticles, referencedAnnexes,
+  parseRecitals, parseChapters, parseArticles, parseAnnexes, ROMAN,
+} from "./lib/eu_oj_parser.mjs";
 import path from "node:path";
 
 const ROOT = process.cwd();
@@ -61,94 +66,6 @@ async function loadSource() {
 
 // ---------------------------------------------------------------- text helpers
 
-const ENTITIES = {
-  nbsp: " ", amp: "&", lt: "<", gt: ">", quot: '"', apos: "'",
-  laquo: "«", raquo: "»", hellip: "…", ndash: "–", mdash: "—",
-  lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”",
-  deg: "°", euro: "€", sect: "§", middot: "·", times: "×",
-};
-
-function decode(s) {
-  return s
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, d) => String.fromCodePoint(parseInt(d, 16)))
-    .replace(/&([a-z]+);/gi, (m, n) => (n.toLowerCase() in ENTITIES ? ENTITIES[n.toLowerCase()] : m));
-}
-
-/** Strip markup and footnote reference markers, collapse whitespace. */
-function textOf(html) {
-  return decode(
-    html
-      // OJ footnote anchors, e.g. the superscript "(1)" linking to a note
-      .replace(/<span[^>]*class="oj-super[^"]*"[^>]*>[\s\S]*?<\/span>/g, "")
-      .replace(/<a[^>]*class="oj-note"[^>]*>[\s\S]*?<\/a>/g, "")
-      .replace(/<[^>]+>/g, " ")
-  )
-    .replace(/ /g, " ")
-    // Footnote anchors leave an empty "( )" behind once the marker span is removed.
-    .replace(/\(\s*\)/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-/**
- * Walks a fragment in document order and returns its visible blocks.
- * OJ uses two-column tables for lettered/numbered points: first cell is the
- * label "(a)", second is the text. We rejoin them onto one line.
- */
-function blocks(frag) {
-  const out = [];
-  // Annexes III and IV use oj-enumeration-spacing divs rather than oj-normal
-  // paragraphs, so both forms have to be recognised or those annexes come out empty.
-  const re =
-    /<div[^>]*class="oj-enumeration-spacing"[^>]*>[\s\S]*?<\/div>|<table[\s\S]*?<\/table>|<p[^>]*class="oj-normal"[^>]*>[\s\S]*?<\/p>/g;
-  let m;
-  while ((m = re.exec(frag)) !== null) {
-    const chunk = m[0];
-    if (chunk.startsWith("<table")) {
-      for (const row of chunk.match(/<tr[\s\S]*?<\/tr>/g) || []) {
-        const cells = [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((c) => textOf(c[1]));
-        const label = cells[0] || "";
-        const body = cells.slice(1).join(" ").trim();
-        const line = `${label} ${body}`.trim();
-        if (line) out.push(line);
-      }
-    } else {
-      const t = textOf(chunk);
-      if (t) out.push(t);
-    }
-  }
-  return out;
-}
-
-function sliceById(html, id, nextIds) {
-  const start = html.indexOf(`id="${id}"`);
-  if (start === -1) return null;
-  let end = html.length;
-  for (const n of nextIds) {
-    const i = html.indexOf(`id="${n}"`, start + 1);
-    if (i !== -1 && i < end) end = i;
-  }
-  return html.slice(start, end);
-}
-
-/** Real cross-references to articles, extracted from the text itself. */
-function referencedArticles(text) {
-  const nums = new Set();
-  for (const m of text.matchAll(/Article\s+(\d{1,2})\b/g)) {
-    const n = Number(m[1]);
-    if (n >= 1 && n <= 71) nums.add(n);
-  }
-  return [...nums].sort((a, b) => a - b);
-}
-
-function referencedAnnexes(text) {
-  const set = new Set();
-  for (const m of text.matchAll(/Annex\s+(VIII|VII|VI|IV|IX|V|III|II|I)\b/g)) set.add(m[1]);
-  return [...set];
-}
-
-/** Keyword tags — asserted only where the term literally occurs in the text. */
 const KEYWORDS = [
   ["SBOM", /software bill of materials|SBOM/i],
   ["VulnerabilityHandling", /vulnerabilit/i],
@@ -229,119 +146,6 @@ function applyCorrigenda(articles) {
 
 // ---------------------------------------------------------------- parse
 
-function parseRecitals(html) {
-  const ids = Array.from({ length: 130 }, (_, i) => `rct_${i + 1}`);
-  const recitals = [];
-  for (let n = 1; n <= 130; n++) {
-    const frag = sliceById(html, `rct_${n}`, [`rct_${n + 1}`, "enc_1"]);
-    if (!frag) throw new Error(`Recital ${n} not found in source`);
-    // The first cell holds "(n)"; drop it and keep the body.
-    const b = blocks(frag);
-    const cleaned = b.map((line) => line.replace(new RegExp(`^\\(${n}\\)\\s*`), "").trim()).filter(Boolean);
-    const text = cleaned.join("\n");
-    if (!text) throw new Error(`Recital ${n} parsed empty`);
-    recitals.push({
-      number: n,
-      // Real recitals carry no titles. We do not invent one.
-      title: `Recital ${n}`,
-      text,
-      tags: tagsFor(text),
-      relatedArticles: referencedArticles(text),
-      relatedAnnexes: referencedAnnexes(text),
-    });
-  }
-  void ids;
-  return recitals;
-}
-
-function parseChapters(html) {
-  // CHAPTER heading pairs: oj-ti-section-1 = "CHAPTER N", oj-ti-section-2 = title.
-  const heads = [...html.matchAll(/class="oj-ti-section-([12])"[^>]*>([\s\S]*?)<\/p>/g)].map((m) => ({
-    level: Number(m[1]),
-    text: textOf(m[2]),
-    index: m.index,
-  }));
-  const chapters = [];
-  for (let i = 0; i < heads.length; i++) {
-    if (heads[i].level !== 1) continue;
-    const title = heads[i + 1] && heads[i + 1].level === 2 ? heads[i + 1].text : "";
-    chapters.push({ label: heads[i].text, title, index: heads[i].index });
-  }
-  return chapters;
-}
-
-const ROMAN = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8 };
-
-function parseArticles(html, chapters) {
-  const articles = [];
-  for (let n = 1; n <= 71; n++) {
-    const frag = sliceById(html, `art_${n}`, [`art_${n + 1}`, "fnp_1", "anx_I"]);
-    if (!frag) throw new Error(`Article ${n} not found in source`);
-    const titleM = frag.match(/class="oj-sti-art"[^>]*>([\s\S]*?)<\/p>/);
-    const title = titleM ? textOf(titleM[1]) : "";
-    if (!title) throw new Error(`Article ${n} has no title in source`);
-
-    const paragraphs = [];
-    let cur = null;
-    for (const line of blocks(frag)) {
-      const numbered = /^(\d{1,2})\.\s+(.*)$/s.exec(line);
-      if (numbered) {
-        cur = { paragraphNumber: Number(numbered[1]), text: numbered[2].trim() };
-        paragraphs.push(cur);
-      } else if (cur) {
-        cur.text += `\n${line}`;
-      } else {
-        // Leading text before any numbered paragraph (or a single-paragraph article).
-        cur = { paragraphNumber: 0, text: line };
-        paragraphs.push(cur);
-      }
-    }
-    if (!paragraphs.length) throw new Error(`Article ${n} parsed with no paragraphs`);
-
-    const idx = html.indexOf(`id="art_${n}"`);
-    let chapter = chapters[0];
-    for (const c of chapters) if (c.index < idx) chapter = c;
-    const roman = (chapter.label.match(/CHAPTER\s+([IVX]+)/) || [])[1] || "I";
-
-    const full = paragraphs.map((p) => p.text).join("\n");
-    articles.push({
-      articleNumber: n,
-      title,
-      chapterNumber: ROMAN[roman] || 1,
-      chapterTitle: chapter.title,
-      paragraphs,
-      tags: tagsFor(full),
-      referencedArticles: referencedArticles(full).filter((x) => x !== n),
-      referencedAnnexes: referencedAnnexes(full),
-    });
-  }
-  return articles;
-}
-
-function parseAnnexes(html) {
-  const order = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"];
-  const titles = [...html.matchAll(/class="oj-doc-ti"[^>]*>([\s\S]*?)<\/p>/g)].map((m) => textOf(m[1]));
-  const annexes = [];
-  for (let i = 0; i < order.length; i++) {
-    const num = order[i];
-    const frag = sliceById(html, `anx_${num}`, [`anx_${order[i + 1]}`, "fnp_1"]);
-    if (!frag) throw new Error(`Annex ${num} not found in source`);
-    const ti = titles.indexOf(`ANNEX ${num}`);
-    const title = ti !== -1 && titles[ti + 1] ? titles[ti + 1] : `Annex ${num}`;
-    const body = blocks(frag).filter((l) => l !== `ANNEX ${num}` && l !== title);
-    if (!body.length) throw new Error(`Annex ${num} parsed empty`);
-    annexes.push({
-      annexNumber: num,
-      title,
-      blocks: body,
-      tags: tagsFor(body.join("\n")),
-      referencedArticles: referencedArticles(body.join("\n")),
-    });
-  }
-  return annexes;
-}
-
-/** Edges derived from real cross-references, not hand-authored. */
 function buildGraph(recitals, articles, annexes) {
   const edges = [];
   const seen = new Set();
@@ -376,10 +180,10 @@ function buildGraph(recitals, articles, annexes) {
 
 function main() {
   return loadSource().then((html) => {
-    const recitals = parseRecitals(html);
+    const recitals = parseRecitals(html, tagsFor, 130, 71);
     const chapters = parseChapters(html);
-    const articles = parseArticles(html, chapters);
-    const annexes = parseAnnexes(html);
+    const articles = parseArticles(html, chapters, tagsFor, 71);
+    const annexes = parseAnnexes(html, ["I","II","III","IV","V","VI","VII","VIII"], tagsFor, 71);
     const corrigendaApplied = applyCorrigenda(articles);
     const graph = buildGraph(recitals, articles, annexes);
 
