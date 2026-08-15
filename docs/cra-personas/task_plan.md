@@ -188,10 +188,26 @@ hashing. xBOM + OSV. Upstream-maintainer notifications. Art. 14 clock is correct
 including end-of-month clamping per Reg. 1182/71.
 
 ### Tasks
-- **1.1** Art. 13(8) five-year support floor: validate numerically. Today a
-  1-year support period on a Class II product yields a green "complete".
-- **1.2** Art. 13(12) retention clock: 10 years **or** the support period,
-  whichever is longer. Surface expiry; alert before it lapses.
+- **1.1** Art. 13(8) support period. **Corrected 2026-08-15 after reading the
+  text — the original criterion was legally wrong.** Art. 13(8) says the support
+  period "shall be at least five years", but the very next sentence says "Where
+  the product with digital elements is expected to be in use for less than five
+  years, the support period shall correspond to the expected use time." So a
+  12-month support period is *lawful* when expected use time is 12 months.
+  Blocking it outright would flag a compliant manufacturer as non-compliant.
+  Implement: a support period below five years requires a declared expected use
+  time it matches, plus the determination inputs Art. 13(8) requires to be
+  carried into Annex VII. Unjustified short periods are flagged; justified ones
+  are accepted and evidenced.
+- **1.2** Retention clocks. **Corrected — Art. 13(12) is not the retention
+  provision**; it covers drawing up the technical documentation, conformity
+  assessment, the DoC and CE marking. There are three distinct clocks:
+  - **Art. 13(9)** — each security update stays available 10 years from *its
+    issue*, or the remainder of the support period, whichever is longer.
+  - **Art. 13(13)** — technical documentation + EU DoC at MSA disposal, 10 years
+    from *placing on the market*, or the support period, whichever is longer.
+  - **Art. 13(18)** — Annex II user information, same rule as 13(13).
+  Different start dates, so they cannot share one field.
 - **1.3** Art. 23 economic-operator traceability records — currently absent.
 - **1.4** Chapter V cooperation (Arts. 52–54): MSA request intake, corrective
   action, withdrawal/recall workflow — currently absent.
@@ -216,10 +232,12 @@ including end-of-month clamping per Reg. 1182/71.
   moment a standard is cited, so it must be computed, never baked in.
 
 ### Acceptance criteria
-- Saving a 12-month support period on an Annex III Class II product **blocks**
-  with a citation to Art. 13(8). Regression test.
-- Retention expiry computed from real dates; test covers the
-  "whichever is longer" branch both ways.
+- A support period under five years with **no** declared expected use time is
+  flagged, citing Art. 13(8). The same period **with** a matching expected use
+  time is accepted. Regression test covers both directions — a rule that only
+  ever says "no" is as wrong as one that only ever says "yes".
+- Each of the three retention clocks computed from its own start date; test
+  covers the "whichever is longer" branch both ways for each.
 - Every Art. 13 paragraph with an operative duty maps to an obligation row, or
   is explicitly marked out-of-scope with a reason in `findings.md`.
 - Manufacturer cockpit KPIs all trace to a query. Zero literals.
