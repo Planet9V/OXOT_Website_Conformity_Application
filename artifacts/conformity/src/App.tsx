@@ -49,6 +49,7 @@ const StandardsMatrixPage = lazy(() => import('./pages/standards-matrix'));
 const CeNameplateStudioPage = lazy(() => import('./pages/ce-nameplate-studio'));
 const OpenSourceStewardPage = lazy(() => import('./pages/open-source-steward'));
 const ImporterArchivePage = lazy(() => import('./pages/importer-archive'));
+const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
 /** Minimal loading state shown only while a lazy chunk loads. */
@@ -158,6 +159,7 @@ function ShellRoutes() {
           <Route path="/reports/:id" component={ReportWorkspace} />
           <Route path="/reports" component={Reports} />
           <Route path="/profile" component={Profile} />
+          <Route path="/org-profile" component={OrgProfilePage} />
           <Route path="/psirt">
             <ErrorBoundary>
               <Psirt />

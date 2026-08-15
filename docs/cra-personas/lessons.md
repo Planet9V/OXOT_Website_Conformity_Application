@@ -161,6 +161,24 @@ The `--user root` matters: the container user cannot write `dist/`.
 Verify against the DB (`select regulation_key, applies_to, count(*) from requirements group by 1,2`),
 not against the source file.
 
+### L17 — `docker compose up` silently re-runs the one-shot seed and can revert your data
+`/obligations` returned 44 in the API test, then 30 an hour later with nothing
+touched in between. Cause: `docker compose up -d web` re-ran the `seed` service
+(a `depends_on` one-shot), which rewrote `requirements.applies_to` back to the
+pre-migration values.
+**Apply:** after any `docker compose up`, re-verify data-dependent behaviour.
+Treat a number that changed without a code change as a seed re-run until proven
+otherwise.
+
+### L18 — `docker compose build api` does not rebuild `seed` or `migrate`
+They build from a **different target** (`target: build`) than the api service
+(`target: api`), so the seed image kept the pre-edit `seedConformity.ts` even
+after `build api` succeeded. Re-seeding then faithfully restored the old data.
+**Apply:** any change to a seed script needs `docker compose build seed` before
+`docker compose up -d seed`. Combined with L16: edit the seed, build the seed
+image, run the seed, then verify against the DB — three separate steps, none of
+which the others imply.
+
 ---
 
 ## Phase retros

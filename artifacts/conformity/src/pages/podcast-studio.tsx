@@ -51,6 +51,10 @@ export default function PodcastStudioPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<'1.0x' | '1.25x' | '1.5x'>('1.0x');
   const [selectedBlog, setSelectedBlog] = useState<Episode | null>(null);
+  // Which feed URL was most recently copied, so the button can confirm it.
+  const [copiedFeed, setCopiedFeed] = useState<string | null>(null);
+  // The episode whose script is open in the modal, or null when it is closed.
+  const [selectedScript, setSelectedScript] = useState<Episode | null>(null);
   const [selectedBlogContent, setSelectedBlogContent] = useState<string | null>(null);
 
   const handleSelectBlog = (blog: Episode) => {
