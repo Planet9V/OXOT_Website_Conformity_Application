@@ -48,6 +48,7 @@ import deemedManufacturerRouter from "./deemedManufacturer";
 import notifiedBodyRouter from "./notifiedBody";
 import statutoryFileRouter from "./statutoryFile";
 import attestationsRouter from "./attestations";
+import operatorChecksRouter from "./operatorChecks";
 import { podcastStudioRouter } from "./podcastStudio";
 import { craFaqRouter } from "./craFaqRoutes";
 
@@ -79,6 +80,7 @@ router.use(deemedManufacturerRouter);
 router.use(notifiedBodyRouter);
 router.use(statutoryFileRouter);
 router.use(attestationsRouter);
+router.use(operatorChecksRouter);
 router.use(conformityReportsRouter);
 router.use(conformityPsirtRouter);
 router.use(conformityIntelligenceRouter);
