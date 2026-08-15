@@ -40,10 +40,10 @@ persisted data comes back. G7 is the retro — update `lessons.md` and re-tune t
 
 ## What is next
 
-**Phase 6 — team role model.** Required by D12 (two equal daily users). Today
-only `admin`/`member` exist plus a free-text `roleResponsibility`, so "the home
-differs by role" has nothing to branch on. Phase 6.2 also fixes
-`conformityMembers.plainPassword`, which stores passwords in plaintext.
+**Phase 6 — team role model.** Required by D12 (two equal daily users).
+6.1 (four roles as data) and 6.2 (plaintext-password removal) are **done**
+2026-08-15 — see task_plan.md. Next is **6.3**: scope obligations and evidence
+requests by role, and expose `teamRole` on `/me` so the home can branch.
 
 **Phase 7 — shell redesign.** Nine destinations in four groups, replacing 34
 pages and 51 route registrations, built *on* the existing 181 design tokens and
