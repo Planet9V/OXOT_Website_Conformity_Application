@@ -75,6 +75,19 @@ design principles hold.
 
 ## Known-bad state, so nobody rediscovers it
 
+- **The CSIRT "transmit" button is fake, and the honesty gate does not catch
+  it.** `artifacts/conformity/src/pages/partner-hub.tsx:1066` is
+  `onClick={() => setCsirtDispatched(true)}` — local state only. partner-hub
+  makes no incident or submission API call at all, yet the UI then renders
+  "TRANSMITTED TO CSIRT". A user could believe they discharged a 24-hour
+  statutory reporting duty that never happened. `check_honesty.mjs` reports 9
+  findings and **none is in partner-hub**, so the gate has a real gap here.
+  This is the highest-severity known issue in the tree — fix it before Phase 7
+  work begins, and widen the honesty rule so it cannot recur.
+- Two of the 9 honesty findings are false positives on `persona-cockpit.tsx:12`,
+  a *comment* that documents the fabricated strings a previous session removed.
+  Annotate it the way `presumption.ts:23` is annotated rather than leaving the
+  baseline inflated.
 - 31 G2 failures (issue #62), deferred by decision until the persona phases end.
 - 6 orphaned capabilities — enumerated by `check_ui_reach.mjs`, each with a
   scheduled home in iteration 2.
