@@ -91,22 +91,6 @@ else.
 **Apply:** when adding a field, ask which axis it belongs to. If the answer is
 "both", it is two fields.
 
----
-
-## Phase retros
-
-*(Appended at G7. Format below.)*
-
-<!--
-## Phase N — <name> — completed YYYY-MM-DD
-
-**What worked:** …
-**What cost time:** …
-**Surprises:** …
-**Re-tuning applied to Phase N+1:** … (name the specific task edits)
-**New lessons:** Lnn — … (evidence: file:line)
--->
-
 ### L11 — Check whether the legal precondition is met, not just whether the rule exists
 The app asserts `FULL_STATUTORY_PRESUMPTION` under the presumption-of-conformity
 rule. The rule is real (Art. 27), but its precondition is not met: Art. 27(1)
@@ -130,3 +114,19 @@ anything load-bearing.
 **Apply:** primary = the OJ text we hold, plus Commission pages. Secondary =
 everything else, indicative only. State which tier a claim rests on whenever it
 lands in the product or the plan.
+
+---
+
+## Phase retros
+
+*(Appended at G7. Format below.)*
+
+<!--
+## Phase N — <name> — completed YYYY-MM-DD
+
+**What worked:** …
+**What cost time:** …
+**Surprises:** …
+**Re-tuning applied to Phase N+1:** … (name the specific task edits)
+**New lessons:** Lnn — … (evidence: file:line)
+-->
