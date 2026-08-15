@@ -61,10 +61,60 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { formatDateTime } from "@/lib/conformity";
 
 function errMsg(e: unknown): string {
   return e instanceof Error && e.message ? e.message : "Something went wrong";
+}
+
+/**
+ * The four team roles from DESIGN_five_shapes.md D2/D12 — must stay in step
+ * with TEAM_ROLES in @workspace/db (guarded server-side by teamRoles.test.ts;
+ * the db package can't be imported into the browser bundle). "unassigned" is
+ * a UI sentinel: Radix Select forbids empty values, and the API stores null.
+ */
+const TEAM_ROLE_OPTIONS = [
+  { value: "compliance_coordinator", label: "Compliance coordinator" },
+  { value: "engineering_lead", label: "Engineering lead" },
+  { value: "psirt", label: "PSIRT" },
+  { value: "signatory", label: "Signatory (signs the EU DoC)" },
+] as const;
+
+const TEAM_ROLE_LABELS: Record<string, string> = Object.fromEntries(
+  TEAM_ROLE_OPTIONS.map((o) => [o.value, o.label]),
+);
+
+function TeamRoleSelect({
+  id,
+  value,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <Select value={value} onValueChange={onChange}>
+      <SelectTrigger id={id} className="rounded-md h-8 text-xs">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="unassigned">Unassigned</SelectItem>
+        {TEAM_ROLE_OPTIONS.map((o) => (
+          <SelectItem key={o.value} value={o.value}>
+            {o.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
 }
 
 function CreateMemberDialog({
@@ -84,6 +134,7 @@ function CreateMemberDialog({
   const [department, setDepartment] = useState("Cybersecurity & Product Compliance");
   const [organization, setOrganization] = useState("OXOT Engineering B.V.");
   const [roleResponsibility, setRoleResponsibility] = useState("Lead Assessor & PSIRT Coordinator");
+  const [teamRole, setTeamRole] = useState("unassigned");
 
   const create = useCreateTeamMember({
     mutation: {
@@ -113,6 +164,7 @@ function CreateMemberDialog({
         department,
         organization,
         roleResponsibility,
+        teamRole: teamRole === "unassigned" ? null : teamRole,
       } as any,
     });
   };
@@ -212,6 +264,11 @@ function CreateMemberDialog({
           </div>
 
           <div className="space-y-1 sm:col-span-2">
+            <Label htmlFor="member-team-role">Team Role</Label>
+            <TeamRoleSelect id="member-team-role" value={teamRole} onChange={setTeamRole} />
+          </div>
+
+          <div className="space-y-1 sm:col-span-2">
             <Label htmlFor="member-role">Role Responsibility &amp; Mandate</Label>
             <Input
               id="member-role"
@@ -270,6 +327,7 @@ function EditMemberDialog({
   const [department, setDepartment] = useState(member.department || "Cybersecurity & Product Compliance");
   const [organization, setOrganization] = useState(member.organization || "OXOT Engineering B.V.");
   const [roleResponsibility, setRoleResponsibility] = useState(member.roleResponsibility || "Lead Assessor & PSIRT Coordinator");
+  const [teamRole, setTeamRole] = useState(member.teamRole ?? "unassigned");
   const [password, setPassword] = useState(member.plainPassword || "Password123!");
 
   const update = useUpdateTeamMember({
@@ -294,6 +352,7 @@ function EditMemberDialog({
         department,
         organization,
         roleResponsibility,
+        teamRole: teamRole === "unassigned" ? null : teamRole,
         ...(password ? { password } : {}),
       } as any,
     });
@@ -340,6 +399,11 @@ function EditMemberDialog({
           <div className="space-y-1">
             <Label htmlFor="edit-member-org">Organization</Label>
             <Input id="edit-member-org" className="h-8 text-xs" value={organization} onChange={(e) => setOrganization(e.target.value)} />
+          </div>
+
+          <div className="space-y-1 sm:col-span-2">
+            <Label htmlFor="edit-member-team-role">Team Role</Label>
+            <TeamRoleSelect id="edit-member-team-role" value={teamRole} onChange={setTeamRole} />
           </div>
 
           <div className="space-y-1 sm:col-span-2">
@@ -433,6 +497,15 @@ function MemberRow({ member }: { member: any }) {
       <TableCell className="p-3">
         <div className="font-semibold text-foreground text-xs">{member.position || "CRA Compliance Officer"}</div>
         <div className="text-[11px] text-muted-foreground">{member.department || "Cybersecurity"}</div>
+        {member.teamRole ? (
+          <Badge variant="outline" className="mt-1 bg-primary/10 text-primary border-primary/30 text-[10px]">
+            {TEAM_ROLE_LABELS[member.teamRole] ?? member.teamRole}
+          </Badge>
+        ) : (
+          <Badge variant="outline" className="mt-1 bg-muted text-muted-foreground text-[10px]">
+            Role unassigned
+          </Badge>
+        )}
       </TableCell>
 
       <TableCell className="p-3 font-mono text-xs">

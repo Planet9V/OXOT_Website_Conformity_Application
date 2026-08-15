@@ -111,6 +111,7 @@ const STATUS_CYCLE = [
 const DEMO_MEMBERS = [
   {
     username: "jim",
+    teamRole: "signatory" as const,
     displayName: "Jim",
     position: "CRA Executive Director & Compliance Lead",
     email: "jim@oxot.nl",
@@ -122,6 +123,7 @@ const DEMO_MEMBERS = [
   },
   {
     username: "jill",
+    teamRole: "psirt" as const,
     displayName: "Jill",
     position: "Head of Vulnerability Management & PSIRT",
     email: "jill@oxot.nl",
@@ -133,6 +135,7 @@ const DEMO_MEMBERS = [
   },
   {
     username: "jack",
+    teamRole: "engineering_lead" as const,
     displayName: "Jack",
     position: "Principal OT/ICS Cybersecurity Architect",
     email: "jack@oxot.nl",
@@ -144,6 +147,7 @@ const DEMO_MEMBERS = [
   },
   {
     username: "nancy",
+    teamRole: "compliance_coordinator" as const,
     displayName: "Nancy",
     position: "Senior Regulatory Auditor & Technical File Manager",
     email: "nancy@oxot.nl",
@@ -155,6 +159,7 @@ const DEMO_MEMBERS = [
   },
   {
     username: "priya.shah",
+    teamRole: "psirt" as const,
     displayName: "Priya Shah",
     position: "Chief Security Officer & PSIRT Lead",
     email: "priya.shah@oxot.nl",
@@ -166,6 +171,7 @@ const DEMO_MEMBERS = [
   },
   {
     username: "marco.bianchi",
+    teamRole: "engineering_lead" as const,
     displayName: "Marco Bianchi",
     position: "Senior Firmware Architect",
     email: "marco.bianchi@oxot.nl",
@@ -177,6 +183,7 @@ const DEMO_MEMBERS = [
   },
   {
     username: "lena.novak",
+    teamRole: "compliance_coordinator" as const,
     displayName: "Lena Novak",
     position: "Regulatory Compliance Lead",
     email: "lena.novak@oxot.nl",
@@ -322,6 +329,7 @@ export async function seedDemoMembers(targetDb: any = db): Promise<void> {
         department: m.department,
         organization: m.organization,
         roleResponsibility: m.roleResponsibility,
+        teamRole: m.teamRole,
         plainPassword: m.plainPassword,
         passwordHash: hashPassword(m.plainPassword),
         active: true,
@@ -336,6 +344,7 @@ export async function seedDemoMembers(targetDb: any = db): Promise<void> {
           department: m.department,
           organization: m.organization,
           roleResponsibility: m.roleResponsibility,
+          teamRole: m.teamRole,
           plainPassword: m.plainPassword,
           passwordHash: hashPassword(m.plainPassword),
           active: true,

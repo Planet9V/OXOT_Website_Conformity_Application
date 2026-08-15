@@ -4,7 +4,9 @@ import {
   db,
   conformityMembersTable,
   conformityActivityTable,
+  TEAM_ROLES,
   type ConformityMemberRow,
+  type TeamRole,
 } from "@workspace/db";
 import { requireAuth, requireAdmin, getSession, reservedUsernames } from "../lib/adminAuth";
 import { hashPassword, normalizeUsername, USERNAME_RE } from "../lib/teamMembers";
@@ -38,6 +40,8 @@ function toDto(m: ConformityMemberRow) {
     department: m.department || "Cybersecurity & Product Compliance",
     organization: m.organization || "OXOT Engineering B.V.",
     roleResponsibility: m.roleResponsibility || "Lead Assessor & PSIRT Coordinator",
+    // One of TEAM_ROLES, or null while unassigned — never defaulted (D12).
+    teamRole: m.teamRole ?? null,
     plainPassword: m.plainPassword || "Password123!",
     active: m.active,
     createdAt: safeIsoString(m.createdAt),
@@ -51,6 +55,21 @@ function toPublicDto(m: ConformityMemberRow) {
   const { plainPassword: _plainPassword, ...rest } = toDto(m);
   return rest;
 }
+
+/**
+ * null clears the role (back to unassigned); undefined means "not in this
+ * request". Anything else must be one of the four TEAM_ROLES — free text is
+ * exactly what this column exists to replace.
+ */
+function parseTeamRole(raw: unknown): { ok: true; value: TeamRole | null } | { ok: false } {
+  if (raw === null) return { ok: true, value: null };
+  if (typeof raw === "string" && (TEAM_ROLES as readonly string[]).includes(raw)) {
+    return { ok: true, value: raw as TeamRole };
+  }
+  return { ok: false };
+}
+
+const TEAM_ROLE_ERROR = `teamRole must be one of ${TEAM_ROLES.join(", ")}, or null to clear it.`;
 
 function isUniqueViolation(err: unknown): boolean {
   if (!err || typeof err !== "object") {
@@ -99,7 +118,14 @@ router.post("/admin/team", requireAdmin, async (req, res): Promise<void> => {
     department,
     organization,
     roleResponsibility,
+    teamRole: rawTeamRole,
   } = req.body;
+
+  const teamRole = parseTeamRole(rawTeamRole === undefined ? null : rawTeamRole);
+  if (!teamRole.ok) {
+    res.status(400).json({ error: TEAM_ROLE_ERROR });
+    return;
+  }
 
   const username = normalizeUsername(rawUsername || "");
   if (!USERNAME_RE.test(username)) {
@@ -141,6 +167,7 @@ router.post("/admin/team", requireAdmin, async (req, res): Promise<void> => {
           department: department || "Cybersecurity & Product Compliance",
           organization: organization || "OXOT Engineering B.V.",
           roleResponsibility: roleResponsibility || "Lead Assessor & PSIRT Coordinator",
+          teamRole: teamRole.value,
           plainPassword: userPassword,
           passwordHash: hashPassword(userPassword),
         })
@@ -198,6 +225,17 @@ router.patch("/admin/team/:id", requireAdmin, async (req, res): Promise<void> =>
     if (body.department !== undefined) set.department = body.department;
     if (body.organization !== undefined) set.organization = body.organization;
     if (body.roleResponsibility !== undefined) set.roleResponsibility = body.roleResponsibility;
+    if (body.teamRole !== undefined) {
+      const parsed = parseTeamRole(body.teamRole);
+      if (!parsed.ok) {
+        res.status(400).json({ error: TEAM_ROLE_ERROR });
+        return;
+      }
+      if (parsed.value !== existing.teamRole) {
+        set.teamRole = parsed.value;
+        changes.push(parsed.value ? `team role set to ${parsed.value}` : "team role cleared");
+      }
+    }
     if (body.password !== undefined && body.password.length > 0) {
       set.plainPassword = body.password;
       set.passwordHash = hashPassword(body.password);

@@ -548,7 +548,10 @@ Prerequisite for the shell redesign's D12 (two equal daily users). Today
 roles are `admin` and `member`, so "the home differs by role" has nothing to
 branch on.
 
-- **6.1** Model the four team roles as data, not free text.
+- **6.1** Model the four team roles as data, not free text. — **done 2026-08-15**:
+  `TEAM_ROLES` + nullable `team_role` in `conformityMembers` (null = unassigned,
+  never defaulted), validated in adminTeam routes, ledgered, seeded, selectable
+  and badged on the team page. Drift-guarded by `teamRoles.test.ts`.
 - **6.2** Fix `conformityMembers.plainPassword` — passwords are stored in
   plaintext. This table is being touched anyway; it is not acceptable to leave.
 - **6.3** Scope obligations and evidence requests by role, so an inbox can be

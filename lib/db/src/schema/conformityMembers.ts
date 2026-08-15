@@ -3,6 +3,22 @@ import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
 /**
+ * The four internal team roles (DESIGN_five_shapes.md, D2/D12). The signatory
+ * is legally distinct: Annex V requires the EU declaration of conformity to be
+ * signed on behalf of the manufacturer, so who may attest is a data question,
+ * not display text. `null` means unassigned — a member nobody has placed in a
+ * role. Never default it: an unassigned member must render as unassigned, not
+ * as a silently-guessed coordinator.
+ */
+export const TEAM_ROLES = [
+  "compliance_coordinator",
+  "engineering_lead",
+  "psirt",
+  "signatory",
+] as const;
+export type TeamRole = (typeof TEAM_ROLES)[number];
+
+/**
  * Named assessor accounts for the conformity workbench ("member" role).
  *
  * Admin-managed: the site admin creates each person (display name +
@@ -27,6 +43,9 @@ export const conformityMembersTable = pgTable("conformity_members", {
   department: text("department").notNull().default("Cybersecurity & Product Compliance"),
   organization: text("organization").notNull().default("OXOT Engineering B.V."),
   roleResponsibility: text("role_responsibility").notNull().default("Lead Assessor & PSIRT Coordinator"),
+  /** One of TEAM_ROLES, or null while unassigned. Routes validate the value;
+   * `roleResponsibility` above stays as free-text description alongside it. */
+  teamRole: text("team_role").$type<TeamRole>(),
   plainPassword: text("plain_password").notNull().default("Password123!"),
   passwordHash: text("password_hash").notNull(),
   active: boolean("active").notNull().default(true),
