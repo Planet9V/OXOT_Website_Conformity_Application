@@ -24,6 +24,12 @@ export default function CeNameplateStudioPage() {
     // notified body's identification number where that body performed no
     // assessment is a marking offence. This must stay empty until the user
     // enters the body that actually assessed their product.
+    //
+    // And "a body assessed it" is NOT the test. Art. 30(4) attaches the number
+    // "where that body is involved in the conformity assessment procedure based
+    // on full quality assurance (based on module H)". A notified body performs
+    // the EU-type examination under Module B+C too, and its number still does
+    // not go on the marking there.
     notifiedBodyNumber: '',
     productionYear: '2026',
     serialBatch: 'SN-2026-EU-94821',
@@ -65,7 +71,7 @@ export default function CeNameplateStudioPage() {
               </span>
             </div>
             <p className="text-xs font-mono text-muted-foreground mt-0.5">
-              Plan the CE rating plate fields. Notified body ID applies only where a body assessed the product. QR artwork is not generated yet.
+              Plan the CE rating plate fields. The notified body number belongs on the marking only on the Module H route — see below. QR artwork is not generated yet.
             </p>
           </div>
         </div>
@@ -125,7 +131,7 @@ export default function CeNameplateStudioPage() {
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="text-[11px] font-mono text-muted-foreground">Notified Body ID (only if assessed)</label>
+              <label className="text-[11px] font-mono text-muted-foreground">Notified Body ID (Module H only — Art. 30(4))</label>
               <Input
                 value={formData.notifiedBodyNumber}
                 onChange={(e) => setFormData({ ...formData, notifiedBodyNumber: e.target.value })}
