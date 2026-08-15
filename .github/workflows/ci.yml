@@ -121,7 +121,7 @@ jobs:
         if: always()
         # Baseline is the known backlog on the day the gate landed. It may only
         # ever go down. A new finding pushes the count above it and fails the build.
-        run: node scripts/check_honesty.mjs --baseline 10
+        run: node scripts/check_honesty.mjs --baseline 9
 
       # G5 — every CRA article citation must resolve against the corpus built
       # from the Official Journal text.

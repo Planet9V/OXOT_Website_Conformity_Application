@@ -22,7 +22,15 @@ openSourceStewardRouter.post("/attestation", (req, res) => {
     hasAutomatedCiTesting: Boolean(b.hasAutomatedCiTesting),
     hasSbomPublished: Boolean(b.hasSbomPublished),
     hasSignedReleases: Boolean(b.hasSignedReleases),
-    nonCommercialStewardDeclaration: Boolean(b.nonCommercialStewardDeclaration),
+    /**
+     * Was `nonCommercialStewardDeclaration`, which inverted the definition.
+     * Art. 3(14): a steward supports free and open-source software "intended
+     * FOR COMMERCIAL ACTIVITIES". Declaring yourself non-commercial does not
+     * strengthen your position as a steward — it suggests you may not be one.
+     */
+    supportsSoftwareIntendedForCommercialActivities: Boolean(
+      b.supportsSoftwareIntendedForCommercialActivities,
+    ),
   };
 
   const rawPayload = JSON.stringify({
@@ -38,7 +46,7 @@ openSourceStewardRouter.post("/attestation", (req, res) => {
     data.hasAutomatedCiTesting &&
     data.hasSbomPublished &&
     data.hasSignedReleases &&
-    data.nonCommercialStewardDeclaration;
+    data.supportsSoftwareIntendedForCommercialActivities;
 
   res.json({
     attestationHash,
@@ -107,7 +115,14 @@ openSourceStewardRouter.post("/openvex", (req, res) => {
   };
 
   res.json({
-    vexFormat: "OASIS OpenVEX v0.2.0 (CRA Art. 10 & 33 Compliant)",
+    /**
+     * Was "CRA Art. 10 & 33 Compliant". Neither article governs VEX: Art. 10 is
+     * about Union market surveillance programming and Art. 33 is support
+     * measures for SMEs. OpenVEX is an OASIS specification, not a CRA
+     * instrument, and the Regulation does not certify document formats.
+     */
+    vexFormat: "OASIS OpenVEX v0.2.0",
+    note: "OpenVEX is an OASIS specification. It is a useful way to communicate exploitability, and it is not prescribed or certified by Regulation (EU) 2024/2847.",
     vexDocument,
   });
 });

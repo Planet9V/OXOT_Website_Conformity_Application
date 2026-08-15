@@ -74,7 +74,7 @@ export default function OpenSourceStewardPage() {
                 Open-Source Software Steward Hub
               </h1>
               <span className="font-mono text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30 font-semibold">
-                Article 33 Voluntary Attestation
+                Article 24 Steward Obligations
               </span>
             </div>
             <p className="text-xs font-mono text-muted-foreground mt-0.5">
@@ -88,7 +88,7 @@ export default function OpenSourceStewardPage() {
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted border border-border/80 font-mono text-xs text-foreground hover:border-primary transition-all"
         >
           <Gavel className="w-3.5 h-3.5 text-primary" />
-          Statutory Ref: Article 33 & Recital 18
+          Statutory Ref: Article 24 & Article 64(10)(b)
         </Link>
       </div>
 
@@ -167,7 +167,7 @@ export default function OpenSourceStewardPage() {
 
           <div className="space-y-2 pt-2 border-t border-border/60">
             <div className="font-mono text-xs font-semibold text-foreground">
-              Article 33 Voluntary Security Attestation Checklist
+              Article 24 self-declaration
             </div>
 
             {[
@@ -189,7 +189,7 @@ export default function OpenSourceStewardPage() {
               },
               {
                 id: 'nonCommercialStewardDeclaration',
-                label: 'Non-commercial open-source steward declaration (Recital 18 & Art. 33)',
+                label: 'We support free and open-source software intended for commercial activities (Art. 3(14))',
               },
             ].map((item) => (
               <label
@@ -213,7 +213,7 @@ export default function OpenSourceStewardPage() {
             className="w-full bg-primary text-primary-foreground font-mono text-xs gap-1.5"
           >
             <ShieldCheck className="w-4 h-4" />
-            {attestationMutation.isPending ? 'Generating Attestation...' : 'Issue Article 33 Voluntary Attestation'}
+            {attestationMutation.isPending ? 'Generating Attestation...' : 'Issue Article 24 Steward Obligations'}
           </Button>
         </div>
 
@@ -222,7 +222,7 @@ export default function OpenSourceStewardPage() {
           <div className="bg-card/80 border border-border/80 rounded-xl p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-border/60 pb-2">
               <h2 className="font-display font-medium text-lg text-foreground">
-                Article 33 Attestation Certificate
+                Article 24 self-declaration
               </h2>
               {attestationResult && (
                 <span
@@ -264,7 +264,13 @@ export default function OpenSourceStewardPage() {
             ) : (
               <div className="p-8 text-center text-muted-foreground space-y-2 font-mono text-xs">
                 <GitBranch className="w-8 h-8 text-muted-foreground/50 mx-auto" />
-                <p>Fill in steward details and click generate to issue a legally recognized Article 33 FOSS Attestation.</p>
+                <p>
+                  Fill in the steward details to generate a self-declaration of your Article 24
+                  practices. This is your own statement: it is not issued, recognised or verified
+                  by any authority. Article 25 empowers the Commission to establish voluntary
+                  attestation programmes, but none has been enacted, so no statutory attestation
+                  can be held today.
+                </p>
               </div>
             )}
           </div>
