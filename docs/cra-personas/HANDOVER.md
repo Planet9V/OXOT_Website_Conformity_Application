@@ -89,7 +89,9 @@ design principles hold.
 - 31 G2 failures (issue #62), deferred by decision until the persona phases end.
 - 6 orphaned capabilities — enumerated by `check_ui_reach.mjs`, each with a
   scheduled home in iteration 2.
-- `conformityMembers.plainPassword` stores plaintext passwords.
+- ~~`conformityMembers.plainPassword` stores plaintext passwords.~~ Fixed
+  2026-08-15 (Phase 6.2): column removed and dropped; only the scrypt hash
+  remains, and no route returns a password.
 - **Two steward implementations exist.** `openSourceStewardRoutes.ts` (mounted
   at `/steward`) is the older one, and `open-source-steward.tsx` calls it. The
   Phase 4 Art. 24 engine (`stewardPolicy.ts`, at `/conformity/steward/:project`)
