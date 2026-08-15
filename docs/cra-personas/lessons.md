@@ -115,6 +115,22 @@ anything load-bearing.
 everything else, indicative only. State which tier a claim rests on whenever it
 lands in the product or the plan.
 
+### L13 — Read the existing schema before specifying new tables
+Phase 0 originally specified `org_cra_roles` **and** `obligation_instances`.
+Inspecting `lib/db/src/schema` first showed that `requirements` already carries
+`refCode`, `obligationType` and an **`appliesTo` role axis**, that
+`conformity_evaluations` already is the obligation instance (status, owner,
+riskRating, dueDate) keyed by a natural key that survives a reference reseed,
+and that `requirement_mappings` already links CRA to IEC 62443. Only the org
+role layer was actually missing. Specifying the other table would have created
+a second, competing source of truth for obligation state — the same defect class
+as the two contradictory corpora we just removed.
+**Apply:** before adding a table, grep `lib/db/src/schema` for the concept and
+read the closest existing one. The good half of this codebase is better designed
+than a from-scratch spec written without looking.
+(Evidence: `lib/db/src/schema/{requirements,conformityEvaluations}.ts`;
+`seedConformity.ts` refCodes include `4-1 SM`, `4-1 DM`, `4-2 FR1`.)
+
 ---
 
 ## Phase retros

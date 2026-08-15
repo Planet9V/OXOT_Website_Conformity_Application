@@ -128,13 +128,37 @@ zero data hooks; all 24 KPIs, 18 highlights and 18 funnel steps are string
 literals in `PERSONA_CONFIGS`. Persona lives in `useState` + querystring only.
 
 ### Tasks
-- **0.1** Schema: `org_cra_roles` (which roles this org declares it holds, with
-  effective dates) and `obligation_instances` (obligation ↔ owner ↔ status ↔
-  evidence ↔ due date), keyed to real article references.
-- **0.2** Seed the obligation catalogue from the grounded corpus for the roles
-  in scope, using real article + paragraph anchors. No hand-typed text.
-- **0.3** `GET /api/conformity/roles` and `GET /api/conformity/obligations`
-  behind `requireAuth`, returning only declared roles' obligations.
+
+> **Re-tuned 2026-08-14 before writing code.** The original 0.1/0.2 specified two
+> tables that **already exist in better form**. Reuse, don't rebuild:
+> - `requirements` — `regulationKey` + `refCode` (unique), `title`,
+>   `description`, `obligationType`, and **`appliesTo` jsonb: the role axis
+>   already exists**. Seeded verbatim with all of Annex I Part I (1, 2(a)–(m))
+>   and Part II (1)–(8), plus Art. 13/13(5)/13(6)/13(8)/14, Annexes II/V/VII —
+>   **and IEC 62443-4-1 practices (SM, SR, SD, SVV, DM, SUM, SG) and 4-2
+>   foundational requirements**, which is exactly the framework we just chose.
+> - `conformity_evaluations` — the obligation *instance*: status,
+>   implementationNote, riskRating, **owner**, **dueDate**, keyed by
+>   `(assessmentId, regulationKey, requirementRefCode)` as a natural key so
+>   instances survive a reference reseed.
+> - `requirement_mappings` — the "one control, many clauses" cross-regulation
+>   matrix that already links CRA ↔ 62443.
+>
+> What is genuinely missing is only the org role layer and the cockpit wiring.
+
+- **0.1** `org_cra_roles`: which CRA roles this organisation declares it holds,
+  with effective dates and a note. Single-tenant, so one logical org — the table
+  records the *roles*, not tenants. This is the only new table needed.
+- **0.2** Align the role vocabulary. `appliesTo` currently uses
+  `manufacturer | supplier | integrator | provider | operator`, which predates
+  the grounded corpus and does not match the CRA's economic operators. Extend to
+  the real set — `manufacturer`, `authorised_representative`, `importer`,
+  `distributor`, `oss_steward` — and attribute the existing CRA requirements
+  accordingly. Keep the legacy values working for the non-CRA regulations that
+  use them (AI Act uses `provider`, Machinery uses `operator`).
+- **0.3** `GET /api/conformity/roles` (declared roles) and
+  `GET /api/conformity/obligations` (requirements filtered by declared roles,
+  joined to their evaluation state) behind `requireAuth`.
 - **0.4** Role declaration UI: org states which roles it holds.
 - **0.5** Rewrite `persona-cockpit.tsx` to derive every KPI from
   `/api/conformity/obligations`. Delete `PERSONA_CONFIGS` literals.
