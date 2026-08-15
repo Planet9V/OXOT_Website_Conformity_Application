@@ -414,7 +414,7 @@ Scope as delegated access, not a cockpit persona.
 | W2 — NIS2 | in_progress | — | Directive corpus + verifier done |
 | 3 — Importer / Distributor | **rules complete** | G1/G4/G5 pass | 3.1-3.5 done; UI + G6 open |
 | 4 — Steward | **rules complete** | G1/G4/G5 pass | 4.1-4.6; UI + G6 open |
-| 5 — Authorised rep | not_started | — | Depends on 0, reuses 1.3 |
+| 5 — Authorised rep | **rules complete** | G1/G4/G5 pass | 5.1-5.3 done; cockpit + G6 open |
 
 ### G2 baseline (re-tuned after Phase 1)
 
