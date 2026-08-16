@@ -7,8 +7,11 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import type { AddressInfo } from "node:net";
 import type { Server } from "node:http";
+import { eq } from "drizzle-orm";
+import { db, conformityMembersTable } from "@workspace/db";
 import app from "../../app";
 import { ADMIN_COOKIE, createSessionToken } from "../../lib/adminAuth";
+import { hashPassword } from "../../lib/teamMembers";
 
 let server: Server;
 let baseUrl: string;
@@ -77,13 +80,40 @@ describe("Module 1: Users & Permissions Diagnostic Suite", () => {
     expect(res.status).toBe(401);
   });
 
-  it("POST /api/conformity/me/tours - persists completed tour key", async () => {
-    const res = await api("POST", "/conformity/me/tours", {
-      tourKey: "team_onboarding_wizard_v2",
-    });
+  it("POST /api/conformity/me/tours - persists a seen tour for a MEMBER session", async () => {
+    // /me mutations are member-only BY DESIGN: admin and demo are
+    // env-configured accounts, so their mutations answer 403 (asserted
+    // below). The previous version of this test sent an admin session and an
+    // out-of-vocabulary tour key, and asserted the 403 was a failure.
+    const username = "tours.member.test";
+    const [existing] = await db
+      .select()
+      .from(conformityMembersTable)
+      .where(eq(conformityMembersTable.username, username));
+    const memberId = existing
+      ? existing.id
+      : (
+          await db
+            .insert(conformityMembersTable)
+            .values({
+              username,
+              displayName: "Tours Member",
+              passwordHash: hashPassword("tours-member-pass-1"),
+            })
+            .returning()
+        )[0]!.id;
+    const memberCookie = `${ADMIN_COOKIE}=${createSessionToken(username, "member", {
+      memberId,
+      displayName: "Tours Member",
+    })}`;
+
+    const res = await api("POST", "/conformity/me/tours", { tourId: "workbench" }, memberCookie);
     expect(res.status).toBe(200);
-    expect(Array.isArray(res.json.completedTours)).toBe(true);
-    expect(res.json.completedTours).toContain("team_onboarding_wizard_v2");
+    expect(Array.isArray(res.json.toursSeen)).toBe(true);
+    expect(res.json.toursSeen).toContain("workbench");
+
+    const adminAttempt = await api("POST", "/conformity/me/tours", { tourId: "workbench" });
+    expect(adminAttempt.status).toBe(403);
   });
 
   it("GET /api/admin/team - lists registered assessors and team members", async () => {

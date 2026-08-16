@@ -90,7 +90,10 @@ const CYCLONEDX_SBOM = JSON.stringify({
   ],
 });
 
-describe("xBOM Vault — admin happy path", () => {
+// Environment-dependent: BOM ingest stores the raw document bytes via the
+// object-storage sidecar (PRIVATE_OBJECT_DIR). Skipped with reason where
+// storage is absent; the read-only guard suite below runs everywhere.
+describe.skipIf(!process.env.PRIVATE_OBJECT_DIR)("xBOM Vault — admin happy path", () => {
   it("ingests → detail → analyzes (OSV stubbed) → patches checklist → deletes", async () => {
     // ---- create product + assessment via the real endpoints ---------------
     const product = await api("POST", "/conformity/products", {

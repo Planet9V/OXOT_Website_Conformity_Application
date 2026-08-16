@@ -241,7 +241,10 @@ describe("report engine — frozen snapshot determinism", () => {
     const plan = planSections(mixed, "briefing", "board", OPTIONS, buildCitationRegistry(mixed, OPTIONS), "T");
     const kpi = plan.sections.find((s) => s.key === "kpi_band")?.html ?? "";
     // The KPI tile for open incidents must read 3 (open+investigating+mitigated).
-    expect(kpi).toMatch(/>3<[^]{0,60}?Open incidents/);
+    // Matched label-then-value: the renderer emits the label div before the
+    // value div (the old assertion expected the reverse order and went stale
+    // when the tile markup was reworked - the ENGINE was right all along).
+    expect(kpi).toMatch(/Open Incidents[^]{0,80}?>3</);
   });
 
   it("aiSectionSpecs prompts differ by audience", () => {

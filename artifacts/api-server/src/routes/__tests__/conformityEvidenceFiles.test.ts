@@ -90,7 +90,14 @@ const FILE_BYTES = Buffer.from(
 );
 const FILE_SHA256 = createHash("sha256").update(FILE_BYTES).digest("hex");
 
-describe("conformity evidence files — attach & reopen round-trip", () => {
+/**
+ * Environment-dependent: the presigned-URL round-trip uploads REAL bytes via
+ * the object-storage sidecar (PRIVATE_OBJECT_DIR + the Replit GCS bridge).
+ * Where that environment is absent (CI, plain local runs) the suite SKIPS
+ * with this stated reason rather than failing on infrastructure it cannot
+ * reach — and runs in full wherever storage is configured.
+ */
+describe.skipIf(!process.env.PRIVATE_OBJECT_DIR)("conformity evidence files — attach & reopen round-trip", () => {
   it("uploads via presigned URL, links evidence, and downloads the same bytes back", async () => {
     // ---- scaffold a product + assessment via the real endpoints ------------
     const product = await api("POST", "/conformity/products", {

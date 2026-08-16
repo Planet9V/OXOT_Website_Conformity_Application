@@ -65,7 +65,7 @@ re-tune before the next phase starts.
 | # | Check | Command / criterion |
 |---|-------|---------------------|
 | G1 | Typecheck | `npx tsc --noEmit` clean in api-server, conformity, oxot-web |
-| G2 | Tests | `cd artifacts/api-server && npx vitest run` — **no NEW failures vs the recorded baseline**, and the phase's new tests present and passing |
+| G2 | Tests | `cd artifacts/api-server && npx vitest run` — **ZERO failures** (baseline reached 0 in task 8.1, 2026-08-16), and the phase's new tests present and passing |
 | G3 | Build | `cd artifacts/conformity && npx vite build` succeeds |
 | G4 | Honesty | `node scripts/check_honesty.mjs` exits 0 |
 | G5 | Citations | `node scripts/check_citations.mjs` exits 0 — every cited article resolves |

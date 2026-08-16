@@ -79,17 +79,15 @@ jobs:
           pnpm --filter @workspace/conformity exec tsc --noEmit
           pnpm --filter @workspace/oxot-web exec tsc --noEmit
 
-      # Every gate below runs with `if: always()`. G2 currently fails on a
-      # backlog of ~69 pre-existing failures (object storage, demo-role 401 vs
-      # 403, OPENROUTER_API_KEY), and because a failing step halts the job by
-      # default, G3, G4, G5 and the corpus verifier were SKIPPED on every run —
-      # the entire quality apparatus was in the repo but had never executed.
-      # A gate that never runs is not a gate.
+      # Every gate below runs with `if: always()` so one red gate cannot
+      # silently skip the others.
       #
-      # G2 — tests. Fails on any failing test. Suites that cannot collect
-      # without a database are a known gap tracked in the plan; they must not
-      # mask a genuine assertion failure, so the run is not allowed to pass
-      # merely because collection errored.
+      # G2 — tests. ZERO failures as of 2026-08-16 (task 8.1 closed issue
+      # #62): the "31 known failures" were suites frozen on dead contracts,
+      # tests using the wrong session role, test files racing each other on
+      # the one shared database (now sequential — vitest.config.ts), and two
+      # object-storage tests that SKIP with a stated reason where the storage
+      # sidecar is absent. Any failing test fails the build.
       # The schema uses pgvector columns. The image ships the extension but does
       # not enable it, so a fresh database has no `vector` type and every push
       # fails with 'type "vector" does not exist' — which drizzle-kit reports

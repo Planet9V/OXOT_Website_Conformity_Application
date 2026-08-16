@@ -26,7 +26,10 @@ Everything below is verifiable; if a claim here contradicts the working tree,
 ## The gates
 
     npx tsc --noEmit                                  # G1, per package
-    cd artifacts/api-server && npx vitest run         # G2 — see the trap below
+    # G2 — CI-mirror: pgvector on a throwaway port + the ci.yml env
+    # (DATABASE_URL, SESSION_SECRET, ADMIN_*, NODE_ENV=test, DEMO_READONLY=true),
+    # provisioned with push-force + seed:conformity, then:
+    cd artifacts/api-server && npx vitest run
     cd artifacts/conformity && npx vite build         # G3
     node scripts/check_honesty.mjs   --baseline 7     # G4
     node scripts/check_citations.mjs --baseline 0     # G5
@@ -59,10 +62,11 @@ are named there (issue #62 first).
 
 ## Traps — each of these actually happened
 
-1. **G2 has 31 known failures** (issue #62), dominated by 401s. Do **not** fix
-   them by flipping `DEMO_READONLY` in `ci.yml`. That restores the state where
-   unauthenticated writes succeed — the thing that looked like a vulnerability.
-   The fix is making those tests authenticate.
+1. ~~G2 has 31 known failures (issue #62).~~ **Fixed 2026-08-16 (task 8.1):
+   0 failures.** The backlog was dead-contract suites, wrong-session tests,
+   and parallel test files racing on one shared database (now sequential).
+   The trap remains true in spirit: never fix an auth failure by flipping
+   `DEMO_READONLY` — tests authenticate, guards stay.
 2. **Never raise a gate baseline to make it pass.** The baseline is a debt
    record, not a dial.
 3. **Read the article before implementing the task.** Four separate plan defects
@@ -93,7 +97,6 @@ are named there (issue #62 first).
   because there was nothing left to report. The button still *sends* nothing
   (partner-hub makes no incident API call), but the UI now says so; wiring real
   submission is Phase 7 work, where partner-hub is retired anyway.
-- 31 G2 failures (issue #62), deferred by decision until the persona phases end.
 - ~~Orphaned capabilities~~ ZERO as of 2026-08-15 (7.5b): every shipped
   capability has a screen that calls it. G8 baseline is 0 and stays there.
 - ~~`conformityMembers.plainPassword` stores plaintext passwords.~~ Fixed
