@@ -47,6 +47,7 @@ const ProductPortfolioPage = lazy(() =>
 );
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
+const Nis2ReaderPage = lazy(() => import('./pages/nis2-reader'));
 const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
@@ -158,6 +159,7 @@ function ShellRoutes() {
           {/* Library (7.6a): one destination owns all reference content. */}
           <Route path="/library" component={LibraryPage} />
           <Route path="/library/statute" component={CraWikiPage} />
+          <Route path="/library/nis2" component={Nis2ReaderPage} />
           <Route path="/library/statute/*" component={CraWikiPage} />
           <Route path="/library/acts" component={Regulations} />
           <Route path="/library/acts/:key" component={RegulationDetail} />

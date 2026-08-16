@@ -30,8 +30,15 @@ const SECTIONS: {
     href: "/library/acts",
     title: "Acts in scope",
     description:
-      "Every regulation the reference layer covers — CRA, NIS2, AI Act, Machinery, IEC 62443 and more — with each act's requirement set. The NIS2 Directive's requirements are browsable here; its full-text reader ships with the NIS2 obligations seeding, and until then this catalogue is what exists.",
+      "Every regulation the reference layer covers — CRA, NIS2, AI Act, Machinery, IEC 62443 and more — with each act's requirement set browsable from the API-driven catalogue.",
     icon: Book,
+  },
+  {
+    href: "/library/nis2",
+    title: "NIS2, verbatim",
+    description:
+      "Directive (EU) 2022/2555 as published — 46 articles, 144 recitals — from the same reproducible Official Journal pipeline as the CRA reader. States plainly that no national transposition measure is loaded yet.",
+    icon: BookOpen,
   },
   {
     href: "/library/requirements",

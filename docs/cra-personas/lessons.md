@@ -584,9 +584,10 @@ phase began. The psirt page — the Incidents donor — made zero API calls.
 
 **Re-tuning applied (what Phase 8 should be):** the deferrals that expired
 with this phase, in value order: (1) **issue #62** — DONE 8.1; (2) **PSIRT
-toolkit absorption** into Incidents — DONE 8.2; (3) a **real CE stage** in the product
-file, retiring the CE studio tool; (4) the **NIS2 full-text reader** (corpus
-bundle + Library mode) and **W2.4 national transpositions**; (5) the 15
+toolkit absorption** into Incidents — DONE 8.2; (3) a **real CE stage** — DONE 8.3; (4) the **NIS2 full-text reader** — DONE
+8.4 (W2.4 transposition CONTENT remains queued: loading national measures
+needs sourced verbatim texts — the Legal circuit-breaker forbids
+reconstructing them from memory; the reader states the gap); (5) the 15
 Dependabot findings. The More menu should be EMPTY by the end of Phase 8,
 and the transitional-menu code deleted with it.
 
