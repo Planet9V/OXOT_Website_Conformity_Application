@@ -46,7 +46,11 @@ jobs:
       # Portable evidence storage (10.1): with the local backend the two
       # storage suites RUN instead of skipping — the suite floor is 714/0/0.
       OBJECT_STORAGE_BACKEND: local
-      OBJECT_STORAGE_DIR: ${{ runner.temp }}/objects
+      # A literal path: the `runner` context is NOT available in job-level
+      # env (steps only) — using it here invalidated the whole workflow file
+      # and every run failed at parse time before executing anything (L52's
+      # sibling: the failure looked like red gates, was actually a dead file).
+      OBJECT_STORAGE_DIR: /tmp/oxot-ci-objects
 
     steps:
       - uses: actions/checkout@v4
