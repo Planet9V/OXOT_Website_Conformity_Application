@@ -3,7 +3,7 @@ import { eq, desc, sql } from "drizzle-orm";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
-import { db, productDocumentsTable } from "@workspace/db";
+import { db, productDocumentsTable, conformityProductsTable } from "@workspace/db";
 import { requireAuth, getSession } from "../lib/adminAuth";
 
 // What remains of the product-portfolio donor's server half (retired 9.1):
@@ -116,22 +116,27 @@ productPortfolioRouter.post("/products/:id/documents", requireAuth, async (req, 
       res.status(400).json({ success: false, error: "uploadedBy is required — provenance must name who uploaded" });
       return;
     }
+    // A clean refusal instead of an FK 500 for a product that does not exist.
+    const [product] = await db
+      .select({ id: conformityProductsTable.id })
+      .from(conformityProductsTable)
+      .where(eq(conformityProductsTable.id, productId));
+    if (!product) {
+      res.status(404).json({ success: false, error: "Product not found" });
+      return;
+    }
 
     const contentStr = fileContentText;
     const fileBytes = Buffer.byteLength(contentStr, "utf-8");
     const sha256Hash = crypto.createHash("sha256").update(contentStr).digest("hex");
 
-    // Persistent storage directory path
-    const uploadDir = path.join(process.cwd(), "uploads", "products", String(productId));
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
-    const safeFileName = `${Date.now()}_${originalFileName.replace(/[^a-zA-Z0-9_.-]/g, "_")}`;
-    const fullStoragePath = path.join(uploadDir, safeFileName);
-    fs.writeFileSync(fullStoragePath, contentStr, "utf-8");
-
-    const storagePathRelative = `/uploads/products/${productId}/${safeFileName}`;
+    // The record of truth is the DATABASE row (content + sha256). The old
+    // second copy on container-local disk was worse than none: the api
+    // container's filesystem is rebuilt on every deploy, so the "stored"
+    // file silently vanished while the record claimed it existed — and in
+    // the container the write failed outright (EACCES), which is how the
+    // H1 G6 probe exposed it. storagePath stays only for legacy rows.
+    const storagePathRelative = "";
 
     try {
       await db.execute(sql`SELECT setval(pg_get_serial_sequence('cra_product_documents', 'id'), COALESCE((SELECT max(id) FROM cra_product_documents), 1));`);

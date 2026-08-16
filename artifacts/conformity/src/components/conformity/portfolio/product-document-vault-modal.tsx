@@ -240,7 +240,12 @@ export function ProductDocumentVaultModal({
                   SKU: {product?.sku}
                 </Badge>
                 <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/30 font-mono text-xs gap-1">
-                  <Lock className="h-3 w-3" /> CRA Art. 10(7) 10-Year Archive
+                  {/* Art. 13(13): technical documentation kept at the
+                      authorities' disposal for >= 10 years after placing on
+                      the market (verified against the corpus title — the old
+                      "Art. 10(7)" was draft-era numbering; final Art. 10 is
+                      about cyber skills. L41.) */}
+                  <Lock className="h-3 w-3" /> CRA Art. 13(13) 10-Year Archive
                 </Badge>
               </div>
               <DialogTitle className="text-2xl font-display font-bold text-foreground tracking-tight">

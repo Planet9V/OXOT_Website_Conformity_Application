@@ -851,3 +851,43 @@ HANDOVER's "Next steps" order.
   output was the truth (L36). Gates: G2 712/0/2; G6 live 3/3 proving the
   fake digest is absent from the rendered page AND every served JS bundle
   (`artifacts_verify/honesty_zero_95/`).
+
+# Hygiene batch H1–H3 (2026-08-16, post-Phase-9)
+
+- **H1 done 2026-08-16** Portfolio schema hygiene. The four orphaned demo
+  tables (`cra_portfolio_products`, `cra_product_releases`,
+  `cra_enterprise_customers`, `cra_customer_deployments`) are DELETED from
+  the schema (zero source consumers; the live tables held only the
+  fictional seed, and the live vault held 0 rows — nothing real lost).
+  `cra_product_documents.productId` now carries a real FK →
+  `conformity_products.id` (cascade), ending the two-registry keyspace
+  ambiguity. The H1 G6 probe then exposed and killed two more defects:
+  (1) the vault's disk write ALWAYS failed in the container (EACCES on
+  /app/uploads) — and the container-local "storage" was dishonest anyway
+  (rebuilt away while the row claimed it existed); the DB row (content +
+  sha256) is now the sole record, disk write removed, orphan uploads
+  refuse with a clean 404; (2) the vault badge cited "CRA Art. 10(7)
+  10-Year Archive" — draft-era numbering (final Art. 10 is cyber SKILLS);
+  corrected to Art. 13(13) after checking the corpus title (L41). Live
+  stack migrated (one-shot images rebuilt first — L39); G6 6/6 incl.
+  cascade-delete proof and the four tables absent from the live DB
+  (`artifacts_verify/vault_fk_h1/`); G2 712/0/2 re-run after the route
+  change. Observed, explicitly out of scope: the long-known unused
+  `cra_composite_*`/`cra_csaf_advisories`/`cra_procurement_evaluations`
+  tables remain (a separate decision).
+- **H2 closed as documented-by-design 2026-08-16.** The two skipped tests
+  gate on `PRIVATE_OBJECT_DIR`, but `lib/objectStorage.ts` is hard-wired
+  to the REPLIT GCS sidecar (external-account credentials against
+  127.0.0.1:1106): setting the env locally would un-skip them straight
+  into failure. Off Replit the skips are correct and state their reason.
+  Making file evidence storage portable (local/S3 backend + non-sidecar
+  upload URLs) is a NAMED FEATURE a future phase may take, not hygiene.
+- **H3 done 2026-08-16 (the safe parts).** Repo-local git identity set
+  (Jim McKenney / mckenneyengineers@gmail.com — commits no longer
+  attribute to the auto-derived hostname identity). Development is
+  MAIN-ONLY from here: the local checkout switches to `main` after this
+  commit; `feat/phase-7-shell-redesign` remains as history (always equal
+  to main; never diverged). NOT done, needs the user outside a session:
+  moving the repo out of ~/Downloads (breaks the running compose project
+  name, `.mcp.json` paths and session state mid-session — do it between
+  sessions, then `docker compose up -d` from the new path).
