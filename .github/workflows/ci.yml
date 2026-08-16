@@ -182,6 +182,20 @@ jobs:
         if: always()
         run: node scripts/verify_bsig_corpus.mjs
 
+      # The Phase-10 acts (10.3): AI Act, Machinery Regulation, RED — same
+      # contract, one parameterized verifier. B1 reports "----" for
+      # corrigenda by design (the scraping method failed the CRA's positive
+      # control and cannot prove an absence).
+      - name: AI Act source of truth
+        if: always()
+        run: node scripts/verify_euact_corpus.mjs ai_act
+      - name: Machinery Regulation source of truth
+        if: always()
+        run: node scripts/verify_euact_corpus.mjs machinery
+      - name: RED source of truth
+        if: always()
+        run: node scripts/verify_euact_corpus.mjs red
+
       # Belt and braces: the corpus must also be reproducible byte-for-byte, so
       # a hand-edit of craCorpusData.ts cannot survive.
       - name: Corpus is reproducible from the Official Journal source
@@ -195,4 +209,10 @@ jobs:
           node scripts/sync_cbw_corpus_data.mjs
           node scripts/build_bsig_corpus_from_gii.mjs
           node scripts/sync_bsig_corpus_data.mjs
-          git diff --exit-code -- artifacts/*/src/**/craCorpusData.ts artifacts/conformity/src/data/nis2CorpusData.ts artifacts/conformity/src/data/cbwCorpusData.ts artifacts/conformity/src/data/bsigCorpusData.ts docs/cra_statutory_corpus/ docs/nis2_statutory_corpus/ docs/cbw_statutory_corpus/ docs/bsig_statutory_corpus/
+          node scripts/build_euact_corpus_from_eurlex.mjs ai_act
+          node scripts/sync_euact_corpus_data.mjs ai_act
+          node scripts/build_euact_corpus_from_eurlex.mjs machinery
+          node scripts/sync_euact_corpus_data.mjs machinery
+          node scripts/build_euact_corpus_from_eurlex.mjs red
+          node scripts/sync_euact_corpus_data.mjs red
+          git diff --exit-code -- artifacts/*/src/**/craCorpusData.ts artifacts/conformity/src/data/nis2CorpusData.ts artifacts/conformity/src/data/cbwCorpusData.ts artifacts/conformity/src/data/bsigCorpusData.ts artifacts/conformity/src/data/aiActCorpusData.ts artifacts/conformity/src/data/machineryCorpusData.ts artifacts/conformity/src/data/redCorpusData.ts docs/cra_statutory_corpus/ docs/nis2_statutory_corpus/ docs/cbw_statutory_corpus/ docs/bsig_statutory_corpus/ docs/ai_act_statutory_corpus/ docs/machinery_statutory_corpus/ docs/red_statutory_corpus/

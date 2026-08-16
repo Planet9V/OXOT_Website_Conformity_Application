@@ -244,122 +244,6 @@
             3
           ],
           "referencedAnnexes": []
-        },
-        {
-          "articleNumber": 40,
-          "title": "Review",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 0,
-              "text": "By 17 October 2027 and every 36 months thereafter, the Commission shall review the functioning of this Directive, and report to the European Parliament and to the Council. The report shall in particular assess the relevance of the size of the entities concerned, and the sectors, subsectors and types of entity referred to in Annexes I and II for the functioning of the economy and society in relation to cybersecurity. To that end and with a view to further advancing the strategic and operational cooperation, the Commission shall take into account the reports of the Cooperation Group and the CSIRTs network on the experience gained at a strategic and operational level. The report shall be accompanied, where necessary, by a legislative proposal."
-            }
-          ],
-          "tags": [
-            "csirt",
-            "cooperation"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
-        },
-        {
-          "articleNumber": 41,
-          "title": "Transposition",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 1,
-              "text": "By 17 October 2024, Member States shall adopt and publish the measures necessary to comply with this Directive. They shall immediately inform the Commission thereof.\nThey shall apply those measures from 18 October 2024."
-            },
-            {
-              "paragraphNumber": 2,
-              "text": "When Member States adopt the measures referred to in paragraph 1, they shall contain a reference to this Directive or shall be accompanied by such reference on the occasion of their official publication. The methods of making such reference shall be laid down by Member States."
-            }
-          ],
-          "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
-        },
-        {
-          "articleNumber": 42,
-          "title": "Amendment of Regulation (EU) No 910/2014",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 0,
-              "text": "In Regulation (EU) No 910/2014, Article 19 is deleted with effect from 18 October 2024."
-            }
-          ],
-          "tags": [],
-          "referencedArticles": [
-            19
-          ],
-          "referencedAnnexes": []
-        },
-        {
-          "articleNumber": 43,
-          "title": "Amendment of Directive (EU) 2018/1972",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 0,
-              "text": "In Directive (EU) 2018/1972, Articles 40 and 41 are deleted with effect from 18 October 2024."
-            }
-          ],
-          "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
-        },
-        {
-          "articleNumber": 44,
-          "title": "Repeal",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 0,
-              "text": "Directive (EU) 2016/1148 is repealed with effect from 18 October 2024.\nReferences to the repealed Directive shall be construed as references to this Directive and shall be read in accordance with the correlation table set out in Annex III."
-            }
-          ],
-          "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "III"
-          ]
-        },
-        {
-          "articleNumber": 45,
-          "title": "Entry into force",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 0,
-              "text": "This Directive shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union ."
-            }
-          ],
-          "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
-        },
-        {
-          "articleNumber": 46,
-          "title": "Addressees",
-          "chapterNumber": 1,
-          "chapterTitle": "FINAL PROVISIONS",
-          "paragraphs": [
-            {
-              "paragraphNumber": 0,
-              "text": "This Directive is addressed to the Member States."
-            }
-          ],
-          "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
         }
       ]
     },
@@ -1655,7 +1539,124 @@
       "chapterNumber": 9,
       "label": "CHAPTER IX",
       "title": "FINAL PROVISIONS",
-      "articles": []
+      "articles": [
+        {
+          "articleNumber": 40,
+          "title": "Review",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "By 17 October 2027 and every 36 months thereafter, the Commission shall review the functioning of this Directive, and report to the European Parliament and to the Council. The report shall in particular assess the relevance of the size of the entities concerned, and the sectors, subsectors and types of entity referred to in Annexes I and II for the functioning of the economy and society in relation to cybersecurity. To that end and with a view to further advancing the strategic and operational cooperation, the Commission shall take into account the reports of the Cooperation Group and the CSIRTs network on the experience gained at a strategic and operational level. The report shall be accompanied, where necessary, by a legislative proposal."
+            }
+          ],
+          "tags": [
+            "csirt",
+            "cooperation"
+          ],
+          "referencedArticles": [],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 41,
+          "title": "Transposition",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "By 17 October 2024, Member States shall adopt and publish the measures necessary to comply with this Directive. They shall immediately inform the Commission thereof.\nThey shall apply those measures from 18 October 2024."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "When Member States adopt the measures referred to in paragraph 1, they shall contain a reference to this Directive or shall be accompanied by such reference on the occasion of their official publication. The methods of making such reference shall be laid down by Member States."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 42,
+          "title": "Amendment of Regulation (EU) No 910/2014",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "In Regulation (EU) No 910/2014, Article 19 is deleted with effect from 18 October 2024."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            19
+          ],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 43,
+          "title": "Amendment of Directive (EU) 2018/1972",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "In Directive (EU) 2018/1972, Articles 40 and 41 are deleted with effect from 18 October 2024."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 44,
+          "title": "Repeal",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Directive (EU) 2016/1148 is repealed with effect from 18 October 2024.\nReferences to the repealed Directive shall be construed as references to this Directive and shall be read in accordance with the correlation table set out in Annex III."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [],
+          "referencedAnnexes": [
+            "III"
+          ]
+        },
+        {
+          "articleNumber": 45,
+          "title": "Entry into force",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "This Directive shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union ."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 46,
+          "title": "Addressees",
+          "chapterNumber": 9,
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "This Directive is addressed to the Member States."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [],
+          "referencedAnnexes": []
+        }
+      ]
     }
   ]
 }

@@ -925,7 +925,33 @@ in G6, not only the new ones).
   anything). Surfaces: product file (register) + the PSIRT/Incidents panel
   (impacted set + record-notification), spec-first endpoints, G8 entries in
   the same commit.
-- **10.3 Three new acts, corpus-first: AI Act, Machinery, RED.** Sources as
+- **10.3a–b done 2026-08-16** Three new acts, corpus-first (the reference
+  layer + safeguards): authentic OJ sources committed (CELEX 32024R1689 /
+  32023R1230 / 32014L0053), ONE parameterized builder over the shared
+  parser (chapter filter for the AI Act's SECTION headings; annexes parsed
+  by VISIBLE headings because the Machinery OJ HTML ships BROKEN annex ids
+  — ANNEX IX reuses anx_I), pinned structures cross-checked by independent
+  anchor counts (AI 180/13/113/13 · MR 86/9/54/12 · RED 75/7/52/8), one
+  parameterized verifier in CI (A live byte-match, honest "----" corrigenda,
+  C integrity + bundle sha, D probes, F regulation/directive framing),
+  byte-for-byte reproducibility, three readers on one shared component with
+  per-act honesty banners (RED carries the NIS2-style transposition
+  caveat). The build EXPOSED AND FIXED a shipped defect: the parser's roman
+  table stopped at VIII, so the NIS2 corpus had Articles 40–46 (Chapter IX)
+  misassigned to Chapter I since 8.4 — real romanToInt now; CRA rebuilt
+  byte-identical, NIS2 corrected. SAFEGUARDS extended as the user asked:
+  check_citations.mjs now validates ai_act 1..113, machinery 1..54, red
+  1..52 — the formerly SKIPPED AI-Act blogs/podcasts/content pages now
+  VALIDATE against the real corpus (and passed); concept tables start
+  empty and are earned, not guessed. The OJ's own typography is preserved
+  verbatim (AI Act Art. 1's stray backtick is IN the published source).
+- **10.3c OPEN** Obligations seeding + deriver registration for the three
+  acts (D10: act is a dimension). This is statute-reading work per
+  obligation — the CRA's 92 requirements took multiple phases — and is NOT
+  rushed: each act needs its obligation set read from the corpus, seeded
+  with citations that pass the now-live per-act gate, and its deriver
+  registered. Scope it as its own phase when the user prioritises it.
+- **10.3-note (original scope text follows for the record):** Sources as
   strict as CRA/NIS2 — authentic EUR-Lex OJ texts only: AI Act
   Regulation (EU) 2024/1689 (CELEX 32024R1689), Machinery
   Regulation (EU) 2023/1230 (CELEX 32023R1230), RED Directive 2014/53/EU

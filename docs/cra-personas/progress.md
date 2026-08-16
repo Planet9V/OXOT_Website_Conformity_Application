@@ -186,3 +186,9 @@ the meaning of Art. 64(10).
   advisory that survives product deletion by design — L46 cleanup added).
   G8 20/0. G6 7/7 with screenshots (product_users_102/). Labels got
   htmlFor/id pairs after getByLabel exposed missing association (a11y).
+- 10.3a–b DONE: three corpora (AI Act/MR/RED) + verifiers + readers + CI
+  reproducibility; citation gate now five-act (previous AI-Act skips are
+  enforcement and PASS). Found+fixed shipped NIS2 defect (roman table →
+  ch. IX arts 40–46 were in ch. I). G2 exit-0 (suite unchanged 722);
+  G6 8/8 (three_acts_103/). 10.3c (obligation seeding + derivers ×3)
+  deliberately left open — statute-reading work, its own phase.

@@ -158,7 +158,21 @@ export function parseChapters(html) {
   return chapters;
 }
 
-export const ROMAN = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8 };
+// A real conversion, not a lookup: the original table stopped at VIII, which
+// silently misassigned every article in a chapter IX+ to chapter 1 — the
+// SHIPPED NIS2 corpus carried that for its final-provisions chapter until the
+// 10.3 verifier caught it (chapters IX..XIII exist in the AI Act).
+export function romanToInt(roman) {
+  const VAL = { I: 1, V: 5, X: 10, L: 50, C: 100 };
+  let total = 0;
+  for (let i = 0; i < roman.length; i++) {
+    const v = VAL[roman[i]] ?? 0;
+    const next = VAL[roman[i + 1]] ?? 0;
+    total += v < next ? -v : v;
+  }
+  return total;
+}
+export const ROMAN = new Proxy({}, { get: (_t, p) => (typeof p === "string" ? romanToInt(p) || undefined : undefined) });
 
 export function parseArticles(html, chapters, tagsFor, maxArticle) {
   const articles = [];

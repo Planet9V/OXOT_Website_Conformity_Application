@@ -46,7 +46,7 @@ const EXT = new Set([".ts", ".tsx", ".md", ".mdx"]);
 // cannot resolve. Generated corpus files are excluded exactly like the docs
 // corpora they are built from.
 const SKIP =
-  /node_modules|\/dist\/|craCorpusData\.ts|nis2CorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|docs\/cra-personas/;
+  /node_modules|\/dist\/|craCorpusData\.ts|nis2CorpusData\.ts|cbwCorpusData\.ts|bsigCorpusData\.ts|aiActCorpusData\.ts|machineryCorpusData\.ts|redCorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|docs\/cra-personas/;
 
 /** Load an act's article titles from its grounded corpus. */
 function loadCorpus(relPath, actKey) {
@@ -179,6 +179,34 @@ const ACTS = {
     concepts: NIS2_CONCEPTS,
     paragraphRule: false,
   },
+  // Phase 10.3: three more acts become FIRST-CLASS — their files were
+  // previously skipped wholesale ("we have no corpus"), which meant every
+  // article number in them was unverified. Now they validate against their
+  // own grounded corpora. Concept tables start empty: the range and
+  // attribution checks apply immediately; concepts grow as wrong-article
+  // classes are actually seen (over-matching produced 44 false positives
+  // once — concepts are earned, not guessed).
+  ai_act: {
+    label: "Regulation (EU) 2024/1689 (AI Act)",
+    corpus: "docs/ai_act_statutory_corpus/02_articles_full.json",
+    names: /2024\/1689|\bAI Act\b|Artificial Intelligence Act/i,
+    concepts: [],
+    paragraphRule: false,
+  },
+  machinery: {
+    label: "Regulation (EU) 2023/1230 (Machinery Regulation)",
+    corpus: "docs/machinery_statutory_corpus/02_articles_full.json",
+    names: /2023\/1230|Machinery Regulation/i,
+    concepts: [],
+    paragraphRule: false,
+  },
+  red: {
+    label: "Directive 2014/53/EU (RED)",
+    corpus: "docs/red_statutory_corpus/02_articles_full.json",
+    names: /2014\/53|\bRED\b|Radio Equipment Directive/i,
+    concepts: [],
+    paragraphRule: false,
+  },
 };
 
 for (const [key, act] of Object.entries(ACTS)) {
@@ -281,14 +309,14 @@ function attributedElsewhere(line, matchIndex, namesThisAct) {
  */
 const FILE_ACT = [
   { re: /\bnis2\b/i, act: "nis2" },
-  { re: /ai[-_]act/i, act: null, name: "EU AI Act" },
-  { re: /machinery/i, act: null, name: "Machinery Regulation" },
+  { re: /ai[-_]act/i, act: "ai_act" },
+  { re: /machinery/i, act: "machinery" },
   { re: /\bgdpr\b/i, act: null, name: "GDPR" },
   { re: /\bdora\b/i, act: null, name: "DORA" },
   { re: /\bgpsr\b/i, act: null, name: "GPSR" },
   { re: /\bcer\b/i, act: null, name: "CER Directive" },
   { re: /data[-_]act/i, act: null, name: "Data Act" },
-  { re: /radio[-_]equipment|\bred\b/i, act: null, name: "Radio Equipment Directive" },
+  { re: /radio[-_]equipment|\bred\b/i, act: "red" },
 ];
 
 /**
@@ -297,7 +325,7 @@ const FILE_ACT = [
  * them is correct by definition, and "correcting" one would corrupt the very
  * thing every other citation is checked against. Never scan the source of truth.
  */
-const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus)\//;
+const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus)\//;
 
 /**
  * Which act does this file default to? Returns the act, or a skip reason.

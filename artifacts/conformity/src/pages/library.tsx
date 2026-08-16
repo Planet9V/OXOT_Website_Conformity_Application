@@ -55,6 +55,27 @@ const SECTIONS: {
     icon: BookOpen,
   },
   {
+    href: "/library/ai-act",
+    title: "AI Act, verbatim",
+    description:
+      "Regulation (EU) 2024/1689 as published — 113 articles, 180 recitals, 13 annexes — from the same reproducible Official Journal pipeline as the CRA reader.",
+    icon: BookOpen,
+  },
+  {
+    href: "/library/machinery",
+    title: "Machinery Regulation, verbatim",
+    description:
+      "Regulation (EU) 2023/1230 as published — 54 articles, 86 recitals, 12 annexes — from the same reproducible Official Journal pipeline.",
+    icon: BookOpen,
+  },
+  {
+    href: "/library/red",
+    title: "Radio Equipment Directive, verbatim",
+    description:
+      "Directive 2014/53/EU as published — 52 articles, 75 recitals, 8 annexes. A directive: the reader states plainly that national transposition governs and none is loaded.",
+    icon: BookOpen,
+  },
+  {
     href: "/library/requirements",
     title: "Requirement catalogue",
     description:
