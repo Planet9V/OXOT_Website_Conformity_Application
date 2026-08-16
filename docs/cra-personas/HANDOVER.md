@@ -20,7 +20,7 @@ Everything below is verifiable; if a claim here contradicts the working tree,
    W1.3 and does not survive them. Decisions D10–D13 are binding.
 2. **`task_plan.md`** — Phases 6 and 7 are next. The phase-status table says what
    is complete; the gate table (G1–G7) is the definition of done.
-3. **`lessons.md`** — L1–L35. Not optional reading; several are things that cost
+3. **`lessons.md`** — L1–L44. Not optional reading; several are things that cost
    real time to learn.
 
 ## The gates
@@ -46,10 +46,16 @@ persisted data comes back. G7 is the retro — update `lessons.md` and re-tune t
 Close it with **G7** (update lessons.md, re-tune Phase 7) before starting
 Phase 7.
 
-**Phase 7 — shell redesign.** Nine destinations in four groups, replacing 34
-pages and 51 route registrations, built *on* the existing 181 design tokens and
-57 UI primitives. Done means the UI reach gate goes to 0 orphans and the seven
-design principles hold.
+**Phase 7 — shell redesign: COMPLETE 2026-08-16.** Nine real destinations,
+role-aware Home with the evidence-request inbox, polymorphic product file
+(orgRole; Verify gate, Assess panel, Arts. 21/22 determination, versions
+loop), cross-act Incidents (CRA product + NIS2 entity clocks), Authorities,
+Signatures, Projects on the Art. 24 engine, Organisation with mandates,
+Library owning all reference content, universal statutory flyout. **G8 is 0
+and is now a covenant: a capability lands WITH its surface.** Donors
+partner-hub, standards-matrix, importer-archive, open-source-steward are
+deleted. See lessons.md L41–L44 and the Phase 7 retro; Phase 8 candidates
+are named there (issue #62 first).
 
 ## Traps — each of these actually happened
 

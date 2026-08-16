@@ -512,3 +512,84 @@ engines at that point; and the steward UI moves onto the Art. 24 engine with
 the older /steward route retired rather than kept alongside.
 
 **New lessons:** L36–L40.
+
+### L41 — A citation gate that checks existence cannot catch the wrong article
+Three instances in one phase: nav labels carried proposal-era numbers
+("Open-Source Steward (Art. 33)" — Art. 24 in the adopted text), the command
+center linked "Standards Matrix (Art. 34)" (mutual recognition agreements, not
+the presumption), and a nearly-shipped inline cite would have opened CRA
+Art. 14's text under a "NIS2 Art. 23(4)(d)" label. All resolve against the
+corpus; all are wrong. The gate checks that a cited article EXISTS, not that
+it is the RIGHT one.
+**Apply:** verify the article's TITLE against the corpus before writing any
+UI label that carries a number, and never let a point-of-use affordance dress
+one act's text in another act's label — no flyout is better than a lookalike.
+
+### L42 — Clock anchors differ between acts; read each one verbatim
+CRA Art. 14's final report runs from the availability of a corrective
+measure. NIS2 Art. 23(4)(d)'s final report runs from THE SUBMISSION OF THE
+INCIDENT NOTIFICATION — so before that submission it has no deadline at all,
+and a model that set it at creation (as the CRA one correctly does for its
+own anchors) would have been wrong in the dangerous direction, showing a
+deadline further away than the real one could be.
+**Apply:** statutory clocks are per-act, per-stage, per-anchor. Never copy a
+clock structure across acts; read the anchor sentence verbatim first, and let
+"not yet running" be a rendered state.
+
+### L43 — A donor page retires only after its last real consumer is re-homed
+partner-hub looked ready to delete after its claims were fixed — but it was
+the ONLY caller of the deemed-manufacturer engine. Deleting it first would
+have orphaned a statute-grounded, unit-tested capability the same day the
+orphan gate reached zero. The grep of the donor's /api calls, done before
+deletion, is what caught it.
+**Apply:** before deleting any page, list its API calls and re-home every
+endpoint that has no other caller. The redirect is the last step, not the
+first.
+
+### L44 — At zero, the orphan gate changes meaning: from debt record to covenant
+While the baseline was 6, G8 measured burn-down. At 0 it became a different
+rule: a new capability lands WITH its surface and its registry entry in the
+same commit, or the build fails. Both capabilities added after zero
+(evidence requests, entity incidents) shipped that way, and the gate's
+comment now says so.
+**Apply:** when a ratcheted baseline reaches zero, rewrite the gate's comment
+from "do not raise" to the covenant the zero now enforces — the number stops
+being history and starts being law.
+
+---
+
+## Phase 7 — Shell redesign — completed 2026-08-16
+
+**What worked:** The donor doctrine end-to-end — every page that died gave
+its organs first, and the "More (being re-homed)" menu emptied honestly
+batch by batch. Engine-first order (corpus → lib+tests → routes → surface →
+G6 live) held for every batch and caught the Art. 23(4)(d) anchor before any
+code assumed the wrong one. The batch cadence (one destination or one loop
+per commit, all gates each time, Playwright G6 with screenshots reviewed)
+meant no batch ever had to be reopened.
+
+**What cost time:** Docker rebuilds under amd64 emulation dominated wall
+time (~10–15 min per batch). Two G6 scripts initially asserted the wrong
+thing (raw column names vs the engine's resolved shape; exact-match against
+decorated chip text) — script bugs, not code bugs, but each cost a cycle.
+The nav/search collision at 1440px was invisible to every assertion and
+found only in the screenshot (L4's cousin: review the pixels, not just the
+counts). The login rate limiter throttled repeated test logins — correctly —
+and was reset by container restart, never weakened.
+
+**Surprises:** The versions engine had existed for days with no write-path —
+the file reported a gap no user could close. The standards matrix's real
+content had ALREADY been re-homed (the wizard's StandardsEditor) before the
+phase began. The psirt page — the Incidents donor — made zero API calls.
+
+**Re-tuning applied (what Phase 8 should be):** the deferrals that expired
+with this phase, in value order: (1) **issue #62** — the persona phases are
+done, so the 31 auth-failing tests must now authenticate (never by flipping
+DEMO_READONLY); (2) **PSIRT toolkit absorption** into Incidents — the last
+transitional donor with content; (3) a **real CE stage** in the product
+file, retiring the CE studio tool; (4) the **NIS2 full-text reader** (corpus
+bundle + Library mode) and **W2.4 national transpositions**; (5) the 15
+Dependabot findings. The More menu should be EMPTY by the end of Phase 8,
+and the transitional-menu code deleted with it.
+
+**New lessons:** L41–L44.
