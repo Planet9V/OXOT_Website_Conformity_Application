@@ -74,8 +74,13 @@ export function SiteFooter() {
             </span>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/product-portfolio" className="text-foreground/70 hover:text-primary transition-colors">
-                  Portfolio
+                <Link href="/" className="text-foreground/70 hover:text-primary transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/incidents" className="text-foreground/70 hover:text-primary transition-colors">
+                  Incidents
                 </Link>
               </li>
               <li>
@@ -84,23 +89,18 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link href="/psirt" className="text-foreground/70 hover:text-primary transition-colors">
-                  PSIRT
+                <Link href="/organisation" className="text-foreground/70 hover:text-primary transition-colors">
+                  Organisation
                 </Link>
               </li>
               <li>
-                <Link href="/reports" className="text-foreground/70 hover:text-primary transition-colors">
-                  Reports
+                <Link href="/library" className="text-foreground/70 hover:text-primary transition-colors">
+                  Library
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="text-foreground/70 hover:text-primary transition-colors">
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link href="/regulations" className="text-foreground/70 hover:text-primary transition-colors">
-                  Reference
+                <Link href="/settings" className="text-foreground/70 hover:text-primary transition-colors">
+                  Settings
                 </Link>
               </li>
             </ul>

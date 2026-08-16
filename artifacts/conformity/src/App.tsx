@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { Redirect, Route, Switch, Router as WouterRouter } from 'wouter';
 import { ThemeProvider } from './providers/theme-provider';
 import { TooltipProvider } from './components/ui/tooltip';
 import { Toaster } from './components/ui/sonner';
@@ -20,8 +20,8 @@ import ProductDetail from './pages/product-detail';
 import Team from './pages/team';
 import Welcome from './pages/welcome';
 import Demo from './pages/demo';
-import Overview from './pages/overview';
 import Onboarding from './pages/onboarding';
+import DestinationPlaceholder from './pages/destination-placeholder';
 import Profile from './pages/profile';
 import Security from './pages/security';
 
@@ -134,16 +134,26 @@ function ShellRoutes() {
       <AppShell>
         <Suspense fallback={<RouteLoadingFallback />}>
         <Switch>
+          {/* ── The nine destinations (DESIGN_five_shapes.md iteration 2, task 7.1).
+              Several mount DONOR pages until their surface is rebuilt in
+              7.2–7.6 — the shell ships first, the surfaces follow. */}
           <Route path="/" component={Dashboard} />
-          <Route path="/overview" component={Overview} />
-          <Route path="/regulations" component={Regulations} />
-          <Route path="/regulations/:key" component={RegulationDetail} />
-          <Route path="/themes" component={Themes} />
-          <Route path="/requirements" component={Requirements} />
-          <Route path="/requirements/:id" component={RequirementDetail} />
-          <Route path="/mappings" component={Mappings} />
-          <Route path="/sources" component={Sources} />
-          <Route path="/sources/view/:filename" component={SourceViewer} />
+          <Route path="/incidents">
+            <ErrorBoundary>
+              <Psirt />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/incidents/*">
+            <ErrorBoundary>
+              <Psirt />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/authorities">
+            <DestinationPlaceholder id="authorities" />
+          </Route>
+          <Route path="/signatures">
+            <DestinationPlaceholder id="signatures" />
+          </Route>
           <Route path="/products">
             <ErrorBoundary>
               <Products />
@@ -154,22 +164,52 @@ function ShellRoutes() {
               <ProductDetail />
             </ErrorBoundary>
           </Route>
+          <Route path="/projects" component={OpenSourceStewardPage} />
+          <Route path="/organisation" component={OrgProfilePage} />
+          <Route path="/library" component={CraWikiPage} />
+          <Route path="/library/*" component={CraWikiPage} />
+          <Route path="/settings" component={Team} />
+
+          {/* ── Retired paths redirect to their destination, so old bookmarks
+              and deep links keep working. */}
+          <Route path="/overview"><Redirect to="/" /></Route>
+          <Route path="/psirt"><Redirect to="/incidents" /></Route>
+          <Route path="/psirt/*"><Redirect to="/incidents" /></Route>
+          <Route path="/steward"><Redirect to="/projects" /></Route>
+          <Route path="/open-source-steward"><Redirect to="/projects" /></Route>
+          <Route path="/org-profile"><Redirect to="/organisation" /></Route>
+          <Route path="/team"><Redirect to="/settings" /></Route>
+          <Route path="/wiki"><Redirect to="/library" /></Route>
+          <Route path="/wiki/*"><Redirect to="/library" /></Route>
+          <Route path="/cra-wiki"><Redirect to="/library" /></Route>
+          <Route path="/cra-wiki/*"><Redirect to="/library" /></Route>
+          {/* Alias sprawl collapsed: one canonical path per surviving page. */}
+          <Route path="/standards-matrix"><Redirect to="/standards" /></Route>
+          <Route path="/ce-nameplate"><Redirect to="/ce-studio" /></Route>
+          <Route path="/ce-nameplate-studio"><Redirect to="/ce-studio" /></Route>
+          <Route path="/importer-archive"><Redirect to="/archive" /></Route>
+          <Route path="/podcast"><Redirect to="/podcast-studio" /></Route>
+          <Route path="/podcast/*"><Redirect to="/podcast-studio" /></Route>
+          <Route path="/blogs"><Redirect to="/podcast-studio" /></Route>
+          <Route path="/blogs/*"><Redirect to="/podcast-studio" /></Route>
+
+          {/* ── Reference pages: retired in 7.6 when the Library absorbs them. */}
+          <Route path="/regulations" component={Regulations} />
+          <Route path="/regulations/:key" component={RegulationDetail} />
+          <Route path="/themes" component={Themes} />
+          <Route path="/requirements" component={Requirements} />
+          <Route path="/requirements/:id" component={RequirementDetail} />
+          <Route path="/mappings" component={Mappings} />
+          <Route path="/sources" component={Sources} />
+          <Route path="/sources/view/:filename" component={SourceViewer} />
+
+          {/* ── Transitional surfaces awaiting re-homing (7.2–7.6); reachable
+              via the "More" menu, each retires with its re-homing task. */}
           <Route path="/assessments/:id" component={Assessment} />
           <Route path="/flows" component={Flows} />
           <Route path="/reports/:id" component={ReportWorkspace} />
           <Route path="/reports" component={Reports} />
           <Route path="/profile" component={Profile} />
-          <Route path="/org-profile" component={OrgProfilePage} />
-          <Route path="/psirt">
-            <ErrorBoundary>
-              <Psirt />
-            </ErrorBoundary>
-          </Route>
-          <Route path="/psirt/*">
-            <ErrorBoundary>
-              <Psirt />
-            </ErrorBoundary>
-          </Route>
           <Route path="/product-portfolio">
             <ErrorBoundary>
               <ProductPortfolioPage />
@@ -180,28 +220,13 @@ function ShellRoutes() {
               <ProductPortfolioPage />
             </ErrorBoundary>
           </Route>
-          <Route path="/team" component={Team} />
           <Route path="/partner-hub" component={PartnerHubPage} />
           <Route path="/partner-hub/*" component={PartnerHubPage} />
           <Route path="/standards" component={StandardsMatrixPage} />
-          <Route path="/standards-matrix" component={StandardsMatrixPage} />
           <Route path="/ce-studio" component={CeNameplateStudioPage} />
-          <Route path="/ce-nameplate" component={CeNameplateStudioPage} />
-          <Route path="/ce-nameplate-studio" component={CeNameplateStudioPage} />
-          <Route path="/steward" component={OpenSourceStewardPage} />
-          <Route path="/open-source-steward" component={OpenSourceStewardPage} />
           <Route path="/archive" component={ImporterArchivePage} />
-          <Route path="/importer-archive" component={ImporterArchivePage} />
-          <Route path="/wiki" component={CraWikiPage} />
-          <Route path="/wiki/*" component={CraWikiPage} />
-          <Route path="/cra-wiki" component={CraWikiPage} />
-          <Route path="/cra-wiki/*" component={CraWikiPage} />
-          <Route path="/podcast" component={PodcastStudioPage} />
-          <Route path="/podcast/*" component={PodcastStudioPage} />
           <Route path="/podcast-studio" component={PodcastStudioPage} />
           <Route path="/podcast-studio/*" component={PodcastStudioPage} />
-          <Route path="/blogs" component={PodcastStudioPage} />
-          <Route path="/blogs/*" component={PodcastStudioPage} />
           <Route path="/auditor-portal" component={AuditorPortalPage} />
           <Route path="/auditor-portal/*" component={AuditorPortalPage} />
           <Route>

@@ -64,3 +64,4 @@ coverage/
 # fresh clone where dist/ is ignored, so consumers cannot resolve project
 # references and typecheck fails with TS6305.
 *.tsbuildinfo
+artifacts_verify/

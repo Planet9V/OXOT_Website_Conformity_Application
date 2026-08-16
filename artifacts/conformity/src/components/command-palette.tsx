@@ -37,17 +37,24 @@ import {
   getListTeamMembersQueryKey,
 } from "@workspace/api-client-react";
 
+// The nine destinations (task 7.1) plus surfaces still awaiting re-homing.
 const SECTIONS = [
-  { value: "/", label: "Overview", keywords: ["dashboard", "portfolio", "home"], icon: LayoutDashboard },
+  { value: "/", label: "Home", keywords: ["dashboard", "overview", "portfolio"], icon: LayoutDashboard },
+  { value: "/incidents", label: "Incidents", keywords: ["psirt", "vulnerability", "csirt", "reporting"], icon: ClipboardCheck },
+  { value: "/authorities", label: "Authorities", keywords: ["market surveillance", "msa", "competent authority"], icon: Database },
+  { value: "/signatures", label: "Signatures", keywords: ["attestations", "signing", "provenance"], icon: UserCircle },
+  { value: "/products", label: "Products", keywords: ["assessments", "portfolio", "product file"], icon: ClipboardCheck },
+  { value: "/projects", label: "Projects", keywords: ["open source", "steward", "foss"], icon: ListTree },
+  { value: "/organisation", label: "Organisation", keywords: ["org profile", "roles", "declarations", "obligations"], icon: Grid3x3 },
+  { value: "/library", label: "Library", keywords: ["wiki", "statute", "articles", "recitals", "cra", "nis2"], icon: Book },
+  { value: "/settings", label: "Settings", keywords: ["team", "members", "assessors", "accounts"], icon: Users },
   { value: "/regulations", label: "Regulations", keywords: ["cra", "ai act", "nis2", "machinery"], icon: Book },
-  { value: "/themes", label: "Themes", keywords: ["cross-cutting", "categories"], icon: Layers },
   { value: "/requirements", label: "Requirements", keywords: ["catalogue", "rules"], icon: ListTree },
   { value: "/mappings", label: "Matrix", keywords: ["cross-regulation", "mapping"], icon: Grid3x3 },
+  { value: "/themes", label: "Themes", keywords: ["cross-cutting", "categories"], icon: Layers },
   { value: "/sources", label: "Sources", keywords: ["documents", "legal"], icon: Database },
-  { value: "/products", label: "Products", keywords: ["assessments", "portfolio"], icon: ClipboardCheck },
   { value: "/flows", label: "Flows", keywords: ["process", "workflow"], icon: GitBranch },
-  { value: "/team", label: "Team", keywords: ["members", "assessors"], icon: Users },
-  { value: "/profile", label: "Profile", keywords: ["account", "password", "my", "settings"], icon: UserCircle },
+  { value: "/profile", label: "Profile", keywords: ["account", "password", "my"], icon: UserCircle },
 ];
 
 interface CommandPaletteProps {
@@ -93,7 +100,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const lowerSearch = search.toLowerCase();
   const availableSections = isAdmin
     ? SECTIONS
-    : SECTIONS.filter((s) => s.value !== "/team");
+    : SECTIONS.filter((s) => s.value !== "/settings");
   const filteredSections = availableSections.filter(
     (s) =>
       s.label.toLowerCase().includes(lowerSearch) ||

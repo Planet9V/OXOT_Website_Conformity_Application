@@ -578,7 +578,15 @@ design tokens and 57 UI primitives — structure and surfaces are new, the visua
 language is not discarded.
 
 - **7.1** Navigation shell and routing for the nine destinations; retire the
-  route aliases.
+  route aliases. — **done 2026-08-15**: four-group nav (Work / Registers /
+  Reference / Admin) with the nine destinations; donor pages mounted
+  (Incidents←psirt, Projects←steward, Organisation←org-profile,
+  Library←wiki, Settings←team); honest placeholders for Authorities and
+  Signatures that state the 7.5 gap; 12 retired paths redirect; alias sprawl
+  collapsed to one canonical path per page; not-yet-re-homed surfaces held in
+  an explicitly transitional "More" menu that is deleted as 7.2–7.6 land.
+  Verified live by scripts/verify_shell_71_playwright.mjs (9 destinations +
+  12 redirects, screenshots).
 - **7.2** Home, role-aware. Phase 6 delivered its inputs: branch on
   `/conformity/me` `teamRole` and filter by each obligation's
   `defaultTeamRole`. A null teamRole renders the NEUTRAL home, never a

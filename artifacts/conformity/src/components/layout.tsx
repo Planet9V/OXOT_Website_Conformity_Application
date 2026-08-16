@@ -3,14 +3,17 @@ import { Link, useLocation } from "wouter";
 import { useQueryClient } from "@tanstack/react-query";
 import {
   LayoutDashboard,
-  Book,
   Layers,
-  ListTree,
   Grid3x3,
   Database,
   ClipboardCheck,
   GitBranch,
   FileText,
+  FileSignature,
+  FolderGit2,
+  Building2,
+  Landmark,
+  Settings as SettingsIcon,
   LogOut,
   Menu,
   Sun,
@@ -18,14 +21,12 @@ import {
   ChevronDown,
   User,
   UserCircle,
-  Users,
   ShieldAlert,
   HelpCircle,
   BookOpen,
   Compass,
   Boxes,
   Search,
-  Headphones,
   type LucideIcon,
 } from "lucide-react";
 import { useGetAdminSession, useAdminLogout } from "@workspace/api-client-react";
@@ -53,127 +54,78 @@ type NavItem = {
   label: string;
   icon: LucideIcon;
   description?: string;
-  /** True for links that leave the workbench SPA (e.g. the public site's Knowledge Hub). */
-  external?: boolean;
+  /** Only rendered for admin sessions. */
+  adminOnly?: boolean;
+  /** Legacy path prefixes that should light this destination up while their
+   * pages await re-homing (e.g. /assessments/:id belongs to Products). */
+  alsoActive?: string[];
 };
 
-// The one place operators do the work: products lead into their assessments.
-const PRIMARY: NavItem = {
-  href: "/products",
-  label: "Products",
-  icon: ClipboardCheck,
-  description: "Run and manage conformity assessments",
-};
-
-// Admin-authored process flows started from an assessment workbench.
-const FLOWS: NavItem = {
-  href: "/flows",
-  label: "Flows",
-  icon: GitBranch,
-  description: "Author guided assessment process flows",
-};
-
-// Executive reporting suite — portfolio rollups plus per-assessment documents.
-const REPORTS: NavItem = {
-  href: "/reports",
-  label: "Reports",
-  icon: FileText,
-  description: "Executive briefings, full reports and readouts",
-};
-
-// PSIRT / coordinated vulnerability disclosure (Annex I Part II CRA).
-const PSIRT: NavItem = {
-  href: "/psirt",
-  label: "PSIRT",
-  icon: ShieldAlert,
-  description: "Vulnerability intake, remediation lifecycle and advisories",
-};
-
-// Product Portfolio & Customer Operations Platform
-const PRODUCT_PORTFOLIO: NavItem = {
-  href: "/product-portfolio",
-  label: "Portfolio",
-  icon: Boxes,
-  description: "CRA products, versions, CISA customer fleets & mass import",
-};
-
-// Named assessor accounts — admin-only
-const TEAM: NavItem = {
-  href: "/team",
-  label: "Team",
-  icon: Users,
-  description: "Named assessor accounts and assignments",
-};
-
-// Everything used to understand the rules — the reference library.
-const REFERENCE: NavItem[] = [
-  { href: "/", label: "Overview", icon: LayoutDashboard, description: "Portfolio dashboard" },
-  { href: "/regulations", label: "Regulations", icon: Book, description: "CRA, AI Act, Machinery, IEC 62443, NIS2" },
-  { href: "/themes", label: "Themes", icon: Layers, description: "Cross-cutting requirement themes" },
-  { href: "/requirements", label: "Requirements", icon: ListTree, description: "Unified requirement catalogue" },
-  { href: "/mappings", label: "Matrix", icon: Grid3x3, description: "Cross-regulation mappings" },
-  { href: "/sources", label: "Sources", icon: Database, description: "Underlying legal source texts" },
-  { href: "/wiki", label: "Statutory Wiki", icon: BookOpen, description: "Regulation (EU) 2024/2847 corpus" },
+/**
+ * The nine destinations in four groups (DESIGN_five_shapes.md iteration 2,
+ * D10–D13). The groups mirror the design doc exactly: WORK is deadline-driven
+ * and arrives from outside; REGISTERS is what you are responsible for;
+ * REFERENCE is the law; ADMIN is the team. Acts and roles are dimensions on
+ * the surfaces (badges and filters), never navigation sections.
+ */
+const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
+  {
+    label: "Work",
+    items: [
+      { href: "/", label: "Home", icon: LayoutDashboard, description: "What needs attention, scoped to your team role" },
+      { href: "/incidents", label: "Incidents", icon: ShieldAlert, description: "Vulnerability intake and the CRA Art. 14 / NIS2 Art. 23 reporting clocks" },
+      { href: "/authorities", label: "Authorities", icon: Landmark, description: "Market surveillance and competent-authority engagements" },
+      { href: "/signatures", label: "Signatures", icon: FileSignature, description: "Attestations and the provenance ledger" },
+    ],
+  },
+  {
+    label: "Registers",
+    items: [
+      { href: "/products", label: "Products", icon: ClipboardCheck, alsoActive: ["/assessments"], description: "Product files: assessments, evidence and documentation" },
+      { href: "/projects", label: "Projects", icon: FolderGit2, description: "Open-source stewardship (CRA Art. 24) — projects, not products" },
+      { href: "/organisation", label: "Organisation", icon: Building2, description: "Declared roles, regulations in scope and organisation-level duties" },
+    ],
+  },
+  {
+    label: "Reference",
+    items: [
+      { href: "/library", label: "Library", icon: BookOpen, description: "The statutory texts — read linearly or at the point of use" },
+    ],
+  },
+  {
+    label: "Admin",
+    items: [
+      { href: "/settings", label: "Settings", icon: SettingsIcon, adminOnly: true, description: "Team accounts and roles" },
+    ],
+  },
 ];
 
-// Industrial System Integrator & Plant Operations Hub
-const PARTNER_HUB: NavItem = {
-  href: "/partner-hub",
-  label: "Plant & SI Hub",
-  icon: Boxes,
-  description: "Axians 5-stage pipeline, Recital 34 safe harbor & 24h CSIRT dispatcher",
-};
-
-// Specialized statutory execution engines
-const CRA_OPERATIONS: NavItem[] = [
-  { href: "/partner-hub", label: "Plant & SI Pipeline", icon: Boxes, description: "Axians 5-stage OT portfolio workflow" },
-  { href: "/standards", label: "Standards Matrix (Art. 27)", icon: Layers, description: "IEC 62443 / ETSI EN 303 645 presumption of conformity" },
-  { href: "/ce-studio", label: "CE Nameplate Studio (Arts. 22/23)", icon: Grid3x3, description: "Vector CE rating plate & digital product passport generator" },
-  { href: "/steward", label: "Open-Source Steward (Art. 33)", icon: ListTree, description: "FOSS voluntary security attestations & OpenVEX statements" },
-  { href: "/archive", label: "10-Year Archive Ledger (Art. 17)", icon: Database, description: "Statutory importer technical documentation vault (2037+)" },
-  { href: "/wiki", label: "Full CRA Statutory Wiki", icon: Book, description: "Verbatim OJ text — 71 articles, 130 recitals & 8 annexes" },
-  { href: "/podcast-studio", label: "Podcast Studio & Media Hub", icon: Headphones, description: "Manage, listen, and syndicate 67 episodes across 3 styles + RSS" },
-  { href: "/auditor-portal", label: "Notified Body Auditor Portal", icon: ClipboardCheck, description: "Third-party Module H / B+C examination workbench" },
+/**
+ * Surfaces that still exist but have not yet been re-homed into a destination
+ * (task_plan.md 7.2–7.6). They stay reachable here during the transition —
+ * removing reach before the replacement ships would be a regression — and this
+ * menu is DELETED when the last entry moves. Do not add new surfaces here.
+ */
+const TRANSITIONAL: NavItem[] = [
+  { href: "/partner-hub", label: "Plant & SI Pipeline", icon: Boxes, description: "Re-homes into the product file and Incidents (7.3 / 7.4)" },
+  { href: "/product-portfolio", label: "Portfolio", icon: Boxes, description: "Re-homes into Products (7.3)" },
+  { href: "/reports", label: "Reports", icon: FileText, description: "Re-homes into Home and the product file" },
+  { href: "/flows", label: "Flows", icon: GitBranch, description: "Admin-authored assessment process flows" },
+  { href: "/standards", label: "Standards Matrix", icon: Layers, description: "Re-homes into the product file (7.3)" },
+  { href: "/ce-studio", label: "CE Studio", icon: Grid3x3, description: "Re-homes into the product file (7.3)" },
+  { href: "/archive", label: "Importer Archive", icon: Database, description: "Re-homes into the product file (7.3)" },
+  { href: "/auditor-portal", label: "Auditor Portal", icon: ClipboardCheck, description: "Separate notified-body track" },
 ];
 
 function useNavState() {
   const [location] = useLocation();
-  const productsActive =
-    location.startsWith("/products") || location.startsWith("/assessments");
-  const flowsActive = location.startsWith("/flows");
-  const reportsActive = location.startsWith("/reports");
-  const teamActive = location.startsWith("/team");
-  const psirtActive = location.startsWith("/psirt");
-  const portfolioActive = location.startsWith("/product-portfolio");
-  const partnerActive = location.startsWith("/partner-hub");
-  const isRef = (href: string) =>
-    href === "/" ? location === "/" : location.startsWith(href);
-  const isCraOp = (href: string) => location.startsWith(href);
-  const craOperationsActive =
-    CRA_OPERATIONS.some((c) => isCraOp(c.href));
-  const referenceActive =
-    !productsActive &&
-    !flowsActive &&
-    !reportsActive &&
-    !teamActive &&
-    !psirtActive &&
-    !portfolioActive &&
-    !craOperationsActive &&
-    REFERENCE.some((r) => isRef(r.href));
-  return {
-    location,
-    productsActive,
-    flowsActive,
-    reportsActive,
-    teamActive,
-    psirtActive,
-    portfolioActive,
-    partnerActive,
-    craOperationsActive,
-    referenceActive,
-    isRef,
-    isCraOp,
-  };
+  const isActive = (item: NavItem) =>
+    item.href === "/"
+      ? location === "/"
+      : location.startsWith(item.href) ||
+        (item.alsoActive ?? []).some((p) => location.startsWith(p));
+  const transitionalActive = TRANSITIONAL.some((t) => location.startsWith(t.href));
+  return { location, isActive, transitionalActive };
 }
 
 function ThemeToggle() {
@@ -214,108 +166,33 @@ function navLinkClass(active: boolean) {
   );
 }
 
-function CraOperationsMenu({
-  active,
-  isCraOp,
-}: {
-  active: boolean;
-  isCraOp: (href: string) => boolean;
-}) {
+function TransitionalMenu({ active }: { active: boolean }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className={navLinkClass(active)} data-testid="nav-cra-operations">
-          CRA Operations
+        <button className={navLinkClass(active)} data-testid="nav-transitional">
+          More
           <ChevronDown className="w-3.5 h-3.5" aria-hidden="true" />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-80">
         <DropdownMenuLabel className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
-          Regulation (EU) 2024/2847 Engines
+          Being re-homed (Phase 7)
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {CRA_OPERATIONS.map((item) => {
-          const body = (
-            <>
-              <item.icon className="w-4 h-4 mt-0.5 text-primary shrink-0" />
+        {TRANSITIONAL.map((item) => (
+          <DropdownMenuItem key={item.href} asChild>
+            <Link href={item.href} className="flex items-start gap-3 cursor-pointer">
+              <item.icon className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0" />
               <div className="flex flex-col gap-0.5">
                 <span className="text-sm font-medium leading-none text-foreground">{item.label}</span>
                 <span className="text-xs text-muted-foreground leading-snug">
                   {item.description}
                 </span>
               </div>
-            </>
-          );
-          return (
-            <DropdownMenuItem key={item.href} asChild>
-              {item.external ? (
-                <a href={item.href} className="flex items-start gap-3 cursor-pointer">
-                  {body}
-                </a>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="flex items-start gap-3 cursor-pointer"
-                  data-active={isCraOp(item.href) || undefined}
-                >
-                  {body}
-                </Link>
-              )}
-            </DropdownMenuItem>
-          );
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
-
-function ReferenceMenu({
-  active,
-  isRef,
-}: {
-  active: boolean;
-  isRef: (href: string) => boolean;
-}) {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className={navLinkClass(active)} data-testid="nav-reference">
-          Reference
-          <ChevronDown className="w-3.5 h-3.5" aria-hidden="true" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-72">
-        {REFERENCE.map((item) => {
-          const body = (
-            <>
-              <item.icon className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0" />
-              <div className="flex flex-col gap-0.5">
-                <span className="text-sm font-medium leading-none">{item.label}</span>
-                <span className="text-xs text-muted-foreground leading-snug">
-                  {item.description}
-                </span>
-              </div>
-            </>
-          );
-          return (
-            <DropdownMenuItem key={item.href} asChild>
-              {item.external ? (
-                // Full-page navigation out of the workbench SPA.
-                <a href={item.href} className="flex items-start gap-3 cursor-pointer">
-                  {body}
-                </a>
-              ) : (
-                <Link
-                  href={item.href}
-                  className="flex items-start gap-3 cursor-pointer"
-                  data-active={isRef(item.href) || undefined}
-                >
-                  {body}
-                </Link>
-              )}
-            </DropdownMenuItem>
-          );
-        })}
+            </Link>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -448,57 +325,47 @@ function mobileItemClass(active: boolean) {
 }
 
 export function Header() {
-  const {
-    productsActive,
-    flowsActive,
-    reportsActive,
-    teamActive,
-    psirtActive,
-    portfolioActive,
-    partnerActive,
-    craOperationsActive,
-    referenceActive,
-    isRef,
-    isCraOp,
-  } = useNavState();
+  const { location, isActive, transitionalActive } = useNavState();
   const { data: session } = useGetAdminSession();
   const isAdmin = session?.role === "admin";
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
   const { open: paletteOpen, setOpen: setPaletteOpen } = useCommandPalette();
 
+  // Groups whose every item is filtered out (Admin for non-admins) disappear
+  // entirely, separator included.
+  const visibleGroups = NAV_GROUPS.map((g) => ({
+    ...g,
+    items: g.items.filter((i) => !i.adminOnly || isAdmin),
+  })).filter((g) => g.items.length > 0);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-6 min-w-0">
+        <div className="flex items-center gap-4 min-w-0">
           <Brand />
-          <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
-            <Link href={PRODUCT_PORTFOLIO.href} className={navLinkClass(portfolioActive)} data-testid="nav-portfolio">
-              {PRODUCT_PORTFOLIO.label}
-            </Link>
-            <Link href={PRIMARY.href} className={navLinkClass(productsActive)} data-testid="nav-products">
-              {PRIMARY.label}
-            </Link>
-            <Link href={PARTNER_HUB.href} className={navLinkClass(partnerActive)} data-testid="nav-partner-hub">
-              {PARTNER_HUB.label}
-            </Link>
-            <CraOperationsMenu active={craOperationsActive} isCraOp={isCraOp} />
-            <Link href={PSIRT.href} className={navLinkClass(psirtActive)} data-testid="nav-psirt">
-              {PSIRT.label}
-            </Link>
-            <Link href={REPORTS.href} className={navLinkClass(reportsActive)} data-testid="nav-reports">
-              {REPORTS.label}
-            </Link>
-            {isAdmin && (
-              <Link href={TEAM.href} className={navLinkClass(teamActive)} data-testid="nav-team">
-                {TEAM.label}
-              </Link>
-            )}
-            <ReferenceMenu active={referenceActive} isRef={isRef} />
+          <nav className="hidden xl:flex items-center gap-0.5" aria-label="Primary">
+            {visibleGroups.map((group, gi) => (
+              <div key={group.label} className="flex items-center gap-0.5">
+                {gi > 0 && <div className="h-4 w-px bg-border mx-1.5" aria-hidden="true" />}
+                {group.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={navLinkClass(isActive(item))}
+                    data-testid={`nav-${item.label.toLowerCase()}`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+            <div className="h-4 w-px bg-border mx-1.5" aria-hidden="true" />
+            <TransitionalMenu active={transitionalActive} />
           </nav>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 shrink-0">
           <Button
             variant="ghost"
             size="sm"
@@ -507,8 +374,8 @@ export function Header() {
             data-testid="command-palette-trigger"
           >
             <Search className="h-4 w-4" />
-            <span className="hidden lg:inline">Search</span>
-            <Kbd className="hidden lg:inline-flex">⌘K</Kbd>
+            <span className="hidden 2xl:inline">Search</span>
+            <Kbd className="hidden 2xl:inline-flex">⌘K</Kbd>
           </Button>
           <HelpMenu />
           <ThemeToggle />
@@ -516,7 +383,7 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            className="w-9 h-9 md:hidden"
+            className="w-9 h-9 xl:hidden"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
@@ -537,104 +404,42 @@ export function Header() {
           </SheetHeader>
 
           <nav className="flex-1 overflow-y-auto py-2" aria-label="Mobile">
-            <Link
-              href={PRODUCT_PORTFOLIO.href}
-              onClick={close}
-              className={mobileItemClass(portfolioActive)}
-            >
-              <PRODUCT_PORTFOLIO.icon className="w-4 h-4 shrink-0" />
-              {PRODUCT_PORTFOLIO.label}
-            </Link>
-            <Link
-              href={PRIMARY.href}
-              onClick={close}
-              className={mobileItemClass(productsActive)}
-            >
-              <PRIMARY.icon className="w-4 h-4 shrink-0" />
-              {PRIMARY.label}
-            </Link>
-            <Link
-              href={PARTNER_HUB.href}
-              onClick={close}
-              className={mobileItemClass(partnerActive)}
-            >
-              <PARTNER_HUB.icon className="w-4 h-4 shrink-0" />
-              {PARTNER_HUB.label}
-            </Link>
-            <div className="px-5 pt-3 pb-1 text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-              CRA Statutory Operations
-            </div>
-            {CRA_OPERATIONS.map((c) => (
-              <Link
-                key={c.href}
-                href={c.href}
-                onClick={close}
-                className={mobileItemClass(isCraOp(c.href))}
-              >
-                <c.icon className="w-4 h-4 shrink-0 text-primary" />
-                {c.label}
-              </Link>
+            {visibleGroups.map((group) => (
+              <div key={group.label}>
+                <div className="px-5 pt-3 pb-1 text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+                  {group.label}
+                </div>
+                {group.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={close}
+                    className={mobileItemClass(isActive(item))}
+                  >
+                    <item.icon className="w-4 h-4 shrink-0" />
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             ))}
-            <div className="px-5 pt-3 pb-1 text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-              Core Monitoring & Reports
-            </div>
-            <Link
-              href={PSIRT.href}
-              onClick={close}
-              className={mobileItemClass(psirtActive)}
-            >
-              <PSIRT.icon className="w-4 h-4 shrink-0" />
-              {PSIRT.label}
-            </Link>
-            <Link
-              href={REPORTS.href}
-              onClick={close}
-              className={mobileItemClass(reportsActive)}
-            >
-              <REPORTS.icon className="w-4 h-4 shrink-0" />
-              {REPORTS.label}
-            </Link>
-            {isAdmin && (
-              <Link
-                href={TEAM.href}
-                onClick={close}
-                className={mobileItemClass(teamActive)}
-              >
-                <TEAM.icon className="w-4 h-4 shrink-0" />
-                {TEAM.label}
-              </Link>
-            )}
 
             <div className="px-5 pt-4 pb-1 flex items-center gap-2">
               <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground whitespace-nowrap">
-                Reference
+                Being re-homed (Phase 7)
               </span>
               <div className="flex-1 h-px bg-border" />
             </div>
-
-            {REFERENCE.map((item) =>
-              item.external ? (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={close}
-                  className={mobileItemClass(false)}
-                >
-                  <item.icon className="w-4 h-4 shrink-0" />
-                  {item.label}
-                </a>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={close}
-                  className={mobileItemClass(!productsActive && isRef(item.href))}
-                >
-                  <item.icon className="w-4 h-4 shrink-0" />
-                  {item.label}
-                </Link>
-              ),
-            )}
+            {TRANSITIONAL.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={close}
+                className={mobileItemClass(location.startsWith(item.href))}
+              >
+                <item.icon className="w-4 h-4 shrink-0" />
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="border-t border-border px-5 py-4 space-y-4">
