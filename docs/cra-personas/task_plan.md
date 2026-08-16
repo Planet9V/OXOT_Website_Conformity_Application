@@ -652,8 +652,17 @@ language is not discarded.
   removed — one implementation, as the plan demanded. Organisation gained
   the Art. 18 mandates panel: stored-as-written, defects reported never
   trimmed, Art. 18(3) copy-producibility surfaced. Every shipped capability
-  now has a screen; the G8 baseline is 0 and stays there. Remaining in 7.5:
-  the P2 evidence-request model + 6.3 role scoping (7.5c).
+  now has a screen; the G8 baseline is 0 and stays there.
+  — **7.5c done 2026-08-15**: the P2 "ask" half exists — evidence requests
+  (new table + routes) validated against the reference layer (a request
+  cannot cite a duty that does not exist), routed by team role or named
+  member (a request must land in someone's inbox), with the 6.3 role-scoped
+  inbox delivered in Home's "Your work": requests routed to your role appear
+  there and close with a mandatory resolution. Closing NEVER touches the
+  obligation's own status, and the UI says so. Due dates are the requester's
+  choice, never presented as statutory clocks. G8 covenant honoured: the
+  capability landed WITH its surface and registry entry (11 reached, 0
+  orphaned).
 - **7.6** Library with the universal statutory flyout; retire the nine
   reference pages. — **7.6a done 2026-08-15**: Library is one destination
   owning all reference content — a landing (statute reader, act catalogue,

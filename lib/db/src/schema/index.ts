@@ -98,6 +98,7 @@ export * from "./craDeemedManufacturer";
 export * from "./conformityNotifiedBody";
 export * from "./conformityProductVersions";
 export * from "./conformityAttestations";
+export * from "./conformityEvidenceRequests";
 export * from "./conformityImporterDossiers";
 export * from "./conformityOperatorChecks";
 export * from "./conformityStewardPolicies";
