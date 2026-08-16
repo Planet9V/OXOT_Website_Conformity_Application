@@ -20,7 +20,7 @@ export default function AiActReaderPage() {
             <span className="font-medium text-foreground">The AI Act is a regulation</span> —
             directly applicable, one text in every Member State. Its obligations phase in on
             the dates the text itself sets; this reader shows the verbatim act and nothing
-            else. This application never concludes whether any system is compliant with it.
+            else. This application never renders a verdict on any system under it.
           </p>
         </div>
       }

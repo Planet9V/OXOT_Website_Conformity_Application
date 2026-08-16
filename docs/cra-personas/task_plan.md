@@ -968,7 +968,7 @@ in G6, not only the new ones).
   Obligations seeding + deriver registration per D10 (act is a dimension —
   no new navigation), statutory flyout stays CRA-only unless verbatim
   parity is achievable per act.
-- **10.4 The last unused tables.** Decide `cra_composite_components/
+- **10.4 done 2026-08-16** The last unused tables. Decide `cra_composite_components/
   _systems`, `cra_csaf_advisories`, `cra_procurement_evaluations`: wire to
   a real consumer or drop like H1 (survey write/read paths first — L43/L49).
 

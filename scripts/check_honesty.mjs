@@ -22,7 +22,11 @@ const SCAN_DIRS = [
   "artifacts/api-server/src",
 ];
 const EXT = new Set([".ts", ".tsx"]);
-const SKIP = /node_modules|\/dist\/|craCorpusData\.ts|\.test\.tsx?$|__tests__/;
+// Corpus bundles ARE the law: the Machinery Regulation legitimately says
+// vibrations are "transmitted to" the seat, and flagging the OJ's own words
+// would invite editing the statute (same doctrine as the citation gate's
+// corpus exclusion). Never scan the source of truth.
+const SKIP = /node_modules|\/dist\/|craCorpusData\.ts|nis2CorpusData\.ts|cbwCorpusData\.ts|bsigCorpusData\.ts|aiActCorpusData\.ts|machineryCorpusData\.ts|redCorpusData\.ts|\.test\.tsx?$|__tests__/;
 
 /**
  * Each rule is deliberately narrow. Broad rules get waived wholesale and stop

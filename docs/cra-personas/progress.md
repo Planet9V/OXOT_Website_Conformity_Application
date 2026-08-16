@@ -192,3 +192,10 @@ the meaning of Art. 64(10).
   ch. IX arts 40–46 were in ch. I). G2 exit-0 (suite unchanged 722);
   G6 8/8 (three_acts_103/). 10.3c (obligation seeding + derivers ×3)
   deliberately left open — statute-reading work, its own phase.
+- 10.4 DONE: the dead chain DELETED whole — 4 tables (cra_composite_
+  components/_systems, cra_csaf_advisories, cra_procurement_evaluations),
+  their never-persisting engines (procurement/composite/csaf, incl. the
+  hardcoded-timestamp "seal"), the UNAUTHENTICATED /api/ecosystem routes
+  (zero UI consumers anywhere), their zod schemas and unit tests. Fresh
+  push proves 0 tables; G2 717/0/0 (5 dead-engine tests fewer); live
+  stack migrated.

@@ -94,7 +94,6 @@ export * from "./partnerSpareParts";
 export * from "./networkScopeAssessments";
 export * from "./supplierCompliance";
 // Multi-Persona CRA Ecosystem Extensions
-export * from "./craProcurement";
 export * from "./craDeemedManufacturer";
 export * from "./conformityNotifiedBody";
 export * from "./conformityProductVersions";
@@ -105,7 +104,5 @@ export * from "./conformityImporterDossiers";
 export * from "./conformityOperatorChecks";
 export * from "./conformityStewardPolicies";
 export * from "./conformityMandates";
-export * from "./craComposite";
-export * from "./craCsaf";
 // What this organisation does, and which regulations apply to it
 export * from "./orgRoles";

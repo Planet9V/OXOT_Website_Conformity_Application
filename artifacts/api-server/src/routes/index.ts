@@ -38,7 +38,6 @@ import regulatoryNewsRouter from "./regulatoryNews";
 import conformitySelfcheckRouter from "./conformitySelfcheck";
 import { productPortfolioRouter } from "./productPortfolio";
 import { partnerScopeRouter } from "./partnerScope";
-import { ecosystemRouter } from "./ecosystemRoutes";
 import { craWikiRouter } from "./craWikiRoutes";
 import { harmonisedStandardsRouter } from "./harmonisedStandardsRoutes";
 import { importerArchiveRouter } from "./importerArchiveRoutes";
@@ -61,7 +60,6 @@ const router: IRouter = Router();
 router.use(craFaqRouter);
 router.use(podcastStudioRouter);
 router.use("/portfolio", productPortfolioRouter);
-router.use("/ecosystem", ecosystemRouter);
 router.use("/wiki/cra", craWikiRouter);
 router.use("/standards", harmonisedStandardsRouter);
 // The older /steward implementation was retired in 7.5b: the Art. 24 engine

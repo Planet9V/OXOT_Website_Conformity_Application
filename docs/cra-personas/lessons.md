@@ -758,3 +758,19 @@ character stream compared against its source region, whitespace-normalized
 CONTROL run once to show a single flipped character fails it. A checker
 that has never been seen to fail has proven nothing (the corpus verifiers'
 own positive-control doctrine, applied to text instead of paths).
+
+### L52 — A gate piped through tail launders its exit code
+**Seen:** 2026-08-16, task 10.4's commit gate. The 10.3 gate chain ran
+`check_honesty.mjs 2>&1 | tail -1 && …` — in zsh a pipeline's status is the
+LAST command's, so tail's 0 let the chain print ALL-STATIC-GATES-OK over a
+RED honesty gate, and 10.3 shipped claiming G4 = 0 while CI would fail it.
+The four real findings underneath: the new corpus bundles carry the law's
+own words ("vibrations transmitted to the seat") that trip English
+claim-regexes — bundles belong in the honesty SKIP exactly as they are in
+the citation gate's — and a NEGATED honesty sentence ("never concludes …
+is compliant with it") still matches a positive-claim regex.
+**Apply:** never pipe a gate's output when its exit code is the signal —
+run it bare (silence with >/dev/null, which preserves status), or set
+pipefail. L45 said chain with `&&`; this adds: make sure the thing being
+chained is the GATE, not a pipe wrapped around it. And corpus bundles are
+excluded from EVERY content gate, not just the one that already learned it.
