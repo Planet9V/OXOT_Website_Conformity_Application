@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { ShieldAlert, ArrowRight, Wrench } from "lucide-react";
+import { Cite } from "@/components/statutory-flyout";
 
 /**
  * The Incidents destination (task 7.4) — every statutory reporting clock in
@@ -64,9 +65,10 @@ export default function IncidentsPage() {
           <ShieldAlert className="w-6 h-6 text-primary shrink-0" /> Incidents
         </h1>
         <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
-          Every incident's CRA Art. 14 clocks — early warning (24h), notification (72h),
-          final report — across all products. Submissions are recorded in each
-          assessment's incident panel; this surface is where nothing gets missed.
+          Every incident's <Cite article={14} /> clocks — early warning (24h),
+          notification (72h), final report — across all products. Submissions are
+          recorded in each assessment's incident panel; this surface is where nothing
+          gets missed.
         </p>
       </div>
 

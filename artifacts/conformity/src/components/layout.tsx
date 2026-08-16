@@ -48,6 +48,7 @@ import { requestTour, type TourId } from "@/lib/tour";
 import { shouldAutoStartOnboarding } from "@/lib/onboarding";
 import { CommandPalette, useCommandPalette } from "@/components/command-palette";
 import { FloatingAiAssistant } from "./floating-ai-assistant";
+import { StatutoryFlyoutProvider } from "@/components/statutory-flyout";
 
 type NavItem = {
   href: string;
@@ -482,6 +483,7 @@ function OnboardingRedirect() {
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
+    <StatutoryFlyoutProvider>
     <div className="flex min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden flex-col bg-background text-foreground relative">
       <a
         href="#main-content"
@@ -495,5 +497,6 @@ export function AppShell({ children }: { children: ReactNode }) {
       <Footer />
       <FloatingAiAssistant />
     </div>
+    </StatutoryFlyoutProvider>
   );
 }

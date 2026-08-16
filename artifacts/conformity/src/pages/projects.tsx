@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { FolderGit2, Plus, ArrowLeft } from "lucide-react";
+import { Cite } from "@/components/statutory-flyout";
 
 /**
  * The Projects destination (task 7.5) — open-source stewardship, CRA Art. 24,
@@ -383,9 +384,10 @@ export default function ProjectsPage() {
             <FolderGit2 className="w-6 h-6 text-primary shrink-0" /> Projects
           </h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
-            CRA Art. 24 stewardship — projects, not products: a versioned cybersecurity
-            policy, authority cooperation clocks, and the steward's legal position. No CE
-            marking, no declaration of conformity, no conformity assessment.
+            <Cite article={24} /> stewardship — projects, not products: a versioned
+            cybersecurity policy, authority cooperation clocks, and the steward's legal
+            position. No CE marking, no declaration of conformity, no conformity
+            assessment.
           </p>
         </div>
         {!selected && (

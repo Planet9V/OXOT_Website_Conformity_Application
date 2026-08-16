@@ -669,8 +669,15 @@ language is not discarded.
   requirements, themes, matrix, sources; the NIS2 full-text reader honestly
   deferred to the NIS2 seeding) with the nine reference pages re-mounted
   UNDER /library/* and every old top-level path redirecting in, params
-  preserved. Remaining 7.6b: extract partner-hub's statutory flyout into a
-  shared component and make it universal.
+  preserved.
+  — **7.6b done 2026-08-16**: the statutory flyout is universal —
+  components/statutory-flyout.tsx (provider in the AppShell, `Cite` inline
+  trigger), rendering VERBATIM articles, recitals and annexes from the
+  bundled corpus and nothing else — no commentary, no paraphrase. CRA-only
+  by honesty: other acts' citations get no lookalike. Wired at the point of
+  use on Incidents (Art. 14), Signatures (Art. 28) and Projects (Art. 24),
+  each linking onward to the Library. Partner-hub keeps its local copy only
+  because the page retires in 7.3c.
 
 Acceptance: every capability in the iteration 2 orphan table is reachable, the
 seven design principles hold, and G6 verifies each surface live.

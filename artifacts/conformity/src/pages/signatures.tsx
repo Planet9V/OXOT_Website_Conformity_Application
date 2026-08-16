@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { FileSignature } from "lucide-react";
+import { Cite } from "@/components/statutory-flyout";
 
 /**
  * The Signatures destination (task 7.5) — the provenance ledger (P6).
@@ -58,8 +59,8 @@ export default function SignaturesPage() {
         <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
           Who stood behind what, when, and over exactly which bytes. Signing itself
           happens where the document lives: the EU declaration of conformity
-          (CRA Art. 28) is signed from its assessment workbench, which refuses an
-          incomplete declaration rather than warning about it.
+          (<Cite article={28} />) is signed from its assessment workbench, which
+          refuses an incomplete declaration rather than warning about it.
         </p>
       </div>
 
