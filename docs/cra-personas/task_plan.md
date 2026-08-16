@@ -633,6 +633,16 @@ language is not discarded.
   Projects moves the steward UI onto the Art. 24 engine
   (`/conformity/steward/:project`) and retires the older `/steward` route —
   one implementation, not two side by side.
+  — **7.5a done 2026-08-15**: Authorities and Signatures are real surfaces;
+  their placeholders retired as promised. Authorities: Chapter V engagement
+  list with the engine's Art. 53/54 assessments, record dialog (the
+  prescribed period is CAPTURED from the authority's communication, never
+  computed — its absence renders as a gap), Art. 54(5) escalation exposure
+  surfaced at the top, mark-completed. Signatures: the P6 provenance ledger
+  (GET /conformity/attestations without subject now lists the workspace,
+  capped and saying so) — read-only by design; Annex V signing stays in the
+  workbench with its refusal rules. G8 orphans 4 → 2 (steward policy,
+  mandates — 7.5b).
 - **7.6** Library with the universal statutory flyout; retire the nine
   reference pages.
 

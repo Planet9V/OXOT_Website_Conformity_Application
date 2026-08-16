@@ -21,8 +21,9 @@ import Team from './pages/team';
 import Welcome from './pages/welcome';
 import Demo from './pages/demo';
 import Onboarding from './pages/onboarding';
-import DestinationPlaceholder from './pages/destination-placeholder';
 import IncidentsPage from './pages/incidents';
+import AuthoritiesPage from './pages/authorities';
+import SignaturesPage from './pages/signatures';
 import Profile from './pages/profile';
 import Security from './pages/security';
 
@@ -151,12 +152,8 @@ function ShellRoutes() {
               <Psirt />
             </ErrorBoundary>
           </Route>
-          <Route path="/authorities">
-            <DestinationPlaceholder id="authorities" />
-          </Route>
-          <Route path="/signatures">
-            <DestinationPlaceholder id="signatures" />
-          </Route>
+          <Route path="/authorities" component={AuthoritiesPage} />
+          <Route path="/signatures" component={SignaturesPage} />
           <Route path="/products">
             <ErrorBoundary>
               <Products />

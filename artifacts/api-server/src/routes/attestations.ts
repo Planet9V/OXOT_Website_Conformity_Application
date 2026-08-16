@@ -1,5 +1,5 @@
 import { Router, type IRouter, type Request, type Response } from "express";
-import { eq, and } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 import {
   db,
   conformityAttestationsTable,
@@ -24,15 +24,26 @@ function actorOf(req: Request): string {
   return s ? `${s.role}:${s.username}` : "";
 }
 
-/** GET — the attestation history for a subject, newest first. */
+/**
+ * GET — attestation history. With ?subject=, one subject's history; without,
+ * the workspace ledger, newest first (task 7.5: the Signatures surface). The
+ * ledger is capped rather than paginated — provenance rows are small, and the
+ * cap is stated in the response so truncation is never silent.
+ */
+const LEDGER_CAP = 200;
 router.get("/conformity/attestations", requireAuth, async (req: Request, res: Response) => {
   const subject = String(req.query.subject ?? "");
-  if (!subject) {
-    res.status(400).json({ error: "A subject is required, e.g. artifact:eu_doc:12" });
+  if (subject) {
+    const rows = await attestationsFor(subject);
+    res.json({ subject, total: rows.length, attestations: rows });
     return;
   }
-  const rows = await attestationsFor(subject);
-  res.json({ subject, total: rows.length, attestations: rows });
+  const rows = await db
+    .select()
+    .from(conformityAttestationsTable)
+    .orderBy(desc(conformityAttestationsTable.attestedAt))
+    .limit(LEDGER_CAP);
+  res.json({ total: rows.length, cap: LEDGER_CAP, attestations: rows });
 });
 
 /**

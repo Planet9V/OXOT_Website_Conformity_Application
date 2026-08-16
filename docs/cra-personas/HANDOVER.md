@@ -30,7 +30,7 @@ Everything below is verifiable; if a claim here contradicts the working tree,
     cd artifacts/conformity && npx vite build         # G3
     node scripts/check_honesty.mjs   --baseline 7     # G4
     node scripts/check_citations.mjs --baseline 0     # G5
-    node scripts/check_ui_reach.mjs  --baseline 4     # G8
+    node scripts/check_ui_reach.mjs  --baseline 2     # G8
     node scripts/verify_cra_corpus.mjs                # corpus
     node scripts/verify_nis2_corpus.mjs
 
@@ -88,9 +88,9 @@ design principles hold.
   (partner-hub makes no incident API call), but the UI now says so; wiring real
   submission is Phase 7 work, where partner-hub is retired anyway.
 - 31 G2 failures (issue #62), deferred by decision until the persona phases end.
-- 4 orphaned capabilities (was 6 — notified body and operator checks got
-  their product-file home in 7.3a) — enumerated by `check_ui_reach.mjs`,
-  each scheduled a home in 7.5.
+- 2 orphaned capabilities (was 6 — 7.3a re-homed notified body + operator
+  checks; 7.5a made Authorities and Signatures real): steward policy
+  (Projects) and mandates (Organisation), both 7.5b.
 - ~~`conformityMembers.plainPassword` stores plaintext passwords.~~ Fixed
   2026-08-15 (Phase 6.2): column removed and dropped; only the scrypt hash
   remains, and no route returns a password.
