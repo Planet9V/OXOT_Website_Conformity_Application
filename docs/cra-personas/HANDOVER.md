@@ -45,7 +45,7 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L48 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L50 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
@@ -58,6 +58,7 @@ do not".
 | 6 | Team role model: `TEAM_ROLES` as data (nullable, never defaulted — L40), plaintext `plainPassword` **removed**, role-scoped obligations (`defaultTeamRole`, a routing default never a statutory assignment) + `teamRole` on `/me` |
 | 7 | The nine-destination shell (below); polymorphic product file; cross-act Incidents; Authorities/Signatures/Projects/Organisation real; Library owns all reference content; universal statutory flyout; evidence requests (P2 ask-half); NIS2 entity incidents; **G8 = 0 orphans, now a covenant**; donors partner-hub / standards-matrix / importer-archive / open-source-steward / psirt-toolkit / ce-studio **deleted** with redirects |
 | 8 | G2 = **0 test failures** (issue #62 closed — dead contracts, wrong session roles, parallel DB races now sequential, 2 storage skips-with-reason); PSIRT CVD pipeline on Incidents; CE derivations in the statutory file (no `mayAffix` by construction); NIS2 verbatim reader (reproducible bundle); **all Dependabot alerts patched** (range-scoped pnpm overrides; 0 open) |
+| 9 | Absorption close-out: product-portfolio absorbed into Products (honest bulk import — `POST /conformity/products/import`; quick-start and the fabricating portfolio endpoints deleted; vault kept, its invented-provenance defaults removed); reports → a Home section, flows → `/settings/flows`; the transitional **More menu DELETED** — nav is exactly the nine destinations; auditor-portal decided PERMANENT + EXTERNAL and completed end-to-end in 9.3b (admin-issued expiring tokens, org-side RFI inbox with respond); **G4 driven 7 → 0 and made a covenant** (the empty-string "provenance hash" on the public trust center among the seven). 9.4 (W2.4 national texts) stays blocked on sources |
 
 ## The application map (key files)
 
@@ -76,9 +77,11 @@ do not".
 | Library `/library` | `pages/library.tsx` → `cra-wiki` (CRA verbatim), `nis2-reader.tsx` (NIS2 verbatim), acts/requirements/themes/mappings/sources under `/library/*` | corpora bundles; `components/statutory-flyout.tsx` = law at point of use (verbatim only, CRA-only — no lookalikes for other acts) |
 | Settings `/settings` | `pages/team.tsx` (team + `teamRole` select) | `adminTeam.ts` |
 
-**Transitional "More" menu** (`layout.tsx` `TRANSITIONAL`) still holds:
-product-portfolio, reports, flows, auditor-portal — the open absorption
-work. Delete the menu and its code when they are re-homed.
+**The transitional "More" menu is GONE** (9.3): every surface it held was
+re-homed or, for `/auditor-portal`, decided permanent-and-external (the
+token-authenticated notified-body door, routed OUTSIDE the login shell;
+tokens are issued and RFIs answered in the product file's
+`auditor-access-panel.tsx`). Do not reintroduce a junk-drawer menu.
 
 **Corpora** (the source of truth): `docs/cra_statutory_corpus/` and
 `docs/nis2_statutory_corpus/` — verbatim OJ text built from EUR-Lex by
@@ -105,9 +108,9 @@ history. One-shot `migrate`/`seed` images bake the schema at build time:
 # per package (tsc is hoisted to the ROOT node_modules/.bin)
 cd <pkg> && <root>/node_modules/.bin/tsc --noEmit          # G1
 cd artifacts/conformity && ./node_modules/.bin/vite build   # G3
-node scripts/check_honesty.mjs   --baseline 7               # G4 (all 7 in oxot-web/marketing)
+node scripts/check_honesty.mjs   --baseline 0               # G4 — COVENANT (0 since 9.5)
 node scripts/check_citations.mjs --baseline 0               # G5
-node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT
+node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT (17 reached)
 node scripts/verify_cra_corpus.mjs && node scripts/verify_nis2_corpus.mjs
 ```
 
@@ -132,7 +135,7 @@ leftovers — L46). Tests mint signed cookies via
 limiter: 10/15min, reset by api-container restart, never weakened).
 
 **G6 (live)** per batch: rebuild containers, drive the surface with
-Playwright (`scripts/verify_*_playwright.mjs`, 14 repeatable scripts —
+Playwright (`scripts/verify_*_playwright.mjs`, 19 repeatable scripts —
 pattern: login, act through the real UI, read persisted state back via the
 API, screenshot, clean up probes), and **review the screenshot** — pixels
 catch what assertions miss (nav collisions were found only that way).
@@ -174,25 +177,23 @@ is why W2.4 content waits for sourced national texts); the same approach
 failed twice; or `git log`/`git status` shows an unexpected change (the
 audio script is the known benign one).
 
-## Next steps, in order
+## Next steps, in order (Phase 9 closed 2026-08-16 — see its G7 retro)
 
-1. **Absorb `product-portfolio` into Products** — the last 7.3 donor
-   (fleet/import features; check its `/api` calls before deleting).
-2. **Re-home `reports`** (→ Home / product file) and **`flows`**
-   (admin-authored process flows — likely Settings or the workbench).
-3. **Decide `auditor-portal`** — probably a permanent separate
-   notified-body track, not transitional; if so move it out of "More"
-   deliberately, then **delete the More menu and its code**.
-4. **W2.4 transposition content** — BLOCKED on sourced verbatim national
-   texts (NL, then DE). The NIS2 reader's banner states the gap; loading
-   anything reconstructed from memory is forbidden by the Legal breaker.
-5. **The 7 honesty findings** — all in `artifacts/oxot-web` marketing
-   surfaces (`cra-analytics-suite`, `trust-center-page`,
-   `floating-ai-assistant`, `conformityAssessments.ts:841`,
-   `seedDemo.ts:691`); drive G4's baseline 7 → 0.
-6. Optional hygiene: `main`-only development or branch rename;
-   object-storage env for the 2 skipped tests; move the repo out of
-   `~/Downloads`.
+1. **W2.4 transposition content — BLOCKED on the user**: sourced verbatim
+   national texts (NL, then DE). Ask for them; loading anything
+   reconstructed from memory is forbidden by the Legal breaker. The NIS2
+   reader's banner states the gap honestly meanwhile.
+2. **Portfolio schema hygiene** (recorded in 9.1, deliberately not done
+   there): the orphaned demo tables (`cra_portfolio_products`, releases,
+   customers, deployments) and the shared `cra_product_documents.productId`
+   that the retired donor and the real registry keyed DIFFERENTLY — drop or
+   re-point now that only the vault survives.
+3. Optional hygiene: object-storage env for the 2 skipped tests;
+   `main`-only development or branch rename; move the repo out of
+   `~/Downloads`; git identity config.
+
+No new phase is opened until the user chooses among these or names new
+scope.
 
 ## Traps that actually happened (do not rediscover)
 

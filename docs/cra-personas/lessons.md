@@ -669,3 +669,65 @@ tree before writing it down (L36 doing its job at a distance).
 `replaced != original` (or grep the file afterwards) and fail loudly on
 zero replacements. Prefer the Edit tool, which errors on a non-match,
 over ad-hoc `.replace` scripts.
+
+## Phase 9 — Absorption close-out — completed 2026-08-16
+
+**What worked:** The survey-before-scope discipline paid for itself four
+times in one day. 9.1's grep-first (L43) showed the portfolio donor's four
+tabs were already served by real engines except import — so the batch built
+one small honest capability instead of porting 1,700 lines of demo
+scaffolding. 9.3's survey turned "move auditor-portal deliberately" into
+the discovery that the track was HALF-built (a door with no key), which
+became 9.3b — an end-to-end capability proven by one G6 script that walks
+issue → portal → RFI → answer → revoke against the live stack. Driving two
+gates to covenant floors (G8 in Phase 7, G4 here) means every future claim
+regression fails the build, not a review.
+
+**What cost time:** Almost nothing was lost to rework; the one G6 red was
+the script's own fault (the trust-center hash line lives under a tab the
+script never clicked). The amd64-emulated container rebuilds (~8–10 min
+each, five of them) dominated wall-clock; overlapping them with CI-mirror
+G2 runs kept the day moving.
+
+**Surprises:** The handover's own summary said "all 7 honesty findings in
+oxot-web marketing" — the gate said otherwise (two in the conformity SPA,
+two in api-server). The gate output, not the summary, was the truth (L36
+again, this time against our own document). And the worst finding of the
+seven was public-facing: a provenance page showing auditors the SHA-256 of
+the empty string as a "Cryptographic Provenance Hash".
+
+**Re-tuning applied to the remainder:** 9.4 (W2.4 transposition content)
+stays BLOCKED on sourced verbatim NL/DE texts — the next session should ask
+for them rather than build around the gap. The named hygiene backlog, in
+order: (1) the orphaned portfolio demo tables (`cra_portfolio_products`,
+releases, customers, deployments) and the shared
+`cra_product_documents.productId` that two registries keyed differently —
+drop or re-point now that only the vault survives; (2) object-storage env
+for the 2 skipped tests; (3) repo out of ~/Downloads; (4) git identity
+config. No new phase is opened until the user chooses among these or names
+new scope.
+
+**New lessons:** L49–L50.
+
+### L49 — "Reached" is not "usable": reachability gates cannot see a missing write path
+**Seen:** 2026-08-16, task 9.3. The auditor portal referenced its API paths,
+so any path-scan would call the capability covered — yet NOTHING in the
+system could ever insert the token the portal requires, so no user could
+reach it in practice. G8 checks that a screen calls the path; it cannot
+check that the loop closes.
+**Apply:** when surveying any credential/token/invite-gated surface, grep
+for the ISSUANCE write (`insert(<accessTable>)`) — not just the validation
+read. A gate on references proves wiring, never usability; the closable
+loop must be proven by an end-to-end test (the 9.3b suite and G6 script are
+the template).
+
+### L50 — A retired donor's fabrications survive in its re-homed components
+**Seen:** 2026-08-16, task 9.1. The donor page was deleted, but the vault
+modal it spawned — already re-homed into product-detail — still pre-filled
+"Marcus Vance (Security Lead)" as the provenance actor, and its server half
+would hash INVENTED placeholder text as if it were the uploaded file. The
+donor died; its fabrications had already emigrated.
+**Apply:** retiring a donor includes sweeping the components it left behind
+in shared folders for its defaults — every `|| "<plausible value>"` on an
+actor, a date, or file content is a fabrication waiting to be recorded as
+fact. Provenance fields refuse when absent; they never default.
