@@ -2,7 +2,7 @@
 
 The single entry point for any developer or session picking up the OXOT CRA
 conformity application. Everything below was verified against the working
-tree on 2026-08-16 at commit `2970b4b`; if a claim here ever contradicts the
+tree on 2026-08-16 at commit `0ebc852` (Phase 10 closed, CI green); if a claim here ever contradicts the
 working tree, **the working tree wins** and this file is wrong (that has
 happened — L36 — so check before trusting).
 
@@ -45,12 +45,12 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L51 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L52 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 9 (and its post-retro remainder)
+## Phases — all complete through Phase 10
 
 | Phase | Delivered |
 |---|---|
@@ -59,6 +59,7 @@ do not".
 | 7 | The nine-destination shell (below); polymorphic product file; cross-act Incidents; Authorities/Signatures/Projects/Organisation real; Library owns all reference content; universal statutory flyout; evidence requests (P2 ask-half); NIS2 entity incidents; **G8 = 0 orphans, now a covenant**; donors partner-hub / standards-matrix / importer-archive / open-source-steward / psirt-toolkit / ce-studio **deleted** with redirects |
 | 8 | G2 = **0 test failures** (issue #62 closed — dead contracts, wrong session roles, parallel DB races now sequential, 2 storage skips-with-reason); PSIRT CVD pipeline on Incidents; CE derivations in the statutory file (no `mayAffix` by construction); NIS2 verbatim reader (reproducible bundle); **all Dependabot alerts patched** (range-scoped pnpm overrides; 0 open) |
 | 9 | Absorption close-out: product-portfolio absorbed into Products (honest bulk import — `POST /conformity/products/import`; quick-start and the fabricating portfolio endpoints deleted; vault kept, its invented-provenance defaults removed); reports → a Home section, flows → `/settings/flows`; the transitional **More menu DELETED** — nav is exactly the nine destinations; auditor-portal decided PERMANENT + EXTERNAL and completed end-to-end in 9.3b (admin-issued expiring tokens, org-side RFI inbox with respond); **G4 driven 7 → 0 and made a covenant** (the empty-string "provenance hash" on the public trust center among the seven). Same day, after the G7 retro: **W2.4 COMPLETED** — 9.4a Cyberbeveiligingswet (NL, promulgated Staatsblad XML, in force 2026-08-15) and 9.4b BSI-Gesetz (DE, consolidated gii XML, a disclosed departure with the verbatim amendment trail), each with a CI verifier including **D2 full-content parity** (which caught and killed 8 flattener-added characters — L51) |
+| 10 | **Portable evidence storage** (backend seam: Replit sidecar vs local volume, chooser no-regression proven by unit test; suite reached ZERO SKIPS; restart-persistence proven live) · **Art. 14(8) product-user register + notification record** (tri-state impacted derivation states its rule ON THE WIRE; the app records the org's act, transmits nothing) · **AI Act / Machinery / RED corpora + readers** (authentic OJ, pinned structures, seven verifiers total, five-act citation gate — formerly-skipped AI-Act content now VALIDATES; NIS2 chapter-IX misassignment found+fixed) · **last dead chain deleted** (4 unwritten tables, unauth /api/ecosystem, fake-timestamp seal engine) · L52 (a piped gate launders its exit code) · CI green end-to-end after fixing an invalid workflow env (`runner.temp` is step-only) |
 
 ## The application map (key files)
 
@@ -71,10 +72,10 @@ do not".
 | Incidents `/incidents` | `pages/incidents.tsx` (CRA product clocks + NIS2 entity incidents + `components/incidents/psirt-panel.tsx`) | `conformityAssessments.ts` incidents, `entityIncidents.ts` + `lib/nis2Reporting.ts`, `conformityPsirt.ts` |
 | Authorities `/authorities` | `pages/authorities.tsx` | `msaEngagements.ts` + `lib/marketSurveillance.ts` (deadlines CAPTURED from the authority, never computed) |
 | Signatures `/signatures` | `pages/signatures.tsx` (read-only ledger) | `attestations.ts` + `lib/attestationStore.ts`; Annex V signing stays in the workbench with its refusal rules |
-| Products `/products(/:id)` | `pages/product-detail.tsx` + `components/product-file/*` (verify-panel, notified-body-panel, deemed-manufacturer-panel) + StatutoryFile (versions, CE, retention, due diligence) | `conformityAssessments.ts`, `statutoryFile.ts`, `operatorChecks.ts`, `notifiedBody.ts`, `deemedManufacturer.ts`, `lib/ceMarking.ts` — the file renders **per the product's `orgRole`** (nullable; null prompts, never guesses) |
+| Products `/products(/:id)` | `pages/product-detail.tsx` + `components/product-file/*` (verify-panel, notified-body-panel, deemed-manufacturer-panel, auditor-access-panel — issue/revoke portal tokens + RFI inbox, product-users-panel — the Art. 14(8) register) + StatutoryFile (versions, CE, retention, due diligence) | `conformityAssessments.ts`, `statutoryFile.ts`, `operatorChecks.ts`, `notifiedBody.ts`, `deemedManufacturer.ts`, `lib/ceMarking.ts` — the file renders **per the product's `orgRole`** (nullable; null prompts, never guesses) |
 | Projects `/projects` | `pages/projects.tsx` (Art. 24 engine — the ONLY steward implementation) | `stewardPolicy.ts` + `lib/openSourceSteward.ts` (versioned supersede-never-overwrite policies) |
 | Organisation `/organisation` | `pages/org-profile.tsx` + `components/organisation/mandates-panel.tsx` | `orgProfile.ts` declarations, `mandates.ts` (stored-as-written, defects reported never trimmed) |
-| Library `/library` | `pages/library.tsx` → `cra-wiki` (CRA verbatim), `nis2-reader.tsx` (NIS2 verbatim), `cbw-reader.tsx` (NL transposition, Dutch verbatim), `bsig-reader.tsx` (DE transposition core, German verbatim + amendment trail), acts/requirements/themes/mappings/sources under `/library/*` | corpora bundles; `components/statutory-flyout.tsx` = law at point of use (verbatim only, CRA-only — no lookalikes for other acts) |
+| Library `/library` | `pages/library.tsx` → `cra-wiki` (CRA), `nis2-reader.tsx`, `cbw-reader.tsx` (NL, Dutch), `bsig-reader.tsx` (DE, German + amendment trail), `ai-act-reader` / `machinery-reader` / `red-reader` (shared `eu-act-reader.tsx`; RED carries the directive/transposition caveat), acts/requirements/themes/mappings/sources under `/library/*` | corpora bundles; `components/statutory-flyout.tsx` = law at point of use (verbatim only, CRA-only — no lookalikes for other acts) |
 | Settings `/settings` | `pages/team.tsx` (team + `teamRole` select) | `adminTeam.ts` |
 
 **The transitional "More" menu is GONE** (9.3): every surface it held was
@@ -89,6 +90,10 @@ byte-for-byte reproducible in CI — never hand-edit a corpus or bundle:
 
 - `docs/cra_statutory_corpus/` + `docs/nis2_statutory_corpus/` — verbatim
   OJ text from EUR-Lex (`build_*_corpus_from_eurlex.mjs`).
+- `docs/{ai_act,machinery,red}_statutory_corpus/` — the Phase-10 acts, one
+  parameterized builder (`build_euact_corpus_from_eurlex.mjs <act>`), pinned
+  structures cross-checked by independent anchor counts; the Machinery OJ
+  HTML ships BROKEN annex ids, so annexes parse by VISIBLE headings.
 - `docs/cbw_statutory_corpus/` — the Dutch NIS2 transposition, from the
   promulgated Staatsblad XML, Stb. 2026, 187 (`build_cbw_corpus_from_stb.mjs`).
 - `docs/bsig_statutory_corpus/` — the German transposition core (BSIG),
@@ -97,10 +102,13 @@ byte-for-byte reproducible in CI — never hand-edit a corpus or bundle:
   verbatim standangabe amendment trail is in the metadata
   (`build_bsig_corpus_from_gii.mjs`).
 
-Each has its own verifier (`verify_{cra,nis2,cbw,bsig}_corpus.mjs`, all in
-CI); the transposition verifiers include **D2 full-content parity** — every
-article/§/annex compared character-for-character against its source region
-(L51). Verify any article number against the corpus **title** before
+Each has its own verifier — `verify_{cra,nis2,cbw,bsig}_corpus.mjs` plus
+`verify_euact_corpus.mjs <ai_act|machinery|red>`, ALL in CI; the
+transposition verifiers include **D2 full-content parity** (L51 — the OJ
+family still relies on pinned structure + probes; hardening it is a named
+open task). Corpus bundles are excluded from EVERY content gate — they ARE
+the law, and the Machinery Regulation legitimately says vibrations are
+"transmitted to" the seat (L52). Verify any article number against the corpus **title** before
 putting it in a label — a wrong-but-existing number passes the citation
 gate (L41).
 
@@ -122,13 +130,23 @@ history. One-shot `migrate`/`seed` images bake the schema at build time:
 cd <pkg> && <root>/node_modules/.bin/tsc --noEmit          # G1
 cd artifacts/conformity && ./node_modules/.bin/vite build   # G3
 node scripts/check_honesty.mjs   --baseline 0               # G4 — COVENANT (0 since 9.5)
-node scripts/check_citations.mjs --baseline 0               # G5
+node scripts/check_citations.mjs --baseline 0               # G5 — FIVE acts (cra/nis2/ai_act/machinery/red)
 node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT (17 reached)
 node scripts/verify_cra_corpus.mjs && node scripts/verify_nis2_corpus.mjs \
-  && node scripts/verify_cbw_corpus.mjs && node scripts/verify_bsig_corpus.mjs
+  && node scripts/verify_cbw_corpus.mjs && node scripts/verify_bsig_corpus.mjs \
+  && node scripts/verify_euact_corpus.mjs ai_act \
+  && node scripts/verify_euact_corpus.mjs machinery \
+  && node scripts/verify_euact_corpus.mjs red
 ```
 
-**G2 (tests) = ZERO failures**, run in the CI-mirror environment:
+Run gates BARE — never through a pipe: `cmd | tail -1 && next` proceeds on
+tail's exit code, not the gate's, and shipped a red G4 once (L52). Silence
+with `>/dev/null`, which preserves the status.
+
+**G2 (tests) = ZERO failures AND ZERO SKIPS** (717/717 since 10.1/10.4 —
+the local storage backend un-skipped the two storage suites), run in the
+CI-mirror environment (add `OBJECT_STORAGE_BACKEND=local` and an
+`OBJECT_STORAGE_DIR` tmpdir to the env below):
 
 ```
 docker run -d --name oxot-test-db -p 127.0.0.1:5544:5432 \
@@ -149,7 +167,7 @@ leftovers — L46). Tests mint signed cookies via
 limiter: 10/15min, reset by api-container restart, never weakened).
 
 **G6 (live)** per batch: rebuild containers, drive the surface with
-Playwright (`scripts/verify_*_playwright.mjs`, 21 repeatable scripts —
+Playwright (`scripts/verify_*_playwright.mjs`, 25 repeatable scripts —
 pattern: login, act through the real UI, read persisted state back via the
 API, screenshot, clean up probes), and **review the screenshot** — pixels
 catch what assertions miss (nav collisions were found only that way).
@@ -193,25 +211,30 @@ on evidence with the user, not guessed); the same approach failed twice;
 or `git log`/`git status` shows an unexpected change (the audio script is
 the known benign one).
 
-## Next steps, in order (Phase 9 closed 2026-08-16 — see its G7 retro)
+## Next steps (Phases 9 AND 10 closed 2026-08-16, H1–H3 hygiene done, CI green)
 
-1. **W2.4 is COMPLETE** (9.4a + 9.4b, 2026-08-16): the Dutch
-   Cyberbeveiligingswet (`/library/cbw`, from the promulgated Staatsblad
-   XML) and the German BSI-Gesetz (`/library/bsig`, from the consolidated
-   gii XML — a DISCLOSED departure, because the promulgation is a PDF-only
-   Artikelgesetz and the law is already amended; the verbatim standangabe
-   trail is carried). Both have their own CI verifiers, including D2
-   full-content parity: every article/§/annex compared character-for-character
-   against its source region on every run (L51 — spot probes alone once
-   missed 8 added characters). Nothing left here.
-2. **Portfolio schema hygiene** (recorded in 9.1, deliberately not done
-   there): the orphaned demo tables (`cra_portfolio_products`, releases,
-   customers, deployments) and the shared `cra_product_documents.productId`
-   that the retired donor and the real registry keyed DIFFERENTLY — drop or
-   re-point now that only the vault survives.
-3. Optional hygiene: object-storage env for the 2 skipped tests;
-   `main`-only development or branch rename; move the repo out of
-   `~/Downloads`; git identity config.
+Everything previously queued is DONE: W2.4 (NL+DE transpositions), the
+portfolio schema hygiene, the object-storage question (resolved by 10.1's
+portable backend — zero skips), main-only development, git identity, and
+Phase 10's four tasks. **No task is in flight. The open candidates, for
+the user to prioritise:**
+
+1. **10.3c — obligation seeding + deriver registration for the AI Act,
+   Machinery Regulation and RED** (D10: act is a dimension). Statute-
+   reading work per obligation — the CRA's 92 requirements took multiple
+   phases. The five-act citation gate is live to hold it. The natural
+   next phase.
+2. **L51 parity hardening for the OJ corpus family** — the transposition
+   corpora (Cbw, BSIG) have D2 full-content parity; the five OJ corpora
+   (CRA, NIS2, AI Act, Machinery, RED) still rely on pinned structure +
+   verbatim probes.
+3. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** — the
+   CRA-adjacent content a customer will actually ask about.
+4. Small: storage file GC (deleting evidence rows does not remove stored
+   files — a property inherited from the GCS backend and stated in 10.1).
+5. **User-only, between sessions:** move the repo out of `~/Downloads`
+   (quit session → move folder → `docker compose up -d` from the new
+   path → reopen).
 
 No new phase is opened until the user chooses among these or names new
 scope.
@@ -233,3 +256,9 @@ scope.
    law and cite other instruments); never "fix" TFEU citations inside them.
 7. Generated client files are regenerated wholesale — hand-edits are
    deleted by the next `orval` run (L37); spec first, always.
+8. **A gate piped through `tail` launders its exit code** (L52) — a zsh
+   pipeline returns the LAST command's status, and one red G4 shipped that
+   way. Run gates bare; `>/dev/null` preserves the status.
+9. **`${{ runner.temp }}` is invalid in a workflow's job-level `env`** —
+   it silently killed every CI run at file-parse time, which looks like
+   red gates but is a dead workflow. Literal paths in job env.
