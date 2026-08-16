@@ -613,9 +613,17 @@ language is not discarded.
   statutory file; per-version Art. 13(13) retention now resolves from the
   version's own placing date; natural-key duplicates 409. Also established:
   applied standards were ALREADY re-homed (StandardsEditor in the wizard) —
-  the standards-matrix donor page's real content lives there. Remaining for
-  7.3c: absorb CE studio, importer archive and partner-hub stages 1–4;
-  retire the standards-matrix page.
+  the standards-matrix donor page's real content lives there.
+  — **7.3c done 2026-08-16** (donor retirement): the Arts. 21/22
+  deemed-manufacturer determination is re-homed into the product file (shown
+  for importer/distributor/system-integrator products, tri-state facts, the
+  engine's persisted verdict with record hash, all-unanswered runs report
+  what is unanswered). partner-hub, standards-matrix and importer-archive
+  pages are DELETED with redirects (their real content lives in the product
+  file, the wizard's StandardsEditor, and the statutory file's retention
+  clocks; the stateless procurement calculator's statutory substance is the
+  Verify gate). CE studio stays as a tool in the More menu pending a real
+  CE stage.
 - **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.
   — **7.4a done 2026-08-15**: /incidents is now the real destination — a new
   workspace-level GET /conformity/incidents (spec-first) feeds an act-badged

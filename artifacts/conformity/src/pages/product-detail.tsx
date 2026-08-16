@@ -41,6 +41,7 @@ import { ArrowLeft, Plus, Trash2, ArrowRight, ClipboardCheck, FileText, Lock, Up
 import { ProductDocumentVaultModal } from "@/components/conformity/portfolio/product-document-vault-modal";
 import { VerifyPanel } from "@/components/product-file/verify-panel";
 import { NotifiedBodyPanel } from "@/components/product-file/notified-body-panel";
+import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufacturer-panel";
 import {
   Select,
   SelectContent,
@@ -559,6 +560,15 @@ export default function ProductDetail() {
           checks what the manufacturer did. No authoring stages. */}
       {isVerificationShape && (
         <VerifyPanel productId={id} role={orgRole as "importer" | "distributor"} />
+      )}
+
+      {/* Arts. 21/22: the roles at risk of BECOMING the manufacturer get the
+          determination in their file (re-homed from partner-hub, 7.3c). */}
+      {(isVerificationShape || orgRole === "system_integrator") && (
+        <DeemedManufacturerPanel
+          productId={id}
+          actorRole={orgRole === "system_integrator" ? "other_person" : (orgRole as "importer" | "distributor")}
+        />
       )}
 
       {/* Prominent Hero CTA for Kickoff Wizard */}

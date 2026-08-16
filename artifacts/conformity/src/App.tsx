@@ -47,11 +47,8 @@ const ProductPortfolioPage = lazy(() =>
   import('./pages/product-portfolio').then((m) => ({ default: m.ProductPortfolioPage })),
 );
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
-const PartnerHubPage = lazy(() => import('./pages/partner-hub'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
-const StandardsMatrixPage = lazy(() => import('./pages/standards-matrix'));
 const CeNameplateStudioPage = lazy(() => import('./pages/ce-nameplate-studio'));
-const ImporterArchivePage = lazy(() => import('./pages/importer-archive'));
 const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
@@ -236,11 +233,15 @@ function ShellRoutes() {
               <ProductPortfolioPage />
             </ErrorBoundary>
           </Route>
-          <Route path="/partner-hub" component={PartnerHubPage} />
-          <Route path="/partner-hub/*" component={PartnerHubPage} />
-          <Route path="/standards" component={StandardsMatrixPage} />
+          {/* Retired donors (7.3c): partner-hub's stages live in the product
+              file and Incidents; the archive's retention clocks live in the
+              statutory file; the standards editor lives in each assessment's
+              wizard. */}
+          <Route path="/partner-hub"><Redirect to="/products" /></Route>
+          <Route path="/partner-hub/*"><Redirect to="/products" /></Route>
+          <Route path="/standards"><Redirect to="/library/statute" /></Route>
           <Route path="/ce-studio" component={CeNameplateStudioPage} />
-          <Route path="/archive" component={ImporterArchivePage} />
+          <Route path="/archive"><Redirect to="/products" /></Route>
           <Route path="/podcast-studio" component={PodcastStudioPage} />
           <Route path="/podcast-studio/*" component={PodcastStudioPage} />
           <Route path="/auditor-portal" component={AuditorPortalPage} />
