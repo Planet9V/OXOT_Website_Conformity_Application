@@ -1,10 +1,25 @@
+import { useState } from "react";
 import { Link } from "wouter";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useListWorkspaceIncidents } from "@workspace/api-client-react";
+import { toast } from "sonner";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { ShieldAlert, ArrowRight, Wrench } from "lucide-react";
+import { ShieldAlert, ArrowRight, Wrench, Building2, Plus } from "lucide-react";
 import { Cite } from "@/components/statutory-flyout";
 
 /**
@@ -129,25 +144,241 @@ export default function IncidentsPage() {
         </>
       )}
 
-      <div className="rounded-2xl border border-border/60 bg-muted/20 px-5 py-4 text-sm text-muted-foreground space-y-2">
-        <p>
-          <span className="font-medium text-foreground">NIS2 Art. 23 incidents are not
-          modelled yet.</span>{" "}
-          The directive's staged reporting (24h early warning, 72h notification, one-month
-          final report to the CSIRT or competent authority) belongs on this same surface —
-          that is the point of a cross-act Incidents destination — but the entity-side
-          incident model ships with the NIS2 obligations seeding. Until then this page
-          shows CRA product incidents only, and says so.
-        </p>
-        <p className="text-xs">
-          <Wrench className="inline h-3 w-3 mr-1" />
-          The PSIRT toolkit (advisory drafting, SBOM/KEV triage) remains available under{" "}
-          <Link href="/psirt-tools" className="text-primary hover:underline">
-            PSIRT toolkit
-          </Link>{" "}
-          while its content is re-homed here.
-        </p>
+      <EntityIncidentsSection />
+
+      <p className="text-xs text-muted-foreground">
+        <Wrench className="inline h-3 w-3 mr-1" />
+        The PSIRT toolkit (advisory drafting, SBOM/KEV triage) remains available under{" "}
+        <Link href="/psirt-tools" className="text-primary hover:underline">
+          PSIRT toolkit
+        </Link>{" "}
+        while its content is re-homed here.
+      </p>
+    </div>
+  );
+}
+
+interface EntityIncident {
+  id: number;
+  title: string;
+  awareAt: string;
+  submittedTo: string;
+  assessment: {
+    stages: {
+      stage: string;
+      citation: string;
+      dueAt: string | null;
+      doneAt: string | null;
+      state: string;
+      message: string;
+    }[];
+    overdueCount: number;
+  };
+}
+
+const STAGE_SHORT: Record<string, string> = {
+  early_warning: "24h",
+  notification: "72h",
+  final_report: "final",
+};
+
+/**
+ * The organisation's own significant incidents as a NIS2 entity (Art. 23) —
+ * the entity half of the cross-act surface. Clock states come from the
+ * nis2Reporting engine; the final report's chip reads "not running" until
+ * the notification is submitted, because that is where Art. 23(4)(d)
+ * anchors its month.
+ */
+function EntityIncidentsSection() {
+  const qc = useQueryClient();
+  const [createOpen, setCreateOpen] = useState(false);
+  const [stageFor, setStageFor] = useState<{ incident: EntityIncident; stage: string } | null>(null);
+  const [form, setForm] = useState({ title: "", description: "", awareAt: "" });
+  const [submittedTo, setSubmittedTo] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  const queryKey = ["/api/conformity/entity-incidents"];
+  const { data, isLoading } = useQuery<{ total: number; overdueCount: number; incidents: EntityIncident[] }>({
+    queryKey,
+    queryFn: async () => {
+      const res = await fetch("/api/conformity/entity-incidents");
+      if (!res.ok) throw new Error(`Could not load entity incidents (HTTP ${res.status})`);
+      return res.json();
+    },
+  });
+
+  const create = async () => {
+    setSaving(true);
+    try {
+      const res = await fetch("/api/conformity/entity-incidents", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, awareAt: form.awareAt || null }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
+      toast.success("Entity incident recorded — the Art. 23 clocks are running");
+      setCreateOpen(false);
+      setForm({ title: "", description: "", awareAt: "" });
+      await qc.invalidateQueries({ queryKey });
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Could not record the incident");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const recordStage = async () => {
+    if (!stageFor) return;
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/conformity/entity-incidents/${stageFor.incident.id}/stages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ stage: stageFor.stage, submittedTo }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
+      toast.success("Submission recorded");
+      setStageFor(null);
+      setSubmittedTo("");
+      await qc.invalidateQueries({ queryKey });
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Could not record the submission");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const rows = data?.incidents ?? [];
+
+  return (
+    <div className="space-y-3" data-testid="entity-incidents">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6">
+        <div>
+          <h2 className="text-lg font-serif text-foreground flex items-center gap-2">
+            <Building2 className="h-4 w-4 text-primary" /> Entity incidents — NIS2 Art. 23
+          </h2>
+          <p className="text-xs text-muted-foreground mt-0.5 max-w-3xl">
+            The organisation's own significant incidents as an essential/important entity.
+            Early warning (24h) and notification (72h) run from awareness; the one-month
+            final report runs from the notification's submission. Which CSIRT or competent
+            authority receives them depends on the Member State transposition — the
+            recipient is recorded from what actually happened, never derived.
+          </p>
+        </div>
+        <Button size="sm" className="gap-1.5 text-xs shrink-0" onClick={() => setCreateOpen(true)} data-testid="record-entity-incident">
+          <Plus className="h-3.5 w-3.5" /> Record incident
+        </Button>
       </div>
+
+      {isLoading ? (
+        <Skeleton className="h-24 w-full rounded-2xl" />
+      ) : rows.length === 0 ? (
+        <p className="text-sm text-muted-foreground">
+          No entity incidents are recorded. Recording one starts its Art. 23 clocks from
+          the moment of awareness.
+        </p>
+      ) : (
+        <ul className="space-y-3">
+          {rows.map((i) => (
+            <li key={i.id} className="rounded-xl border border-border/70 bg-card p-4 space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="min-w-0 flex items-center gap-2.5">
+                  <Badge variant="outline" className="font-mono text-[10px] uppercase shrink-0">nis2</Badge>
+                  <span className="text-sm font-medium text-foreground truncate">{i.title}</span>
+                  <span className="font-mono text-[11px] text-muted-foreground">aware {i.awareAt.slice(0, 16).replace("T", " ")}</span>
+                </div>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {i.assessment.stages.map((s) => (
+                    <button
+                      key={s.stage}
+                      type="button"
+                      disabled={s.state === "met"}
+                      onClick={() => s.state !== "met" && s.state !== "not_yet_running" && setStageFor({ incident: i, stage: s.stage })}
+                      title={s.message}
+                      className={cn(
+                        "inline-flex items-center rounded-md border px-1.5 py-0.5 font-mono text-[10px]",
+                        s.state === "met" && "border-emerald-500/40 bg-emerald-500/10 text-emerald-500",
+                        s.state === "overdue" && "border-destructive/40 bg-destructive/10 text-destructive font-bold",
+                        s.state === "pending" && "border-border bg-muted/40 text-muted-foreground hover:border-primary/50",
+                        s.state === "not_yet_running" && "border-border/40 bg-muted/20 text-muted-foreground/50 cursor-not-allowed",
+                      )}
+                    >
+                      {STAGE_SHORT[s.stage]}
+                      {s.state === "met" ? " ✓" : s.state === "overdue" ? " OVERDUE" : s.state === "not_yet_running" ? " —" : ""}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              {i.assessment.stages.find((s) => s.stage === "final_report")?.state === "not_yet_running" && (
+                <p className="text-[11px] text-muted-foreground">
+                  Final report not yet running — NIS2 Art. 23(4)(d) anchors its month on
+                  the notification's submission.
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <Dialog open={createOpen} onOpenChange={setCreateOpen}>
+        <DialogContent className="rounded-2xl max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-lg">Record a significant incident</DialogTitle>
+            <DialogDescription className="text-xs">
+              Every Art. 23(4) deadline runs from the moment the entity became aware —
+              record that moment exactly.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 py-1 text-xs">
+            <div className="space-y-1">
+              <Label>Title *</Label>
+              <Input className="h-8 text-xs" value={form.title}
+                onChange={(e) => setForm({ ...form, title: e.target.value })} />
+            </div>
+            <div className="space-y-1">
+              <Label>Aware at *</Label>
+              <Input type="datetime-local" className="h-8 text-xs font-mono" value={form.awareAt}
+                onChange={(e) => setForm({ ...form, awareAt: e.target.value })} />
+            </div>
+            <div className="space-y-1">
+              <Label>Description</Label>
+              <Textarea className="text-xs h-16" value={form.description}
+                onChange={(e) => setForm({ ...form, description: e.target.value })} />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" size="sm" onClick={() => setCreateOpen(false)}>Cancel</Button>
+            <Button size="sm" onClick={create} disabled={saving || !form.title.trim() || !form.awareAt}>
+              Record — clocks start
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={stageFor !== null} onOpenChange={(v) => !v && setStageFor(null)}>
+        <DialogContent className="rounded-2xl max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-lg">
+              Record the {stageFor?.stage.replaceAll("_", " ")}
+            </DialogTitle>
+            <DialogDescription className="text-xs">
+              Records that the submission was made now. The recipient depends on the
+              national transposition — say where it actually went.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-1 py-1 text-xs">
+            <Label>Submitted to</Label>
+            <Input className="h-8 text-xs" placeholder="e.g. NCSC-NL (CSIRT)" value={submittedTo}
+              onChange={(e) => setSubmittedTo(e.target.value)} />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" size="sm" onClick={() => setStageFor(null)}>Cancel</Button>
+            <Button size="sm" onClick={recordStage} disabled={saving}>Record submission</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

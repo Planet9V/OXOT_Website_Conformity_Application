@@ -55,6 +55,7 @@ const CAPABILITIES = [
   // so the distinctive tail is the only stable thing to match on.
   { name: "statutory file",      path: "/statutory-file",               home: "Products -> product file" },
   { name: "evidence requests",   path: "/conformity/evidence-requests", home: "Home -> Your work" },
+  { name: "entity incidents",    path: "/conformity/entity-incidents",  home: "Incidents" },
 ];
 
 /** Every /api/... literal, including template-literal segments like ${id}. */

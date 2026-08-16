@@ -43,6 +43,8 @@ import {
   conformityEmbeddingsTable,
   conformityReportsTable,
   conformityMembersTable,
+  orgRolesTable,
+  orgRegulationsTable,
   conformityProductRevisionsTable,
   conformityPsirtProfilesTable,
   type ConformityProductRow,
@@ -315,6 +317,23 @@ const DEMO_SBOM = {
     },
   ],
 };
+
+/**
+ * W2.3 — the demo organisation is also an operator (NIS2 essential/important
+ * entity), matching the design's Axians story: manufacturer AND operator at
+ * once. Declaring the role and the directive is what brings the NIS2
+ * obligation set (Arts. 20/21/23) into the obligations feed.
+ */
+export async function seedDemoNis2Declarations(targetDb: any = db): Promise<void> {
+  await targetDb
+    .insert(orgRolesTable)
+    .values({ roleKey: "operator", isDeclared: true })
+    .onConflictDoUpdate({ target: orgRolesTable.roleKey, set: { isDeclared: true } });
+  await targetDb
+    .insert(orgRegulationsTable)
+    .values({ regulationKey: "nis2", isDeclared: true })
+    .onConflictDoUpdate({ target: orgRegulationsTable.regulationKey, set: { isDeclared: true } });
+}
 
 export async function seedDemoMembers(targetDb: any = db): Promise<void> {
   for (const m of DEMO_MEMBERS) {

@@ -99,6 +99,7 @@ export * from "./conformityNotifiedBody";
 export * from "./conformityProductVersions";
 export * from "./conformityAttestations";
 export * from "./conformityEvidenceRequests";
+export * from "./conformityEntityIncidents";
 export * from "./conformityImporterDossiers";
 export * from "./conformityOperatorChecks";
 export * from "./conformityStewardPolicies";

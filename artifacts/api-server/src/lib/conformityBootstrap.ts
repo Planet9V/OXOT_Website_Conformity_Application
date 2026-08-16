@@ -28,7 +28,7 @@ import {
 } from "@workspace/db";
 import { logger } from "./logger";
 import { seedConformity } from "../scripts/seedConformity";
-import { seedDemo, seedDemoMembers } from "../scripts/seedDemo";
+import { seedDemo, seedDemoMembers, seedDemoNis2Declarations } from "../scripts/seedDemo";
 import { CRA_FLOW_KEY, CRA_FLOW_STEPS } from "../scripts/craFlowTemplate";
 
 // Arbitrary but stable app-wide lock id for this bootstrap.
@@ -49,6 +49,7 @@ export async function runConformityBootstrap(): Promise<void> {
       // 0. Ensure team members (Jim, Jill, Jack, Nancy) are always present on server boot
       try {
         await seedDemoMembers();
+        await seedDemoNis2Declarations();
         logger.info("Conformity bootstrap: team members (Jim, Jill, Jack, Nancy) verified & seeded.");
       } catch (memErr) {
         logger.error({ err: memErr }, "Failed to seed team members on bootstrap");

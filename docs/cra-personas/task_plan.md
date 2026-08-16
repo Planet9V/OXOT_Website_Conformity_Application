@@ -632,9 +632,20 @@ language is not discarded.
   linking into the workbench where the staged-submission panel already
   lives. The NIS2 Art. 23 gap is stated ON the surface (entity-side incident
   model ships with the NIS2 seeding). The static psirt donor moved to
-  /psirt-tools in the More menu. Remaining for 7.4b: NIS2 entity incidents
-  when W2.3 lands; re-home partner-hub stage 5 payload builder wired to the
-  real submissions; absorb the PSIRT toolkit content.
+  /psirt-tools in the More menu.
+  — **7.4b done 2026-08-16 (and W2.3 with it)**: the demo org now declares
+  operator + nis2 (seeded, idempotent), so 12 NIS2 obligations flow through
+  the same engine — D11's simultaneous-roles story is real (manufacturer AND
+  operator). NIS2 entity incidents exist end-to-end: lib/nis2Reporting.ts
+  (unit-tested, incl. the Art. 23(4)(d) trap — the one-month final report
+  anchors on the NOTIFICATION SUBMISSION, so it has NO deadline before that
+  submission and the API refuses a final report recorded first), entity-
+  scoped table (an entity's incident is not a product's), staged-submission
+  routes with recipient CAPTURED as text (the transposition decides it —
+  W2.4 still deferred), and the cross-act Incidents surface rendering both
+  acts. Partner-hub stage 5 is subsumed: the real staged submissions ARE
+  the payload flow. PSIRT toolkit content absorption remains the one open
+  donor item (psirt-tools in the More menu).
 - **7.5** Authorities, Signatures, Projects, Organisation — the four surfaces
   that give the six orphaned capabilities a home. Includes building the P2
   evidence-request model and applying the role scoping deferred from 6.3.
