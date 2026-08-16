@@ -61,6 +61,5 @@ tool); the NIS2 full-text reader (corpus bundle + Library mode) and W2.4
 national transpositions; the 15 Dependabot findings. The More menu must be
 EMPTY at phase end, its code deleted.
 
-**Then:** Phase 7 (shell redesign — nine destinations, drives G8 to 0 orphans).
 Close every phase with G7 — update `lessons.md`, then re-tune the next phase's
 tasks before starting it.
