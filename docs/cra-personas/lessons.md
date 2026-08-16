@@ -592,3 +592,67 @@ Dependabot findings. The More menu should be EMPTY by the end of Phase 8,
 and the transitional-menu code deleted with it.
 
 **New lessons:** L41–L44.
+
+### L45 — A gate chained with ';' is not a gate
+The 8.4 commit shipped with G5 RED: the gate commands were separated by
+';' so the citation failure did not stop the `git commit` that followed in
+the same shell line. The failure itself was benign (verbatim TFEU citations
+in the new NIS2 bundle misattributed to the CRA), but the process hole was
+not — the definition of done executed and then was ignored.
+**Apply:** anything that must gate a commit is chained with `&&` (or its
+exit code is checked) so red stops the line. A gate whose failure cannot
+prevent the next command is advisory, and advisory gates rot.
+
+### L46 — Re-verification catches the neighbours, not just the change
+The dependency bumps broke nothing — but re-running the FULL suite on the
+new lockfile exposed a latent flake that had passed by luck: a suite that
+scavenged whatever assessment its siblings left behind, green or red
+depending on who cleaned up. The same pattern all phase: every wide
+re-verification surfaced something adjacent (parallel races in 8.1, the
+scavenged fixture in 8.5).
+**Apply:** treat every full-suite run as a chance to catch order- and
+leftover-dependence. A fixture a test did not create is a fixture it does
+not own; suites create their own data and delete it after.
+
+### L47 — Wait on the process, not on a status heuristic
+Twice in one night a "container restarted" wait matched the PREVIOUS
+build's restart ("Up About a minute") while the current image was still
+building — and a G6 then asserted against a stale bundle, reporting
+failures that were not in the code. The completion signal that cannot lie
+is the build process itself (its PID, or the harness notification), never
+a status string that a neighbouring event can satisfy.
+**Apply:** gate follow-on verification on the thing you started
+finishing — wait for the exact process/notification — and treat "the check
+failed but the code looks right" as a prompt to check WHICH build you are
+testing.
+
+---
+
+## Phase 8 — Hardening — completed 2026-08-16
+
+**What worked:** Reproducing CI exactly (throwaway pgvector + the ci.yml
+env) turned "31 known failures" from folklore into four named diseases in
+one afternoon. Range-scoped dependency overrides patched all 15 advisories
+without touching unaffected majors. The corpus pipeline generalised to a
+second act with one small script because the CRA pipeline was built
+reproducible from the start.
+
+**What cost time:** The stale-container wait (L47, twice). The gate chain
+hole (L45). Playwright assertions against decorated text (again — L38's
+cousin).
+
+**Surprises:** The "dominated by 401s" issue description was itself stale —
+only ONE suite was genuinely missing auth. The advisory publish
+completeness gate refused the G6 probe and thereby exposed that the new
+dialog could not author a publishable advisory at all (no product field) —
+a gate catching a UI gap the same hour the UI shipped.
+
+**Honest remainder (next phase's opening state):** the More menu is NOT
+empty — product-portfolio (→ Products, the last 7.3 absorption), reports
+(→ Home/product file), flows, and auditor-portal (arguably a permanent
+separate track, not transitional) remain. W2.4 transposition CONTENT needs
+sourced national texts (Legal circuit-breaker). Dependabot alerts close
+asynchronously after GitHub re-scans the pushed lockfile. G4's 7 remaining
+findings live in oxot-web marketing surfaces outside this app.
+
+**New lessons:** L45–L47.

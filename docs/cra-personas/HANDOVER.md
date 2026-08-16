@@ -20,7 +20,7 @@ Everything below is verifiable; if a claim here contradicts the working tree,
    W1.3 and does not survive them. Decisions D10–D13 are binding.
 2. **`task_plan.md`** — Phases 6 and 7 are next. The phase-status table says what
    is complete; the gate table (G1–G7) is the definition of done.
-3. **`lessons.md`** — L1–L44. Not optional reading; several are things that cost
+3. **`lessons.md`** — L1–L47. Not optional reading; several are things that cost
    real time to learn.
 
 ## The gates
@@ -48,6 +48,13 @@ persisted data comes back. G7 is the retro — update `lessons.md` and re-tune t
 `defaultTeamRole`, `/me` carries the member's `teamRole`). See task_plan.md.
 Close it with **G7** (update lessons.md, re-tune Phase 7) before starting
 Phase 7.
+
+**Phase 8 — hardening: COMPLETE 2026-08-16** (8.1 G2=0/issue #62; 8.2
+PSIRT absorption; 8.3 real CE stage; 8.4 NIS2 verbatim reader, W2.4
+content queued behind sourced texts; 8.5 all 15 Dependabot alerts patched,
+suite 702/0/2 on the new lockfile). Honest remainder in the Phase 8 retro
+(lessons.md): More menu not yet empty (portfolio, reports, flows,
+auditor-portal), W2.4 content, oxot-web honesty findings.
 
 **Phase 7 — shell redesign: COMPLETE 2026-08-16.** Nine real destinations,
 role-aware Home with the evidence-request inbox, polymorphic product file

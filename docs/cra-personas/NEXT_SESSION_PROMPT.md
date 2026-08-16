@@ -46,20 +46,16 @@ and `task_plan.md` Phases 6–7.
 be needed; the corpus does not settle a legal question; the same approach has
 failed twice; or `git log` shows an unexpected HEAD move.
 
-**First task — Phase 8.1: make the 31 G2 test failures authenticate (issue #62).**
+**First task — the remaining absorptions (Phase 8 retro's honest remainder).**
 
-Phases 6 and 7 are COMPLETE (2026-08-16; see task_plan.md, lessons.md
-L36–L44, and the two phase retros). The nine destinations are real, G8 is a
-zero-orphan covenant, and the deferral that protected issue #62 has expired.
-The fix is making the failing suites authenticate — NEVER flipping
-DEMO_READONLY in ci.yml, which restores unauthenticated writes. When G2
-reaches 0 new-failure baseline, lower the recorded baseline.
-
-Then, in order (the Phase 8 re-tune in lessons.md): PSIRT toolkit absorption
-into Incidents; a real CE stage in the product file (retiring the CE studio
-tool); the NIS2 full-text reader (corpus bundle + Library mode) and W2.4
-national transpositions; the 15 Dependabot findings. The More menu must be
-EMPTY at phase end, its code deleted.
+Phases 6, 7 AND 8 are COMPLETE (see task_plan.md, lessons.md L36–L47, and
+the three phase retros). Every ratcheted gate is at its floor: G2 = 0
+failures (CI-mirror 702/0/2), G5 = 0, G8 = 0 orphans as a covenant. The
+remaining work, in order: absorb product-portfolio into Products (the last
+7.3 donor), re-home reports and flows, decide whether auditor-portal is a
+permanent separate track (then the More menu and its code DELETE); W2.4
+transposition content when sourced national texts are provided; the 7
+honesty findings in oxot-web marketing surfaces.
 
 Close every phase with G7 — update `lessons.md`, then re-tune the next phase's
 tasks before starting it.
