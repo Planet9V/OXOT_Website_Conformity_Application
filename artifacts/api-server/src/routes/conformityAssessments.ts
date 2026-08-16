@@ -840,7 +840,7 @@ router.get("/conformity/cra-analytics", requireAuth, async (req, res): Promise<v
             label: "T+48h: 72h Detailed Notification & Analysis",
             time: activeIncident.notificationDoneAt ? new Date(activeIncident.notificationDoneAt).toLocaleString() : "8 days ago",
             status: activeIncident.notificationDoneAt ? "completed" : "pending",
-            details: "Complete impact analysis & severity assessment transmitted to EU Member States.",
+            details: "Complete impact analysis & severity assessment recorded for the Member States concerned.",
           },
           {
             step: 4,

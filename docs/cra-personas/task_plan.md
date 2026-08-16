@@ -796,4 +796,17 @@ HANDOVER's "Next steps" order.
   (`artifacts_verify/auditor_track_93b/`).
 - **9.4** W2.4 transposition content — BLOCKED on sourced verbatim national
   texts (NL, then DE); the NIS2 reader banner states the gap.
-- **9.5** Drive G4 7 → 0 (all findings in `artifacts/oxot-web` marketing).
+- **9.5 done 2026-08-16** G4 driven 7 → 0 and the CI baseline lowered to a
+  COVENANT (ci.yml `--baseline 0`, via the Edit tool per L48). The seven:
+  both cra-analytics-suite copies and the server incident timeline claimed
+  analyses "transmitted to EU Member States" (now "prepared for"/"recorded
+  for" — the app records, it does not transmit); the assistant's canned
+  reply promised a "CRA-Compliant" advisory (now a draft that says the tool
+  does not conclude conformity); seedDemo called a release "fully
+  compliant" (now describes what is tracked); and the public trust center
+  showed procurement/auditors a "Cryptographic Provenance Hash" that was
+  the SHA-256 of the EMPTY STRING in both locales (now "not yet published
+  for this product"). Not "all in oxot-web" as previously noted — the gate
+  output was the truth (L36). Gates: G2 712/0/2; G6 live 3/3 proving the
+  fake digest is absent from the rendered page AND every served JS bundle
+  (`artifacts_verify/honesty_zero_95/`).

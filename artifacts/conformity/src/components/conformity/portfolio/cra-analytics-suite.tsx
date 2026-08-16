@@ -568,7 +568,7 @@ export function CraAnalyticsSuite() {
                     label: "T+48h: 72h Detailed Notification & Analysis",
                     time: "8 days ago",
                     status: "completed",
-                    details: "Complete impact analysis transmitted to EU Member States (NL, DE, FR).",
+                    details: "Complete impact analysis prepared for the Member States concerned (NL, DE, FR).",
                   },
                   {
                     step: 4,

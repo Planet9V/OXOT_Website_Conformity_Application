@@ -688,7 +688,7 @@ export async function seedDemo(): Promise<void> {
       {
         productId: product.id,
         versionString: "v1.8.5",
-        revisionNotes: "Current CRA Article 10 & Annex IV fully compliant release.",
+        revisionNotes: "Current release; support period and technical-file retention tracked in the statutory file.",
         lifecycleState: "active",
         supportPeriodStartDate: new Date("2026-02-01T00:00:00Z"),
         supportPeriodEndDate: suppEnd,

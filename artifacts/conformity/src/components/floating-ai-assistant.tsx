@@ -51,7 +51,7 @@ export function FloatingAiAssistant() {
         if (text.toLowerCase().includes("24-hour") || text.toLowerCase().includes("art. 14")) {
           aiReply += "Under CRA Article 14(1), manufacturers must submit an **Early Warning** to the ENISA CSIRT Single Reporting Platform within **24 hours** of becoming aware of an actively exploited vulnerability. The early warning must state if malicious activity is suspected and list affected EU member states.";
         } else if (text.toLowerCase().includes("customer") || text.toLowerCase().includes("notice")) {
-          aiReply += "Here is your **CRA-Compliant Customer Security Advisory Summary**:\n- **Affected Product**: NovaGuard Smart Home Hub v2.1\n- **CVE ID**: CVE-2026-3891 (HMS Anybus Driver Stack)\n- **Action Required**: Apply Firmware Patch v2.1.4 immediately or isolate management port 8443.";
+          aiReply += "Here is a **draft Customer Security Advisory Summary** (review before use — this tool does not conclude conformity):\n- **Affected Product**: NovaGuard Smart Home Hub v2.1\n- **CVE ID**: CVE-2026-3891 (HMS Anybus Driver Stack)\n- **Action Required**: Apply Firmware Patch v2.1.4 immediately or isolate management port 8443.";
         } else if (text.toLowerCase().includes("cbom") || text.toLowerCase().includes("kev")) {
           aiReply += "Your product CBOM currently has 1 active CISA KEV match (CVE-2026-3891). We recommend issuing a VEX (Vulnerability Exploitability eXchange) statement flagging status as **Affected** and attaching patch v2.1.4.";
         } else {

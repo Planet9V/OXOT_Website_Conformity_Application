@@ -59,7 +59,7 @@ const copy = {
       'Components and dependencies are continuously monitored against CISA KEV and NVD vulnerability databases.',
     sbomSpecVersion: 'CycloneDX Spec Version: 1.5',
     sbomHash:
-      'Cryptographic Provenance Hash: sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      'Cryptographic provenance hash: not yet published for this product',
     sbomStatus: 'Status: ZERO KNOWN EXPLOITED VULNERABILITIES (KEV)',
   },
   nl: {
@@ -95,7 +95,7 @@ const copy = {
       'Componenten en afhankelijkheden worden continu gecontroleerd aan de hand van de kwetsbaarhedendatabases CISA KEV en NVD.',
     sbomSpecVersion: 'CycloneDX-specificatieversie: 1.5',
     sbomHash:
-      'Cryptografische herkomsthash: sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      'Cryptografische herkomsthash: nog niet gepubliceerd voor dit product',
     sbomStatus: 'Status: GEEN BEKENDE MISBRUIKTE KWETSBAARHEDEN (KEV)',
   },
 } as const;
