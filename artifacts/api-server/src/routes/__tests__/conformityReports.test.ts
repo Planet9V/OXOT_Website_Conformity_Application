@@ -57,6 +57,7 @@ let baseUrl: string;
 let adminCookie: string;
 let demoCookie: string;
 let assessmentId: number;
+let fixtureProductId: number;
 const createdReportIds: number[] = [];
 
 async function api(
@@ -121,16 +122,37 @@ beforeAll(async () => {
   adminCookie = `${ADMIN_COOKIE}=${createSessionToken(username)}`;
   demoCookie = `${ADMIN_COOKIE}=${createSessionToken("oxotdemo", "demo")}`;
 
-  const [assessment] = await db
-    .select({ id: conformityAssessmentsTable.id })
-    .from(conformityAssessmentsTable)
-    .orderBy(desc(conformityAssessmentsTable.id))
-    .limit(1);
-  if (!assessment) throw new Error("dev DB has no conformity assessment — run seed:demo first");
-  assessmentId = assessment.id;
+  /**
+   * Self-sufficient fixture (task 8.5): this suite previously scavenged
+   * whatever assessment a SIBLING suite happened to leave behind — green or
+   * red depending on which neighbours cleaned up after themselves. It now
+   * creates its own product + assessment through the real API and never
+   * depends on leftovers.
+   */
+  const productRes = await api("POST", "/conformity/products", {
+    cookie: adminCookie,
+    body: { name: "Reports Fixture Product", productType: "software" },
+  });
+  if (productRes.status !== 200) {
+    throw new Error(`could not create the fixture product (HTTP ${productRes.status})`);
+  }
+  fixtureProductId = productRes.body.id;
+  const assessmentRes = await api("POST", "/conformity/assessments", {
+    cookie: adminCookie,
+    body: { productId: fixtureProductId, regulationKey: "cra" },
+  });
+  if (assessmentRes.status !== 200) {
+    throw new Error(`could not create the fixture assessment (HTTP ${assessmentRes.status})`);
+  }
+  assessmentId = assessmentRes.body.assessment.id;
 });
 
 afterAll(async () => {
+  // Remove the fixture product (cascades to its assessment) so this suite
+  // leaves no leftovers for a sibling to scavenge.
+  if (fixtureProductId) {
+    await api("DELETE", `/conformity/products/${fixtureProductId}`, { cookie: adminCookie });
+  }
   if (createdReportIds.length) {
     await db.delete(conformityReportsTable).where(inArray(conformityReportsTable.id, createdReportIds));
     await db
