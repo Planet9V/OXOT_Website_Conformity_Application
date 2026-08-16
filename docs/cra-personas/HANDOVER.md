@@ -2,7 +2,7 @@
 
 The single entry point for any developer or session picking up the OXOT CRA
 conformity application. Everything below was verified against the working
-tree on 2026-08-16 at commit `625c13a`; if a claim here ever contradicts the
+tree on 2026-08-16 at commit `2970b4b`; if a claim here ever contradicts the
 working tree, **the working tree wins** and this file is wrong (that has
 happened — L36 — so check before trusting).
 
@@ -45,12 +45,12 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L50 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L51 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 8
+## Phases — all complete through Phase 9 (and its post-retro remainder)
 
 | Phase | Delivered |
 |---|---|
@@ -58,7 +58,7 @@ do not".
 | 6 | Team role model: `TEAM_ROLES` as data (nullable, never defaulted — L40), plaintext `plainPassword` **removed**, role-scoped obligations (`defaultTeamRole`, a routing default never a statutory assignment) + `teamRole` on `/me` |
 | 7 | The nine-destination shell (below); polymorphic product file; cross-act Incidents; Authorities/Signatures/Projects/Organisation real; Library owns all reference content; universal statutory flyout; evidence requests (P2 ask-half); NIS2 entity incidents; **G8 = 0 orphans, now a covenant**; donors partner-hub / standards-matrix / importer-archive / open-source-steward / psirt-toolkit / ce-studio **deleted** with redirects |
 | 8 | G2 = **0 test failures** (issue #62 closed — dead contracts, wrong session roles, parallel DB races now sequential, 2 storage skips-with-reason); PSIRT CVD pipeline on Incidents; CE derivations in the statutory file (no `mayAffix` by construction); NIS2 verbatim reader (reproducible bundle); **all Dependabot alerts patched** (range-scoped pnpm overrides; 0 open) |
-| 9 | Absorption close-out: product-portfolio absorbed into Products (honest bulk import — `POST /conformity/products/import`; quick-start and the fabricating portfolio endpoints deleted; vault kept, its invented-provenance defaults removed); reports → a Home section, flows → `/settings/flows`; the transitional **More menu DELETED** — nav is exactly the nine destinations; auditor-portal decided PERMANENT + EXTERNAL and completed end-to-end in 9.3b (admin-issued expiring tokens, org-side RFI inbox with respond); **G4 driven 7 → 0 and made a covenant** (the empty-string "provenance hash" on the public trust center among the seven). 9.4 (W2.4 national texts) stays blocked on sources |
+| 9 | Absorption close-out: product-portfolio absorbed into Products (honest bulk import — `POST /conformity/products/import`; quick-start and the fabricating portfolio endpoints deleted; vault kept, its invented-provenance defaults removed); reports → a Home section, flows → `/settings/flows`; the transitional **More menu DELETED** — nav is exactly the nine destinations; auditor-portal decided PERMANENT + EXTERNAL and completed end-to-end in 9.3b (admin-issued expiring tokens, org-side RFI inbox with respond); **G4 driven 7 → 0 and made a covenant** (the empty-string "provenance hash" on the public trust center among the seven). Same day, after the G7 retro: **W2.4 COMPLETED** — 9.4a Cyberbeveiligingswet (NL, promulgated Staatsblad XML, in force 2026-08-15) and 9.4b BSI-Gesetz (DE, consolidated gii XML, a disclosed departure with the verbatim amendment trail), each with a CI verifier including **D2 full-content parity** (which caught and killed 8 flattener-added characters — L51) |
 
 ## The application map (key files)
 
@@ -74,7 +74,7 @@ do not".
 | Products `/products(/:id)` | `pages/product-detail.tsx` + `components/product-file/*` (verify-panel, notified-body-panel, deemed-manufacturer-panel) + StatutoryFile (versions, CE, retention, due diligence) | `conformityAssessments.ts`, `statutoryFile.ts`, `operatorChecks.ts`, `notifiedBody.ts`, `deemedManufacturer.ts`, `lib/ceMarking.ts` — the file renders **per the product's `orgRole`** (nullable; null prompts, never guesses) |
 | Projects `/projects` | `pages/projects.tsx` (Art. 24 engine — the ONLY steward implementation) | `stewardPolicy.ts` + `lib/openSourceSteward.ts` (versioned supersede-never-overwrite policies) |
 | Organisation `/organisation` | `pages/org-profile.tsx` + `components/organisation/mandates-panel.tsx` | `orgProfile.ts` declarations, `mandates.ts` (stored-as-written, defects reported never trimmed) |
-| Library `/library` | `pages/library.tsx` → `cra-wiki` (CRA verbatim), `nis2-reader.tsx` (NIS2 verbatim), acts/requirements/themes/mappings/sources under `/library/*` | corpora bundles; `components/statutory-flyout.tsx` = law at point of use (verbatim only, CRA-only — no lookalikes for other acts) |
+| Library `/library` | `pages/library.tsx` → `cra-wiki` (CRA verbatim), `nis2-reader.tsx` (NIS2 verbatim), `cbw-reader.tsx` (NL transposition, Dutch verbatim), `bsig-reader.tsx` (DE transposition core, German verbatim + amendment trail), acts/requirements/themes/mappings/sources under `/library/*` | corpora bundles; `components/statutory-flyout.tsx` = law at point of use (verbatim only, CRA-only — no lookalikes for other acts) |
 | Settings `/settings` | `pages/team.tsx` (team + `teamRole` select) | `adminTeam.ts` |
 
 **The transitional "More" menu is GONE** (9.3): every surface it held was
@@ -83,13 +83,26 @@ token-authenticated notified-body door, routed OUTSIDE the login shell;
 tokens are issued and RFIs answered in the product file's
 `auditor-access-panel.tsx`). Do not reintroduce a junk-drawer menu.
 
-**Corpora** (the source of truth): `docs/cra_statutory_corpus/` and
-`docs/nis2_statutory_corpus/` — verbatim OJ text built from EUR-Lex by
-`scripts/build_*_corpus_from_eurlex.mjs`, synced to frontend bundles by
-`scripts/sync_*_corpus_data.mjs`, and proven byte-for-byte reproducible in
-CI. Never hand-edit a corpus or bundle. Verify any article number against
-the corpus **title** before putting it in a label — a wrong-but-existing
-number passes the citation gate (L41).
+**Corpora** (the source of truth), all built from a COMMITTED authentic
+source by script, synced to frontend bundles by script, and proven
+byte-for-byte reproducible in CI — never hand-edit a corpus or bundle:
+
+- `docs/cra_statutory_corpus/` + `docs/nis2_statutory_corpus/` — verbatim
+  OJ text from EUR-Lex (`build_*_corpus_from_eurlex.mjs`).
+- `docs/cbw_statutory_corpus/` — the Dutch NIS2 transposition, from the
+  promulgated Staatsblad XML, Stb. 2026, 187 (`build_cbw_corpus_from_stb.mjs`).
+- `docs/bsig_statutory_corpus/` — the German transposition core (BSIG),
+  from the CONSOLIDATED gesetze-im-internet XML — a disclosed departure
+  (Artikelgesetz promulgation is PDF-only and already amended); the
+  verbatim standangabe amendment trail is in the metadata
+  (`build_bsig_corpus_from_gii.mjs`).
+
+Each has its own verifier (`verify_{cra,nis2,cbw,bsig}_corpus.mjs`, all in
+CI); the transposition verifiers include **D2 full-content parity** — every
+article/§/annex compared character-for-character against its source region
+(L51). Verify any article number against the corpus **title** before
+putting it in a label — a wrong-but-existing number passes the citation
+gate (L41).
 
 **Spec-first pipeline**: `lib/api-spec/openapi.yaml` → `orval`
 (`cd lib/api-spec && ./node_modules/.bin/orval --config ./orval.config.ts`)
@@ -111,7 +124,8 @@ cd artifacts/conformity && ./node_modules/.bin/vite build   # G3
 node scripts/check_honesty.mjs   --baseline 0               # G4 — COVENANT (0 since 9.5)
 node scripts/check_citations.mjs --baseline 0               # G5
 node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT (17 reached)
-node scripts/verify_cra_corpus.mjs && node scripts/verify_nis2_corpus.mjs
+node scripts/verify_cra_corpus.mjs && node scripts/verify_nis2_corpus.mjs \
+  && node scripts/verify_cbw_corpus.mjs && node scripts/verify_bsig_corpus.mjs
 ```
 
 **G2 (tests) = ZERO failures**, run in the CI-mirror environment:
@@ -135,7 +149,7 @@ leftovers — L46). Tests mint signed cookies via
 limiter: 10/15min, reset by api-container restart, never weakened).
 
 **G6 (live)** per batch: rebuild containers, drive the surface with
-Playwright (`scripts/verify_*_playwright.mjs`, 19 repeatable scripts —
+Playwright (`scripts/verify_*_playwright.mjs`, 21 repeatable scripts —
 pattern: login, act through the real UI, read persisted state back via the
 API, screenshot, clean up probes), and **review the screenshot** — pixels
 catch what assertions miss (nav collisions were found only that way).
@@ -173,9 +187,11 @@ phase's tasks before starting it.
 
 **Halt and ask, never guess, when**: a new `honesty-ok:`/`citation-ok:`
 waiver would be needed; the corpus does not settle a legal question (this
-is why W2.4 content waits for sourced national texts); the same approach
-failed twice; or `git log`/`git status` shows an unexpected change (the
-audio script is the known benign one).
+is why W2.4 waited until the sourced national texts were located rather
+than reconstructing them — and why the DE source-strategy fork was decided
+on evidence with the user, not guessed); the same approach failed twice;
+or `git log`/`git status` shows an unexpected change (the audio script is
+the known benign one).
 
 ## Next steps, in order (Phase 9 closed 2026-08-16 — see its G7 retro)
 

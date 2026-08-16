@@ -709,6 +709,18 @@ new scope.
 
 **New lessons:** L49–L50.
 
+**Addendum — same day, after this retro closed.** The "9.4 stays BLOCKED"
+line above was overtaken within hours: the user asked for a web search, the
+authentic sources were located (the Cbw had entered into force the day
+before), and W2.4 completed as 9.4a (NL, promulgated Staatsblad XML) and
+9.4b (DE, consolidated gii XML — the source-strategy fork decided on
+evidence with the user: the promulgation is a PDF-only Artikelgesetz and
+the BSIG was already amended). A user-requested error check then produced
+the full-content parity audit, which found 8 flattener-added characters in
+Cbw Artt. 99–100 that every existing gate had passed; the audit became
+check D2 in both transposition verifiers, negative-controlled. New lesson:
+L51. Commits `b2bfb97` → `2970b4b`.
+
 ### L49 — "Reached" is not "usable": reachability gates cannot see a missing write path
 **Seen:** 2026-08-16, task 9.3. The auditor portal referenced its API paths,
 so any path-scan would call the capability covered — yet NOTHING in the
