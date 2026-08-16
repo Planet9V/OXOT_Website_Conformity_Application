@@ -63,6 +63,9 @@ const CAPABILITIES = [
   { name: "advisories",          path: "/conformity/advisories",        home: "Incidents", hook: "useListConformityAdvisories" },
   { name: "vuln reports",        path: "/conformity/vuln-reports",      home: "Incidents", hook: "useListConformityVulnReports" },
   { name: "product bulk import", path: "/conformity/products/import",   home: "Products",  hook: "useImportConformityProducts" },
+  // Parented by a dynamic assessment id, so the distinctive tail is matched.
+  { name: "auditor access",      path: "/auditor-access",               home: "Products -> product file", hook: "useListAuditorAccess" },
+  { name: "auditor rfis",        path: "/auditor-rfis",                 home: "Products -> product file", hook: "useListAuditorRfis" },
 ];
 
 /** Every /api/... literal, including template-literal segments like ${id}. */

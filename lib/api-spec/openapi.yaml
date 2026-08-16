@@ -2689,6 +2689,122 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/assessments/{id}/auditor-access:
+    get:
+      operationId: listAuditorAccess
+      tags: [conformity]
+      summary: List notified-body auditor access grants for an assessment
+      description: >
+        The organisation's side of the external auditor portal (9.3b). Each
+        grant is an expiring, revocable token scoped to ONE assessment; the
+        token is shown so an admin can send the portal link to the auditor.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Access grants
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditorAccessList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: issueAuditorAccess
+      tags: [conformity]
+      summary: Issue an auditor access token (admin only)
+      description: >
+        Requires an admin session. Expiry is the issuer's explicit choice —
+        it is never defaulted.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IssueAuditorAccessInput"
+      responses:
+        "200":
+          description: The issued grant, including its token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditorAccess"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/auditor-access/{id}/revoke:
+    post:
+      operationId: revokeAuditorAccess
+      tags: [conformity]
+      summary: Revoke an auditor access token (admin only)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The revoked grant
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditorAccess"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/assessments/{id}/auditor-rfis:
+    get:
+      operationId: listAuditorRfis
+      tags: [conformity]
+      summary: The organisation's inbox of auditor RFIs for an assessment
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: RFIs, non-conformities and observations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditorRfiList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/auditor-rfis/{id}/respond:
+    post:
+      operationId: respondAuditorRfi
+      tags: [conformity]
+      summary: Record the organisation's response to an auditor RFI
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RespondAuditorRfiInput"
+      responses:
+        "200":
+          description: The answered RFI
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditorRfi"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
   /conformity/assessments/{id}/evidence:
     get:
       operationId: listConformityEvidence
@@ -4088,6 +4204,12 @@ components:
             $ref: "#/components/schemas/Error"
     Conflict:
       description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Forbidden:
+      description: The session lacks the required role
       content:
         application/json:
           schema:
@@ -6838,6 +6960,65 @@ components:
         supportPeriodEnd: { type: ["string", "null"] }
       required:
         - name
+    AuditorAccess:
+      type: object
+      properties:
+        id: { type: integer }
+        assessmentId: { type: integer }
+        auditorEmail: { type: string }
+        notifiedBodyName: { type: string }
+        notifiedBodyNumber: { type: string }
+        accessToken: { type: string }
+        expiresAt: { type: string }
+        isActive: { type: boolean }
+        createdAt: { type: string }
+      required:
+        [id, assessmentId, auditorEmail, notifiedBodyName, notifiedBodyNumber, accessToken, expiresAt, isActive, createdAt]
+    AuditorAccessList:
+      type: object
+      properties:
+        access:
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditorAccess"
+      required: [access]
+    IssueAuditorAccessInput:
+      type: object
+      properties:
+        auditorEmail: { type: string, minLength: 3 }
+        notifiedBodyName: { type: string, minLength: 1 }
+        notifiedBodyNumber: { type: string, minLength: 1 }
+        # Explicit, never defaulted: expiry is the issuer's decision.
+        expiresInDays: { type: integer, minimum: 1, maximum: 365 }
+      required: [auditorEmail, notifiedBodyName, notifiedBodyNumber, expiresInDays]
+    AuditorRfi:
+      type: object
+      properties:
+        id: { type: integer }
+        assessmentId: { type: integer }
+        requirementRefCode: { type: ["string", "null"] }
+        auditorEmail: { type: string }
+        question: { type: string }
+        severity: { type: string, enum: [rfi, non_conformity, observation] }
+        status: { type: string, enum: [open, answered, closed] }
+        manufacturerResponse: { type: string }
+        respondedAt: { type: ["string", "null"] }
+        createdAt: { type: string }
+      required:
+        [id, assessmentId, auditorEmail, question, severity, status, manufacturerResponse, respondedAt, createdAt]
+    AuditorRfiList:
+      type: object
+      properties:
+        rfis:
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditorRfi"
+      required: [rfis]
+    RespondAuditorRfiInput:
+      type: object
+      properties:
+        response: { type: string, minLength: 1 }
+      required: [response]
     ImportConformityProductsInput:
       type: object
       properties:

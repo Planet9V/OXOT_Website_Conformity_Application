@@ -1652,6 +1652,78 @@ export interface ConformityProductInput {
   supportPeriodEnd?: string | null;
 }
 
+export interface AuditorAccess {
+  id: number;
+  assessmentId: number;
+  auditorEmail: string;
+  notifiedBodyName: string;
+  notifiedBodyNumber: string;
+  accessToken: string;
+  expiresAt: string;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface AuditorAccessList {
+  access: AuditorAccess[];
+}
+
+export interface IssueAuditorAccessInput {
+  /** @minLength 3 */
+  auditorEmail: string;
+  /** @minLength 1 */
+  notifiedBodyName: string;
+  /** @minLength 1 */
+  notifiedBodyNumber: string;
+  /**
+     * @minimum 1
+     * @maximum 365
+     */
+  expiresInDays: number;
+}
+
+export type AuditorRfiSeverity = typeof AuditorRfiSeverity[keyof typeof AuditorRfiSeverity];
+
+
+export const AuditorRfiSeverity = {
+  rfi: 'rfi',
+  non_conformity: 'non_conformity',
+  observation: 'observation',
+} as const;
+
+export type AuditorRfiStatus = typeof AuditorRfiStatus[keyof typeof AuditorRfiStatus];
+
+
+export const AuditorRfiStatus = {
+  open: 'open',
+  answered: 'answered',
+  closed: 'closed',
+} as const;
+
+export interface AuditorRfi {
+  id: number;
+  assessmentId: number;
+  /** @nullable */
+  requirementRefCode?: string | null;
+  auditorEmail: string;
+  question: string;
+  severity: AuditorRfiSeverity;
+  status: AuditorRfiStatus;
+  manufacturerResponse: string;
+  /** @nullable */
+  respondedAt: string | null;
+  createdAt: string;
+}
+
+export interface AuditorRfiList {
+  rfis: AuditorRfi[];
+}
+
+export interface RespondAuditorRfiInput {
+  /** @minLength 1 */
+  response: string;
+}
+
 export interface ImportConformityProductRow {
   name?: string;
   description?: string;
@@ -3132,6 +3204,11 @@ export type UnauthorizedResponse = Error;
  * Conflict
  */
 export type ConflictResponse = Error;
+
+/**
+ * The session lacks the required role
+ */
+export type ForbiddenResponse = Error;
 
 export type ListLeadsParams = {
 q?: string;

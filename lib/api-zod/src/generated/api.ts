@@ -3846,6 +3846,136 @@ export const UpdateConformityEvaluationResponse = zod.object({
 
 
 /**
+ * The organisation's side of the external auditor portal (9.3b). Each grant is an expiring, revocable token scoped to ONE assessment; the token is shown so an admin can send the portal link to the auditor.
+ * @summary List notified-body auditor access grants for an assessment
+ */
+export const ListAuditorAccessParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListAuditorAccessResponse = zod.object({
+  "access": zod.array(zod.object({
+  "id": zod.number(),
+  "assessmentId": zod.number(),
+  "auditorEmail": zod.string(),
+  "notifiedBodyName": zod.string(),
+  "notifiedBodyNumber": zod.string(),
+  "accessToken": zod.string(),
+  "expiresAt": zod.string(),
+  "isActive": zod.boolean(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
+ * Requires an admin session. Expiry is the issuer's explicit choice — it is never defaulted.
+ * @summary Issue an auditor access token (admin only)
+ */
+export const IssueAuditorAccessParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const issueAuditorAccessBodyAuditorEmailMin = 3;
+
+
+
+export const issueAuditorAccessBodyExpiresInDaysMax = 365;
+
+
+
+export const IssueAuditorAccessBody = zod.object({
+  "auditorEmail": zod.string().min(issueAuditorAccessBodyAuditorEmailMin),
+  "notifiedBodyName": zod.string().min(1),
+  "notifiedBodyNumber": zod.string().min(1),
+  "expiresInDays": zod.number().min(1).max(issueAuditorAccessBodyExpiresInDaysMax)
+})
+
+export const IssueAuditorAccessResponse = zod.object({
+  "id": zod.number(),
+  "assessmentId": zod.number(),
+  "auditorEmail": zod.string(),
+  "notifiedBodyName": zod.string(),
+  "notifiedBodyNumber": zod.string(),
+  "accessToken": zod.string(),
+  "expiresAt": zod.string(),
+  "isActive": zod.boolean(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Revoke an auditor access token (admin only)
+ */
+export const RevokeAuditorAccessParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const RevokeAuditorAccessResponse = zod.object({
+  "id": zod.number(),
+  "assessmentId": zod.number(),
+  "auditorEmail": zod.string(),
+  "notifiedBodyName": zod.string(),
+  "notifiedBodyNumber": zod.string(),
+  "accessToken": zod.string(),
+  "expiresAt": zod.string(),
+  "isActive": zod.boolean(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary The organisation's inbox of auditor RFIs for an assessment
+ */
+export const ListAuditorRfisParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListAuditorRfisResponse = zod.object({
+  "rfis": zod.array(zod.object({
+  "id": zod.number(),
+  "assessmentId": zod.number(),
+  "requirementRefCode": zod.string().nullish(),
+  "auditorEmail": zod.string(),
+  "question": zod.string(),
+  "severity": zod.enum(['rfi', 'non_conformity', 'observation']),
+  "status": zod.enum(['open', 'answered', 'closed']),
+  "manufacturerResponse": zod.string(),
+  "respondedAt": zod.string().nullable(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
+ * @summary Record the organisation's response to an auditor RFI
+ */
+export const RespondAuditorRfiParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+
+
+
+export const RespondAuditorRfiBody = zod.object({
+  "response": zod.string().min(1)
+})
+
+export const RespondAuditorRfiResponse = zod.object({
+  "id": zod.number(),
+  "assessmentId": zod.number(),
+  "requirementRefCode": zod.string().nullish(),
+  "auditorEmail": zod.string(),
+  "question": zod.string(),
+  "severity": zod.enum(['rfi', 'non_conformity', 'observation']),
+  "status": zod.enum(['open', 'answered', 'closed']),
+  "manufacturerResponse": zod.string(),
+  "respondedAt": zod.string().nullable(),
+  "createdAt": zod.string()
+})
+
+
+/**
  * @summary List evidence for an assessment
  */
 export const ListConformityEvidenceParams = zod.object({

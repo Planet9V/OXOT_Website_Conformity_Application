@@ -34,6 +34,10 @@ import type {
   AnnexReadiness,
   ApplyLinksInput,
   AskAssistantInput,
+  AuditorAccess,
+  AuditorAccessList,
+  AuditorRfi,
+  AuditorRfiList,
   BadRequestResponse,
   BomCatalog,
   BomDetail,
@@ -94,6 +98,7 @@ import type {
   Error,
   ExportBom200,
   FinalizeConformityReport200,
+  ForbiddenResponse,
   GenerateNewsletterInput,
   GeneratedNewsletter,
   GetAnalyticsOverviewParams,
@@ -110,6 +115,7 @@ import type {
   IntegrationActivityItem,
   IntegrationSettings,
   IntegrationsHealth,
+  IssueAuditorAccessInput,
   Lead,
   LeadDetail,
   LinkSuggestionsResult,
@@ -149,6 +155,7 @@ import type {
   RegulationDetail,
   Requirement,
   RequirementDetail,
+  RespondAuditorRfiInput,
   SaveAnswersInput,
   SaveNavInput,
   SavePageDraftInput,
@@ -9519,6 +9526,377 @@ export const useUpdateConformityEvaluation = <TError = ErrorType<BadRequestRespo
         TContext
       > => {
       return useMutation(getUpdateConformityEvaluationMutationOptions(options));
+    }
+
+export const getListAuditorAccessUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/assessments/${id}/auditor-access`
+}
+
+/**
+ * The organisation's side of the external auditor portal (9.3b). Each grant is an expiring, revocable token scoped to ONE assessment; the token is shown so an admin can send the portal link to the auditor.
+ * @summary List notified-body auditor access grants for an assessment
+ */
+export const listAuditorAccess = async (id: number, options?: RequestInit): Promise<AuditorAccessList> => {
+
+  return customFetch<AuditorAccessList>(getListAuditorAccessUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListAuditorAccessQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/assessments/${id}/auditor-access`
+    ] as const;
+    }
+
+
+export const getListAuditorAccessQueryOptions = <TData = Awaited<ReturnType<typeof listAuditorAccess>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAuditorAccess>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListAuditorAccessQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listAuditorAccess>>> = ({ signal }) => listAuditorAccess(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listAuditorAccess>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListAuditorAccessQueryResult = NonNullable<Awaited<ReturnType<typeof listAuditorAccess>>>
+export type ListAuditorAccessQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary List notified-body auditor access grants for an assessment
+ */
+
+export function useListAuditorAccess<TData = Awaited<ReturnType<typeof listAuditorAccess>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAuditorAccess>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListAuditorAccessQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getIssueAuditorAccessUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/assessments/${id}/auditor-access`
+}
+
+/**
+ * Requires an admin session. Expiry is the issuer's explicit choice — it is never defaulted.
+ * @summary Issue an auditor access token (admin only)
+ */
+export const issueAuditorAccess = async (id: number,
+    issueAuditorAccessInput: IssueAuditorAccessInput, options?: RequestInit): Promise<AuditorAccess> => {
+
+  return customFetch<AuditorAccess>(getIssueAuditorAccessUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(issueAuditorAccessInput)
+  }
+);}
+
+
+
+
+
+export const getIssueAuditorAccessMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | ForbiddenResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof issueAuditorAccess>>, TError,{id: number;data: BodyType<IssueAuditorAccessInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof issueAuditorAccess>>, TError,{id: number;data: BodyType<IssueAuditorAccessInput>}, TContext> => {
+
+const mutationKey = ['issueAuditorAccess'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof issueAuditorAccess>>, {id: number;data: BodyType<IssueAuditorAccessInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  issueAuditorAccess(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type IssueAuditorAccessMutationResult = NonNullable<Awaited<ReturnType<typeof issueAuditorAccess>>>
+    export type IssueAuditorAccessMutationBody = BodyType<IssueAuditorAccessInput>
+    export type IssueAuditorAccessMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | ForbiddenResponse | NotFoundResponse>
+
+    /**
+ * @summary Issue an auditor access token (admin only)
+ */
+export const useIssueAuditorAccess = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | ForbiddenResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof issueAuditorAccess>>, TError,{id: number;data: BodyType<IssueAuditorAccessInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof issueAuditorAccess>>,
+        TError,
+        {id: number;data: BodyType<IssueAuditorAccessInput>},
+        TContext
+      > => {
+      return useMutation(getIssueAuditorAccessMutationOptions(options));
+    }
+
+export const getRevokeAuditorAccessUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/auditor-access/${id}/revoke`
+}
+
+/**
+ * @summary Revoke an auditor access token (admin only)
+ */
+export const revokeAuditorAccess = async (id: number, options?: RequestInit): Promise<AuditorAccess> => {
+
+  return customFetch<AuditorAccess>(getRevokeAuditorAccessUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getRevokeAuditorAccessMutationOptions = <TError = ErrorType<UnauthorizedResponse | ForbiddenResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof revokeAuditorAccess>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof revokeAuditorAccess>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['revokeAuditorAccess'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof revokeAuditorAccess>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  revokeAuditorAccess(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RevokeAuditorAccessMutationResult = NonNullable<Awaited<ReturnType<typeof revokeAuditorAccess>>>
+
+    export type RevokeAuditorAccessMutationError = ErrorType<UnauthorizedResponse | ForbiddenResponse | NotFoundResponse>
+
+    /**
+ * @summary Revoke an auditor access token (admin only)
+ */
+export const useRevokeAuditorAccess = <TError = ErrorType<UnauthorizedResponse | ForbiddenResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof revokeAuditorAccess>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof revokeAuditorAccess>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getRevokeAuditorAccessMutationOptions(options));
+    }
+
+export const getListAuditorRfisUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/assessments/${id}/auditor-rfis`
+}
+
+/**
+ * @summary The organisation's inbox of auditor RFIs for an assessment
+ */
+export const listAuditorRfis = async (id: number, options?: RequestInit): Promise<AuditorRfiList> => {
+
+  return customFetch<AuditorRfiList>(getListAuditorRfisUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListAuditorRfisQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/assessments/${id}/auditor-rfis`
+    ] as const;
+    }
+
+
+export const getListAuditorRfisQueryOptions = <TData = Awaited<ReturnType<typeof listAuditorRfis>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAuditorRfis>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListAuditorRfisQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listAuditorRfis>>> = ({ signal }) => listAuditorRfis(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listAuditorRfis>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListAuditorRfisQueryResult = NonNullable<Awaited<ReturnType<typeof listAuditorRfis>>>
+export type ListAuditorRfisQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The organisation's inbox of auditor RFIs for an assessment
+ */
+
+export function useListAuditorRfis<TData = Awaited<ReturnType<typeof listAuditorRfis>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAuditorRfis>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListAuditorRfisQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getRespondAuditorRfiUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/auditor-rfis/${id}/respond`
+}
+
+/**
+ * @summary Record the organisation's response to an auditor RFI
+ */
+export const respondAuditorRfi = async (id: number,
+    respondAuditorRfiInput: RespondAuditorRfiInput, options?: RequestInit): Promise<AuditorRfi> => {
+
+  return customFetch<AuditorRfi>(getRespondAuditorRfiUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(respondAuditorRfiInput)
+  }
+);}
+
+
+
+
+
+export const getRespondAuditorRfiMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof respondAuditorRfi>>, TError,{id: number;data: BodyType<RespondAuditorRfiInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof respondAuditorRfi>>, TError,{id: number;data: BodyType<RespondAuditorRfiInput>}, TContext> => {
+
+const mutationKey = ['respondAuditorRfi'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof respondAuditorRfi>>, {id: number;data: BodyType<RespondAuditorRfiInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  respondAuditorRfi(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RespondAuditorRfiMutationResult = NonNullable<Awaited<ReturnType<typeof respondAuditorRfi>>>
+    export type RespondAuditorRfiMutationBody = BodyType<RespondAuditorRfiInput>
+    export type RespondAuditorRfiMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Record the organisation's response to an auditor RFI
+ */
+export const useRespondAuditorRfi = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof respondAuditorRfi>>, TError,{id: number;data: BodyType<RespondAuditorRfiInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof respondAuditorRfi>>,
+        TError,
+        {id: number;data: BodyType<RespondAuditorRfiInput>},
+        TContext
+      > => {
+      return useMutation(getRespondAuditorRfiMutationOptions(options));
     }
 
 export const getListConformityEvidenceUrl = (id: number,) => {

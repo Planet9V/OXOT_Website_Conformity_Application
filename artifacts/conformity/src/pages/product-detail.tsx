@@ -41,6 +41,7 @@ import { ArrowLeft, Plus, Trash2, ArrowRight, ClipboardCheck, FileText, Lock, Up
 import { ProductDocumentVaultModal } from "@/components/conformity/portfolio/product-document-vault-modal";
 import { VerifyPanel } from "@/components/product-file/verify-panel";
 import { NotifiedBodyPanel } from "@/components/product-file/notified-body-panel";
+import { AuditorAccessPanel } from "@/components/product-file/auditor-access-panel";
 import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufacturer-panel";
 import {
   Select,
@@ -639,6 +640,7 @@ export default function ProductDetail() {
       {/* Assess stage: notified-body engagements are a manufacturer concern
           (CRA Art. 32); a verifier checks the OUTCOME via the gate above. */}
       {orgRole === "manufacturer" && <NotifiedBodyPanel productId={id} />}
+      {orgRole === "manufacturer" && <AuditorAccessPanel assessments={assessments} />}
 
       <StatutoryFile productId={id} />
 

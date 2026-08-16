@@ -783,10 +783,17 @@ HANDOVER's "Next steps" order.
   706/0/2; G6 live 5/5 (no More menu desktop+mobile, portal renders outside
   the shell, workspace 401 without / 403 with a garbage token; screenshots
   in `artifacts_verify/shell_93/`).
-- **9.3b** Give the notified-body door its key: admin-issued, expiring,
-  assessment-scoped auditor tokens (spec-first endpoint + issue/revoke UI in
-  the product file's notified-body panel) and an org-side RFI inbox on the
-  same panel, registered in G8. Until then the portal refuses honestly.
+- **9.3b done 2026-08-16** The notified-body door has its key. Five spec-first
+  endpoints (orval codegen): list/issue (admin, expiry 1–365 days EXPLICIT —
+  never defaulted) and revoke auditor access; list the org's RFI inbox;
+  record a response (status → answered, respondedAt set, activity ledger row
+  for every act). New `AuditorAccessPanel` in the manufacturer product file
+  (issue dialog, portal-link copy, revoke, RFI inbox with inline respond).
+  G8 registered both capabilities (17 reached / 0 orphaned). G2 CI-mirror
+  712/0/2 including a new 6-test HTTP suite proving issue → portal opens →
+  RFI → inbox → answer visible through the portal → revoke closes (403).
+  G6 live 7/7 with reviewed screenshots
+  (`artifacts_verify/auditor_track_93b/`).
 - **9.4** W2.4 transposition content — BLOCKED on sourced verbatim national
   texts (NL, then DE); the NIS2 reader banner states the gap.
 - **9.5** Drive G4 7 → 0 (all findings in `artifacts/oxot-web` marketing).
