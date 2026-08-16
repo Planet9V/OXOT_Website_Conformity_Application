@@ -179,16 +179,15 @@ audio script is the known benign one).
 
 ## Next steps, in order (Phase 9 closed 2026-08-16 — see its G7 retro)
 
-1. **W2.4 DE (9.4b) — a source-strategy DECISION, then a build.** NL is
-   DONE (9.4a, 2026-08-16): the Cyberbeveiligingswet corpus + reader at
-   `/library/cbw`, built from the promulgated Staatsblad XML
-   (Stb. 2026, 187) with its own verifier in CI. Germany is located but
-   not built: the NIS2UmsuCG (BGBl. 2025 I Nr. 301, in force 2025-12-06)
-   is an ARTIKELGESETZ amending the BSIG — the promulgation is amendment
-   instructions, not readable law. Decide: parse the BGBl PDF (authentic,
-   unreadable as obligations) vs the consolidated amended BSI-Gesetz
-   (readable; verify what authority gesetze-im-internet.de / recht.bund.de
-   each carry) — and what each choice may honestly claim. Do not guess.
+1. **W2.4 is COMPLETE** (9.4a + 9.4b, 2026-08-16): the Dutch
+   Cyberbeveiligingswet (`/library/cbw`, from the promulgated Staatsblad
+   XML) and the German BSI-Gesetz (`/library/bsig`, from the consolidated
+   gii XML — a DISCLOSED departure, because the promulgation is a PDF-only
+   Artikelgesetz and the law is already amended; the verbatim standangabe
+   trail is carried). Both have their own CI verifiers, including D2
+   full-content parity: every article/§/annex compared character-for-character
+   against its source region on every run (L51 — spot probes alone once
+   missed 8 added characters). Nothing left here.
 2. **Portfolio schema hygiene** (recorded in 9.1, deliberately not done
    there): the orphaned demo tables (`cra_portfolio_products`, releases,
    customers, deployments) and the shared `cra_product_documents.productId`

@@ -69,15 +69,10 @@ would be needed; the corpus does not settle a legal question; the same
 approach has failed twice; or `git status`/`git log` shows an unexpected
 change beyond the audio script.
 
-**First task — the 9.4b decision, then hygiene.** W2.4 NL is DONE (9.4a):
-the Cyberbeveiligingswet corpus + reader at `/library/cbw`, built from the
-promulgated Staatsblad XML with its own CI verifier. Germany remains: the
-NIS2UmsuCG (BGBl. 2025 I Nr. 301) is an ARTIKELGESETZ amending the BSIG,
-so the NL parse does not transfer — first DECIDE the source strategy
-(authentic BGBl PDF vs consolidated amended BSI-Gesetz, and what each may
-honestly claim; never reconstruct law from memory), presenting the options
-to the user if the authority question does not settle cleanly. Then, or
-meanwhile, work the hygiene backlog in order:
+**First task — the hygiene backlog.** W2.4 is COMPLETE: both national
+transpositions are loaded verbatim with CI verifiers including D2
+full-content parity (L51). Phase 9 and its remainder are all closed.
+Unless the user names new scope, work the hygiene backlog in order:
 
 1. **Portfolio schema hygiene** (recorded in 9.1): drop or re-point the
    orphaned demo tables (`cra_portfolio_products`, releases, customers,
