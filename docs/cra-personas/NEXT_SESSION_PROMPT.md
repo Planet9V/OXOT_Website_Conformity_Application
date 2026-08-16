@@ -46,23 +46,20 @@ and `task_plan.md` Phases 6–7.
 be needed; the corpus does not settle a legal question; the same approach has
 failed twice; or `git log` shows an unexpected HEAD move.
 
-**First task — Phase 6.3: scope work by team role.**
+**First task — Phase 8.1: make the 31 G2 test failures authenticate (issue #62).**
 
-Done before this point (2026-08-15, see task_plan.md and the commit log):
-the honesty-gate correction (G4 baseline 9 → 7, positive-control proven),
-6.1 (four team roles as validated data — `TEAM_ROLES` in `@workspace/db`,
-nullable `team_role`, seeded, editable, drift-guarded), and 6.2 (plaintext
-`plainPassword` removed everywhere; the scrypt hash is the only credential).
+Phases 6 and 7 are COMPLETE (2026-08-16; see task_plan.md, lessons.md
+L36–L44, and the two phase retros). The nine destinations are real, G8 is a
+zero-orphan covenant, and the deferral that protected issue #62 has expired.
+The fix is making the failing suites authenticate — NEVER flipping
+DEMO_READONLY in ci.yml, which restores unauthenticated writes. When G2
+reaches 0 new-failure baseline, lower the recorded baseline.
 
-6.3 closes Phase 6: scope obligations and evidence requests by role, and
-expose `teamRole` on `/me` (its response schema is generated — regenerate,
-don't hand-edit) so the home can branch. Phase acceptance: a user's role
-determines what their home surfaces, and no password is readable in the
-database (the second half already holds).
-
-Remember the framing correction in memory: unwired surfaces such as the
-partner-hub CSIRT payload builder are DONORS that Phase 7 re-homes onto the
-real engines — describe them as "not yet wired", never "fake".
+Then, in order (the Phase 8 re-tune in lessons.md): PSIRT toolkit absorption
+into Incidents; a real CE stage in the product file (retiring the CE studio
+tool); the NIS2 full-text reader (corpus bundle + Library mode) and W2.4
+national transpositions; the 15 Dependabot findings. The More menu must be
+EMPTY at phase end, its code deleted.
 
 **Then:** Phase 7 (shell redesign — nine destinations, drives G8 to 0 orphans).
 Close every phase with G7 — update `lessons.md`, then re-tune the next phase's
