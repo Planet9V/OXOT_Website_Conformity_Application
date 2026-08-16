@@ -40,8 +40,13 @@ const SCAN_DIRS = [
 const EXT = new Set([".ts", ".tsx", ".md", ".mdx"]);
 // Corpora and their cached sources are the reference, not citation sites.
 // docs/cra-personas records historical wrong numbers on purpose, as lessons.
+// Corpus bundles are the verbatim law itself — scanning them against the
+// corpus is circular, and the OJ text legitimately cites other instruments
+// (TFEU articles 114/218/290/346 in NIS2 recitals) that per-line attribution
+// cannot resolve. Generated corpus files are excluded exactly like the docs
+// corpora they are built from.
 const SKIP =
-  /node_modules|\/dist\/|craCorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|docs\/cra-personas/;
+  /node_modules|\/dist\/|craCorpusData\.ts|nis2CorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|docs\/cra-personas/;
 
 /** Load an act's article titles from its grounded corpus. */
 function loadCorpus(relPath, actKey) {
