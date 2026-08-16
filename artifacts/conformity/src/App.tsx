@@ -39,7 +39,6 @@ import { Skeleton } from './components/ui/skeleton';
 // CommandCenter lazy-load).
 const Assessment = lazy(() => import('./pages/assessment'));
 const Flows = lazy(() => import('./pages/flows'));
-const Reports = lazy(() => import('./pages/reports'));
 const ReportWorkspace = lazy(() => import('./pages/report-workspace'));
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
@@ -210,9 +209,13 @@ function ShellRoutes() {
           {/* ── Transitional surfaces awaiting re-homing (7.2–7.6); reachable
               via the "More" menu, each retires with its re-homing task. */}
           <Route path="/assessments/:id" component={Assessment} />
-          <Route path="/flows" component={Flows} />
+          {/* Re-homed 9.2: the reports list lives on Home; each document
+              still opens in the /reports/:id workspace. Flow authoring lives
+              under Settings; /flows redirects so bookmarks survive. */}
+          <Route path="/settings/flows" component={Flows} />
+          <Route path="/flows"><Redirect to="/settings/flows" /></Route>
           <Route path="/reports/:id" component={ReportWorkspace} />
-          <Route path="/reports" component={Reports} />
+          <Route path="/reports"><Redirect to="/" /></Route>
           <Route path="/profile" component={Profile} />
           {/* Retired donors (7.3c, 9.1): partner-hub's stages live in the
               product file and Incidents; the archive's retention clocks live

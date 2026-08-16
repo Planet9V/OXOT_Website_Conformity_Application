@@ -7,8 +7,6 @@ import {
   Grid3x3,
   Database,
   ClipboardCheck,
-  GitBranch,
-  FileText,
   FileSignature,
   FolderGit2,
   Building2,
@@ -72,7 +70,7 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
   {
     label: "Work",
     items: [
-      { href: "/", label: "Home", icon: LayoutDashboard, description: "What needs attention, scoped to your team role" },
+      { href: "/", label: "Home", icon: LayoutDashboard, alsoActive: ["/reports"], description: "What needs attention, scoped to your team role" },
       { href: "/incidents", label: "Incidents", icon: ShieldAlert, description: "Vulnerability intake and the CRA Art. 14 / NIS2 Art. 23 reporting clocks" },
       { href: "/authorities", label: "Authorities", icon: Landmark, description: "Market surveillance and competent-authority engagements" },
       { href: "/signatures", label: "Signatures", icon: FileSignature, description: "Attestations and the provenance ledger" },
@@ -107,8 +105,6 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
  * menu is DELETED when the last entry moves. Do not add new surfaces here.
  */
 const TRANSITIONAL: NavItem[] = [
-  { href: "/reports", label: "Reports", icon: FileText, description: "Re-homes into Home and the product file" },
-  { href: "/flows", label: "Flows", icon: GitBranch, description: "Admin-authored assessment process flows" },
   { href: "/auditor-portal", label: "Auditor Portal", icon: ClipboardCheck, description: "Separate notified-body track" },
 ];
 
@@ -116,7 +112,7 @@ function useNavState() {
   const [location] = useLocation();
   const isActive = (item: NavItem) =>
     item.href === "/"
-      ? location === "/"
+      ? location === "/" || (item.alsoActive ?? []).some((p) => location.startsWith(p))
       : location.startsWith(item.href) ||
         (item.alsoActive ?? []).some((p) => location.startsWith(p));
   const transitionalActive = TRANSITIONAL.some((t) => location.startsWith(t.href));

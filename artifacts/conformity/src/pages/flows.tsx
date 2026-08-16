@@ -19,6 +19,7 @@ import type {
 } from "@workspace/api-client-react";
 import { GeneratableArtifactType } from "@workspace/api-client-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { SettingsNav } from "@/components/settings-nav";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -921,6 +922,7 @@ export default function Flows() {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto space-y-6">
+      <SettingsNav />
       <div className="flex items-start justify-between gap-4 border-b border-border pb-6">
         <div>
           <span className="oxot-kicker block mb-1">CRA ASSESSMENT PROCESS AUTHORING</span>

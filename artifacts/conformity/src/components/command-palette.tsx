@@ -39,7 +39,7 @@ import {
 
 // The nine destinations (task 7.1) plus surfaces still awaiting re-homing.
 const SECTIONS = [
-  { value: "/", label: "Home", keywords: ["dashboard", "overview", "portfolio"], icon: LayoutDashboard },
+  { value: "/", label: "Home", keywords: ["dashboard", "overview", "portfolio", "reports"], icon: LayoutDashboard },
   { value: "/incidents", label: "Incidents", keywords: ["psirt", "vulnerability", "csirt", "reporting"], icon: ClipboardCheck },
   { value: "/authorities", label: "Authorities", keywords: ["market surveillance", "msa", "competent authority"], icon: Database },
   { value: "/signatures", label: "Signatures", keywords: ["attestations", "signing", "provenance"], icon: UserCircle },
@@ -53,7 +53,7 @@ const SECTIONS = [
   { value: "/mappings", label: "Matrix", keywords: ["cross-regulation", "mapping"], icon: Grid3x3 },
   { value: "/themes", label: "Themes", keywords: ["cross-cutting", "categories"], icon: Layers },
   { value: "/sources", label: "Sources", keywords: ["documents", "legal"], icon: Database },
-  { value: "/flows", label: "Flows", keywords: ["process", "workflow"], icon: GitBranch },
+  { value: "/settings/flows", label: "Assessment flows", keywords: ["process", "workflow", "flows"], icon: GitBranch },
   { value: "/profile", label: "Profile", keywords: ["account", "password", "my"], icon: UserCircle },
 ];
 

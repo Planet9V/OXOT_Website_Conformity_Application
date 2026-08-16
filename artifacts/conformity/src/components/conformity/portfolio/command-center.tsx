@@ -45,6 +45,7 @@ import { TriageBoard } from "./triage-board";
 import { CraAnalyticsSuite } from "./cra-analytics-suite";
 import { PersonaCockpit } from "@/components/persona-cockpit";
 import { YourWork } from "@/components/home/your-work";
+import { ReportsSection } from "@/components/home/reports-section";
 import { PersonaCopilotDrawer } from "@/components/persona-copilot-drawer";
 import { InteractiveFineSimulator } from "./interactive-fine-simulator";
 
@@ -212,6 +213,10 @@ export function CommandCenter() {
 
       {/* 3. Organisation-wide cockpit, derived from the declarations. */}
       <PersonaCockpit />
+
+      {/* Executive documents (9.2): the retired /reports destination lives
+          here — the coordinator's surface. Documents open in /reports/:id. */}
+      <ReportsSection />
 
       {/* 3. DYNAMIC PRIMARY OPERATIONAL WORKSTATION (PERSONA-ALIGNED) */}
 

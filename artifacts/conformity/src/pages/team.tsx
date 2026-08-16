@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { SettingsNav } from "@/components/settings-nav";
 import {
   useGetAdminSession,
   useListTeamMembers,
@@ -642,6 +643,7 @@ export default function Team() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <SettingsNav />
       <div className="flex flex-wrap items-start justify-between gap-4 border-b border-border pb-6">
         <div>
           <span className="oxot-kicker block mb-1">CRA ARTICLE 13 · NAMED ASSESSOR ACCOUNTABILITY</span>

@@ -757,7 +757,17 @@ HANDOVER's "Next steps" order.
   recorded, not done here: the now-unused portfolio tables
   (`cra_portfolio_products`, releases, customers, deployments) and the shared
   `cra_product_documents.productId` that two registries key differently.
-- **9.2** Re-home `reports` (→ Home / product file) and `flows`.
+- **9.2 done 2026-08-16** Re-home `reports` and `flows`. The reports LIST
+  became a section on Home (`components/home/reports-section.tsx` in the
+  command-center — the coordinator's surface); each document still opens in
+  the unchanged `/reports/:id` workspace, and per-assessment generation stays
+  in the workbench's Reports tab (already homed). Flow authoring moved to
+  `/settings/flows` under a new Settings sub-navigation (Team | Assessment
+  flows) — it is admin-authored configuration, which is what Settings is.
+  `/reports` → `/` and `/flows` → `/settings/flows` redirects; command
+  palette updated; the TRANSITIONAL menu now holds only auditor-portal.
+  Gates: G2 CI-mirror 706/0/2 re-run green; G8 15/0; G6 live 8/8 with
+  reviewed screenshots (`artifacts_verify/reports_flows_92/`).
 - **9.3** Decide `auditor-portal` (likely the permanent notified-body track);
   then DELETE the More menu and its TRANSITIONAL code in layout.tsx.
 - **9.4** W2.4 transposition content — BLOCKED on sourced verbatim national

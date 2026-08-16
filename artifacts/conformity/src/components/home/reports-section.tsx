@@ -11,10 +11,13 @@ import { ReportRow } from "@/components/conformity/report-shared";
 import { FileText, Plus } from "lucide-react";
 
 /**
- * Portfolio-level reports page: portfolio rollups (all products in one
- * document) plus every per-assessment report, with the portfolio builder.
+ * Reports on Home (re-homed from the retired /reports destination, task 9.2):
+ * portfolio rollups across every product plus each per-assessment report,
+ * with the portfolio builder. Per-assessment generation stays where the
+ * assessment is — the workbench's Reports tab; every document opens in the
+ * same /reports/:id workspace as before.
  */
-export default function Reports() {
+export function ReportsSection() {
   const { data: session } = useGetAdminSession();
   const readOnly = session?.role === "demo";
   const { data, isLoading, isError } = useListConformityReports(undefined, {
@@ -29,16 +32,16 @@ export default function Reports() {
   const assessmentReports = reports.filter((r) => r.scope === "assessment");
 
   return (
-    <div className="px-4 py-8 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8" data-testid="reports-page">
-      <header className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-border pb-6">
+    <section id="reports" className="space-y-6" data-testid="reports-section">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-border pb-4">
         <div>
-          <span className="oxot-kicker block mb-1">CRA ANNEX VII · EXECUTIVE BRIEFINGS &amp; TECHNICAL REPORTS</span>
-          <h1 className="text-3xl sm:text-4xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
-            <FileText className="w-6 h-6 text-primary shrink-0" /> Reports
-          </h1>
+          <h2 className="text-2xl font-serif font-normal tracking-tight text-foreground flex items-center gap-2.5">
+            <FileText className="w-5 h-5 text-primary shrink-0" /> Reports
+          </h2>
           <p className="text-sm text-muted-foreground mt-1 max-w-2xl font-sans">
-            Executive documents generated from frozen data snapshots — portfolio rollups across every product, and
-            per-assessment briefings, full reports and readouts. Each stays exactly as generated; finalise to lock.
+            Executive documents generated from frozen data snapshots — portfolio rollups across every
+            product, and per-assessment briefings, full reports and readouts. Each stays exactly as
+            generated; finalise to lock.
           </p>
         </div>
         {!readOnly ? (
@@ -52,11 +55,10 @@ export default function Reports() {
             }
           />
         ) : null}
-      </header>
+      </div>
 
       {isLoading ? (
         <div className="space-y-2">
-          <Skeleton className="h-16 w-full" />
           <Skeleton className="h-16 w-full" />
           <Skeleton className="h-16 w-full" />
         </div>
@@ -67,8 +69,8 @@ export default function Reports() {
         </Empty>
       ) : (
         <>
-          <section className="space-y-3">
-            <h2 className="text-xl font-serif font-normal text-foreground">Portfolio rollups</h2>
+          <div className="space-y-3">
+            <h3 className="text-lg font-serif font-normal text-foreground">Portfolio rollups</h3>
             {portfolioReports.length === 0 ? (
               <Empty>
                 <FileText className="h-8 w-8 text-muted-foreground" aria-hidden="true" />
@@ -84,10 +86,10 @@ export default function Reports() {
                 ))}
               </div>
             )}
-          </section>
+          </div>
 
-          <section className="space-y-3">
-            <h2 className="text-xl font-serif font-normal text-foreground">Assessment reports</h2>
+          <div className="space-y-3">
+            <h3 className="text-lg font-serif font-normal text-foreground">Assessment reports</h3>
             {assessmentReports.length === 0 ? (
               <Empty>
                 <EmptyTitle>No assessment reports yet</EmptyTitle>
@@ -102,9 +104,9 @@ export default function Reports() {
                 ))}
               </div>
             )}
-          </section>
+          </div>
         </>
       )}
-    </div>
+    </section>
   );
 }
