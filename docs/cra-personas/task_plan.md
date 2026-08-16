@@ -882,7 +882,7 @@ HANDOVER's "Next steps" order.
   into failure. Off Replit the skips are correct and state their reason.
   Making file evidence storage portable (local/S3 backend + non-sidecar
   upload URLs) is a NAMED FEATURE a future phase may take, not hygiene.
-- **H3 done 2026-08-16 (the safe parts).** Repo-local git identity set
+- **H3 done 2026-08-16 (the safe parts, see below).** Repo-local git identity set
   (Jim McKenney / mckenneyengineers@gmail.com — commits no longer
   attribute to the auto-derived hostname identity). Development is
   MAIN-ONLY from here: the local checkout switches to `main` after this
@@ -891,3 +891,62 @@ HANDOVER's "Next steps" order.
   moving the repo out of ~/Downloads (breaks the running compose project
   name, `.mcp.json` paths and session state mid-session — do it between
   sessions, then `docker compose up -d` from the new path).
+
+# Phase 10 — Portable evidence, user notification, three new acts (added 2026-08-16)
+
+User-ordered scope, with the standing constraints unchanged (single-tenant;
+the app never concludes conformity; tri-state; verbatim-or-absent statutory
+text; gates at their covenant floors; nothing may break current features or
+the customer experience — every batch proves the EXISTING surfaces still work
+in G6, not only the new ones).
+
+- **10.1 done 2026-08-16** Portable evidence storage. File evidence (P3: evidence files,
+  xBOM uploads) is hard-wired to the Replit GCS sidecar
+  (`lib/objectStorage.ts`, 127.0.0.1:1106), so uploads cannot work in any
+  non-Replit deployment and two suites skip. Introduce a storage BACKEND
+  seam: `replit-gcs` (existing behaviour, selected exactly as today so the
+  Replit deployment is untouched) and `local` (filesystem under a compose
+  volume; authenticated direct-upload endpoint replacing the sidecar's
+  presigned URL for that backend). Same client-facing contract wherever
+  possible; ACL semantics preserved. Done means: the two skipped suites RUN
+  against the local backend in CI-mirror (G2 becomes 714/0/0), the live
+  stack uploads/downloads evidence through the real UI (G6, plus proof the
+  EXISTING evidence/BOM surfaces still work), and Replit selection logic is
+  provably unchanged (unit test on the backend chooser).
+- **10.2 Art. 14(8) user-notification register.** Statute FIRST, verbatim:
+  CRA Art. 14(8) (informing impacted users about the incident/vulnerability
+  and, where relevant, corrective measures) and NIS2 Art. 23 recipients-of-
+  services language; clocks/anchors read from the corpus before any code.
+  The donor's one good idea rebuilt honestly: a per-product register of
+  product users/deployments (real table, FK'd, tri-state facts, no invented
+  defaults), a derivation joining a published PSIRT advisory to the
+  impacted-user set, and a RECORD of the organisation's own notification act
+  (recorded-as-done by a named actor — the app never claims it transmitted
+  anything). Surfaces: product file (register) + the PSIRT/Incidents panel
+  (impacted set + record-notification), spec-first endpoints, G8 entries in
+  the same commit.
+- **10.3 Three new acts, corpus-first: AI Act, Machinery, RED.** Sources as
+  strict as CRA/NIS2 — authentic EUR-Lex OJ texts only: AI Act
+  Regulation (EU) 2024/1689 (CELEX 32024R1689), Machinery
+  Regulation (EU) 2023/1230 (CELEX 32023R1230), RED Directive 2014/53/EU
+  (CELEX 32014L0053, consolidated-vs-OJ decision recorded the CRA way if a
+  corrigendum exists). Each: committed source → build script (existing
+  `eu_oj_parser.mjs`) → sync → verifier incl. D2 full-content parity →
+  reproducibility in CI → Library reader with the same honesty banners
+  (regulation vs directive framing; RED is a DIRECTIVE — national
+  transposition caveat like NIS2's). THEN the safeguards the user asked
+  for: `check_citations.mjs` extended so AI-Act/Machinery/RED citations in
+  app code, blogs, podcasts and marketing VALIDATE against their corpora —
+  today five files are SKIPPED as "about the EU AI Act"; those skips become
+  enforcement, any surfaced wrong citations get fixed, baseline stays 0.
+  Obligations seeding + deriver registration per D10 (act is a dimension —
+  no new navigation), statutory flyout stays CRA-only unless verbatim
+  parity is achievable per act.
+- **10.4 The last unused tables.** Decide `cra_composite_components/
+  _systems`, `cra_csaf_advisories`, `cra_procurement_evaluations`: wire to
+  a real consumer or drop like H1 (survey write/read paths first — L43/L49).
+
+Sequencing note: 10.1 before 10.2 because the notification register's
+evidence attachments should land on the portable store, not the sidecar.
+10.3's citation-gate extension may surface latent wrong citations in
+published content — that is the point; they are fixed, never waived.

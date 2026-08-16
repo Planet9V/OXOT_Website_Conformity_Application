@@ -43,6 +43,10 @@ jobs:
       # inactive and 23 correct assertions fail against a correctly-written
       # application. This is the configuration under test, not a workaround.
       DEMO_READONLY: "true"
+      # Portable evidence storage (10.1): with the local backend the two
+      # storage suites RUN instead of skipping — the suite floor is 714/0/0.
+      OBJECT_STORAGE_BACKEND: local
+      OBJECT_STORAGE_DIR: ${{ runner.temp }}/objects
 
     steps:
       - uses: actions/checkout@v4

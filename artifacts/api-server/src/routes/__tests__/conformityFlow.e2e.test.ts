@@ -32,7 +32,7 @@ import type { Server } from "node:http";
 import app from "../../app";
 import { ADMIN_COOKIE, createSessionToken } from "../../lib/adminAuth";
 import { ARTIFACT_TYPES } from "../../lib/conformityEngine";
-import { ObjectStorageService } from "../../lib/objectStorage";
+import { objectStorage } from "../../lib/storageBackend";
 
 let server: Server;
 let baseUrl: string;
@@ -398,7 +398,7 @@ describe("CRA conformity flow — full end-to-end walk", () => {
     const knownBytes = Buffer.from("conformity-evidence-under-test");
     const expectedHash = createHash("sha256").update(knownBytes).digest("hex");
     const downloadSpy = vi
-      .spyOn(ObjectStorageService.prototype, "downloadToBufferIfWithin")
+      .spyOn(objectStorage, "downloadToBufferIfWithin")
       .mockResolvedValue(knownBytes);
     let hashedEvidenceId = 0;
     try {

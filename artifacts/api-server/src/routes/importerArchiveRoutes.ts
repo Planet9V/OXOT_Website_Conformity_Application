@@ -9,7 +9,7 @@ import {
 import { requireAuth, requireAdmin, getSession } from "../lib/adminAuth";
 import { importerRecordRetention } from "../lib/retention";
 import { recordAttestation } from "../lib/attestationStore";
-import { ObjectStorageService } from "../lib/objectStorage";
+import { objectStorage } from "../lib/storageBackend";
 
 /**
  * The importer's Article 19(6) dossier archive.
@@ -51,7 +51,7 @@ const MAX_HASH_BYTES = 25 * 1024 * 1024; // 25 MiB
 async function fingerprint(objectPath: string): Promise<{ hash: string; bytes: number } | null> {
   if (!objectPath) return null;
   try {
-    const storage = new ObjectStorageService();
+    const storage = objectStorage;
     const buf = await storage.downloadToBufferIfWithin(objectPath, MAX_HASH_BYTES);
     if (!buf?.length) return null;
     return { hash: createHash("sha256").update(buf).digest("hex"), bytes: buf.length };

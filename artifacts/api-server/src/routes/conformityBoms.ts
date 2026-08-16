@@ -63,7 +63,7 @@ import {
   GetBomEngineeringResponse,
 } from "@workspace/api-zod";
 import { requireAuth, getSession } from "../lib/adminAuth";
-import { ObjectStorageService } from "../lib/objectStorage";
+import { objectStorage as objectStorageBackend } from "../lib/storageBackend";
 import {
   parseBom,
   runCryptoHeuristics,
@@ -78,7 +78,7 @@ import { listBomNotificationGaps } from "../lib/bomNotificationGaps";
 import { embedText } from "../lib/embeddings";
 
 const router: IRouter = Router();
-const objectStorage = new ObjectStorageService();
+const objectStorage = objectStorageBackend;
 
 /**
  * Hard cap on a BOM document the server will pull into memory to parse. Large

@@ -108,6 +108,13 @@ services:
       OPENROUTER_TTS_MODEL: ${OPENROUTER_TTS_MODEL:-qwen/qwen-audio-3.0-tts-flash}
       AI_INTEGRATIONS_OPENAI_BASE_URL: ${AI_INTEGRATIONS_OPENAI_BASE_URL:-https://api.openai.com/v1}
       AI_INTEGRATIONS_OPENAI_API_KEY: ${AI_INTEGRATIONS_OPENAI_API_KEY:-}
+      # Portable evidence storage (10.1): file evidence lives on this volume
+      # instead of the Replit GCS sidecar, which does not exist here — before
+      # this backend, uploads could not work in the docker stack at all.
+      OBJECT_STORAGE_BACKEND: local
+      OBJECT_STORAGE_DIR: /data/objects
+    volumes:
+      - objectstore:/data/objects
     depends_on:
       seed:
         condition: service_completed_successfully
@@ -128,3 +135,4 @@ services:
 
 volumes:
   pgdata:
+  objectstore:

@@ -157,3 +157,25 @@ the meaning of Art. 64(10).
 **Reference:** Directive (EU) 2022/2555, CELEX 32022L2555, OJ L 333,
 27.12.2022, p. 80.
 
+
+## 2026-08-16 — Phase 10 opened; 10.1 in flight
+
+- Phase 10 plan written to task_plan.md (10.1 portable storage → 10.2
+  Art. 14(8) register → 10.3 AI Act/Machinery/RED corpora → 10.4 last
+  unused tables). Survey findings for 10.1 in findings.md.
+- 10.1 build: storage seam (`lib/storageBackend.ts` chooser +
+  `lib/objectStorageLocal.ts`), 5 consumers swapped, local PUT route
+  (raw-body carve-out in app.ts so application/json SBOM uploads are not
+  destroyed by the JSON parser), Dockerfile pre-creates /data/objects
+  node-owned (H1's EACCES class), compose volume + env, ci.yml env, two
+  suites un-skip on local backend, chooser no-regression unit test.
+- In flight: CI-mirror G2 with OBJECT_STORAGE_BACKEND=local (floor moves
+  to 714/0/0) + api image rebuild. Then G6 incl. restart-persistence
+  proof and existing-surface regression checks.
+- 10.1 DONE: G2 CI-mirror with local backend = **717/0/0 — the first
+  ZERO-SKIP suite in the programme** (both storage suites now run; 3 new
+  seam tests). G6 8/8 live on the docker stack: relative one-time URL,
+  PUT, stored-bytes sha256 fingerprint, byte-identical download, bytes on
+  the volume, evidence SURVIVES api restart, workbench count renders,
+  Products+Home regression clean. Known behavior carried over from the
+  GCS backend: deleting evidence rows does not GC stored files.

@@ -39,6 +39,11 @@ FROM node:24-slim AS api
 WORKDIR /app
 ENV NODE_ENV=production PORT=8080
 COPY --from=build /app /app
+# Mount point for the portable evidence store (10.1). Created node-owned in
+# the IMAGE so a fresh named volume inherits writable ownership — without
+# this the volume mounts root-owned and every write EACCESes (the same
+# failure class H1 found on /app/uploads).
+RUN mkdir -p /data/objects && chown node:node /data/objects
 USER node
 EXPOSE 8080
 CMD ["node", "--enable-source-maps", "artifacts/api-server/dist/index.mjs"]

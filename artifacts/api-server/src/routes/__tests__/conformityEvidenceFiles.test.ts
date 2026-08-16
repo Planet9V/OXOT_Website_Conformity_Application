@@ -97,7 +97,10 @@ const FILE_SHA256 = createHash("sha256").update(FILE_BYTES).digest("hex");
  * with this stated reason rather than failing on infrastructure it cannot
  * reach — and runs in full wherever storage is configured.
  */
-describe.skipIf(!process.env.PRIVATE_OBJECT_DIR)("conformity evidence files — attach & reopen round-trip", () => {
+const storageAvailable = Boolean(
+  process.env.PRIVATE_OBJECT_DIR || process.env.OBJECT_STORAGE_BACKEND === "local",
+);
+describe.skipIf(!storageAvailable)("conformity evidence files — attach & reopen round-trip", () => {
   it("uploads via presigned URL, links evidence, and downloads the same bytes back", async () => {
     // ---- scaffold a product + assessment via the real endpoints ------------
     const product = await api("POST", "/conformity/products", {
@@ -130,9 +133,15 @@ describe.skipIf(!process.env.PRIVATE_OBJECT_DIR)("conformity evidence files — 
       // The normalized path is what the client stores on the evidence row.
       expect(objectPath).toMatch(/^\/objects\//);
 
-      const put = await fetch(uploadURL, {
+      // A presigned GCS URL is absolute; the local backend returns a
+      // RELATIVE authenticated URL (the browser client sends the session
+      // cookie automatically same-origin — here we attach it explicitly).
+      const putUrl = uploadURL.startsWith("http")
+        ? uploadURL
+        : `${baseUrl.replace(/\/api$/, "")}${uploadURL}`;
+      const put = await fetch(putUrl, {
         method: "PUT",
-        headers: { "content-type": "application/pdf" },
+        headers: { "content-type": "application/pdf", cookie: adminCookie },
         body: FILE_BYTES,
       });
       expect(put.ok, `PUT to presigned URL failed: ${put.status}`).toBe(true);

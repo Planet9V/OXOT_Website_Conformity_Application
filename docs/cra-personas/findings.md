@@ -147,3 +147,36 @@ users, and the app must follow.
   see task 0.8, CI needs it.
 - Docker: `docker compose build web api && docker compose up -d web api`, site on
   `localhost:8088`, conformity SPA under `/conformity/`.
+
+## 10.1 survey — evidence storage as shipped (2026-08-16)
+
+- The whole file-evidence flow hangs off `lib/objectStorage.ts`, which is
+  hard-wired to the Replit GCS sidecar (`127.0.0.1:1106` external-account
+  credentials). Off Replit, `POST /storage/uploads/request-url` fails at
+  presign time — file evidence has NEVER worked in the local/docker stack.
+- Flow: client `lib/upload.ts` → POST `/api/storage/uploads/request-url`
+  (requireAdmin; server-side size cap 50 MB + extension/content-type
+  allow-list in `routes/storage.ts::validateUpload`) → presigned GCS PUT →
+  `objectPath = /objects/<uuid>` stored by feature routes → downloads via
+  GET `/storage/objects/*` (CMS-media registration check) and per-feature
+  routes using `downloadToBuffer(IfWithin)`.
+- Service consumers (5, none in tests): `routes/storage.ts`,
+  `routes/conformityBoms.ts`, `routes/conformityAssessments.ts`,
+  `routes/importerArchiveRoutes.ts`, `lib/pdf.ts`. Tests construct the
+  service directly and `describe.skipIf(!process.env.PRIVATE_OBJECT_DIR)`.
+- Methods actually consumed (the seam interface):
+  `getObjectEntityUploadURL`, `normalizeObjectEntityPath`,
+  `getObjectEntityFile`, `downloadObject`, `downloadToBuffer`,
+  `downloadToBufferIfWithin`, `uploadBytes`, `searchPublicObject`,
+  `getPublicObjectSearchPaths`, `trySetObjectEntityAclPolicy`,
+  `canAccessObjectEntity`.
+- ACL is stored as GCS object metadata via `lib/objectAcl.ts`; a local
+  backend can carry the same policy shape in a `<file>.acl.json` sidecar.
+- The client PUTs with XHR to whatever URL the server returns — a RELATIVE
+  authenticated URL works same-origin (cookies flow), so the local backend
+  can return `/api/storage/uploads/local/<id>` instead of a presigned URL
+  with NO client contract change.
+- **Backend selection rule (no-regression):** explicit
+  `OBJECT_STORAGE_BACKEND=local` selects local; anything else keeps the
+  Replit sidecar path exactly as today. The docker stack gains a volume —
+  it was broken before, so local-backend-on is strictly an improvement.

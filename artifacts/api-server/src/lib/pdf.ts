@@ -3,10 +3,10 @@ import { promisify } from "node:util";
 import { mkdtemp, writeFile, readdir, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { ObjectStorageService } from "./objectStorage";
+import { objectStorage } from "./storageBackend";
 
 const execFileAsync = promisify(execFile);
-const storage = new ObjectStorageService();
+const storage = objectStorage;
 
 export interface RenderedPage {
   objectPath: string;

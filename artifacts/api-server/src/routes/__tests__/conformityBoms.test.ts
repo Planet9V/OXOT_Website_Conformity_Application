@@ -26,9 +26,10 @@ vi.mock("../../lib/embeddings", () => ({
 
 import app from "../../app";
 import { ADMIN_COOKIE, createSessionToken } from "../../lib/adminAuth";
-import { ObjectStorageService } from "../../lib/objectStorage";
+import { objectStorage } from "../../lib/storageBackend";
 
-const objectStorage = new ObjectStorageService();
+// The shared backend instance — sidecar on Replit, filesystem when
+// OBJECT_STORAGE_BACKEND=local (which is how CI runs this suite).
 
 let server: Server;
 let baseUrl: string;
@@ -93,7 +94,10 @@ const CYCLONEDX_SBOM = JSON.stringify({
 // Environment-dependent: BOM ingest stores the raw document bytes via the
 // object-storage sidecar (PRIVATE_OBJECT_DIR). Skipped with reason where
 // storage is absent; the read-only guard suite below runs everywhere.
-describe.skipIf(!process.env.PRIVATE_OBJECT_DIR)("xBOM Vault — admin happy path", () => {
+const storageAvailable = Boolean(
+  process.env.PRIVATE_OBJECT_DIR || process.env.OBJECT_STORAGE_BACKEND === "local",
+);
+describe.skipIf(!storageAvailable)("xBOM Vault — admin happy path", () => {
   it("ingests → detail → analyzes (OSV stubbed) → patches checklist → deletes", async () => {
     // ---- create product + assessment via the real endpoints ---------------
     const product = await api("POST", "/conformity/products", {

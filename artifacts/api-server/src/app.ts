@@ -79,7 +79,15 @@ app.use(
   }),
 );
 app.use(cookieParser());
-app.use(express.json());
+// The local storage backend's upload PUT carries the FILE'S content type —
+// which may be application/json (SBOMs). It must receive raw bytes, so it is
+// excluded from the JSON body parser rather than parsed and destroyed by it.
+const isLocalUploadPut = (req: Request) =>
+  req.method === "PUT" && req.path.startsWith("/api/storage/uploads/local/");
+app.use((req, res, next) =>
+  isLocalUploadPut(req) ? express.raw({ type: () => true, limit: "55mb" })(req, res, next) : next(),
+);
+app.use((req, res, next) => (isLocalUploadPut(req) ? next() : express.json()(req, res, next)));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);

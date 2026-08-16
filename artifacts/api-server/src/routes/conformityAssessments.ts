@@ -140,7 +140,8 @@ import {
   clampReminderIntervalHours,
   BREACH_ALERT_KEY_RE,
 } from "../lib/conformityAlerts";
-import { ObjectNotFoundError, ObjectStorageService } from "../lib/objectStorage";
+import { ObjectNotFoundError } from "../lib/objectStorage";
+import { objectStorage as objectStorageBackend } from "../lib/storageBackend";
 import {
   getFlow,
   computeScope,
@@ -173,7 +174,7 @@ import {
 import { embedText } from "../lib/embeddings";
 
 const router: IRouter = Router();
-const objectStorage = new ObjectStorageService();
+const objectStorage = objectStorageBackend;
 
 /**
  * The public "demo" role is READ-ONLY across the execution layer. The demo

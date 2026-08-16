@@ -7,10 +7,8 @@ import { Router, type IRouter, type Request, type Response } from 'express';
 import { eq } from 'drizzle-orm';
 import { db, mediaAssetsTable, carouselSlidesTable } from '@workspace/db';
 
-import {
-  ObjectNotFoundError,
-  ObjectStorageService,
-} from '../lib/objectStorage';
+import { ObjectNotFoundError } from '../lib/objectStorage';
+import { objectStorage, localBackend } from '../lib/storageBackend';
 import { requireAdmin } from '../lib/adminAuth';
 
 /**
@@ -35,7 +33,7 @@ async function isRegisteredMedia(objectPath: string): Promise<boolean> {
 }
 
 const router: IRouter = Router();
-const objectStorageService = new ObjectStorageService();
+const objectStorageService = objectStorage;
 
 /**
  * Upload guardrails. The client-side `accept` attribute is trivially
@@ -147,6 +145,46 @@ router.post(
       req.log.error({ err: error }, 'Error generating upload URL');
       res.status(500).json({ error: 'Failed to generate upload URL' });
     }
+  },
+);
+
+/**
+ * PUT /storage/uploads/local/:id
+ *
+ * The local backend's replacement for the GCS presigned PUT: accepts the raw
+ * file bytes for a one-time upload id minted by request-url (same 15-minute
+ * lifetime as the presign TTL). Only exists when OBJECT_STORAGE_BACKEND=local;
+ * on the Replit backend the URL is never issued and this route 404s. Requires
+ * the same admin session that minted the id — unlike a presigned URL, the
+ * cookie flows because the URL is same-origin.
+ */
+router.put(
+  '/storage/uploads/local/:id',
+  requireAdmin,
+  async (req: Request, res: Response) => {
+    const local = localBackend();
+    if (!local) {
+      res.status(404).json({ error: 'Not found' });
+      return;
+    }
+    const body = req.body as unknown;
+    if (!Buffer.isBuffer(body) || body.length === 0) {
+      res.status(400).json({ error: 'Missing file body' });
+      return;
+    }
+    if (body.length > MAX_UPLOAD_BYTES) {
+      res.status(400).json({ error: 'File is too large.' });
+      return;
+    }
+    const contentType =
+      (req.headers['content-type'] as string | undefined)?.split(';')[0].trim() ||
+      'application/octet-stream';
+    const objectPath = local.acceptLocalUpload(String(req.params.id), body, contentType);
+    if (!objectPath) {
+      res.status(404).json({ error: 'Upload id unknown or expired' });
+      return;
+    }
+    res.json({ ok: true, objectPath });
   },
 );
 
