@@ -179,10 +179,16 @@ audio script is the known benign one).
 
 ## Next steps, in order (Phase 9 closed 2026-08-16 — see its G7 retro)
 
-1. **W2.4 transposition content — BLOCKED on the user**: sourced verbatim
-   national texts (NL, then DE). Ask for them; loading anything
-   reconstructed from memory is forbidden by the Legal breaker. The NIS2
-   reader's banner states the gap honestly meanwhile.
+1. **W2.4 DE (9.4b) — a source-strategy DECISION, then a build.** NL is
+   DONE (9.4a, 2026-08-16): the Cyberbeveiligingswet corpus + reader at
+   `/library/cbw`, built from the promulgated Staatsblad XML
+   (Stb. 2026, 187) with its own verifier in CI. Germany is located but
+   not built: the NIS2UmsuCG (BGBl. 2025 I Nr. 301, in force 2025-12-06)
+   is an ARTIKELGESETZ amending the BSIG — the promulgation is amendment
+   instructions, not readable law. Decide: parse the BGBl PDF (authentic,
+   unreadable as obligations) vs the consolidated amended BSI-Gesetz
+   (readable; verify what authority gesetze-im-internet.de / recht.bund.de
+   each carry) — and what each choice may honestly claim. Do not guess.
 2. **Portfolio schema hygiene** (recorded in 9.1, deliberately not done
    there): the orphaned demo tables (`cra_portfolio_products`, releases,
    customers, deployments) and the shared `cra_product_documents.productId`
