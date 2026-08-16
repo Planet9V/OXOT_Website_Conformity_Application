@@ -774,3 +774,42 @@ run it bare (silence with >/dev/null, which preserves status), or set
 pipefail. L45 said chain with `&&`; this adds: make sure the thing being
 chained is the GATE, not a pipe wrapped around it. And corpus bundles are
 excluded from EVERY content gate, not just the one that already learned it.
+
+## Phase 10 — Portable evidence, user notification, five-act reference — completed 2026-08-16
+
+**What worked:** The batch cadence held across four very different tasks in
+one continuous run. The seam pattern (10.1) delivered a storage backend
+switch with a PROVABLE no-regression property — a unit test enumerating the
+exact Replit env shapes — and the suite reached zero skips for the first
+time. Statute-first (10.2) turned the donor's customer-register idea into
+an honest Art. 14(8) register whose derivation states its own rule on the
+wire. The discovery-mode/pinned-structure pattern (10.3) made three corpora
+land in one sitting with both heuristics agreeing before anything was
+trusted; the parameterized builder/verifier/sync trio kept it at three thin
+configs instead of nine scripts.
+
+**What cost time:** Only real defects. Each G6 first-run failure was a
+finding, not friction: the vault's EACCES (H1's class), the label
+association gap, the Anlagen id breakage in the OJ's own HTML, the
+strict-mode locator collisions.
+
+**Surprises, all caught by our own gates:** (1) the shared parser's roman
+table stopped at VIII — the SHIPPED NIS2 corpus had its Chapter IX articles
+misassigned since 8.4, exposed only when the AI Act needed chapters IX–XIII;
+(2) the Machinery Regulation's OJ HTML ships BROKEN annex anchors (ANNEX IX
+reuses anx_I) — trusting document ids without an independent count would
+have served the wrong annex while looking successful; (3) the 10.3 gate
+chain itself was unsound — a pipe laundered a red G4 into a pass (L52), and
+the "failing" findings were the LAW'S OWN WORDS tripping claim-regexes,
+which is why corpus bundles are excluded from every content gate.
+
+**Re-tuning applied:** 10.3c (obligation seeding + deriver registration for
+AI Act/Machinery/RED) is the named next phase when the user prioritises it —
+statute-reading work with the five-act citation gate now live to hold it.
+The L51 full-content-parity hardening for the five OJ corpora (CRA, NIS2,
+AI Act, Machinery, RED) remains open — the transposition corpora have D2;
+the OJ family still relies on pinned structure + probes. Candidate scope
+alongside: portable-storage file GC, and the RED delegated-acts cyber
+requirements (Art. 3(3)(d)/(e)/(f)) as the natural CRA-adjacent content.
+
+**New lessons:** L52 (and L51 landed mid-phase from the parity audit).
