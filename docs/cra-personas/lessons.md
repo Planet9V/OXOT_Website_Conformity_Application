@@ -428,3 +428,87 @@ the same tri-state discipline (L32) for every verification question in 3.3.
 
 **New lessons:** L30-L33.
 
+
+### L36 — A defect report is a claim, and claims get verified at WRITE time
+The handover named partner-hub's "TRANSMITTED TO CSIRT" as the highest-severity
+live issue and the honesty gate as blind to it. Both statements had been false
+for a day: commit 857e91a had already replaced the string with "DRAFT ONLY —
+NOT SENT", and the gate had matched that class since the day it landed —
+proven later by planting a violation and watching the gate fail. The report
+was written from memory of the tree, not from the tree.
+**Apply:** verify-before-claiming applies to defect REPORTS, not just fixes.
+Before recording a defect in a handover, run the reproducing command against
+the current tree, and record the commit hash you verified against.
+
+### L37 — Hand-edited generated code survives until someone runs the generator
+`openrouterApiKey` lived in the generated LlmConfig types and three real
+consumers since b360c37 — but never in openapi.yaml. Someone had edited the
+generated files directly, so the first codegen run in months silently deleted
+the field; only diffing the regen output exposed it.
+**Apply:** generated files are never edited by hand — the fix goes in the
+spec. And when a codegen run touches files you did not expect, treat every
+unexpected hunk as evidence of past hand-edits: reconcile the spec before
+committing, or the next regen re-breaks it.
+
+### L38 — Prove "no new failures" inside one environment, not across two
+Local test runs show 28 files failing to collect (no DATABASE_URL) where CI
+shows 31 individual failures — the counts are not comparable. The proof that
+a change adds no failures is stash → run → pop → run: both sides in the same
+environment, same command, minutes apart. Phase 6 used it three times; each
+delta was exactly the new tests and nothing else.
+**Apply:** never compare a local count against the CI baseline. Compare
+pre-change and post-change in the environment you are standing in.
+
+### L39 — A stale one-shot image resurrects the schema you just removed
+The compose `migrate` one-shot bakes the schema at image-build time. Run it
+after changing the schema but before rebuilding the image and it happily
+re-applies the OLD schema — it would have re-added the plain_password column
+minutes after the drop. Same trap for `seed`.
+**Apply:** one-shot containers are code too. Rebuild them with the change,
+run the parity check twice, and verify the state is stable across both runs.
+
+### L40 — A fact may be unknown; a route must terminate
+Two nullability regimes in one phase, and they are different on purpose. A
+member's teamRole is a FACT: null until someone declares it, never defaulted
+(tri-state, L32 — defaulting would assert what nobody said). An obligation's
+defaultTeamRole is a ROUTE: total by design, falling through to the
+coordinator, because a duty that appears in nobody's inbox is how a clock
+gets missed — and its name says "default" so nobody reads workflow routing
+as a statutory assignment.
+**Apply:** classify each field as fact or route before choosing nullability.
+Unknown facts stay null and render as unknown; routes always land somewhere
+safe, and their names admit they are defaults.
+
+---
+
+## Phase 6 — Team role model — completed 2026-08-15
+
+**What worked:** Data → routes → UI order, three times over. The stash-compare
+proof (L38) made every G2 claim exact. G6 probes that exercise the full loop —
+create member → log in as them → rotate password → old credential 401s — catch
+what endpoint-shape checks cannot. Spec-first for /me meant orval did the type
+plumbing across both client libs in one command.
+
+**What cost time:** The session opened on a stale premise (L36) — the "first
+task" was mostly already done, and the real work was correcting the record.
+Codegen exposed month-old spec drift (L37) that had to be repaired mid-task.
+Two self-inflicted verification wounds: piping gate output through `tail` cut
+off the verdict line twice (an instance of L4 — filter the findings, never
+the failure), and a `cd` persisting across shell calls sent two gates hunting
+modules from the wrong directory.
+
+**Surprises:** The highest-severity "live" issue in the handover was already
+fixed. And the plaintext-password column turned out to have exactly one
+consumer — an edit-dialog prefill that could only exist because of the leak.
+
+**Re-tuning applied to Phase 7:** recorded in task_plan.md under Phase 7 —
+7.2's branching inputs now exist and null teamRole must render the neutral
+home (L40); the P2 evidence-request model plus its role scoping (deferred
+from 6.3, with reason) is pinned to the task that builds the request flow;
+every new Phase 7 endpoint consumed through the generated client goes into
+openapi.yaml first (L37); partner-hub is a donor, not a deletion — stages
+1–4 re-home into the product file, stage 5 into Incidents, wired to the real
+engines at that point; and the steward UI moves onto the Art. 24 engine with
+the older /steward route retired rather than kept alongside.
+
+**New lessons:** L36–L40.

@@ -579,17 +579,39 @@ language is not discarded.
 
 - **7.1** Navigation shell and routing for the nine destinations; retire the
   route aliases.
-- **7.2** Home, role-aware (depends on Phase 6).
+- **7.2** Home, role-aware. Phase 6 delivered its inputs: branch on
+  `/conformity/me` `teamRole` and filter by each obligation's
+  `defaultTeamRole`. A null teamRole renders the NEUTRAL home, never a
+  guessed one (L40).
 - **7.3** Products as the polymorphic subject file — renders per the product's
   role, absorbing notified body, CE, versions, end-of-support, BOM evidence.
 - **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.
 - **7.5** Authorities, Signatures, Projects, Organisation — the four surfaces
-  that give the six orphaned capabilities a home.
+  that give the six orphaned capabilities a home. Includes building the P2
+  evidence-request model and applying the role scoping deferred from 6.3.
+  Projects moves the steward UI onto the Art. 24 engine
+  (`/conformity/steward/:project`) and retires the older `/steward` route —
+  one implementation, not two side by side.
 - **7.6** Library with the universal statutory flyout; retire the nine
   reference pages.
 
 Acceptance: every capability in the iteration 2 orphan table is reachable, the
 seven design principles hold, and G6 verifies each surface live.
+
+## Re-tuned 2026-08-15 (G7 closing Phase 6)
+
+- **Donor framing (binding):** partner-hub and the persona pages are DONORS,
+  not deletions. Stages 1–4 of the Axians pipeline re-home into the product
+  file (7.3); stage 5 (24h CSIRT hub) re-homes into cross-act Incidents (7.4)
+  and is wired to the real incident engine at that point. The statutoryFlyout
+  pattern born in partner-hub goes universal (7.6).
+- **Spec-first (L37):** every new Phase 7 endpoint consumed through the
+  generated client is added to `lib/api-spec/openapi.yaml` and reaches the
+  frontend via `orval` codegen — generated files are never hand-edited.
+- **Verification cadence:** each 7.x lands with the full gate set, G2 proven
+  by stash-compare in one environment (L38), one-shot images rebuilt before
+  any parity run (L39), and G8's orphan baseline lowered as each capability
+  gains its home — 6 → 0 across the phase.
 
 ## Sequencing note — the accepted risk
 
