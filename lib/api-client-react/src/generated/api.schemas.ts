@@ -1652,6 +1652,33 @@ export interface ConformityProductInput {
   supportPeriodEnd?: string | null;
 }
 
+export interface ImportConformityProductRow {
+  name?: string;
+  description?: string;
+  manufacturerName?: string;
+  productType?: string;
+  version?: string;
+  intendedUse?: string;
+}
+
+export interface ImportConformityProductsInput {
+  /**
+     * @minItems 1
+     * @maxItems 500
+     */
+  rows: ImportConformityProductRow[];
+}
+
+export type ImportConformityProductsResultRejectedItem = {
+  index: number;
+  reason: string;
+};
+
+export interface ImportConformityProductsResult {
+  created: ConformityProduct[];
+  rejected: ImportConformityProductsResultRejectedItem[];
+}
+
 export type AppliedStandardCoverage = typeof AppliedStandardCoverage[keyof typeof AppliedStandardCoverage];
 
 

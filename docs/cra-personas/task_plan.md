@@ -723,3 +723,43 @@ and three personas (importer/distributor, steward, authorised representative)
 stay unusable throughout. This was chosen deliberately over shipping a
 compromised single home. Mitigation: 7.1 and 7.3 should land as early as
 possible so the manufacturer journey stays demonstrable while the rest is built.
+
+# Phase 9 — Absorption close-out (added 2026-08-16)
+
+The remainder named by the Phase 8 G7: the last donors leave the TRANSITIONAL
+menu, the menu itself is deleted, and G4 is driven to zero. Order is the
+HANDOVER's "Next steps" order.
+
+- **9.1 done 2026-08-16** Absorb `product-portfolio` into Products; retire the
+  donor. All gates green at commit time: G2 CI-mirror 706/0/2, G8 = 15
+  reached / 0 orphaned, G6 live (preview honesty, per-row rejection, absent
+  fields stay absent, no assessment created, redirect verified; screenshots in
+  `artifacts_verify/products_import_91/`). Survey
+  (2026-08-16) found every donor tab already served by a real engine or
+  scaffolding a parallel demo registry: fleet rollup → Home's command-center
+  (`/conformity/portfolio`); versions → the statutory file (7.3b); PSIRT tab →
+  Incidents (8.2; the donor's tab is unreachable dead code); document vault →
+  product-detail. The one feature with no real-registry home is **import** —
+  and the donor's version fabricates what it cannot parse (invents contact
+  emails, CISA sectors, quantities) into `cra_portfolio_products` seeded with
+  "CRA Class I certified" strings the conformity registry must never inherit.
+  Batch: spec-first `POST /conformity/products/import` (honest bulk create:
+  name required, absent facts stay null, rejects reported per row, NO
+  assessment/classification created — Art. 32 assessment remains an explicit
+  user act); an Import dialog on Products whose preview never invents a value;
+  G8 registry entry in the same commit; delete the donor page with
+  `/product-portfolio` → `/products` redirects and drop the TRANSITIONAL
+  Portfolio entry; delete `POST /conformity/products/quick-start` (its only
+  consumer was the donor; it silently defaulted `important_class_1`) and the
+  consumer-less fabricating portfolio endpoints (fleet list, customers CRUD,
+  ai-parse-file, upload-bulk, psirt-impact, demo seed) — the documents
+  endpoints stay, product-detail's vault consumes them. Follow-up hygiene
+  recorded, not done here: the now-unused portfolio tables
+  (`cra_portfolio_products`, releases, customers, deployments) and the shared
+  `cra_product_documents.productId` that two registries key differently.
+- **9.2** Re-home `reports` (→ Home / product file) and `flows`.
+- **9.3** Decide `auditor-portal` (likely the permanent notified-body track);
+  then DELETE the More menu and its TRANSITIONAL code in layout.tsx.
+- **9.4** W2.4 transposition content — BLOCKED on sourced verbatim national
+  texts (NL, then DE); the NIS2 reader banner states the gap.
+- **9.5** Drive G4 7 → 0 (all findings in `artifacts/oxot-web` marketing).

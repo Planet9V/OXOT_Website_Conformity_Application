@@ -101,6 +101,8 @@ import type {
   GetIntegrationActivityParams,
   GetSocialStatusParams,
   HealthStatus,
+  ImportConformityProductsInput,
+  ImportConformityProductsResult,
   IncidentReportPackage,
   IncidentSubmission,
   IndexStatus,
@@ -8570,6 +8572,78 @@ export const useCreateConformityProduct = <TError = ErrorType<BadRequestResponse
         TContext
       > => {
       return useMutation(getCreateConformityProductMutationOptions(options));
+    }
+
+export const getImportConformityProductsUrl = () => {
+
+
+
+
+  return `/api/conformity/products/import`
+}
+
+/**
+ * Creates each valid row as a product; rows without a name are rejected and reported by index, never silently dropped. Absent fields stay absent — nothing is defaulted or invented. No assessment and no classification is created; the Art. 32 conformity assessment remains an explicit user act per product.
+ * @summary Bulk-create products in the registry
+ */
+export const importConformityProducts = async (importConformityProductsInput: ImportConformityProductsInput, options?: RequestInit): Promise<ImportConformityProductsResult> => {
+
+  return customFetch<ImportConformityProductsResult>(getImportConformityProductsUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(importConformityProductsInput)
+  }
+);}
+
+
+
+
+
+export const getImportConformityProductsMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof importConformityProducts>>, TError,{data: BodyType<ImportConformityProductsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof importConformityProducts>>, TError,{data: BodyType<ImportConformityProductsInput>}, TContext> => {
+
+const mutationKey = ['importConformityProducts'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof importConformityProducts>>, {data: BodyType<ImportConformityProductsInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  importConformityProducts(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type ImportConformityProductsMutationResult = NonNullable<Awaited<ReturnType<typeof importConformityProducts>>>
+    export type ImportConformityProductsMutationBody = BodyType<ImportConformityProductsInput>
+    export type ImportConformityProductsMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse>
+
+    /**
+ * @summary Bulk-create products in the registry
+ */
+export const useImportConformityProducts = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof importConformityProducts>>, TError,{data: BodyType<ImportConformityProductsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof importConformityProducts>>,
+        TError,
+        {data: BodyType<ImportConformityProductsInput>},
+        TContext
+      > => {
+      return useMutation(getImportConformityProductsMutationOptions(options));
     }
 
 export const getGetConformityProductUrl = (id: number,) => {

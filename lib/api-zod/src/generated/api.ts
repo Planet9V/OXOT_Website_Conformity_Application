@@ -2994,6 +2994,49 @@ export const CreateConformityProductResponse = zod.object({
 
 
 /**
+ * Creates each valid row as a product; rows without a name are rejected and reported by index, never silently dropped. Absent fields stay absent — nothing is defaulted or invented. No assessment and no classification is created; the Art. 32 conformity assessment remains an explicit user act per product.
+ * @summary Bulk-create products in the registry
+ */
+export const importConformityProductsBodyRowsMax = 500;
+
+
+
+export const ImportConformityProductsBody = zod.object({
+  "rows": zod.array(zod.object({
+  "name": zod.string().optional(),
+  "description": zod.string().optional(),
+  "manufacturerName": zod.string().optional(),
+  "productType": zod.string().optional(),
+  "version": zod.string().optional(),
+  "intendedUse": zod.string().optional()
+})).min(1).max(importConformityProductsBodyRowsMax)
+})
+
+export const ImportConformityProductsResponse = zod.object({
+  "created": zod.array(zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "description": zod.string(),
+  "manufacturerName": zod.string(),
+  "manufacturerAddress": zod.string(),
+  "authorizedRep": zod.string(),
+  "productType": zod.string(),
+  "version": zod.string(),
+  "intendedUse": zod.string(),
+  "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
+  "supportPeriodStart": zod.string().nullable(),
+  "supportPeriodEnd": zod.string().nullable(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})),
+  "rejected": zod.array(zod.object({
+  "index": zod.number(),
+  "reason": zod.string()
+}))
+})
+
+
+/**
  * @summary Get a product and its assessments
  */
 export const GetConformityProductParams = zod.object({

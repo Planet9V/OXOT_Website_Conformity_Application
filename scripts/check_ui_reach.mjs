@@ -62,6 +62,7 @@ const CAPABILITIES = [
   // gate pass vacuously.
   { name: "advisories",          path: "/conformity/advisories",        home: "Incidents", hook: "useListConformityAdvisories" },
   { name: "vuln reports",        path: "/conformity/vuln-reports",      home: "Incidents", hook: "useListConformityVulnReports" },
+  { name: "product bulk import", path: "/conformity/products/import",   home: "Products",  hook: "useImportConformityProducts" },
 ];
 
 /** Every /api/... literal, including template-literal segments like ${id}. */

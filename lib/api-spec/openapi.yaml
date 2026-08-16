@@ -2402,6 +2402,34 @@ paths:
           $ref: "#/components/responses/BadRequest"
         "401":
           $ref: "#/components/responses/Unauthorized"
+  /conformity/products/import:
+    post:
+      operationId: importConformityProducts
+      tags: [conformity]
+      summary: Bulk-create products in the registry
+      description: >
+        Creates each valid row as a product; rows without a name are rejected
+        and reported by index, never silently dropped. Absent fields stay
+        absent — nothing is defaulted or invented. No assessment and no
+        classification is created; the Art. 32 conformity assessment remains
+        an explicit user act per product.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImportConformityProductsInput"
+      responses:
+        "200":
+          description: Import result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImportConformityProductsResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
   /conformity/products/{id}:
     get:
       operationId: getConformityProduct
@@ -6810,6 +6838,47 @@ components:
         supportPeriodEnd: { type: ["string", "null"] }
       required:
         - name
+    ImportConformityProductsInput:
+      type: object
+      properties:
+        rows:
+          type: array
+          minItems: 1
+          maxItems: 500
+          # Deliberately NOT ConformityProductInput: its required `name` would
+          # reject the whole request at validation. A nameless row is rejected
+          # individually in the result so the rest of the file still imports.
+          items:
+            $ref: "#/components/schemas/ImportConformityProductRow"
+      required:
+        - rows
+    ImportConformityProductRow:
+      type: object
+      properties:
+        name: { type: string }
+        description: { type: string }
+        manufacturerName: { type: string }
+        productType: { type: string }
+        version: { type: string }
+        intendedUse: { type: string }
+    ImportConformityProductsResult:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            $ref: "#/components/schemas/ConformityProduct"
+        rejected:
+          type: array
+          items:
+            type: object
+            properties:
+              index: { type: integer }
+              reason: { type: string }
+            required: [index, reason]
+      required:
+        - created
+        - rejected
     AppliedStandard:
       type: object
       properties:

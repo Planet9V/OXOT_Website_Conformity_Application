@@ -25,7 +25,6 @@ import {
   HelpCircle,
   BookOpen,
   Compass,
-  Boxes,
   Search,
   type LucideIcon,
 } from "lucide-react";
@@ -108,7 +107,6 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
  * menu is DELETED when the last entry moves. Do not add new surfaces here.
  */
 const TRANSITIONAL: NavItem[] = [
-  { href: "/product-portfolio", label: "Portfolio", icon: Boxes, description: "Re-homes into Products (7.3)" },
   { href: "/reports", label: "Reports", icon: FileText, description: "Re-homes into Home and the product file" },
   { href: "/flows", label: "Flows", icon: GitBranch, description: "Admin-authored assessment process flows" },
   { href: "/auditor-portal", label: "Auditor Portal", icon: ClipboardCheck, description: "Separate notified-body track" },

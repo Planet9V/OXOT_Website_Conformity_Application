@@ -83,7 +83,8 @@ export function ProductDocumentVaultModal({
   const [categoryInput, setCategoryInput] = useState("Product Specification");
   const [versionInput, setVersionInput] = useState("v1.0");
   const [descriptionInput, setDescriptionInput] = useState("");
-  const [uploaderInput, setUploaderInput] = useState("Marcus Vance (Security Lead)");
+  // Provenance names its actual actor — no pre-filled placeholder identity.
+  const [uploaderInput, setUploaderInput] = useState("");
   const [isUploading, setIsUploading] = useState(false);
 
   // Preview Drawer State
@@ -142,6 +143,10 @@ export function ProductDocumentVaultModal({
       toast.error("Please select at least one file to upload");
       return;
     }
+    if (!uploaderInput.trim()) {
+      toast.error("Enter who is uploading — provenance records the actual actor");
+      return;
+    }
 
     setIsUploading(true);
     let successCount = 0;
@@ -152,7 +157,7 @@ export function ProductDocumentVaultModal({
         const payload = {
           title: titleInput || file.name,
           docCategory: categoryInput,
-          description: descriptionInput || "Supporting CRA compliance document.",
+          description: descriptionInput,
           fileVersion: versionInput || "v1.0",
           originalFileName: file.name,
           mimeType: file.type || "application/octet-stream",

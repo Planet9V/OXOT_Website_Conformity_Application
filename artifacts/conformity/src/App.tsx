@@ -32,19 +32,15 @@ import Security from './pages/security';
 import React, { Component, Suspense, lazy, type ReactNode } from "react";
 import { Skeleton } from './components/ui/skeleton';
 
-// Code-split the heaviest feature workspaces (chart-heavy or, in
-// product-portfolio's case, a 1727-line single component) out of the main
+// Code-split the heaviest feature workspaces (chart-heavy) out of the main
 // bundle — every route in this app was previously statically imported, so
-// visiting /team pulled in PSIRT's recharts bundle and the whole product
-// portfolio workspace too. Mirrors the lazy-load pattern already proven in
-// pages/dashboard.tsx (its own CommandCenter lazy-load).
+// visiting /team pulled in PSIRT's recharts bundle too. Mirrors the
+// lazy-load pattern already proven in pages/dashboard.tsx (its own
+// CommandCenter lazy-load).
 const Assessment = lazy(() => import('./pages/assessment'));
 const Flows = lazy(() => import('./pages/flows'));
 const Reports = lazy(() => import('./pages/reports'));
 const ReportWorkspace = lazy(() => import('./pages/report-workspace'));
-const ProductPortfolioPage = lazy(() =>
-  import('./pages/product-portfolio').then((m) => ({ default: m.ProductPortfolioPage })),
-);
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
 const Nis2ReaderPage = lazy(() => import('./pages/nis2-reader'));
@@ -218,20 +214,13 @@ function ShellRoutes() {
           <Route path="/reports/:id" component={ReportWorkspace} />
           <Route path="/reports" component={Reports} />
           <Route path="/profile" component={Profile} />
-          <Route path="/product-portfolio">
-            <ErrorBoundary>
-              <ProductPortfolioPage />
-            </ErrorBoundary>
-          </Route>
-          <Route path="/product-portfolio/*">
-            <ErrorBoundary>
-              <ProductPortfolioPage />
-            </ErrorBoundary>
-          </Route>
-          {/* Retired donors (7.3c): partner-hub's stages live in the product
-              file and Incidents; the archive's retention clocks live in the
-              statutory file; the standards editor lives in each assessment's
-              wizard. */}
+          {/* Retired donors (7.3c, 9.1): partner-hub's stages live in the
+              product file and Incidents; the archive's retention clocks live
+              in the statutory file; the standards editor lives in each
+              assessment's wizard; product-portfolio's import lives on
+              Products, its rollup on Home, its documents in the product file. */}
+          <Route path="/product-portfolio"><Redirect to="/products" /></Route>
+          <Route path="/product-portfolio/*"><Redirect to="/products" /></Route>
           <Route path="/partner-hub"><Redirect to="/products" /></Route>
           <Route path="/partner-hub/*"><Redirect to="/products" /></Route>
           <Route path="/standards"><Redirect to="/library/statute" /></Route>

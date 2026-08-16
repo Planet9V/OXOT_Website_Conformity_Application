@@ -4,6 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import {
   useListConformityProducts,
   useCreateConformityProduct,
+  useImportConformityProducts,
 } from "@workspace/api-client-react";
 import {
   Table,
@@ -28,8 +29,198 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { formatDate } from "@/lib/utils";
-import { Plus, Boxes, Package, ArrowRight } from "lucide-react";
+import { Plus, Boxes, Package, ArrowRight, Upload } from "lucide-react";
 import { toast } from "sonner";
+
+// ---------------------------------------------------------------------------
+// Bulk import (re-homed from the retired product-portfolio donor).
+// The parse is deliberately literal: a header row names the columns, a cell
+// that is absent stays absent ("—" in the preview, empty in the registry),
+// and a row without a name is shown as rejected — nothing is ever invented
+// to fill a gap. Import creates products only; no assessment and no
+// classification, since the Art. 32 assessment is an explicit act per product.
+// ---------------------------------------------------------------------------
+
+const IMPORT_HEADERS: Record<string, keyof ImportRow> = {
+  name: "name",
+  product: "name",
+  "product name": "name",
+  description: "description",
+  manufacturer: "manufacturerName",
+  "manufacturer name": "manufacturerName",
+  type: "productType",
+  "product type": "productType",
+  version: "version",
+  "intended use": "intendedUse",
+  intendeduse: "intendedUse",
+};
+
+type ImportRow = {
+  name?: string;
+  description?: string;
+  manufacturerName?: string;
+  productType?: string;
+  version?: string;
+  intendedUse?: string;
+};
+
+function splitLine(line: string): string[] {
+  if (line.startsWith("|") && line.endsWith("|")) {
+    return line.slice(1, -1).split("|").map((c) => c.trim());
+  }
+  const sep = line.includes("\t") ? "\t" : line.includes(";") ? ";" : ",";
+  return line.split(sep).map((c) => c.trim().replace(/^"(.*)"$/, "$1"));
+}
+
+function parseImportText(text: string): { rows: ImportRow[]; ignoredColumns: string[]; error?: string } {
+  const lines = text
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter((l) => l && !/^\|?[\s|:-]+\|?$/.test(l)); // drop markdown separator rows
+  if (!lines.length) return { rows: [], ignoredColumns: [] };
+
+  const headerCells = splitLine(lines[0]!).map((h) => h.toLowerCase());
+  const mapping = headerCells.map((h) => IMPORT_HEADERS[h]);
+  if (!mapping.includes("name")) {
+    return {
+      rows: [],
+      ignoredColumns: [],
+      error: 'The first row must be a header row containing a "name" column.',
+    };
+  }
+  const ignoredColumns = headerCells.filter((_, i) => !mapping[i]);
+
+  const rows = lines.slice(1).map((line) => {
+    const cells = splitLine(line);
+    const row: ImportRow = {};
+    mapping.forEach((field, i) => {
+      const value = cells[i]?.trim();
+      if (field && value) row[field] = value;
+    });
+    return row;
+  });
+  return { rows, ignoredColumns };
+}
+
+function ImportProductsDialog() {
+  const qc = useQueryClient();
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
+  const importProducts = useImportConformityProducts({
+    mutation: {
+      onSuccess: (result) => {
+        qc.invalidateQueries();
+        toast.success(
+          `${result.created.length} product${result.created.length === 1 ? "" : "s"} imported` +
+            (result.rejected.length ? `; ${result.rejected.length} rejected` : ""),
+        );
+        setOpen(false);
+        setText("");
+      },
+      onError: (err: any) => toast.error(err.message || "Import failed"),
+    },
+  });
+
+  const { rows, ignoredColumns, error } = parseImportText(text);
+  const ready = rows.filter((r) => r.name?.trim());
+  const nameless = rows.length - ready.length;
+
+  const onFile = (file: File | undefined) => {
+    if (!file) return;
+    file.text().then(setText, () => toast.error("Could not read the file"));
+  };
+
+  const FIELDS: Array<{ key: keyof ImportRow; label: string }> = [
+    { key: "name", label: "Name" },
+    { key: "productType", label: "Type" },
+    { key: "version", label: "Version" },
+    { key: "manufacturerName", label: "Manufacturer" },
+    { key: "intendedUse", label: "Intended use" },
+    { key: "description", label: "Description" },
+  ];
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button variant="outline" onClick={() => setOpen(true)} className="text-xs rounded-lg">
+          <Upload className="w-4 h-4 mr-1.5" /> Import
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="rounded-md max-w-3xl">
+        <DialogHeader>
+          <DialogTitle>Import products</DialogTitle>
+          <DialogDescription>
+            Paste CSV, TSV, semicolon-separated or markdown-table rows (or choose a file). The
+            first row must be a header naming the columns; a &quot;name&quot; column is required.
+            Absent cells stay absent — nothing is filled in for you. Imported products carry no
+            assessment: the conformity assessment is started per product, explicitly.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-3">
+          <input
+            type="file"
+            accept=".csv,.tsv,.txt,.md"
+            className="text-xs"
+            onChange={(e) => onFile(e.target.files?.[0])}
+          />
+          <Textarea
+            className="rounded-md font-mono text-xs min-h-32"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder={"name,type,version,manufacturer\nAcme Gateway 3000,Hardware,1.0,Acme GmbH"}
+          />
+          {error ? (
+            <p className="text-xs text-destructive">{error}</p>
+          ) : rows.length > 0 ? (
+            <div className="space-y-2">
+              <p className="text-xs text-muted-foreground">
+                {ready.length} row{ready.length === 1 ? "" : "s"} ready
+                {nameless > 0 && `; ${nameless} without a name (will be rejected)`}
+                {ignoredColumns.length > 0 && `; ignored columns: ${ignoredColumns.join(", ")}`}
+              </p>
+              <div className="border border-border rounded-md max-h-56 overflow-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      {FIELDS.map((f) => (
+                        <TableHead key={f.key} className="text-xs">
+                          {f.label}
+                        </TableHead>
+                      ))}
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((row, i) => (
+                      <TableRow key={i} className={row.name?.trim() ? "" : "opacity-50"}>
+                        {FIELDS.map((f) => (
+                          <TableCell key={f.key} className="text-xs">
+                            {row[f.key] || "—"}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          ) : null}
+        </div>
+        <DialogFooter>
+          <Button variant="outline" className="rounded-md" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+          <Button
+            className="rounded-md"
+            disabled={importProducts.isPending || ready.length === 0}
+            onClick={() => importProducts.mutate({ data: { rows } })}
+          >
+            Import {ready.length > 0 ? `${ready.length} product${ready.length === 1 ? "" : "s"}` : ""}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
 
 function CreateProductDialog() {
   const qc = useQueryClient();
@@ -155,7 +346,10 @@ export default function Products() {
             Manage products with digital elements and run their statutory conformity assessments.
           </p>
         </div>
-        <CreateProductDialog />
+        <div className="flex items-center gap-2 shrink-0">
+          <ImportProductsDialog />
+          <CreateProductDialog />
+        </div>
       </div>
 
       <div className="border border-border bg-card">

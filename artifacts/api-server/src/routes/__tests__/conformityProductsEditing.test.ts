@@ -125,3 +125,58 @@ describe("Conformity product editing & lifecycle (authenticated)", () => {
     expect(getRes.status).toBe(404);
   });
 });
+
+describe("Bulk import into the registry (task 9.1)", () => {
+  const importedIds: number[] = [];
+
+  afterAll(async () => {
+    for (const id of importedIds) {
+      await requestApi("DELETE", `/conformity/products/${id}`);
+    }
+  });
+
+  it("rejects an unauthenticated import (401)", async () => {
+    const res = await requestApi(
+      "POST",
+      "/conformity/products/import",
+      { rows: [{ name: "Unauthenticated Import Probe" }] },
+      false,
+    );
+    expect(res.status).toBe(401);
+  });
+
+  it("creates named rows, rejects nameless rows by index, and never invents a field", async () => {
+    const res = await requestApi("POST", "/conformity/products/import", {
+      rows: [
+        { name: "Import Probe Gateway", productType: "Hardware", version: "1.2" },
+        { name: "  " }, // whitespace-only name: rejected, not trimmed into existence
+        { name: "Import Probe Sensor", manufacturerName: "Probe GmbH" },
+      ],
+    });
+    expect(res.status).toBe(200);
+    expect(res.json.created).toHaveLength(2);
+    expect(res.json.rejected).toEqual([{ index: 1, reason: "Row has no product name" }]);
+
+    const [gateway, sensor] = res.json.created;
+    importedIds.push(gateway.id, sensor.id);
+    expect(gateway.name).toBe("Import Probe Gateway");
+    expect(gateway.productType).toBe("Hardware");
+    expect(gateway.version).toBe("1.2");
+    // Absent fields stay absent — nothing defaulted or invented.
+    expect(gateway.manufacturerName).toBe("");
+    expect(sensor.description).toBe("");
+    expect(sensor.manufacturerName).toBe("Probe GmbH");
+  });
+
+  it("creates NO assessment for imported products — Art. 32 stays an explicit act", async () => {
+    const id = importedIds[0]!;
+    const res = await requestApi("GET", `/conformity/products/${id}`);
+    expect(res.status).toBe(200);
+    expect(res.json.assessments ?? res.json.product?.assessments ?? []).toHaveLength(0);
+  });
+
+  it("rejects an empty rows array at validation (400)", async () => {
+    const res = await requestApi("POST", "/conformity/products/import", { rows: [] });
+    expect(res.status).toBe(400);
+  });
+});

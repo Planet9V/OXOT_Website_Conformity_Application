@@ -56,6 +56,8 @@ import {
   ListConformityProductsResponse,
   CreateConformityProductBody,
   CreateConformityProductResponse,
+  ImportConformityProductsBody,
+  ImportConformityProductsResponse,
   GetConformityProductParams,
   GetConformityProductResponse,
   UpdateConformityProductParams,
@@ -930,60 +932,57 @@ router.post("/conformity/products", requireAuth, async (req, res): Promise<void>
   res.json(CreateConformityProductResponse.parse(toProductDto(row!)));
 });
 
-router.post("/conformity/products/quick-start", requireAuth, async (req, res): Promise<void> => {
-  try {
-    const name = (req.body.name as string) || "My Industrial Device";
-    const productType = (req.body.productType as string) || "industrial_device";
-    const description = (req.body.description as string) || "Auto-created from public onboarding funnel";
-    const classification = (req.body.classification as string) || "important_class_1";
+// Bulk import into the registry. Replaced the quick-start funnel endpoint,
+// whose only consumer was the retired product-portfolio donor and which
+// silently defaulted a CRA classification (important_class_1 → module_a) no
+// user had determined. Import creates products ONLY: a row without a name is
+// rejected by index, absent fields stay absent, and no assessment or
+// classification is created — Art. 32 assessment remains an explicit act.
+router.post("/conformity/products/import", requireAuth, async (req, res): Promise<void> => {
+  const body = ImportConformityProductsBody.parse(req.body);
+  const rejected: Array<{ index: number; reason: string }> = [];
+  const toInsert: Array<{ index: number; row: (typeof body.rows)[number] }> = [];
+  body.rows.forEach((row, index) => {
+    if (!row.name?.trim()) {
+      rejected.push({ index, reason: "Row has no product name" });
+    } else {
+      toInsert.push({ index, row });
+    }
+  });
 
-    const result = await db.transaction(async (tx) => {
-      const [prod] = await tx
+  const created = await db.transaction(async (tx) => {
+    const out = [];
+    for (const { row } of toInsert) {
+      const [inserted] = await tx
         .insert(conformityProductsTable)
         .values({
-          name,
-          description,
-          manufacturerName: (req.body.manufacturerName as string) || "OXOT Customer",
-          productType,
-          version: "1.0.0",
-          intendedUse: "EU Cyber Resilience Act & Multi-Regulation Compliance",
+          name: row.name!.trim(),
+          description: row.description ?? "",
+          manufacturerName: row.manufacturerName ?? "",
+          productType: row.productType ?? "",
+          version: row.version ?? "",
+          intendedUse: row.intendedUse ?? "",
         })
         .returning();
-
-      const [assessment] = await tx
-        .insert(conformityAssessmentsTable)
-        .values({
-          productId: prod!.id,
-          regulationKey: "cra",
-          status: "in_progress",
-          currentStage: "classification",
-          classKey: classification,
-          routeKey: classification === "important_class_2" ? "module_b_plus_c" : "module_a",
-        })
-        .returning();
-
       await tx.insert(conformityActivityTable).values({
         entityType: "product",
-        entityId: prod!.id,
-        assessmentId: assessment!.id,
+        entityId: inserted!.id,
         action: "created",
-        actor: "public:funnel",
+        actor: actorOf(req),
         source: "ui",
-        summary: `Quick-start assessment initialized for "${name}"`,
+        summary: `Product "${inserted!.name}" created via bulk import`,
       });
+      out.push(inserted!);
+    }
+    return out;
+  });
 
-      return { product: prod!, assessment: assessment! };
-    });
-
-    res.json({
-      success: true,
-      productId: result.product.id,
-      assessmentId: result.assessment.id,
-      redirectUrl: `/conformity/assessments/${result.assessment.id}`,
-    });
-  } catch (err: any) {
-    res.status(500).json({ error: err.message || "Failed to execute quick-start onboarding" });
-  }
+  res.json(
+    ImportConformityProductsResponse.parse({
+      created: created.map(toProductDto),
+      rejected,
+    }),
+  );
 });
 
 /**
