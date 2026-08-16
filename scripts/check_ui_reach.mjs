@@ -66,6 +66,9 @@ const CAPABILITIES = [
   // Parented by a dynamic assessment id, so the distinctive tail is matched.
   { name: "auditor access",      path: "/auditor-access",               home: "Products -> product file", hook: "useListAuditorAccess" },
   { name: "auditor rfis",        path: "/auditor-rfis",                 home: "Products -> product file", hook: "useListAuditorRfis" },
+  { name: "product users",       path: "/users",                        home: "Products -> product file", hook: "useListProductUsers" },
+  { name: "impacted users",      path: "/impacted-users",               home: "Incidents -> advisory",    hook: "useGetAdvisoryImpactedUsers" },
+  { name: "user notifications",  path: "/user-notifications",           home: "Products -> product file; Incidents", hook: "useListUserNotifications" },
 ];
 
 /** Every /api/... literal, including template-literal segments like ${id}. */

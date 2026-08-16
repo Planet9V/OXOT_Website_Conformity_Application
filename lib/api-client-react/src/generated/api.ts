@@ -27,6 +27,7 @@ import type {
   AdminPage,
   AdminPageSummary,
   AdminSession,
+  AdvisoryImpactedUsers,
   AffiliateLink,
   AffiliateLinkInput,
   AnalyticsOverview,
@@ -88,10 +89,12 @@ import type {
   CreateIncidentInput,
   CreateIncidentSubmissionInput,
   CreatePageInput,
+  CreateProductUserInput,
   CreateTeamMemberInput,
   CreateTemplateInput,
   DeleteConformityAdvisory200,
   DeleteConformityReport200,
+  DeleteProductUser200,
   DeleteResult,
   EmailSettingsInput,
   EmailTestInput,
@@ -146,9 +149,12 @@ import type {
   PageSummary,
   PageTemplate,
   PageVersion,
+  ProductUser,
+  ProductUserList,
   PublicSecurityAdvisory,
   PublicSecurityPolicy,
   PublishAdminPageInput,
+  RecordUserNotificationInput,
   RegenerateConformityReportSection200,
   RegisterMediaInput,
   Regulation,
@@ -200,6 +206,8 @@ import type {
   UpdateVulnReportInput,
   UploadUrlRequest,
   UploadUrlResponse,
+  UserNotification,
+  UserNotificationList,
   VulnReportEvent,
   WizardGenerateInput,
   WizardResult,
@@ -9526,6 +9534,455 @@ export const useUpdateConformityEvaluation = <TError = ErrorType<BadRequestRespo
         TContext
       > => {
       return useMutation(getUpdateConformityEvaluationMutationOptions(options));
+    }
+
+export const getListProductUsersUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/users`
+}
+
+/**
+ * @summary The product-user register (CRA Art. 14(8))
+ */
+export const listProductUsers = async (id: number, options?: RequestInit): Promise<ProductUserList> => {
+
+  return customFetch<ProductUserList>(getListProductUsersUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListProductUsersQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/users`
+    ] as const;
+    }
+
+
+export const getListProductUsersQueryOptions = <TData = Awaited<ReturnType<typeof listProductUsers>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listProductUsers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListProductUsersQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listProductUsers>>> = ({ signal }) => listProductUsers(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listProductUsers>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListProductUsersQueryResult = NonNullable<Awaited<ReturnType<typeof listProductUsers>>>
+export type ListProductUsersQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The product-user register (CRA Art. 14(8))
+ */
+
+export function useListProductUsers<TData = Awaited<ReturnType<typeof listProductUsers>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listProductUsers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListProductUsersQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateProductUserUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/users`
+}
+
+/**
+ * Name is required; contact and deployed version are recorded as stated and stay absent ("") until known — never invented. An absent version means an advisory match cannot rule this user out.
+ * @summary Register a product user
+ */
+export const createProductUser = async (id: number,
+    createProductUserInput: CreateProductUserInput, options?: RequestInit): Promise<ProductUser> => {
+
+  return customFetch<ProductUser>(getCreateProductUserUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(createProductUserInput)
+  }
+);}
+
+
+
+
+
+export const getCreateProductUserMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createProductUser>>, TError,{id: number;data: BodyType<CreateProductUserInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createProductUser>>, TError,{id: number;data: BodyType<CreateProductUserInput>}, TContext> => {
+
+const mutationKey = ['createProductUser'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createProductUser>>, {id: number;data: BodyType<CreateProductUserInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  createProductUser(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateProductUserMutationResult = NonNullable<Awaited<ReturnType<typeof createProductUser>>>
+    export type CreateProductUserMutationBody = BodyType<CreateProductUserInput>
+    export type CreateProductUserMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Register a product user
+ */
+export const useCreateProductUser = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createProductUser>>, TError,{id: number;data: BodyType<CreateProductUserInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createProductUser>>,
+        TError,
+        {id: number;data: BodyType<CreateProductUserInput>},
+        TContext
+      > => {
+      return useMutation(getCreateProductUserMutationOptions(options));
+    }
+
+export const getDeleteProductUserUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/product-users/${id}`
+}
+
+/**
+ * @summary Remove a product-user row
+ */
+export const deleteProductUser = async (id: number, options?: RequestInit): Promise<DeleteProductUser200> => {
+
+  return customFetch<DeleteProductUser200>(getDeleteProductUserUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteProductUserMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteProductUser>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteProductUser>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteProductUser'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteProductUser>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteProductUser(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteProductUserMutationResult = NonNullable<Awaited<ReturnType<typeof deleteProductUser>>>
+
+    export type DeleteProductUserMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Remove a product-user row
+ */
+export const useDeleteProductUser = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteProductUser>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteProductUser>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteProductUserMutationOptions(options));
+    }
+
+export const getGetAdvisoryImpactedUsersUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/advisories/${id}/impacted-users`
+}
+
+/**
+ * The advisory's affected-versions field is free text, so the only honest derivation is an exact match on the RECORDED version: users whose recorded version appears verbatim are "impacted"; users with NO recorded version cannot be ruled out; everyone else needs manual verification. The response carries that rule so no caller can present the split as more certain than it is.
+ * @summary Which registered users an advisory impacts (Art. 14(8))
+ */
+export const getAdvisoryImpactedUsers = async (id: number, options?: RequestInit): Promise<AdvisoryImpactedUsers> => {
+
+  return customFetch<AdvisoryImpactedUsers>(getGetAdvisoryImpactedUsersUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetAdvisoryImpactedUsersQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/advisories/${id}/impacted-users`
+    ] as const;
+    }
+
+
+export const getGetAdvisoryImpactedUsersQueryOptions = <TData = Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetAdvisoryImpactedUsersQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>> = ({ signal }) => getAdvisoryImpactedUsers(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetAdvisoryImpactedUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>>
+export type GetAdvisoryImpactedUsersQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary Which registered users an advisory impacts (Art. 14(8))
+ */
+
+export function useGetAdvisoryImpactedUsers<TData = Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAdvisoryImpactedUsers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetAdvisoryImpactedUsersQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getListUserNotificationsUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/user-notifications`
+}
+
+/**
+ * @summary The record of user notifications for a product
+ */
+export const listUserNotifications = async (id: number, options?: RequestInit): Promise<UserNotificationList> => {
+
+  return customFetch<UserNotificationList>(getListUserNotificationsUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListUserNotificationsQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/user-notifications`
+    ] as const;
+    }
+
+
+export const getListUserNotificationsQueryOptions = <TData = Awaited<ReturnType<typeof listUserNotifications>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listUserNotifications>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListUserNotificationsQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listUserNotifications>>> = ({ signal }) => listUserNotifications(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listUserNotifications>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListUserNotificationsQueryResult = NonNullable<Awaited<ReturnType<typeof listUserNotifications>>>
+export type ListUserNotificationsQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The record of user notifications for a product
+ */
+
+export function useListUserNotifications<TData = Awaited<ReturnType<typeof listUserNotifications>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listUserNotifications>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListUserNotificationsQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getRecordUserNotificationUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/user-notifications`
+}
+
+/**
+ * Records the ORGANISATION'S OWN act — this application transmits nothing. Scope, the stated time, and the method are the recorder's explicit statements; the session actor is captured as provenance.
+ * @summary Record that the organisation informed users (Art. 14(8))
+ */
+export const recordUserNotification = async (id: number,
+    recordUserNotificationInput: RecordUserNotificationInput, options?: RequestInit): Promise<UserNotification> => {
+
+  return customFetch<UserNotification>(getRecordUserNotificationUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(recordUserNotificationInput)
+  }
+);}
+
+
+
+
+
+export const getRecordUserNotificationMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof recordUserNotification>>, TError,{id: number;data: BodyType<RecordUserNotificationInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof recordUserNotification>>, TError,{id: number;data: BodyType<RecordUserNotificationInput>}, TContext> => {
+
+const mutationKey = ['recordUserNotification'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof recordUserNotification>>, {id: number;data: BodyType<RecordUserNotificationInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  recordUserNotification(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RecordUserNotificationMutationResult = NonNullable<Awaited<ReturnType<typeof recordUserNotification>>>
+    export type RecordUserNotificationMutationBody = BodyType<RecordUserNotificationInput>
+    export type RecordUserNotificationMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Record that the organisation informed users (Art. 14(8))
+ */
+export const useRecordUserNotification = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof recordUserNotification>>, TError,{id: number;data: BodyType<RecordUserNotificationInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof recordUserNotification>>,
+        TError,
+        {id: number;data: BodyType<RecordUserNotificationInput>},
+        TContext
+      > => {
+      return useMutation(getRecordUserNotificationMutationOptions(options));
     }
 
 export const getListAuditorAccessUrl = (id: number,) => {

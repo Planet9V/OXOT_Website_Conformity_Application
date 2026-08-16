@@ -1652,6 +1652,84 @@ export interface ConformityProductInput {
   supportPeriodEnd?: string | null;
 }
 
+export interface ProductUser {
+  id: number;
+  productId: number;
+  name: string;
+  contact: string;
+  deployedVersion: string;
+  notes: string;
+  registeredBy: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ProductUserList {
+  users: ProductUser[];
+}
+
+export interface CreateProductUserInput {
+  /** @minLength 1 */
+  name: string;
+  contact?: string;
+  deployedVersion?: string;
+  notes?: string;
+}
+
+export interface AdvisoryImpactedUsers {
+  rule: string;
+  affectedVersionTokens: string[];
+  impacted: ProductUser[];
+  versionNotRecorded: ProductUser[];
+  noRecordedMatch: ProductUser[];
+}
+
+export type UserNotificationScope = typeof UserNotificationScope[keyof typeof UserNotificationScope];
+
+
+export const UserNotificationScope = {
+  impacted_users: 'impacted_users',
+  all_users: 'all_users',
+} as const;
+
+export interface UserNotification {
+  id: number;
+  productId: number;
+  /** @nullable */
+  advisoryId: number | null;
+  scope: UserNotificationScope;
+  statedAt: string;
+  method: string;
+  measuresSummary: string;
+  machineReadableFormat: string;
+  recordedBy: string;
+  createdAt: string;
+}
+
+export interface UserNotificationList {
+  notifications: UserNotification[];
+}
+
+export type RecordUserNotificationInputScope = typeof RecordUserNotificationInputScope[keyof typeof RecordUserNotificationInputScope];
+
+
+export const RecordUserNotificationInputScope = {
+  impacted_users: 'impacted_users',
+  all_users: 'all_users',
+} as const;
+
+export interface RecordUserNotificationInput {
+  /** @nullable */
+  advisoryId?: number | null;
+  scope: RecordUserNotificationInputScope;
+  /** @minLength 4 */
+  statedAt: string;
+  /** @minLength 1 */
+  method: string;
+  measuresSummary?: string;
+  machineReadableFormat?: string;
+}
+
 export interface AuditorAccess {
   id: number;
   assessmentId: number;
@@ -3261,6 +3339,10 @@ regulation?: string;
 theme?: string;
 obligationType?: string;
 q?: string;
+};
+
+export type DeleteProductUser200 = {
+  success: boolean;
 };
 
 export type ListWorkspaceIncidents200IncidentsItem = {

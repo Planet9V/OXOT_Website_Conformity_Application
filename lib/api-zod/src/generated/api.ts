@@ -3846,6 +3846,177 @@ export const UpdateConformityEvaluationResponse = zod.object({
 
 
 /**
+ * @summary The product-user register (CRA Art. 14(8))
+ */
+export const ListProductUsersParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListProductUsersResponse = zod.object({
+  "users": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "deployedVersion": zod.string(),
+  "notes": zod.string(),
+  "registeredBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+}))
+})
+
+
+/**
+ * Name is required; contact and deployed version are recorded as stated and stay absent ("") until known — never invented. An absent version means an advisory match cannot rule this user out.
+ * @summary Register a product user
+ */
+export const CreateProductUserParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+
+
+
+export const CreateProductUserBody = zod.object({
+  "name": zod.string().min(1),
+  "contact": zod.string().optional(),
+  "deployedVersion": zod.string().optional(),
+  "notes": zod.string().optional()
+})
+
+export const CreateProductUserResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "deployedVersion": zod.string(),
+  "notes": zod.string(),
+  "registeredBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * @summary Remove a product-user row
+ */
+export const DeleteProductUserParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const DeleteProductUserResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
+ * The advisory's affected-versions field is free text, so the only honest derivation is an exact match on the RECORDED version: users whose recorded version appears verbatim are "impacted"; users with NO recorded version cannot be ruled out; everyone else needs manual verification. The response carries that rule so no caller can present the split as more certain than it is.
+ * @summary Which registered users an advisory impacts (Art. 14(8))
+ */
+export const GetAdvisoryImpactedUsersParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const GetAdvisoryImpactedUsersResponse = zod.object({
+  "rule": zod.string(),
+  "affectedVersionTokens": zod.array(zod.string()),
+  "impacted": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "deployedVersion": zod.string(),
+  "notes": zod.string(),
+  "registeredBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})),
+  "versionNotRecorded": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "deployedVersion": zod.string(),
+  "notes": zod.string(),
+  "registeredBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})),
+  "noRecordedMatch": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "deployedVersion": zod.string(),
+  "notes": zod.string(),
+  "registeredBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+}))
+})
+
+
+/**
+ * @summary The record of user notifications for a product
+ */
+export const ListUserNotificationsParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListUserNotificationsResponse = zod.object({
+  "notifications": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "advisoryId": zod.number().nullable(),
+  "scope": zod.enum(['impacted_users', 'all_users']),
+  "statedAt": zod.string(),
+  "method": zod.string(),
+  "measuresSummary": zod.string(),
+  "machineReadableFormat": zod.string(),
+  "recordedBy": zod.string(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
+ * Records the ORGANISATION'S OWN act — this application transmits nothing. Scope, the stated time, and the method are the recorder's explicit statements; the session actor is captured as provenance.
+ * @summary Record that the organisation informed users (Art. 14(8))
+ */
+export const RecordUserNotificationParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const recordUserNotificationBodyStatedAtMin = 4;
+
+
+
+
+export const RecordUserNotificationBody = zod.object({
+  "advisoryId": zod.number().nullish(),
+  "scope": zod.enum(['impacted_users', 'all_users']),
+  "statedAt": zod.string().min(recordUserNotificationBodyStatedAtMin),
+  "method": zod.string().min(1),
+  "measuresSummary": zod.string().optional(),
+  "machineReadableFormat": zod.string().optional()
+})
+
+export const RecordUserNotificationResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "advisoryId": zod.number().nullable(),
+  "scope": zod.enum(['impacted_users', 'all_users']),
+  "statedAt": zod.string(),
+  "method": zod.string(),
+  "measuresSummary": zod.string(),
+  "machineReadableFormat": zod.string(),
+  "recordedBy": zod.string(),
+  "createdAt": zod.string()
+})
+
+
+/**
  * The organisation's side of the external auditor portal (9.3b). Each grant is an expiring, revocable token scoped to ONE assessment; the token is shown so an admin can send the portal link to the auditor.
  * @summary List notified-body auditor access grants for an assessment
  */

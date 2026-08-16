@@ -42,6 +42,7 @@ import { ProductDocumentVaultModal } from "@/components/conformity/portfolio/pro
 import { VerifyPanel } from "@/components/product-file/verify-panel";
 import { NotifiedBodyPanel } from "@/components/product-file/notified-body-panel";
 import { AuditorAccessPanel } from "@/components/product-file/auditor-access-panel";
+import { ProductUsersPanel } from "@/components/product-file/product-users-panel";
 import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufacturer-panel";
 import {
   Select,
@@ -641,6 +642,7 @@ export default function ProductDetail() {
           (CRA Art. 32); a verifier checks the OUTCOME via the gate above. */}
       {orgRole === "manufacturer" && <NotifiedBodyPanel productId={id} />}
       {orgRole === "manufacturer" && <AuditorAccessPanel assessments={assessments} />}
+      {orgRole === "manufacturer" && <ProductUsersPanel productId={id} />}
 
       <StatutoryFile productId={id} />
 

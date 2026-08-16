@@ -33,6 +33,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { ImpactedUsersDialog } from "@/components/incidents/impacted-users-dialog";
 import { Megaphone, Bug, Plus } from "lucide-react";
 
 /**
@@ -86,6 +87,7 @@ export function PsirtPanel() {
   const products = useListConformityProducts();
 
   const advisories = useListConformityAdvisories();
+  const [impactedFor, setImpactedFor] = useState<{ advisoryId: number; productId: number } | null>(null);
   const vulnReports = useListConformityVulnReports();
 
   const createAdvisory = useCreateConformityAdvisory({
@@ -227,12 +229,32 @@ export function PsirtPanel() {
                       Publish
                     </Button>
                   )}
+                  {a.productId != null && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="h-7 text-[11px]"
+                      data-testid={`impacted-users-${a.id}`}
+                      onClick={() => setImpactedFor({ advisoryId: a.id, productId: a.productId })}
+                    >
+                      Impacted users
+                    </Button>
+                  )}
                 </div>
               </li>
             ))}
           </ul>
         )}
       </div>
+
+      {impactedFor && (
+        <ImpactedUsersDialog
+          advisoryId={impactedFor.advisoryId}
+          productId={impactedFor.productId}
+          open
+          onClose={() => setImpactedFor(null)}
+        />
+      )}
 
       <Dialog open={createOpen} onOpenChange={setCreateOpen}>
         <DialogContent className="rounded-2xl max-w-lg">

@@ -76,6 +76,7 @@ export * from "./conformityAlertState";
 export * from "./conformityPsirtProfiles";
 export * from "./conformityVulnReports";
 export * from "./conformityAdvisories";
+export * from "./conformityProductUsers";
 // Phase 4 & 5 — Notified Body shared portal, Multi-BOM (6 Formats) & supply chain lineage.
 export * from "./conformityAuditorAccess";
 export * from "./conformityAuditorRfis";

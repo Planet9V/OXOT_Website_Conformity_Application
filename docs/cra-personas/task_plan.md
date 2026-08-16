@@ -913,7 +913,7 @@ in G6, not only the new ones).
   stack uploads/downloads evidence through the real UI (G6, plus proof the
   EXISTING evidence/BOM surfaces still work), and Replit selection logic is
   provably unchanged (unit test on the backend chooser).
-- **10.2 Art. 14(8) user-notification register.** Statute FIRST, verbatim:
+- **10.2 done 2026-08-16** Art. 14(8) user-notification register. Statute FIRST, verbatim:
   CRA Art. 14(8) (informing impacted users about the incident/vulnerability
   and, where relevant, corrective measures) and NIS2 Art. 23 recipients-of-
   services language; clocks/anchors read from the corpus before any code.

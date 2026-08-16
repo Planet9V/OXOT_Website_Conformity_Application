@@ -2689,6 +2689,146 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/users:
+    get:
+      operationId: listProductUsers
+      tags: [conformity]
+      summary: The product-user register (CRA Art. 14(8))
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Registered users of this product
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductUserList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createProductUser
+      tags: [conformity]
+      summary: Register a product user
+      description: >
+        Name is required; contact and deployed version are recorded as stated
+        and stay absent ("") until known — never invented. An absent version
+        means an advisory match cannot rule this user out.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductUserInput"
+      responses:
+        "200":
+          description: The registered user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductUser"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/product-users/{id}:
+    delete:
+      operationId: deleteProductUser
+      tags: [conformity]
+      summary: Remove a product-user row
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                required: [success]
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/advisories/{id}/impacted-users:
+    get:
+      operationId: getAdvisoryImpactedUsers
+      tags: [conformity]
+      summary: Which registered users an advisory impacts (Art. 14(8))
+      description: >
+        The advisory's affected-versions field is free text, so the only
+        honest derivation is an exact match on the RECORDED version: users
+        whose recorded version appears verbatim are "impacted"; users with
+        NO recorded version cannot be ruled out; everyone else needs manual
+        verification. The response carries that rule so no caller can
+        present the split as more certain than it is.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The tri-state split with its rule
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdvisoryImpactedUsers"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/user-notifications:
+    get:
+      operationId: listUserNotifications
+      tags: [conformity]
+      summary: The record of user notifications for a product
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Recorded notification acts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserNotificationList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: recordUserNotification
+      tags: [conformity]
+      summary: Record that the organisation informed users (Art. 14(8))
+      description: >
+        Records the ORGANISATION'S OWN act — this application transmits
+        nothing. Scope, the stated time, and the method are the recorder's
+        explicit statements; the session actor is captured as provenance.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecordUserNotificationInput"
+      responses:
+        "200":
+          description: The recorded act
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserNotification"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
   /conformity/assessments/{id}/auditor-access:
     get:
       operationId: listAuditorAccess
@@ -6960,6 +7100,90 @@ components:
         supportPeriodEnd: { type: ["string", "null"] }
       required:
         - name
+    ProductUser:
+      type: object
+      properties:
+        id: { type: integer }
+        productId: { type: integer }
+        name: { type: string }
+        contact: { type: string }
+        deployedVersion: { type: string }
+        notes: { type: string }
+        registeredBy: { type: string }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+      required:
+        [id, productId, name, contact, deployedVersion, notes, registeredBy, createdAt, updatedAt]
+    ProductUserList:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductUser"
+      required: [users]
+    CreateProductUserInput:
+      type: object
+      properties:
+        name: { type: string, minLength: 1 }
+        contact: { type: string }
+        deployedVersion: { type: string }
+        notes: { type: string }
+      required: [name]
+    AdvisoryImpactedUsers:
+      type: object
+      properties:
+        rule: { type: string }
+        affectedVersionTokens:
+          type: array
+          items: { type: string }
+        impacted:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductUser"
+        versionNotRecorded:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductUser"
+        noRecordedMatch:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductUser"
+      required: [rule, affectedVersionTokens, impacted, versionNotRecorded, noRecordedMatch]
+    UserNotification:
+      type: object
+      properties:
+        id: { type: integer }
+        productId: { type: integer }
+        advisoryId: { type: ["integer", "null"] }
+        scope: { type: string, enum: [impacted_users, all_users] }
+        statedAt: { type: string }
+        method: { type: string }
+        measuresSummary: { type: string }
+        machineReadableFormat: { type: string }
+        recordedBy: { type: string }
+        createdAt: { type: string }
+      required:
+        [id, productId, advisoryId, scope, statedAt, method, measuresSummary, machineReadableFormat, recordedBy, createdAt]
+    UserNotificationList:
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserNotification"
+      required: [notifications]
+    RecordUserNotificationInput:
+      type: object
+      properties:
+        advisoryId: { type: ["integer", "null"] }
+        scope: { type: string, enum: [impacted_users, all_users] }
+        # The recorder's explicit statement of when users were informed.
+        statedAt: { type: string, minLength: 4 }
+        method: { type: string, minLength: 1 }
+        measuresSummary: { type: string }
+        machineReadableFormat: { type: string }
+      required: [scope, statedAt, method]
     AuditorAccess:
       type: object
       properties:

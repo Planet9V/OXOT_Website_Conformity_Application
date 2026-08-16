@@ -179,3 +179,10 @@ the meaning of Art. 64(10).
   the volume, evidence SURVIVES api restart, workbench count renders,
   Products+Home regression clean. Known behavior carried over from the
   GCS backend: deleting evidence rows does not GC stored files.
+- 10.2 DONE: product-user register + notification record (Art. 14(8),
+  NIS2 23(2) read verbatim first). Tri-state derivation with the rule in
+  the response; app records the org's act, transmits nothing. G2 722/0/0
+  (one inter-suite flake caught and fixed: my suite initially LEAKED an
+  advisory that survives product deletion by design — L46 cleanup added).
+  G8 20/0. G6 7/7 with screenshots (product_users_102/). Labels got
+  htmlFor/id pairs after getByLabel exposed missing association (a11y).
