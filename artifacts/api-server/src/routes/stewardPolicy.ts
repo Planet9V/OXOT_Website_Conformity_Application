@@ -30,6 +30,39 @@ function actorOf(req: Request): string {
 }
 const tri = (v: unknown) => (v === true || v === false ? v : null);
 
+/**
+ * GET — the project register (task 7.5: the Projects destination). A project
+ * exists once anything is recorded against its name — a policy version or an
+ * authority request — because stewardship is organised around the project,
+ * not around a product row (D6/D7: no CE, no DoC, no conformity assessment).
+ */
+router.get("/conformity/steward", requireAuth, async (_req: Request, res: Response) => {
+  const [policies, requests] = await Promise.all([
+    db
+      .select()
+      .from(conformityStewardPoliciesTable)
+      .orderBy(desc(conformityStewardPoliciesTable.version)),
+    db.select().from(conformityStewardRequestsTable),
+  ]);
+  const names = new Set<string>([
+    ...policies.map((p) => p.projectName),
+    ...requests.map((r) => r.projectName),
+  ]);
+  const projects = [...names].sort().map((name) => {
+    const current = policies.find((p) => p.projectName === name && p.supersededAt == null);
+    const projectRequests = requests.filter((r) => r.projectName === name);
+    return {
+      name,
+      currentPolicyVersion: current?.version ?? null,
+      aspectsCovered: (current?.aspectsCovered ?? []).length,
+      totalPolicyAspects: Object.keys(POLICY_ASPECTS).length,
+      openRequests: projectRequests.filter((r) => r.receivedAt && !r.documentationProvidedAt).length,
+      totalRequests: projectRequests.length,
+    };
+  });
+  res.json({ total: projects.length, projects });
+});
+
 /** GET — the steward's position for a project: policy, requests, reporting, law. */
 router.get("/conformity/steward/:project", requireAuth, async (req: Request, res: Response) => {
   const projectName = String(req.params.project);

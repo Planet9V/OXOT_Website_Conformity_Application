@@ -643,6 +643,17 @@ language is not discarded.
   capped and saying so) — read-only by design; Annex V signing stays in the
   workbench with its refusal rules. G8 orphans 4 → 2 (steward policy,
   mandates — 7.5b).
+  — **7.5b done 2026-08-15 — G8 IS ZERO.** Projects runs on the Art. 24
+  engine: project register (new GET /conformity/steward), versioned policy
+  (supersede-never-overwrite, per Art. 24(2)), cooperation clocks, and the
+  engine's legal position (Art. 64(10)(b) fines exemption stated WITH its
+  limits). The older steward implementation is deleted on both sides —
+  openSourceStewardRoutes.ts unmounted and removed, open-source-steward.tsx
+  removed — one implementation, as the plan demanded. Organisation gained
+  the Art. 18 mandates panel: stored-as-written, defects reported never
+  trimmed, Art. 18(3) copy-producibility surfaced. Every shipped capability
+  now has a screen; the G8 baseline is 0 and stays there. Remaining in 7.5:
+  the P2 evidence-request model + 6.3 role scoping (7.5c).
 - **7.6** Library with the universal statutory flyout; retire the nine
   reference pages.
 

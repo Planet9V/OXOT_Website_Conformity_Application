@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { Building2, Scale, Info, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
+import { MandatesPanel } from "@/components/organisation/mandates-panel";
 
 /**
  * Who this organisation is, in regulatory terms.
@@ -249,6 +250,9 @@ export default function OrgProfilePage() {
           </div>
         )}
       </section>
+
+      {/* Mandates held (CRA Art. 18) — the custody register (task 7.5). */}
+      <MandatesPanel />
     </div>
   );
 }

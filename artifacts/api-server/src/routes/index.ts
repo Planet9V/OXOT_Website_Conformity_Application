@@ -40,7 +40,6 @@ import { partnerScopeRouter } from "./partnerScope";
 import { ecosystemRouter } from "./ecosystemRoutes";
 import { craWikiRouter } from "./craWikiRoutes";
 import { harmonisedStandardsRouter } from "./harmonisedStandardsRoutes";
-import { openSourceStewardRouter } from "./openSourceStewardRoutes";
 import { importerArchiveRouter } from "./importerArchiveRoutes";
 import orgProfileRouter from "./orgProfile";
 import msaEngagementsRouter from "./msaEngagements";
@@ -62,7 +61,8 @@ router.use("/portfolio", productPortfolioRouter);
 router.use("/ecosystem", ecosystemRouter);
 router.use("/wiki/cra", craWikiRouter);
 router.use("/standards", harmonisedStandardsRouter);
-router.use("/steward", openSourceStewardRouter);
+// The older /steward implementation was retired in 7.5b: the Art. 24 engine
+// (stewardPolicy.ts) is the one steward surface — one implementation, not two.
 router.use("/archive", importerArchiveRouter);
 router.use(partnerScopeRouter);
 router.use(regulatoryNewsRouter);

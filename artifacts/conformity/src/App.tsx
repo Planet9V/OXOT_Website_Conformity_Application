@@ -22,6 +22,7 @@ import Welcome from './pages/welcome';
 import Demo from './pages/demo';
 import Onboarding from './pages/onboarding';
 import IncidentsPage from './pages/incidents';
+import ProjectsPage from './pages/projects';
 import AuthoritiesPage from './pages/authorities';
 import SignaturesPage from './pages/signatures';
 import Profile from './pages/profile';
@@ -49,7 +50,6 @@ const PartnerHubPage = lazy(() => import('./pages/partner-hub'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
 const StandardsMatrixPage = lazy(() => import('./pages/standards-matrix'));
 const CeNameplateStudioPage = lazy(() => import('./pages/ce-nameplate-studio'));
-const OpenSourceStewardPage = lazy(() => import('./pages/open-source-steward'));
 const ImporterArchivePage = lazy(() => import('./pages/importer-archive'));
 const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
@@ -164,7 +164,7 @@ function ShellRoutes() {
               <ProductDetail />
             </ErrorBoundary>
           </Route>
-          <Route path="/projects" component={OpenSourceStewardPage} />
+          <Route path="/projects" component={ProjectsPage} />
           <Route path="/organisation" component={OrgProfilePage} />
           <Route path="/library" component={CraWikiPage} />
           <Route path="/library/*" component={CraWikiPage} />
