@@ -56,6 +56,12 @@ const CAPABILITIES = [
   { name: "statutory file",      path: "/statutory-file",               home: "Products -> product file" },
   { name: "evidence requests",   path: "/conformity/evidence-requests", home: "Home -> Your work" },
   { name: "entity incidents",    path: "/conformity/entity-incidents",  home: "Incidents" },
+  // Consumed via the GENERATED client (spec-first), so the reach check is the
+  // specific hook name appearing in app source — never a scan of the
+  // generated client itself, which contains every path and would make the
+  // gate pass vacuously.
+  { name: "advisories",          path: "/conformity/advisories",        home: "Incidents", hook: "useListConformityAdvisories" },
+  { name: "vuln reports",        path: "/conformity/vuln-reports",      home: "Incidents", hook: "useListConformityVulnReports" },
 ];
 
 /** Every /api/... literal, including template-literal segments like ${id}. */
@@ -76,10 +82,14 @@ function main() {
   const i = process.argv.indexOf("--baseline");
   const baseline = i >= 0 ? Number(process.argv[i + 1]) : 0;
 
-  // What the UI actually calls.
+  // What the UI actually calls — literal /api paths, plus the full source
+  // text for hook-name checks on spec-first capabilities.
   const called = new Set();
+  let appSource = "";
   for (const f of sourceFiles(FRONTEND, [".ts", ".tsx"])) {
-    for (const m of readFileSync(f, "utf8").matchAll(API_PATH)) called.add(m[0]);
+    const text = readFileSync(f, "utf8");
+    appSource += text;
+    for (const m of text.matchAll(API_PATH)) called.add(m[0]);
   }
 
   // What the API actually serves — the positive control.
@@ -97,7 +107,9 @@ function main() {
       stale.push(cap);
       continue;
     }
-    if ([...called].some((p) => p.includes(cap.path))) reached.push(cap);
+    const viaPath = [...called].some((p) => p.includes(cap.path));
+    const viaHook = cap.hook ? appSource.includes(cap.hook) : false;
+    if (viaPath || viaHook) reached.push(cap);
     else orphans.push(cap);
   }
 

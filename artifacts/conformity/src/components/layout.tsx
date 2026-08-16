@@ -108,7 +108,6 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
  * menu is DELETED when the last entry moves. Do not add new surfaces here.
  */
 const TRANSITIONAL: NavItem[] = [
-  { href: "/psirt-tools", label: "PSIRT Toolkit", icon: ShieldAlert, description: "Advisories & SBOM/KEV triage — re-homes into Incidents (7.4)" },
   { href: "/product-portfolio", label: "Portfolio", icon: Boxes, description: "Re-homes into Products (7.3)" },
   { href: "/reports", label: "Reports", icon: FileText, description: "Re-homes into Home and the product file" },
   { href: "/flows", label: "Flows", icon: GitBranch, description: "Admin-authored assessment process flows" },

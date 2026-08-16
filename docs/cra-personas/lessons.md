@@ -583,10 +583,8 @@ content had ALREADY been re-homed (the wizard's StandardsEditor) before the
 phase began. The psirt page — the Incidents donor — made zero API calls.
 
 **Re-tuning applied (what Phase 8 should be):** the deferrals that expired
-with this phase, in value order: (1) **issue #62** — the persona phases are
-done, so the 31 auth-failing tests must now authenticate (never by flipping
-DEMO_READONLY); (2) **PSIRT toolkit absorption** into Incidents — the last
-transitional donor with content; (3) a **real CE stage** in the product
+with this phase, in value order: (1) **issue #62** — DONE 8.1; (2) **PSIRT
+toolkit absorption** into Incidents — DONE 8.2; (3) a **real CE stage** in the product
 file, retiring the CE studio tool; (4) the **NIS2 full-text reader** (corpus
 bundle + Library mode) and **W2.4 national transpositions**; (5) the 15
 Dependabot findings. The More menu should be EMPTY by the end of Phase 8,

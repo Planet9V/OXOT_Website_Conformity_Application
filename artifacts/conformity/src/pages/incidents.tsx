@@ -19,8 +19,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { ShieldAlert, ArrowRight, Wrench, Building2, Plus } from "lucide-react";
+import { ShieldAlert, ArrowRight, Building2, Plus } from "lucide-react";
 import { Cite } from "@/components/statutory-flyout";
+import { PsirtPanel } from "@/components/incidents/psirt-panel";
 
 /**
  * The Incidents destination (task 7.4) — every statutory reporting clock in
@@ -146,14 +147,7 @@ export default function IncidentsPage() {
 
       <EntityIncidentsSection />
 
-      <p className="text-xs text-muted-foreground">
-        <Wrench className="inline h-3 w-3 mr-1" />
-        The PSIRT toolkit (advisory drafting, SBOM/KEV triage) remains available under{" "}
-        <Link href="/psirt-tools" className="text-primary hover:underline">
-          PSIRT toolkit
-        </Link>{" "}
-        while its content is re-homed here.
-      </p>
+      <PsirtPanel />
     </div>
   );
 }

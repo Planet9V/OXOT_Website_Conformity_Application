@@ -42,7 +42,6 @@ const Assessment = lazy(() => import('./pages/assessment'));
 const Flows = lazy(() => import('./pages/flows'));
 const Reports = lazy(() => import('./pages/reports'));
 const ReportWorkspace = lazy(() => import('./pages/report-workspace'));
-const Psirt = lazy(() => import('./pages/psirt'));
 const ProductPortfolioPage = lazy(() =>
   import('./pages/product-portfolio').then((m) => ({ default: m.ProductPortfolioPage })),
 );
@@ -143,13 +142,6 @@ function ShellRoutes() {
               <IncidentsPage />
             </ErrorBoundary>
           </Route>
-          {/* The static PSIRT toolkit stays reachable while its content
-              re-homes into Incidents (donor doctrine, 7.4). */}
-          <Route path="/psirt-tools">
-            <ErrorBoundary>
-              <Psirt />
-            </ErrorBoundary>
-          </Route>
           <Route path="/authorities" component={AuthoritiesPage} />
           <Route path="/signatures" component={SignaturesPage} />
           <Route path="/products">
@@ -181,7 +173,9 @@ function ShellRoutes() {
           {/* ── Retired paths redirect to their destination, so old bookmarks
               and deep links keep working. */}
           <Route path="/overview"><Redirect to="/" /></Route>
+          {/* psirt + psirt-tools retired (8.2): the real machinery lives in Incidents. */}
           <Route path="/psirt"><Redirect to="/incidents" /></Route>
+          <Route path="/psirt-tools"><Redirect to="/incidents" /></Route>
           <Route path="/psirt/*"><Redirect to="/incidents" /></Route>
           <Route path="/steward"><Redirect to="/projects" /></Route>
           <Route path="/open-source-steward"><Redirect to="/projects" /></Route>
