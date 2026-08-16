@@ -37,7 +37,14 @@ const SECTIONS: {
     href: "/library/nis2",
     title: "NIS2, verbatim",
     description:
-      "Directive (EU) 2022/2555 as published — 46 articles, 144 recitals — from the same reproducible Official Journal pipeline as the CRA reader. States plainly that no national transposition measure is loaded yet.",
+      "Directive (EU) 2022/2555 as published — 46 articles, 144 recitals — from the same reproducible Official Journal pipeline as the CRA reader. The Dutch transposition is loaded (below); other Member States' measures are not.",
+    icon: BookOpen,
+  },
+  {
+    href: "/library/cbw",
+    title: "Cyberbeveiligingswet, verbatim (NL)",
+    description:
+      "The Dutch NIS2 transposition as promulgated — Stb. 2026, 187, in force 15 August 2026 — 111 artikelen in 16 hoofdstukken, in Dutch, from the same reproducible pipeline. This is the text that binds entities established in the Netherlands.",
     icon: BookOpen,
   },
   {

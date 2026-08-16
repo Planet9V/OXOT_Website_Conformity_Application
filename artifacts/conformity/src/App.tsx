@@ -43,6 +43,7 @@ const ReportWorkspace = lazy(() => import('./pages/report-workspace'));
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
 const Nis2ReaderPage = lazy(() => import('./pages/nis2-reader'));
+const CbwReaderPage = lazy(() => import('./pages/cbw-reader'));
 const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
@@ -155,6 +156,7 @@ function ShellRoutes() {
           <Route path="/library" component={LibraryPage} />
           <Route path="/library/statute" component={CraWikiPage} />
           <Route path="/library/nis2" component={Nis2ReaderPage} />
+          <Route path="/library/cbw" component={CbwReaderPage} />
           <Route path="/library/statute/*" component={CraWikiPage} />
           <Route path="/library/acts" component={Regulations} />
           <Route path="/library/acts/:key" component={RegulationDetail} />

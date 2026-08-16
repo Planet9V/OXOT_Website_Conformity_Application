@@ -794,8 +794,32 @@ HANDOVER's "Next steps" order.
   RFI → inbox → answer visible through the portal → revoke closes (403).
   G6 live 7/7 with reviewed screenshots
   (`artifacts_verify/auditor_track_93b/`).
-- **9.4** W2.4 transposition content — BLOCKED on sourced verbatim national
-  texts (NL, then DE); the NIS2 reader banner states the gap.
+- **9.4a done 2026-08-16** W2.4 NL: the Cyberbeveiligingswet corpus + reader.
+  Unblocked the same day by locating the AUTHENTIC sources (user asked for a
+  web search): the promulgation Stb. 2026, 187 (structured XML from
+  zoek.officielebekendmakingen.nl — the NL analogue of the OJ) and the
+  consolidated register BWBR0052872, in force 2026-08-15 (the DAY BEFORE
+  this build). Pipeline mirrors CRA/NIS2: committed source →
+  `build_cbw_corpus_from_stb.mjs` (hand-rolled ordered-XML parser; 16
+  hoofdstukken, 111 artikelen incl. inserted 21a — numbering asserted
+  contiguous; amendment articles 99–105 are `wijzig-artikel` and their
+  QUOTED provisions are payload, never articles) → sync →
+  `verify_cbw_corpus.mjs` (A source byte-match live, B register in-force
+  probe with an honest "----" on unprovable amendment absence, C integrity +
+  bundle sha, D verbatim probes incl. the Art. 27 72-uur clock, F framing:
+  national_transposition, Dutch, never a translation) → CI (verifier +
+  byte-for-byte reproducibility). Reader at /library/cbw: Dutch VERBATIM
+  (no official translation exists; translating would be reconstruction),
+  amendment badge, § section labels; the NIS2 reader's banner now states
+  the NL measure is loaded and links it. G2 712/0/2; G6 live 8/8
+  (`artifacts_verify/cbw_reader_94a/`).
+- **9.4b** W2.4 DE: the NIS2UmsuCG is located (BGBl. 2025 I Nr. 301,
+  promulgated 2025-12-05, in force 2025-12-06 — PDF only) but it is an
+  ARTIKELGESETZ amending the BSIG: the readable obligations live in the
+  consolidated amended BSI-Gesetz, so the NL one-self-contained-law parse
+  does not transfer. Decide source strategy (BGBl PDF vs consolidated
+  gesetze-im-internet.de XML and what each can honestly claim) before
+  building.
 - **9.5 done 2026-08-16** G4 driven 7 → 0 and the CI baseline lowered to a
   COVENANT (ci.yml `--baseline 0`, via the Edit tool per L48). The seven:
   both cra-analytics-suite copies and the server incident timeline claimed
