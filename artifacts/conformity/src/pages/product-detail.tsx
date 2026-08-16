@@ -307,6 +307,39 @@ function StatutoryFile({ productId }: { productId: number }) {
           </div>
         )}
 
+        {/* CE marking — Arts. 29/30, derivation only (8.3). */}
+        {data.ceMarking && (
+          <div data-testid="ce-marking-block">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+              CE marking — Articles 29/30
+            </div>
+            <ul className="space-y-1">
+              {data.ceMarking.requirements.map((r: any, i: number) => (
+                <li key={i} className="flex gap-2">
+                  <span className="font-mono text-[10px] text-primary shrink-0 mt-0.5">{r.citation}</span>
+                  <span
+                    className={
+                      r.state === "met"
+                        ? "text-emerald-600 dark:text-emerald-400"
+                        : r.state === "gap"
+                          ? "text-amber-600 dark:text-amber-500"
+                          : "text-muted-foreground"
+                    }
+                  >
+                    {r.text}
+                    {r.state === "not_derivable" ? " — a physical fact this record cannot derive" : ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-1.5 text-[11px] text-muted-foreground">
+              This file states what the record shows against what the articles require. It
+              never concludes that the marking may be affixed — that follows the
+              conformity assessment itself.
+            </p>
+          </div>
+        )}
+
         {/* What is missing */}
         {data.gaps?.length > 0 && (
           <div className="pt-3 border-t border-border/60">

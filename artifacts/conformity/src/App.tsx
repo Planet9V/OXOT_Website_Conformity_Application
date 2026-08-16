@@ -47,7 +47,6 @@ const ProductPortfolioPage = lazy(() =>
 );
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
-const CeNameplateStudioPage = lazy(() => import('./pages/ce-nameplate-studio'));
 const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
@@ -234,7 +233,10 @@ function ShellRoutes() {
           <Route path="/partner-hub"><Redirect to="/products" /></Route>
           <Route path="/partner-hub/*"><Redirect to="/products" /></Route>
           <Route path="/standards"><Redirect to="/library/statute" /></Route>
-          <Route path="/ce-studio" component={CeNameplateStudioPage} />
+          {/* CE studio retired (8.3): CE facts live in each product's statutory
+              file; nameplate rendering returns when the Art. 30(6) implementing
+              acts give labels real content. */}
+          <Route path="/ce-studio"><Redirect to="/products" /></Route>
           <Route path="/archive"><Redirect to="/products" /></Route>
           <Route path="/podcast-studio" component={PodcastStudioPage} />
           <Route path="/podcast-studio/*" component={PodcastStudioPage} />

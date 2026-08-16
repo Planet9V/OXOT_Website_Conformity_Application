@@ -8,8 +8,14 @@ import {
   conformityBomComponentsTable,
   conformityNotifiedBodyEngagementsTable,
   conformityActivityTable,
+  conformityAssessmentsTable,
+  conformityArtifactsTable,
+  conformityAttestationsTable,
 } from "@workspace/db";
 import { requireAuth, getSession } from "../lib/adminAuth";
+import { assessCeMarking } from "../lib/ceMarking";
+import { subjectFor } from "../lib/attestationStore";
+import type { ConformityModule as CeModule } from "../lib/notifiedBody";
 import { resolveVersion } from "../lib/productVersions";
 import {
   assessComponentDueDiligence,
@@ -135,8 +141,45 @@ router.get(
         }
       : null;
 
+    // ---- CE marking (8.3) — derivation only, Arts. 28/29/30 ---------------
+    const assessments = await db
+      .select()
+      .from(conformityAssessmentsTable)
+      .where(eq(conformityAssessmentsTable.productId, productId));
+    let euDocGenerated = false;
+    let euDocSigned = false;
+    if (assessments.length) {
+      const artifacts = await db
+        .select()
+        .from(conformityArtifactsTable)
+        .where(
+          inArray(
+            conformityArtifactsTable.assessmentId,
+            assessments.map((a) => a.id),
+          ),
+        );
+      const euDocs = artifacts.filter((a) => a.artifactType === "eu_doc");
+      euDocGenerated = euDocs.length > 0;
+      if (euDocGenerated) {
+        const subjects = euDocs.map((a) => subjectFor.declaration(a.assessmentId));
+        const signatures = await db
+          .select()
+          .from(conformityAttestationsTable)
+          .where(inArray(conformityAttestationsTable.subject, subjects));
+        euDocSigned = signatures.some((s) => s.kind === "declaration_signed");
+      }
+    }
+    const ceMarking = assessCeMarking({
+      euDocGenerated,
+      euDocSigned,
+      placedOnMarketDate: product.placedOnMarketDate,
+      nbModule: (open?.module as CeModule) ?? null,
+      nbCertificateCleared: notifiedBody?.certificate.clearedToPlaceOnMarket ?? null,
+    });
+
     // ---- What is missing, in one list -------------------------------------
     const gaps: { citation: string; gap: string }[] = [];
+    for (const g of ceMarking.gaps) gaps.push({ citation: "Article 30", gap: g });
     for (const v of versions) for (const g of v.gaps) gaps.push({ citation: "Article 13(13)/13(18)", gap: g });
     for (const g of endOfSupport.gaps) gaps.push({ citation: "Article 13(8)", gap: g });
     if (!versionRows.length) {
@@ -171,6 +214,7 @@ router.get(
       dueDiligence: { summary: dueDiligence, components: componentAssessments },
       endOfSupport,
       notifiedBody,
+      ceMarking,
       gaps,
       /** Deliberately a count of what is missing, never a score. */
       gapCount: gaps.length,

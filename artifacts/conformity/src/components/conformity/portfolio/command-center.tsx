@@ -232,18 +232,11 @@ export function CommandCenter() {
                   Direct intervention board for blocked requirements, Annex I security evaluations, and CE nameplate production.
                 </CardDescription>
               </div>
-              <div className="flex items-center gap-2">
-                <Link href="/standards">
-                  <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
-                    Standards Matrix (CRA Art. 27)
-                  </Button>
-                </Link>
-                <Link href="/ce-studio">
-                  <Button size="sm" className="gap-1.5 font-mono text-xs">
-                    CE Nameplate Studio
-                  </Button>
-                </Link>
-              </div>
+              <Link href="/library/statute">
+                <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
+                  Presumption of conformity (CRA Art. 27)
+                </Button>
+              </Link>
             </div>
           </CardHeader>
           <CardContent className="pt-4">

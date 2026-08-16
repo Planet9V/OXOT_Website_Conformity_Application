@@ -111,7 +111,6 @@ const TRANSITIONAL: NavItem[] = [
   { href: "/product-portfolio", label: "Portfolio", icon: Boxes, description: "Re-homes into Products (7.3)" },
   { href: "/reports", label: "Reports", icon: FileText, description: "Re-homes into Home and the product file" },
   { href: "/flows", label: "Flows", icon: GitBranch, description: "Admin-authored assessment process flows" },
-  { href: "/ce-studio", label: "CE Studio", icon: Grid3x3, description: "Re-homes into the product file (7.3)" },
   { href: "/auditor-portal", label: "Auditor Portal", icon: ClipboardCheck, description: "Separate notified-body track" },
 ];
 
