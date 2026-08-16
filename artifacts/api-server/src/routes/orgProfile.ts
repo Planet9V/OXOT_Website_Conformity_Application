@@ -16,6 +16,7 @@ import {
 import { requireAuth } from "../lib/adminAuth";
 import { assessReportingObligation } from "../lib/reportingObligation";
 import { deriveStatus } from "../lib/statusDerivers";
+import { defaultTeamRoleFor } from "../lib/teamRouting";
 
 /**
  * The organisation's own profile: what it does, and which acts it is subject to.
@@ -239,6 +240,10 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
         derivedFrom: derived ? derived.derivedFrom : null,
         evaluationCount: evals.length,
         owners: [...new Set(evals.map((e) => e.owner).filter(Boolean))],
+        // Internal routing DEFAULT (6.3): which team role's inbox this lands
+        // in. Workflow scoping, not a statutory assignment — the act binds
+        // the organisation, not a member of its staff.
+        defaultTeamRole: defaultTeamRoleFor(r.themeKey),
         nextDueDate:
           evals
             .map((e) => e.dueDate)

@@ -508,12 +508,31 @@ export interface UpdateTeamMemberInput {
   password?: string;
 }
 
+/**
+ * The member's internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin/demo sessions — env-configured accounts are not team members.
+ * @nullable
+ */
+export type MyProfileTeamRole = typeof MyProfileTeamRole[keyof typeof MyProfileTeamRole] | null;
+
+
+export const MyProfileTeamRole = {
+  compliance_coordinator: 'compliance_coordinator',
+  engineering_lead: 'engineering_lead',
+  psirt: 'psirt',
+  signatory: 'signatory',
+} as const;
+
 export interface MyProfile {
   username: string;
   /** @nullable */
   displayName: string | null;
   /** admin | demo | member */
   role: string;
+  /**
+     * The member's internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin/demo sessions — env-configured accounts are not team members.
+     * @nullable
+     */
+  teamRole: MyProfileTeamRole;
   /**
      * ISO timestamp the member account was created. Null for admin/demo.
      * @nullable
@@ -1013,6 +1032,8 @@ export interface ProviderStatus {
 
 export interface LlmConfig {
   /** @nullable */
+  openrouterApiKey?: string | null;
+  /** @nullable */
   chatModel?: string | null;
   /** @nullable */
   embeddingModel?: string | null;
@@ -1027,6 +1048,8 @@ export interface LlmConfig {
 }
 
 export interface LlmConfigInput {
+  /** @nullable */
+  openrouterApiKey?: string | null;
   /** @nullable */
   chatModel?: string | null;
   /** @nullable */

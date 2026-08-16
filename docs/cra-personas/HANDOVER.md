@@ -40,10 +40,11 @@ persisted data comes back. G7 is the retro — update `lessons.md` and re-tune t
 
 ## What is next
 
-**Phase 6 — team role model.** Required by D12 (two equal daily users).
-6.1 (four roles as data) and 6.2 (plaintext-password removal) are **done**
-2026-08-15 — see task_plan.md. Next is **6.3**: scope obligations and evidence
-requests by role, and expose `teamRole` on `/me` so the home can branch.
+**Phase 6 — team role model: COMPLETE 2026-08-15** (6.1 roles as data,
+6.2 plaintext-password removal, 6.3 role scoping — obligations carry
+`defaultTeamRole`, `/me` carries the member's `teamRole`). See task_plan.md.
+Close it with **G7** (update lessons.md, re-tune Phase 7) before starting
+Phase 7.
 
 **Phase 7 — shell redesign.** Nine destinations in four groups, replacing 34
 pages and 51 route registrations, built *on* the existing 181 design tokens and

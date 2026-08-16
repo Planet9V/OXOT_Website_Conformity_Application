@@ -240,6 +240,7 @@ export const GetMyProfileResponse = zod.object({
   "username": zod.string(),
   "displayName": zod.string().nullable(),
   "role": zod.string().describe('admin | demo | member'),
+  "teamRole": zod.union([zod.literal('compliance_coordinator'),zod.literal('engineering_lead'),zod.literal('psirt'),zod.literal('signatory'),zod.literal(null)]).nullable().describe('The member\'s internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin\/demo sessions — env-configured accounts are not team members.'),
   "memberSince": zod.string().nullable().describe('ISO timestamp the member account was created. Null for admin\/demo.'),
   "needsOnboarding": zod.boolean(),
   "toursSeen": zod.array(zod.string()).describe('Guided-tour ids this account has already seen. Persisted on the member account; always empty for admin\/demo sessions (they use per-browser storage).')
@@ -262,6 +263,7 @@ export const UpdateMyProfileResponse = zod.object({
   "username": zod.string(),
   "displayName": zod.string().nullable(),
   "role": zod.string().describe('admin | demo | member'),
+  "teamRole": zod.union([zod.literal('compliance_coordinator'),zod.literal('engineering_lead'),zod.literal('psirt'),zod.literal('signatory'),zod.literal(null)]).nullable().describe('The member\'s internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin\/demo sessions — env-configured accounts are not team members.'),
   "memberSince": zod.string().nullable().describe('ISO timestamp the member account was created. Null for admin\/demo.'),
   "needsOnboarding": zod.boolean(),
   "toursSeen": zod.array(zod.string()).describe('Guided-tour ids this account has already seen. Persisted on the member account; always empty for admin\/demo sessions (they use per-browser storage).')
@@ -297,6 +299,7 @@ export const CompleteMyOnboardingResponse = zod.object({
   "username": zod.string(),
   "displayName": zod.string().nullable(),
   "role": zod.string().describe('admin | demo | member'),
+  "teamRole": zod.union([zod.literal('compliance_coordinator'),zod.literal('engineering_lead'),zod.literal('psirt'),zod.literal('signatory'),zod.literal(null)]).nullable().describe('The member\'s internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin\/demo sessions — env-configured accounts are not team members.'),
   "memberSince": zod.string().nullable().describe('ISO timestamp the member account was created. Null for admin\/demo.'),
   "needsOnboarding": zod.boolean(),
   "toursSeen": zod.array(zod.string()).describe('Guided-tour ids this account has already seen. Persisted on the member account; always empty for admin\/demo sessions (they use per-browser storage).')
@@ -315,6 +318,7 @@ export const MarkMyTourSeenResponse = zod.object({
   "username": zod.string(),
   "displayName": zod.string().nullable(),
   "role": zod.string().describe('admin | demo | member'),
+  "teamRole": zod.union([zod.literal('compliance_coordinator'),zod.literal('engineering_lead'),zod.literal('psirt'),zod.literal('signatory'),zod.literal(null)]).nullable().describe('The member\'s internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin\/demo sessions — env-configured accounts are not team members.'),
   "memberSince": zod.string().nullable().describe('ISO timestamp the member account was created. Null for admin\/demo.'),
   "needsOnboarding": zod.boolean(),
   "toursSeen": zod.array(zod.string()).describe('Guided-tour ids this account has already seen. Persisted on the member account; always empty for admin\/demo sessions (they use per-browser storage).')
@@ -1411,6 +1415,7 @@ export const DeleteCarouselSlideResponse = zod.object({
  */
 export const GetLlmSettingsResponse = zod.object({
   "config": zod.object({
+  "openrouterApiKey": zod.string().nullish(),
   "chatModel": zod.string().nullish(),
   "embeddingModel": zod.string().nullish(),
   "longContextModel": zod.string().nullish(),
@@ -1439,6 +1444,7 @@ export const GetLlmSettingsResponse = zod.object({
  * @summary Save LLM model selection
  */
 export const SaveLlmSettingsBody = zod.object({
+  "openrouterApiKey": zod.string().nullish(),
   "chatModel": zod.string().nullish(),
   "embeddingModel": zod.string().nullish(),
   "longContextModel": zod.string().nullish(),
@@ -1449,6 +1455,7 @@ export const SaveLlmSettingsBody = zod.object({
 
 export const SaveLlmSettingsResponse = zod.object({
   "config": zod.object({
+  "openrouterApiKey": zod.string().nullish(),
   "chatModel": zod.string().nullish(),
   "embeddingModel": zod.string().nullish(),
   "longContextModel": zod.string().nullish(),

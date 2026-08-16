@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { MyProfileTeamRole } from './myProfileTeamRole';
 
 export interface MyProfile {
   username: string;
@@ -12,6 +13,11 @@ export interface MyProfile {
   displayName: string | null;
   /** admin | demo | member */
   role: string;
+  /**
+     * The member's internal team role (task 6.3), used to scope the home surface and inbox. Null when unassigned, and always null for admin/demo sessions — env-configured accounts are not team members.
+     * @nullable
+     */
+  teamRole: MyProfileTeamRole;
   /**
      * ISO timestamp the member account was created. Null for admin/demo.
      * @nullable

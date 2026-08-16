@@ -5024,6 +5024,13 @@ components:
         username: { type: string }
         displayName: { type: ["string", "null"] }
         role: { type: string, description: "admin | demo | member" }
+        teamRole:
+          type: ["string", "null"]
+          enum: [compliance_coordinator, engineering_lead, psirt, signatory, null]
+          description: >-
+            The member's internal team role (task 6.3), used to scope the home
+            surface and inbox. Null when unassigned, and always null for
+            admin/demo sessions — env-configured accounts are not team members.
         memberSince:
           type: ["string", "null"]
           description: "ISO timestamp the member account was created. Null for admin/demo."
@@ -5039,6 +5046,7 @@ components:
         - username
         - displayName
         - role
+        - teamRole
         - memberSince
         - needsOnboarding
         - toursSeen
@@ -5822,6 +5830,12 @@ components:
     LlmConfig:
       type: object
       properties:
+        # Present in the running API and its three consumers since b360c37 but
+        # never added to this spec — the generated types were hand-edited
+        # instead, and every codegen run silently reverted them. Restored here
+        # (2026-08-15) so the spec matches reality and codegen is safe to run.
+        openrouterApiKey:
+          type: ["string", "null"]
         chatModel:
           type: ["string", "null"]
         embeddingModel:
@@ -5837,6 +5851,8 @@ components:
     LlmConfigInput:
       type: object
       properties:
+        openrouterApiKey:
+          type: ["string", "null"]
         chatModel:
           type: ["string", "null"]
         embeddingModel:

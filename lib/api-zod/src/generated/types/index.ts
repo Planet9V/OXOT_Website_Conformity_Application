@@ -221,6 +221,7 @@ export * from './mediaAsset';
 export * from './menuPlacement';
 export * from './modelInfo';
 export * from './myProfile';
+export * from './myProfileTeamRole';
 export * from './navItem';
 export * from './navItemInput';
 export * from './newsletter';

@@ -558,7 +558,14 @@ branch on.
   from the database; scrypt hash is the only stored credential; verified live
   (create → login → rotate → old password 401, DTOs carry no password field).
 - **6.3** Scope obligations and evidence requests by role, so an inbox can be
-  role-scoped rather than showing everyone everything.
+  role-scoped rather than showing everyone everything. — **done 2026-08-15**:
+  every obligation now carries `defaultTeamRole` (theme-keyed registry in
+  `lib/teamRouting.ts` — a workflow routing default, not a statutory
+  assignment; unmapped themes land with the coordinator, never with nobody),
+  and `/me` exposes the member's `teamRole` (spec-first via openapi.yaml +
+  orval). The evidence-request half is deferred WITH REASON: the P2 request
+  model does not exist yet (design doc: "no request model") — it is built in
+  Phase 7, and scoping it lands there.
 
 Acceptance: a user's role determines what their home surfaces, and no password
 is readable in the database.

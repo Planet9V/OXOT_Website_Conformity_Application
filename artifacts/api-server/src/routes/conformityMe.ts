@@ -38,6 +38,8 @@ function synthProfile(session: Session) {
     username: session.username,
     displayName: session.displayName ?? null,
     role: session.role,
+    // Env-configured accounts are not team members and hold no team role.
+    teamRole: null,
     memberSince: null,
     needsOnboarding: false,
     toursSeen: [],
@@ -49,6 +51,8 @@ function memberProfile(row: ConformityMemberRow) {
     username: row.username,
     displayName: row.displayName,
     role: "member" as const,
+    // Null while unassigned — the home renders a neutral surface then (6.3).
+    teamRole: row.teamRole ?? null,
     memberSince: row.createdAt.toISOString(),
     needsOnboarding: row.onboardedAt === null,
     toursSeen: row.toursSeen,
