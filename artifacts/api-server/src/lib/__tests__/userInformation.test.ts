@@ -27,6 +27,7 @@ function product(over: Partial<ConformityProductRow> = {}): ConformityProductRow
   return {
     id: 1,
     name: "",
+    orgRole: null,
     description: "",
     manufacturerName: "",
     manufacturerAddress: "",

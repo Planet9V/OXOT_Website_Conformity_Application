@@ -18,6 +18,14 @@ export const conformityProductsTable = pgTable("conformity_products", {
   authorizedRep: text("authorized_rep").notNull().default(""),
   // hardware | software | hardware_with_software | remote_data_processing
   productType: text("product_type").notNull().default("software"),
+  /**
+   * The role THIS organisation holds for THIS product — one of the
+   * CANONICAL_ROLES keys (orgRoles.ts), or null until somebody declares it
+   * (D5: role is per product, never inherited from the org; never guessed).
+   * Selects which stages the product file renders: creation stages for a
+   * manufacturer, the Arts. 19/20 verification gate for importer/distributor.
+   */
+  orgRole: text("org_role"),
   version: text("version").notNull().default(""),
   intendedUse: text("intended_use").notNull().default(""),
   // ISO date (YYYY-MM-DD) or null. Art. 13(8): five years is the default, not an

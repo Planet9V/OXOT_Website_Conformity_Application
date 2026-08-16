@@ -111,6 +111,8 @@ export * from './conformityPortfolio';
 export * from './conformityProduct';
 export * from './conformityProductDetail';
 export * from './conformityProductInput';
+export * from './conformityProductInputOrgRole';
+export * from './conformityProductOrgRole';
 export * from './conformityPsirtProfile';
 export * from './conformityReport';
 export * from './conformityReportAudience';

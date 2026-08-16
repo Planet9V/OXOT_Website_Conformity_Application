@@ -1578,6 +1578,23 @@ export interface SocialPostLogEntry {
   createdAt: string;
 }
 
+/**
+ * The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.
+ * @nullable
+ */
+export type ConformityProductOrgRole = typeof ConformityProductOrgRole[keyof typeof ConformityProductOrgRole] | null;
+
+
+export const ConformityProductOrgRole = {
+  manufacturer: 'manufacturer',
+  authorised_representative: 'authorised_representative',
+  importer: 'importer',
+  distributor: 'distributor',
+  oss_steward: 'oss_steward',
+  system_integrator: 'system_integrator',
+  operator: 'operator',
+} as const;
+
 export interface ConformityProduct {
   id: number;
   name: string;
@@ -1588,6 +1605,11 @@ export interface ConformityProduct {
   productType: string;
   version: string;
   intendedUse: string;
+  /**
+     * The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.
+     * @nullable
+     */
+  orgRole: ConformityProductOrgRole;
   /** @nullable */
   supportPeriodStart: string | null;
   /** @nullable */
@@ -1595,6 +1617,22 @@ export interface ConformityProduct {
   createdAt: string;
   updatedAt: string;
 }
+
+/**
+ * @nullable
+ */
+export type ConformityProductInputOrgRole = typeof ConformityProductInputOrgRole[keyof typeof ConformityProductInputOrgRole] | null;
+
+
+export const ConformityProductInputOrgRole = {
+  manufacturer: 'manufacturer',
+  authorised_representative: 'authorised_representative',
+  importer: 'importer',
+  distributor: 'distributor',
+  oss_steward: 'oss_steward',
+  system_integrator: 'system_integrator',
+  operator: 'operator',
+} as const;
 
 export interface ConformityProductInput {
   /** @minLength 1 */
@@ -1606,6 +1644,8 @@ export interface ConformityProductInput {
   productType?: string;
   version?: string;
   intendedUse?: string;
+  /** @nullable */
+  orgRole?: ConformityProductInputOrgRole;
   /** @nullable */
   supportPeriodStart?: string | null;
   /** @nullable */

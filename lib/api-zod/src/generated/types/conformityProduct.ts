@@ -5,6 +5,7 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
+import type { ConformityProductOrgRole } from './conformityProductOrgRole';
 
 export interface ConformityProduct {
   id: number;
@@ -16,6 +17,11 @@ export interface ConformityProduct {
   productType: string;
   version: string;
   intendedUse: string;
+  /**
+     * The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.
+     * @nullable
+     */
+  orgRole: ConformityProductOrgRole;
   /** @nullable */
   supportPeriodStart: string | null;
   /** @nullable */

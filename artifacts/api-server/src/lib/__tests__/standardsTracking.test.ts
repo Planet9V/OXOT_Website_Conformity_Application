@@ -86,6 +86,7 @@ function product(): ConformityProductRow {
   return {
     id: 1,
     name: "NovaGuard Smart Home Hub",
+    orgRole: null,
     description: "Connected home hub",
     manufacturerName: "NovaGuard Labs BV",
     manufacturerAddress: "Keizersgracht 1, Amsterdam, NL",

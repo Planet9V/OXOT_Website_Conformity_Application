@@ -599,6 +599,15 @@ language is not discarded.
   live by scripts/verify_home_72_playwright.mjs (jack scoped, admin neutral).
 - **7.3** Products as the polymorphic subject file — renders per the product's
   role, absorbing notified body, CE, versions, end-of-support, BOM evidence.
+  — **7.3a done 2026-08-15** (the polymorphic spine): products carry
+  `orgRole` (nullable, spec-first, validated; null renders the declaration
+  prompt, never a guess); a manufacturer file shows the Assess stage
+  (notified-body engagements, Art. 32 verdicts from the engine, Annex VIII
+  single-body 409 surfaced verbatim); an importer/distributor file shows the
+  Verify gate (Arts. 19/20 tri-state checklist, duty-to-refrain hold as a
+  refusal) and NO authoring stages. G8 orphans 6 → 4. Remaining for 7.3b:
+  absorb CE studio, standards matrix, versions, end-of-support, importer
+  archive and partner-hub stages 1–4 into the file.
 - **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.
 - **7.5** Authorities, Signatures, Projects, Organisation — the four surfaces
   that give the six orphaned capabilities a home. Includes building the P2

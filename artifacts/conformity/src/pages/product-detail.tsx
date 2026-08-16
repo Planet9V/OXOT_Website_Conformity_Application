@@ -39,8 +39,36 @@ import { stageLabel } from "@/lib/conformity";
 import { stageProgress } from "@/lib/journey";
 import { ArrowLeft, Plus, Trash2, ArrowRight, ClipboardCheck, FileText, Lock, Upload, ShieldCheck, Eye, Copy, Pencil, Sparkles, Zap, CheckCircle2 } from "lucide-react";
 import { ProductDocumentVaultModal } from "@/components/conformity/portfolio/product-document-vault-modal";
+import { VerifyPanel } from "@/components/product-file/verify-panel";
+import { NotifiedBodyPanel } from "@/components/product-file/notified-body-panel";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
+
+/**
+ * The role THIS organisation holds for THIS product (D5) — mirrors
+ * CANONICAL_ROLES in @workspace/db, which cannot be imported into the browser
+ * bundle. "unassigned" is a UI sentinel for null (Radix forbids empty values).
+ */
+const ORG_ROLE_OPTIONS = [
+  { value: "manufacturer", label: "Manufacturer" },
+  { value: "authorised_representative", label: "Authorised representative" },
+  { value: "importer", label: "Importer" },
+  { value: "distributor", label: "Distributor" },
+  { value: "oss_steward", label: "Open-source software steward" },
+  { value: "system_integrator", label: "System integrator" },
+  { value: "operator", label: "Operator / asset owner" },
+] as const;
+
+const ORG_ROLE_LABEL: Record<string, string> = Object.fromEntries(
+  ORG_ROLE_OPTIONS.map((o) => [o.value, o.label]),
+);
 
 function InfoRow({ label, value, onEdit }: { label: string; value?: string | null; onEdit?: () => void }) {
   return (
@@ -221,6 +249,7 @@ export default function ProductDetail() {
     intendedUse: "",
     manufacturerAddress: "",
     description: "",
+    orgRole: "unassigned",
   });
 
   useEffect(() => {
@@ -234,6 +263,7 @@ export default function ProductDetail() {
         intendedUse: data.product.intendedUse || "",
         manufacturerAddress: data.product.manufacturerAddress || "",
         description: data.product.description || "",
+        orgRole: (data.product as any).orgRole ?? "unassigned",
       });
     }
   }, [data?.product]);
@@ -314,9 +344,16 @@ export default function ProductDetail() {
       data: {
         ...editForm,
         name: editForm.name.trim(),
-      },
+        orgRole: editForm.orgRole === "unassigned" ? null : editForm.orgRole,
+      } as any,
     });
   };
+
+  // The product file renders per the product's role (D5). Null means nobody
+  // has declared it, so the file shows the declaration prompt and the
+  // standard content — it never guesses a role.
+  const orgRole = (product as any).orgRole ?? null;
+  const isVerificationShape = orgRole === "importer" || orgRole === "distributor";
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto space-y-8">
@@ -332,7 +369,18 @@ export default function ProductDetail() {
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <span className="oxot-kicker block mb-1">REGISTERED PRODUCT DOSSIER</span>
-              <CardTitle className="text-3xl font-serif font-normal text-foreground">{product.name}</CardTitle>
+              <div className="flex flex-wrap items-center gap-3">
+                <CardTitle className="text-3xl font-serif font-normal text-foreground">{product.name}</CardTitle>
+                {orgRole ? (
+                  <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30 text-[11px]">
+                    Our role: {ORG_ROLE_LABEL[orgRole] ?? orgRole}
+                  </Badge>
+                ) : (
+                  <Badge variant="outline" className="bg-muted text-muted-foreground text-[11px]">
+                    Role not declared
+                  </Badge>
+                )}
+              </div>
               {product.description ? (
                 <p className="text-sm text-muted-foreground mt-1 max-w-2xl font-sans">
                   {product.description}
@@ -399,7 +447,22 @@ export default function ProductDetail() {
         </CardContent>
       </Card>
 
+      {orgRole === null && (
+        <p className="text-sm text-muted-foreground border border-border/60 bg-muted/20 rounded-xl px-4 py-3">
+          Nobody has declared which role this organisation holds for this product.
+          The file shows the standard content until the role is set in
+          "Edit Product Information" — it does not guess.
+        </p>
+      )}
+
+      {/* The verification shape (importer/distributor): a short gate that
+          checks what the manufacturer did. No authoring stages. */}
+      {isVerificationShape && (
+        <VerifyPanel productId={id} role={orgRole as "importer" | "distributor"} />
+      )}
+
       {/* Prominent Hero CTA for Kickoff Wizard */}
+      {!isVerificationShape && (
       <Card className="rounded-2xl border-2 border-primary/40 bg-card p-6 shadow-md relative overflow-hidden">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1.5 max-w-2xl">
@@ -428,9 +491,16 @@ export default function ProductDetail() {
           </Button>
         </div>
       </Card>
+      )}
+
+      {/* Assess stage: notified-body engagements are a manufacturer concern
+          (CRA Art. 32); a verifier checks the OUTCOME via the gate above. */}
+      {orgRole === "manufacturer" && <NotifiedBodyPanel productId={id} />}
 
       <StatutoryFile productId={id} />
 
+      {/* Assessments are authoring — the verification shape has none. */}
+      {!isVerificationShape && (
       <div className="space-y-4">
         <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
           <h2 className="text-xl font-serif font-normal text-foreground flex items-center gap-2">
@@ -552,6 +622,7 @@ export default function ProductDetail() {
           </div>
         )}
       </div>
+      )}
 
       {/* Product-Specific Supporting Document Vault & 5-10 Year CRA Provenance Section */}
       <Card className="rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-card via-card to-emerald-500/5 shadow-xl overflow-hidden">
@@ -633,6 +704,25 @@ export default function ProductDetail() {
                 onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
                 placeholder="e.g. NovaGuard Smart Home Hub v2"
               />
+            </FormField>
+
+            <FormField label="Our Role for This Product">
+              <Select
+                value={editForm.orgRole}
+                onValueChange={(v) => setEditForm({ ...editForm, orgRole: v })}
+              >
+                <SelectTrigger className="rounded-lg h-9 text-xs" id="edit-product-org-role">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="unassigned">Not declared</SelectItem>
+                  {ORG_ROLE_OPTIONS.map((o) => (
+                    <SelectItem key={o.value} value={o.value}>
+                      {o.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </FormField>
 
             <div className="grid grid-cols-2 gap-4">

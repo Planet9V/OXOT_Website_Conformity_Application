@@ -412,6 +412,8 @@ export async function seedDemo(): Promise<void> {
         "Residential security automation for consumers; controls smart locks, security cameras and alarm sensors.",
       supportPeriodStart: nowIso,
       supportPeriodEnd: supportEnd,
+      // The demo org manufactures this product (D5: role is per product).
+      orgRole: "manufacturer",
     };
     const [existingProduct] = await tx
       .select()

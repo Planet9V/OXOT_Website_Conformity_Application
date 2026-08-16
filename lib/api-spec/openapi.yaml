@@ -6734,6 +6734,14 @@ components:
         productType: { type: string }
         version: { type: string }
         intendedUse: { type: string }
+        orgRole:
+          type: ["string", "null"]
+          enum: [manufacturer, authorised_representative, importer, distributor, oss_steward, system_integrator, operator, null]
+          description: >-
+            The role THIS organisation holds for THIS product (D5 — Siemens
+            manufactures some products and imports others). Selects which
+            stages the product file renders. Null until declared; the file
+            then prompts for the declaration instead of guessing.
         supportPeriodStart: { type: ["string", "null"] }
         supportPeriodEnd: { type: ["string", "null"] }
         createdAt: { type: string }
@@ -6748,6 +6756,7 @@ components:
         - productType
         - version
         - intendedUse
+        - orgRole
         - supportPeriodStart
         - supportPeriodEnd
         - createdAt
@@ -6763,6 +6772,9 @@ components:
         productType: { type: string }
         version: { type: string }
         intendedUse: { type: string }
+        orgRole:
+          type: ["string", "null"]
+          enum: [manufacturer, authorised_representative, importer, distributor, oss_steward, system_integrator, operator, null]
         supportPeriodStart: { type: ["string", "null"] }
         supportPeriodEnd: { type: ["string", "null"] }
       required:

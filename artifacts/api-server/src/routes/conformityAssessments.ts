@@ -211,6 +211,8 @@ function toProductDto(p: ConformityProductRow) {
     productType: p.productType,
     version: p.version,
     intendedUse: p.intendedUse,
+    // Per-product role (D5) — null until declared, never defaulted.
+    orgRole: p.orgRole ?? null,
     supportPeriodStart: p.supportPeriodStart ?? null,
     supportPeriodEnd: p.supportPeriodEnd ?? null,
     createdAt: p.createdAt.toISOString(),
@@ -908,6 +910,7 @@ router.post("/conformity/products", requireAuth, async (req, res): Promise<void>
         productType: body.productType ?? "software",
         version: body.version ?? "",
         intendedUse: body.intendedUse ?? "",
+        orgRole: body.orgRole ?? null,
         supportPeriodStart: body.supportPeriodStart ?? null,
         supportPeriodEnd: body.supportPeriodEnd ?? null,
       })
@@ -1099,6 +1102,7 @@ router.put("/conformity/products/:id", requireAuth, async (req, res): Promise<vo
   if (body.productType !== undefined) set.productType = body.productType;
   if (body.version !== undefined) set.version = body.version;
   if (body.intendedUse !== undefined) set.intendedUse = body.intendedUse;
+  if (body.orgRole !== undefined) set.orgRole = body.orgRole;
   if (body.supportPeriodStart !== undefined) set.supportPeriodStart = body.supportPeriodStart;
   if (body.supportPeriodEnd !== undefined) set.supportPeriodEnd = body.supportPeriodEnd;
 
