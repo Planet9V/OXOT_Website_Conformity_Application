@@ -87,14 +87,17 @@ export default function Nis2ReaderPage() {
           <span className="font-medium text-foreground">NIS2 is a directive.</span>{" "}
           The duties that bind an entity flow through each Member State's implementing
           law (transposition deadline {nis2ArticlesData.transpositionDeadline}, per the
-          corpus metadata). The Dutch transposition — the{" "}
+          corpus metadata). Two transpositions are loaded verbatim: the Dutch{" "}
           <Link href="/library/cbw" className="text-primary hover:underline">
             Cyberbeveiligingswet
           </Link>{" "}
-          (Stb. 2026, 187, in force 15 August 2026) — is loaded verbatim; no other
-          Member State's measure is. Obligations shown elsewhere cite the Directive's
-          own text, and where a national measure diverges, the national measure
-          governs.
+          (Stb. 2026, 187) and the core of the German one, the{" "}
+          <Link href="/library/bsig" className="text-primary hover:underline">
+            BSI-Gesetz
+          </Link>{" "}
+          (Artikel 1 NIS2UmsuCG, BGBl. 2025 I Nr. 301). No other Member State's
+          measure is. Obligations shown elsewhere cite the Directive's own text, and
+          where a national measure diverges, the national measure governs.
         </p>
       </div>
 

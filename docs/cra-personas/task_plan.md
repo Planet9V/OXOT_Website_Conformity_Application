@@ -813,13 +813,30 @@ HANDOVER's "Next steps" order.
   amendment badge, § section labels; the NIS2 reader's banner now states
   the NL measure is loaded and links it. G2 712/0/2; G6 live 8/8
   (`artifacts_verify/cbw_reader_94a/`).
-- **9.4b** W2.4 DE: the NIS2UmsuCG is located (BGBl. 2025 I Nr. 301,
-  promulgated 2025-12-05, in force 2025-12-06 — PDF only) but it is an
-  ARTIKELGESETZ amending the BSIG: the readable obligations live in the
-  consolidated amended BSI-Gesetz, so the NL one-self-contained-law parse
-  does not transfer. Decide source strategy (BGBl PDF vs consolidated
-  gesetze-im-internet.de XML and what each can honestly claim) before
-  building.
+- **9.4b done 2026-08-16** W2.4 DE: the BSI-Gesetz corpus + reader. The
+  source decision was made on evidence, with the user in the loop (they
+  leaned promulgation, then consolidated): the promulgation
+  (BGBl. 2025 I Nr. 301) is PDF-only — unverifiable byte-for-byte — and
+  decisively, the BSIG has ALREADY been amended (Art. 4 G v. 11.3.2026
+  I Nr. 66, with two further changes juris records). A promulgation corpus
+  would show law no longer in force as written. Built instead from the
+  CONSOLIDATED gesetze-im-internet.de XML (`bsig_2025`, gii-norm DTD),
+  with the departure DISCLOSED: metadata carries
+  `consolidatedNotPromulgated`, `whyConsolidated`, the authentic BGBl
+  fundstelle, and the VERBATIM standangabe amendment trail — including
+  juris's own caveat ("textlich nachgewiesen, dokumentarisch noch nicht
+  abschließend bearbeitet"). Scope = the BSIG alone (Artikel 1
+  NIS2UmsuCG); the other Artikel amend other laws and are excluded,
+  stated. §§ 1..66 + 2 Anlagen; gliederung (Teil/Kapitel) tracked as
+  document-order markers; ordered-XML tokenizer factored into
+  `scripts/lib/ordered_xml_parser.mjs` (Cbw refactor proven
+  byte-identical). Verifier: live zip byte-match ignoring juris builddate
+  stamps; B1 compares the amendment trail against the LIVE record — a new
+  amendment the corpus lacks is a loud STALE FAIL; verbatim probes pin
+  the § 32 24h/72h clocks. Reader at /library/bsig with the disclosure
+  banner + trail; NIS2 reader banner now names BOTH loaded
+  transpositions. G2 712/0/2; G6 live 7/7
+  (`artifacts_verify/bsig_reader_94b/`). W2.4 is COMPLETE (NL + DE).
 - **9.5 done 2026-08-16** G4 driven 7 → 0 and the CI baseline lowered to a
   COVENANT (ci.yml `--baseline 0`, via the Edit tool per L48). The seven:
   both cra-analytics-suite copies and the server incident timeline claimed

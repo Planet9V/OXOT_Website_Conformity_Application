@@ -52,51 +52,10 @@ const WET = {
   bindsEntitiesIn: "NL",
 };
 
-// ── minimal ordered XML parser ──────────────────────────────────────────────
-// Purpose-built for this one well-formed government document (no CDATA, no
-// namespaces, no processing beyond the prolog). Yields arrays of
-// { tagName: [children] } plus { "#text": "..." } leaves — document order
-// preserved, attributes dropped (the schema's attributes are typographic).
-// A general XML library is not available at this workspace level, and the
-// count assertions below plus the verifier's verbatim probes check the parse.
-
-function decodeEntities(s) {
-  return s
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;/g, "'")
-    .replace(/&amp;/g, "&");
-}
-
-function parseXmlOrdered(input) {
-  const root = [];
-  const stack = [root];
-  const TOKEN = /<!--[\s\S]*?-->|<\?[\s\S]*?\?>|<!\[CDATA\[[\s\S]*?\]\]>|<\/?[^>]+>|[^<]+/g;
-  for (const token of input.match(TOKEN) ?? []) {
-    if (token.startsWith("<!--") || token.startsWith("<?")) continue;
-    if (token.startsWith("<![CDATA[")) {
-      throw new Error("unexpected CDATA — this parser does not handle it");
-    }
-    if (token.startsWith("</")) {
-      if (stack.length < 2) throw new Error(`unbalanced close tag ${token}`);
-      stack.pop();
-    } else if (token.startsWith("<")) {
-      const selfClosing = /\/>$/.test(token);
-      const name = token.slice(1, -1).replace(/\/$/, "").trim().split(/[\s>]/)[0];
-      if (!name) throw new Error(`unparseable tag ${token}`);
-      const node = { [name]: [] };
-      stack[stack.length - 1].push(node);
-      if (!selfClosing) stack.push(node[name]);
-    } else {
-      stack[stack.length - 1].push({ "#text": decodeEntities(token) });
-    }
-  }
-  if (stack.length !== 1) throw new Error(`unclosed element(s): depth ${stack.length - 1} at EOF`);
-  return root;
-}
+// Ordered XML parsing is shared with the BSIG builder — the schemas differ,
+// the tokenizer does not. The count assertions below plus the verifier's
+// verbatim probes check the parse.
+import { parseXmlOrdered, children } from "./lib/ordered_xml_parser.mjs";
 
 /** All text inside a preserved-order node list, structure-aware. */
 function flatten(nodes) {
@@ -187,10 +146,6 @@ function childText(nodes, tagName) {
   return "";
 }
 
-/** Direct children of a preserved-order node list with the given tag. */
-function children(nodes, tagName) {
-  return (nodes ?? []).filter((n) => tagName in n).map((n) => n[tagName]);
-}
 
 const clean = (s) =>
   s

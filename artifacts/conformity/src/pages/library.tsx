@@ -48,6 +48,13 @@ const SECTIONS: {
     icon: BookOpen,
   },
   {
+    href: "/library/bsig",
+    title: "BSI-Gesetz, verbatim (DE)",
+    description:
+      "The core of the German NIS2 transposition — enacted by Artikel 1 NIS2UmsuCG (BGBl. 2025 I Nr. 301), §§ 1–66 plus 2 Anlagen, in German. Consolidated text, deliberately: the law has already been amended, and the reader shows the verbatim amendment trail.",
+    icon: BookOpen,
+  },
+  {
     href: "/library/requirements",
     title: "Requirement catalogue",
     description:
