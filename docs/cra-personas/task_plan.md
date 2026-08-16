@@ -605,9 +605,17 @@ language is not discarded.
   (notified-body engagements, Art. 32 verdicts from the engine, Annex VIII
   single-body 409 surfaced verbatim); an importer/distributor file shows the
   Verify gate (Arts. 19/20 tri-state checklist, duty-to-refrain hold as a
-  refusal) and NO authoring stages. G8 orphans 6 → 4. Remaining for 7.3b:
-  absorb CE studio, standards matrix, versions, end-of-support, importer
-  archive and partner-hub stages 1–4 into the file.
+  refusal) and NO authoring stages. G8 orphans 6 → 4.
+  — **7.3b done 2026-08-15** (versions loop closed): the versions table and
+  its Phase-2 engine had NO write-path — the file reported "no versions
+  recorded" as a gap no user could close. POST
+  /conformity/products/:id/versions + a Record-version dialog in the
+  statutory file; per-version Art. 13(13) retention now resolves from the
+  version's own placing date; natural-key duplicates 409. Also established:
+  applied standards were ALREADY re-homed (StandardsEditor in the wizard) —
+  the standards-matrix donor page's real content lives there. Remaining for
+  7.3c: absorb CE studio, importer archive and partner-hub stages 1–4;
+  retire the standards-matrix page.
 - **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.
 - **7.5** Authorities, Signatures, Projects, Organisation — the four surfaces
   that give the six orphaned capabilities a home. Includes building the P2

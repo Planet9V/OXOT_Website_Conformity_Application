@@ -7,8 +7,9 @@ import {
   conformityBomsTable,
   conformityBomComponentsTable,
   conformityNotifiedBodyEngagementsTable,
+  conformityActivityTable,
 } from "@workspace/db";
-import { requireAuth } from "../lib/adminAuth";
+import { requireAuth, getSession } from "../lib/adminAuth";
 import { resolveVersion } from "../lib/productVersions";
 import {
   assessComponentDueDiligence,
@@ -174,6 +175,99 @@ router.get(
       /** Deliberately a count of what is missing, never a score. */
       gapCount: gaps.length,
     });
+  },
+);
+
+/**
+ * POST — record a version of the product.
+ *
+ * The versions table and its rule engine (resolveVersion, per-version
+ * retention) existed since Phase 2, but nothing could WRITE a version: the
+ * statutory file reported "no versions recorded" as a gap no user could ever
+ * close. This is the missing half of the loop.
+ *
+ * Dates are optional and never defaulted: a version with no placing date
+ * reads as "not yet placed on the market", which is a true statement about a
+ * version still in development — not a gap in the record.
+ */
+router.post(
+  "/conformity/products/:id/versions",
+  requireAuth,
+  async (req: Request, res: Response) => {
+    const productId = Number(req.params.id);
+    const [product] = await db
+      .select()
+      .from(conformityProductsTable)
+      .where(eq(conformityProductsTable.id, productId));
+    if (!product) {
+      res.status(404).json({ error: `Product ${productId} not found` });
+      return;
+    }
+
+    const b = req.body ?? {};
+    const version = String(b.version ?? "").trim();
+    if (!version) {
+      res.status(400).json({ error: "version is required (e.g. \"2.1.0\" or a hardware revision)." });
+      return;
+    }
+    const isoOrNull = (v: unknown) => {
+      if (v == null || v === "") return null;
+      const s = String(v);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) throw new Error(`"${s}" is not an ISO date (YYYY-MM-DD)`);
+      return s;
+    };
+    let placedOnMarketDate: string | null;
+    let supportPeriodStart: string | null;
+    let supportPeriodEnd: string | null;
+    try {
+      placedOnMarketDate = isoOrNull(b.placedOnMarketDate);
+      supportPeriodStart = isoOrNull(b.supportPeriodStart);
+      supportPeriodEnd = isoOrNull(b.supportPeriodEnd);
+    } catch (e) {
+      res.status(400).json({ error: e instanceof Error ? e.message : "Invalid date" });
+      return;
+    }
+    const variant = String(b.variant ?? "").trim();
+
+    try {
+      const [row] = await db.transaction(async (tx) => {
+        const rows = await tx
+          .insert(conformityProductVersionsTable)
+          .values({
+            productId,
+            version,
+            variant,
+            placedOnMarketDate,
+            supportPeriodStart,
+            supportPeriodEnd,
+            notes: String(b.notes ?? ""),
+          })
+          .returning();
+        const s = getSession(req);
+        await tx.insert(conformityActivityTable).values({
+          entityType: "product",
+          entityId: productId,
+          action: "version_recorded",
+          actor: s ? `${s.role}:${s.username}` : "",
+          source: "ui",
+          summary: `Version ${version}${variant ? ` (${variant})` : ""} recorded for "${product.name}"${
+            placedOnMarketDate ? `, placed on the market ${placedOnMarketDate}` : ", not yet placed on the market"
+          }`,
+        });
+        return rows;
+      });
+      res.status(201).json(resolveVersion(product, row!));
+    } catch (err: unknown) {
+      const code = (err as { code?: string; cause?: { code?: string } })?.code
+        ?? (err as { cause?: { code?: string } })?.cause?.code;
+      if (code === "23505") {
+        res.status(409).json({
+          error: `Version "${version}"${variant ? ` (${variant})` : ""} is already recorded for this product.`,
+        });
+        return;
+      }
+      throw err;
+    }
   },
 );
 

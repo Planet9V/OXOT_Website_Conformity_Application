@@ -98,7 +98,95 @@ function InfoRow({ label, value, onEdit }: { label: string; value?: string | nul
  * Reports GAPS and CITATIONS, never a score. A percentage reads as reassurance
  * while the missing part is the part that matters.
  */
+function RecordVersionDialog({
+  productId,
+  open,
+  onOpenChange,
+}: {
+  productId: number;
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+}) {
+  const qc = useQueryClient();
+  const [form, setForm] = useState({ version: "", variant: "", placedOnMarketDate: "", supportPeriodEnd: "" });
+  const [saving, setSaving] = useState(false);
+
+  const submit = async () => {
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/conformity/products/${productId}/versions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          version: form.version,
+          variant: form.variant,
+          placedOnMarketDate: form.placedOnMarketDate || null,
+          supportPeriodEnd: form.supportPeriodEnd || null,
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`);
+      toast.success(`Version ${form.version} recorded`);
+      setForm({ version: "", variant: "", placedOnMarketDate: "", supportPeriodEnd: "" });
+      onOpenChange(false);
+      await qc.invalidateQueries({ queryKey: [`/api/conformity/products/${productId}/statutory-file`] });
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Could not record the version");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="rounded-2xl max-w-md">
+        <DialogHeader>
+          <DialogTitle className="font-serif text-lg">Record a version</DialogTitle>
+          <DialogDescription className="text-xs">
+            Retention clocks (CRA Art. 13(13)) run from when THIS version was placed
+            on the market. Leave the date blank for a version still in development —
+            it will read as "not yet placed on the market", which is the truth.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="space-y-3 py-1 text-xs">
+          <div className="grid grid-cols-2 gap-3">
+            <FormField label="Version *">
+              <Input className="h-8 text-xs font-mono" placeholder="2.1.0" value={form.version}
+                onChange={(e) => setForm({ ...form, version: e.target.value })} />
+            </FormField>
+            <FormField label="Variant (optional)">
+              <Input className="h-8 text-xs" placeholder="e.g. EU SKU" value={form.variant}
+                onChange={(e) => setForm({ ...form, variant: e.target.value })} />
+            </FormField>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <FormField label="Placed on the market">
+              <Input className="h-8 text-xs font-mono" type="date" value={form.placedOnMarketDate}
+                onChange={(e) => setForm({ ...form, placedOnMarketDate: e.target.value })} />
+            </FormField>
+            <FormField label="Own support period end">
+              <Input className="h-8 text-xs font-mono" type="date" value={form.supportPeriodEnd}
+                onChange={(e) => setForm({ ...form, supportPeriodEnd: e.target.value })} />
+            </FormField>
+          </div>
+          <p className="text-[11px] text-muted-foreground">
+            A blank support period inherits the product's (CRA Art. 13(8)); retention is
+            never inherited — it uses this version's own placing date.
+          </p>
+        </div>
+        <DialogFooter>
+          <Button variant="outline" size="sm" onClick={() => onOpenChange(false)}>Cancel</Button>
+          <Button size="sm" onClick={submit} disabled={saving || !form.version.trim()}>
+            Record version
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 function StatutoryFile({ productId }: { productId: number }) {
+  const [recordOpen, setRecordOpen] = useState(false);
   const { data, isLoading } = useQuery<any>({
     queryKey: [`/api/conformity/products/${productId}/statutory-file`],
     queryFn: async () => {
@@ -154,8 +242,19 @@ function StatutoryFile({ productId }: { productId: number }) {
 
         {/* Versions — each with its own clocks */}
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-            Versions
+          <div className="flex items-center justify-between mb-1">
+            <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              Versions
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-6 text-[11px] px-2"
+              onClick={() => setRecordOpen(true)}
+              data-testid="record-version"
+            >
+              <Plus className="w-3 h-3 mr-1" /> Record version
+            </Button>
           </div>
           {data.versions?.length ? (
             <ul className="space-y-1">
@@ -224,6 +323,7 @@ function StatutoryFile({ productId }: { productId: number }) {
           </div>
         )}
       </CardContent>
+      <RecordVersionDialog productId={productId} open={recordOpen} onOpenChange={setRecordOpen} />
     </Card>
   );
 }
