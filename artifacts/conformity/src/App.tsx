@@ -22,6 +22,7 @@ import Welcome from './pages/welcome';
 import Demo from './pages/demo';
 import Onboarding from './pages/onboarding';
 import IncidentsPage from './pages/incidents';
+import LibraryPage from './pages/library';
 import ProjectsPage from './pages/projects';
 import AuthoritiesPage from './pages/authorities';
 import SignaturesPage from './pages/signatures';
@@ -166,8 +167,18 @@ function ShellRoutes() {
           </Route>
           <Route path="/projects" component={ProjectsPage} />
           <Route path="/organisation" component={OrgProfilePage} />
-          <Route path="/library" component={CraWikiPage} />
-          <Route path="/library/*" component={CraWikiPage} />
+          {/* Library (7.6a): one destination owns all reference content. */}
+          <Route path="/library" component={LibraryPage} />
+          <Route path="/library/statute" component={CraWikiPage} />
+          <Route path="/library/statute/*" component={CraWikiPage} />
+          <Route path="/library/acts" component={Regulations} />
+          <Route path="/library/acts/:key" component={RegulationDetail} />
+          <Route path="/library/requirements" component={Requirements} />
+          <Route path="/library/requirements/:id" component={RequirementDetail} />
+          <Route path="/library/themes" component={Themes} />
+          <Route path="/library/mappings" component={Mappings} />
+          <Route path="/library/sources" component={Sources} />
+          <Route path="/library/sources/view/:filename" component={SourceViewer} />
           <Route path="/settings" component={Team} />
 
           {/* ── Retired paths redirect to their destination, so old bookmarks
@@ -179,10 +190,25 @@ function ShellRoutes() {
           <Route path="/open-source-steward"><Redirect to="/projects" /></Route>
           <Route path="/org-profile"><Redirect to="/organisation" /></Route>
           <Route path="/team"><Redirect to="/settings" /></Route>
-          <Route path="/wiki"><Redirect to="/library" /></Route>
-          <Route path="/wiki/*"><Redirect to="/library" /></Route>
-          <Route path="/cra-wiki"><Redirect to="/library" /></Route>
-          <Route path="/cra-wiki/*"><Redirect to="/library" /></Route>
+          <Route path="/wiki"><Redirect to="/library/statute" /></Route>
+          <Route path="/wiki/*"><Redirect to="/library/statute" /></Route>
+          <Route path="/cra-wiki"><Redirect to="/library/statute" /></Route>
+          <Route path="/cra-wiki/*"><Redirect to="/library/statute" /></Route>
+          {/* The nine reference pages live under Library now (7.6a). */}
+          <Route path="/regulations"><Redirect to="/library/acts" /></Route>
+          <Route path="/regulations/:key">
+            {(params) => <Redirect to={`/library/acts/${params.key}`} />}
+          </Route>
+          <Route path="/themes"><Redirect to="/library/themes" /></Route>
+          <Route path="/requirements"><Redirect to="/library/requirements" /></Route>
+          <Route path="/requirements/:id">
+            {(params) => <Redirect to={`/library/requirements/${params.id}`} />}
+          </Route>
+          <Route path="/mappings"><Redirect to="/library/mappings" /></Route>
+          <Route path="/sources"><Redirect to="/library/sources" /></Route>
+          <Route path="/sources/view/:filename">
+            {(params) => <Redirect to={`/library/sources/view/${params.filename}`} />}
+          </Route>
           {/* Alias sprawl collapsed: one canonical path per surviving page. */}
           <Route path="/standards-matrix"><Redirect to="/standards" /></Route>
           <Route path="/ce-nameplate"><Redirect to="/ce-studio" /></Route>
@@ -192,16 +218,6 @@ function ShellRoutes() {
           <Route path="/podcast/*"><Redirect to="/podcast-studio" /></Route>
           <Route path="/blogs"><Redirect to="/podcast-studio" /></Route>
           <Route path="/blogs/*"><Redirect to="/podcast-studio" /></Route>
-
-          {/* ── Reference pages: retired in 7.6 when the Library absorbs them. */}
-          <Route path="/regulations" component={Regulations} />
-          <Route path="/regulations/:key" component={RegulationDetail} />
-          <Route path="/themes" component={Themes} />
-          <Route path="/requirements" component={Requirements} />
-          <Route path="/requirements/:id" component={RequirementDetail} />
-          <Route path="/mappings" component={Mappings} />
-          <Route path="/sources" component={Sources} />
-          <Route path="/sources/view/:filename" component={SourceViewer} />
 
           {/* ── Transitional surfaces awaiting re-homing (7.2–7.6); reachable
               via the "More" menu, each retires with its re-homing task. */}

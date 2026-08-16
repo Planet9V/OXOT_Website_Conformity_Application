@@ -655,7 +655,13 @@ language is not discarded.
   now has a screen; the G8 baseline is 0 and stays there. Remaining in 7.5:
   the P2 evidence-request model + 6.3 role scoping (7.5c).
 - **7.6** Library with the universal statutory flyout; retire the nine
-  reference pages.
+  reference pages. — **7.6a done 2026-08-15**: Library is one destination
+  owning all reference content — a landing (statute reader, act catalogue,
+  requirements, themes, matrix, sources; the NIS2 full-text reader honestly
+  deferred to the NIS2 seeding) with the nine reference pages re-mounted
+  UNDER /library/* and every old top-level path redirecting in, params
+  preserved. Remaining 7.6b: extract partner-hub's statutory flyout into a
+  shared component and make it universal.
 
 Acceptance: every capability in the iteration 2 orphan table is reachable, the
 seven design principles hold, and G6 verifies each surface live.
