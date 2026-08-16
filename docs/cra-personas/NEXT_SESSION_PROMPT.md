@@ -25,8 +25,9 @@ and `task_plan.md` Phases 6–7.
    vulnerability without running the command that proves it, and show the
    output. Every failure in the previous session was a verification failure, not
    a capability failure.
-3. **Gates are the definition of done:** G1 typecheck · G2 no *new* failures
-   against the 31 baseline · G3 build · G4 honesty · G5 citations · G8 UI reach ·
+3. **Gates are the definition of done:** G1 typecheck · G2 tests = **ZERO
+   failures** (run the CI-mirror recipe in HANDOVER.md) · G3 build · G4 honesty
+   (baseline 7) · G5 citations (0) · G8 UI reach (**0 orphans — a covenant**) ·
    both corpus verifiers · G6 live against `localhost:8088` with real persisted
    data.
 4. **Never raise a gate baseline to make something pass.** A baseline is a debt
@@ -48,7 +49,7 @@ failed twice; or `git log` shows an unexpected HEAD move.
 
 **First task — the remaining absorptions (Phase 8 retro's honest remainder).**
 
-Phases 6, 7 AND 8 are COMPLETE (see task_plan.md, lessons.md L36–L47, and
+Phases 6, 7 AND 8 are COMPLETE (see task_plan.md, lessons.md L36–L48, and
 the three phase retros). Every ratcheted gate is at its floor: G2 = 0
 failures (CI-mirror 702/0/2), G5 = 0, G8 = 0 orphans as a covenant. The
 remaining work, in order: absorb product-portfolio into Products (the last

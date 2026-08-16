@@ -656,3 +656,16 @@ asynchronously after GitHub re-scans the pushed lockfile. G4's 7 remaining
 findings live in oxot-web marketing surfaces outside this app.
 
 **New lessons:** L45–L47.
+
+### L48 — A scripted edit without an assert silently no-ops
+**Seen:** 2026-08-16, verifying facts for the handover rewrite. The 7.5b
+batch had "updated" ci.yml's G8 baseline from 4 to 0 with a python
+`str.replace` — which matched nothing, changed nothing, and reported
+nothing. Local gate runs used `--baseline 0` throughout, so every check
+passed while CI silently kept the looser floor for three batches. Caught
+only because the handover rewrite re-verified every claim against the
+tree before writing it down (L36 doing its job at a distance).
+**Apply:** any scripted bulk edit must assert its effect — check
+`replaced != original` (or grep the file afterwards) and fail loudly on
+zero replacements. Prefer the Edit tool, which errors on a non-match,
+over ad-hoc `.replace` scripts.

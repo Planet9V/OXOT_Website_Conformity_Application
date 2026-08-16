@@ -133,13 +133,13 @@ jobs:
       - name: G8 UI reach gate
         if: always()
         # A capability no screen calls is invisible to the customer, however
-        # green its tests are. Started at 6 orphans when the gate was written;
-        # 7.3a gave notified body and operator checks their home in the
-        # product file (baseline 6 -> 4). Remaining: msa engagements
-        # (Authorities), steward policy (Projects), mandates (Organisation),
-        # attestations (Signatures) — all scheduled in 7.5. Phase 7 drives
-        # this to 0. Do not raise the baseline to make a failure go away.
-        run: node scripts/check_ui_reach.mjs --baseline 4
+        # green its tests are. Started at 6 orphans; Phase 7 drove it to ZERO
+        # (2026-08-16) and zero is now a COVENANT: a new capability lands
+        # WITH its surface and its registry entry in scripts/check_ui_reach.mjs
+        # in the same commit, or the build fails. Never raise this.
+        # (This line previously lagged at 4: a scripted edit without an
+        # assert silently no-oped — L48. Local runs used 0 throughout.)
+        run: node scripts/check_ui_reach.mjs --baseline 0
 
       # THE source-of-truth check. One command, deterministic, three states
       # (PASS / FAIL / "----" could-not-verify). This is the only sanctioned way
