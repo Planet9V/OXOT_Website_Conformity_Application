@@ -118,6 +118,7 @@ import type {
   ListNewsletterSubscribersParams,
   ListRequirementsParams,
   ListWorkspaceActivityParams,
+  ListWorkspaceIncidents200,
   LlmConfigInput,
   LlmSettings,
   MailStatus,
@@ -10188,6 +10189,84 @@ export const useAskConformityAssistant = <TError = ErrorType<BadRequestResponse 
       > => {
       return useMutation(getAskConformityAssistantMutationOptions(options));
     }
+
+export const getListWorkspaceIncidentsUrl = () => {
+
+
+
+
+  return `/api/conformity/incidents`
+}
+
+/**
+ * The Incidents destination's feed (task 7.4): all incidents across all assessments, each with its three CRA Article 14 clocks and the product and regulation it arises from. One act-badged surface (D10).
+ * @summary List every incident in the workspace with its statutory clocks
+ */
+export const listWorkspaceIncidents = async ( options?: RequestInit): Promise<ListWorkspaceIncidents200> => {
+
+  return customFetch<ListWorkspaceIncidents200>(getListWorkspaceIncidentsUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListWorkspaceIncidentsQueryKey = () => {
+    return [
+    `/api/conformity/incidents`
+    ] as const;
+    }
+
+
+export const getListWorkspaceIncidentsQueryOptions = <TData = Awaited<ReturnType<typeof listWorkspaceIncidents>>, TError = ErrorType<UnauthorizedResponse>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listWorkspaceIncidents>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListWorkspaceIncidentsQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listWorkspaceIncidents>>> = ({ signal }) => listWorkspaceIncidents({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listWorkspaceIncidents>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListWorkspaceIncidentsQueryResult = NonNullable<Awaited<ReturnType<typeof listWorkspaceIncidents>>>
+export type ListWorkspaceIncidentsQueryError = ErrorType<UnauthorizedResponse>
+
+
+/**
+ * @summary List every incident in the workspace with its statutory clocks
+ */
+
+export function useListWorkspaceIncidents<TData = Awaited<ReturnType<typeof listWorkspaceIncidents>>, TError = ErrorType<UnauthorizedResponse>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listWorkspaceIncidents>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListWorkspaceIncidentsQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getListConformityIncidentsUrl = (id: number,) => {
 

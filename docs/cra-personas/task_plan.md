@@ -617,6 +617,16 @@ language is not discarded.
   7.3c: absorb CE studio, importer archive and partner-hub stages 1–4;
   retire the standards-matrix page.
 - **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.
+  — **7.4a done 2026-08-15**: /incidents is now the real destination — a new
+  workspace-level GET /conformity/incidents (spec-first) feeds an act-badged
+  triage list with the three Art. 14 clock chips per incident
+  (met/pending/OVERDUE rendered from the row's own dueAt/doneAt), each row
+  linking into the workbench where the staged-submission panel already
+  lives. The NIS2 Art. 23 gap is stated ON the surface (entity-side incident
+  model ships with the NIS2 seeding). The static psirt donor moved to
+  /psirt-tools in the More menu. Remaining for 7.4b: NIS2 entity incidents
+  when W2.3 lands; re-home partner-hub stage 5 payload builder wired to the
+  real submissions; absorb the PSIRT toolkit content.
 - **7.5** Authorities, Signatures, Projects, Organisation — the four surfaces
   that give the six orphaned capabilities a home. Includes building the P2
   evidence-request model and applying the role scoping deferred from 6.3.

@@ -4039,6 +4039,49 @@ export const AskConformityAssistantResponse = zod.unknown()
 
 
 /**
+ * The Incidents destination's feed (task 7.4): all incidents across all assessments, each with its three CRA Article 14 clocks and the product and regulation it arises from. One act-badged surface (D10).
+ * @summary List every incident in the workspace with its statutory clocks
+ */
+export const ListWorkspaceIncidentsResponse = zod.object({
+  "total": zod.number(),
+  "incidents": zod.array(zod.object({
+  "incident": zod.object({
+  "id": zod.number(),
+  "assessmentId": zod.number(),
+  "title": zod.string(),
+  "description": zod.string(),
+  "kind": zod.enum(['exploited_vulnerability', 'severe_incident']).describe('CRA Art 14 reporting track.'),
+  "severity": zod.string(),
+  "owner": zod.string().optional(),
+  "detectedAt": zod.string(),
+  "earlyWarningDueAt": zod.string(),
+  "earlyWarningDoneAt": zod.string().nullable(),
+  "notificationDueAt": zod.string(),
+  "notificationDoneAt": zod.string().nullable(),
+  "finalReportDueAt": zod.string(),
+  "finalReportDoneAt": zod.string().nullable(),
+  "correctiveAvailableAt": zod.string().nullable().describe('When a corrective\/mitigating measure became available (vulnerability final-report anchor).'),
+  "memberStates": zod.string(),
+  "suspectedMalicious": zod.boolean(),
+  "exploitNature": zod.string(),
+  "sourceVulnerabilityId": zod.string().describe('Vulnerability identifier (e.g. CVE) the incident originated from; \"\" when reported manually.'),
+  "sourceComponent": zod.string().describe('Affected component (\"name@version\") the incident originated from; \"\" when reported manually.'),
+  "correctiveMeasures": zod.string(),
+  "userMitigations": zod.string(),
+  "threatActorInfo": zod.string(),
+  "sensitive": zod.boolean(),
+  "status": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+}),
+  "productId": zod.number().nullable(),
+  "productName": zod.string(),
+  "regulationKey": zod.string()
+}))
+})
+
+
+/**
  * @summary List post-market incidents for an assessment
  */
 export const ListConformityIncidentsParams = zod.object({

@@ -108,6 +108,7 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
  */
 const TRANSITIONAL: NavItem[] = [
   { href: "/partner-hub", label: "Plant & SI Pipeline", icon: Boxes, description: "Re-homes into the product file and Incidents (7.3 / 7.4)" },
+  { href: "/psirt-tools", label: "PSIRT Toolkit", icon: ShieldAlert, description: "Advisories & SBOM/KEV triage — re-homes into Incidents (7.4)" },
   { href: "/product-portfolio", label: "Portfolio", icon: Boxes, description: "Re-homes into Products (7.3)" },
   { href: "/reports", label: "Reports", icon: FileText, description: "Re-homes into Home and the product file" },
   { href: "/flows", label: "Flows", icon: GitBranch, description: "Admin-authored assessment process flows" },

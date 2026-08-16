@@ -2873,6 +2873,37 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/incidents:
+    get:
+      operationId: listWorkspaceIncidents
+      tags: [conformity]
+      summary: List every incident in the workspace with its statutory clocks
+      description: >-
+        The Incidents destination's feed (task 7.4): all incidents across all
+        assessments, each with its three CRA Article 14 clocks and the product
+        and regulation it arises from. One act-badged surface (D10).
+      responses:
+        "200":
+          description: All incidents, newest detection first
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total: { type: integer }
+                  incidents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        incident: { $ref: "#/components/schemas/ConformityIncident" }
+                        productId: { type: ["integer", "null"] }
+                        productName: { type: string }
+                        regulationKey: { type: string }
+                      required: [incident, productId, productName, regulationKey]
+                required: [total, incidents]
+        "401":
+          $ref: "#/components/responses/Unauthorized"
   /conformity/assessments/{id}/incidents:
     get:
       operationId: listConformityIncidents

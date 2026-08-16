@@ -3159,6 +3159,19 @@ obligationType?: string;
 q?: string;
 };
 
+export type ListWorkspaceIncidents200IncidentsItem = {
+  incident: ConformityIncident;
+  /** @nullable */
+  productId: number | null;
+  productName: string;
+  regulationKey: string;
+};
+
+export type ListWorkspaceIncidents200 = {
+  total: number;
+  incidents: ListWorkspaceIncidents200IncidentsItem[];
+};
+
 export type ListWorkspaceActivityParams = {
 /**
  * Page size (default 20, max 100).

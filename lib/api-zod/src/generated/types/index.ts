@@ -209,6 +209,8 @@ export * from './listLeadsParams';
 export * from './listNewsletterSubscribersParams';
 export * from './listRequirementsParams';
 export * from './listWorkspaceActivityParams';
+export * from './listWorkspaceIncidents200';
+export * from './listWorkspaceIncidents200IncidentsItem';
 export * from './llmConfig';
 export * from './llmConfigInput';
 export * from './llmSettings';

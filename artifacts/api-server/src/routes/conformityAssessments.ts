@@ -2064,6 +2064,37 @@ router.get("/conformity/assessments/:id/grades", requireAuth, async (req, res): 
 // Incidents (post-market, Article 14)
 // ---------------------------------------------------------------------------
 
+/**
+ * The Incidents destination's feed (task 7.4): every incident in the
+ * workspace, newest detection first, each with the product and regulation it
+ * arises from so the surface can badge the act (D10). Clock deadlines come
+ * from the incident row itself — set at creation by the Art. 14 rules — and
+ * whether a stage is met, pending or overdue is for the CLIENT to render
+ * from dueAt/doneAt; this endpoint adds no judgement of its own.
+ */
+router.get("/conformity/incidents", requireAuth, async (_req, res): Promise<void> => {
+  const [incidents, assessments, products] = await Promise.all([
+    db.select().from(conformityIncidentsTable).orderBy(desc(conformityIncidentsTable.detectedAt)),
+    db.select().from(conformityAssessmentsTable),
+    db.select().from(conformityProductsTable),
+  ]);
+  const assessmentById = new Map(assessments.map((a) => [a.id, a]));
+  const productById = new Map(products.map((p) => [p.id, p]));
+  res.json({
+    total: incidents.length,
+    incidents: incidents.map((i) => {
+      const a = i.assessmentId != null ? assessmentById.get(i.assessmentId) : undefined;
+      const p = a ? productById.get(a.productId) : undefined;
+      return {
+        incident: toIncidentDto(i),
+        productId: p?.id ?? null,
+        productName: p?.name ?? "",
+        regulationKey: a?.regulationKey ?? "cra",
+      };
+    }),
+  });
+});
+
 router.get("/conformity/assessments/:id/incidents", requireAuth, async (req, res): Promise<void> => {
   const { id } = ListConformityIncidentsParams.parse(req.params);
   const assessment = await loadAssessment(id);

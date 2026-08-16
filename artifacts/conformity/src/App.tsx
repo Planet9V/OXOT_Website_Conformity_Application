@@ -22,6 +22,7 @@ import Welcome from './pages/welcome';
 import Demo from './pages/demo';
 import Onboarding from './pages/onboarding';
 import DestinationPlaceholder from './pages/destination-placeholder';
+import IncidentsPage from './pages/incidents';
 import Profile from './pages/profile';
 import Security from './pages/security';
 
@@ -140,10 +141,12 @@ function ShellRoutes() {
           <Route path="/" component={Dashboard} />
           <Route path="/incidents">
             <ErrorBoundary>
-              <Psirt />
+              <IncidentsPage />
             </ErrorBoundary>
           </Route>
-          <Route path="/incidents/*">
+          {/* The static PSIRT toolkit stays reachable while its content
+              re-homes into Incidents (donor doctrine, 7.4). */}
+          <Route path="/psirt-tools">
             <ErrorBoundary>
               <Psirt />
             </ErrorBoundary>
