@@ -31,6 +31,8 @@ export interface Obligation {
   status: string;
   evaluationCount: number;
   owners: string[];
+  /** Internal routing default (6.3) — which team role's inbox this lands in. */
+  defaultTeamRole: string;
   nextDueDate: string | null;
 }
 

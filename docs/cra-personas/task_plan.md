@@ -590,7 +590,13 @@ language is not discarded.
 - **7.2** Home, role-aware. Phase 6 delivered its inputs: branch on
   `/conformity/me` `teamRole` and filter by each obligation's
   `defaultTeamRole`. A null teamRole renders the NEUTRAL home, never a
-  guessed one (L40).
+  guessed one (L40). — **done 2026-08-15**: "Your work" panel leads Home —
+  role badge, open obligations routed by `defaultTeamRole` sorted by due
+  date, per-role destination shortcut, and the routing-default disclaimer in
+  the UI itself. Null role / admin / demo get the honest neutral notice.
+  Fixed two wrong-era labels in the donor content (Annex IV→VII technical
+  documentation; presumption Art. 34→27, both corpus-verified). Verified
+  live by scripts/verify_home_72_playwright.mjs (jack scoped, admin neutral).
 - **7.3** Products as the polymorphic subject file — renders per the product's
   role, absorbing notified body, CE, versions, end-of-support, BOM evidence.
 - **7.4** Incidents, cross-act — CRA Art. 14 and NIS2 Art. 23 on one surface.

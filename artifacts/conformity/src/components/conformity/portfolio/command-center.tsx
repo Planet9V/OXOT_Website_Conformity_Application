@@ -44,6 +44,7 @@ import { GradeDistribution } from "./grade-distribution";
 import { TriageBoard } from "./triage-board";
 import { CraAnalyticsSuite } from "./cra-analytics-suite";
 import { PersonaCockpit } from "@/components/persona-cockpit";
+import { YourWork } from "@/components/home/your-work";
 import { PersonaCopilotDrawer } from "@/components/persona-copilot-drawer";
 import { InteractiveFineSimulator } from "./interactive-fine-simulator";
 
@@ -186,7 +187,7 @@ export function CommandCenter() {
               Conformity Operations &amp; Triage
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground font-sans leading-relaxed max-w-2xl">
-              Every product assessment ranked by priority. Manage statutory Article 14 clocks, generate Annex IV technical files, and monitor live ENISA advisories.
+              Every product assessment ranked by priority. Manage statutory CRA Article 14 clocks, assemble Annex VII technical documentation, and follow regulatory news.
             </p>
           </div>
 
@@ -205,7 +206,11 @@ export function CommandCenter() {
         </div>
       </div>
 
-      {/* 2. Unified Role-Based Persona Cockpit & Statutory Action Funnels */}
+      {/* 2. The role-aware slice (7.2, D12): the member's own routed work
+          first; a null team role renders an honest neutral notice instead. */}
+      <YourWork />
+
+      {/* 3. Organisation-wide cockpit, derived from the declarations. */}
       <PersonaCockpit />
 
       {/* 3. DYNAMIC PRIMARY OPERATIONAL WORKSTATION (PERSONA-ALIGNED) */}
@@ -230,7 +235,7 @@ export function CommandCenter() {
               <div className="flex items-center gap-2">
                 <Link href="/standards">
                   <Button size="sm" variant="outline" className="gap-1.5 font-mono text-xs">
-                    Standards Matrix (Art. 34)
+                    Standards Matrix (CRA Art. 27)
                   </Button>
                 </Link>
                 <Link href="/ce-studio">
