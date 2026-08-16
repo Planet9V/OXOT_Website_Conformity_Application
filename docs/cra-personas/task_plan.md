@@ -768,8 +768,25 @@ HANDOVER's "Next steps" order.
   palette updated; the TRANSITIONAL menu now holds only auditor-portal.
   Gates: G2 CI-mirror 706/0/2 re-run green; G8 15/0; G6 live 8/8 with
   reviewed screenshots (`artifacts_verify/reports_flows_92/`).
-- **9.3** Decide `auditor-portal` (likely the permanent notified-body track);
-  then DELETE the More menu and its TRANSITIONAL code in layout.tsx.
+- **9.3 done 2026-08-16** Decide `auditor-portal`; DELETE the More menu.
+  Decision: the portal is what the design always named it — the permanent,
+  EXTERNAL notified-body door (token-authenticated, routed outside the login
+  shell like the public CVD page). Internal team members are not its users,
+  so it does not belong in internal navigation at all. The TRANSITIONAL
+  array, TransitionalMenu, its desktop and mobile mounts and the duplicate
+  inner-shell routes are deleted; the nav now holds exactly the nine
+  destinations. Survey found the track REAL but HALF-BUILT: token-validated
+  reads of real assessment/evidence data and a working RFI write — but no
+  issuance path exists anywhere (nothing ever inserts into
+  `conformity_auditor_access`) and the organisation never sees submitted
+  RFIs. That gap is 9.3b, not silently absorbed. Gates: G2 CI-mirror re-run
+  706/0/2; G6 live 5/5 (no More menu desktop+mobile, portal renders outside
+  the shell, workspace 401 without / 403 with a garbage token; screenshots
+  in `artifacts_verify/shell_93/`).
+- **9.3b** Give the notified-body door its key: admin-issued, expiring,
+  assessment-scoped auditor tokens (spec-first endpoint + issue/revoke UI in
+  the product file's notified-body panel) and an org-side RFI inbox on the
+  same panel, registered in G8. Until then the portal refuses honestly.
 - **9.4** W2.4 transposition content — BLOCKED on sourced verbatim national
   texts (NL, then DE); the NIS2 reader banner states the gap.
 - **9.5** Drive G4 7 → 0 (all findings in `artifacts/oxot-web` marketing).

@@ -16,7 +16,6 @@ import {
   Menu,
   Sun,
   Moon,
-  ChevronDown,
   User,
   UserCircle,
   ShieldAlert,
@@ -98,15 +97,10 @@ const NAV_GROUPS: { label: string; items: NavItem[] }[] = [
   },
 ];
 
-/**
- * Surfaces that still exist but have not yet been re-homed into a destination
- * (task_plan.md 7.2–7.6). They stay reachable here during the transition —
- * removing reach before the replacement ships would be a regression — and this
- * menu is DELETED when the last entry moves. Do not add new surfaces here.
- */
-const TRANSITIONAL: NavItem[] = [
-  { href: "/auditor-portal", label: "Auditor Portal", icon: ClipboardCheck, description: "Separate notified-body track" },
-];
+// The transitional "More" menu is gone (9.3): every surface it held was
+// re-homed (7.3c, 8.3, 9.1, 9.2) or, for the auditor portal, decided to be
+// what it always was — an external, token-authenticated notified-body door
+// (routed outside this shell), not an internal destination.
 
 function useNavState() {
   const [location] = useLocation();
@@ -115,8 +109,7 @@ function useNavState() {
       ? location === "/" || (item.alsoActive ?? []).some((p) => location.startsWith(p))
       : location.startsWith(item.href) ||
         (item.alsoActive ?? []).some((p) => location.startsWith(p));
-  const transitionalActive = TRANSITIONAL.some((t) => location.startsWith(t.href));
-  return { location, isActive, transitionalActive };
+  return { location, isActive };
 }
 
 function ThemeToggle() {
@@ -154,38 +147,6 @@ function navLinkClass(active: boolean) {
     active
       ? "text-primary-ink after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:rounded-full after:bg-primary"
       : "text-muted-foreground hover:text-foreground",
-  );
-}
-
-function TransitionalMenu({ active }: { active: boolean }) {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button className={navLinkClass(active)} data-testid="nav-transitional">
-          More
-          <ChevronDown className="w-3.5 h-3.5" aria-hidden="true" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-80">
-        <DropdownMenuLabel className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
-          Being re-homed (Phase 7)
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {TRANSITIONAL.map((item) => (
-          <DropdownMenuItem key={item.href} asChild>
-            <Link href={item.href} className="flex items-start gap-3 cursor-pointer">
-              <item.icon className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0" />
-              <div className="flex flex-col gap-0.5">
-                <span className="text-sm font-medium leading-none text-foreground">{item.label}</span>
-                <span className="text-xs text-muted-foreground leading-snug">
-                  {item.description}
-                </span>
-              </div>
-            </Link>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }
 
@@ -316,7 +277,7 @@ function mobileItemClass(active: boolean) {
 }
 
 export function Header() {
-  const { location, isActive, transitionalActive } = useNavState();
+  const { location, isActive } = useNavState();
   const { data: session } = useGetAdminSession();
   const isAdmin = session?.role === "admin";
   const [open, setOpen] = useState(false);
@@ -351,8 +312,6 @@ export function Header() {
                 ))}
               </div>
             ))}
-            <div className="h-4 w-px bg-border mx-1.5" aria-hidden="true" />
-            <TransitionalMenu active={transitionalActive} />
           </nav>
         </div>
 
@@ -414,23 +373,6 @@ export function Header() {
               </div>
             ))}
 
-            <div className="px-5 pt-4 pb-1 flex items-center gap-2">
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground whitespace-nowrap">
-                Being re-homed (Phase 7)
-              </span>
-              <div className="flex-1 h-px bg-border" />
-            </div>
-            {TRANSITIONAL.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={close}
-                className={mobileItemClass(location.startsWith(item.href))}
-              >
-                <item.icon className="w-4 h-4 shrink-0" />
-                {item.label}
-              </Link>
-            ))}
           </nav>
 
           <div className="border-t border-border px-5 py-4 space-y-4">

@@ -234,8 +234,9 @@ function ShellRoutes() {
           <Route path="/archive"><Redirect to="/products" /></Route>
           <Route path="/podcast-studio" component={PodcastStudioPage} />
           <Route path="/podcast-studio/*" component={PodcastStudioPage} />
-          <Route path="/auditor-portal" component={AuditorPortalPage} />
-          <Route path="/auditor-portal/*" component={AuditorPortalPage} />
+          {/* /auditor-portal is registered ONLY outside this shell (below):
+              it is the external, token-authenticated notified-body door —
+              never an internal destination (9.3). */}
           <Route>
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center justify-center">
               <h2 className="text-2xl font-bold mb-2">404 — Page not found</h2>
