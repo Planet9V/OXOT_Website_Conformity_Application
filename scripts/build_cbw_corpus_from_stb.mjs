@@ -90,9 +90,11 @@ function flatten(nodes) {
           out += (out && !out.endsWith("\n") ? "\n" : "") + flatten(value);
           break;
         case "wijzig-lid": {
+          // The marker exactly as printed — the Staatsblad writes "A", not
+          // "A." (the parity audit caught an added period here once).
           const letter = childText(value, "lidnr");
           const body = flatten(value.filter((c) => !("lidnr" in c)));
-          out += `\n${letter}. ${body.trim()}`;
+          out += `\n${letter} ${body.trim()}`;
           break;
         }
         case "wijziging": {

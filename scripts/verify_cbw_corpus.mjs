@@ -26,6 +26,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { parseXmlOrdered, children } from "./lib/ordered_xml_parser.mjs";
 
 const ROOT = process.cwd();
 const CORPUS = path.join(ROOT, "docs/cbw_statutory_corpus");
@@ -217,6 +218,68 @@ function checkVerbatimProbes() {
   ok("D1", `${probes.length} verbatim probes match source AND corpus`);
 }
 
+function checkFullContentParity() {
+  // D2 — the strongest check: for EVERY article and bijlage, the corpus's
+  // character content must equal the source region's, whitespace-normalized.
+  // Catches any dropped element, swallowed list item or flattening bug
+  // anywhere — not just at the D1 probe points. (Born 2026-08-16: a one-off
+  // audit caught the flattener adding a period to amendment markers.)
+  const xml = fs.readFileSync(SOURCE, "utf8").replace(/^﻿/, "");
+  const doc = parseXmlOrdered(xml);
+  const staatsblad = children(children(doc, "officiele-publicatie")[0], "staatsblad")[0];
+  const wetBesluit = children(staatsblad, "wet-besluit")[0];
+  const wettekst = children(wetBesluit, "wettekst")[0];
+
+  const rawText = (nodes, skip) => {
+    let out = "";
+    for (const node of nodes ?? []) {
+      for (const [tag, value] of Object.entries(node)) {
+        if (tag === "#text") out += String(value);
+        else if (!skip.has(tag)) out += rawText(value, skip);
+      }
+    }
+    return out;
+  };
+  const normalize = (s) => s.replace(/ /g, " ").replace(/­/g, "").replace(/[|]/g, "").replace(/\s+/g, "");
+
+  const srcArts = [];
+  const collect = (nodes) => {
+    for (const node of nodes) {
+      if ("artikel" in node) srcArts.push(node.artikel);
+      else if ("wijzig-artikel" in node) srcArts.push(node["wijzig-artikel"]);
+      else if ("paragraaf" in node) collect(node.paragraaf);
+      else if ("hoofdstuk" in node) collect(node.hoofdstuk);
+    }
+  };
+  collect(wettekst);
+
+  const meta = readJson("01_articles_full.json");
+  const corpusArts = meta.chapters.flatMap((c) => c.articles);
+  if (srcArts.length !== corpusArts.length) {
+    return bad("D2", `${srcArts.length} source articles vs ${corpusArts.length} in the corpus`);
+  }
+  const skip = new Set(["noot"]);
+  for (let i = 0; i < srcArts.length; i++) {
+    const c = corpusArts[i];
+    const src = normalize(rawText(srcArts[i].filter((n) => !("kop" in n)), skip));
+    const rebuilt = normalize(
+      c.paragraphs.map((p) => (p.paragraphNumber != null ? `${p.paragraphNumber}.` : "") + p.text).join(""),
+    );
+    if (src !== rebuilt) {
+      return bad("D2", `Art. ${c.articleNumber}: character content diverges from the source (${src.length} vs ${rebuilt.length} chars)`);
+    }
+  }
+  const corpusBijl = readJson("02_bijlagen_full.json").bijlagen;
+  const srcBijl = children(wetBesluit, "bijlage");
+  for (let i = 0; i < srcBijl.length; i++) {
+    const src = normalize(rawText(srcBijl[i].filter((n) => !("kop" in n)), skip));
+    if (src !== normalize(corpusBijl[i]?.text ?? "")) {
+      return bad("D2", `Bijlage ${i + 1}: character content diverges from the source`);
+    }
+  }
+  ok("D2", `full-content parity: all ${srcArts.length} artikelen + ${srcBijl.length} bijlagen character-exact against the source`);
+}
+
 // ──────────────────────────────────────────────────────── F. framing carried
 
 function checkFraming() {
@@ -239,6 +302,7 @@ checkAmendmentDrift();
 checkCorpusIntegrity();
 checkBundleInSync();
 checkVerbatimProbes();
+checkFullContentParity();
 checkFraming();
 
 let failed = false;

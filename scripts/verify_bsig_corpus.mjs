@@ -27,6 +27,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import os from "node:os";
+import { parseXmlOrdered, children } from "./lib/ordered_xml_parser.mjs";
 
 const ROOT = process.cwd();
 const CORPUS = path.join(ROOT, "docs/bsig_statutory_corpus");
@@ -192,6 +193,48 @@ function checkVerbatimProbes() {
   ok("D1", `${probes.length} verbatim probes match source AND corpus`);
 }
 
+function checkFullContentParity() {
+  // D2 — the strongest check: for EVERY § and Anlage, the corpus's
+  // character content must equal the source Content region's,
+  // whitespace-normalized (footnote apparatus and table geometry excluded
+  // by design; the "|" cell separator the flattener adds is normalized
+  // away). Catches any dropped element or flattening bug anywhere.
+  const xml = fs.readFileSync(SOURCE, "utf8");
+  const doc = parseXmlOrdered(xml);
+  const norms = children(children(doc, "dokumente")[0], "norm");
+
+  const rawText = (nodes, skip) => {
+    let out = "";
+    for (const node of nodes ?? []) {
+      for (const [tag, value] of Object.entries(node)) {
+        if (tag === "#text") out += String(value);
+        else if (!skip.has(tag)) out += rawText(value, skip);
+      }
+    }
+    return out;
+  };
+  const normalize = (s) => s.replace(/ /g, " ").replace(/­/g, "").replace(/[|]/g, "").replace(/\s+/g, "");
+  const skip = new Set(["Footnotes", "FnR", "colspec"]);
+
+  const meta = readJson("01_sections_full.json");
+  const anlagen = readJson("02_anlagen_full.json").anlagen;
+  let si = 0, ai = 0;
+  for (const norm of norms.slice(1)) {
+    const m = children(norm, "metadaten")[0];
+    const enbez = (children(m, "enbez")[0] ?? []).map((x) => x["#text"] ?? "").join("").trim();
+    if (!enbez || enbez === "Inhaltsübersicht") continue;
+    if (children(m, "gliederungseinheit").length) continue;
+    const textdaten = children(norm, "textdaten")[0] ?? [];
+    const content = children(children(textdaten, "text")[0] ?? [], "Content")[0] ?? [];
+    const src = normalize(rawText(content, skip));
+    const corpusText = /^Anlage/.test(enbez) ? anlagen[ai++]?.text : meta.sections[si++]?.text;
+    if (src !== normalize(corpusText ?? "")) {
+      return bad("D2", `${enbez}: character content diverges from the source`);
+    }
+  }
+  ok("D2", `full-content parity: all ${si} sections + ${ai} Anlagen character-exact against the source`);
+}
+
 // ──────────────────────────────────────────────────────── F. framing carried
 
 function checkFraming() {
@@ -217,6 +260,7 @@ checkAmendmentTrail();
 checkCorpusIntegrity();
 checkBundleInSync();
 checkVerbatimProbes();
+checkFullContentParity();
 checkFraming();
 
 let failed = false;

@@ -731,3 +731,18 @@ donor died; its fabrications had already emigrated.
 in shared folders for its defaults — every `|| "<plausible value>"` on an
 actor, a date, or file content is a fabrication waiting to be recorded as
 fact. Provenance fields refuse when absent; they never default.
+
+### L51 — Spot probes pass while the flattener edits the law; only full parity catches it
+**Seen:** 2026-08-16, the user asked for an error check on the freshly built
+Cbw/BSIG corpora. All four verbatim spot probes passed, every gate was
+green — and a full-content audit still found the Cbw flattener printing
+amendment markers as "A." where the Staatsblad prints bare "A": eight
+characters added to the law across Artt. 99–100, invisible to every
+existing check because no probe crossed that code path.
+**Apply:** for any verbatim-reproduction pipeline, spot probes are a smoke
+test, not a proof. The proof is full-content parity — every unit's
+character stream compared against its source region, whitespace-normalized
+— promoted into the CI verifier (D2 in verify_cbw/bsig), with a NEGATIVE
+CONTROL run once to show a single flipped character fails it. A checker
+that has never been seen to fail has proven nothing (the corpus verifiers'
+own positive-control doctrine, applied to text instead of paths).
