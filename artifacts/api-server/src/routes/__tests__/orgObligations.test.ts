@@ -108,6 +108,17 @@ describe("GET /conformity/org/obligations", () => {
     expect(byRef.has("Art 15")).toBe(true);
   });
 
+  it("gives a declared operator the AI Act deployer duties, in the Act's own word", async () => {
+    await declareExactly(["operator"], ["ai_act"]);
+    const res = await api("GET", "/conformity/org/obligations");
+    expect(res.status).toBe(200);
+    const art26 = res.json.obligations.find((o: any) => o.refCode === "Art 26");
+    expect(art26, "Art 26 deployer duties missing for the operator").toBeDefined();
+    expect(art26.roleTerms).toContain("deployer");
+    // Provider-only duties stay off an operator-only declaration.
+    expect(res.json.obligations.some((o: any) => o.refCode === "Art 17")).toBe(false);
+  });
+
   it("contributes nothing from an act that is not declared", async () => {
     await declareExactly(["manufacturer"], ["cra"]);
     const res = await api("GET", "/conformity/org/obligations");

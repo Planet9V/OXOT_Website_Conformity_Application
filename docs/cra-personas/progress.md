@@ -216,3 +216,12 @@ the meaning of Art. 64(10).
   seven verifiers green. Seed validation: 114 requirements, 79 mappings.
 - G6 pending: seed image rebuilt + re-run (L39), then
   verify_red_obligations_111_playwright.mjs with screenshot review.
+
+## 2026-08-16 (night) — 11.1 shipped (875085e), 11.2 shipped
+- 11.1: RED 22 rows + 7 mappings; orgObligations.test.ts born; G6 cockpit
+  `red · 17`. Commit 875085e pushed.
+- 11.2: AI Act 12 rows verified (3 corrected: Art 12 title, Art 15(5)
+  attack list, Art 73 real deadlines), 11 added (provider chapter,
+  importer/distributor, deployer Art 26, registration, transparency);
+  operator termFor +ai_act "deployer"; GPAI refusal documented. G2
+  721/0/0; G6 both lenses green, screenshots reviewed.

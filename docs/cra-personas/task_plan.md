@@ -1035,10 +1035,22 @@ Tasks (one batch each; statute read from the corpus BEFORE writing a row):
   relationship is real (Art 3(3) ↔ CRA Annex I items). Gates + G6: declare
   red via the API, see RED obligations with RED's own role terms on Home,
   screenshot, withdraw declaration.
-- **11.2** AI Act seed verified + extended — every existing row checked
-  verbatim against `docs/ai_act_statutory_corpus/` (title, article scope,
-  applicability); extend statute-first (provider chapter, registration,
-  transparency, deployer duties for the operator role — corpus decides).
+- **11.2 done 2026-08-16** All 12 original rows verified against the
+  corpus: Art 12 title corrected to the statute's "Record-keeping";
+  Art 15(5) now names the statute's own attack list (data poisoning,
+  model poisoning, adversarial examples, confidentiality attacks —
+  verified verbatim before shipping); Art 73 carries the real clock
+  anchors (15 days / 2 days widespread / 10 days death, immediate on
+  causal link — L42). ELEVEN new rows: provider chapter Art 16(b), 18,
+  19, 20, 21, 22 (AR); importer Art 23; distributor Art 24; deployer
+  duties Art 26 → the operator role (Art 3(4) 'deployer' verified;
+  operator termFor now speaks it); registration Art 49; transparency
+  Art 50. GPAI Arts 53/55 NOT seeded — refusal + reason in the seed
+  comment. 3 new mappings (Art 18↔CRA Art 13(13), Art 20↔RED Art 10(11),
+  Art 19↔CRA Annex I(2)(l)). Gates: G1 · G2 721/0/0 · G3 · G4/G5/G8 = 0 ·
+  seed validation 125 req/82 map · G6 live (api+seed images rebuilt;
+  ai_act badge under BOTH lenses, operator = nis2·12 + ai_act·3,
+  screenshots reviewed, declaration restored).
 - **11.3** Machinery seed verified + extended — the 8 rows checked against
   `docs/machinery_statutory_corpus/` (Annex III numbering especially);
   extend with the manufacturer/importer/distributor chapter as the corpus

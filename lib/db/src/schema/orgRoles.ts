@@ -132,11 +132,12 @@ export const CANONICAL_ROLES = [
   {
     key: "operator",
     label: "Operator / asset owner",
-    // Downstream users carry no CRA obligations — their duties are NIS2.
+    // Downstream users carry no CRA obligations — their duties are NIS2 and,
+    // for AI systems used under their authority, the AI Act's deployer duties.
     craArticle: null,
     summary:
-      "Owns and operates the equipment in service. Carries NIS2 duties as an essential or important entity; the CRA binds its suppliers, not it.",
-    termFor: { nis2: "essential or important entity", iec_62443: "asset owner" },
+      "Owns and operates the equipment in service. Carries NIS2 duties as an essential or important entity and AI Act duties as a deployer; the CRA binds its suppliers, not it.",
+    termFor: { nis2: "essential or important entity", ai_act: "deployer", iec_62443: "asset owner" },
   },
 ] as const;
 
