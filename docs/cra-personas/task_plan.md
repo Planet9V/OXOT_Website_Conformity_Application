@@ -1402,7 +1402,7 @@ the scheduled lifecycle check.
 - **19.4 done** Gates bare, G6 with reviewed screenshots, commit/push, CI
   watch, G7.
 
-## Phase 20 — Informational-website realignment review (opened 2026-08-17)
+## Phase 20 — Informational-website realignment review (opened 2026-08-17; 20a–20c closed, 20d open)
 
 User: the marketing site is stale after Phases 7–19; it undersells and
 misdescribes the application; the "CRA 2-minute assessment" is

@@ -1141,3 +1141,43 @@ with `cd` to the repo root in the same command.
 **Floors after this phase:** unchanged — G2 726/0/0 zero-skips · G4 0
 · G5 0 · G8 20/0. New standing infra: the weekly lifecycle LaunchAgent
 (reinstall after the repo move).
+
+## L60 — A public write path is a decision, not a feature
+
+**What happened (Phase 21.4):** the supplier door wanted file upload —
+the obvious "complete" version. The upload pipeline is admin-session
+end-to-end for a reason, and improvising a public, unauthenticated
+write-to-disk path at speed is how evidence stores get poisoned. The
+door shipped taking LINKS and TEXT only; the page says so plainly
+("This page takes links and text…"); file upload through the door is a
+tracked follow-up gated on a security review.
+
+**The rule:** when a feature's complete version needs a new public
+write surface, ship the honest subset and print the boundary ON the
+surface. A capability statement on the page beats a silent limitation
+— and both beat a rushed upload endpoint.
+
+## Phase 21 + 20b/20c retro (G7) — the operator becomes the star, then the site says so
+
+**What worked:** the order. Build the shape first (21), sell it second
+(20b/20c) — every sentence on /operators describes something G6 had
+already screenshotted working. Reuse held: the door is the
+auditor-portal pattern, the checklist is the redInScope tri-state
+pattern ×7 with corpus-verified anchors, the posture board is a pure
+rollup over facts. The honesty gate flagging the site's own honesty
+strip was the covenant working — the sentence quotes the claim to
+refuse it, and now carries a visible waiver saying exactly that.
+
+**What recurred:** wrong-cwd gate runs, twice more (~4 total across
+sessions). The discipline is now mechanical: every gate invocation
+starts with `cd <repo-root> &&` in the same command line, no
+exceptions.
+
+**Open, tracked:** 20d public statutory wikis (SEO magnets);
+supplier-door file upload after a security review; the podcast
+narration date audit (user-flagged; scripts regenerate later);
+native-Dutch review of nl strings before paid traffic.
+
+**Floors after this phase:** G2 = 751/0/0 zero-skips · G4 = 0 (one new
+visible waiver) · G5 = 0 · G8 = 26/0 · eleven corpus verifiers +
+lifecycle guard + weekly LaunchAgent.

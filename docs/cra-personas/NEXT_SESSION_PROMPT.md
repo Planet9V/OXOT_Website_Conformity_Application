@@ -19,13 +19,13 @@ map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–19 are COMPLETE with G7 retros. 17 =
+**Where things stand:** Phases 0–21 are COMPLETE with G7 retros (20d open as a candidate). 17 =
 GDPR + Data Act + GPSR content (ELEVEN corpora, 156 requirements across
 NINE modelled acts); 18 = the RED→CRA handover as per-product guidance
 (tri-state `redInScope` fact + a product-file panel whose dates/quotes
 all render from the 2022/30 corpus metadata — L57/L58). **DORA and CER
 are PARKED by user decision.** MAIN-ONLY,
-pushed, GitHub CI green. Floors: G2 = **726/0/0** · G4 = 0 COVENANT ·
+pushed, GitHub CI green. Floors: G2 = **751/0/0** · G4 = 0 COVENANT ·
 G5 = 0 across EIGHT enforced acts · G8 = 0 COVENANT (20) · ELEVEN corpus
 verifiers + the lifecycle guard, all with negative controls.
 
@@ -74,13 +74,17 @@ change beyond the audio script.
 **No task is in flight.** DORA/CER stay parked. Open candidates (ask
 which, or take #1 if told to proceed):
 
-1. **User-only, between sessions:** move the repo out of `~/Downloads`,
-   then re-run `scripts/ops/install_lifecycle_launchagent.sh`.
+1. **20d** — public statutory wikis as SEO lead magnets.
+2. Supplier-door FILE upload — only after a security review (L60).
+3. Podcast narration date audit before regeneration (user-flagged).
+4. Native-Dutch review of nl marketing strings.
+5. **User-only:** move the repo out of `~/Downloads`, then re-run
+   `scripts/ops/install_lifecycle_launchagent.sh`.
 
-(Phase 18 delivered the RED→CRA per-product handover; Phase 19 the
-wiki pattern for every act, per-act wiki buttons in oxot-web, the
-Text-currency panel, and the weekly lifecycle LaunchAgent. Suite
-floor 726/0/0.)
+(Phases 18–21 delivered; Phase 21 = the operator shape — supplier
+register, procurement checks with corpus-verified Art 13 anchors,
+posture board, supplier door — now headlined on the website. Suite
+floor 751/0/0; G8 26 capabilities.)
 
 Batch cadence for everything: survey → scope one shippable batch → build →
 all gates (bare) → G6 with reviewed screenshots → plan done-marker →

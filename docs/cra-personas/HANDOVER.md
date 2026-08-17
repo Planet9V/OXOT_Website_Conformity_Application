@@ -69,6 +69,8 @@ do not".
 | 17 | **GDPR + Data Act + GPSR content.** Tenth/eleventh corpora on the resurrected OJ+corrigenda pipeline (`build_oj_act_corpus.mjs` — GDPR R(02) = 19 must-fire corrections incl. recital-level; Data Act R(01) = 1); 19 statute-first obligation rows (GDPR ×9 for the operator as "controller or processor"; Data Act ×5 — Chapter II binds the manufacturer as "manufacturer / data holder"; GPSR ×5 incl. the Art 6(1)(g) cyber hook); readers + cards + enforced citation gates; acts list "9 modelled · 2 reference-only". **DORA and CER PARKED by decision.** Suite 725/0/0; 156 requirements / 92 mappings. |
 | 18 | **RED→CRA handover as per-product guidance.** Nullable tri-state `redInScope` fact on conformity_products (spec-first → orval; null = unanswered, L40); product-file panel for EVERY role rendering the timeline (applies 2025-08-01 · RED governs until 2027-12-11 · repealed by 2026/339, CRA governs from that date) with every date/quote read from the 2022/30 corpus metadata at render time (L57). No new route (G8 untouched). Suite **726/0/0** (+1: tri-state persistence). L58: a CI mirror is the environment, not just the command — and never pipe a gate. |
 | 19 | **The wiki pattern for every act (user-requested).** EuActReader v2 carries the CRA-wiki browsing pattern parameterized (tabbed counts, number/title/text search, Cite buttons, numbered paragraph chips + anchors, ?tab&num&q deep links, per-article corrigenda callouts from corpus provenance); nis2-reader migrated onto it (scripted G6 unchanged) — SIX acts share the pattern. oxot-web cards' hardcoded "CRA Wiki View" (NIS2 → CRA recitals!) replaced by per-act WIKI_VIEWS (L59). Regulation detail gains the "Text currency" panel (amendment trail/corrigenda lazy-read from each act's own bundle). Weekly lifecycle LaunchAgent installed (notifies only on REAL failure; reinstall after repo move). |
+| 20 | **Website realignment (audit-first).** Review + specs in docs/marketing/website-realignment-2026-08.md (F1–F10, competitive read). 20a: the 2-minute check's off-by-one statutory dates fixed EN-side (NL had forked correct), runway WALL 2027-12-11, workbench "fullText" now corpus verbatim, hero de-animated (CTA was invisible pre-hydration). 20b/20c: repositioned as the EU conformance system of record — operator band + honesty strip (visible G4 waiver: quotes the claim to refuse it) + 7 personas + 4 pillars on home; new /operators page; platform modules = the shipped shell; operator pricing note; operator branch in the check. **20d (public wikis) OPEN.** |
+| 21 | **The operator shape (user: "make it the star").** Supplier register (assets outlive relationships), per-product procurement check (tri-state ×7, anchors corpus-verified: Art 13(12)+30, 13(15)–(20); SBOM labelled contractual), per-supplier posture board (unlinked products NAMED), supplier documents (sha256, storage-GC'd incl. product delete), asks with expiring revocable tokens + the PUBLIC door /supplier-portal (rate-limited, no-enumeration, link/note only — L60: file upload deferred to security review). Demo seeds the Fieldbus story. Suite **751/0/0** (+25); G8 26/0 (+6 capabilities); door round-trip proven live end-to-end. |
 
 ## The application map (key files)
 
@@ -237,12 +239,17 @@ the known benign one).
 reference-only framing; revisit only when a customer declaration needs
 them). Open candidates:
 
-1. **User-only, between sessions:** move the repo out of `~/Downloads`,
-   then re-run `scripts/ops/install_lifecycle_launchagent.sh` (the
-   LaunchAgent pins the repo path).
+1. **20d** — public statutory wikis as SEO lead magnets (option A:
+   open the Library read-only; option B: static per-article pages).
+2. Supplier-door FILE upload — only after a security review (L60).
+3. Podcast narration date audit before regeneration (user-flagged).
+4. Native-Dutch review of nl marketing strings before paid traffic.
+5. **User-only, between sessions:** move the repo out of `~/Downloads`,
+   then re-run `scripts/ops/install_lifecycle_launchagent.sh`.
 
-(RED→CRA handover → Phase 18. Reader polish + lifecycle habit + the
-wiki pattern for every act → Phase 19.)
+(Phases 18–21 delivered: RED→CRA handover; the wiki pattern for every
+act + lifecycle habit; the website realignment 20a–20c; the operator
+shape as the star.)
 
 No new phase is opened until the user chooses among these or names new
 scope.
