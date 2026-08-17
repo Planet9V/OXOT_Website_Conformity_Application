@@ -1008,3 +1008,35 @@ seed rows for the GPSR (its corpus now exists); (2) periodic lifecycle
 runs (the guard is in CI but EUR-Lex may bot-challenge it there — a
 scheduled local run belongs in the ops habit); (3) the RED→CRA handover
 surfaced per product (from Phase 13's retro). New lessons: L56.
+
+## L57 — Honesty implemented once is honesty in one place
+
+**Seen:** Phase 16. Task 11.4 made un-modelled acts honest — on the Home
+cockpit. The Library kept saying "11 Frameworks Active", the act pages
+kept showing "0 extracted obligations" over empty skeletons, and the
+reader cards kept counts three corpus pivots had falsified. Every one of
+those surfaces had been TRUE when written; none of them was wired to the
+thing that changed. UI copy that states a count or a status is a CLAIM
+(L36's UI corollary), and claims hardcoded in copy go stale silently —
+no gate reads prose.
+**Apply:** when a truth changes (an act gains content, a corpus pivots,
+a count moves), grep the FRONTEND for every surface that states the old
+truth — cards, kickers, banners, subtitles — not just the one you built
+the honesty into. Prefer deriving UI claims from data the change updates
+(the reader subtitles derive from corpus metadata and stayed true; the
+Library cards hardcoded and lied). The audit that catches this is a
+screenshot walk, because stale prose looks perfectly healthy in code.
+
+## Phase 16 — UX/gap review — completed 2026-08-17
+
+**What worked:** audit-first with pixel review. All eight findings came
+from LOOKING — the API probes confirmed boundaries (and cleared F4 as a
+non-issue), but every real defect was visible only in rendered pages:
+stale hardcoded counts, skeleton sections, the "Directive" label on
+regulations, the flattened role line. Fix cost was one evening-batch;
+finding cost without the audit would have been a customer's trust.
+
+**Re-tuning applied:** Phase 17 next (GDPR + Data Act + GPSR seeds).
+Deferred, recorded: chapter-aware search result grouping in readers;
+regulation-detail could surface the amendment trail for pivoted acts
+(it shows seed metadata only). New lessons: L57.
