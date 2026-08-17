@@ -45,12 +45,12 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L55 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L56 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 13
+## Phases — all complete through Phase 15
 
 | Phase | Delivered |
 |---|---|
@@ -63,6 +63,8 @@ do not".
 | 11 | **Obligation content ×3 acts (10.3c)** — zero engine changes (D10 held: requirements × declarations). 11.1 RED seeded from nothing (22 rows: Art 3(3)(d)/(e)/(f) cyber essential requirements, Art 10 chain, importer/distributor, Art 15 traceability) — `orgObligations.test.ts` is the endpoint's FIRST suite. 11.2 AI Act verified+extended (3 corrections incl. Art 73's real 15/2/10-day anchors; +11 rows: provider chapter, deployer Art 26 → operator role now termed 'deployer', registration, transparency; GPAI refusal documented). 11.3 Machinery: **three misnumbered Annex III addresses fixed** (duties live in 1.1.9/1.2.1(d)/1.2.1(f); DoC was cited to the SAFETY-COMPONENTS annex — now Art 21) + 12 rows (L53: verify annex section numbers against the OJ SOURCE — the flattened bundle drops them). 11.4 declared-but-unseeded acts now NAMED (`regulationsWithoutSeededContent` + cockpit amber note "Zero here means un-modelled, not compliant"); deriver refusals documented per candidate in the statusDerivers header. Suite 723/0/0. |
 | 12 | **D2 full-content parity for the five OJ corpora** (`scripts/lib/oj_content_parity.mjs` — independent flatten, corrigenda must fire, negative control per corpus). Building it exposed FOUR shipped extraction losses, fixed in the shared parser (L54): nested-table truncation (NIS2 Annexes I/II had lost the whole "Type of entity" column), `oj-ti-grseq` heading loss in every annex (CRA Class I/II, Machinery Part A/B…), OJ footer / Parliament-statement leakage into last annexes, one footnote leak into an amendment quote. All five corpora rebuilt, bundles resynced ×3 apps, readers verified live. |
 | 13 | **RED Delegated Regulation (EU) 2022/30** — the Art 3(3)(d)/(e)/(f) designations as an EIGHTH corpus (`docs/red_delegated_2022_30/`, THREE committed sources: base + amending 2023/2444 + repealing 2026/339). Amendments applied as must-fire from/to transformations; **repealed with effect from 2027-12-11 in favour of the CRA** — the reader panel on `/library/red` states both lifecycle dates with verbatim quotes; the three Art 3(3) seed rows name their designated categories. L55: read the EUR-Lex ALL view (amendments/repeals) BEFORE building any corpus. |
+| 14 | **Storage file GC** (deleteObjectEntity on the seam, both backends; evidence/assessment/product deletion paths GC their stored files after commit; proven on disk live) · **verify_nis2_reader G6 script** · **RED→CRA 2027-12-11 handover milestone** on the act timeline — whose G6 pixel review caught and fixed a SHIPPED off-by-one: formatDate rendered every statutory calendar date one day early in negative-offset timezones. |
+| 15 | **The lifecycle repair + guard (L54/L55/L56).** The ALL-view sweep found FOUR shipped corpora carrying superseded/uncorrected text with every gate green. 15.1/15.2: CRA + NIS2 EN corrigenda applied; EHDS 2025/327 recorded pending (2027-03-26). 15.3/15.4: AI Act + Machinery pivoted to the CONSOLIDATED pipeline (as amended by the Digital Omnibus 2026/1744 and 2024/2748 — new parser dialect, hybrid corpus, disclosed-departure verifier, D2 + negative control); GPSR joined as ninth corpus; seeded AI keyDates corrected to the Omnibus dates. 15.5: `check_lifecycle.mjs` (in CI) — whose first run caught the RED eleven years behind (five amending acts incl. common charger: Art 3(4), 3a, Annex Ia, chapter Va, REPLACED Art 10(8)); RED pivoted; OJ euact pipeline deleted; Art 10(8)/13(2) seed rows updated statute-first. Guard passes across all seven EU acts. |
 
 ## The application map (key files)
 
@@ -87,38 +89,37 @@ token-authenticated notified-body door, routed OUTSIDE the login shell;
 tokens are issued and RFIs answered in the product file's
 `auditor-access-panel.tsx`). Do not reintroduce a junk-drawer menu.
 
-**Corpora** (the source of truth), all built from a COMMITTED authentic
-source by script, synced to frontend bundles by script, and proven
-byte-for-byte reproducible in CI — never hand-edit a corpus or bundle:
+**Corpora** (the source of truth) — NINE, all from committed authentic
+sources, script-built, reproducible in CI, D2 full-content parity with
+negative controls, and since Phase 15 lifecycle-guarded (L55/L56 —
+`check_lifecycle.mjs` requires every text-affecting EUR-Lex relation to
+be accounted for in corpus metadata):
 
-- `docs/cra_statutory_corpus/` + `docs/nis2_statutory_corpus/` — verbatim
-  OJ text from EUR-Lex (`build_*_corpus_from_eurlex.mjs`).
-- `docs/{ai_act,machinery,red}_statutory_corpus/` — the Phase-10 acts, one
-  parameterized builder (`build_euact_corpus_from_eurlex.mjs <act>`), pinned
-  structures cross-checked by independent anchor counts; the Machinery OJ
-  HTML ships BROKEN annex ids, so annexes parse by VISIBLE headings.
-- `docs/cbw_statutory_corpus/` — the Dutch NIS2 transposition, from the
-  promulgated Staatsblad XML, Stb. 2026, 187 (`build_cbw_corpus_from_stb.mjs`).
-- `docs/red_delegated_2022_30/` — Delegated Regulation (EU) 2022/30 (the
-  Art 3(3)(d)/(e)/(f) designations), base + amending + repealing sources
-  committed, amendments applied must-fire, repeal (2027-12-11, CRA
-  handover) as quoted metadata (`build_red_delegated_corpus.mjs`).
-- `docs/bsig_statutory_corpus/` — the German transposition core (BSIG),
-  from the CONSOLIDATED gesetze-im-internet XML — a disclosed departure
-  (Artikelgesetz promulgation is PDF-only and already amended); the
-  verbatim standangabe amendment trail is in the metadata
-  (`build_bsig_corpus_from_gii.mjs`).
+- `docs/cra_statutory_corpus/` — OJ original + TWO applied EN corrigenda
+  (Art 64(10), Art 67) + EHDS 2025/327 recorded as PENDING (2027-03-26).
+- `docs/nis2_statutory_corpus/` — OJ original + applied EN corrigendum
+  (Art 19(1)).
+- `docs/{ai_act,machinery,red,gpsr}_statutory_corpus/` — CONSOLIDATED
+  pipeline (`build_consolidated_act_corpus.mjs`, `eu_consolidated_parser`):
+  acts amended in force, built AS AMENDED from the EUR-Lex consolidated
+  text at a pinned date (hybrid: recitals from the original OJ), amendment
+  trail + corrigenda disposition in metadata, disclosed in the readers.
+  AI Act 119 arts (Digital Omnibus 2026/1744); Machinery 59 (2024/2748 +
+  Omnibus); RED 58 (FIVE amending acts incl. common charger — Art 3(4),
+  3a, Annex Ia, chapter Va); GPSR 55 (2024/2748) — no reader yet, stated.
+- `docs/red_delegated_2022_30/` — Delegated Regulation 2022/30 as amended
+  by 2023/2444, repealed 2027-12-11 by 2026/339 (CRA handover).
+- `docs/cbw_statutory_corpus/` + `docs/bsig_statutory_corpus/` — the NL/DE
+  transpositions (Staatsblad XML / gii XML).
 
 Each has its own verifier — `verify_{cra,nis2,cbw,bsig,red_delegated}_corpus.mjs`
-plus `verify_euact_corpus.mjs <ai_act|machinery|red>` (EIGHT in all), ALL in CI; the
-transposition verifiers include **D2 full-content parity**, and since
-Phase 12 the FIVE OJ corpora carry it too (D5/D5N in the CRA and NIS2
-verifiers, D2/D2N in the euact verifier) — every check negative-
-controlled (L51/L54). Corpus bundles are excluded from EVERY content gate — they ARE
-the law, and the Machinery Regulation legitimately says vibrations are
-"transmitted to" the seat (L52). Verify any article number against the corpus **title** before
-putting it in a label — a wrong-but-existing number passes the citation
-gate (L41).
+plus `verify_consolidated_corpus.mjs <ai_act|machinery|red|gpsr>` (NINE in
+all), plus `check_lifecycle.mjs`, ALL in CI. The OJ-format euact
+builder/verifier were DELETED in 15.5 (their acts all pivoted; a stale
+rebuild must never resurrect superseded text). Corpus bundles are excluded
+from every content gate — they ARE the law (L52). Verify any article
+number against the corpus **title** before putting it in a label (L41),
+and any annex SECTION number against the committed source (L53).
 
 **Spec-first pipeline**: `lib/api-spec/openapi.yaml` → `orval`
 (`cd lib/api-spec && ./node_modules/.bin/orval --config ./orval.config.ts`)
@@ -142,9 +143,12 @@ node scripts/check_citations.mjs --baseline 0               # G5 — FIVE acts (
 node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT (17 reached)
 node scripts/verify_cra_corpus.mjs && node scripts/verify_nis2_corpus.mjs \
   && node scripts/verify_cbw_corpus.mjs && node scripts/verify_bsig_corpus.mjs \
-  && node scripts/verify_euact_corpus.mjs ai_act \
-  && node scripts/verify_euact_corpus.mjs machinery \
-  && node scripts/verify_euact_corpus.mjs red
+  && node scripts/verify_red_delegated_corpus.mjs \
+  && node scripts/verify_consolidated_corpus.mjs ai_act \
+  && node scripts/verify_consolidated_corpus.mjs machinery \
+  && node scripts/verify_consolidated_corpus.mjs red \
+  && node scripts/verify_consolidated_corpus.mjs gpsr \
+  && node scripts/check_lifecycle.mjs
 ```
 
 Run gates BARE — never through a pipe: `cmd | tail -1 && next` proceeds on
@@ -219,24 +223,21 @@ on evidence with the user, not guessed); the same approach failed twice;
 or `git log`/`git status` shows an unexpected change (the audio script is
 the known benign one).
 
-## Next steps (Phase 13 closed 2026-08-16 with G7, all floors held)
+## Next steps (Phases 14 + 15 closed 2026-08-16 with G7, all floors held)
 
 **No task is in flight. The open candidates, for the user to prioritise:**
 
-1. Small: storage file GC (deleting evidence rows does not remove stored
-   files — a property inherited from the GCS backend and stated in 10.1).
-2. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
-   GPSR, Data Act) if and when a customer's declaration needs them — the
-   11.4 cockpit note marks that gap honestly in the meantime.
-3. Small: a repeatable `verify_nis2_reader` G6 script (the Phase-12
-   annex check was ad-hoc; the NIS2 reader has no script of its own).
-4. **The 2027-12-11 RED→CRA handover as product-file guidance** — a
-   RED-relevant product's Art 3(3) obligations end when the CRA applies
-   in full (2026/339); surfacing that date per product is a natural
-   future batch, noted in the Phase-13 retro.
-5. **User-only, between sessions:** move the repo out of `~/Downloads`
-   (quit session → move folder → `docker compose up -d` from the new
-   path → reopen).
+1. **The rest of candidate 2** — corpora + statute-first obligation seeds
+   for GDPR, DORA, CER and the Data Act (lifecycle facts already verified:
+   GDPR needs its R(02) EN corrigendum applied; DORA/CER EN-clean; Data
+   Act one trivial corrigendum), plus seed rows for the GPSR (corpus
+   exists, no rows yet).
+2. **The 2027-12-11 RED→CRA handover as product-file guidance** (Phase-13
+   retro candidate).
+3. Ops habit: a scheduled local `check_lifecycle.mjs` run (CI may get
+   bot-challenged; three-state keeps that honest but a periodic local run
+   closes the gap).
+4. **User-only, between sessions:** move the repo out of `~/Downloads`.
 
 No new phase is opened until the user chooses among these or names new
 scope.

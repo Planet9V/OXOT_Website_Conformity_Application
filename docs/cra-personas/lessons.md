@@ -963,3 +963,48 @@ Products file (a RED-relevant product's obligations migrate to the CRA
 on that date) — noted as a candidate, not scoped.
 
 **New lessons:** L55.
+
+## L56 — A new guard's first run is an audit, not a smoke test
+
+**Seen:** 15.5. The lifecycle guard was written to prevent future drift; its
+FIRST run found three defects in the corpora of the very session that built
+it (CRA corrigenda without machine-readable ids, an id-less BG corrigendum
+note, a broken positive control) — and then the RED: five amending acts
+since 2014, twenty in-force modifications from the common-charger Directive
+alone, a REPLACED Art 10(8) — none of which the entire Phase-13 build had
+looked for, because 13.1's L55 sweep covered the delegated act and never
+its parent. Every gate was green the whole time: reproducibility, parity,
+probes and citations all verify against the committed source, and the
+committed source was eleven years of amendments behind.
+**Apply:** when a guard is born, run it against the repo that built it
+before trusting it, and treat its first findings as real work, not
+calibration noise. And a lifecycle check must cover EVERY act in the
+house, including the ones a sweep already "did" — the RED was swept for
+its delegated act's lifecycle while its own went unexamined.
+
+## Phase 15 — the shipped corpora meet their lifecycles — completed 2026-08-16
+
+**What worked:** repair-first sequencing (the user's call) and the
+consolidated pipeline generalising four times without redesign: the
+parser/builder/verifier/D2 built for the AI Act and Machinery absorbed the
+GPSR the same hour and the RED the next — each pivot cheaper than the
+last. D2's negative-control discipline caught three parser defects
+(inter-element text loss, footnote-definition capture, wrong title
+element) and one banner truncation before anything shipped. The hybrid
+rule (recitals from the original OJ, enacting terms from the consolidated
+text, both sha-pinned, trail disclosed) held for regulations and a
+directive alike.
+
+**The scale of what was wrong:** four shipped corpora carried superseded
+or uncorrected text (CRA ×2 corrigenda, NIS2 ×1, AI Act amended in force,
+Machinery amended twice + 14 date corrigenda) and the RED was ELEVEN
+YEARS of amendments behind — Art 3(4), Art 3a, Annex Ia, chapter Va and a
+replaced Art 10(8) all absent. The seeded AI Act timeline asserted
+application dates the Digital Omnibus had moved.
+
+**Re-tuning applied:** open work: (1) the rest of candidate 2 — corpora +
+statute-first obligation seeds for GDPR, DORA, CER and the Data Act, and
+seed rows for the GPSR (its corpus now exists); (2) periodic lifecycle
+runs (the guard is in CI but EUR-Lex may bot-challenge it there — a
+scheduled local run belongs in the ops habit); (3) the RED→CRA handover
+surfaced per product (from Phase 13's retro). New lessons: L56.

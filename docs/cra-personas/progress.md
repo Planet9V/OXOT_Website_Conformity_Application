@@ -261,3 +261,8 @@ the meaning of Art. 64(10).
   AMENDED (Digital Omnibus 2026/1744; 2024/2748 chapter IVa), GPSR ninth
   corpus; consolidated parser + hybrid builder + D2 + verifier; readers
   disclose; AI keyDates corrected. All gates green, 724/0/0.
+
+## 2026-08-16/17 — Phase 15 closed (3bc519f + G7)
+- 15.5 lifecycle guard in CI; RED pivoted (was 11 years behind — L56);
+  OJ euact pipeline deleted; guard PASSES across all seven EU acts.
+  Floors: G2 724/0/0; NINE corpus verifiers + lifecycle guard.
