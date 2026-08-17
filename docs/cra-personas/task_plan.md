@@ -1081,3 +1081,29 @@ Tasks (one batch each; statute read from the corpus BEFORE writing a row):
   reviewed, declaration restored).
 
 Done-markers appended per batch below as each closes.
+
+## Phase 12 — L51 D2 parity for the OJ corpus family (opened + closed 2026-08-16)
+
+User-prioritised candidate #1 after Phase 11. One batch.
+
+- **12.1 done 2026-08-16** `scripts/lib/oj_content_parity.mjs`: independent
+  flatten of every article + annex region vs the corpus, whitespace-
+  normalized character equality, corrigenda applied from corpus metadata
+  AND required to fire, negative control per corpus (D2N). Wired into
+  verify_cra (D5/D5N), verify_nis2 (D5/D5N) and verify_euact (D2/D2N).
+  Building it exposed and fixed FOUR shipped extraction losses in the
+  shared parser (L54: reproducibility reproduces the builder's own
+  blindness): nested-table truncation (NIS2 Annexes I/II lost the entire
+  "Type of entity" column), oj-ti-grseq heading loss in every annex
+  (CRA Class I/II, Machinery Part A/B, AI Act Section A/B, RED module
+  titles), OJ footer / Parliament-statement leakage into last annexes,
+  and a footnote paragraph swept into AI Act Art 108's amendment quote.
+  All five corpora rebuilt from committed sources (article text
+  character-identical; newline-only churn where composite rows now split
+  correctly), bundles resynced across all three apps, seven verifiers
+  green with negative controls, G2 723/0/0, readers verified live —
+  the NIS2 Annex I sector table now renders its entity column
+  (screenshot reviewed). Commit cf73887.
+
+Follow-up candidate noted in the G7 retro: a repeatable
+verify_nis2_reader G6 script (the ad-hoc annex check deserves a home).

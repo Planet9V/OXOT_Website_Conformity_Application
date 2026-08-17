@@ -14,23 +14,25 @@ Continue the OXOT CRA persona programme.
 **Before anything else**, read `docs/cra-personas/HANDOVER.md` — the entry
 point, verified claim-by-claim against the working tree. It names the
 reading order (`DESIGN_five_shapes.md` **iteration 2 first**; then
-`task_plan.md`; then `lessons.md` L1–L53), the nine-destination application
+`task_plan.md`; then `lessons.md` L1–L54), the nine-destination application
 map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–11 are COMPLETE with G7 retros (Phase 11
-= 10.3c: statute-verified obligation content for the AI Act, Machinery
-Regulation and RED; three misnumbered machinery addresses fixed — L53;
-empty declared acts now named); the hygiene backlog (H1–H3) is done;
-development is MAIN-ONLY, pushed, **GitHub CI green**. Every gate is at its
+**Where things stand:** Phases 0–12 are COMPLETE with G7 retros (Phase 11
+= 10.3c obligation content ×3 acts; Phase 12 = D2 full-content parity for
+the five OJ corpora, which exposed and fixed four shipped extraction
+losses — L54: reproducibility reproduces the builder's own blindness);
+the hygiene backlog (H1–H3) is done; development is MAIN-ONLY, pushed,
+**GitHub CI green**. Every gate is at its
 floor, two as covenants: G1/G3 green · G2 = **723 passed / 0 failed /
 0 SKIPPED** (CI-mirror needs `OBJECT_STORAGE_BACKEND=local` +
 `OBJECT_STORAGE_DIR=<tmpdir>` in its env) · **G4 honesty = 0 — COVENANT** ·
 G5 citations = 0 across FIVE acts (cra 1..71, nis2 1..46, ai_act 1..113,
 machinery 1..54, red 1..52) · **G8 UI-reach = 0 — COVENANT** (20
 capabilities) · all SEVEN corpus verifiers green (CRA, NIS2, Cbw, BSIG,
-AI Act, Machinery, RED) with byte-for-byte reproducibility in CI ·
+AI Act, Machinery, RED), every one now carrying D2 full-content parity
+WITH a negative control, plus byte-for-byte reproducibility in CI ·
 Dependabot = 0. File evidence runs on the portable storage backend
 (volume-backed locally; the Replit sidecar path provably unchanged).
 `scripts/generate_local_audio.py` may show as modified — the user's own
@@ -81,17 +83,16 @@ change beyond the audio script.
 **No task is in flight.** The open candidates, for the user to prioritise
 (ask which, or take #1 if told to proceed):
 
-1. **L51 parity hardening for the five OJ corpora** — extend D2
-   full-content parity (already on Cbw/BSIG) to CRA, NIS2, AI Act,
-   Machinery, RED, with a negative control.
-2. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
+1. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
    Delegated Regulation (EU) 2022/30 as its own authentic committed
    source (locate the OJ text FIRST — Legal circuit-breaker).
-3. Small: storage file GC (evidence-row deletion does not remove stored
+2. Small: storage file GC (evidence-row deletion does not remove stored
    files; inherited from the GCS backend, stated in 10.1).
-4. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
+3. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
    GPSR, Data Act) when a customer declaration needs them — the 11.4
    cockpit note marks the gap honestly meanwhile.
+4. Small: a repeatable `verify_nis2_reader` G6 script (the Phase-12
+   annex check was ad-hoc; the NIS2 reader has no script of its own).
 5. **User-only, between sessions:** move the repo out of `~/Downloads`.
 
 Batch cadence for everything: survey → scope one shippable batch → build →

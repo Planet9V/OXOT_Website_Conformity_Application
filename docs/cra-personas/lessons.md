@@ -868,3 +868,48 @@ Act) if and when a customer declaration needs them — the cockpit note now
 marks that gap honestly, so it is a choice, not a silence.
 
 **New lessons:** L53.
+
+## L54 — A reproducible build reproduces its own blindness
+
+**Seen:** 12.1. The CI reproducibility diff (builder(source) == corpus,
+byte-for-byte) had been green for every OJ corpus since each was born —
+while NIS2's annexes were missing their entire "Type of entity" column,
+every annex had lost its Part/Class/Section subdivision headings, and two
+corpora carried page-furniture (the OJ footer; the Parliament statement)
+as statutory content. Reproducibility verifies the TRANSFORM is stable; it
+says nothing about whether the transform kept the content. A parser that
+drops an element reproduces the loss identically every build — a check
+that cannot fail on the failure mode that matters.
+**Apply:** for any verbatim pipeline, pair reproducibility with FULL-
+CONTENT PARITY through an INDEPENDENT flattening of the same source
+(D2, negative-controlled — L51), and make the independent path as dumb as
+possible (strip everything, compare characters): the less it shares with
+the builder, the less their blindness can overlap. The exclusions the two
+paths do share (footnotes, headings-by-structure, footer) must be named
+definitions, not accidents of what the extractor happens to recognise.
+
+## Phase 12 — L51 D2 parity for the OJ family — completed 2026-08-16
+
+**What worked:** probe-before-build. A scratch probe measured the real
+divergence per act BEFORE any code changed, which turned "harden the
+verifiers" into a precise defect list: nested-table truncation, grseq
+heading loss, footer/statement leakage, one footnote leak — each fixed at
+the shared-parser choke point, then proven by the very check that found
+it. The Cbw D2 pattern (shared low-level parse, independent flatten,
+normalized character equality, negative control) transferred to HTML
+without redesign. The corrigendum machinery paid off: the checker applies
+declared corrigenda from corpus metadata and FAILS if they stop firing.
+
+**What the check found:** four classes of loss shipped in every OJ corpus
+(L54). The NIS2 entity column is the material one — Annexes I/II define
+WHO is in scope, and the corpus said only which sectors. All corpora
+rebuilt from committed sources; readers re-verified live.
+
+**Re-tuning applied:** open candidates now: (1) RED Art. 3(3) delegated
+acts (Delegated Regulation (EU) 2022/30 — authentic source first);
+(2) storage file GC; (3) obligation content for still-unseeded acts when
+a declaration needs it; (4) user-only repo move. Also worth a small
+batch: fold the ad-hoc NIS2-annex live check into a repeatable
+verify_nis2_reader script (the reader had no G6 script of its own).
+
+**New lessons:** L54.

@@ -239,3 +239,9 @@ the meaning of Art. 64(10).
   statusDerivers header. Obligations response names declared-but-unseeded
   acts; cockpit renders "Zero here means un-modelled, not compliant"
   (GDPR live example, screenshot reviewed). G2 723/0/0.
+
+## 2026-08-16 (late night) — Phase 12 (L51 OJ parity) shipped (cf73887)
+- D2 + negative control now on ALL SEVEN corpora. Four shipped extraction
+  losses found+fixed (NIS2 entity column ~7.6k chars, grseq headings,
+  footer/statement leakage, one footnote leak). L54 recorded. All gates
+  green; NIS2 Annex I entity column verified rendering live.

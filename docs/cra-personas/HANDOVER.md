@@ -45,12 +45,12 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L53 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L54 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 11
+## Phases — all complete through Phase 12
 
 | Phase | Delivered |
 |---|---|
@@ -61,6 +61,7 @@ do not".
 | 9 | Absorption close-out: product-portfolio absorbed into Products (honest bulk import — `POST /conformity/products/import`; quick-start and the fabricating portfolio endpoints deleted; vault kept, its invented-provenance defaults removed); reports → a Home section, flows → `/settings/flows`; the transitional **More menu DELETED** — nav is exactly the nine destinations; auditor-portal decided PERMANENT + EXTERNAL and completed end-to-end in 9.3b (admin-issued expiring tokens, org-side RFI inbox with respond); **G4 driven 7 → 0 and made a covenant** (the empty-string "provenance hash" on the public trust center among the seven). Same day, after the G7 retro: **W2.4 COMPLETED** — 9.4a Cyberbeveiligingswet (NL, promulgated Staatsblad XML, in force 2026-08-15) and 9.4b BSI-Gesetz (DE, consolidated gii XML, a disclosed departure with the verbatim amendment trail), each with a CI verifier including **D2 full-content parity** (which caught and killed 8 flattener-added characters — L51) |
 | 10 | **Portable evidence storage** (backend seam: Replit sidecar vs local volume, chooser no-regression proven by unit test; suite reached ZERO SKIPS; restart-persistence proven live) · **Art. 14(8) product-user register + notification record** (tri-state impacted derivation states its rule ON THE WIRE; the app records the org's act, transmits nothing) · **AI Act / Machinery / RED corpora + readers** (authentic OJ, pinned structures, seven verifiers total, five-act citation gate — formerly-skipped AI-Act content now VALIDATES; NIS2 chapter-IX misassignment found+fixed) · **last dead chain deleted** (4 unwritten tables, unauth /api/ecosystem, fake-timestamp seal engine) · L52 (a piped gate launders its exit code) · CI green end-to-end after fixing an invalid workflow env (`runner.temp` is step-only) |
 | 11 | **Obligation content ×3 acts (10.3c)** — zero engine changes (D10 held: requirements × declarations). 11.1 RED seeded from nothing (22 rows: Art 3(3)(d)/(e)/(f) cyber essential requirements, Art 10 chain, importer/distributor, Art 15 traceability) — `orgObligations.test.ts` is the endpoint's FIRST suite. 11.2 AI Act verified+extended (3 corrections incl. Art 73's real 15/2/10-day anchors; +11 rows: provider chapter, deployer Art 26 → operator role now termed 'deployer', registration, transparency; GPAI refusal documented). 11.3 Machinery: **three misnumbered Annex III addresses fixed** (duties live in 1.1.9/1.2.1(d)/1.2.1(f); DoC was cited to the SAFETY-COMPONENTS annex — now Art 21) + 12 rows (L53: verify annex section numbers against the OJ SOURCE — the flattened bundle drops them). 11.4 declared-but-unseeded acts now NAMED (`regulationsWithoutSeededContent` + cockpit amber note "Zero here means un-modelled, not compliant"); deriver refusals documented per candidate in the statusDerivers header. Suite 723/0/0. |
+| 12 | **D2 full-content parity for the five OJ corpora** (`scripts/lib/oj_content_parity.mjs` — independent flatten, corrigenda must fire, negative control per corpus). Building it exposed FOUR shipped extraction losses, fixed in the shared parser (L54): nested-table truncation (NIS2 Annexes I/II had lost the whole "Type of entity" column), `oj-ti-grseq` heading loss in every annex (CRA Class I/II, Machinery Part A/B…), OJ footer / Parliament-statement leakage into last annexes, one footnote leak into an amendment quote. All five corpora rebuilt, bundles resynced ×3 apps, readers verified live. |
 
 ## The application map (key files)
 
@@ -105,9 +106,10 @@ byte-for-byte reproducible in CI — never hand-edit a corpus or bundle:
 
 Each has its own verifier — `verify_{cra,nis2,cbw,bsig}_corpus.mjs` plus
 `verify_euact_corpus.mjs <ai_act|machinery|red>`, ALL in CI; the
-transposition verifiers include **D2 full-content parity** (L51 — the OJ
-family still relies on pinned structure + probes; hardening it is a named
-open task). Corpus bundles are excluded from EVERY content gate — they ARE
+transposition verifiers include **D2 full-content parity**, and since
+Phase 12 the FIVE OJ corpora carry it too (D5/D5N in the CRA and NIS2
+verifiers, D2/D2N in the euact verifier) — every check negative-
+controlled (L51/L54). Corpus bundles are excluded from EVERY content gate — they ARE
 the law, and the Machinery Regulation legitimately says vibrations are
 "transmitted to" the seat (L52). Verify any article number against the corpus **title** before
 putting it in a label — a wrong-but-existing number passes the citation
@@ -212,26 +214,21 @@ on evidence with the user, not guessed); the same approach failed twice;
 or `git log`/`git status` shows an unexpected change (the audio script is
 the known benign one).
 
-## Next steps (Phase 11 closed 2026-08-16 with G7, CI green)
+## Next steps (Phase 12 closed 2026-08-16 with G7, all floors held)
 
-Everything previously queued is DONE, including 10.3c (Phase 11: the three
-new acts carry statute-verified obligation content, the operator speaks
-'deployer', and an empty declared act is named, never silent). **No task
-is in flight. The open candidates, for the user to prioritise:**
+**No task is in flight. The open candidates, for the user to prioritise:**
 
-1. **L51 parity hardening for the OJ corpus family** — the transposition
-   corpora (Cbw, BSIG) have D2 full-content parity; the five OJ corpora
-   (CRA, NIS2, AI Act, Machinery, RED) still rely on pinned structure +
-   verbatim probes.
-2. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
+1. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
    Delegated Regulation (EU) 2022/30 as its own authentic committed
    source (Legal circuit-breaker: locate the OJ text first), feeding the
    CRA-adjacent content a customer will actually ask about.
-3. Small: storage file GC (deleting evidence rows does not remove stored
+2. Small: storage file GC (deleting evidence rows does not remove stored
    files — a property inherited from the GCS backend and stated in 10.1).
-4. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
+3. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
    GPSR, Data Act) if and when a customer's declaration needs them — the
    11.4 cockpit note marks that gap honestly in the meantime.
+4. Small: a repeatable `verify_nis2_reader` G6 script (the Phase-12
+   annex check was ad-hoc; the NIS2 reader has no script of its own).
 5. **User-only, between sessions:** move the repo out of `~/Downloads`
    (quit session → move folder → `docker compose up -d` from the new
    path → reopen).
