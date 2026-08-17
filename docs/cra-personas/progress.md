@@ -199,3 +199,20 @@ the meaning of Art. 64(10).
   (zero UI consumers anywhere), their zod schemas and unit tests. Fresh
   push proves 0 tables; G2 717/0/0 (5 dead-engine tests fewer); live
   stack migrated.
+
+## 2026-08-16 (late evening) — Phase 11 opened, batch 11.1 (RED seed)
+- Survey: engine already act-generic (requirements × declarations; derivers
+  by key). ai_act/machinery seeds exist but pre-corpus; **red had ZERO rows**.
+  Incident records are CRA/NIS2-shaped only → no new deriver without new data.
+- 11.1 built: 21 RED requirement rows (Art 3(3)(d)/(e)/(f) cyber essential
+  requirements + Art 10 manufacturer chain + Art 12/13 importer/distributor
+  duties + Art 15 traceability for all four economic operators per Art 2(16)),
+  7 honest cross-act mappings. Statute read verbatim from
+  docs/red_statutory_corpus before every row. Non-cyber Art 3(1)/(2)
+  deliberately not seeded (machinery precedent) — stated in the seed comment.
+- New suite orgObligations.test.ts: engine equation + RED rows + role
+  vocabulary + undeclared-act isolation; restores prior declarations (L46).
+- Gates: G1 ok; G2 **720/0/0** (717 floor + 3 new); G3 ok; G4/G5/G8 = 0;
+  seven verifiers green. Seed validation: 114 requirements, 79 mappings.
+- G6 pending: seed image rebuilt + re-run (L39), then
+  verify_red_obligations_111_playwright.mjs with screenshot review.

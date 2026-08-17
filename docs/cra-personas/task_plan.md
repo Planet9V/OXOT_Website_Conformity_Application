@@ -976,3 +976,77 @@ Sequencing note: 10.1 before 10.2 because the notification register's
 evidence attachments should land on the portable store, not the sidecar.
 10.3's citation-gate extension may surface latent wrong citations in
 published content — that is the point; they are fixed, never waived.
+
+## Phase 11 — 10.3c: obligation content for the AI Act, Machinery Regulation and RED (opened 2026-08-16)
+
+User chose candidate #1. Survey findings that shape the phase (verified
+against the tree at 9d0c29a):
+
+- The engine is ALREADY act-generic: `GET /conformity/org/obligations` is
+  requirements(declared regs) × declared roles; derivers hook by
+  `${regulationKey}::${refCode}` (`lib/statusDerivers.ts`). D10 holds —
+  nothing here adds navigation or engine branches.
+- `seedConformity.ts` already carries `ai_act` (12 rows) and `machinery`
+  (8 rows) requirement seeds from the Phase-0 era — written BEFORE the
+  corpora existed, never verified statute-first. **`red` has ZERO
+  requirement rows** while its regulations-table row exists, so an org can
+  declare RED + manufacturer today and silently get nothing.
+- RefCodes in the `Art N` form deliberately evade the G5 regex (`Article`/
+  `Art.` only) — the gate will NOT catch a wrong refCode. Every seeded
+  refCode/title is verified against the corpus article TITLE by hand
+  (L41), and descriptions keep the act's name within the 60-char
+  attribution window of any spelled-out "Article N".
+- Incident records are CRA-shaped (`conformityIncidents`) and NIS2-shaped
+  (`conformityEntityIncidents`) ONLY. Per the statusDerivers doctrine (no
+  deriver for data that does not exist), no `ai_act::Art 73` deriver is
+  registered until an AI-Act incident record type exists. The deriver half
+  of this phase is a documented refusal unless the in-batch survey finds
+  real system data (e.g. attestation rows) a deriver could honestly read.
+- `termFor` already speaks each act's language (ai_act: provider; red:
+  manufacturer/importer/distributor; machinery: assembler for the
+  integrator). Deployer duties (AI Act Art 26) belong to the `operator`
+  role if seeded — decide from the corpus, not from memory.
+- Mapping endpoints are validated at seed time (`seedConformity` throws on
+  unknown refCodes), so renames are caught by G2's seed step.
+
+Tasks (one batch each; statute read from the corpus BEFORE writing a row):
+
+- **11.1 done 2026-08-16** 22 RED requirement rows seeded statute-first
+  (each article read verbatim from the corpus before its row was written):
+  Art 3(3)(d)/(e)/(f) cyber essential requirements; the Art 10 manufacturer
+  chain (paras 1, 3–12); Art 18 DoC; Art 21 technical documentation;
+  Art 12(1)/(7)/(8) importer and Art 13(2)/(4) distributor duties; Art 15
+  traceability for all four economic operators (Art 2(16) defines them —
+  same four as CRA Art 23). Non-cyber Art 3(1)/(2) deliberately NOT seeded
+  (machinery precedent), reasoning in the seed comment. 7 cross-act
+  mappings (Art 21 ≡ CRA Annex VII, Art 18 ≡ Annex V, Art 15 ≡ Art 23,
+  Art 10(4) ↔ Art 13(13), the three 3(3) reqs ↔ CRA Annex I items). NEW:
+  `orgObligations.test.ts` — the obligations endpoint's first tests
+  (engine equation, RED rows in RED's vocabulary, undeclared-act
+  isolation; restores prior declarations, L46). Gates: G1 · G2 720/0/0 ·
+  G3 · G4/G5/G8 = 0 · seven verifiers · seed validation 114 req/79 map ·
+  G6 live (seed image rebuilt per L39; declare-via-real-UI, cockpit badge
+  `red · 17` for the manufacturer lens, screenshots reviewed, declaration
+  restored). Original scope text: RED obligation seed — from `docs/red_statutory_corpus/`, the
+  manufacturer/importer/distributor obligation set (Arts 3(2)/3(3)(d)(e)(f)
+  essential requirements; Chapter II operator duties; technical
+  documentation; conformity assessment; EU DoC; CE marking — final list
+  decided with the corpus open). Honest cross-act mappings only where the
+  relationship is real (Art 3(3) ↔ CRA Annex I items). Gates + G6: declare
+  red via the API, see RED obligations with RED's own role terms on Home,
+  screenshot, withdraw declaration.
+- **11.2** AI Act seed verified + extended — every existing row checked
+  verbatim against `docs/ai_act_statutory_corpus/` (title, article scope,
+  applicability); extend statute-first (provider chapter, registration,
+  transparency, deployer duties for the operator role — corpus decides).
+- **11.3** Machinery seed verified + extended — the 8 rows checked against
+  `docs/machinery_statutory_corpus/` (Annex III numbering especially);
+  extend with the manufacturer/importer/distributor chapter as the corpus
+  supports.
+- **11.4** Derivers + endpoint honesty + G7 — register only derivers whose
+  input data exists (default: none new; the refusal and its reason go in
+  the statusDerivers header); obligations response names any DECLARED
+  regulation that contributed zero requirement rows (spec-first: openapi →
+  orval) so an empty act is never a silent clean bill; lessons + re-tune.
+
+Done-markers appended per batch below as each closes.
