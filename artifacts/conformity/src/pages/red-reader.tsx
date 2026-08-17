@@ -99,6 +99,7 @@ export default function RedReaderPage() {
       annexesData={redAnnexesData}
       defaultArticle={3}
       bodyTestId="red-reader-body"
+      citeAs="Directive 2014/53/EU"
     />
     <DelegatedRegulationPanel />
     </>

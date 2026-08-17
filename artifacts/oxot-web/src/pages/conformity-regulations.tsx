@@ -32,8 +32,23 @@ interface FrameworkHighlight {
   penaltyClause: string;
   keyArticles: string[];
   enforcementMilestones: { date: string; description: string; status: 'imminent' | 'active' | 'future' }[];
-  wikiSlug?: string;
 }
+
+/**
+ * Where each act's own wiki/reader lives. The CRA wiki is in THIS app; the
+ * other acts' readers are the conformity app's Library (same wiki pattern),
+ * so those cross the SPA boundary via a plain href. Acts without a loaded
+ * corpus (IEC 62443, DORA, CER) get no button — there is no text to read.
+ */
+const WIKI_VIEWS: Record<string, { href: string; external: boolean }> = {
+  cra: { href: '/wiki/cra', external: false },
+  nis2: { href: '/conformity/library/nis2', external: true },
+  ai_act: { href: '/conformity/library/ai-act', external: true },
+  machinery: { href: '/conformity/library/machinery', external: true },
+  red: { href: '/conformity/library/red', external: true },
+  gdpr: { href: '/conformity/library/gdpr', external: true },
+  data_act: { href: '/conformity/library/data-act', external: true },
+};
 
 const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
   cra: {
@@ -54,7 +69,6 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
       { date: 'Sep 11, 2026', description: 'Article 14 mandatory 24h ENISA incident reporting takes effect', status: 'imminent' },
       { date: 'Dec 11, 2027', description: 'Full mandatory enforcement & CE marking requirement', status: 'future' }
     ],
-    wikiSlug: '/wiki/cra'
   },
   nis2: {
     key: 'nis2',
@@ -71,7 +85,6 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
       { date: 'Oct 17, 2024', description: 'Transposition deadline into Member State national law', status: 'active' },
       { date: 'Apr 17, 2025', description: 'National competent authorities register Essential Entities', status: 'active' }
     ],
-    wikiSlug: '/wiki/cra?tab=recitals'
   },
   iec_62443: {
     key: 'iec_62443',
@@ -88,7 +101,6 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
       { date: 'Current', description: 'Global benchmark for industrial automation security', status: 'active' },
       { date: '2026-2027', description: 'CEN/CENELEC Harmonised Standard EN 40000 series release (M/606)', status: 'imminent' }
     ],
-    wikiSlug: '/wiki/cra?tab=annexes'
   },
   ai_act: {
     key: 'ai_act',
@@ -105,7 +117,6 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
       { date: 'Feb 2, 2025', description: 'Prohibitions on unacceptable risk AI systems take effect', status: 'active' },
       { date: 'Aug 2, 2026', description: 'General Purpose AI & High-Risk obligations apply', status: 'imminent' }
     ],
-    wikiSlug: '/wiki/cra'
   },
   machinery: {
     key: 'machinery',
@@ -120,7 +131,6 @@ const FRAMEWORK_METADATA: Record<string, FrameworkHighlight> = {
       { date: 'Jul 19, 2023', description: 'Entry into force', status: 'active' },
       { date: 'Jan 20, 2027', description: 'Mandatory application across all EU Member States', status: 'future' }
     ],
-    wikiSlug: '/wiki/cra'
   }
 };
 
@@ -309,15 +319,23 @@ export default function ConformityRegulations() {
                       </a>
 
                       <div className="flex items-center gap-2">
-                        {meta.wikiSlug && (
-                          <Link
-                            href={meta.wikiSlug}
+                        {WIKI_VIEWS[reg.key] && (WIKI_VIEWS[reg.key].external ? (
+                          <a
+                            href={WIKI_VIEWS[reg.key].href}
                             className="px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold flex items-center gap-1 transition-colors"
                           >
                             <BookOpen className="w-3 h-3" />
-                            CRA Wiki View
+                            {reg.shortName} Wiki View
+                          </a>
+                        ) : (
+                          <Link
+                            href={WIKI_VIEWS[reg.key].href}
+                            className="px-3 py-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-xs font-semibold flex items-center gap-1 transition-colors"
+                          >
+                            <BookOpen className="w-3 h-3" />
+                            {reg.shortName} Wiki View
                           </Link>
-                        )}
+                        ))}
                         <Link
                           href={`/conformity-platform/regulations/${reg.key}`}
                           className="px-3 py-1.5 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold flex items-center gap-1 shadow-sm transition-colors"

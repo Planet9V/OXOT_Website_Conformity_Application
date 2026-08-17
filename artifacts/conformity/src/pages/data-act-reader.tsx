@@ -31,6 +31,7 @@ export default function DataActReaderPage() {
       annexesData={dataActAnnexesData}
       defaultArticle={3}
       bodyTestId="data-act-reader-body"
+      citeAs="Regulation (EU) 2023/2854"
     />
   );
 }

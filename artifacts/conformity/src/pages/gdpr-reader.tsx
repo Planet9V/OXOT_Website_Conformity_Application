@@ -32,6 +32,7 @@ export default function GdprReaderPage() {
       annexesData={gdprAnnexesData}
       defaultArticle={32}
       bodyTestId="gdpr-reader-body"
+      citeAs="Regulation (EU) 2016/679"
     />
   );
 }

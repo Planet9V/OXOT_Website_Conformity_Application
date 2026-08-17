@@ -34,6 +34,7 @@ export default function AiActReaderPage() {
       annexesData={aiActAnnexesData}
       defaultArticle={6}
       bodyTestId="ai-act-reader-body"
+      citeAs="Regulation (EU) 2024/1689"
     />
   );
 }

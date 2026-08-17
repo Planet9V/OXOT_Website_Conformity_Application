@@ -286,3 +286,25 @@ the meaning of Art. 64(10).
   demo restored to unanswered. Commit ec4769a pushed; CI run
   32006168614 SUCCESS. G7 closed with L58 (a CI mirror is the
   environment, not just the command).
+
+## 2026-08-17 (early am) — Phase 19: the wiki pattern for every act
+- 19.1: EuActReader v2 = the CRA-wiki browsing pattern parameterized
+  (tabbed counts, filtered/total badge, number/title/text search, Cite
+  buttons via per-act citeAs, numbered paragraph chips + anchors, URL
+  deep-links ?tab&num&q, per-article/recital corrigenda callouts from
+  corpus provenance). nis2-reader migrated onto it (was the
+  pre-parameterization twin) — SIX acts now share the pattern.
+- 19.1b: oxot-web regulations cards sent every act to the CRA wiki
+  ("CRA Wiki View" on the NIS2 card → CRA recitals). Per-act WIKI_VIEWS
+  map now routes each act to its own reader; no button where no text.
+- 19.2: ActLifecyclePanel on regulation-detail — amendment trail,
+  applied corrigenda (grouped by instrument with correction counts),
+  language-only corrigenda notes, consolidated-text disclosure — all
+  lazy-read from the act's own corpus bundle metadata (L57).
+- 19.3: weekly LaunchAgent (com.oxot.conformity.lifecycle-check,
+  Mon 09:00) running scripts/ops/run_lifecycle_check.sh → logs to
+  ~/Library/Logs/oxot-lifecycle.log, notification on real failure.
+  Proven: installed, loaded, manual run exit 0 (EUR-Lex WAF currently
+  challenges all 9 ALL-views — stated as unverified, not counted
+  clean; CI runs the same guard per-push). Installer re-run needed
+  after the planned repo move.

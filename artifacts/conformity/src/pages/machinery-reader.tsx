@@ -41,6 +41,7 @@ export default function MachineryReaderPage() {
       annexesData={machineryAnnexesData}
       defaultArticle={10}
       bodyTestId="machinery-reader-body"
+      citeAs="Regulation (EU) 2023/1230"
     />
   );
 }

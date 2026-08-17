@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getRegColor, formatDate } from "@/lib/utils";
+import { ActLifecyclePanel } from "@/components/act-lifecycle-panel";
 
 /** Acts with an in-app verbatim reader (Library). */
 const READER_PATHS: Record<string, string> = {
@@ -201,6 +202,9 @@ export default function RegulationDetail() {
               </div>
             </CardContent>
           </Card>
+
+          {/* 19.2 — how current the loaded text is, from the act's own corpus metadata. */}
+          <ActLifecyclePanel regKey={reg.key} />
         </div>
       </div>
     </div>

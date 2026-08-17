@@ -1364,3 +1364,40 @@ cyber baseline move?" Per-product guidance needs a per-product FACT.
   capability — no new route, G8 untouched.
 - **18.3 done** Gates bare (G1–G5, G8), container rebuild, G6 with reviewed
   screenshots across all three states, commit/push, CI watch, G7 retro.
+
+## Phase 19 — The wiki pattern for every act + reader polish + lifecycle habit (opened 2026-08-17)
+
+User: the CRA wiki (`/library/statute`) is the browsing experience — the
+other acts should have it too; plus the two deferred polish items and
+the scheduled lifecycle check.
+
+- **19.1** EuActReader v2 = the wiki pattern, parameterized: tabs with
+  counts, index count badge, search by number/title/text, Cite buttons
+  (per-act `citeAs`), numbered paragraph chips with anchor links, URL
+  deep-links (?tab&num&q), per-article/recital corrigenda callouts read
+  from corpus provenance (OJ-pipeline acts carry them; consolidated
+  acts disclose at act level — nothing invented). nis2-reader (the
+  pre-parameterization twin) migrates onto it: SIX acts get the
+  pattern (nis2, ai_act, machinery, red, gdpr, data_act). Cbw/BSIG
+  stay bespoke — national structures, not the EU corpus shape. CRA
+  wiki untouched (it already is the pattern; its graph/commentary are
+  CRA-only data).
+- **19.1b** (user, mid-phase, with screenshot): the oxot-web
+  `/conformity-platform/regulations` cards hardcoded a "CRA Wiki View"
+  button pointing EVERY act at the CRA wiki (NIS2 → the CRA's recitals
+  tab, IEC → the CRA's annexes tab). Replaced with a per-act WIKI_VIEWS
+  map: each act's button is "<SHORT> Wiki View" and opens that act's
+  OWN reader (CRA in-app; the rest cross the SPA boundary to
+  /conformity/library/*); acts with no loaded text (IEC, DORA, CER)
+  get no button.
+- **19.2** Regulation-detail lifecycle panel: amendment trail +
+  corrigenda + repeal facts rendered from the act's OWN corpus
+  metadata via per-act lazy imports (bundle stays split; statutory
+  constants stay in one place — L57).
+- **19.3** Scheduled local lifecycle check: macOS LaunchAgent running
+  `scripts/ops/run_lifecycle_check.sh` weekly (logs to
+  ~/Library/Logs/oxot-lifecycle.log, notification on failure);
+  documented caveat: plist pins the repo path, re-run installer after
+  the planned move out of ~/Downloads.
+- **19.4** Gates bare, G6 with reviewed screenshots, commit/push, CI
+  watch, G7.
