@@ -38,6 +38,7 @@ export interface StorageService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getObjectEntityFile(objectPath: string): Promise<any>;
   normalizeObjectEntityPath(rawPath: string): string;
+  deleteObjectEntity(objectPath: string): Promise<boolean>;
   trySetObjectEntityAclPolicy(rawPath: string, aclPolicy: ObjectAclPolicy): Promise<string>;
   canAccessObjectEntity(args: {
     userId?: string;

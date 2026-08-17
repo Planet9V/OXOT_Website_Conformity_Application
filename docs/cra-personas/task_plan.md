@@ -1157,3 +1157,24 @@ Tasks (one batch):
   SOURCE_OF_TRUTH; 2022/30, 2023/2444, 2026/339 in OTHER_INSTRUMENT).
   Gates: G1 · G2 723/0/0 · G3 · G4/G5/G8 = 0 · 8 verifiers · G6 all PASS
   with reviewed screenshots (panel + banner).
+
+## Phase 14 — candidates 1–4 (opened 2026-08-16, loki-mode)
+
+- **14.1 done** Storage file GC: `deleteObjectEntity` on the storage seam
+  (both backends — local removes file + .acl.json sidecar idempotently;
+  GCS calls File.delete ignoreNotFound), invoked best-effort AFTER the
+  row-deletion transaction commits on all three paths (evidence delete;
+  assessment delete collecting cascading evidence; product delete joining
+  through assessments). New test proves file+sidecar removal on both the
+  direct and the bulk path. G2 724/0/0; G6 live: file present before
+  deletion, REMOVED after, in the api container volume.
+- **14.2 done** `verify_nis2_reader_playwright.mjs` — the Phase-12 ad-hoc
+  annex check now repeatable: banner, Art. 23 verbatim, Annex I
+  entity-definition column. All PASS, screenshots reviewed.
+- **14.3 in progress** RED→CRA handover milestone (2027-12-11) on the
+  act timeline. G6 pixel review CAUGHT a pre-existing defect: formatDate
+  rendered every plain calendar date ONE DAY EARLY in negative-offset
+  timezones (UTC-midnight parse, local render) — statutory dates wrong
+  on the shipped timeline. Fixed at the choke point (calendar dates
+  format in UTC; timestamps keep local rendering).
+- **14.4 next** Obligation content for the still-unseeded acts.

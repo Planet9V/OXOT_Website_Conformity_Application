@@ -197,6 +197,24 @@ export class LocalObjectStorageService {
     return { absPath: abs };
   }
 
+  /**
+   * Remove a stored object and its ACL sidecar (storage GC — the record's
+   * deletion is the statutory act; this is hygiene). Idempotent: an absent
+   * object returns false rather than throwing.
+   */
+  async deleteObjectEntity(objectPath: string): Promise<boolean> {
+    let file: LocalObjectFile;
+    try {
+      file = await this.getObjectEntityFile(objectPath);
+    } catch (e) {
+      if (e instanceof ObjectNotFoundError) return false;
+      throw e;
+    }
+    fs.rmSync(file.absPath, { force: true });
+    fs.rmSync(this.metaPath(file.absPath), { force: true });
+    return true;
+  }
+
   normalizeObjectEntityPath(rawPath: string): string {
     const m = /^\/api\/storage\/uploads\/local\/([A-Za-z0-9-]+)$/.exec(rawPath);
     if (m) return `/objects/uploads/${m[1]}`;

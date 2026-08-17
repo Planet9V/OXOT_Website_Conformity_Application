@@ -244,4 +244,82 @@ describe.skipIf(!storageAvailable)("conformity evidence files — attach & reope
       await api("DELETE", `/conformity/products/${productId}`);
     }
   }, 60_000);
+
+  /**
+   * Storage GC (task 14.1): deleting the evidence row removes the stored
+   * FILE too — proven on the local backend by watching the disk, which the
+   * GCS sidecar path shares via the same seam method. Also proves the bulk
+   * path: an assessment deletion cascades its evidence rows AND their files.
+   */
+  it.skipIf(process.env.OBJECT_STORAGE_BACKEND !== "local")(
+    "removes the stored file when its evidence row is deleted",
+    async () => {
+      const { default: fs } = await import("node:fs");
+      const { default: path } = await import("node:path");
+      const storageDir = process.env.OBJECT_STORAGE_DIR!;
+      const absOf = (objectPath: string) =>
+        path.join(storageDir, "private", ...objectPath.replace(/^\/objects\//, "").split("/"));
+
+      const product = await api("POST", "/conformity/products", {
+        name: `Evidence GC Product ${Date.now()}`,
+        productType: "software",
+      });
+      const productId = (product.json as { id: number }).id;
+      const assessment = await api("POST", "/conformity/assessments", {
+        productId,
+        regulationKey: "cra",
+      });
+      const assessmentId = (assessment.json as { assessment: { id: number } }).assessment.id;
+
+      const uploadOnce = async () => {
+        const reqUrl = await api("POST", "/storage/uploads/request-url", {
+          name: FILE_NAME,
+          size: FILE_BYTES.byteLength,
+          contentType: "application/pdf",
+        });
+        const { uploadURL, objectPath } = reqUrl.json as { uploadURL: string; objectPath: string };
+        const putUrl = uploadURL.startsWith("http")
+          ? uploadURL
+          : `${baseUrl.replace(/\/api$/, "")}${uploadURL}`;
+        const put = await fetch(putUrl, {
+          method: "PUT",
+          headers: { "content-type": "application/pdf", cookie: adminCookie },
+          body: FILE_BYTES,
+        });
+        expect(put.ok).toBe(true);
+        const added = await api("POST", `/conformity/assessments/${assessmentId}/evidence`, {
+          requirementRefCode: "CRA-ER-01",
+          title: "GC probe",
+          evidenceType: "test_report",
+          url: "",
+          objectPath,
+          fileName: FILE_NAME,
+          note: "",
+        });
+        expect(added.status, JSON.stringify(added.json)).toBe(200);
+        return { evidenceId: (added.json as { id: number }).id, objectPath };
+      };
+
+      try {
+        // Direct evidence deletion removes the row AND the stored file + sidecar.
+        const a = await uploadOnce();
+        expect(fs.existsSync(absOf(a.objectPath))).toBe(true);
+        const del = await api("DELETE", `/conformity/evidence/${a.evidenceId}`);
+        expect(del.status).toBe(200);
+        expect(fs.existsSync(absOf(a.objectPath))).toBe(false);
+        expect(fs.existsSync(`${absOf(a.objectPath)}.acl.json`)).toBe(false);
+
+        // Bulk path: assessment deletion cascades the rows and GCs the files.
+        const b = await uploadOnce();
+        expect(fs.existsSync(absOf(b.objectPath))).toBe(true);
+        const delAssessment = await api("DELETE", `/conformity/assessments/${assessmentId}`);
+        expect(delAssessment.status).toBe(200);
+        expect(fs.existsSync(absOf(b.objectPath))).toBe(false);
+      } finally {
+        await api("DELETE", `/conformity/assessments/${assessmentId}`);
+        await api("DELETE", `/conformity/products/${productId}`);
+      }
+    },
+    60_000,
+  );
 });

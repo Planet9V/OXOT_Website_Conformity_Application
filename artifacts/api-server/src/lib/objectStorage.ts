@@ -209,6 +209,23 @@ export class ObjectStorageService {
     return objectFile;
   }
 
+  /**
+   * Remove a stored object (storage GC — the record's deletion is the
+   * statutory act; this is hygiene). Idempotent: an absent object returns
+   * false rather than throwing.
+   */
+  async deleteObjectEntity(objectPath: string): Promise<boolean> {
+    let objectFile: File;
+    try {
+      objectFile = await this.getObjectEntityFile(objectPath);
+    } catch (e) {
+      if (e instanceof ObjectNotFoundError) return false;
+      throw e;
+    }
+    await objectFile.delete({ ignoreNotFound: true });
+    return true;
+  }
+
   normalizeObjectEntityPath(rawPath: string): string {
     if (!rawPath.startsWith('https://storage.googleapis.com/')) {
       return rawPath;

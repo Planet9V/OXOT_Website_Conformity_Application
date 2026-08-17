@@ -15,7 +15,7 @@
  */
 import { createHash } from "node:crypto";
 import { Readable } from "node:stream";
-import { Router, type IRouter } from "express";
+import { Router, type IRouter, type Request as ExpressRequest } from "express";
 import { and, asc, desc, eq, isNull, sql } from "drizzle-orm";
 import { logger } from "../lib/logger";
 import {
@@ -1134,6 +1134,16 @@ router.delete("/conformity/products/:id", requireAuth, async (req, res): Promise
     res.status(404).json({ error: "Product not found" });
     return;
   }
+  // Assessments (and their evidence rows) cascade away with the product —
+  // collect the stored files first so the GC can run after the commit (14.1).
+  const orphaned = await db
+    .select({ objectPath: conformityEvidenceTable.objectPath })
+    .from(conformityEvidenceTable)
+    .innerJoin(
+      conformityAssessmentsTable,
+      eq(conformityEvidenceTable.assessmentId, conformityAssessmentsTable.id),
+    )
+    .where(eq(conformityAssessmentsTable.productId, id));
   await db.transaction(async (tx) => {
     await tx.delete(conformityProductsTable).where(eq(conformityProductsTable.id, id));
     // Assessment-scoped activity rows cascade away with their assessments;
@@ -1148,6 +1158,7 @@ router.delete("/conformity/products/:id", requireAuth, async (req, res): Promise
       summary: `Product "${existing.name}" deleted`,
     });
   });
+  await removeStoredEvidenceFiles(req, orphaned.map((r) => r.objectPath));
   res.json(DeleteConformityProductResponse.parse({ success: true }));
 });
 
@@ -1292,6 +1303,12 @@ router.delete("/conformity/assessments/:id", requireAuth, async (req, res): Prom
     return;
   }
   const product = await loadProduct(assessment.productId);
+  // Evidence rows cascade away with the assessment — collect their stored
+  // files first so the GC can run after the deletion commits (task 14.1).
+  const orphaned = await db
+    .select({ objectPath: conformityEvidenceTable.objectPath })
+    .from(conformityEvidenceTable)
+    .where(eq(conformityEvidenceTable.assessmentId, id));
   await db.transaction(async (tx) => {
     await tx.delete(conformityAssessmentsTable).where(eq(conformityAssessmentsTable.id, id));
     // Workspace-level row (assessmentId null): the assessment's own ledger rows
@@ -1306,6 +1323,7 @@ router.delete("/conformity/assessments/:id", requireAuth, async (req, res): Prom
       summary: `Assessment #${id}${product ? ` (${product.name})` : ""} deleted`,
     });
   });
+  await removeStoredEvidenceFiles(req, orphaned.map((r) => r.objectPath));
   res.json(DeleteConformityAssessmentResponse.parse({ success: true }));
 });
 
@@ -1780,6 +1798,22 @@ router.get("/conformity/evidence/:id/download", requireAuth, async (req, res): P
   }
 });
 
+/**
+ * Storage GC (task 14.1): deleting an evidence ROW is the statutory act; the
+ * stored FILE is hygiene, removed best-effort AFTER the row deletion commits.
+ * A failed file removal is logged, never surfaced as a failed deletion — the
+ * record is already gone, and the next deletion attempt would 404.
+ */
+async function removeStoredEvidenceFiles(req: ExpressRequest, objectPaths: (string | null | undefined)[]) {
+  for (const p of [...new Set(objectPaths.filter((x): x is string => Boolean(x)))]) {
+    try {
+      await objectStorage.deleteObjectEntity(p);
+    } catch (err) {
+      req.log.warn({ err, objectPath: p }, "stored evidence file removal failed; the row is already deleted");
+    }
+  }
+}
+
 router.delete("/conformity/evidence/:id", requireAuth, async (req, res): Promise<void> => {
   const { id } = DeleteConformityEvidenceParams.parse(req.params);
   const [existing] = await db
@@ -1802,6 +1836,7 @@ router.delete("/conformity/evidence/:id", requireAuth, async (req, res): Promise
       summary: `Deleted evidence "${existing.title}"`,
     });
   });
+  await removeStoredEvidenceFiles(req, [existing.objectPath]);
   res.json(DeleteConformityEvidenceResponse.parse({ success: true }));
 });
 
