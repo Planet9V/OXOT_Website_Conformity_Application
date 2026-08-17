@@ -1340,3 +1340,27 @@ org declares.
   acts list reads "9 modelled · 2 reference-only" (DORA/CER parked).
   Gates: G1/G3 · G2 725/0/0 · G4/G5/G8 = 0 · ELEVEN corpus verifiers ·
   G6 live incl. Art 33's 72-hour clock verbatim, screenshots reviewed.
+
+## Phase 18 — RED→CRA handover as per-product guidance (opened 2026-08-17)
+
+The 2027-12-11 fact already lives in three honest places (RED keyDate,
+red-reader DelegatedRegulationPanel, red_delegated corpus metadata) but
+nowhere answers the manufacturer's actual question: "does MY product's
+cyber baseline move?" Per-product guidance needs a per-product FACT.
+
+- **18.1** The fact: nullable `redInScope` boolean on
+  conformity_products (null = unanswered, L40 — never defaulted),
+  spec-first (ConformityProductInput + ConformityProduct in
+  openapi.yaml → orval codegen), wired through POST/PUT/toProductDto.
+  API test: tri-state persists (true/false/null) and survives a GET.
+- **18.2** The panel: `red-handover-panel.tsx` in the product file,
+  mounted for every role (the question is about the equipment, not the
+  hat). Null → declaration prompt (mirrors the D5 orgRole prompt);
+  false → single dismissal line; true → the handover timeline with
+  every date/quote read from `redDelegatedCorpusData.metadata`
+  (appliesFrom, repeal.withEffectFrom, repeal.articleQuote,
+  repeal.reasonQuote) — no statutory constant duplicated outside the
+  corpus (L57). Saves via the existing updateConformityProduct
+  capability — no new route, G8 untouched.
+- **18.3** Gates bare (G1–G5, G8), container rebuild, G6 with reviewed
+  screenshots across all three states, commit/push, CI watch, G7 retro.

@@ -117,6 +117,39 @@ describe("Conformity product editing & lifecycle (authenticated)", () => {
     expect(res.json.product.authorizedRep).toBe("Acme EU Rep GmbH");
   });
 
+  it("keeps the 2022/30 scoping fact tri-state: null until answered, then true/false, revocable to null", async () => {
+    // A product created without answering carries null — never a default.
+    const created = await requestApi("GET", `/conformity/products/${createdProductId}`);
+    expect(created.json.product.redInScope).toBeNull();
+
+    // Answering yes persists true…
+    const base = { name: "Test Smart Gateway v200 Updated" };
+    const yes = await requestApi("PUT", `/conformity/products/${createdProductId}`, {
+      ...base,
+      redInScope: true,
+    });
+    expect(yes.status).toBe(200);
+    expect(yes.json.redInScope).toBe(true);
+
+    // …a PUT that omits the field leaves the answer alone…
+    const untouched = await requestApi("PUT", `/conformity/products/${createdProductId}`, base);
+    expect(untouched.json.redInScope).toBe(true);
+
+    // …no is a real answer, distinct from unanswered…
+    const no = await requestApi("PUT", `/conformity/products/${createdProductId}`, {
+      ...base,
+      redInScope: false,
+    });
+    expect(no.json.redInScope).toBe(false);
+
+    // …and the answer can be withdrawn back to "unanswered".
+    const withdrawn = await requestApi("PUT", `/conformity/products/${createdProductId}`, {
+      ...base,
+      redInScope: null,
+    });
+    expect(withdrawn.json.redInScope).toBeNull();
+  });
+
   it("DELETE /conformity/products/:id removes it (then 404)", async () => {
     const res = await requestApi("DELETE", `/conformity/products/${createdProductId}`);
     expect(res.status).toBe(200);

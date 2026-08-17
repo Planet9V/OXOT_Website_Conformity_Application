@@ -38,6 +38,7 @@ function product(over: Partial<ConformityProductRow> = {}): ConformityProductRow
     placedOnMarketDate: null,
     supportPeriodStart: null,
     supportPeriodEnd: null,
+    redInScope: null,
   expectedUseTimeMonths: null,
   supportPeriodRationale: "",
     createdAt: NOW,

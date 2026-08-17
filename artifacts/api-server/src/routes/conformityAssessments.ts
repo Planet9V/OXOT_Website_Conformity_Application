@@ -218,6 +218,8 @@ function toProductDto(p: ConformityProductRow) {
     orgRole: p.orgRole ?? null,
     supportPeriodStart: p.supportPeriodStart ?? null,
     supportPeriodEnd: p.supportPeriodEnd ?? null,
+    // 2022/30 scoping fact (18.1) — null means nobody has answered yet.
+    redInScope: p.redInScope ?? null,
     createdAt: p.createdAt.toISOString(),
     updatedAt: p.updatedAt.toISOString(),
   };
@@ -916,6 +918,7 @@ router.post("/conformity/products", requireAuth, async (req, res): Promise<void>
         orgRole: body.orgRole ?? null,
         supportPeriodStart: body.supportPeriodStart ?? null,
         supportPeriodEnd: body.supportPeriodEnd ?? null,
+        redInScope: body.redInScope ?? null,
       })
       .returning();
     // Workspace-level ledger row (assessmentId null): products exist above
@@ -1105,6 +1108,7 @@ router.put("/conformity/products/:id", requireAuth, async (req, res): Promise<vo
   if (body.orgRole !== undefined) set.orgRole = body.orgRole;
   if (body.supportPeriodStart !== undefined) set.supportPeriodStart = body.supportPeriodStart;
   if (body.supportPeriodEnd !== undefined) set.supportPeriodEnd = body.supportPeriodEnd;
+  if (body.redInScope !== undefined) set.redInScope = body.redInScope;
 
   const [row] = await db.transaction(async (tx) => {
     const rows = await tx

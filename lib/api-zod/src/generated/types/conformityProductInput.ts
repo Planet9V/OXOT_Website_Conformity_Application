@@ -23,4 +23,9 @@ export interface ConformityProductInput {
   supportPeriodStart?: string | null;
   /** @nullable */
   supportPeriodEnd?: string | null;
+  /**
+     * Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022/30 (RED Art 3(3)(d)/(e)/(f)). Null until answered — a scoping fact, never defaulted.
+     * @nullable
+     */
+  redInScope?: boolean | null;
 }

@@ -7065,6 +7065,12 @@ components:
             then prompts for the declaration instead of guessing.
         supportPeriodStart: { type: ["string", "null"] }
         supportPeriodEnd: { type: ["string", "null"] }
+        redInScope:
+          type: ["boolean", "null"]
+          description: >-
+            Whether the product is radio equipment in a category designated
+            by Delegated Regulation (EU) 2022/30 (RED Art 3(3)(d)/(e)/(f)).
+            Null until answered; the product file prompts instead of guessing.
         createdAt: { type: string }
         updatedAt: { type: string }
       required:
@@ -7098,6 +7104,12 @@ components:
           enum: [manufacturer, authorised_representative, importer, distributor, oss_steward, system_integrator, operator, null]
         supportPeriodStart: { type: ["string", "null"] }
         supportPeriodEnd: { type: ["string", "null"] }
+        redInScope:
+          type: ["boolean", "null"]
+          description: >-
+            Whether the product is radio equipment in a category designated
+            by Delegated Regulation (EU) 2022/30 (RED Art 3(3)(d)/(e)/(f)).
+            Null until answered — a scoping fact, never defaulted.
       required:
         - name
     ProductUser:

@@ -2949,6 +2949,7 @@ export const ListConformityProductsResponseItem = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })
@@ -2972,7 +2973,8 @@ export const CreateConformityProductBody = zod.object({
   "intendedUse": zod.string().optional(),
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullish(),
   "supportPeriodStart": zod.string().nullish(),
-  "supportPeriodEnd": zod.string().nullish()
+  "supportPeriodEnd": zod.string().nullish(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered — a scoping fact, never defaulted.')
 })
 
 export const CreateConformityProductResponse = zod.object({
@@ -2988,6 +2990,7 @@ export const CreateConformityProductResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })
@@ -3026,6 +3029,7 @@ export const ImportConformityProductsResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })),
@@ -3065,6 +3069,7 @@ export const GetConformityProductResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3111,7 +3116,8 @@ export const UpdateConformityProductBody = zod.object({
   "intendedUse": zod.string().optional(),
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullish(),
   "supportPeriodStart": zod.string().nullish(),
-  "supportPeriodEnd": zod.string().nullish()
+  "supportPeriodEnd": zod.string().nullish(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered — a scoping fact, never defaulted.')
 })
 
 export const UpdateConformityProductResponse = zod.object({
@@ -3127,6 +3133,7 @@ export const UpdateConformityProductResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })
@@ -3193,6 +3200,7 @@ export const CreateConformityAssessmentResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3290,6 +3298,7 @@ export const GetConformityAssessmentResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3411,6 +3420,7 @@ export const SaveConformityAnswersResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3512,6 +3522,7 @@ export const SelectConformityRouteResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3628,6 +3639,7 @@ export const SaveConformityStandardsResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3725,6 +3737,7 @@ export const InstantiateConformityRequirementsResponse = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullable().describe('The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.'),
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),

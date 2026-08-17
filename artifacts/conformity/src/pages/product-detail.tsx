@@ -44,6 +44,7 @@ import { NotifiedBodyPanel } from "@/components/product-file/notified-body-panel
 import { AuditorAccessPanel } from "@/components/product-file/auditor-access-panel";
 import { ProductUsersPanel } from "@/components/product-file/product-users-panel";
 import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufacturer-panel";
+import { RedHandoverPanel } from "@/components/product-file/red-handover-panel";
 import {
   Select,
   SelectContent,
@@ -590,6 +591,12 @@ export default function ProductDetail() {
           "Edit Product Information" — it does not guess.
         </p>
       )}
+
+      {/* The 2022/30 scoping fact and the RED→CRA handover it drives (18.2).
+          A question about the equipment, not the hat — every role sees it. */}
+      <RedHandoverPanel
+        product={{ id, name: product.name, redInScope: (product as any).redInScope ?? null }}
+      />
 
       {/* The verification shape (importer/distributor): a short gate that
           checks what the manufacturer did. No authoring stages. */}

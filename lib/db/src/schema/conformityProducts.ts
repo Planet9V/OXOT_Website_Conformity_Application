@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp, integer } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, integer, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
@@ -33,6 +33,16 @@ export const conformityProductsTable = pgTable("conformity_products", {
   // be in use for less than five years and the period corresponds to that.
   supportPeriodStart: text("support_period_start"),
   supportPeriodEnd: text("support_period_end"),
+  /**
+   * Whether this product is radio equipment in a category designated by
+   * Delegated Regulation (EU) 2022/30 under RED Art 3(3)(d)/(e)/(f) —
+   * internet-connected, child/wearable, or processing personal/traffic/
+   * location data. Drives the RED→CRA handover guidance in the product
+   * file: those requirements end 2027-12-11 when 2022/30 is repealed by
+   * 2026/339 and the CRA governs. Null until somebody answers — it is a
+   * scoping FACT, never defaulted or guessed.
+   */
+  redInScope: boolean("red_in_scope"),
   /**
    * ISO date the product was placed on the market, or null before it has been.
    * This is the anchor for the Art. 13(13) and 13(18) retention clocks. It is

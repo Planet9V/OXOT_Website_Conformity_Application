@@ -266,3 +266,17 @@ the meaning of Art. 64(10).
 - 15.5 lifecycle guard in CI; RED pivoted (was 11 years behind — L56);
   OJ euact pipeline deleted; guard PASSES across all seven EU acts.
   Floors: G2 724/0/0; NINE corpus verifiers + lifecycle guard.
+
+## 2026-08-17 (night) — Phase 18: RED→CRA handover in the product file
+- 18.1: nullable redInScope on conformity_products (tri-state, L40);
+  spec-first (ConformityProductInput + ConformityProduct) → orval
+  codegen; POST/PUT/toProductDto wired; API test proves null-until-
+  answered, true/false, omitted-PUT-leaves-alone, withdrawable to null.
+- 18.2: red-handover-panel.tsx mounted for EVERY role (the question is
+  about the equipment, not the hat). All dates/quotes read at render
+  time from redDelegatedCorpusData metadata (L57) — appliesFrom
+  2025-08-01, repeal 2027-12-11 by 2026/339 with article+reason quotes.
+- Gates bare: G1 · G2 726/726 zero-skips (floor +1: the tri-state
+  test) · G3 · G4 0 · G5 0 · G8 20/0. First G2 rerun FAILED silently
+  masked by a tail pipe + missing CI env (SESSION_SECRET etc.) — reran
+  with full env and unpiped exit code.
