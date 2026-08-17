@@ -14,23 +14,19 @@ Continue the OXOT CRA persona programme.
 **Before anything else**, read `docs/cra-personas/HANDOVER.md` — the entry
 point, verified claim-by-claim against the working tree. It names the
 reading order (`DESIGN_five_shapes.md` **iteration 2 first**; then
-`task_plan.md`; then `lessons.md` L1–L56), the nine-destination application
+`task_plan.md`; then `lessons.md` L1–L57), the nine-destination application
 map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–15 are COMPLETE with G7 retros. The
-headline of 14–15: the L55 lifecycle sweep found FOUR shipped corpora
-carrying superseded law with every gate green; all repaired — CRA/NIS2 EN
-corrigenda applied, AI Act + Machinery + RED + GPSR now built AS AMENDED
-from EUR-Lex consolidated texts (new parser dialect, hybrid corpora,
-disclosed departure, D2 + negative controls), the RED was ELEVEN YEARS
-behind (common charger, chapter Va, replaced Art 10(8) — L56), and
-`check_lifecycle.mjs` now guards all seven EU acts in CI. Also: storage
-file GC on all deletion paths; the RED→CRA 2027-12-11 handover milestone;
-a shipped date-rendering off-by-one fixed. MAIN-ONLY, pushed, GitHub CI
-green. Floors: G2 = **724/0/0** · G4 = 0 COVENANT · G5 = 0 five-act ·
-G8 = 0 COVENANT (20) · NINE corpus verifiers + lifecycle guard.
+**Where things stand:** Phases 0–17 are COMPLETE with G7 retros. 16 = the
+UX/gap audit (the reference layer now tells the truth about itself
+everywhere — L57); 17 = GDPR + Data Act + GPSR content (ELEVEN corpora,
+156 requirements across NINE modelled acts, "9 modelled · 2
+reference-only"). **DORA and CER are PARKED by user decision.** MAIN-ONLY,
+pushed, GitHub CI green. Floors: G2 = **725/0/0** · G4 = 0 COVENANT ·
+G5 = 0 across EIGHT enforced acts · G8 = 0 COVENANT (20) · ELEVEN corpus
+verifiers + the lifecycle guard, all with negative controls.
 
 **Working agreement — governs every task, not just the first:**
 
@@ -74,15 +70,13 @@ would be needed; the corpus does not settle a legal question; the same
 approach has failed twice; or `git status`/`git log` shows an unexpected
 change beyond the audio script.
 
-**No task is in flight.** The open candidates, for the user to prioritise
-(ask which, or take #1 if told to proceed):
+**No task is in flight.** DORA/CER stay parked. Open candidates (ask
+which, or take #1 if told to proceed):
 
-1. **Finish candidate 2** — corpora + statute-first obligation seeds for
-   GDPR (apply its R(02) EN corrigendum), DORA, CER, Data Act; seed rows
-   for the GPSR (its corpus exists). Lifecycle facts already verified and
-   recorded in findings.md.
-2. **RED→CRA 2027-12-11 handover as product-file guidance.**
-3. Ops: scheduled local `check_lifecycle.mjs` runs.
+1. **RED→CRA 2027-12-11 handover as product-file guidance.**
+2. Ops: scheduled local `check_lifecycle.mjs` runs.
+3. Reader polish: chapter-aware search grouping; amendment trail on
+   regulation-detail pages.
 4. **User-only, between sessions:** move the repo out of `~/Downloads`.
 
 Batch cadence for everything: survey → scope one shippable batch → build →

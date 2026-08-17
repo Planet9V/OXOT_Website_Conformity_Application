@@ -1040,3 +1040,27 @@ finding cost without the audit would have been a customer's trust.
 Deferred, recorded: chapter-aware search result grouping in readers;
 regulation-detail could surface the amendment trail for pivoted acts
 (it shows seed metadata only). New lessons: L57.
+
+## Phase 17 — GDPR, Data Act, GPSR — completed 2026-08-17
+
+**What worked:** three pipelines, each matched to its act's lifecycle —
+consolidated for the amended, OJ+corrigenda for the corrected, and the
+resurrection of the deleted OJ pipeline from git history took one `git
+show` because the log is a deliverable. Fetch-before-build proved to be
+an availability strategy: EUR-Lex WAF-challenged mid-phase and nothing
+stalled, because every source was already committed or on disk. The
+lifecycle sweep done in 14.4 (before the repair detour) meant zero new
+research: every corrigendum's disposition was already verified and
+recorded in findings.md.
+
+**Watch-fors that recurred:** two silent no-op scripted edits (L48 —
+both caught by the gate that the edit was supposed to configure, which
+is the right failure mode); a moved-premise test (GDPR graduating to
+modelled broke the test that used it as the unseeded example — tests
+that pin "X has no content" break the day X earns content; parked
+DORA is the stable choice); and an api-image rebuild forgotten when only
+db-package constants changed (the container bakes the workspace).
+
+**Re-tuning applied:** open candidates: RED→CRA handover per product;
+scheduled lifecycle runs; DORA/CER stay parked. No new lesson number —
+the phase was L-lessons applied, not learned.
