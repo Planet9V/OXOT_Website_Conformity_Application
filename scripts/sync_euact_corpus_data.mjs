@@ -14,6 +14,8 @@ const ACTS = {
   ai_act: { dir: "docs/ai_act_statutory_corpus", prefix: "aiAct", target: "aiActCorpusData.ts" },
   machinery: { dir: "docs/machinery_statutory_corpus", prefix: "machinery", target: "machineryCorpusData.ts" },
   red: { dir: "docs/red_statutory_corpus", prefix: "red", target: "redCorpusData.ts" },
+  gdpr: { dir: "docs/gdpr_statutory_corpus", prefix: "gdpr", target: "gdprCorpusData.ts" },
+  data_act: { dir: "docs/data_act_statutory_corpus", prefix: "dataAct", target: "dataActCorpusData.ts" },
 };
 
 const act = ACTS[process.argv[2]];

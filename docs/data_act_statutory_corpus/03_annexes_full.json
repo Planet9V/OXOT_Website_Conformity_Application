@@ -1,0 +1,51 @@
+{
+  "regulation": "Regulation (EU) 2023/2854",
+  "shortTitle": "Data Act",
+  "officialJournalReference": "OJ L, 2023/2854, 22.12.2023",
+  "celex": "32023R2854",
+  "eli": "http://data.europa.eu/eli/reg/2023/2854/oj",
+  "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R2854",
+  "adopted": "2023-12-13",
+  "entryIntoForce": "2024-01-11",
+  "appliesFrom": "2025-09-12",
+  "instrumentType": "regulation",
+  "nationalTranspositionRequired": false,
+  "corrigendaVerified": true,
+  "corrigendaNoted": [
+    {
+      "id": "32023R2854R(02)",
+      "note": "ES only."
+    },
+    {
+      "id": "32023R2854R(03)",
+      "note": "FI only."
+    },
+    {
+      "id": "32023R2854R(04)",
+      "note": "DE, NL only."
+    },
+    {
+      "id": "32023R2854R(05)",
+      "note": "NL only."
+    }
+  ],
+  "corrigenda": [
+    {
+      "id": "32023R2854R(01)",
+      "ojRef": "OJ L, 2024/90740, 9.12.2024",
+      "eli": "http://data.europa.eu/eli/reg/2023/2854/corrigendum/2024-12-09/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R2854R(01)",
+      "article": 48,
+      "from": "‘68. Regulation (EU) 2023/2854",
+      "to": "‘(69) Regulation (EU) 2023/2854",
+      "note": "Art 48: the point number this Regulation takes in Annex I to Directive (EU) 2020/1828 is (69), not 68."
+    }
+  ],
+  "builtFrom": "docs/data_act_statutory_corpus/source/CELEX_32023R2854_EN.html",
+  "sourceSha256": "97143ad0e720522e1c6cbeebd0ef87f90b7c2edd9bcfe6b0fa90fd0673bc548f",
+  "recitalsCount": 120,
+  "chaptersCount": 11,
+  "totalArticles": 50,
+  "annexesCount": 0,
+  "annexes": []
+}

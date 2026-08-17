@@ -76,6 +76,20 @@ const SECTIONS: {
     icon: BookOpen,
   },
   {
+    href: "/library/gdpr",
+    title: "GDPR, verbatim (corrigenda applied)",
+    description:
+      "Regulation (EU) 2016/679 — 99 articles, 173 recitals — the authentic OJ text with the English corrigendum of 23 May 2018 applied (19 corrections, each a documented must-fire substitution), verified character-exact in CI.",
+    icon: BookOpen,
+  },
+  {
+    href: "/library/data-act",
+    title: "Data Act, verbatim (corrigenda applied)",
+    description:
+      "Regulation (EU) 2023/2854 — 50 articles, 120 recitals — the authentic OJ text with its English corrigendum applied. Chapter II binds manufacturers of connected products directly (data access by design).",
+    icon: BookOpen,
+  },
+  {
     href: "/library/requirements",
     title: "Requirement catalogue",
     description:

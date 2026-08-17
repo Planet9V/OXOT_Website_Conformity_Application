@@ -1,0 +1,223 @@
+{
+  "regulation": "Regulation (EU) 2016/679",
+  "shortTitle": "GDPR",
+  "officialJournalReference": "OJ L 119, 4.5.2016, p. 1",
+  "celex": "32016R0679",
+  "eli": "http://data.europa.eu/eli/reg/2016/679/oj",
+  "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679",
+  "adopted": "2016-04-27",
+  "entryIntoForce": "2016-05-24",
+  "appliesFrom": "2018-05-25",
+  "instrumentType": "regulation",
+  "nationalTranspositionRequired": false,
+  "corrigendaVerified": true,
+  "corrigendaNoted": [
+    {
+      "id": "32016R0679R(01)",
+      "note": "DE, ET, IT, HU only — the English text is not affected."
+    },
+    {
+      "id": "32016R0679R(03)",
+      "note": "ES, CS, DE, EL, GA, HR, IT, LT, HU, NL, PL, PT, SK, FI, SV only."
+    }
+  ],
+  "corrigenda": [
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "recital": 71,
+      "from": "of the data subject and that prevents, inter alia, discriminatory effects",
+      "to": "of the data subject, and prevent, inter alia, discriminatory effects",
+      "note": "Recital 71, fifth/sixth sentences (first change)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "recital": 71,
+      "from": "or that result in measures having such an effect.",
+      "to": "or processing that results in measures having such an effect.",
+      "note": "Recital 71 (second change)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 37,
+      "from": "pursuant to Article 9 and personal data relating to criminal convictions",
+      "to": "pursuant to Article 9 or personal data relating to criminal convictions",
+      "note": "Art 37(1)(c): 'and' → 'or'."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 41,
+      "from": "the draft criteria for accreditation",
+      "to": "the draft requirements for accreditation",
+      "note": "Art 41(3)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 41,
+      "from": "if the conditions for accreditation are not",
+      "to": "if the requirements for accreditation are not",
+      "note": "Art 41(5)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 42,
+      "from": "provided that the relevant requirements continue to be met",
+      "to": "provided that the relevant criteria continue to be met",
+      "note": "Art 42(7) first change."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 42,
+      "from": "where the requirements for the certification are not or are no longer met",
+      "to": "where the criteria for the certification are not or are no longer met",
+      "note": "Art 42(7) second change."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 43,
+      "from": "on the basis of criteria approved by the supervisory authority",
+      "to": "on the basis of requirements approved by the supervisory authority",
+      "note": "Art 43(3)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 43,
+      "from": "transmit those requirements and criteria to the Board. The Board shall collate all certification mechanisms and data protection seals in a register and shall make them publicly available by any appropriate means.",
+      "to": "transmit those requirements and criteria to the Board.",
+      "note": "Art 43(6): final sentence deleted (register duty moved to Art 42(8))."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 57,
+      "from": "draft and publish the criteria for accreditation",
+      "to": "draft and publish the requirements for accreditation",
+      "note": "Art 57(1)(p)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 64,
+      "from": "aims to approve the criteria for accreditation of a body pursuant to Article 41(3) or a certification body pursuant to Article 43(3);",
+      "to": "aims to approve the requirements for accreditation of a body pursuant to Article 41(3), of a certification body pursuant to Article 43(3) or the criteria for certification referred to in Article 42(5);",
+      "note": "Art 64(1)(c)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 64,
+      "from": "The competent supervisory authority shall not adopt its draft decision",
+      "to": "The competent supervisory authority referred to in paragraph 1 shall not adopt its draft decision",
+      "note": "Art 64(6)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 64,
+      "from": "The supervisory authority referred to in paragraph 1 shall take utmost account",
+      "to": "The competent supervisory authority referred to in paragraph 1 shall take utmost account",
+      "note": "Art 64(7)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 64,
+      "from": "Where the supervisory authority concerned informs the Chair",
+      "to": "Where the competent supervisory authority referred to in paragraph 1 informs the Chair",
+      "note": "Art 64(8)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 65,
+      "from": "to a draft decision of the lead authority or the lead authority has rejected such an objection",
+      "to": "to a draft decision of the lead supervisory authority and the lead supervisory authority has not followed the objection or has rejected such an objection",
+      "note": "Art 65(1)(a)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 69,
+      "from": "referred to in point (b) of Article 70(1) and in Article 70(2)",
+      "to": "referred to in Article 70(1) and (2)",
+      "note": "Art 69(2)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 70,
+      "from": "best practices referred to in points (e) and (f);",
+      "to": "best practices;",
+      "note": "Art 70(1)(l)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 70,
+      "from": "carry out the accreditation of certification bodies and its periodic review pursuant to Article 43 and maintain a public register of accredited bodies pursuant to Article 43(6) and of the accredited controllers or processors established in third countries pursuant to Article 42(7);",
+      "to": "approve the criteria of certification pursuant to Article 42(5) and maintain a public register of certification mechanisms and data protection seals and marks pursuant to Article 42(8) and of the certified controllers or processors established in third countries pursuant to Article 42(7);",
+      "note": "Art 70(1)(o)."
+    },
+    {
+      "id": "32016R0679R(02)",
+      "ojRef": "OJ L 127, 23.5.2018, p. 2",
+      "eli": "http://data.europa.eu/eli/reg/2016/679/corrigendum/2018-05-23/oj",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32016R0679R(02)",
+      "article": 70,
+      "from": "specify the requirements referred to in Article 43(3) with a view to the accreditation of certification bodies under Article 42;",
+      "to": "approve the requirements referred to in Article 43(3) with a view to the accreditation of certification bodies referred to in Article 43;",
+      "note": "Art 70(1)(p)."
+    }
+  ],
+  "builtFrom": "docs/gdpr_statutory_corpus/source/CELEX_32016R0679_EN.html",
+  "sourceSha256": "380762a6319e681aedf8dd77d46b2e5b0b5e87a0a92c3160ad5f3985025ab8e3",
+  "recitalsCount": 173,
+  "chaptersCount": 11,
+  "totalArticles": 99,
+  "annexesCount": 0,
+  "annexes": []
+}

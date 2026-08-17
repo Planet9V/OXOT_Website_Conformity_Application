@@ -479,6 +479,55 @@ const red: Req[] = [
   { refCode: "Art 15", themeKey: "sbom_supply_chain", title: "Identify who supplied you, and who you supplied", description: "On request, identify to the market surveillance authorities any economic operator who has supplied you with radio equipment and any economic operator to whom you have supplied radio equipment, and be able to present that information for 10 years after having been supplied and 10 years after having supplied.", obligationType: "process", appliesTo: ["manufacturer", "authorised_representative", "importer", "distributor"] },
 ];
 
+
+/**
+ * GDPR — Regulation (EU) 2016/679, seeded 17.2 from docs/gdpr_statutory_corpus
+ * (authentic OJ text with the EN corrigendum applied). Scope follows the
+ * machinery/RED precedent: the ENGINEERING-RELEVANT obligations a conformance
+ * system records evidence for — not the full data-subject-rights regime. The
+ * org bears these as controller or processor (the operator role).
+ */
+const gdpr: Req[] = [
+  { refCode: "Art 24", themeKey: "risk_management", title: "Responsibility of the controller", description: "Taking into account the nature, scope, context and purposes of processing and the risks to natural persons, implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with the Regulation; review and update those measures where necessary.", obligationType: "governance", appliesTo: ["operator"] },
+  { refCode: "Art 25", themeKey: "secure_by_design", title: "Data protection by design and by default", description: "Both when determining the means of processing and at the time of processing itself, implement appropriate technical and organisational measures (such as pseudonymisation) designed to implement data-protection principles, and ensure that by default only personal data necessary for each specific purpose are processed.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 28", themeKey: "sbom_supply_chain", title: "Processors under a binding contract", description: "Use only processors providing sufficient guarantees to implement appropriate technical and organisational measures; processing by a processor shall be governed by a contract or other legal act covering the matters set out in Art 28(3), including security, sub-processors, and return or deletion of data.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 30", themeKey: "technical_documentation", title: "Records of processing activities", description: "Maintain a record of processing activities under the organisation's responsibility, containing the purposes, categories of data and recipients, transfers, envisaged erasure time limits and a general description of the Art 32(1) security measures, and make it available to the supervisory authority on request.", obligationType: "documentation", appliesTo: ["operator"] },
+  { refCode: "Art 32", themeKey: "data_protection", title: "Security of processing", description: "Taking into account the state of the art and the risks, implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including as appropriate pseudonymisation and encryption, the ability to ensure ongoing confidentiality, integrity, availability and resilience of processing systems, the ability to restore availability after an incident, and regular testing of the effectiveness of the measures.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 33", themeKey: "incident_reporting", title: "Notify personal data breaches within 72 hours", description: "In the case of a personal data breach, notify the competent supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of it, unless the breach is unlikely to result in a risk to natural persons; document every breach, its effects and the remedial action taken.", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "Art 34", themeKey: "incident_reporting", title: "Communicate high-risk breaches to data subjects", description: "When a personal data breach is likely to result in a high risk to the rights and freedoms of natural persons, communicate the breach to the data subjects without undue delay, in clear and plain language.", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "Art 35", themeKey: "risk_management", title: "Data protection impact assessment", description: "Where a type of processing — in particular using new technologies — is likely to result in a high risk to natural persons, carry out, prior to the processing, an assessment of the impact of the envisaged processing operations on the protection of personal data.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 37", themeKey: "risk_management", title: "Designate a data protection officer where required", description: "Designate a data protection officer where processing is carried out by a public body, where core activities require regular and systematic large-scale monitoring of data subjects, or where core activities consist of large-scale processing of special categories of data (Art 9) or criminal-conviction data (Art 10).", obligationType: "governance", appliesTo: ["operator"] },
+];
+
+/**
+ * Data Act — Regulation (EU) 2023/2854, seeded 17.2 from
+ * docs/data_act_statutory_corpus. Chapter II binds the MANUFACTURER of
+ * connected products directly (access by design); the data-holder duties
+ * follow. Cloud-switching (Ch VI) and B2G (Ch V) are not seeded — no
+ * declared role bears them here; add with a bearer, not before.
+ */
+const dataAct: Req[] = [
+  { refCode: "Art 3(1)", themeKey: "secure_by_design", title: "Access by design", description: "Connected products shall be designed and manufactured, and related services designed and provided, so that product data and related service data — including the metadata necessary to interpret and use them — are, by default, easily, securely, free of charge, in a comprehensive, structured, commonly used and machine-readable format, and where relevant and technically feasible, directly accessible to the user.", obligationType: "product_requirement", appliesTo: ["manufacturer"] },
+  { refCode: "Art 3(2)", themeKey: "technical_documentation", title: "Pre-contractual data information", description: "Before concluding a contract for a connected product or related service, provide the user with the information set out in Art 3(2)-(3), including the type, format and estimated volume of product data the product can generate, whether data is generated continuously and in real time, and how the user may access, retrieve or erase the data.", obligationType: "documentation", appliesTo: ["manufacturer"] },
+  { refCode: "Art 4", themeKey: null, title: "Make readily available data accessible to the user", description: "Where data cannot be accessed directly from the connected product or related service, make readily available data and the necessary metadata accessible to the user without undue delay, of the same quality as is available to the data holder, easily, securely, free of charge, in a comprehensive, structured, commonly used and machine-readable format and, where relevant and technically feasible, continuously and in real time.", obligationType: "process", appliesTo: ["manufacturer"] },
+  { refCode: "Art 5", themeKey: null, title: "Share data with third parties at the user's request", description: "Upon request by a user or a party acting on the user's behalf, make readily available data and the necessary metadata available to a third party without undue delay, of the same quality as available to the data holder, easily, securely and free of charge to the user.", obligationType: "process", appliesTo: ["manufacturer"] },
+  { refCode: "Art 11", themeKey: "access_control", title: "Technical protection of data", description: "A data holder may apply appropriate technical protection measures, including smart contracts and encryption, to prevent unauthorised access to data (including metadata) and to ensure compliance with Arts 4, 5, 6, 8 and 9 and agreed contractual terms; such measures shall not discriminate between third parties or hinder the user's rights.", obligationType: "process", appliesTo: ["manufacturer"] },
+];
+
+/**
+ * GPSR — Regulation (EU) 2023/988, seeded 17.2 from docs/gpsr_statutory_corpus
+ * (as amended by 2024/2748 — chapter IIa emergency procedures not seeded, same
+ * refusal as machinery). The safety net for consumer products outside
+ * sector-specific law; its cyber hook is Art 6(1)(g).
+ */
+const gpsr: Req[] = [
+  { refCode: "Art 5", themeKey: null, title: "Place only safe products on the market", description: "Economic operators shall place or make available on the market only safe products.", obligationType: "product_requirement", appliesTo: ["manufacturer", "importer", "distributor"] },
+  { refCode: "Art 6(1)(g)", themeKey: "secure_by_design", title: "Cybersecurity features relevant to product safety", description: "When assessing whether a product is safe, take into account — when required by the nature of the product — the appropriate cybersecurity features necessary to protect the product against external influences, including malicious third parties, where such an influence might have an impact on the safety of the product, including possible loss of interconnection.", obligationType: "process", appliesTo: ["manufacturer"] },
+  { refCode: "Art 9", themeKey: "risk_management", title: "Manufacturer obligations", description: "Ensure products are designed and manufactured in accordance with the general safety requirement; before placing on the market, carry out an internal risk analysis and draw up technical documentation with a general description of the product and the essential characteristics relevant for assessing its safety; ensure identification and contact information, clear instructions and safety information; take corrective measures and inform authorities where a product is dangerous.", obligationType: "process", appliesTo: ["manufacturer"] },
+  { refCode: "Art 11", themeKey: null, title: "Importer obligations", description: "Before placing a product on the market, ensure it complies with the general safety requirement and that the manufacturer met its identification, documentation and instruction duties; do not place a dangerous product on the market; inform the manufacturer and the market surveillance authorities where a product presents a risk.", obligationType: "process", appliesTo: ["importer"] },
+  { refCode: "Art 12", themeKey: null, title: "Distributor obligations", description: "Before making a product available, verify that the manufacturer and, where applicable, the importer have complied with their identification, documentation and instruction duties; act with due care in relation to the safety requirements; do not make a dangerous product available and inform the authorities where a product presents a risk.", obligationType: "process", appliesTo: ["distributor"] },
+];
+
 const iec: Req[] = [
   { refCode: "4-1 SM", themeKey: "risk_management", title: "Security management", description: "Establish a security management process governing the development lifecycle, including roles, responsibilities and a defined scope of the process.", obligationType: "process", appliesTo: ["manufacturer"] },
   { refCode: "4-1 SM-9", themeKey: "sbom_supply_chain", title: "Third-party component management", description: "Identify, assess and manage security risks of third-party and open-source components used in the product, maintaining a record of components.", obligationType: "process", appliesTo: ["manufacturer"] },
@@ -545,6 +594,9 @@ function buildRequirements(): InsertRequirement[] {
   push("ai_act", aiAct);
   push("machinery", machinery);
   push("red", red);
+  push("gdpr", gdpr);
+  push("data_act", dataAct);
+  push("gpsr", gpsr);
   push("iec_62443", iec);
   push("nis2", nis2);
   return out;
@@ -653,6 +705,16 @@ const mappingTuples: [string, string, string, string, string, string][] = [
   ["ai_act", "Art 19", "cra", "Annex I(2)(l)", "overlaps", "Both concern security-relevant logs — the CRA requires the product to record them, the AI Act requires the provider to retain the automatically generated ones."],
   // Machinery economic-operator chapter added in 11.3
   ["machinery", "Art 19", "cra", "Art 23", "equivalent", "The identical 10-year supplier/customer traceability duty on all four economic operators."],
+  // GDPR / Data Act / GPSR added in 17.2
+  ["gdpr", "Art 32", "cra", "Annex I(2)(e)", "overlaps", "Both require state-of-the-art protection of data confidentiality, including encryption."],
+  ["gdpr", "Art 32", "nis2", "Art 21(2)(h)", "overlaps", "Both require policies on cryptography and security of systems processing data."],
+  ["gdpr", "Art 33", "nis2", "Art 23", "overlaps", "Both impose clock-bound incident notification to an authority (72 hours for personal-data breaches; 24/72 hours for significant incidents)."],
+  ["gdpr", "Art 25", "cra", "Annex I(1)", "overlaps", "Design-time protection duties: data protection by design parallels security by design for products."],
+  ["gdpr", "Art 28", "nis2", "Art 21(2)(d)", "overlaps", "Both govern security obligations flowing to suppliers and service providers."],
+  ["data_act", "Art 11", "cra", "Annex I(2)(d)", "overlaps", "Technical protection of data against unauthorised access rests on the access-control mechanisms the CRA requires of the product."],
+  ["data_act", "Art 3(1)", "cra", "Annex I(2)(m)", "overlaps", "Both bind the product design to user data control: secure accessibility of product data, and secure removal or transfer of data and settings."],
+  ["gpsr", "Art 6(1)(g)", "cra", "Annex I(1)", "overlaps", "GPSR safety assessment expressly weighs the cybersecurity features the CRA requires as essential product requirements."],
+  ["gpsr", "Art 9", "cra", "Art 13", "overlaps", "Both require a documented pre-market risk analysis feeding the technical documentation."],
 ];
 
 function buildMappings(): InsertRequirementMapping[] {

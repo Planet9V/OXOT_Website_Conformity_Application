@@ -137,13 +137,33 @@ describe("GET /conformity/org/obligations", () => {
   });
 
   it("names a declared act that has no seeded requirement content", async () => {
-    await declareExactly(["manufacturer"], ["gdpr", "red"]);
+    // DORA is PARKED (Phase 16 decision): a known regulation with zero
+    // requirement rows — named, not silent. (GDPR graduated to modelled in 17.2.)
+    await declareExactly(["manufacturer"], ["dora", "red"]);
     const res = await api("GET", "/conformity/org/obligations");
     expect(res.status).toBe(200);
-    // GDPR is a known regulation with zero requirement rows — named, not silent.
-    expect(res.json.regulationsWithoutSeededContent).toEqual(["gdpr"]);
+    expect(res.json.regulationsWithoutSeededContent).toEqual(["dora"]);
     // RED has content, so it is not in the list and its rows are served.
     expect(res.json.obligations.some((o: any) => o.regulationKey === "red")).toBe(true);
+  });
+
+  it("serves the 17.2 acts in their own vocabulary", async () => {
+    await declareExactly(["manufacturer", "operator"], ["gdpr", "data_act", "gpsr"]);
+    const res = await api("GET", "/conformity/org/obligations");
+    expect(res.status).toBe(200);
+    const rows = res.json.obligations;
+    const g32 = rows.find((o: any) => o.regulationKey === "gdpr" && o.refCode === "Art 32");
+    expect(g32, "GDPR Art 32 missing").toBeDefined();
+    expect(g32.roleTermByRole?.operator).toBe("controller or processor");
+    const d3 = rows.find((o: any) => o.regulationKey === "data_act" && o.refCode === "Art 3(1)");
+    expect(d3, "Data Act Art 3(1) missing").toBeDefined();
+    expect(d3.roleTermByRole?.manufacturer).toBe("manufacturer / data holder");
+    const p5 = rows.find((o: any) => o.regulationKey === "gpsr" && o.refCode === "Art 5");
+    expect(p5, "GPSR Art 5 missing").toBeDefined();
+    // GDPR/Data Act/GPSR now have content: none may appear in the unseeded list.
+    for (const k of ["gdpr", "data_act", "gpsr"]) {
+      expect(res.json.regulationsWithoutSeededContent).not.toContain(k);
+    }
   });
 
   it("contributes nothing from an act that is not declared", async () => {

@@ -48,6 +48,8 @@ const BsigReaderPage = lazy(() => import('./pages/bsig-reader'));
 const AiActReaderPage = lazy(() => import('./pages/ai-act-reader'));
 const MachineryReaderPage = lazy(() => import('./pages/machinery-reader'));
 const RedReaderPage = lazy(() => import('./pages/red-reader'));
+const GdprReaderPage = lazy(() => import('./pages/gdpr-reader'));
+const DataActReaderPage = lazy(() => import('./pages/data-act-reader'));
 const OrgProfilePage = lazy(() => import('./pages/org-profile'));
 const PodcastStudioPage = lazy(() => import('./pages/podcast-studio'));
 
@@ -165,6 +167,8 @@ function ShellRoutes() {
           <Route path="/library/ai-act" component={AiActReaderPage} />
           <Route path="/library/machinery" component={MachineryReaderPage} />
           <Route path="/library/red" component={RedReaderPage} />
+          <Route path="/library/gdpr" component={GdprReaderPage} />
+          <Route path="/library/data-act" component={DataActReaderPage} />
           <Route path="/library/statute/*" component={CraWikiPage} />
           <Route path="/library/acts" component={Regulations} />
           <Route path="/library/acts/:key" component={RegulationDetail} />

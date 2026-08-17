@@ -32,6 +32,8 @@ const ACTS = [
   { key: "ai_act", celex: "32024R1689", corpus: "docs/ai_act_statutory_corpus/02_articles_full.json", mustFind: "32026R1744" },
   { key: "machinery", celex: "32023R1230", corpus: "docs/machinery_statutory_corpus/02_articles_full.json", mustFind: "32024R2748" },
   { key: "gpsr", celex: "32023R0988", corpus: "docs/gpsr_statutory_corpus/02_articles_full.json", mustFind: "32024R2748" },
+  { key: "gdpr", celex: "32016R0679", corpus: "docs/gdpr_statutory_corpus/02_articles_full.json", mustFind: "32016R0679R(02)" },
+  { key: "data_act", celex: "32023R2854", corpus: "docs/data_act_statutory_corpus/02_articles_full.json", mustFind: "32023R2854R(01)" },
   { key: "red", celex: "32014L0053", corpus: "docs/red_statutory_corpus/02_articles_full.json", mustFind: "32022L2380" },
   { key: "red_delegated", celex: "32022R0030", corpus: "docs/red_delegated_2022_30/02_articles_full.json", mustFind: "32023R2444" },
 ];

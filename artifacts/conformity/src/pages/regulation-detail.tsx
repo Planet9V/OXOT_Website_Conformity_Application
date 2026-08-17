@@ -13,6 +13,8 @@ const READER_PATHS: Record<string, string> = {
   ai_act: "/library/ai-act",
   machinery: "/library/machinery",
   red: "/library/red",
+  gdpr: "/library/gdpr",
+  data_act: "/library/data-act",
 };
 import { ArrowLeft, ExternalLink, AlertTriangle } from "lucide-react";
 

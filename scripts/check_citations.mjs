@@ -46,7 +46,7 @@ const EXT = new Set([".ts", ".tsx", ".md", ".mdx"]);
 // cannot resolve. Generated corpus files are excluded exactly like the docs
 // corpora they are built from.
 const SKIP =
-  /node_modules|\/dist\/|craCorpusData\.ts|nis2CorpusData\.ts|cbwCorpusData\.ts|bsigCorpusData\.ts|aiActCorpusData\.ts|machineryCorpusData\.ts|redCorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|docs\/cra-personas/;
+  /node_modules|\/dist\/|craCorpusData\.ts|nis2CorpusData\.ts|cbwCorpusData\.ts|bsigCorpusData\.ts|aiActCorpusData\.ts|machineryCorpusData\.ts|redCorpusData\.ts|redDelegatedCorpusData\.ts|gdprCorpusData\.ts|dataActCorpusData\.ts|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|gpsr_statutory_corpus|gdpr_statutory_corpus|data_act_statutory_corpus|docs\/cra-personas/;
 
 /** Load an act's article titles from its grounded corpus. */
 function loadCorpus(relPath, actKey) {
@@ -207,6 +207,27 @@ const ACTS = {
     concepts: [],
     paragraphRule: false,
   },
+  gdpr: {
+    label: "Regulation (EU) 2016/679 (GDPR)",
+    corpus: "docs/gdpr_statutory_corpus/02_articles_full.json",
+    names: /2016\/679|\bGDPR\b|General Data Protection/i,
+    concepts: [],
+    paragraphRule: false,
+  },
+  data_act: {
+    label: "Regulation (EU) 2023/2854 (Data Act)",
+    corpus: "docs/data_act_statutory_corpus/02_articles_full.json",
+    names: /2023\/2854|Data Act/i,
+    concepts: [],
+    paragraphRule: false,
+  },
+  gpsr: {
+    label: "Regulation (EU) 2023/988 (GPSR)",
+    corpus: "docs/gpsr_statutory_corpus/02_articles_full.json",
+    names: /2023\/988|\bGPSR\b|General Product Safety/i,
+    concepts: [],
+    paragraphRule: false,
+  },
 };
 
 for (const [key, act] of Object.entries(ACTS)) {
@@ -311,11 +332,11 @@ const FILE_ACT = [
   { re: /\bnis2\b/i, act: "nis2" },
   { re: /ai[-_]act/i, act: "ai_act" },
   { re: /machinery/i, act: "machinery" },
-  { re: /\bgdpr\b/i, act: null, name: "GDPR" },
+  { re: /\bgdpr\b/i, act: "gdpr" },
   { re: /\bdora\b/i, act: null, name: "DORA" },
-  { re: /\bgpsr\b/i, act: null, name: "GPSR" },
+  { re: /\bgpsr\b/i, act: "gpsr" },
   { re: /\bcer\b/i, act: null, name: "CER Directive" },
-  { re: /data[-_]act/i, act: null, name: "Data Act" },
+  { re: /data[-_]act/i, act: "data_act" },
   { re: /radio[-_]equipment|\bred\b/i, act: "red" },
 ];
 
@@ -325,7 +346,7 @@ const FILE_ACT = [
  * them is correct by definition, and "correcting" one would corrupt the very
  * thing every other citation is checked against. Never scan the source of truth.
  */
-const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|red_delegated_2022_30|gpsr_statutory_corpus)\//;
+const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|red_delegated_2022_30|gpsr_statutory_corpus|gdpr_statutory_corpus|data_act_statutory_corpus)\//;
 
 /**
  * Which act does this file default to? Returns the act, or a skip reason.

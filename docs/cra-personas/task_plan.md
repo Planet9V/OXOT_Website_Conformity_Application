@@ -1314,3 +1314,29 @@ org declares.
   "G6 Art148 Probe" product deleted from the demo workspace. Gates:
   G1/G3 · G2 724/0/0 · G4/G5/G8 = 0 · G6 re-walk 22/22 PASS with
   reviewed screenshots.
+
+## Phase 17 — GDPR + Data Act + GPSR seeds (opened + closed 2026-08-17)
+
+- **17.1 done** GDPR and Data Act corpora on a RESURRECTED parameterized
+  OJ pipeline (`build_oj_act_corpus.mjs` / `verify_oj_act_corpus.mjs` —
+  restored from git history; for acts CORRECTED but never amended):
+  authentic OJ originals + EN corrigenda applied as documented must-fire
+  substitutions (GDPR R(02) = 19 corrections incl. two recital-level;
+  Data Act R(01) = 1), corrigenda docs committed as sources, D2 parity +
+  negative controls, verifiers + CI + reproducibility + lifecycle-guard
+  rows. EUR-Lex WAF-challenged mid-phase — irrelevant, all sources were
+  already on disk (fetch-first discipline paid off).
+- **17.2 done** 19 statute-first obligation rows: GDPR ×9 (Arts 24, 25,
+  28, 30, 32, 33 with the real 72-hour clock, 34, 35, 37 — operator role
+  as "controller or processor"), Data Act ×5 (Art 3(1) access by design
+  binding the MANUFACTURER of connected products — termed "manufacturer /
+  data holder" — 3(2), 4, 5, 11), GPSR ×5 (Arts 5, 6(1)(g) the cyber
+  hook, 9, 11, 12). 9 cross-act mappings. Suite gains the vocabulary
+  test; the old unseeded-list test repointed at parked DORA. 156
+  requirements / 92 mappings total.
+- **17.3 done** GDPR + Data Act readers (corrigenda-applied kicker,
+  honest banners), routes, Library cards, act-detail reader links;
+  citation gate now ENFORCES gdpr/data_act/gpsr (former name-skips);
+  acts list reads "9 modelled · 2 reference-only" (DORA/CER parked).
+  Gates: G1/G3 · G2 725/0/0 · G4/G5/G8 = 0 · ELEVEN corpus verifiers ·
+  G6 live incl. Art 33's 72-hour clock verbatim, screenshots reviewed.
