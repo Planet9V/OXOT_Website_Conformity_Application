@@ -813,3 +813,58 @@ alongside: portable-storage file GC, and the RED delegated-acts cyber
 requirements (Art. 3(3)(d)/(e)/(f)) as the natural CRA-adjacent content.
 
 **New lessons:** L52 (and L51 landed mid-phase from the parity audit).
+
+## L53 — A flattened corpus can be verbatim and still lose the address
+
+**Seen:** 11.3. The machinery annex corpus carries Annex III's text
+faithfully, but the flattened blocks drop the SECTION NUMBERING — there is
+no "1.1.9." heading anywhere in the bundle. The Phase-0 seed had attributed
+the software-protection and intervention-evidence duties to
+"Annex III 1.2.1(a)/(b)" and the update duty to "(c)"; the statute puts
+them in 1.1.9, 1.2.1(d) and 1.2.1(f), and the real (a)–(c) say something
+else. The DoC row cited Annex II — the indicative list of SAFETY
+COMPONENTS. Every one of those wrong addresses passed every automated gate,
+because a refCode is not a citation the G5 regex sees (L41's cousin: a
+wrong-but-existing SECTION reference is even harder to catch than a wrong
+article, because sections live below the corpus's structural pins).
+**Apply:** when seeding or labelling against an ANNEX, verify the section
+number against the committed OJ source (`docs/*_statutory_corpus/source/`),
+not the flattened bundle — the bundle proves the words, the source proves
+the address. And treat any pre-corpus seed row as unverified until read
+against the statute; three acts in, every act's Phase-0 seed contained
+defects (AI Act titles/deadlines, machinery addresses).
+
+## Phase 11 — Obligation content for the AI Act, Machinery Regulation and RED — completed 2026-08-16
+
+**What worked:** The engine needed ZERO changes — obligations =
+requirements(declared regs) × declared roles held for three new acts
+exactly as D10 promised, and "adding an act" was pure content work plus one
+vocabulary entry (operator → 'deployer'). Statute-first per row was cheap
+because the corpora are local JSON: every row's article was read verbatim
+before its row was written, and that reading is what found the defects.
+The orgObligations test suite (the endpoint's first) now pins the engine
+equation, each act's vocabulary, and the corrected machinery addresses.
+
+**What the reading found:** the Phase-0 seeds were a defect inventory —
+three misnumbered machinery rows plus a DoC pointing at the
+safety-components annex (L53); an AI Act title from the wrong draft,
+a vague Art 73 with no deadlines, and an attack list the statute states
+precisely. RED had NOTHING — a declarable act serving silent zero, which
+became 11.4's endpoint-honesty fix: declared-but-unseeded acts are now
+NAMED on the wire and in the cockpit ("Zero here means un-modelled, not
+compliant" — GDPR is the live example today).
+
+**Deriver half:** resolved as a documented refusal — no candidate has real
+data to read (AI Act incidents fit neither existing incident shape; DoC
+ledgers are CRA-only). The registry header now names what must exist first.
+
+**Re-tuning applied:** the remaining open candidates are unchanged in
+priority: (1) L51 D2-parity hardening for the five OJ corpora; (2) RED
+Art. 3(3) delegated-acts content (Delegated Regulation (EU) 2022/30 —
+needs its own authentic source, Legal circuit-breaker applies); (3)
+storage file GC; (4) user-only repo move. New candidate surfaced by 11.4:
+obligation content for the still-unseeded acts (GDPR/DORA/CER/GPSR/Data
+Act) if and when a customer declaration needs them — the cockpit note now
+marks that gap honestly, so it is a choice, not a silence.
+
+**New lessons:** L53.

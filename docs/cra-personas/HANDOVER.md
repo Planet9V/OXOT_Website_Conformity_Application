@@ -45,12 +45,12 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L52 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L53 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 10
+## Phases — all complete through Phase 11
 
 | Phase | Delivered |
 |---|---|
@@ -60,6 +60,7 @@ do not".
 | 8 | G2 = **0 test failures** (issue #62 closed — dead contracts, wrong session roles, parallel DB races now sequential, 2 storage skips-with-reason); PSIRT CVD pipeline on Incidents; CE derivations in the statutory file (no `mayAffix` by construction); NIS2 verbatim reader (reproducible bundle); **all Dependabot alerts patched** (range-scoped pnpm overrides; 0 open) |
 | 9 | Absorption close-out: product-portfolio absorbed into Products (honest bulk import — `POST /conformity/products/import`; quick-start and the fabricating portfolio endpoints deleted; vault kept, its invented-provenance defaults removed); reports → a Home section, flows → `/settings/flows`; the transitional **More menu DELETED** — nav is exactly the nine destinations; auditor-portal decided PERMANENT + EXTERNAL and completed end-to-end in 9.3b (admin-issued expiring tokens, org-side RFI inbox with respond); **G4 driven 7 → 0 and made a covenant** (the empty-string "provenance hash" on the public trust center among the seven). Same day, after the G7 retro: **W2.4 COMPLETED** — 9.4a Cyberbeveiligingswet (NL, promulgated Staatsblad XML, in force 2026-08-15) and 9.4b BSI-Gesetz (DE, consolidated gii XML, a disclosed departure with the verbatim amendment trail), each with a CI verifier including **D2 full-content parity** (which caught and killed 8 flattener-added characters — L51) |
 | 10 | **Portable evidence storage** (backend seam: Replit sidecar vs local volume, chooser no-regression proven by unit test; suite reached ZERO SKIPS; restart-persistence proven live) · **Art. 14(8) product-user register + notification record** (tri-state impacted derivation states its rule ON THE WIRE; the app records the org's act, transmits nothing) · **AI Act / Machinery / RED corpora + readers** (authentic OJ, pinned structures, seven verifiers total, five-act citation gate — formerly-skipped AI-Act content now VALIDATES; NIS2 chapter-IX misassignment found+fixed) · **last dead chain deleted** (4 unwritten tables, unauth /api/ecosystem, fake-timestamp seal engine) · L52 (a piped gate launders its exit code) · CI green end-to-end after fixing an invalid workflow env (`runner.temp` is step-only) |
+| 11 | **Obligation content ×3 acts (10.3c)** — zero engine changes (D10 held: requirements × declarations). 11.1 RED seeded from nothing (22 rows: Art 3(3)(d)/(e)/(f) cyber essential requirements, Art 10 chain, importer/distributor, Art 15 traceability) — `orgObligations.test.ts` is the endpoint's FIRST suite. 11.2 AI Act verified+extended (3 corrections incl. Art 73's real 15/2/10-day anchors; +11 rows: provider chapter, deployer Art 26 → operator role now termed 'deployer', registration, transparency; GPAI refusal documented). 11.3 Machinery: **three misnumbered Annex III addresses fixed** (duties live in 1.1.9/1.2.1(d)/1.2.1(f); DoC was cited to the SAFETY-COMPONENTS annex — now Art 21) + 12 rows (L53: verify annex section numbers against the OJ SOURCE — the flattened bundle drops them). 11.4 declared-but-unseeded acts now NAMED (`regulationsWithoutSeededContent` + cockpit amber note "Zero here means un-modelled, not compliant"); deriver refusals documented per candidate in the statusDerivers header. Suite 723/0/0. |
 
 ## The application map (key files)
 
@@ -143,10 +144,10 @@ Run gates BARE — never through a pipe: `cmd | tail -1 && next` proceeds on
 tail's exit code, not the gate's, and shipped a red G4 once (L52). Silence
 with `>/dev/null`, which preserves the status.
 
-**G2 (tests) = ZERO failures AND ZERO SKIPS** (717/717 since 10.1/10.4 —
-the local storage backend un-skipped the two storage suites), run in the
-CI-mirror environment (add `OBJECT_STORAGE_BACKEND=local` and an
-`OBJECT_STORAGE_DIR` tmpdir to the env below):
+**G2 (tests) = ZERO failures AND ZERO SKIPS** (723/723 since Phase 11 —
+717 at the 10.1/10.4 floor plus the six `orgObligations.test.ts` tests),
+run in the CI-mirror environment (add `OBJECT_STORAGE_BACKEND=local` and
+an `OBJECT_STORAGE_DIR` tmpdir to the env below):
 
 ```
 docker run -d --name oxot-test-db -p 127.0.0.1:5544:5432 \
@@ -167,7 +168,7 @@ leftovers — L46). Tests mint signed cookies via
 limiter: 10/15min, reset by api-container restart, never weakened).
 
 **G6 (live)** per batch: rebuild containers, drive the surface with
-Playwright (`scripts/verify_*_playwright.mjs`, 25 repeatable scripts —
+Playwright (`scripts/verify_*_playwright.mjs`, 29 repeatable scripts —
 pattern: login, act through the real UI, read persisted state back via the
 API, screenshot, clean up probes), and **review the screenshot** — pixels
 catch what assertions miss (nav collisions were found only that way).
@@ -211,27 +212,26 @@ on evidence with the user, not guessed); the same approach failed twice;
 or `git log`/`git status` shows an unexpected change (the audio script is
 the known benign one).
 
-## Next steps (Phases 9 AND 10 closed 2026-08-16, H1–H3 hygiene done, CI green)
+## Next steps (Phase 11 closed 2026-08-16 with G7, CI green)
 
-Everything previously queued is DONE: W2.4 (NL+DE transpositions), the
-portfolio schema hygiene, the object-storage question (resolved by 10.1's
-portable backend — zero skips), main-only development, git identity, and
-Phase 10's four tasks. **No task is in flight. The open candidates, for
-the user to prioritise:**
+Everything previously queued is DONE, including 10.3c (Phase 11: the three
+new acts carry statute-verified obligation content, the operator speaks
+'deployer', and an empty declared act is named, never silent). **No task
+is in flight. The open candidates, for the user to prioritise:**
 
-1. **10.3c — obligation seeding + deriver registration for the AI Act,
-   Machinery Regulation and RED** (D10: act is a dimension). Statute-
-   reading work per obligation — the CRA's 92 requirements took multiple
-   phases. The five-act citation gate is live to hold it. The natural
-   next phase.
-2. **L51 parity hardening for the OJ corpus family** — the transposition
+1. **L51 parity hardening for the OJ corpus family** — the transposition
    corpora (Cbw, BSIG) have D2 full-content parity; the five OJ corpora
    (CRA, NIS2, AI Act, Machinery, RED) still rely on pinned structure +
    verbatim probes.
-3. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** — the
+2. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
+   Delegated Regulation (EU) 2022/30 as its own authentic committed
+   source (Legal circuit-breaker: locate the OJ text first), feeding the
    CRA-adjacent content a customer will actually ask about.
-4. Small: storage file GC (deleting evidence rows does not remove stored
+3. Small: storage file GC (deleting evidence rows does not remove stored
    files — a property inherited from the GCS backend and stated in 10.1).
+4. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
+   GPSR, Data Act) if and when a customer's declaration needs them — the
+   11.4 cockpit note marks that gap honestly in the meantime.
 5. **User-only, between sessions:** move the repo out of `~/Downloads`
    (quit session → move folder → `docker compose up -d` from the new
    path → reopen).

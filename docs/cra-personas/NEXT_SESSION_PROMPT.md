@@ -4,25 +4,27 @@ Paste the block below to open the next session (fresh or post-compaction). It
 carries the working agreement in the prompt itself rather than only in a
 document, because behavioural instructions land harder in the prompt than in a
 file the model is told to read. The redundancy with `HANDOVER.md` is
-deliberate. Last verified against the tree at `0ebc852` (Phase 10 closed,
-2026-08-16, GitHub CI green).
+deliberate. Last verified against the tree after Phase 11 closed (2026-08-16,
+night; see `git log` for the head — every batch pushed to main gated).
 
 ---
 
 Continue the OXOT CRA persona programme.
 
 **Before anything else**, read `docs/cra-personas/HANDOVER.md` — the entry
-point, verified claim-by-claim against the tree at `0ebc852`. It names the
+point, verified claim-by-claim against the working tree. It names the
 reading order (`DESIGN_five_shapes.md` **iteration 2 first**; then
-`task_plan.md`; then `lessons.md` L1–L52), the nine-destination application
+`task_plan.md`; then `lessons.md` L1–L53), the nine-destination application
 map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–10 are COMPLETE with G7 retros; the
-hygiene backlog (H1–H3) is done; development is MAIN-ONLY at `main` =
-`0ebc852`, pushed, **GitHub CI green end-to-end**. Every gate is at its
-floor, two as covenants: G1/G3 green · G2 = **717 passed / 0 failed /
+**Where things stand:** Phases 0–11 are COMPLETE with G7 retros (Phase 11
+= 10.3c: statute-verified obligation content for the AI Act, Machinery
+Regulation and RED; three misnumbered machinery addresses fixed — L53;
+empty declared acts now named); the hygiene backlog (H1–H3) is done;
+development is MAIN-ONLY, pushed, **GitHub CI green**. Every gate is at its
+floor, two as covenants: G1/G3 green · G2 = **723 passed / 0 failed /
 0 SKIPPED** (CI-mirror needs `OBJECT_STORAGE_BACKEND=local` +
 `OBJECT_STORAGE_DIR=<tmpdir>` in its env) · **G4 honesty = 0 — COVENANT** ·
 G5 citations = 0 across FIVE acts (cra 1..71, nis2 1..46, ai_act 1..113,
@@ -79,20 +81,17 @@ change beyond the audio script.
 **No task is in flight.** The open candidates, for the user to prioritise
 (ask which, or take #1 if told to proceed):
 
-1. **10.3c — obligation seeding + deriver registration for the AI Act,
-   Machinery Regulation and RED** (D10: adding an act = seeding + deriver
-   registration, never a new page). Statute-reading work per obligation;
-   the five-act citation gate is live to hold every seeded citation. The
-   natural next phase — open it with a survey of how the CRA/NIS2
-   obligation seeds and derivers are structured, then statute-first per
-   act.
-2. **L51 parity hardening for the five OJ corpora** — extend D2
+1. **L51 parity hardening for the five OJ corpora** — extend D2
    full-content parity (already on Cbw/BSIG) to CRA, NIS2, AI Act,
    Machinery, RED, with a negative control.
-3. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** — the
-   CRA-adjacent content customers ask about.
-4. Small: storage file GC (evidence-row deletion does not remove stored
+2. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
+   Delegated Regulation (EU) 2022/30 as its own authentic committed
+   source (locate the OJ text FIRST — Legal circuit-breaker).
+3. Small: storage file GC (evidence-row deletion does not remove stored
    files; inherited from the GCS backend, stated in 10.1).
+4. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
+   GPSR, Data Act) when a customer declaration needs them — the 11.4
+   cockpit note marks the gap honestly meanwhile.
 5. **User-only, between sessions:** move the repo out of `~/Downloads`.
 
 Batch cadence for everything: survey → scope one shippable batch → build →
