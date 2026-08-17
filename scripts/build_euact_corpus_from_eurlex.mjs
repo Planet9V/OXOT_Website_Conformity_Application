@@ -22,6 +22,7 @@ import {
   parseArticles,
   textOf,
   blocks,
+  stripTrailingFooter,
   referencedArticles,
 } from "./lib/eu_oj_parser.mjs";
 
@@ -199,13 +200,20 @@ function main() {
     const heads = [...html.matchAll(/class="oj-doc-ti"[^>]*>\s*ANNEX\s+([IVXLC]+)\s*<\/p>/g)].map(
       (m) => ({ roman: m[1], index: m.index }),
     );
+    // A document-level attachment ("STATEMENT OF THE EUROPEAN PARLIAMENT" in
+    // the RED) follows the last annex under its own oj-doc-ti heading. It is
+    // not annex content — the shipped RED Annex VIII carried its body text
+    // until the D2 parity check exposed it. Bound the last annex before it.
+    const statement = html.search(/class="oj-doc-ti"[^>]*>\s*STATEMENT/);
     return heads.map((h, i) => {
-      const frag = html.slice(h.index, i + 1 < heads.length ? heads[i + 1].index : html.length);
+      let end = i + 1 < heads.length ? heads[i + 1].index : html.length;
+      if (statement !== -1 && statement > h.index && statement < end) end = statement;
+      const frag = html.slice(h.index, end);
       const titleM = frag
         .slice(1)
         .match(/class="(?:oj-doc-ti|oj-ti-grseq-1)"[^>]*>([\s\S]*?)<\/p>/);
       const title = titleM ? textOf(titleM[1]) : `Annex ${h.roman}`;
-      const body = blocks(frag).filter((l) => l !== `ANNEX ${h.roman}` && l !== title);
+      const body = stripTrailingFooter(blocks(frag).filter((l) => l !== `ANNEX ${h.roman}` && l !== title));
       if (!body.length) throw new Error(`Annex ${h.roman} parsed empty`);
       return {
         annexNumber: h.roman,

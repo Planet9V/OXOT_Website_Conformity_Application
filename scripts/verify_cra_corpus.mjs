@@ -16,6 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
+import { checkOjContentParity, negativeControl } from "./lib/oj_content_parity.mjs";
 
 const ROOT = process.cwd();
 const CORPUS = path.join(ROOT, "docs/cra_statutory_corpus");
@@ -296,6 +297,23 @@ function checkVerbatim(recitals, articles, annexes) {
 
 // ──────────────────────────────────────────────────────── E. app copy parity
 
+function checkFullContentParity() {
+  // D2 — every article and annex character-exact against an INDEPENDENT
+  // flatten of the committed OJ source, with the declared corrigenda applied
+  // and required to fire (L51). D2N is the negative control.
+  let r;
+  try {
+    r = checkOjContentParity({ corpusDir: CORPUS, sourceFile: "source/OJ_L_202402847_EN.html" });
+  } catch (e) {
+    return bad("D5", e.message.replace(/^D2:\s*/, ""));
+  }
+  ok("D5", `full-content parity: ${r.articles} articles + ${r.annexes} annexes character-exact against the source (${r.corrigendaApplied} corrigendum applied)`);
+  if (!negativeControl({ corpusDir: CORPUS, sourceFile: "source/OJ_L_202402847_EN.html" })) {
+    return bad("D5N", "negative control DID NOT fail — the parity check is blind");
+  }
+  ok("D5N", "negative control fails as required (one flipped character is caught)");
+}
+
 function checkAppsInSync(articles) {
   const hashes = APPS.map((f) => sha(fs.readFileSync(path.join(ROOT, f))));
   if (new Set(hashes).size !== 1) return bad("E1", "the three app corpus modules are NOT identical to each other");
@@ -324,6 +342,7 @@ async function main() {
   await checkCorrigenda(articles);
   checkRebuild();
   checkVerbatim(recitals, articles, annexes);
+  checkFullContentParity();
   checkAppsInSync(articles);
 
   const width = 76;

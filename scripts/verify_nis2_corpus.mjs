@@ -24,6 +24,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { checkOjContentParity, negativeControl } from "./lib/oj_content_parity.mjs";
 
 const ROOT = process.cwd();
 const CORPUS = path.join(ROOT, "docs/nis2_statutory_corpus");
@@ -202,6 +203,24 @@ function checkVerbatim(recitals, articlesJson, annexes) {
 
 // ────────────────────────────────────── E. structure  F. instrument character
 
+function checkFullContentParity() {
+  // D2 — every article and annex character-exact against an INDEPENDENT
+  // flatten of the committed source (L51). This is the check that exposed
+  // the missing "Type of entity" column of Annexes I and II. D2N is the
+  // negative control.
+  let r;
+  try {
+    r = checkOjContentParity({ corpusDir: CORPUS, sourceFile: "source/CELEX_32022L2555_EN.html" });
+  } catch (e) {
+    return bad("D5", e.message.replace(/^D2:\s*/, ""));
+  }
+  ok("D5", `full-content parity: ${r.articles} articles + ${r.annexes} annexes character-exact against the source`);
+  if (!negativeControl({ corpusDir: CORPUS, sourceFile: "source/CELEX_32022L2555_EN.html" })) {
+    return bad("D5N", "negative control DID NOT fail — the parity check is blind");
+  }
+  ok("D5N", "negative control fails as required (one flipped character is caught)");
+}
+
 function checkStructure(recitals, articlesJson, annexes) {
   const articles = articlesJson.chapters.flatMap((c) => c.articles);
   const problems = [];
@@ -245,6 +264,7 @@ function main() {
   checkCorrigenda(articlesJson);
   checkRebuild();
   checkVerbatim(recitals, articlesJson, annexes);
+  checkFullContentParity();
   checkStructure(recitals, articlesJson, annexes);
   checkInstrumentCharacter(articlesJson);
 

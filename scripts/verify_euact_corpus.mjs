@@ -17,6 +17,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
+import { checkOjContentParity, negativeControl } from "./lib/oj_content_parity.mjs";
 
 const ROOT = process.cwd();
 
@@ -174,6 +175,24 @@ function checkVerbatimProbes() {
   ok("D1", `${act.probes.length} verbatim probes match source AND corpus`);
 }
 
+function checkFullContentParity() {
+  // D2 — every article and annex character-exact against an INDEPENDENT
+  // flatten of the committed source (L51: spot probes are smoke tests; this
+  // is proof). D2N is the negative control: the check must fail against a
+  // deliberately corrupted corpus, or a green D2 proves nothing.
+  let r;
+  try {
+    r = checkOjContentParity({ corpusDir: CORPUS, sourceFile: act.source });
+  } catch (e) {
+    return bad("D2", e.message.replace(/^D2:\s*/, ""));
+  }
+  ok("D2", `full-content parity: ${r.articles} articles + ${r.annexes} annexes character-exact against the source (${r.corrigendaApplied} corrigenda applied)`);
+  if (!negativeControl({ corpusDir: CORPUS, sourceFile: act.source })) {
+    return bad("D2N", "negative control DID NOT fail — the parity check is blind");
+  }
+  ok("D2N", "negative control fails as required (one flipped character is caught)");
+}
+
 function checkFraming() {
   const meta = readJson("01_recitals_full.json");
   if (meta.instrumentType === "directive") {
@@ -192,6 +211,7 @@ checkCorrigenda();
 checkCorpusIntegrity();
 checkBundleInSync();
 checkVerbatimProbes();
+checkFullContentParity();
 checkFraming();
 
 let failed = false;

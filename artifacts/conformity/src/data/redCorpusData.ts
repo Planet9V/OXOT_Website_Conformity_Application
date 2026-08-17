@@ -2453,11 +2453,16 @@ export const redAnnexesData = {
       "annexNumber": "II",
       "title": "CONFORMITY ASSESSMENT MODULE A",
       "blocks": [
+        "INTERNAL PRODUCTION CONTROL",
         "1. Internal production control is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2, 3 and 4 of this Annex, and ensures and declares on his sole responsibility that the radio equipment concerned satisfies the essential requirements set out in Article 3.",
+        "2. Technical documentation",
         "The manufacturer shall establish the technical documentation in accordance with Article 21.",
+        "3. Manufacturing",
         "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure compliance of the manufactured radio equipment with the technical documentation referred to in point 2 of this Annex and with the relevant essential requirements set out in Article 3.",
+        "4. CE marking and EU declaration of conformity",
         "4.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 to each item of radio equipment that satisfies the applicable requirements of this Directive.",
         "4.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it together with the technical documentation at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "5. Authorised representative",
         "The manufacturer's obligations set out in point 4 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
       ],
       "tags": [
@@ -2476,7 +2481,10 @@ export const redAnnexesData = {
       "annexNumber": "III",
       "title": "CONFORMITY ASSESSMENT MODULES B AND C",
       "blocks": [
+        "EU-TYPE EXAMINATION AND CONFORMITY TO TYPE BASED ON INTERNAL PRODUCTION CONTROL",
         "When reference is made to this Annex, the conformity assessment procedure shall follow Modules B (EU-type examination) and C (Conformity to type based on internal production control) of this Annex.",
+        "Module B",
+        "EU-type examination",
         "1. EU-type examination is the part of a conformity assessment procedure in which a notified body examines the technical design of the radio equipment and verifies and attests that the technical design of the radio equipment meets the essential requirements set out in Article 3.",
         "2. EU-type examination shall be carried out by assessment of the adequacy of the technical design of the radio equipment through examination of the technical documentation and supporting evidence referred to in point 3, without examination of a specimen (design type).",
         "3. The manufacturer shall lodge an application for EU-type examination with a single notified body of his choice.",
@@ -2497,10 +2505,15 @@ export const redAnnexesData = {
         "Each notified body shall inform the Member States of EU-type examination certificates it has issued and/or additions thereto in those cases where harmonised standards the references of which have been published in the Official Journal of the European Union have not been applied or not been fully applied. The Member States, the Commission and the other notified bodies may, on request, obtain a copy of the EU-type examination certificates and/or additions thereto. On request, the Member States and the Commission may obtain a copy of the technical documentation and the results of the examinations carried out by the notified body. The notified body shall keep a copy of the EU-type examination certificate, its annexes and additions, as well as the technical file including the documentation submitted by the manufacturer for 10 years after the radio equipment has been assessed or until the expiry of the validity of that certificate.",
         "9. The manufacturer shall keep a copy of the EU-type examination certificate, its annexes and additions together with the technical documentation at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market.",
         "10. The manufacturer's authorised representative may lodge the application referred to in point 3 and fulfil the obligations set out in points 7 and 9, provided that they are specified in the mandate.",
+        "Module C",
+        "Conformity to type based on internal production control",
         "1. Conformity to type based on internal production control is the part of a conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2 and 3, and ensures and declares that the radio equipment concerned is in conformity with the type described in the EU-type examination certificate and satisfies the requirements of this Directive that apply to it.",
+        "2. Manufacturing",
         "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured radio equipment with the approved type described in the EU-type examination certificate and with the requirements of this Directive that apply to it.",
+        "3. CE marking and EU declaration of conformity",
         "3.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 to each item of radio equipment that is in conformity with the type described in the EU-type examination certificate and satisfies the applicable requirements of this Directive.",
         "3.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment type for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "4. Authorised representative",
         "The manufacturer's obligations set out in point 3 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
       ],
       "tags": [
@@ -2519,13 +2532,18 @@ export const redAnnexesData = {
       "annexNumber": "IV",
       "title": "CONFORMITY ASSESSMENT MODULE H",
       "blocks": [
+        "CONFORMITY BASED ON FULL QUALITY ASSURANCE",
         "1. Conformity based on full quality assurance is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2 and 5, and ensures and declares on his sole responsibility that the radio equipment concerned satisfies the requirements of this Directive that apply to it.",
+        "2. Manufacturing",
         "The manufacturer shall operate an approved quality system for design, manufacture, final radio equipment inspection and testing of the radio equipment concerned as specified in point 3 and shall be subject to surveillance as specified in point 4.",
-        "3.1. The manufacturer shall lodge an application for assessment of his quality system with the notified body of his choice, for the radio equipment concerned. The application shall include: (a) the name and address of the manufacturer and, if the application is lodged by the authorised representative, his name and address as well;",
+        "3. Quality system",
+        "3.1. The manufacturer shall lodge an application for assessment of his quality system with the notified body of his choice, for the radio equipment concerned. The application shall include:",
+        "(a) the name and address of the manufacturer and, if the application is lodged by the authorised representative, his name and address as well;",
         "(b) the technical documentation for each radio equipment type intended to be manufactured. The technical documentation shall contain, wherever applicable, the elements set out in Annex V;",
         "(c) the documentation concerning the quality system; and",
         "(d) a written declaration that the same application has not been lodged with any other notified body.",
-        "3.2. The quality system shall ensure compliance of the radio equipment with the requirements of this Directive that apply to it. All the elements, requirements and provisions adopted by the manufacturer shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions. That quality system documentation shall permit a consistent interpretation of the quality programmes, plans, manuals and records. It shall, in particular, contain an adequate description of: (a) the quality objectives and the organisational structure, responsibilities and powers of the management with regard to design and product quality;",
+        "3.2. The quality system shall ensure compliance of the radio equipment with the requirements of this Directive that apply to it. All the elements, requirements and provisions adopted by the manufacturer shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions. That quality system documentation shall permit a consistent interpretation of the quality programmes, plans, manuals and records. It shall, in particular, contain an adequate description of:",
+        "(a) the quality objectives and the organisational structure, responsibilities and powers of the management with regard to design and product quality;",
         "(b) the technical design specifications, including standards, that will be applied and, where the relevant harmonised standards will not be applied in full, the means that will be used to ensure that the essential requirements of this Directive that apply to the radio equipment will be met;",
         "(c) the design control and design verification techniques, processes and systematic actions that will be used when designing radio equipment pertaining to the radio equipment type covered;",
         "(d) the corresponding manufacturing, quality control and quality assurance techniques, processes and systematic actions that will be used;",
@@ -2535,12 +2553,15 @@ export const redAnnexesData = {
         "3.3. The notified body shall assess the quality system to determine whether it satisfies the requirements referred to in point 3.2. It shall presume conformity with those requirements in respect of the elements of the quality system that comply with the corresponding specifications of the relevant harmonised standard. In addition to experience in quality management systems, the auditing team shall have at least one member experienced as an assessor in the relevant radio equipment field and radio equipment technology concerned, and knowledge of the applicable requirements of this Directive. The audit shall include an assessment visit to the manufacturer's premises. The auditing team shall review the technical documentation referred to in point 3.1(b) to verify the manufacturer's ability to identify the applicable requirements of this Directive and to carry out the necessary examinations with a view to ensuring compliance of the radio equipment with those requirements. The manufacturer or his authorised representative shall be notified of the decision. The notification shall contain the conclusions of the audit and the reasoned assessment decision.",
         "3.4. The manufacturer shall undertake to fulfil the obligations arising out of the quality system as approved and to maintain it so that it remains adequate and efficient.",
         "3.5. The manufacturer shall keep the notified body that has approved the quality system informed of any intended change to the quality system. The notified body shall evaluate any proposed changes and decide whether the modified quality system will continue to satisfy the requirements referred to in point 3.2 or whether a reassessment is necessary. It shall notify the manufacturer of its decision. The notification shall contain the conclusions of the examination and the reasoned assessment decision.",
+        "4. Surveillance under the responsibility of the notified body",
         "4.1. The purpose of surveillance is to make sure that the manufacturer duly fulfils the obligations arising out of the approved quality system.",
-        "4.2. The manufacturer shall, for assessment purposes, allow the notified body access to the design, manufacture, inspection, testing and storage sites, and shall provide it with all necessary information, in particular: (a) the quality system documentation;",
+        "4.2. The manufacturer shall, for assessment purposes, allow the notified body access to the design, manufacture, inspection, testing and storage sites, and shall provide it with all necessary information, in particular:",
+        "(a) the quality system documentation;",
         "(b) the quality records as provided for by the design part of the quality system, such as results of analyses, calculations, tests, etc.;",
         "(c) the quality records as provided for by the manufacturing part of the quality system, such as inspection reports and test data, calibration data, reports concerning the qualifications of the personnel, etc.",
         "4.3. The notified body shall carry out periodic audits to make sure that the manufacturer maintains and applies the quality system and shall provide the manufacturer with an audit report.",
         "4.4. In addition, the notified body may pay unexpected visits to the manufacturer. During such visits, the notified body may, if necessary, carry out radio equipment tests, or have them carried out, in order to check the proper functioning of the quality system. It shall provide the manufacturer with a visit report and, if tests have been carried out, with a test report.",
+        "5. CE marking and EU declaration of conformity",
         "5.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 and, under the responsibility of the notified body referred to in point 3.1, the latter's identification number to each item of radio equipment that satisfies the applicable requirements set out in Article 3.",
         "5.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment type for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
         "6. The manufacturer shall, for a period ending 10 years after the radio equipment has been placed on the market, keep at the disposal of the national authorities:",
@@ -2550,6 +2571,7 @@ export const redAnnexesData = {
         "(d) the decisions and reports of the notified body referred to in points 3.5, 4.3 and 4.4.",
         "7. Each notified body shall inform its notifying authority of quality system approvals issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of quality system approvals refused, suspended or otherwise restricted.",
         "Each notified body shall inform the other notified bodies of quality system approvals which it has refused, suspended or withdrawn, and, upon request, of quality system approvals which it has issued.",
+        "8. Authorised representative",
         "The manufacturer's obligations set out in points 3.1, 3.5, 5 and 6 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
       ],
       "tags": [
@@ -2569,7 +2591,8 @@ export const redAnnexesData = {
       "title": "CONTENTS OF TECHNICAL DOCUMENTATION",
       "blocks": [
         "The technical documentation shall, wherever applicable, contain at least the following elements:",
-        "(a) a general description of the radio equipment including: (i) photographs or illustrations showing external features, marking and internal layout;",
+        "(a) a general description of the radio equipment including:",
+        "(i) photographs or illustrations showing external features, marking and internal layout;",
         "(ii) versions of software or firmware affecting compliance with essential requirements;",
         "(iii) user information and installation instructions;",
         "(b) conceptual design and manufacturing drawings and schemes of components, sub-assemblies, circuits and other relevant similar elements;",
@@ -2672,12 +2695,9 @@ export const redAnnexesData = {
         "Annex V Annex IV",
         "Annex VI Article 26",
         "Annex VII(1) to (4) Articles 19 and 20",
-        "Annex VII(5) Article 10(10)",
-        "The European Parliament considers that only when and insofar as implementing acts in the sense of Regulation (EU) No 182/2011 are discussed in meetings of committees, can the latter be considered as ‘comitology committees’ within the meaning of Annex I to the Framework Agreement on the relations between the European Parliament and the European Commission. Meetings of committees thus fall within the scope of point 15 of the Framework Agreement when and insofar as other issues are discussed."
+        "Annex VII(5) Article 10(10)"
       ],
-      "tags": [
-        "delegated_acts"
-      ],
+      "tags": [],
       "referencedArticles": [
         1,
         2,
