@@ -1,21 +1,61 @@
 {
   "regulation": "Regulation (EU) 2023/1230",
   "shortTitle": "Machinery Regulation",
-  "officialJournalReference": "OJ L 165, 29.6.2023, p. 1",
+  "officialJournalReference": "OJ L 165, 29.6.2023",
   "celex": "32023R1230",
+  "consolidatedCelex": "02023R1230-20260727",
   "eli": "http://data.europa.eu/eli/reg/2023/1230/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1230",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R1230-20260727",
   "adopted": "2023-06-14",
-  "entryIntoForce": "2023-07-19",
   "instrumentType": "regulation",
   "nationalTranspositionRequired": false,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/machinery_statutory_corpus/source/CELEX_32023R1230_EN.html",
-  "sourceSha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-07-27",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2024/2748 (internal market emergency procedures)",
+      "celex": "32024R2748",
+      "eli": "http://data.europa.eu/eli/reg/2024/2748/oj",
+      "applicableFrom": "2026-05-29",
+      "summary": "Inserts chapter IVa (Arts 25a–25e, emergency procedures) and Art 3 points 37–38."
+    },
+    {
+      "act": "Regulation (EU) 2026/1744 (Digital Omnibus on AI)",
+      "celex": "32026R1744",
+      "eli": "http://data.europa.eu/eli/reg/2026/1744/oj",
+      "applicableFrom": "2026-07-27",
+      "summary": "Replaces Art 47(3) and related provisions aligning machinery AI-safety assessment with the amended AI Act timeline."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32023R1230R(01)",
+      "note": "EN — fourteen date corrections (the 13/14 July → 19/20 July family; Art 54 point (b) 2023→2026). INCORPORATED in the consolidated text this corpus is built from."
+    },
+    {
+      "id": "32023R1230R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32023R1230R(03)",
+      "note": "DE, SK only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32023R1230_EN.html",
+      "sha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02023R1230-20260727_EN.html",
+      "sha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b"
+    }
+  },
+  "sourceSha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b",
   "recitalsCount": 86,
-  "chaptersCount": 9,
-  "totalArticles": 54,
+  "chaptersCount": 10,
+  "totalArticles": 59,
   "annexesCount": 12,
   "recitals": [
     {
@@ -38,9 +78,7 @@
       "number": 3,
       "title": "Recital 3",
       "text": "Experience with the application of Directive 2006/42/EC has shown inadequacies and inconsistencies in the product coverage and conformity assessment procedures. It is therefore necessary to improve, simplify and adapt the provisions set out in that Directive to the needs of the market and provide clear rules in relation to the framework within which products within the scope of this Regulation may be made available on the market.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -48,10 +86,7 @@
       "number": 4,
       "title": "Recital 4",
       "text": "Since the rules setting out the requirements for products within the scope of this Regulation, in particular the essential health and safety requirements and the conformity assessment procedures, need to be of uniform application for all operators across the Union, and not give room for divergent implementation by Member States, Directive 2006/42/EC should be replaced by a regulation.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -67,10 +102,7 @@
       "number": 6,
       "title": "Recital 6",
       "text": "Regulation (EC) No 765/2008 of the European Parliament and of the Council lays down rules on the accreditation of conformity assessment bodies, and the general principles of the CE marking. That Regulation should be applicable to products within the scope of this Regulation in order to ensure that those products, which are benefiting from the free movement of goods within the Union, fulfil requirements providing for a high level of protection of public interests such as the protection of the health and safety of persons and, where appropriate, domestic animals and property, and, where applicable, of the environment.",
-      "tags": [
-        "conformity_assessment",
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -78,9 +110,7 @@
       "number": 7,
       "title": "Recital 7",
       "text": "Regulation (EU) 2019/1020 of the European Parliament and of the Council sets out rules on market surveillance and control of products entering the Union market. As Directive 2006/42/EC is listed in Annex I of Regulation (EU) 2019/1020, that Regulation already applies to products within the scope of this Regulation. However, Regulation (EU) 2019/1020 applies to products within the scope of this Regulation insofar as there are no specific provisions with the same objective, which regulate in a more specific manner particular aspects of market surveillance and enforcement.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": [
         "I"
@@ -98,10 +128,7 @@
       "number": 9,
       "title": "Recital 9",
       "text": "Decision No 768/2008/EC of the European Parliament and of the Council lays down common principles and reference provisions intended to apply across sectoral legislation. In order to ensure consistency with other sectoral product legislation, it is appropriate to align certain provisions of this Regulation to that Decision, insofar as sectoral specificities do not require a different solution. Therefore, certain definitions, the general obligations of economic operators, the rules on presumption of conformity, the rules on EU declaration of conformity, the rules on CE marking, the requirements for conformity assessment bodies, the rules on notification procedures and conformity assessment procedures and the rules on procedures to deal with machinery or related products, and, where applicable, with partly completed machinery, presenting a risk should be adapted to the reference provisions laid down in that Decision.",
-      "tags": [
-        "conformity_assessment",
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -109,9 +136,7 @@
       "number": 10,
       "title": "Recital 10",
       "text": "This Regulation should cover products which are new to the Union market when placed on the market, and are either new products made by a manufacturer established in the Union or products, whether new or second-hand, imported from a third country.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -119,9 +144,7 @@
       "number": 11,
       "title": "Recital 11",
       "text": "Where there is a possibility that machinery or related products will be used by a consumer, that is to say, a non-professional user, the manufacturer should take account of the fact that the consumer does not have the same knowledge of and experience in handling machinery or related products in the design and construction of the products. The same applies where the machinery or related product is normally used to provide a service to a consumer.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -129,9 +152,7 @@
       "number": 12,
       "title": "Recital 12",
       "text": "Recently, more advanced machinery, which is less dependent on human operators, has been introduced on the market. Such machinery is working on defined tasks and in structured environments, yet it can learn to perform new actions in this context and become more autonomous. Further refinements to machinery, already in place or to be expected, include real-time processing of information, problem solving, mobility, sensor systems, learning, adaptability, and capability of operating in unstructured environments (for example construction sites). The Commission Report on the safety and liability implications of Artificial Intelligence, the Internet of Things and Robotics of 19 February 2020, states that the emergence of new digital technologies, like artificial intelligence, the Internet of things and robotics, raises new challenges in terms of product safety. The report concludes that the current product safety legislation, including Directive 2006/42/EC, contains a number of gaps in this respect that need to be addressed. Thus, this Regulation should cover the safety risks stemming from new digital technologies.",
-      "tags": [
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -156,7 +177,7 @@
       "title": "Recital 15",
       "text": "In order to ensure that the scope of this Regulation is sufficiently clear, a distinction should be made between machinery, related products and partly completed machinery. Moreover, related products should be understood as comprising interchangeable equipment, safety components, lifting accessories, chains, ropes and webbing, and removable mechanical transmission devices, which are all products within the scope of this Regulation.",
       "tags": [
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -190,10 +211,7 @@
       "title": "Recital 19",
       "text": "The evolution of the machinery sector has resulted in the growing use of digital means and software plays a more and more important role in machinery design. Consequently, the definition of machinery should be adapted. In this respect, machinery missing only the upload of software intended for the specific application foreseen by the manufacturer, and which is the subject of the conformity assessment procedure of the machinery, should fall under the definition of machinery and not under the definitions of related products or partly completed machinery. Furthermore, the definition of safety components should cover not only physical devices but also digital devices. In order to take into account the increasing use of software as a safety component, software that performs a safety function and which is placed independently on the market should be considered a safety component.",
       "tags": [
-        "conformity_assessment",
-        "operator_roles",
-        "safety_components",
-        "digital_safety"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -203,8 +221,7 @@
       "title": "Recital 20",
       "text": "Considering their critical protective function, certain components included in the indicative list of safety components in Annex II should also be subject to specific conformity assessment procedures and included in Annex I.",
       "tags": [
-        "conformity_assessment",
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": [
@@ -224,9 +241,7 @@
       "number": 22,
       "title": "Recital 22",
       "text": "Where products within the scope of this Regulation present risks that are addressed by the essential health and safety requirements set out in this Regulation but which are also wholly or partly covered by more specific Union harmonisation legislation than this Regulation, this Regulation should not apply to the extent that those risks are covered by that other Union legislation. In other cases, products within the scope of this Regulation might present risks that are not covered by the essential health and safety requirements set out in this Regulation. For example, products incorporating a Wi-Fi function might present risks not addressed by the essential health and safety requirements set out in this Regulation, as this Regulation does not deal with risks specific to such Wi-Fi function.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -242,9 +257,7 @@
       "number": 24,
       "title": "Recital 24",
       "text": "The evolution of the state of the art in the machinery sector has an impact on the classification of categories of machinery or related products listed in Annex I. With a view to properly reflecting any categories of machinery or related products presenting a higher risk factor, criteria should be established for the assessment of categories of products which should be included in the list of categories of machinery or related products subject to a stricter conformity assessment procedure.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": [
         "I"
@@ -255,8 +268,7 @@
       "title": "Recital 25",
       "text": "Other risks related to new digital technologies are those provoked by malicious third parties that have an impact on the safety of products within the scope of this Regulation. In this respect, manufacturers should be required to adopt proportionate measures which are limited to the protection of the safety of the product within the scope of this Regulation. This does not preclude the application to products within the scope of this Regulation of other Union legal acts specifically addressing cybersecurity aspects.",
       "tags": [
-        "operator_roles",
-        "digital_safety"
+        "cybersecurity"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -265,13 +277,7 @@
       "number": 26,
       "title": "Recital 26",
       "text": "In order to ensure that machinery or related products, when placed on the market or put into service, do not entail health and safety risks for persons or domestic animals and do not cause harm to property, and, where applicable, to the environment, essential health and safety requirements should be set out which have to be met in order for the machinery or related products to be allowed on the market. Machinery or related products should comply with the essential health and safety requirements when placed on the market or put into service. Where such products are subsequently modified, by physical or digital means, in a way that is not foreseen or planned by the manufacturer and which affects the safety of such products by creating a new hazard or increasing an existing risk, the modification should be considered as substantial when new significant protective measures are required. However, repair and maintenance operations which do not affect the machinery or related product’s compliance with the relevant essential health and safety requirements should not be considered to be substantial modifications. In order to ensure the compliance of such a product with the relevant essential health and safety requirements, the person that carries out the substantial modification should be required to perform a new conformity assessment before placing the modified product on the market or putting it into service. In order to avoid an unnecessary and disproportionate burden, the person carrying out the substantial modification should not be required to repeat tests and produce new documentation in relation to machinery or related products that are part of an assembly of machinery, and that are not affected by the modification.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "substantial_modification",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -279,9 +285,7 @@
       "number": 27,
       "title": "Recital 27",
       "text": "In the machinery sector, approximately 98 % of companies are small or medium sized enterprises (SMEs). In order to reduce the regulatory burden on SMEs, it is important that notified bodies consider adapting the fees for conformity assessment and reducing them proportionately to the specific interests and needs of SMEs.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -305,11 +309,7 @@
       "number": 30,
       "title": "Recital 30",
       "text": "In order to facilitate communication between economic operators, market surveillance authorities and users, manufacturers and importers should indicate a website, email address or other digital contact in addition to the postal address.",
-      "tags": [
-        "operator_roles",
-        "supervision_enforcement",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -317,10 +317,7 @@
       "number": 31,
       "title": "Recital 31",
       "text": "The manufacturer, having detailed knowledge of the design and production process, is best placed to carry out the conformity assessment procedure. Conformity assessment should therefore remain solely the obligation of the manufacturer.",
-      "tags": [
-        "conformity_assessment",
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -328,11 +325,7 @@
       "number": 32,
       "title": "Recital 32",
       "text": "The manufacturer should also ensure that a risk assessment is carried out for the product within the scope of this Regulation, which the manufacturer wishes to place on the market or put into service. In this context, the manufacturer should determine which essential health and safety requirements are applicable to the product within the scope of this Regulation and which measures need to be taken to address the risks that the product might present. The risk assessment should also address future updates or developments of software installed in the machinery or related product, which are foreseen when the machinery or related product is placed on the market or put into service. The risks identified during the risk assessment should include those risks that might arise during the product’s lifecycle due to an intended evolution of its behaviour to operate with varying levels of autonomy.",
-      "tags": [
-        "ehsr",
-        "operator_roles",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -340,9 +333,7 @@
       "number": 33,
       "title": "Recital 33",
       "text": "The safety of the entire machinery or related product relies on the dependencies and interactions between its components, including partly completed machinery, and, if relevant, with other machinery or related products that participate in a coordinated assembly of a machinery system, which can also result in an assembly of machinery. Therefore, manufacturers should be required to assess all those interactions in the risk assessment.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -350,13 +341,7 @@
       "number": 34,
       "title": "Recital 34",
       "text": "It is essential that, before drawing up the EU declaration of conformity or the EU declaration of incorporation, the manufacturer prepare technical documentation. The manufacturer should be required to make that technical documentation available to national authorities on request or to notified bodies in the context of the relevant conformity assessment procedure. Detailed plans of subassemblies used for the manufacture of the product within the scope of this Regulation should only be required as part of the technical documentation where knowledge of such plans is essential for assessing conformity with the essential health and safety requirements set out in this Regulation.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -364,9 +349,7 @@
       "number": 35,
       "title": "Recital 35",
       "text": "A person who manufactures machinery or related products for his or her own use is considered as to be a manufacturer and should be required to fulfil all the related obligations. In that case, the machinery or related product is not placed on the market, since it is not made available by the manufacturer to another person but is used by the manufacturer itself. However, such machinery needs to comply with this Regulation before it is put into service.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -374,12 +357,7 @@
       "number": 36,
       "title": "Recital 36",
       "text": "It is necessary to ensure that products within the scope of this Regulation from third countries entering the Union market comply with the requirements of this Regulation and do not present a risk to the health and safety of persons, in particular consumers and professional users, and, where appropriate, to domestic animals and property, and, where applicable, to the environment, and in particular that appropriate conformity assessment procedures have been carried out by manufacturers with regard to such products. Provision should therefore be made for importers to ensure that products within the scope of this Regulation that they place on the market comply with the requirements of this Regulation and do not present a risk to the health and safety of persons, and, where appropriate, domestic animals and property, and, where applicable, to the environment. For the same reason, provision should also be made for importers to ensure that the conformity assessment procedures have been carried out and that the CE marking, in the case of machinery and related products, is affixed and technical documentation drawn up by manufacturers is available for inspection by the competent national authorities.",
-      "tags": [
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -387,10 +365,7 @@
       "number": 37,
       "title": "Recital 37",
       "text": "When placing products within the scope of this Regulation on the market, importers should indicate on those products their respective names, registered trade names or registered trade marks, postal addresses, websites, email addresses or other digital contacts at which they can be contacted. Exceptions should be provided for in cases where the size or nature of the product does not allow it. This includes cases where the importers would have to open the packaging to put their names and addresses on the product.",
-      "tags": [
-        "operator_roles",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -398,9 +373,7 @@
       "number": 38,
       "title": "Recital 38",
       "text": "As the distributor makes products within the scope of this Regulation available on the market after they have been placed on the market by the manufacturer or the importer, the distributor should act with due care to ensure that its handling of the product within the scope of this Regulation does not adversely affect its compliance with the requirements set out in this Regulation.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -408,9 +381,7 @@
       "number": 39,
       "title": "Recital 39",
       "text": "With a view to ensuring the health and safety of the users of products within the scope of this Regulation, economic operators should ensure that all relevant documentation, such as the instructions for use, while containing precise and comprehensible information, is easily understandable and available in a language which can be easily understood by users, as determined by the Member State concerned, takes into account technological developments and changes to user behaviour, and is as up to date as possible. When products within the scope of this Regulation are made available on the market in packages containing multiple units, the instructions and information should accompany the smallest commercially available unit.",
-      "tags": [
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -418,11 +389,7 @@
       "number": 40,
       "title": "Recital 40",
       "text": "Instructions and other relevant documentation may be provided in a digital printable format. However, the manufacturer should ensure that distributors can provide, at the request of the user at the time of the purchase, the instructions for use in a paper format free of charge. The manufacturer should also consider providing the contact details where the user can request the instructions to be dispatched by mail.",
-      "tags": [
-        "operator_roles",
-        "digital_safety",
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -430,10 +397,7 @@
       "number": 41,
       "title": "Recital 41",
       "text": "Distributors and importers, being close to the market place, should be involved in market surveillance tasks carried out by the competent national authorities, and should be prepared to participate actively, providing those authorities with all necessary information relating to the product within the scope of this Regulation concerned.",
-      "tags": [
-        "operator_roles",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -441,9 +405,7 @@
       "number": 42,
       "title": "Recital 42",
       "text": "Any economic operator who either places a product within the scope of this Regulation on the market under its own name or trademark or modifies a product within the scope of this Regulation in such a way that compliance with the requirements of this Regulation might be affected should be considered to be the manufacturer and should assume the obligations of the manufacturer.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -451,9 +413,7 @@
       "number": 43,
       "title": "Recital 43",
       "text": "Ensuring traceability of products within the scope of this Regulation throughout the whole supply chain enables a simpler and more efficient market surveillance. The economic operators should therefore be required to keep the information on their transactions of products within the scope of this Regulation for a certain period of time. However, that obligation should be proportionate to the role of each economic operator in the supply chain and the economic operators should not be required to update information that they have not produced.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -461,10 +421,7 @@
       "number": 44,
       "title": "Recital 44",
       "text": "This Regulation should be limited to setting out the essential health and safety requirements, supplemented by a number of more specific requirements for certain categories of products within the scope of this Regulation. In order to facilitate the assessment of conformity with those health and safety requirements, it is necessary to provide for a presumption of conformity for products within the scope of this Regulation which are in conformity with harmonised standards that are developed and in respect of which the references are published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012 of the European Parliament and of the Council for the purpose of expressing the detailed technical specifications of those requirements.",
-      "tags": [
-        "ehsr",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -472,11 +429,7 @@
       "number": 45,
       "title": "Recital 45",
       "text": "The current EU standardisation framework which is based on the New Approach principles set out in Council Resolution of 7 May 1985 on a new approach to technical harmonization and standards and on Regulation (EU) No 1025/2012 represents the framework by default to elaborate standards that provide for a presumption of conformity with the relevant essential health and safety requirements of this Regulation. European standards should be market-driven, take into account the public interest, as well as the policy objectives clearly stated in the Commission’s request to one or more European standardisation organisations to draft harmonised standards, within a set deadline and be based on consensus. However, in the absence of relevant references to harmonised standards, the Commission should be able to adopt implementing acts establishing common specifications for the essential health and safety requirements of this Regulation, provided that in doing so it duly respects the role and functions of standardisation organisations, as an exceptional fall back solution to facilitate the manufacturer’s obligation to comply with those health and safety requirements, when the standardisation process is blocked or when there are delays in the establishment of appropriate harmonised standards. If such delay is due to the technical complexity of the standard in question, this should be considered by the Commission before contemplating the establishment of common specifications.",
-      "tags": [
-        "ehsr",
-        "operator_roles",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -484,9 +437,7 @@
       "number": 46,
       "title": "Recital 46",
       "text": "With a view to establishing, in the most efficient way, common specifications that cover the essential health and safety requirements of this Regulation, the Commission should involve relevant stakeholders in the process.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -494,9 +445,7 @@
       "number": 47,
       "title": "Recital 47",
       "text": "Reasonable period should mean, in relation to the publication of reference to harmonised standards in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012, a period during which the publication in the Official Journal of the European Union of the reference to the standard, its corrigendum or its amendment is expected and which should not exceed one year after the deadline for drafting a European standard set in accordance with Regulation (EU) No 1025/2012.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -504,10 +453,7 @@
       "number": 48,
       "title": "Recital 48",
       "text": "Compliance with harmonised standards and with common specifications established by the Commission should be voluntary. Alternative technical solutions should therefore be acceptable where compliance of the products within the scope of this Regulation with the relevant essential health and safety requirements is demonstrated in the technical file.",
-      "tags": [
-        "ehsr",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -515,9 +461,7 @@
       "number": 49,
       "title": "Recital 49",
       "text": "The essential health and safety requirements should be satisfied in order to ensure that the product within the scope of this Regulation is safe. Those requirements should be applied with discernment to take account of the state of the art at the time of construction and of technical and economic requirements.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -525,9 +469,7 @@
       "number": 50,
       "title": "Recital 50",
       "text": "Regulation (EU) No 1025/2012 provides for a procedure for objections to harmonised standards where those standards do not satisfy or entirely satisfy the requirements of this Regulation.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -536,8 +478,7 @@
       "title": "Recital 51",
       "text": "With a view to addressing the risks stemming from malicious third party actions that have an impact on the safety of products within the scope of this Regulation, this Regulation should include essential health and safety requirements in respect of which conformity to the appropriate extent can be presumed as the result of a certificate or statement of conformity issued under a relevant cybersecurity certification scheme adopted in accordance with Regulation (EU) 2019/881 of the European Parliament and of the Council .",
       "tags": [
-        "ehsr",
-        "digital_safety"
+        "cybersecurity"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -546,11 +487,7 @@
       "number": 52,
       "title": "Recital 52",
       "text": "Manufacturers should draw up an EU declaration of conformity to provide information on the conformity of machinery or related products with this Regulation. Manufacturers may also be required by other Union legal acts to draw up an EU declaration of conformity. To ensure effective access to information for market surveillance purposes, a single EU declaration of conformity should be drawn up in respect of all Union legal acts. In order to reduce the administrative burden on economic operators, it should be possible for that single EU declaration of conformity to be a dossier made up of relevant individual declarations of conformity.",
-      "tags": [
-        "operator_roles",
-        "ce_marking",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -558,9 +495,7 @@
       "number": 53,
       "title": "Recital 53",
       "text": "The harmonised standards relevant to this Regulation should take into account the requirements of Directive (EU) 2019/882 of the European Parliament and of the Council and the United Nations Convention on the Rights of Persons with Disabilities .",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -569,8 +504,7 @@
       "title": "Recital 54",
       "text": "The list of products in Annex IV of Directive 2006/42/EC has until now been based on the risk emanating from the intended use or any reasonably foreseeable misuse of those products or their critical protective function. Nevertheless, the machinery field embraces new ways of designing and constructing machinery or related products that might present higher risk factors, regardless of such intended use or any reasonably foreseeable misuse. For example, systems with self-evolving behaviour ensuring safety functions should be included in Annex I due to their characteristics such as data dependency, opacity, autonomy and connectivity, which might considerably increase the probability and severity of harm and seriously affect the safety of the machinery or related product. Therefore, the conformity assessment of a safety component or a system with self-evolving behaviour ensuring safety functions should be carried out by a third party, whether or not the safety component has been placed independently on the market or is part of a system embedded in machinery that is placed on the market. However, where machinery embeds a system of which the safety component has already been subject to third party conformity assessment when it was placed independently on the market, that machinery should not have to be re-certified by a third party solely on the basis of the embedding of that system.",
       "tags": [
-        "conformity_assessment",
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": [
@@ -582,10 +516,7 @@
       "number": 55,
       "title": "Recital 55",
       "text": "Provisions related to the third-party conformity assessment of software ensuring safety functions set out in this Regulation should only apply to systems with a fully or partially self-evolving behaviour using machine learning approaches ensuring safety functions. On the contrary, those provisions should not apply to software incapable of learning or evolving, and programmed only to execute certain automated functions of machinery or related products.",
-      "tags": [
-        "conformity_assessment",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -593,10 +524,7 @@
       "number": 56,
       "title": "Recital 56",
       "text": "The CE marking, indicating the conformity of a product, is the visible consequence of a whole process comprising conformity assessment in a broad sense. The general principles governing the CE marking are set out in Regulation (EC) No 765/2008. Rules governing the affixing of the CE marking on machinery or related products should be laid down in this Regulation.",
-      "tags": [
-        "conformity_assessment",
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -604,9 +532,7 @@
       "number": 57,
       "title": "Recital 57",
       "text": "The CE marking should be the only marking which guarantees that machinery or related products comply with the requirements of this Regulation. Member States should therefore take appropriate action as regards other markings which are likely to mislead third parties as to the meaning or the form of the CE marking.",
-      "tags": [
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -614,10 +540,7 @@
       "number": 58,
       "title": "Recital 58",
       "text": "In order to enable economic operators to demonstrate and the competent authorities to ensure that machinery or related products made available on the market are in conformity with the essential health and safety requirements, it is necessary to provide for conformity assessment procedures. Decision No 768/2008/EC establishes modules for conformity assessment procedures, which include procedures from the least to the most stringent, in proportion to the level of risk involved and the level of safety required. In order to ensure inter-sectoral coherence and to avoid ad hoc variants, conformity assessment procedures should be chosen from among those modules.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -625,10 +548,7 @@
       "number": 59,
       "title": "Recital 59",
       "text": "Manufacturers should be responsible for ensuring that a conformity assessment is carried out in respect of their machinery or related products in accordance with this Regulation. Nevertheless, for certain categories of machinery or related products that have a higher risk factor, a stricter conformity assessment procedure requiring the participation of a notified body should be required.",
-      "tags": [
-        "conformity_assessment",
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -636,9 +556,7 @@
       "number": 60,
       "title": "Recital 60",
       "text": "It is essential that all notified bodies perform their functions to the same level and under conditions of fair competition. That requires the setting of obligatory requirements for conformity assessment bodies wishing to be notified in order to provide conformity assessment services.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -646,10 +564,7 @@
       "number": 61,
       "title": "Recital 61",
       "text": "If a conformity assessment body demonstrates conformity with the criteria laid down in harmonised standards, it should be presumed to comply with the corresponding requirements set out in this Regulation.",
-      "tags": [
-        "conformity_assessment",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -657,9 +572,7 @@
       "number": 62,
       "title": "Recital 62",
       "text": "In order to ensure a consistent level of quality in the performance of conformity assessment of machinery or related products, it is also necessary to set requirements for notifying authorities and other bodies involved in the assessment, notification and monitoring of notified bodies.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -667,9 +580,7 @@
       "number": 63,
       "title": "Recital 63",
       "text": "The system set out in this Regulation should be complemented by the accreditation system provided for in Regulation (EC) No 765/2008. Since accreditation is an essential means of verifying the competence of conformity assessment bodies, it should also be used for the purposes of notification.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -677,9 +588,7 @@
       "number": 64,
       "title": "Recital 64",
       "text": "Transparent accreditation as provided for in Regulation (EC) No 765/2008, ensuring the necessary level of confidence in certificates of conformity, should be considered by the national public authorities throughout the Union as the preferred means of demonstrating the technical competence of conformity assessment bodies. However, national authorities may consider that they possess the appropriate means of carrying out that evaluation themselves. In such cases, in order to ensure the appropriate level of credibility of evaluations carried out by other national authorities, they should provide the Commission and the other Member States with the necessary documentary evidence demonstrating the compliance of the conformity assessment bodies evaluated with the relevant regulatory requirements.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -687,9 +596,7 @@
       "number": 65,
       "title": "Recital 65",
       "text": "Conformity assessment bodies frequently subcontract parts of their activities linked to the assessment of conformity or have recourse to a subsidiary. In order to safeguard the level of protection required for the machinery or related products to be placed on the market, it is essential that conformity assessment subcontractors and subsidiaries fulfil the same requirements as notified bodies in relation to the performance of conformity assessment tasks. Therefore, it is important that the assessment of the competence and the performance of bodies to be notified, and the monitoring of bodies already notified, cover also activities carried out by subcontractors and subsidiaries.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -697,9 +604,7 @@
       "number": 66,
       "title": "Recital 66",
       "text": "Since notified bodies may offer their services throughout the Union, it is appropriate to give the other Member States and the Commission the opportunity to raise objections concerning a notified body. It is therefore important to provide for a period during which any doubts or concerns as to the competence of conformity assessment bodies can be clarified before they start operating as notified bodies.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -707,9 +612,7 @@
       "number": 67,
       "title": "Recital 67",
       "text": "In the interests of competitiveness, it is crucial that notified bodies apply the conformity assessment procedures without creating unnecessary burdens for economic operators. For the same reason, and to ensure equal treatment of economic operators, consistency in the technical application of the conformity assessment procedures needs to be ensured. That can best be achieved through appropriate coordination and cooperation between notified bodies.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -717,9 +620,7 @@
       "number": 68,
       "title": "Recital 68",
       "text": "Market surveillance is an essential instrument to ensure the proper and uniform application of Union law. It is therefore appropriate to put in place a legal framework within which market surveillance can be carried out in an appropriate manner with regard to products within the scope of this Regulation.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -727,9 +628,7 @@
       "number": 69,
       "title": "Recital 69",
       "text": "Member States should take all appropriate measures to ensure that machinery and related products may be placed on the market or put into service only if, where properly installed and maintained and used for its intended purpose, or under conditions of use which can be reasonably foreseen, they do not endanger the health or safety of persons, in particular consumers and professional users, and, where appropriate, of domestic animals and property, and, where applicable, the environment. In particular, the proper installation of lifting machinery is essential to ensure the compliance with applicable essential health and safety requirements. Machinery and related products should be considered as non-compliant with the essential health and safety requirements laid down in this Regulation only under conditions of use, which could result from lawful and readily predictable human behaviour.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -737,10 +636,7 @@
       "number": 70,
       "title": "Recital 70",
       "text": "In the context of market surveillance, a clear distinction should be established between the disputing of a harmonised standard or of common specifications conferring a presumption of conformity on products within the scope of this Regulation and the safeguard clause relating to products within the scope of this Regulation.",
-      "tags": [
-        "supervision_enforcement",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -756,9 +652,7 @@
       "number": 72,
       "title": "Recital 72",
       "text": "The existing safeguard procedure should be supplemented by a procedure under which interested parties are informed of measures intended to be taken with regard to products within the scope of this Regulation presenting a risk to the health or safety of persons and, where appropriate, domestic animals and property, and, where applicable, to the environment. It should allow market surveillance authorities, in cooperation with the relevant economic operators, to act at an earlier stage in respect of such products.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -766,9 +660,7 @@
       "number": 73,
       "title": "Recital 73",
       "text": "Where the Member States and the Commission agree as to the justification of a measure taken by a Member State, no further involvement of the Commission should be required, except where non-compliance can be attributed to shortcomings in a harmonised standard or in common specifications.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -777,8 +669,7 @@
       "title": "Recital 74",
       "text": "In order to take into account technical progress and knowledge or new scientific evidence and to ensure a sufficient level of data availability, the power to adopt acts in accordance with Article 290 of the Treaty on the Functioning of the European Union should be delegated to the Commission in respect of amending the list of categories of machinery and related products in Annex I and the indicative list of safety components in Annex II, and if necessary of supplementing the obligations of Member States to provide data and information on the categories of machinery and related products which are subject to a specific conformity assessment procedure through the establishment of a common methodology. Where a new category of machinery or related products is added to the list in Annex I, the Commission should ensure that economic operators are provided with sufficient time to comply with their obligations under this Regulation. It is of particular importance that the Commission carry out appropriate consultations during its preparatory work, including with the stakeholders concerned and that those consultations be conducted in accordance with the principles laid down in the Interinstitutional Agreement of 13 April 2016 on Better Law-Making . In particular, to ensure equal participation in the preparation of delegated acts, the European Parliament and the Council receive all documents at the same time as Member States’ experts, and their experts systematically have access to meetings of Commission expert groups dealing with the preparation of delegated acts.",
       "tags": [
-        "conformity_assessment",
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": [
@@ -790,10 +681,7 @@
       "number": 75,
       "title": "Recital 75",
       "text": "In order to ensure uniform conditions for the implementation of this Regulation, implementing powers should be conferred on the Commission for the establishment of a uniform template for the collection of data and information for the purpose of adding a category of machinery or related products to Annex I or withdrawing a category of machinery or related products from Annex I, for the establishment of common specifications for the essential health and safety requirements set out in Annex III, for requesting the notifying Member State to take the necessary corrective measures in respect of a notified body that does not meet the requirements for its notification, and for establishing whether a national measure in respect of compliant products within the scope of this Regulation which are found by a Member State to present a risk to the health and safety of persons, in particular consumers and professional users, or, where appropriate, to domestic animals or property, or, where applicable, to the environment, is justified. Those powers should be exercised in accordance with Regulation (EU) No 182/2011 of the European Parliament and of the Council .",
-      "tags": [
-        "ehsr",
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": [
         "I",
@@ -844,10 +732,7 @@
       "number": 81,
       "title": "Recital 81",
       "text": "The traceability of machinery data required for the technical file and for market surveillance purposes should comply with confidentiality rules to protect manufacturers.",
-      "tags": [
-        "operator_roles",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -855,9 +740,7 @@
       "number": 82,
       "title": "Recital 82",
       "text": "Member States should lay down rules on penalties applicable to infringements of this Regulation and ensure that those rules are implemented. The penalties provided for should be effective, proportionate and dissuasive.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },

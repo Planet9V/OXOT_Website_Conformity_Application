@@ -1,0 +1,157 @@
+{
+  "regulation": "Regulation (EU) 2023/988",
+  "shortTitle": "General Product Safety Regulation",
+  "officialJournalReference": "OJ L 135, 23.5.2023",
+  "celex": "32023R0988",
+  "consolidatedCelex": "02023R0988-20260529",
+  "eli": "http://data.europa.eu/eli/reg/2023/988/oj",
+  "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R0988-20260529",
+  "adopted": "2023-05-10",
+  "instrumentType": "regulation",
+  "nationalTranspositionRequired": false,
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-05-29",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2024/2748 (internal market emergency procedures)",
+      "celex": "32024R2748",
+      "eli": "http://data.europa.eu/eli/reg/2024/2748/oj",
+      "applicableFrom": "2026-05-29",
+      "summary": "Inserts chapter IIa (Arts 8a–8c, emergency procedures), Art 3 points 29–30 and amends Art 2(1)."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32023R0988R(01)",
+      "note": "ES, ET, DE, HR, NL, RO, FI only — the English text is not affected."
+    },
+    {
+      "id": "32023R0988R(02)",
+      "note": "PT only."
+    },
+    {
+      "id": "32023R0988R(03)",
+      "note": "ES only."
+    },
+    {
+      "id": "32023R0988R(04)",
+      "note": "ES only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32023R0988_EN.html",
+      "sha256": "2b87abcae7a508bb565ed35a99c42d47d6c85e35e017b97d35cba3da196b478f"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02023R0988-20260529_EN.html",
+      "sha256": "71c9a06a26e76e2cb9f6b2a3eb6b3f10be25cda387f25f17a5ca7a2f93b9f040"
+    }
+  },
+  "sourceSha256": "71c9a06a26e76e2cb9f6b2a3eb6b3f10be25cda387f25f17a5ca7a2f93b9f040",
+  "recitalsCount": 108,
+  "chaptersCount": 11,
+  "totalArticles": 55,
+  "annexesCount": 1,
+  "annexes": [
+    {
+      "annexNumber": "—",
+      "title": "CORRELATION TABLE",
+      "blocks": [
+        "Directive 87/357/EEC Directive 2001/95/EC Regulation (EU) No 1025/2012 This Regulation",
+        "Article 1(2) Article 2(1) and (2)",
+        "Article 2 except point (a), 2nd subparagraph and point (b), 2nd subparagraph Article 3",
+        "Article 2, point (a), 2nd subparagraph Article 2(2), point (i) and Article 2(3)",
+        "Article 2, point (b), 2nd subparagraph Article 6(2)",
+        "Article 3(1) Article 5",
+        "Article 3(2) Article 7(1)",
+        "Article 3(3) Article 8",
+        "Article 3(4) Article 7(3)",
+        "Article 4(1), points (a) and (b) Article 10(1) Article 7(2)",
+        "Article 4(1), point (c) - -",
+        "Article 4(1), point (d) - -",
+        "Article 4(2), first subparagraph Article 10(7) Article 48(1), point (a)",
+        "Article 4(2), second subparagraph - -",
+        "Article 4(2), third and fourth subparagraphs Article 11(1), point (b) Article 48(1), point (b)",
+        "Article 5(1), first subparagraph Article 9(7)",
+        "Article 5(1), second subparagraph -",
+        "Article 5(1), third subparagraph, point (a) Article 9(10), (12) and (13) and Article 11(9) and (10)",
+        "Article 5(1), third subparagraph, point (b) Article 9(8) and Article 11(8)",
+        "Article 5(1), fourth subparagraph, point (a) Article 9(5) and (6) and Article 11(3)",
+        "Article 5(1), fourth subparagraph, point (b), first sentence Article 9(2) and (3)",
+        "Article 5(1), fourth subparagraph, point (b), second sentence Article 9(11), (12) and (13) and Article 11(9), (10) and (11)",
+        "Article 5(1), fifth subparagraph Article 9(8), point (a)",
+        "Article 5(2) Article 12(1) and (3)",
+        "Article 5(3), first subparagraph Article 9(8), Article 11(8) and Article 12(4)",
+        "Article 5(3), second subparagraph -",
+        "Article 5(4) Article 15",
+        "Articles 6 to 9 Article 2(2), Articles 23 and 44",
+        "Article 10(1) Article 30",
+        "Article 10(2) Articles 31 and 32",
+        "Article 11(1), first subparagraph Article 26(3)",
+        "Article 11(1), second subparagraph -",
+        "Article 11(1), third subparagraph Article 26(10)",
+        "Article 11(2) Article 26(5)",
+        "Article 12(1), first and fourth subparagraph Article 26(1) and (2)",
+        "Article 12(1), second subparagraph -",
+        "Article 12(1), third subparagraph -",
+        "Article 12(2) Article 26(5) and (7)",
+        "Article 12(3) Article 26(10)",
+        "Article 12(4) Article 40(2) to (6)",
+        "Article 13 Article 28",
+        "Articles 14 and 15 Article 46",
+        "Article 16(1), first subparagraph Article 33(1)",
+        "Article 16(1), second subparagraph Article 33(2)",
+        "Article 16(2) Article 33(3)",
+        "Article 17 Article 43(2)",
+        "Article 18(1) and (2) Article 23",
+        "Article 18(3) Article 43(1)",
+        "Article 19(1) -",
+        "Article 19(2) Article 47",
+        "Article 20 -",
+        "Article 21 Article 52",
+        "Annex I, (1) Article 9(8), Article 10(2), point (c), Article 11(8) and Article 12(4)",
+        "Annex I, (2) and (3) Article 26",
+        "Annex III -",
+        "Annex IV Annex",
+        "Articles 1 and 2 Article 6(1), first subparagraph and Article 6(1)(f), point (i)",
+        "Articles 3 to 7 -"
+      ],
+      "tags": [],
+      "referencedArticles": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        23,
+        26,
+        28,
+        30,
+        33,
+        40,
+        43,
+        46,
+        47,
+        48,
+        52
+      ]
+    }
+  ]
+}

@@ -61,12 +61,17 @@ const regulations: InsertRegulation[] = [
       "Risk-based framework for AI systems. High-risk systems must meet requirements on risk management, data governance, technical documentation, logging, transparency, human oversight, and accuracy/robustness/cybersecurity, backed by a quality management system, conformity assessment, registration, and post-market monitoring.",
     inForceDate: "2024-08-01",
     sourceUrl: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+    // High-risk application dates are as AMENDED by Regulation (EU)
+    // 2026/1744 (the Digital Omnibus on AI, in force 2026-07-27), verified
+    // against its replacement of Art 113(c): Annex III high-risk from
+    // 2 December 2027; Annex I embedded high-risk from 2 August 2028.
     keyDates: [
       { date: "2024-08-01", label: "AI Act enters into force" },
       { date: "2025-02-02", label: "Prohibited practices (Art 5) apply" },
       { date: "2025-08-02", label: "GPAI and governance rules apply" },
-      { date: "2026-08-02", label: "High-risk (Annex III) obligations apply" },
-      { date: "2027-08-02", label: "High-risk (Annex I) obligations apply" },
+      { date: "2026-07-27", label: "Digital Omnibus (Regulation (EU) 2026/1744) in force — high-risk dates amended" },
+      { date: "2027-12-02", label: "High-risk (Annex III, Art 6(2)) obligations apply — moved from 2 Aug 2026 by 2026/1744" },
+      { date: "2028-08-02", label: "High-risk (Annex I embedded, Art 6(1)) obligations apply — moved from 2 Aug 2027 by 2026/1744" },
     ],
     sortOrder: 2,
   },

@@ -2,7 +2,7 @@
  * Machinery Regulation statutory corpus — Regulation (EU) 2023/1230.
  *
  * GENERATED FILE — DO NOT EDIT BY HAND.
- * Built from the Official Journal text (OJ L 165, 29.6.2023, p. 1,
+ * Built from the Official Journal text (OJ L 165, 29.6.2023,
  * CELEX 32023R1230) by scripts/build_euact_corpus_from_eurlex.mjs and
  * copied here by scripts/sync_euact_corpus_data.mjs. Every recital, article
  * paragraph and annex line is verbatim OJ text.
@@ -14,21 +14,61 @@
 export const machineryRecitalsData = {
   "regulation": "Regulation (EU) 2023/1230",
   "shortTitle": "Machinery Regulation",
-  "officialJournalReference": "OJ L 165, 29.6.2023, p. 1",
+  "officialJournalReference": "OJ L 165, 29.6.2023",
   "celex": "32023R1230",
+  "consolidatedCelex": "02023R1230-20260727",
   "eli": "http://data.europa.eu/eli/reg/2023/1230/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1230",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R1230-20260727",
   "adopted": "2023-06-14",
-  "entryIntoForce": "2023-07-19",
   "instrumentType": "regulation",
   "nationalTranspositionRequired": false,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/machinery_statutory_corpus/source/CELEX_32023R1230_EN.html",
-  "sourceSha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-07-27",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2024/2748 (internal market emergency procedures)",
+      "celex": "32024R2748",
+      "eli": "http://data.europa.eu/eli/reg/2024/2748/oj",
+      "applicableFrom": "2026-05-29",
+      "summary": "Inserts chapter IVa (Arts 25a–25e, emergency procedures) and Art 3 points 37–38."
+    },
+    {
+      "act": "Regulation (EU) 2026/1744 (Digital Omnibus on AI)",
+      "celex": "32026R1744",
+      "eli": "http://data.europa.eu/eli/reg/2026/1744/oj",
+      "applicableFrom": "2026-07-27",
+      "summary": "Replaces Art 47(3) and related provisions aligning machinery AI-safety assessment with the amended AI Act timeline."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32023R1230R(01)",
+      "note": "EN — fourteen date corrections (the 13/14 July → 19/20 July family; Art 54 point (b) 2023→2026). INCORPORATED in the consolidated text this corpus is built from."
+    },
+    {
+      "id": "32023R1230R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32023R1230R(03)",
+      "note": "DE, SK only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32023R1230_EN.html",
+      "sha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02023R1230-20260727_EN.html",
+      "sha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b"
+    }
+  },
+  "sourceSha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b",
   "recitalsCount": 86,
-  "chaptersCount": 9,
-  "totalArticles": 54,
+  "chaptersCount": 10,
+  "totalArticles": 59,
   "annexesCount": 12,
   "recitals": [
     {
@@ -51,9 +91,7 @@ export const machineryRecitalsData = {
       "number": 3,
       "title": "Recital 3",
       "text": "Experience with the application of Directive 2006/42/EC has shown inadequacies and inconsistencies in the product coverage and conformity assessment procedures. It is therefore necessary to improve, simplify and adapt the provisions set out in that Directive to the needs of the market and provide clear rules in relation to the framework within which products within the scope of this Regulation may be made available on the market.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -61,10 +99,7 @@ export const machineryRecitalsData = {
       "number": 4,
       "title": "Recital 4",
       "text": "Since the rules setting out the requirements for products within the scope of this Regulation, in particular the essential health and safety requirements and the conformity assessment procedures, need to be of uniform application for all operators across the Union, and not give room for divergent implementation by Member States, Directive 2006/42/EC should be replaced by a regulation.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -80,10 +115,7 @@ export const machineryRecitalsData = {
       "number": 6,
       "title": "Recital 6",
       "text": "Regulation (EC) No 765/2008 of the European Parliament and of the Council lays down rules on the accreditation of conformity assessment bodies, and the general principles of the CE marking. That Regulation should be applicable to products within the scope of this Regulation in order to ensure that those products, which are benefiting from the free movement of goods within the Union, fulfil requirements providing for a high level of protection of public interests such as the protection of the health and safety of persons and, where appropriate, domestic animals and property, and, where applicable, of the environment.",
-      "tags": [
-        "conformity_assessment",
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -91,9 +123,7 @@ export const machineryRecitalsData = {
       "number": 7,
       "title": "Recital 7",
       "text": "Regulation (EU) 2019/1020 of the European Parliament and of the Council sets out rules on market surveillance and control of products entering the Union market. As Directive 2006/42/EC is listed in Annex I of Regulation (EU) 2019/1020, that Regulation already applies to products within the scope of this Regulation. However, Regulation (EU) 2019/1020 applies to products within the scope of this Regulation insofar as there are no specific provisions with the same objective, which regulate in a more specific manner particular aspects of market surveillance and enforcement.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": [
         "I"
@@ -111,10 +141,7 @@ export const machineryRecitalsData = {
       "number": 9,
       "title": "Recital 9",
       "text": "Decision No 768/2008/EC of the European Parliament and of the Council lays down common principles and reference provisions intended to apply across sectoral legislation. In order to ensure consistency with other sectoral product legislation, it is appropriate to align certain provisions of this Regulation to that Decision, insofar as sectoral specificities do not require a different solution. Therefore, certain definitions, the general obligations of economic operators, the rules on presumption of conformity, the rules on EU declaration of conformity, the rules on CE marking, the requirements for conformity assessment bodies, the rules on notification procedures and conformity assessment procedures and the rules on procedures to deal with machinery or related products, and, where applicable, with partly completed machinery, presenting a risk should be adapted to the reference provisions laid down in that Decision.",
-      "tags": [
-        "conformity_assessment",
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -122,9 +149,7 @@ export const machineryRecitalsData = {
       "number": 10,
       "title": "Recital 10",
       "text": "This Regulation should cover products which are new to the Union market when placed on the market, and are either new products made by a manufacturer established in the Union or products, whether new or second-hand, imported from a third country.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -132,9 +157,7 @@ export const machineryRecitalsData = {
       "number": 11,
       "title": "Recital 11",
       "text": "Where there is a possibility that machinery or related products will be used by a consumer, that is to say, a non-professional user, the manufacturer should take account of the fact that the consumer does not have the same knowledge of and experience in handling machinery or related products in the design and construction of the products. The same applies where the machinery or related product is normally used to provide a service to a consumer.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -142,9 +165,7 @@ export const machineryRecitalsData = {
       "number": 12,
       "title": "Recital 12",
       "text": "Recently, more advanced machinery, which is less dependent on human operators, has been introduced on the market. Such machinery is working on defined tasks and in structured environments, yet it can learn to perform new actions in this context and become more autonomous. Further refinements to machinery, already in place or to be expected, include real-time processing of information, problem solving, mobility, sensor systems, learning, adaptability, and capability of operating in unstructured environments (for example construction sites). The Commission Report on the safety and liability implications of Artificial Intelligence, the Internet of Things and Robotics of 19 February 2020, states that the emergence of new digital technologies, like artificial intelligence, the Internet of things and robotics, raises new challenges in terms of product safety. The report concludes that the current product safety legislation, including Directive 2006/42/EC, contains a number of gaps in this respect that need to be addressed. Thus, this Regulation should cover the safety risks stemming from new digital technologies.",
-      "tags": [
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -169,7 +190,7 @@ export const machineryRecitalsData = {
       "title": "Recital 15",
       "text": "In order to ensure that the scope of this Regulation is sufficiently clear, a distinction should be made between machinery, related products and partly completed machinery. Moreover, related products should be understood as comprising interchangeable equipment, safety components, lifting accessories, chains, ropes and webbing, and removable mechanical transmission devices, which are all products within the scope of this Regulation.",
       "tags": [
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -203,10 +224,7 @@ export const machineryRecitalsData = {
       "title": "Recital 19",
       "text": "The evolution of the machinery sector has resulted in the growing use of digital means and software plays a more and more important role in machinery design. Consequently, the definition of machinery should be adapted. In this respect, machinery missing only the upload of software intended for the specific application foreseen by the manufacturer, and which is the subject of the conformity assessment procedure of the machinery, should fall under the definition of machinery and not under the definitions of related products or partly completed machinery. Furthermore, the definition of safety components should cover not only physical devices but also digital devices. In order to take into account the increasing use of software as a safety component, software that performs a safety function and which is placed independently on the market should be considered a safety component.",
       "tags": [
-        "conformity_assessment",
-        "operator_roles",
-        "safety_components",
-        "digital_safety"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -216,8 +234,7 @@ export const machineryRecitalsData = {
       "title": "Recital 20",
       "text": "Considering their critical protective function, certain components included in the indicative list of safety components in Annex II should also be subject to specific conformity assessment procedures and included in Annex I.",
       "tags": [
-        "conformity_assessment",
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": [
@@ -237,9 +254,7 @@ export const machineryRecitalsData = {
       "number": 22,
       "title": "Recital 22",
       "text": "Where products within the scope of this Regulation present risks that are addressed by the essential health and safety requirements set out in this Regulation but which are also wholly or partly covered by more specific Union harmonisation legislation than this Regulation, this Regulation should not apply to the extent that those risks are covered by that other Union legislation. In other cases, products within the scope of this Regulation might present risks that are not covered by the essential health and safety requirements set out in this Regulation. For example, products incorporating a Wi-Fi function might present risks not addressed by the essential health and safety requirements set out in this Regulation, as this Regulation does not deal with risks specific to such Wi-Fi function.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -255,9 +270,7 @@ export const machineryRecitalsData = {
       "number": 24,
       "title": "Recital 24",
       "text": "The evolution of the state of the art in the machinery sector has an impact on the classification of categories of machinery or related products listed in Annex I. With a view to properly reflecting any categories of machinery or related products presenting a higher risk factor, criteria should be established for the assessment of categories of products which should be included in the list of categories of machinery or related products subject to a stricter conformity assessment procedure.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": [
         "I"
@@ -268,8 +281,7 @@ export const machineryRecitalsData = {
       "title": "Recital 25",
       "text": "Other risks related to new digital technologies are those provoked by malicious third parties that have an impact on the safety of products within the scope of this Regulation. In this respect, manufacturers should be required to adopt proportionate measures which are limited to the protection of the safety of the product within the scope of this Regulation. This does not preclude the application to products within the scope of this Regulation of other Union legal acts specifically addressing cybersecurity aspects.",
       "tags": [
-        "operator_roles",
-        "digital_safety"
+        "cybersecurity"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -278,13 +290,7 @@ export const machineryRecitalsData = {
       "number": 26,
       "title": "Recital 26",
       "text": "In order to ensure that machinery or related products, when placed on the market or put into service, do not entail health and safety risks for persons or domestic animals and do not cause harm to property, and, where applicable, to the environment, essential health and safety requirements should be set out which have to be met in order for the machinery or related products to be allowed on the market. Machinery or related products should comply with the essential health and safety requirements when placed on the market or put into service. Where such products are subsequently modified, by physical or digital means, in a way that is not foreseen or planned by the manufacturer and which affects the safety of such products by creating a new hazard or increasing an existing risk, the modification should be considered as substantial when new significant protective measures are required. However, repair and maintenance operations which do not affect the machinery or related product’s compliance with the relevant essential health and safety requirements should not be considered to be substantial modifications. In order to ensure the compliance of such a product with the relevant essential health and safety requirements, the person that carries out the substantial modification should be required to perform a new conformity assessment before placing the modified product on the market or putting it into service. In order to avoid an unnecessary and disproportionate burden, the person carrying out the substantial modification should not be required to repeat tests and produce new documentation in relation to machinery or related products that are part of an assembly of machinery, and that are not affected by the modification.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "substantial_modification",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -292,9 +298,7 @@ export const machineryRecitalsData = {
       "number": 27,
       "title": "Recital 27",
       "text": "In the machinery sector, approximately 98 % of companies are small or medium sized enterprises (SMEs). In order to reduce the regulatory burden on SMEs, it is important that notified bodies consider adapting the fees for conformity assessment and reducing them proportionately to the specific interests and needs of SMEs.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -318,11 +322,7 @@ export const machineryRecitalsData = {
       "number": 30,
       "title": "Recital 30",
       "text": "In order to facilitate communication between economic operators, market surveillance authorities and users, manufacturers and importers should indicate a website, email address or other digital contact in addition to the postal address.",
-      "tags": [
-        "operator_roles",
-        "supervision_enforcement",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -330,10 +330,7 @@ export const machineryRecitalsData = {
       "number": 31,
       "title": "Recital 31",
       "text": "The manufacturer, having detailed knowledge of the design and production process, is best placed to carry out the conformity assessment procedure. Conformity assessment should therefore remain solely the obligation of the manufacturer.",
-      "tags": [
-        "conformity_assessment",
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -341,11 +338,7 @@ export const machineryRecitalsData = {
       "number": 32,
       "title": "Recital 32",
       "text": "The manufacturer should also ensure that a risk assessment is carried out for the product within the scope of this Regulation, which the manufacturer wishes to place on the market or put into service. In this context, the manufacturer should determine which essential health and safety requirements are applicable to the product within the scope of this Regulation and which measures need to be taken to address the risks that the product might present. The risk assessment should also address future updates or developments of software installed in the machinery or related product, which are foreseen when the machinery or related product is placed on the market or put into service. The risks identified during the risk assessment should include those risks that might arise during the product’s lifecycle due to an intended evolution of its behaviour to operate with varying levels of autonomy.",
-      "tags": [
-        "ehsr",
-        "operator_roles",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -353,9 +346,7 @@ export const machineryRecitalsData = {
       "number": 33,
       "title": "Recital 33",
       "text": "The safety of the entire machinery or related product relies on the dependencies and interactions between its components, including partly completed machinery, and, if relevant, with other machinery or related products that participate in a coordinated assembly of a machinery system, which can also result in an assembly of machinery. Therefore, manufacturers should be required to assess all those interactions in the risk assessment.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -363,13 +354,7 @@ export const machineryRecitalsData = {
       "number": 34,
       "title": "Recital 34",
       "text": "It is essential that, before drawing up the EU declaration of conformity or the EU declaration of incorporation, the manufacturer prepare technical documentation. The manufacturer should be required to make that technical documentation available to national authorities on request or to notified bodies in the context of the relevant conformity assessment procedure. Detailed plans of subassemblies used for the manufacture of the product within the scope of this Regulation should only be required as part of the technical documentation where knowledge of such plans is essential for assessing conformity with the essential health and safety requirements set out in this Regulation.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -377,9 +362,7 @@ export const machineryRecitalsData = {
       "number": 35,
       "title": "Recital 35",
       "text": "A person who manufactures machinery or related products for his or her own use is considered as to be a manufacturer and should be required to fulfil all the related obligations. In that case, the machinery or related product is not placed on the market, since it is not made available by the manufacturer to another person but is used by the manufacturer itself. However, such machinery needs to comply with this Regulation before it is put into service.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -387,12 +370,7 @@ export const machineryRecitalsData = {
       "number": 36,
       "title": "Recital 36",
       "text": "It is necessary to ensure that products within the scope of this Regulation from third countries entering the Union market comply with the requirements of this Regulation and do not present a risk to the health and safety of persons, in particular consumers and professional users, and, where appropriate, to domestic animals and property, and, where applicable, to the environment, and in particular that appropriate conformity assessment procedures have been carried out by manufacturers with regard to such products. Provision should therefore be made for importers to ensure that products within the scope of this Regulation that they place on the market comply with the requirements of this Regulation and do not present a risk to the health and safety of persons, and, where appropriate, domestic animals and property, and, where applicable, to the environment. For the same reason, provision should also be made for importers to ensure that the conformity assessment procedures have been carried out and that the CE marking, in the case of machinery and related products, is affixed and technical documentation drawn up by manufacturers is available for inspection by the competent national authorities.",
-      "tags": [
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -400,10 +378,7 @@ export const machineryRecitalsData = {
       "number": 37,
       "title": "Recital 37",
       "text": "When placing products within the scope of this Regulation on the market, importers should indicate on those products their respective names, registered trade names or registered trade marks, postal addresses, websites, email addresses or other digital contacts at which they can be contacted. Exceptions should be provided for in cases where the size or nature of the product does not allow it. This includes cases where the importers would have to open the packaging to put their names and addresses on the product.",
-      "tags": [
-        "operator_roles",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -411,9 +386,7 @@ export const machineryRecitalsData = {
       "number": 38,
       "title": "Recital 38",
       "text": "As the distributor makes products within the scope of this Regulation available on the market after they have been placed on the market by the manufacturer or the importer, the distributor should act with due care to ensure that its handling of the product within the scope of this Regulation does not adversely affect its compliance with the requirements set out in this Regulation.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -421,9 +394,7 @@ export const machineryRecitalsData = {
       "number": 39,
       "title": "Recital 39",
       "text": "With a view to ensuring the health and safety of the users of products within the scope of this Regulation, economic operators should ensure that all relevant documentation, such as the instructions for use, while containing precise and comprehensible information, is easily understandable and available in a language which can be easily understood by users, as determined by the Member State concerned, takes into account technological developments and changes to user behaviour, and is as up to date as possible. When products within the scope of this Regulation are made available on the market in packages containing multiple units, the instructions and information should accompany the smallest commercially available unit.",
-      "tags": [
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -431,11 +402,7 @@ export const machineryRecitalsData = {
       "number": 40,
       "title": "Recital 40",
       "text": "Instructions and other relevant documentation may be provided in a digital printable format. However, the manufacturer should ensure that distributors can provide, at the request of the user at the time of the purchase, the instructions for use in a paper format free of charge. The manufacturer should also consider providing the contact details where the user can request the instructions to be dispatched by mail.",
-      "tags": [
-        "operator_roles",
-        "digital_safety",
-        "documentation"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -443,10 +410,7 @@ export const machineryRecitalsData = {
       "number": 41,
       "title": "Recital 41",
       "text": "Distributors and importers, being close to the market place, should be involved in market surveillance tasks carried out by the competent national authorities, and should be prepared to participate actively, providing those authorities with all necessary information relating to the product within the scope of this Regulation concerned.",
-      "tags": [
-        "operator_roles",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -454,9 +418,7 @@ export const machineryRecitalsData = {
       "number": 42,
       "title": "Recital 42",
       "text": "Any economic operator who either places a product within the scope of this Regulation on the market under its own name or trademark or modifies a product within the scope of this Regulation in such a way that compliance with the requirements of this Regulation might be affected should be considered to be the manufacturer and should assume the obligations of the manufacturer.",
-      "tags": [
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -464,9 +426,7 @@ export const machineryRecitalsData = {
       "number": 43,
       "title": "Recital 43",
       "text": "Ensuring traceability of products within the scope of this Regulation throughout the whole supply chain enables a simpler and more efficient market surveillance. The economic operators should therefore be required to keep the information on their transactions of products within the scope of this Regulation for a certain period of time. However, that obligation should be proportionate to the role of each economic operator in the supply chain and the economic operators should not be required to update information that they have not produced.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -474,10 +434,7 @@ export const machineryRecitalsData = {
       "number": 44,
       "title": "Recital 44",
       "text": "This Regulation should be limited to setting out the essential health and safety requirements, supplemented by a number of more specific requirements for certain categories of products within the scope of this Regulation. In order to facilitate the assessment of conformity with those health and safety requirements, it is necessary to provide for a presumption of conformity for products within the scope of this Regulation which are in conformity with harmonised standards that are developed and in respect of which the references are published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012 of the European Parliament and of the Council for the purpose of expressing the detailed technical specifications of those requirements.",
-      "tags": [
-        "ehsr",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -485,11 +442,7 @@ export const machineryRecitalsData = {
       "number": 45,
       "title": "Recital 45",
       "text": "The current EU standardisation framework which is based on the New Approach principles set out in Council Resolution of 7 May 1985 on a new approach to technical harmonization and standards and on Regulation (EU) No 1025/2012 represents the framework by default to elaborate standards that provide for a presumption of conformity with the relevant essential health and safety requirements of this Regulation. European standards should be market-driven, take into account the public interest, as well as the policy objectives clearly stated in the Commission’s request to one or more European standardisation organisations to draft harmonised standards, within a set deadline and be based on consensus. However, in the absence of relevant references to harmonised standards, the Commission should be able to adopt implementing acts establishing common specifications for the essential health and safety requirements of this Regulation, provided that in doing so it duly respects the role and functions of standardisation organisations, as an exceptional fall back solution to facilitate the manufacturer’s obligation to comply with those health and safety requirements, when the standardisation process is blocked or when there are delays in the establishment of appropriate harmonised standards. If such delay is due to the technical complexity of the standard in question, this should be considered by the Commission before contemplating the establishment of common specifications.",
-      "tags": [
-        "ehsr",
-        "operator_roles",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -497,9 +450,7 @@ export const machineryRecitalsData = {
       "number": 46,
       "title": "Recital 46",
       "text": "With a view to establishing, in the most efficient way, common specifications that cover the essential health and safety requirements of this Regulation, the Commission should involve relevant stakeholders in the process.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -507,9 +458,7 @@ export const machineryRecitalsData = {
       "number": 47,
       "title": "Recital 47",
       "text": "Reasonable period should mean, in relation to the publication of reference to harmonised standards in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012, a period during which the publication in the Official Journal of the European Union of the reference to the standard, its corrigendum or its amendment is expected and which should not exceed one year after the deadline for drafting a European standard set in accordance with Regulation (EU) No 1025/2012.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -517,10 +466,7 @@ export const machineryRecitalsData = {
       "number": 48,
       "title": "Recital 48",
       "text": "Compliance with harmonised standards and with common specifications established by the Commission should be voluntary. Alternative technical solutions should therefore be acceptable where compliance of the products within the scope of this Regulation with the relevant essential health and safety requirements is demonstrated in the technical file.",
-      "tags": [
-        "ehsr",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -528,9 +474,7 @@ export const machineryRecitalsData = {
       "number": 49,
       "title": "Recital 49",
       "text": "The essential health and safety requirements should be satisfied in order to ensure that the product within the scope of this Regulation is safe. Those requirements should be applied with discernment to take account of the state of the art at the time of construction and of technical and economic requirements.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -538,9 +482,7 @@ export const machineryRecitalsData = {
       "number": 50,
       "title": "Recital 50",
       "text": "Regulation (EU) No 1025/2012 provides for a procedure for objections to harmonised standards where those standards do not satisfy or entirely satisfy the requirements of this Regulation.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -549,8 +491,7 @@ export const machineryRecitalsData = {
       "title": "Recital 51",
       "text": "With a view to addressing the risks stemming from malicious third party actions that have an impact on the safety of products within the scope of this Regulation, this Regulation should include essential health and safety requirements in respect of which conformity to the appropriate extent can be presumed as the result of a certificate or statement of conformity issued under a relevant cybersecurity certification scheme adopted in accordance with Regulation (EU) 2019/881 of the European Parliament and of the Council .",
       "tags": [
-        "ehsr",
-        "digital_safety"
+        "cybersecurity"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -559,11 +500,7 @@ export const machineryRecitalsData = {
       "number": 52,
       "title": "Recital 52",
       "text": "Manufacturers should draw up an EU declaration of conformity to provide information on the conformity of machinery or related products with this Regulation. Manufacturers may also be required by other Union legal acts to draw up an EU declaration of conformity. To ensure effective access to information for market surveillance purposes, a single EU declaration of conformity should be drawn up in respect of all Union legal acts. In order to reduce the administrative burden on economic operators, it should be possible for that single EU declaration of conformity to be a dossier made up of relevant individual declarations of conformity.",
-      "tags": [
-        "operator_roles",
-        "ce_marking",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -571,9 +508,7 @@ export const machineryRecitalsData = {
       "number": 53,
       "title": "Recital 53",
       "text": "The harmonised standards relevant to this Regulation should take into account the requirements of Directive (EU) 2019/882 of the European Parliament and of the Council and the United Nations Convention on the Rights of Persons with Disabilities .",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -582,8 +517,7 @@ export const machineryRecitalsData = {
       "title": "Recital 54",
       "text": "The list of products in Annex IV of Directive 2006/42/EC has until now been based on the risk emanating from the intended use or any reasonably foreseeable misuse of those products or their critical protective function. Nevertheless, the machinery field embraces new ways of designing and constructing machinery or related products that might present higher risk factors, regardless of such intended use or any reasonably foreseeable misuse. For example, systems with self-evolving behaviour ensuring safety functions should be included in Annex I due to their characteristics such as data dependency, opacity, autonomy and connectivity, which might considerably increase the probability and severity of harm and seriously affect the safety of the machinery or related product. Therefore, the conformity assessment of a safety component or a system with self-evolving behaviour ensuring safety functions should be carried out by a third party, whether or not the safety component has been placed independently on the market or is part of a system embedded in machinery that is placed on the market. However, where machinery embeds a system of which the safety component has already been subject to third party conformity assessment when it was placed independently on the market, that machinery should not have to be re-certified by a third party solely on the basis of the embedding of that system.",
       "tags": [
-        "conformity_assessment",
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": [
@@ -595,10 +529,7 @@ export const machineryRecitalsData = {
       "number": 55,
       "title": "Recital 55",
       "text": "Provisions related to the third-party conformity assessment of software ensuring safety functions set out in this Regulation should only apply to systems with a fully or partially self-evolving behaviour using machine learning approaches ensuring safety functions. On the contrary, those provisions should not apply to software incapable of learning or evolving, and programmed only to execute certain automated functions of machinery or related products.",
-      "tags": [
-        "conformity_assessment",
-        "digital_safety"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -606,10 +537,7 @@ export const machineryRecitalsData = {
       "number": 56,
       "title": "Recital 56",
       "text": "The CE marking, indicating the conformity of a product, is the visible consequence of a whole process comprising conformity assessment in a broad sense. The general principles governing the CE marking are set out in Regulation (EC) No 765/2008. Rules governing the affixing of the CE marking on machinery or related products should be laid down in this Regulation.",
-      "tags": [
-        "conformity_assessment",
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -617,9 +545,7 @@ export const machineryRecitalsData = {
       "number": 57,
       "title": "Recital 57",
       "text": "The CE marking should be the only marking which guarantees that machinery or related products comply with the requirements of this Regulation. Member States should therefore take appropriate action as regards other markings which are likely to mislead third parties as to the meaning or the form of the CE marking.",
-      "tags": [
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -627,10 +553,7 @@ export const machineryRecitalsData = {
       "number": 58,
       "title": "Recital 58",
       "text": "In order to enable economic operators to demonstrate and the competent authorities to ensure that machinery or related products made available on the market are in conformity with the essential health and safety requirements, it is necessary to provide for conformity assessment procedures. Decision No 768/2008/EC establishes modules for conformity assessment procedures, which include procedures from the least to the most stringent, in proportion to the level of risk involved and the level of safety required. In order to ensure inter-sectoral coherence and to avoid ad hoc variants, conformity assessment procedures should be chosen from among those modules.",
-      "tags": [
-        "ehsr",
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -638,10 +561,7 @@ export const machineryRecitalsData = {
       "number": 59,
       "title": "Recital 59",
       "text": "Manufacturers should be responsible for ensuring that a conformity assessment is carried out in respect of their machinery or related products in accordance with this Regulation. Nevertheless, for certain categories of machinery or related products that have a higher risk factor, a stricter conformity assessment procedure requiring the participation of a notified body should be required.",
-      "tags": [
-        "conformity_assessment",
-        "operator_roles"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -649,9 +569,7 @@ export const machineryRecitalsData = {
       "number": 60,
       "title": "Recital 60",
       "text": "It is essential that all notified bodies perform their functions to the same level and under conditions of fair competition. That requires the setting of obligatory requirements for conformity assessment bodies wishing to be notified in order to provide conformity assessment services.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -659,10 +577,7 @@ export const machineryRecitalsData = {
       "number": 61,
       "title": "Recital 61",
       "text": "If a conformity assessment body demonstrates conformity with the criteria laid down in harmonised standards, it should be presumed to comply with the corresponding requirements set out in this Regulation.",
-      "tags": [
-        "conformity_assessment",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -670,9 +585,7 @@ export const machineryRecitalsData = {
       "number": 62,
       "title": "Recital 62",
       "text": "In order to ensure a consistent level of quality in the performance of conformity assessment of machinery or related products, it is also necessary to set requirements for notifying authorities and other bodies involved in the assessment, notification and monitoring of notified bodies.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -680,9 +593,7 @@ export const machineryRecitalsData = {
       "number": 63,
       "title": "Recital 63",
       "text": "The system set out in this Regulation should be complemented by the accreditation system provided for in Regulation (EC) No 765/2008. Since accreditation is an essential means of verifying the competence of conformity assessment bodies, it should also be used for the purposes of notification.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -690,9 +601,7 @@ export const machineryRecitalsData = {
       "number": 64,
       "title": "Recital 64",
       "text": "Transparent accreditation as provided for in Regulation (EC) No 765/2008, ensuring the necessary level of confidence in certificates of conformity, should be considered by the national public authorities throughout the Union as the preferred means of demonstrating the technical competence of conformity assessment bodies. However, national authorities may consider that they possess the appropriate means of carrying out that evaluation themselves. In such cases, in order to ensure the appropriate level of credibility of evaluations carried out by other national authorities, they should provide the Commission and the other Member States with the necessary documentary evidence demonstrating the compliance of the conformity assessment bodies evaluated with the relevant regulatory requirements.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -700,9 +609,7 @@ export const machineryRecitalsData = {
       "number": 65,
       "title": "Recital 65",
       "text": "Conformity assessment bodies frequently subcontract parts of their activities linked to the assessment of conformity or have recourse to a subsidiary. In order to safeguard the level of protection required for the machinery or related products to be placed on the market, it is essential that conformity assessment subcontractors and subsidiaries fulfil the same requirements as notified bodies in relation to the performance of conformity assessment tasks. Therefore, it is important that the assessment of the competence and the performance of bodies to be notified, and the monitoring of bodies already notified, cover also activities carried out by subcontractors and subsidiaries.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -710,9 +617,7 @@ export const machineryRecitalsData = {
       "number": 66,
       "title": "Recital 66",
       "text": "Since notified bodies may offer their services throughout the Union, it is appropriate to give the other Member States and the Commission the opportunity to raise objections concerning a notified body. It is therefore important to provide for a period during which any doubts or concerns as to the competence of conformity assessment bodies can be clarified before they start operating as notified bodies.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -720,9 +625,7 @@ export const machineryRecitalsData = {
       "number": 67,
       "title": "Recital 67",
       "text": "In the interests of competitiveness, it is crucial that notified bodies apply the conformity assessment procedures without creating unnecessary burdens for economic operators. For the same reason, and to ensure equal treatment of economic operators, consistency in the technical application of the conformity assessment procedures needs to be ensured. That can best be achieved through appropriate coordination and cooperation between notified bodies.",
-      "tags": [
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -730,9 +633,7 @@ export const machineryRecitalsData = {
       "number": 68,
       "title": "Recital 68",
       "text": "Market surveillance is an essential instrument to ensure the proper and uniform application of Union law. It is therefore appropriate to put in place a legal framework within which market surveillance can be carried out in an appropriate manner with regard to products within the scope of this Regulation.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -740,9 +641,7 @@ export const machineryRecitalsData = {
       "number": 69,
       "title": "Recital 69",
       "text": "Member States should take all appropriate measures to ensure that machinery and related products may be placed on the market or put into service only if, where properly installed and maintained and used for its intended purpose, or under conditions of use which can be reasonably foreseen, they do not endanger the health or safety of persons, in particular consumers and professional users, and, where appropriate, of domestic animals and property, and, where applicable, the environment. In particular, the proper installation of lifting machinery is essential to ensure the compliance with applicable essential health and safety requirements. Machinery and related products should be considered as non-compliant with the essential health and safety requirements laid down in this Regulation only under conditions of use, which could result from lawful and readily predictable human behaviour.",
-      "tags": [
-        "ehsr"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -750,10 +649,7 @@ export const machineryRecitalsData = {
       "number": 70,
       "title": "Recital 70",
       "text": "In the context of market surveillance, a clear distinction should be established between the disputing of a harmonised standard or of common specifications conferring a presumption of conformity on products within the scope of this Regulation and the safeguard clause relating to products within the scope of this Regulation.",
-      "tags": [
-        "supervision_enforcement",
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -769,9 +665,7 @@ export const machineryRecitalsData = {
       "number": 72,
       "title": "Recital 72",
       "text": "The existing safeguard procedure should be supplemented by a procedure under which interested parties are informed of measures intended to be taken with regard to products within the scope of this Regulation presenting a risk to the health or safety of persons and, where appropriate, domestic animals and property, and, where applicable, to the environment. It should allow market surveillance authorities, in cooperation with the relevant economic operators, to act at an earlier stage in respect of such products.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -779,9 +673,7 @@ export const machineryRecitalsData = {
       "number": 73,
       "title": "Recital 73",
       "text": "Where the Member States and the Commission agree as to the justification of a measure taken by a Member State, no further involvement of the Commission should be required, except where non-compliance can be attributed to shortcomings in a harmonised standard or in common specifications.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -790,8 +682,7 @@ export const machineryRecitalsData = {
       "title": "Recital 74",
       "text": "In order to take into account technical progress and knowledge or new scientific evidence and to ensure a sufficient level of data availability, the power to adopt acts in accordance with Article 290 of the Treaty on the Functioning of the European Union should be delegated to the Commission in respect of amending the list of categories of machinery and related products in Annex I and the indicative list of safety components in Annex II, and if necessary of supplementing the obligations of Member States to provide data and information on the categories of machinery and related products which are subject to a specific conformity assessment procedure through the establishment of a common methodology. Where a new category of machinery or related products is added to the list in Annex I, the Commission should ensure that economic operators are provided with sufficient time to comply with their obligations under this Regulation. It is of particular importance that the Commission carry out appropriate consultations during its preparatory work, including with the stakeholders concerned and that those consultations be conducted in accordance with the principles laid down in the Interinstitutional Agreement of 13 April 2016 on Better Law-Making . In particular, to ensure equal participation in the preparation of delegated acts, the European Parliament and the Council receive all documents at the same time as Member States’ experts, and their experts systematically have access to meetings of Commission expert groups dealing with the preparation of delegated acts.",
       "tags": [
-        "conformity_assessment",
-        "safety_components"
+        "safety_component"
       ],
       "relatedArticles": [],
       "relatedAnnexes": [
@@ -803,10 +694,7 @@ export const machineryRecitalsData = {
       "number": 75,
       "title": "Recital 75",
       "text": "In order to ensure uniform conditions for the implementation of this Regulation, implementing powers should be conferred on the Commission for the establishment of a uniform template for the collection of data and information for the purpose of adding a category of machinery or related products to Annex I or withdrawing a category of machinery or related products from Annex I, for the establishment of common specifications for the essential health and safety requirements set out in Annex III, for requesting the notifying Member State to take the necessary corrective measures in respect of a notified body that does not meet the requirements for its notification, and for establishing whether a national measure in respect of compliant products within the scope of this Regulation which are found by a Member State to present a risk to the health and safety of persons, in particular consumers and professional users, or, where appropriate, to domestic animals or property, or, where applicable, to the environment, is justified. Those powers should be exercised in accordance with Regulation (EU) No 182/2011 of the European Parliament and of the Council .",
-      "tags": [
-        "ehsr",
-        "conformity_assessment"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": [
         "I",
@@ -857,10 +745,7 @@ export const machineryRecitalsData = {
       "number": 81,
       "title": "Recital 81",
       "text": "The traceability of machinery data required for the technical file and for market surveillance purposes should comply with confidentiality rules to protect manufacturers.",
-      "tags": [
-        "operator_roles",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -868,9 +753,7 @@ export const machineryRecitalsData = {
       "number": 82,
       "title": "Recital 82",
       "text": "Member States should lay down rules on penalties applicable to infringements of this Regulation and ensure that those rules are implemented. The penalties provided for should be effective, proportionate and dissuasive.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -914,32 +797,73 @@ export const machineryRecitalsData = {
 export const machineryArticlesData = {
   "regulation": "Regulation (EU) 2023/1230",
   "shortTitle": "Machinery Regulation",
-  "officialJournalReference": "OJ L 165, 29.6.2023, p. 1",
+  "officialJournalReference": "OJ L 165, 29.6.2023",
   "celex": "32023R1230",
+  "consolidatedCelex": "02023R1230-20260727",
   "eli": "http://data.europa.eu/eli/reg/2023/1230/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1230",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R1230-20260727",
   "adopted": "2023-06-14",
-  "entryIntoForce": "2023-07-19",
   "instrumentType": "regulation",
   "nationalTranspositionRequired": false,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/machinery_statutory_corpus/source/CELEX_32023R1230_EN.html",
-  "sourceSha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-07-27",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2024/2748 (internal market emergency procedures)",
+      "celex": "32024R2748",
+      "eli": "http://data.europa.eu/eli/reg/2024/2748/oj",
+      "applicableFrom": "2026-05-29",
+      "summary": "Inserts chapter IVa (Arts 25a–25e, emergency procedures) and Art 3 points 37–38."
+    },
+    {
+      "act": "Regulation (EU) 2026/1744 (Digital Omnibus on AI)",
+      "celex": "32026R1744",
+      "eli": "http://data.europa.eu/eli/reg/2026/1744/oj",
+      "applicableFrom": "2026-07-27",
+      "summary": "Replaces Art 47(3) and related provisions aligning machinery AI-safety assessment with the amended AI Act timeline."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32023R1230R(01)",
+      "note": "EN — fourteen date corrections (the 13/14 July → 19/20 July family; Art 54 point (b) 2023→2026). INCORPORATED in the consolidated text this corpus is built from."
+    },
+    {
+      "id": "32023R1230R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32023R1230R(03)",
+      "note": "DE, SK only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32023R1230_EN.html",
+      "sha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02023R1230-20260727_EN.html",
+      "sha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b"
+    }
+  },
+  "sourceSha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b",
   "recitalsCount": 86,
-  "chaptersCount": 9,
-  "totalArticles": 54,
+  "chaptersCount": 10,
+  "totalArticles": 59,
   "annexesCount": 12,
   "chapters": [
     {
       "chapterNumber": 1,
-      "label": "CHAPTER I",
-      "title": "GENERAL PROVISIONS",
+      "chapterLabel": "I",
+      "chapterTitle": "GENERAL PROVISIONS",
       "articles": [
         {
-          "articleNumber": 1,
+          "articleNumber": "1",
           "title": "Subject matter",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -948,13 +872,13 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 2,
+          "articleNumber": "2",
           "title": "Scope",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -967,47 +891,36 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [
-            "ehsr",
-            "operator_roles",
-            "safety_components"
+            "safety_component"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 3,
+          "articleNumber": "3",
           "title": "Definitions",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 0,
-              "text": "For the purposes of this Regulation, the following definitions apply:\n(1) ‘machinery’ means:\n(a) an assembly, fitted with or intended to be fitted with a drive system other than directly applied human or animal effort, consisting of linked parts or components, at least one of which moves, and which are joined together for a specific application;\n(b) an assembly referred to in point (a), missing only the components to connect it on site or to sources of energy and motion;\n(c) an assembly referred to points (a) and (b), ready to be installed and able to function as it stands only if mounted on a means of transport, or installed in a building or a structure;\n(d) assemblies of machinery referred to in points (a), (b) and (c), or of partly completed machinery, which, in order to achieve the same end, are arranged and controlled so that they function as an integral whole;\n(e) an assembly of linked parts or components, at least one of which moves, and which are joined together, intended for lifting loads and whose only power source is directly applied human effort;\n(f) an assembly as referred to in points (a) to (e) missing only the uploading of the software intended for the specific application foreseen by the manufacturer;\n(2) ‘interchangeable equipment’ means a device which, after the putting into service of machinery or an agricultural or forestry tractor, is assembled with that machinery or agricultural or forestry tractor by the operator in order to change its function or to attribute a new function to it, provided that the device is not a tool;\n(3) ‘safety component’ means a physical or digital component, including software, of a product within the scope of this Regulation, which is designed or intended to fulfil a safety function and which is independently placed on the market, the failure or malfunction of which endanger the safety of persons, but which is not necessary in order for that product to function or for which normal components may be substituted in order for that product to function;\n(4) ‘safety function’ means a function that serves to fulfil a protective measure designed to eliminate, or, if that is not possible, to reduce, a risk, which, if it fails, could result in an increase of that risk;\n(5) ‘lifting accessory’ means a component or equipment, not attached to the lifting machinery, which enables the load to be held, which is placed between the machinery and the load or on the load itself, or which is intended to constitute an integral part of the load and which is independently placed on the market, including slings and their components;\n(6) ‘chains’ means chains designed and constructed for lifting purposes as part of lifting machinery or lifting accessories;\n(7) ‘ropes’ means ropes designed and constructed for lifting purposes as part of lifting machinery or lifting accessories;\n(8) ‘webbing’ means webbing designed and constructed for lifting purposes as part of lifting machinery or lifting accessories;\n(9) ‘removable mechanical transmission device’ means a removable component for transmitting power between self-propelled machinery or a tractor and other machinery or related products by joining them at the first fixed bearing; when it is placed on the market with a guard, the device and the guard are to be regarded as one item;\n(10) ‘partly completed machinery’ means an assembly which is not yet machinery as it cannot in itself perform a specific application and which is only intended to be incorporated into or assembled with machinery or other partly completed machinery or equipment, thereby forming machinery;\n(11) ‘making available on the market’ means any supply of a product within the scope of this Regulation for distribution or use on the Union market in the course of a commercial activity, whether in return for payment or free of charge;\n(12) ‘placing on the market’ means the first making available of a product within the scope of this Regulation on the Union market;\n(13) ‘putting into service’ means the first use, for its intended purpose, in the Union, of machinery or related products;\n(14) ‘essential health and safety requirements’ means the mandatory provisions, set out in Annex III, relating to the design and construction of products within the scope of this Regulation to ensure a high level of protection of the health and safety of persons, and, where appropriate, domestic animals and property, and, where applicable, of the environment;\n(15) ‘Union harmonisation legislation’ means any Union legislation harmonising the conditions for the marketing of products;\n(16) ‘substantial modification’ means a modification of machinery or a related product, by physical or digital means after that machinery or related product has been placed on the market or put into service, which is not foreseen or planned by the manufacturer, and which affects the safety of that machinery or related product, by creating a new hazard, or by increasing an existing risk, which requires:\n(a) the addition of guards or protective devices to that machinery or related product the processing of which necessitates the modification of the existing safety control system; or\n(b) the adoption of additional protective measures to ensure the stability or mechanical strength of that machinery or related product;\n(17) ‘instructions for use’ means the information, provided by the manufacturer when the machinery or related product is placed on the market or put into service, to inform the user of the machinery or related product, of the intended and proper use of that machinery or related product, as well as information on any precautions to be taken when using or installing the machinery or related product, including information on the safety aspects, and on how to keep that machinery or related product safe, and to ensure that it remains fit for purpose during its entire lifetime;\n(18) ‘manufacturer’ means any natural or legal person who:\n(a) manufactures products within the scope of this Regulation or who has those products designed or manufactured, and markets those products under its name or trademark; or\n(b) manufactures products within the scope of this Regulation, and puts those products into service for its own use;\n(19) ‘authorised representative’ means any natural or legal person established within the Union who has received a written mandate from a manufacturer to act on its behalf in relation to specified tasks;\n(20) ‘importer’ means any natural or legal person established within the Union who places a product within the scope of this Regulation from a third country on the Union market;\n(21) ‘distributor’ means any natural or legal person in the supply chain, other than the manufacturer or the importer, who makes a product within the scope of this Regulation available on the market;\n(22) ‘economic operator’ means the manufacturer, the authorised representative, the importer or the distributor;\n(23) ‘technical specifications’ means a document that prescribes technical requirements to be fulfilled by products within the scope of this Regulation;\n(24) ‘harmonised standard’ means a harmonised standard as defined in Article 2, point 1, point (c), of Regulation (EU) No 1025/2012;\n(25) ‘CE marking’ means a marking by which the manufacturer indicates that machinery or a related product is in conformity with the applicable requirements set out in Union harmonisation legislation providing for its affixing;\n(26) ‘accreditation’ means accreditation as defined in Article 2, point (10), of Regulation (EC) No 765/2008;\n(27) ‘national accreditation body’ means a national accreditation body as defined in Article 2, point (11), of Regulation (EC) No 765/2008;\n(28) ‘conformity assessment’ means the process for demonstrating whether the applicable essential health and safety requirements in this Regulation relating to machinery or related products have been fulfilled;\n(29) ‘conformity assessment body’ means a body that performs conformity assessment activities, including calibration, testing, certification and inspection;\n(30) ‘notified body’ means a conformity assessment body notified in accordance with this Regulation;\n(31) ‘market surveillance authority’ means a ‘market surveillance authority’ as defined in Article 3, point (4), of Regulation (EU) 2019/1020;\n(32) ‘recall’ means any measure aimed at achieving the return of a product within the scope of this Regulation that has already been made available to a user;\n(33) ‘withdrawal’ means, for a product, any measure aimed at preventing a product within the scope of this Regulation that is in the supply chain from being made available on the market;\n(34) ‘lifetime’ means the period from the moment that machinery or a related product is placed on the market or put into service until the moment that it is discarded, including the effective time when the machinery or related product is capable of being used and the phases of transport, assembly, dismantling, disabling, scrapping or other physical or digital modifications foreseen by the manufacturer;\n(35) ‘source code’ means the currently installed version of the software of a product within the scope of this Regulation, written in a programming language so that it is unambiguous and understandable to humans;\n(36) ‘professional user’ means a natural person who uses or operates machinery or a related product in the course of his or her professional activity or work."
+              "text": "For the purposes of this Regulation, the following definitions apply:\n(1) ‘machinery’ means:\n(a) an assembly, fitted with or intended to be fitted with a drive system other than directly applied human or animal effort, consisting of linked parts or components, at least one of which moves, and which are joined together for a specific application;\n(b) an assembly referred to in point (a), missing only the components to connect it on site or to sources of energy and motion;\n(c) an assembly referred to points (a) and (b), ready to be installed and able to function as it stands only if mounted on a means of transport, or installed in a building or a structure;\n(d) assemblies of machinery referred to in points (a), (b) and (c), or of partly completed machinery, which, in order to achieve the same end, are arranged and controlled so that they function as an integral whole;\n(e) an assembly of linked parts or components, at least one of which moves, and which are joined together, intended for lifting loads and whose only power source is directly applied human effort;\n(f) an assembly as referred to in points (a) to (e) missing only the uploading of the software intended for the specific application foreseen by the manufacturer;\n(2) ‘interchangeable equipment’ means a device which, after the putting into service of machinery or an agricultural or forestry tractor, is assembled with that machinery or agricultural or forestry tractor by the operator in order to change its function or to attribute a new function to it, provided that the device is not a tool;\n(3) ‘safety component’ means a physical or digital component, including software, of a product within the scope of this Regulation, which is designed or intended to fulfil a safety function and which is independently placed on the market, the failure or malfunction of which endanger the safety of persons, but which is not necessary in order for that product to function or for which normal components may be substituted in order for that product to function;\n(4) ‘safety function’ means a function that serves to fulfil a protective measure designed to eliminate, or, if that is not possible, to reduce, a risk, which, if it fails, could result in an increase of that risk;\n(5) ‘lifting accessory’ means a component or equipment, not attached to the lifting machinery, which enables the load to be held, which is placed between the machinery and the load or on the load itself, or which is intended to constitute an integral part of the load and which is independently placed on the market, including slings and their components;\n(6) ‘chains’ means chains designed and constructed for lifting purposes as part of lifting machinery or lifting accessories;\n(7) ‘ropes’ means ropes designed and constructed for lifting purposes as part of lifting machinery or lifting accessories;\n(8) ‘webbing’ means webbing designed and constructed for lifting purposes as part of lifting machinery or lifting accessories;\n(9) ‘removable mechanical transmission device’ means a removable component for transmitting power between self-propelled machinery or a tractor and other machinery or related products by joining them at the first fixed bearing; when it is placed on the market with a guard, the device and the guard are to be regarded as one item;\n(10) ‘partly completed machinery’ means an assembly which is not yet machinery as it cannot in itself perform a specific application and which is only intended to be incorporated into or assembled with machinery or other partly completed machinery or equipment, thereby forming machinery;\n(11) ‘making available on the market’ means any supply of a product within the scope of this Regulation for distribution or use on the Union market in the course of a commercial activity, whether in return for payment or free of charge;\n(12) ‘placing on the market’ means the first making available of a product within the scope of this Regulation on the Union market;\n(13) ‘putting into service’ means the first use, for its intended purpose, in the Union, of machinery or related products;\n(14) ‘essential health and safety requirements’ means the mandatory provisions, set out in Annex III, relating to the design and construction of products within the scope of this Regulation to ensure a high level of protection of the health and safety of persons, and, where appropriate, domestic animals and property, and, where applicable, of the environment;\n(15) ‘Union harmonisation legislation’ means any Union legislation harmonising the conditions for the marketing of products;\n(16) ‘substantial modification’ means a modification of machinery or a related product, by physical or digital means after that machinery or related product has been placed on the market or put into service, which is not foreseen or planned by the manufacturer, and which affects the safety of that machinery or related product, by creating a new hazard, or by increasing an existing risk, which requires:\n(a) the addition of guards or protective devices to that machinery or related product the processing of which necessitates the modification of the existing safety control system; or\n(b) the adoption of additional protective measures to ensure the stability or mechanical strength of that machinery or related product;\n(17) ‘instructions for use’ means the information, provided by the manufacturer when the machinery or related product is placed on the market or put into service, to inform the user of the machinery or related product, of the intended and proper use of that machinery or related product, as well as information on any precautions to be taken when using or installing the machinery or related product, including information on the safety aspects, and on how to keep that machinery or related product safe, and to ensure that it remains fit for purpose during its entire lifetime;\n(18) ‘manufacturer’ means any natural or legal person who:\n(a) manufactures products within the scope of this Regulation or who has those products designed or manufactured, and markets those products under its name or trademark; or\n(b) manufactures products within the scope of this Regulation, and puts those products into service for its own use;\n(19) ‘authorised representative’ means any natural or legal person established within the Union who has received a written mandate from a manufacturer to act on its behalf in relation to specified tasks;\n(20) ‘importer’ means any natural or legal person established within the Union who places a product within the scope of this Regulation from a third country on the Union market;\n(21) ‘distributor’ means any natural or legal person in the supply chain, other than the manufacturer or the importer, who makes a product within the scope of this Regulation available on the market;\n(22) ‘economic operator’ means the manufacturer, the authorised representative, the importer or the distributor;\n(23) ‘technical specifications’ means a document that prescribes technical requirements to be fulfilled by products within the scope of this Regulation;\n(24) ‘harmonised standard’ means a harmonised standard as defined in Article 2, point 1, point (c), of Regulation (EU) No 1025/2012;\n(25) ‘CE marking’ means a marking by which the manufacturer indicates that machinery or a related product is in conformity with the applicable requirements set out in Union harmonisation legislation providing for its affixing;\n(26) ‘accreditation’ means accreditation as defined in Article 2, point (10), of Regulation (EC) No 765/2008;\n(27) ‘national accreditation body’ means a national accreditation body as defined in Article 2, point (11), of Regulation (EC) No 765/2008;\n(28) ‘conformity assessment’ means the process for demonstrating whether the applicable essential health and safety requirements in this Regulation relating to machinery or related products have been fulfilled;\n(29) ‘conformity assessment body’ means a body that performs conformity assessment activities, including calibration, testing, certification and inspection;\n(30) ‘notified body’ means a conformity assessment body notified in accordance with this Regulation;\n(31) ‘market surveillance authority’ means a ‘market surveillance authority’ as defined in Article 3, point (4), of Regulation (EU) 2019/1020;\n(32) ‘recall’ means any measure aimed at achieving the return of a product within the scope of this Regulation that has already been made available to a user;\n(33) ‘withdrawal’ means, for a product, any measure aimed at preventing a product within the scope of this Regulation that is in the supply chain from being made available on the market;\n(34) ‘lifetime’ means the period from the moment that machinery or a related product is placed on the market or put into service until the moment that it is discarded, including the effective time when the machinery or related product is capable of being used and the phases of transport, assembly, dismantling, disabling, scrapping or other physical or digital modifications foreseen by the manufacturer;\n(35) ‘source code’ means the currently installed version of the software of a product within the scope of this Regulation, written in a programming language so that it is unambiguous and understandable to humans;\n(36) ‘professional user’ means a natural person who uses or operates machinery or a related product in the course of his or her professional activity or work;\n(37) ‘crisis-relevant goods’ means crisis-relevant goods as defined in Article 3, point (6), of Regulation (EU) 2024/2747 of the European Parliament and of the Council ;\n(38) ‘internal market emergency mode’ means internal market emergency mode as defined in Article 3, point (3), of Regulation (EU) 2024/2747."
             }
           ],
           "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement",
-            "safety_components",
-            "substantial_modification",
-            "digital_safety",
-            "documentation",
-            "standards"
+            "safety_component",
+            "control_systems"
           ],
           "referencedArticles": [
-            2
-          ],
-          "referencedAnnexes": [
-            "III"
+            2,
+            3
           ]
         },
         {
-          "articleNumber": 4,
+          "articleNumber": "4",
           "title": "Free movement",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1020,13 +933,13 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 5,
+          "articleNumber": "5",
           "title": "Protection of persons during installation or use of machinery or related products",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1035,13 +948,13 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 6,
+          "articleNumber": "6",
           "title": "Categories of machinery and related products listed in Annex I subject to relevant conformity assessment procedures",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1078,11 +991,11 @@ export const machineryArticlesData = {
             },
             {
               "paragraphNumber": 9,
-              "text": "By 14 July 2025, and every five years thereafter, Member States shall provide the data and information referred to in paragraph 5, including information to the effect that none of the events referred to in paragraph 5 has occurred, for every category of machinery or related products which is included in Annex I or which is not included in Annex I where that non-inclusion is a cause of concern for the Member State."
+              "text": "By ►C1 20 July 2025 ◄ , and every five years thereafter, Member States shall provide the data and information referred to in paragraph 5, including information to the effect that none of the events referred to in paragraph 5 has occurred, for every category of machinery or related products which is included in Annex I or which is not included in Annex I where that non-inclusion is a cause of concern for the Member State."
             },
             {
               "paragraphNumber": 10,
-              "text": "The Commission shall adopt implementing acts setting out and, where necessary in the light of technological and market development, updating a template concerning the collection by Member States of the data and the information referred to in paragraph 5, points (a) to (d).\nWhen adopting those implementing acts, the Commission shall issue guidance to Member States on the collection and transmission of comparable, high-quality data and information.\nThose implementing acts shall be adopted in accordance with the examination procedure referred to in Article 48(3).\nThe first such implementing act shall be adopted not later than 14 July 2024."
+              "text": "The Commission shall adopt implementing acts setting out and, where necessary in the light of technological and market development, updating a template concerning the collection by Member States of the data and the information referred to in paragraph 5, points (a) to (d).\nWhen adopting those implementing acts, the Commission shall issue guidance to Member States on the collection and transmission of comparable, high-quality data and information.\nThose implementing acts shall be adopted in accordance with the examination procedure referred to in Article 48(3).\nThe first such implementing act shall be adopted not later than ►C1 20 July 2024 ◄ ."
             },
             {
               "paragraphNumber": 11,
@@ -1090,27 +1003,20 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "supervision_enforcement",
-            "safety_components",
-            "standards"
+            "safety_component"
           ],
           "referencedArticles": [
             25,
             47,
             48,
             53
-          ],
-          "referencedAnnexes": [
-            "I"
           ]
         },
         {
-          "articleNumber": 7,
+          "articleNumber": "7",
           "title": "Safety components",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1127,38 +1033,37 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [
-            "safety_components"
+            "safety_component"
           ],
           "referencedArticles": [
             47
-          ],
-          "referencedAnnexes": [
-            "II"
           ]
         },
         {
-          "articleNumber": 8,
+          "articleNumber": "8",
           "title": "Essential health and safety requirements for products within the scope of this Regulation",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 0,
-              "text": "Machinery or related products shall only be made available on the market or put into service if, where properly installed and maintained and used for their intended use or under conditions which can reasonably be foreseen, they meet the essential health and safety requirements set out in Annex III.\nPartly completed machinery shall only be made available on the market if it meets the relevant essential health and safety requirements set out in Annex III."
+              "text": "Machinery or related products shall only be made available on the market or put into service if, where properly installed and maintained and used for their intended use or under conditions which can reasonably be foreseen, they meet the essential health and safety requirements set out in Annex III.\nPartly completed machinery shall only be made available on the market if it meets the relevant essential health and safety requirements set out in Annex III.\nThe Commission shall adopt delegated acts in accordance with Article 47 of this Regulation to amend Annex III to this Regulation by adding health and safety requirements in respect of Artificial Intelligence (AI) systems that are classified as high-risk pursuant to Article 6(1) of Regulation (EU) 2024/1689 of the European Parliament and of the Council due to the fact that they are a safety component in a product covered by this Regulation, or they are themselves a product covered by this Regulation. Those requirements shall ensure that the relevant requirements set out in Chapter III, Section 2, and Articles 17, 19, 72 and 73 of Regulation (EU) 2024/1689 are reflected.\nWhen adopting the delegated acts referred to in the third paragraph, the Commission shall take into account the objectives of Regulation (EU) 2024/1689 and ensure a level of protection consistent with that Regulation. Those delegated acts shall apply by 2 August 2028."
             }
           ],
           "tags": [
-            "ehsr"
+            "safety_component"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "III"
+          "referencedArticles": [
+            6,
+            47
           ]
         },
         {
-          "articleNumber": 9,
+          "articleNumber": "9",
           "title": "Specific Union harmonisation legislation",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1166,25 +1071,21 @@ export const machineryArticlesData = {
               "text": "Where, for a certain product within the scope of this Regulation, the risks addressed by the essential health and safety requirements set out in Annex III are wholly or partly covered by Union harmonisation legislation that is more specific than this Regulation, this Regulation shall not apply to that product to the extent that that specific Union legislation covers such risks."
             }
           ],
-          "tags": [
-            "ehsr"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "III"
-          ]
+          "tags": [],
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 2,
-      "label": "CHAPTER II",
-      "title": "OBLIGATIONS OF ECONOMIC OPERATORS",
+      "chapterLabel": "II",
+      "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
       "articles": [
         {
-          "articleNumber": 10,
+          "articleNumber": "10",
           "title": "Obligations of manufacturers of machinery and related products",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1228,32 +1129,19 @@ export const machineryArticlesData = {
               "text": "Manufacturers shall, further to a reasoned request from a competent national authority, provide that authority with all the information and documentation, in paper or digital format, necessary to demonstrate the conformity of the machinery or related products with this Regulation, in a language which can be easily understood by that authority. They shall cooperate with that authority, at its request, on any actions taken to eliminate the risks presented by the machinery or related products, which they have placed on the market or put into service."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             20,
             21,
             24,
             25
-          ],
-          "referencedAnnexes": [
-            "III",
-            "IV",
-            "V"
           ]
         },
         {
-          "articleNumber": 11,
+          "articleNumber": "11",
           "title": "Obligations of manufacturers of partly completed machinery",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1297,28 +1185,17 @@ export const machineryArticlesData = {
               "text": "Manufacturers shall, further to a reasoned request from a competent national authority, provide that authority with all the information and documentation, in paper or digital format, necessary to demonstrate the conformity of the partly completed machinery with this Regulation, in a language which can be easily understood by that authority. They shall cooperate with that authority, at its request, on any actions taken to eliminate the risks as regards the relevant essential health and safety requirements presented by the partly completed machinery, which they have placed on the market."
             }
           ],
-          "tags": [
-            "ehsr",
-            "operator_roles",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             20,
             22
-          ],
-          "referencedAnnexes": [
-            "III",
-            "IV",
-            "V"
           ]
         },
         {
-          "articleNumber": 12,
+          "articleNumber": "12",
           "title": "Authorised representatives",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1330,25 +1207,17 @@ export const machineryArticlesData = {
               "text": "An authorised representative shall perform the tasks specified in the mandate received from the manufacturer. The mandate shall allow the authorised representative to do at least the following:\n(a) keep the technical documentation and the EU declaration of conformity of machinery and related products or the EU declaration of incorporation of partly completed machinery at the disposal of the national market surveillance authorities for at least 10 years after the product has been placed on the market;\n(b) further to a reasoned request from a competent national authority, provide that authority with all the information and documentation necessary to demonstrate the conformity of the product within the scope of this Regulation, either in paper or digital format;\n(c) cooperate with the competent national authorities, at their request, on any actions taken to eliminate the risks presented by a product within the scope of this Regulation covered by the authorised representative’s mandate."
             }
           ],
-          "tags": [
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             10,
             11
-          ],
-          "referencedAnnexes": [
-            "IV"
           ]
         },
         {
-          "articleNumber": 13,
+          "articleNumber": "13",
           "title": "Obligations of importers of machinery and related products",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1388,29 +1257,18 @@ export const machineryArticlesData = {
               "text": "Importers shall, further to a reasoned request from a competent national authority, provide that authority with all the information and documentation, in paper or digital format, necessary to demonstrate conformity of the machinery or related products with this Regulation in a language that can be easily understood by that authority. Importers shall cooperate with that authority, at its request, on any action taken to eliminate the risks to the health and safety of persons and, where appropriate, domestic animals and property, and, where applicable, to the environment presented by machinery or related products which they have placed on the market."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             10,
             23,
             25
-          ],
-          "referencedAnnexes": [
-            "IV",
-            "III"
           ]
         },
         {
-          "articleNumber": 14,
+          "articleNumber": "14",
           "title": "Obligations of importers of partly completed machinery",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1446,25 +1304,16 @@ export const machineryArticlesData = {
               "text": "Importers shall, further to a reasoned request from a competent national authority, provide that authority with all the information and documentation, in paper or digital format, necessary to demonstrate the conformity of the partly completed machinery with this Regulation in a language that can be easily understood by that authority. Importers shall cooperate with that authority, at its request, on any action taken to eliminate the risks as regards the relevant essential health and safety requirements presented by a partly completed machinery, which they have placed on the market."
             }
           ],
-          "tags": [
-            "ehsr",
-            "operator_roles",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             11
-          ],
-          "referencedAnnexes": [
-            "IV",
-            "III"
           ]
         },
         {
-          "articleNumber": 15,
+          "articleNumber": "15",
           "title": "Obligations of distributors of machinery and related products",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1492,26 +1341,17 @@ export const machineryArticlesData = {
               "text": "Distributors shall, further to a reasoned request from a competent national authority, provide that authority with all the information and documentation, in paper or digital format, necessary to demonstrate the conformity of the machinery or related product with this Regulation in a language that can be easily understood by that authority. They shall cooperate with that authority, at its request, on any action taken to eliminate the risks to the health and safety of persons and, where appropriate, domestic animals and property, and, where applicable, to the environment presented by machinery or a related product which they have made available on the market."
             }
           ],
-          "tags": [
-            "ehsr",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             10,
             13
-          ],
-          "referencedAnnexes": [
-            "III"
           ]
         },
         {
-          "articleNumber": 16,
+          "articleNumber": "16",
           "title": "Obligations of distributors of partly completed machinery",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1539,25 +1379,17 @@ export const machineryArticlesData = {
               "text": "Distributors shall, further to a reasoned request from a competent national authority, provide that authority with all the information and documentation, in paper or digital format, necessary to demonstrate the conformity of the partly completed machinery with this Regulation. They shall cooperate with that authority, at its request, on any action taken to eliminate the risks as regards the essential health and safety requirements presented by partly completed machinery which they have made available on the market."
             }
           ],
-          "tags": [
-            "ehsr",
-            "operator_roles",
-            "supervision_enforcement",
-            "digital_safety",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             11,
             14
-          ],
-          "referencedAnnexes": [
-            "III"
           ]
         },
         {
-          "articleNumber": 17,
+          "articleNumber": "17",
           "title": "Cases in which obligations of manufacturers apply to importers and distributors",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1565,16 +1397,14 @@ export const machineryArticlesData = {
               "text": "An importer or distributor shall be considered to be a manufacturer for the purposes of this Regulation, and shall be subject to the obligations of the manufacturer set out in Articles 10 and 11, where that importer or distributor places a product within the scope of this Regulation on the market under its name or trademark or modifies a product already placed on the market in such a way that compliance with the applicable requirements might be affected."
             }
           ],
-          "tags": [
-            "operator_roles"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 18,
+          "articleNumber": "18",
           "title": "Other cases in which obligations of manufacturers apply",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1582,21 +1412,17 @@ export const machineryArticlesData = {
               "text": "A natural or legal person that carries out a substantial modification of machinery or a related product shall be considered to be a manufacturer for the purposes of this Regulation and shall be subject to the obligations of the manufacturer set out in Article 10 for that machinery or related product or, if the substantial modification has an impact on the safety of only machinery or a related product that is part of an assembly of machinery, for that affected machinery or related product, as demonstrated in the risk assessment.\nThe person who carries out the substantial modification shall in particular, but without prejudice to other obligations set out in Article 10, ensure and declare on its sole responsibility that the machinery or related product concerned is in conformity with the applicable requirements of this Regulation and shall apply the relevant conformity assessment procedure as provided in Article 25 (2), (3) and (4) of this Regulation.\nA non-professional user who carries out a substantial modification to his or her machinery or related product, for his or her own use, shall not be considered to be a manufacturer for the purposes of this Regulation and shall not be subject to the obligations on the manufacturer set out in Article 10."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "operator_roles",
-            "substantial_modification"
-          ],
+          "tags": [],
           "referencedArticles": [
             10,
             25
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 19,
+          "articleNumber": "19",
           "title": "Identification of economic operators",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1608,23 +1434,21 @@ export const machineryArticlesData = {
               "text": "In order to be able to comply with the obligation in paragraph 1, economic operators shall retain the information referred to in that paragraph for at least 10 years after they supplied or were supplied with the products within the scope of this Regulation."
             }
           ],
-          "tags": [
-            "supervision_enforcement"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 3,
-      "label": "CHAPTER III",
-      "title": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
+      "chapterLabel": "III",
+      "chapterTitle": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
       "articles": [
         {
-          "articleNumber": 20,
+          "articleNumber": "20",
           "title": "Presumption of conformity of products within the scope of this Regulation",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
           "paragraphs": [
             {
@@ -1662,26 +1486,28 @@ export const machineryArticlesData = {
             {
               "paragraphNumber": 9,
               "text": "Machinery and related products that have been certified or for which a statement of conformity has been issued under a cybersecurity certification scheme adopted in accordance with Regulation (EU) 2019/881 the references of which have been published in the Official Journal of the European Union shall be presumed to be in conformity with the essential health and safety requirements set out in Annex III, sections 1.1.9 and 1.2.1, as regards protection against corruption and safety and reliability of control systems insofar as those requirements are covered by the cybersecurity certificate or statement of conformity or parts thereof."
+            },
+            {
+              "paragraphNumber": 10,
+              "text": "Until harmonised standards or common specifications are referenced or adopted pursuant to this Article as regards high-risk AI systems, high-risk AI systems within the scope of this Regulation which comply with the relevant harmonised standards referenced, or common specifications adopted pursuant to Articles 40 and, respectively, 41 of Regulation (EU) 2024/1689 shall be presumed to be in conformity with the essential health and safety requirements set out in Annex III to this Regulation as regards high-risk AI systems."
             }
           ],
           "tags": [
-            "ehsr",
-            "digital_safety",
-            "standards"
+            "cybersecurity",
+            "protection_against_corruption",
+            "control_systems"
           ],
           "referencedArticles": [
             10,
             22,
             48
-          ],
-          "referencedAnnexes": [
-            "III"
           ]
         },
         {
-          "articleNumber": 21,
+          "articleNumber": "21",
           "title": "EU declaration of conformity of machinery and related products",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
           "paragraphs": [
             {
@@ -1701,21 +1527,14 @@ export const machineryArticlesData = {
               "text": "By drawing up the EU declaration of conformity, the manufacturer shall assume responsibility for the compliance of the machinery or related product with the requirements laid down in this Regulation."
             }
           ],
-          "tags": [
-            "ehsr",
-            "operator_roles",
-            "ce_marking"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "III",
-            "V"
-          ]
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 22,
+          "articleNumber": "22",
           "title": "EU declaration of incorporation of partly completed machinery",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
           "paragraphs": [
             {
@@ -1735,21 +1554,14 @@ export const machineryArticlesData = {
               "text": "By drawing up the EU declaration of incorporation, the manufacturer shall assume responsibility for the compliance of the partly completed machinery with the requirements laid down in this Regulation."
             }
           ],
-          "tags": [
-            "ehsr",
-            "operator_roles",
-            "ce_marking"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "III",
-            "V"
-          ]
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 23,
+          "articleNumber": "23",
           "title": "General principles of the CE marking",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
           "paragraphs": [
             {
@@ -1757,18 +1569,16 @@ export const machineryArticlesData = {
               "text": "The CE marking shall be subject to the general principles set out in Article 30 of Regulation (EC) No 765/2008."
             }
           ],
-          "tags": [
-            "ce_marking"
-          ],
+          "tags": [],
           "referencedArticles": [
             30
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 24,
+          "articleNumber": "24",
           "title": "Rules for affixing the CE marking to machinery and related products",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF PRODUCTS WITHIN THE SCOPE OF THIS REGULATION",
           "paragraphs": [
             {
@@ -1792,28 +1602,23 @@ export const machineryArticlesData = {
               "text": "Member States shall build upon existing mechanisms to ensure correct application of the regime governing the CE marking and shall take appropriate action in the event of improper use of that marking."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             25
-          ],
-          "referencedAnnexes": []
+          ]
         }
       ]
     },
     {
       "chapterNumber": 4,
-      "label": "CHAPTER IV",
-      "title": "CONFORMITY ASSESSMENT",
+      "chapterLabel": "IV",
+      "chapterTitle": "CONFORMITY ASSESSMENT",
       "articles": [
         {
-          "articleNumber": 25,
+          "articleNumber": "25",
           "title": "Conformity assessment procedures for machinery and related products",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "CONFORMITY ASSESSMENT",
           "paragraphs": [
             {
@@ -1837,34 +1642,207 @@ export const machineryArticlesData = {
               "text": "Notified bodies shall take into account the specific interests and needs of small and medium sized enterprises when setting the fees for conformity assessment."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             18
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 4,
+      "chapterLabel": "IVa",
+      "chapterTitle": "EMERGENCY PROCEDURES",
+      "articles": [
+        {
+          "articleNumber": "25a",
+          "title": "Application of emergency procedures",
+          "chapterNumber": 4,
+          "chapterLabel": "IVa",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Articles 25b to 25e of this Regulation shall apply only if the Commission has adopted an implementing act pursuant to Article 28 of Regulation (EU) 2024/2747 with respect to machinery and related products covered by this Regulation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Articles 25b to 25e of this Regulation shall apply only to machinery and related products which have been designated as crisis-relevant goods pursuant to Article 18(4) of Regulation (EU) 2024/2747."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Articles 25b to 25e of this Regulation shall apply only during the internal market emergency mode that has been activated in accordance with Article 18 of Regulation (EU) 2024/2747.\nHowever, Article 25c(7) of this Regulation shall apply during the internal market emergency mode and after its expiry or deactivation."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The Commission may adopt implementing acts regarding the corrective or restrictive actions to be taken, the procedures to be followed and the specific labelling and traceability requirements with respect to machinery and related products placed on the market or put into service in accordance with Articles 25c and 25d. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 48(3)."
+            }
           ],
-          "referencedAnnexes": [
-            "I",
-            "VII",
-            "VIII",
-            "IX",
-            "VI"
+          "tags": [],
+          "referencedArticles": [
+            18,
+            28,
+            48
+          ]
+        },
+        {
+          "articleNumber": "25b",
+          "title": "Prioritisation of the conformity assessment of machinery and related products designated as crisis-relevant goods",
+          "chapterNumber": 4,
+          "chapterLabel": "IVa",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "This Article applies to all types of machinery and related products listed in the implementing act referred to in Article 25a(1) that are subject to the conformity assessment procedures referred to in Article 25 that require the mandatory involvement of a notified body."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The notified bodies shall make best efforts to process as a matter of priority all applications for a conformity assessment of machinery and related products referred to in paragraph 1 of this Article, irrespective of whether those applications have been lodged before or after the activation of the emergency procedures pursuant to Article 25a."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The prioritisation of applications for a conformity assessment of machinery and related products pursuant to paragraph 2 shall not result in additional disproportionate additional costs for the manufacturers, who have lodged those applications."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The notified bodies shall make reasonable efforts to increase their testing capacities for machinery and related products referred to in paragraph 1 in respect of which they have been notified."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            25
+          ]
+        },
+        {
+          "articleNumber": "25c",
+          "title": "Derogation from conformity assessment procedures requiring the mandatory involvement of a notified body",
+          "chapterNumber": 4,
+          "chapterLabel": "IVa",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "By way of derogation from Article 25, a Member State may authorise, on a duly justified request from an economic operator, the placing on the market or putting into service within the territory of that Member State, of specific machinery or related products listed in the implementing act referred to in Article 25a(1) and for which the conformity assessment procedures referred to in Article 25 that require the mandatory involvement of a notified body have not been carried out but for which the compliance with all the applicable essential health and safety requirements set out in Annex III has been demonstrated in accordance with procedures referred to in that authorisation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Member State shall immediately inform the Commission and the other Member States of any authorisation granted in accordance with paragraph 1 of this Article. Provided that the requirements set out in the authorisation ensure conformity with the applicable essential health and safety requirements laid down in Annex III, the Commission shall adopt, without delay, an implementing act extending for a limited period of time the validity of the authorisation granted by a Member State in accordance with paragraph 1 of this Article to the territory of the whole Union and shall set out the conditions under which the specific machinery or related products may be placed on the market or put into service. When preparing the draft implementing act, the Commission may request national market surveillance authorities to provide relevant information or comments regarding the technical assessment that served as the basis for the authorisation referred to in paragraph 1 of this Article. The implementing act shall be adopted in accordance with the examination procedure referred to in Article 48(3).\nThe machinery or related products subject to the extension of validity referred to in the first subparagraph shall bear the information that they are placed on the market or put into service as a ‘crisis-relevant good’. The implementing act referred to in the first subparagraph shall specify the content and presentation of that information. That information, as well as any labelling, shall be clear, understandable and intelligible and, where relevant, in a language which can be easily understood by consumers and other end-users, as determined by the Member State concerned."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "On duly justified imperative grounds of urgency relating to the need to preserve the health and safety of persons, the Commission shall adopt immediately applicable implementing acts in accordance with the procedure referred to in Article 48(4)."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "As long as an implementing act as referred to in paragraph 2 or 3 is not adopted, the authorisation granted by a competent national authority in one Member State shall be valid only on the territory of that Member State, and on the territories of any other Member States whose competent national authorities have recognised the validity of that authorisation before the adoption of such an implementing act. Member States shall inform the Commission and the other Member States of any decision to recognise the validity of that authorisation."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Manufacturers of machinery or of related products subject to the authorisation procedure referred to in paragraph 1 shall declare on their sole responsibility that the machinery or the related products concerned comply with all the applicable essential health and safety requirements set out in Annex III and shall be responsible for the fulfilment of all the conformity assessment procedures indicated by the competent national authority."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Any authorisation issued pursuant to paragraph 1 shall set out the conditions and requirements under which the machinery or the related products may be placed on the market or put into service. Such authorisations shall set out at least the following:\n(a) a description of the procedures by means of which compliance with the applicable essential health and safety requirements set out in Annex III to this Regulation was successfully demonstrated;\n(b) any specific requirements regarding the traceability of the machinery and the related products concerned;\n(c) an end date of validity of the authorisation, which cannot go beyond the last day of the period for which the internal market emergency mode has been activated in accordance with Article 18 of Regulation (EU) 2024/2747;\n(d) any specific requirements regarding the need to ensure a continuous conformity assessment with respect to the machinery and the related products concerned;\n(e) measures to be taken upon expiry or deactivation of the internal market emergency mode with respect to the machinery or the related products concerned that have been placed on the market or put into service."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "By way of derogation from Articles 4, 23 and 24, machinery or related products for which an authorisation has been granted in accordance with paragraph 1 of this Article shall not bear the CE marking and Article 4 shall not apply."
+            },
+            {
+              "paragraphNumber": 8,
+              "text": "The market surveillance authorities of a Member State where an authorisation pursuant to paragraphs 1, 2 and 4 of this Article is valid shall be entitled, with respect to such machinery and related products, to take all corrective and restrictive actions at national level provided for under Regulation (EU) 2019/1020 and under this Regulation. They shall immediately inform the Commission and the market surveillance authorities of all other Member States of these actions."
+            },
+            {
+              "paragraphNumber": 9,
+              "text": "The use of the authorisation procedure set out in paragraphs 1 to 4 of this Article shall not affect the application on the territory of the Member State concerned of the relevant conformity assessment procedures laid down in Article 25."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            4,
+            18,
+            25,
+            48
+          ]
+        },
+        {
+          "articleNumber": "25d",
+          "title": "Presumption of conformity based on standards and common specifications",
+          "chapterNumber": 4,
+          "chapterLabel": "IVa",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where machinery or related products have been designated as crisis-relevant goods, the Commission is empowered to adopt implementing acts, listing appropriate standards or establishing common specifications for such machinery or related products to cover the applicable essential health and safety requirements set out in Annex III to this Regulation in the following cases:\n(a) where a reference to harmonised standards covering the applicable essential health and safety requirements set out in Annex III to this Regulation has not been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012 and no such reference is expected to be published within a reasonable period; or\n(b) where severe disruptions to the functioning of the internal market, which led to the activation of the internal market emergency mode in accordance with Article 18 of Regulation (EU) 2024/2747, significantly restrict the possibilities of manufacturers to make use of the harmonised standards that cover the applicable essential health and safety requirements set out in Annex III to this Regulation and the references of which have already been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The implementing acts referred to in paragraph 1 shall set out the most appropriate alternative technical solution for the purposes of providing a presumption of conformity in accordance with paragraph 5. To that end, references of European standards or references of relevant applicable national or international standards may be published in those implementing acts or, if there is no European standard or relevant applicable national or international standard, common specifications may be established by those implementing acts."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The implementing acts referred to in paragraph 1 of this Article shall be adopted in accordance with the examination procedure referred to in Article 48(3) and shall apply until the last day of the period during which the internal market emergency mode is activated, unless such implementing acts are amended or repealed in accordance with paragraph 7 of this Article."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Before preparing the draft implementing act referred to in paragraph 1 of this Article, the Commission shall inform the committee referred to in Article 22 of Regulation (EU) No 1025/2012 that it considers that the conditions in paragraph 1 of this Article have been fulfilled. When preparing that draft implementing act, the Commission shall take into account the views of relevant bodies or expert groups established under this Regulation and shall duly consult all relevant stakeholders."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Without prejudice to Article 20, machinery and related products that are in conformity with the standards or common specifications referred to in paragraph 1 of this Article, or parts thereof, shall be presumed to be in conformity with the applicable essential health and safety requirements set out in Annex III that are covered by those standards, common specifications or parts thereof. From the day following the expiry or deactivation of the internal market emergency mode, it shall no longer be possible for manufacturers to rely on the presumption of conformity provided by the standards or the common specifications referred to in the implementing acts referred to in paragraph 1 of this Article."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "By way of derogation from Article 25a(3), first subparagraph, unless there is sufficient reason to believe that the machinery and the related products covered by the standards or common specifications referred to in paragraph 1 of this Article present a risk to the health or safety of persons, the machinery and the related products that are in conformity with those standards or common specifications and which have been placed on the market or put into service shall be deemed to be in conformity with the applicable essential health and safety requirements set out in Annex III after the expiry or repeal of an implementing act adopted pursuant to paragraph 3 of this Article and after the expiry or deactivation of the internal market emergency mode."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "When a Member State considers that a standard or common specification referred to in paragraph 1 does not entirely satisfy the applicable essential health and safety requirements set out in Annex III, it shall inform the Commission thereof by submitting a detailed explanation. The Commission shall assess that detailed explanation and may, if appropriate, amend or repeal the implementing act listing the standard or establishing the common specification in question."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            18,
+            20,
+            22,
+            48
+          ]
+        },
+        {
+          "articleNumber": "25e",
+          "title": "Prioritisation of market surveillance activities and mutual assistance among authorities",
+          "chapterNumber": 4,
+          "chapterLabel": "IVa",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Member States shall prioritise the market surveillance activities for machinery and related products listed in the implementing act referred to in Article 25a(1) of this Regulation. The Commission shall facilitate coordination of such prioritisation efforts through the Union Product Compliance Network established under Article 29 of Regulation (EU) 2019/1020."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The market surveillance authorities of the Member States shall ensure that best efforts are made to provide assistance to other market surveillance authorities during an internal market emergency mode, including by mobilising and dispatching expert teams to temporarily reinforce the staff of market surveillance authorities requesting assistance or by providing logistical support, such as the reinforcement of the testing capacity for machinery and the related products listed in the implementing act referred to in Article 25a(1)."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            29
           ]
         }
       ]
     },
     {
       "chapterNumber": 5,
-      "label": "CHAPTER V",
-      "title": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
+      "chapterLabel": "V",
+      "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
       "articles": [
         {
-          "articleNumber": 26,
+          "articleNumber": "26",
           "title": "Notification",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1872,16 +1850,14 @@ export const machineryArticlesData = {
               "text": "Member States shall notify the Commission and the other Member States of bodies authorised to carry out third-party conformity assessment tasks in accordance with this Regulation."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 27,
+          "articleNumber": "27",
           "title": "Notifying authorities",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1901,19 +1877,17 @@ export const machineryArticlesData = {
               "text": "The notifying authority shall take full responsibility for the tasks performed by the body referred to in paragraph 3."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
+          "tags": [],
           "referencedArticles": [
             28,
             32
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 28,
+          "articleNumber": "28",
           "title": "Requirements relating to notifying authorities",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1941,16 +1915,14 @@ export const machineryArticlesData = {
               "text": "A notifying authority shall have a sufficient number of competent personnel at its disposal for the proper performance of its tasks."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 29,
+          "articleNumber": "29",
           "title": "Information obligation of notifying authorities",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1958,16 +1930,14 @@ export const machineryArticlesData = {
               "text": "Member States shall inform the Commission of their procedures for the assessment and notification of conformity assessment bodies and the monitoring of notified bodies, and of any changes thereto.\nThe Commission shall make that information publicly available."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 30,
+          "articleNumber": "30",
           "title": "Requirements relating to notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2015,24 +1985,17 @@ export const machineryArticlesData = {
               "text": "A conformity assessment body shall participate in, or ensure that its personnel responsible for carrying out the conformity assessment tasks are informed of, the relevant standardisation activities and the activities of the notified body coordination group established under Article 42 and shall apply as general guidance the administrative decisions and documents produced as a result of the work of that group."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             20,
             42
-          ],
-          "referencedAnnexes": [
-            "III"
           ]
         },
         {
-          "articleNumber": 31,
+          "articleNumber": "31",
           "title": "Presumption of conformity of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2040,19 +2003,16 @@ export const machineryArticlesData = {
               "text": "Where a conformity assessment body demonstrates its conformity with the criteria laid down in the relevant harmonised standards or parts thereof the references of which have been published in the Official Journal of the European Union , it shall be presumed to comply with the requirements set out in Article 30 insofar as the applicable harmonised standards cover those requirements."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             30
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 32,
+          "articleNumber": "32",
           "title": "Use of subcontractors and subsidiaries by notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2072,18 +2032,16 @@ export const machineryArticlesData = {
               "text": "A notified body shall keep at the disposal of the notifying authority the relevant documents concerning the assessment of the qualifications of the subcontractor or the subsidiary and the work carried out by them under Annexes VII, IX and X."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
+          "tags": [],
           "referencedArticles": [
             30
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 33,
+          "articleNumber": "33",
           "title": "Application for notification",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2099,18 +2057,16 @@ export const machineryArticlesData = {
               "text": "Where the conformity assessment body concerned cannot provide an accreditation certificate as referred to in paragraph 2, it shall provide the notifying authority with all the documentary evidence necessary for the verification, recognition and regular monitoring of its compliance with the requirements laid down in Article 30."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
+          "tags": [],
           "referencedArticles": [
             30
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 34,
+          "articleNumber": "34",
           "title": "Notification procedure",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2138,19 +2094,17 @@ export const machineryArticlesData = {
               "text": "The notifying authority shall notify the Commission and the other Member States of any subsequent relevant changes to the notification referred to in paragraph 2."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
+          "tags": [],
           "referencedArticles": [
             30,
             33
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 35,
+          "articleNumber": "35",
           "title": "Identification numbers and lists of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2162,16 +2116,14 @@ export const machineryArticlesData = {
               "text": "The Commission shall make publicly available the list of bodies notified under this Regulation including the identification numbers that have been assigned to them and the conformity assessment activities for which they have been notified.\nThe Commission shall ensure that the list is kept up to date."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 36,
+          "articleNumber": "36",
           "title": "Changes to notifications",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2183,20 +2135,17 @@ export const machineryArticlesData = {
               "text": "In the event of restriction, suspension or withdrawal of notification, or where the notified body has ceased its activity, the notifying authority shall take appropriate steps to ensure that the files of that body are either processed by another notified body or kept available for the responsible notifying and market surveillance authorities at their request."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "supervision_enforcement"
-          ],
+          "tags": [],
           "referencedArticles": [
             30,
             38
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 37,
+          "articleNumber": "37",
           "title": "Challenge of the competence of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2216,18 +2165,16 @@ export const machineryArticlesData = {
               "text": "Where the Commission ascertains that a notified body does not meet or no longer meets the requirements for its notification, it shall adopt an implementing act requesting the notifying Member State to take the necessary corrective measures, including the withdrawal of the notification if necessary.\nThat implementing act shall be adopted in accordance with the advisory procedure referred to in Article 48(2)."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
+          "tags": [],
           "referencedArticles": [
             48
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 38,
+          "articleNumber": "38",
           "title": "Operational obligations of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2247,24 +2194,16 @@ export const machineryArticlesData = {
               "text": "Where, in the course of the monitoring of conformity, following the adoption of an approval decision, in accordance with Annex IX, a notified body finds that machinery or a related product no longer complies, it shall require the manufacturer to take appropriate corrective actions and shall suspend or withdraw the approval decision, if necessary.\nWhere corrective actions are not taken or do not have the required effect, the notified body shall restrict, suspend or withdraw any approval decisions, as appropriate."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "operator_roles",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             20
-          ],
-          "referencedAnnexes": [
-            "III",
-            "IX"
           ]
         },
         {
-          "articleNumber": 39,
+          "articleNumber": "39",
           "title": "Appeals against decisions of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2272,16 +2211,14 @@ export const machineryArticlesData = {
               "text": "A notified body shall ensure that a transparent and accessible appeals procedure against its decisions is available."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 40,
+          "articleNumber": "40",
           "title": "Information obligation of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2293,17 +2230,14 @@ export const machineryArticlesData = {
               "text": "A notified body shall provide the other bodies notified under this Regulation carrying out similar conformity assessment activities covering the same kinds of machinery or related products with relevant information on issues relating to negative and, on request, positive conformity assessment results."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "supervision_enforcement"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 41,
+          "articleNumber": "41",
           "title": "Exchange of experience",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2312,13 +2246,13 @@ export const machineryArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 42,
+          "articleNumber": "42",
           "title": "Coordination of notified bodies",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2326,23 +2260,21 @@ export const machineryArticlesData = {
               "text": "The Commission shall ensure the establishment and good functioning of appropriate coordination and cooperation between bodies notified under this Regulation in the form of a sectoral group of notified bodies.\nNotified bodies shall participate in the work of that group, directly or by means of designated representatives."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 6,
-      "label": "CHAPTER VI",
-      "title": "UNION MARKET SURVEILLANCE AND UNION SAFEGUARD PROCEDURES",
+      "chapterLabel": "VI",
+      "chapterTitle": "UNION MARKET SURVEILLANCE AND UNION SAFEGUARD PROCEDURES",
       "articles": [
         {
-          "articleNumber": 43,
+          "articleNumber": "43",
           "title": "Procedure at national level for dealing with products within the scope of this Regulation presenting a risk",
           "chapterNumber": 6,
+          "chapterLabel": "VI",
           "chapterTitle": "UNION MARKET SURVEILLANCE AND UNION SAFEGUARD PROCEDURES",
           "paragraphs": [
             {
@@ -2378,24 +2310,17 @@ export const machineryArticlesData = {
               "text": "Member States shall ensure that appropriate restrictive measures, such as withdrawal of the product, are taken in respect of the product within the scope of this Regulation concerned without delay."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "supervision_enforcement",
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             16,
             20
-          ],
-          "referencedAnnexes": [
-            "III"
           ]
         },
         {
-          "articleNumber": 44,
+          "articleNumber": "44",
           "title": "Union safeguard procedure",
           "chapterNumber": 6,
+          "chapterLabel": "VI",
           "chapterTitle": "UNION MARKET SURVEILLANCE AND UNION SAFEGUARD PROCEDURES",
           "paragraphs": [
             {
@@ -2411,20 +2336,18 @@ export const machineryArticlesData = {
               "text": "Where the national measure is considered to be justified and the non-compliance of the product within the scope of this Regulation is attributed to shortcomings in the harmonised standards referred to in Article 43(5), point (b), of this Regulation or common specifications referred to in Article 43(5), point (c), of this Regulation, the Commission shall apply the procedure provided for in Article 11 of Regulation (EU) No 1025/2012 or in Article 20(8) of this Regulation respectively."
             }
           ],
-          "tags": [
-            "standards"
-          ],
+          "tags": [],
           "referencedArticles": [
             11,
             20,
             43
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 45,
+          "articleNumber": "45",
           "title": "Compliant products within the scope of this Regulation which present a risk",
           "chapterNumber": 6,
+          "chapterLabel": "VI",
           "chapterTitle": "UNION MARKET SURVEILLANCE AND UNION SAFEGUARD PROCEDURES",
           "paragraphs": [
             {
@@ -2448,21 +2371,17 @@ export const machineryArticlesData = {
               "text": "The Commission shall address its decision to all Member States and shall immediately communicate it to them and to the relevant economic operator or operators."
             }
           ],
-          "tags": [
-            "ehsr"
-          ],
+          "tags": [],
           "referencedArticles": [
             43,
             48
-          ],
-          "referencedAnnexes": [
-            "III"
           ]
         },
         {
-          "articleNumber": 46,
+          "articleNumber": "46",
           "title": "Formal non-compliance",
           "chapterNumber": 6,
+          "chapterLabel": "VI",
           "chapterTitle": "UNION MARKET SURVEILLANCE AND UNION SAFEGUARD PROCEDURES",
           "paragraphs": [
             {
@@ -2478,11 +2397,7 @@ export const machineryArticlesData = {
               "text": "Where the non-compliance referred to in paragraphs 1 and 2 persists, the Member State concerned shall take all appropriate measures to restrict or prohibit the product within the scope of this Regulation concerned being made available on the market or ensure that it is recalled or withdrawn from the market."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "ce_marking",
-            "documentation"
-          ],
+          "tags": [],
           "referencedArticles": [
             10,
             11,
@@ -2491,20 +2406,20 @@ export const machineryArticlesData = {
             24,
             30,
             43
-          ],
-          "referencedAnnexes": []
+          ]
         }
       ]
     },
     {
       "chapterNumber": 7,
-      "label": "CHAPTER VII",
-      "title": "DELEGATED POWERS AND COMMITTEE PROCEDURE",
+      "chapterLabel": "VII",
+      "chapterTitle": "DELEGATED POWERS AND COMMITTEE PROCEDURE",
       "articles": [
         {
-          "articleNumber": 47,
+          "articleNumber": "47",
           "title": "Exercise of the delegation",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "DELEGATED POWERS AND COMMITTEE PROCEDURE",
           "paragraphs": [
             {
@@ -2513,11 +2428,11 @@ export const machineryArticlesData = {
             },
             {
               "paragraphNumber": 2,
-              "text": "The power to adopt delegated acts referred to in Articles 6(2), 6(11) and 7(2) shall be conferred on the Commission for a period of five years from 13 July 2023. The Commission shall draw up a report in respect of the delegation of power not later than nine months before the end of the five-year period. The delegation of power shall be tacitly extended for periods of an identical duration, unless the European Parliament or the Council opposes such extension not later than three months before the end of each period."
+              "text": "The power to adopt delegated acts referred to in Article 6(2) and (11) and Article 7(2), shall be conferred on the Commission for a period of five years from 19 July 2023. The power to adopt delegated acts referred to in Article 8, third paragraph, shall be conferred on the Commission for a period of five years from 27 July 2026. The Commission shall draw up a report in respect of the delegation of power not later than nine months before the end of the five-year period. The delegation of power shall be tacitly extended for periods of an identical duration, unless the European Parliament or the Council opposes such extension no later than three months before the end of each period."
             },
             {
               "paragraphNumber": 3,
-              "text": "The delegation of power referred to in Articles 6(2), 6(11) and 7(2) may be revoked at any time by the European Parliament or by the Council. A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the Official Journal of the European Union or at a later date specified therein. It shall not affect the validity of any delegated acts already in force."
+              "text": "The delegation of power referred to in Article 6(2) and (11), Article 7(2) and Article 8, third paragraph, may be revoked at any time by the European Parliament or by the Council. A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the Official Journal of the European Union or at a later date specified therein. It shall not affect the validity of any delegated acts already in force."
             },
             {
               "paragraphNumber": 4,
@@ -2529,17 +2444,21 @@ export const machineryArticlesData = {
             },
             {
               "paragraphNumber": 6,
-              "text": "A delegated act adopted pursuant to Articles 6(2), 6(11) or 7(2) shall enter into force only if no objection has been expressed either by the European Parliament or by the Council within a period of two months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by two months at the initiative of the European Parliament or of the Council."
+              "text": "A delegated act adopted pursuant to Article 6(2) and (11), Article 7(2) or Article 8, third paragraph, shall enter into force only if no objection has been expressed either by the European Parliament or by the Council within a period of two months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by two months at the initiative of the European Parliament or of the Council."
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": [
+            6,
+            7,
+            8
+          ]
         },
         {
-          "articleNumber": 48,
+          "articleNumber": "48",
           "title": "Committee procedure",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "DELEGATED POWERS AND COMMITTEE PROCEDURE",
           "paragraphs": [
             {
@@ -2569,20 +2488,20 @@ export const machineryArticlesData = {
             5,
             8,
             20
-          ],
-          "referencedAnnexes": []
+          ]
         }
       ]
     },
     {
       "chapterNumber": 8,
-      "label": "CHAPTER VIII",
-      "title": "CONFIDENTIALITY AND PENALTIES",
+      "chapterLabel": "VIII",
+      "chapterTitle": "CONFIDENTIALITY AND PENALTIES",
       "articles": [
         {
-          "articleNumber": 49,
+          "articleNumber": "49",
           "title": "Confidentiality",
           "chapterNumber": 8,
+          "chapterLabel": "VIII",
           "chapterTitle": "CONFIDENTIALITY AND PENALTIES",
           "paragraphs": [
             {
@@ -2602,16 +2521,14 @@ export const machineryArticlesData = {
               "text": "The Commission and Member States may exchange confidential information with regulatory authorities of third countries with which they have bilateral or multilateral confidentiality agreements and arrangements when those agreements and arrangements ensure that any exchange of information is in accordance with applicable Union law."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 50,
+          "articleNumber": "50",
           "title": "Penalties",
           "chapterNumber": 8,
+          "chapterLabel": "VIII",
           "chapterTitle": "CONFIDENTIALITY AND PENALTIES",
           "paragraphs": [
             {
@@ -2620,26 +2537,24 @@ export const machineryArticlesData = {
             },
             {
               "paragraphNumber": 2,
-              "text": "Member States shall, by 14 October 2026, notify the Commission of those rules and of those measures and shall notify it, without delay, of any subsequent amendment affecting them."
+              "text": "Member States shall, by ►C1 20 October 2026 ◄ , notify the Commission of those rules and of those measures and shall notify it, without delay, of any subsequent amendment affecting them."
             }
           ],
-          "tags": [
-            "supervision_enforcement"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 9,
-      "label": "CHAPTER IX",
-      "title": "TRANSITIONAL AND FINAL PROVISIONS",
+      "chapterLabel": "IX",
+      "chapterTitle": "TRANSITIONAL AND FINAL PROVISIONS",
       "articles": [
         {
-          "articleNumber": 51,
+          "articleNumber": "51",
           "title": "Repeals",
           "chapterNumber": 9,
+          "chapterLabel": "IX",
           "chapterTitle": "TRANSITIONAL AND FINAL PROVISIONS",
           "paragraphs": [
             {
@@ -2648,22 +2563,22 @@ export const machineryArticlesData = {
             },
             {
               "paragraphNumber": 2,
-              "text": "Directive 2006/42/EC is repealed with effect from 14 January 2027.\nReferences to the repealed Directive 2006/42/EC shall be construed as references to this Regulation and shall be read in accordance with the correlation table in Annex XII."
+              "text": "Directive 2006/42/EC is repealed with effect from ►C1 20 January 2027 ◄ .\nReferences to the repealed Directive 2006/42/EC shall be construed as references to this Regulation and shall be read in accordance with the correlation table in Annex XII."
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 52,
+          "articleNumber": "52",
           "title": "Transitional provisions",
           "chapterNumber": 9,
+          "chapterLabel": "IX",
           "chapterTitle": "TRANSITIONAL AND FINAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Member States shall not impede the making available on the market of products which were placed on the market in conformity with Directive 2006/42/EC before 14 January 2027. However, Chapter VI of this Regulation shall apply, from 13 July 2023, mutatis mutandis to such products instead of Article 11 of that Directive, including products for which a procedure has already been initiated under Article 11 of Directive 2006/42/EC."
+              "text": "Member States shall not impede the making available on the market of products which were placed on the market in conformity with Directive 2006/42/EC before ►C1 20 January 2027 ◄ . However, Chapter VI of this Regulation shall apply, from ►C1 19 July 2023 ◄ , mutatis mutandis to such products instead of Article 11 of that Directive, including products for which a procedure has already been initiated under Article 11 of Directive 2006/42/EC."
             },
             {
               "paragraphNumber": 2,
@@ -2674,18 +2589,18 @@ export const machineryArticlesData = {
           "referencedArticles": [
             11,
             12
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 53,
+          "articleNumber": "53",
           "title": "Evaluation and review",
           "chapterNumber": 9,
+          "chapterLabel": "IX",
           "chapterTitle": "TRANSITIONAL AND FINAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "By 14 July 2028 and every four years thereafter, the Commission shall submit a report on the evaluation and review of this Regulation to the European Parliament and to the Council. The reports shall be made public."
+              "text": "By ►C1 20 July 2028 ◄ and every four years thereafter, the Commission shall submit a report on the evaluation and review of this Regulation to the European Parliament and to the Council. The reports shall be made public."
             },
             {
               "paragraphNumber": 2,
@@ -2693,39 +2608,31 @@ export const machineryArticlesData = {
             },
             {
               "paragraphNumber": 3,
-              "text": "By 14 July 2026 and every five years thereafter, the Commission shall submit a specific report on the assessment of Article 6(4) and (5) of this Regulation to the European Parliament and to the Council. The reports shall be made public.\nThe Commission shall include in its reports the following:\n(a) a summary of data and information provided by Member States in accordance with Article 6(5) during the reporting period;\n(b) an assessment of the list of categories of machinery or related products in Annex I in view of the criteria set out in Article 6(4).\nIn the reports, the Commission shall assess the appropriateness and availability of data and information provided by Member States, including its sufficiency and suitability for the purposes of making comparisons, identifying any shortcomings, necessary to ensure effective functioning and enforcement of Article 6."
+              "text": "By ►C1 20 July 2026 ◄ and every five years thereafter, the Commission shall submit a specific report on the assessment of Article 6(4) and (5) of this Regulation to the European Parliament and to the Council. The reports shall be made public.\nThe Commission shall include in its reports the following:\n(a) a summary of data and information provided by Member States in accordance with Article 6(5) during the reporting period;\n(b) an assessment of the list of categories of machinery or related products in Annex I in view of the criteria set out in Article 6(4).\nIn the reports, the Commission shall assess the appropriateness and availability of data and information provided by Member States, including its sufficiency and suitability for the purposes of making comparisons, identifying any shortcomings, necessary to ensure effective functioning and enforcement of Article 6."
             }
           ],
-          "tags": [
-            "ehsr",
-            "conformity_assessment",
-            "supervision_enforcement"
-          ],
+          "tags": [],
           "referencedArticles": [
             6
-          ],
-          "referencedAnnexes": [
-            "III",
-            "I"
           ]
         },
         {
-          "articleNumber": 54,
+          "articleNumber": "54",
           "title": "Entry into force and application",
           "chapterNumber": 9,
+          "chapterLabel": "IX",
           "chapterTitle": "TRANSITIONAL AND FINAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 0,
-              "text": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union .\nIt shall apply from 14 January 2027.\nHowever, the following Articles shall apply from the following dates:\n(a) Articles 26 to 42 from 14 January 2024;\n(b) Article 50(1) from 14 October 2023;\n(c) Article 6(7) and Articles 48 and 52 from 13 July 2023;\n(d) Article 6(2) to (6), (8) and (11) and Articles 47 and 53(3) from 14 July 2024."
+              "text": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union .\nIt shall apply from ►C1 20 January 2027 ◄ .\nHowever, the following Articles shall apply from the following dates:\n(a) Articles 26 to 42 from ►C1 20 January 2024 ◄ ;\n(b) Article 50(1) from ►C1 20 October 2026 ◄ ;\n(c) Article 6(7) and Articles 48 and 52 from ►C1 19 July 2023 ◄ ;\n(d) Article 6(2) to (6), (8) and (11) and Articles 47 and 53(3) from ►C1 20 July 2024 ◄ ."
             }
           ],
           "tags": [],
           "referencedArticles": [
             6,
             50
-          ],
-          "referencedAnnexes": []
+          ]
         }
       ]
     }
@@ -2735,27 +2642,68 @@ export const machineryArticlesData = {
 export const machineryAnnexesData = {
   "regulation": "Regulation (EU) 2023/1230",
   "shortTitle": "Machinery Regulation",
-  "officialJournalReference": "OJ L 165, 29.6.2023, p. 1",
+  "officialJournalReference": "OJ L 165, 29.6.2023",
   "celex": "32023R1230",
+  "consolidatedCelex": "02023R1230-20260727",
   "eli": "http://data.europa.eu/eli/reg/2023/1230/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1230",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R1230-20260727",
   "adopted": "2023-06-14",
-  "entryIntoForce": "2023-07-19",
   "instrumentType": "regulation",
   "nationalTranspositionRequired": false,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/machinery_statutory_corpus/source/CELEX_32023R1230_EN.html",
-  "sourceSha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-07-27",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2024/2748 (internal market emergency procedures)",
+      "celex": "32024R2748",
+      "eli": "http://data.europa.eu/eli/reg/2024/2748/oj",
+      "applicableFrom": "2026-05-29",
+      "summary": "Inserts chapter IVa (Arts 25a–25e, emergency procedures) and Art 3 points 37–38."
+    },
+    {
+      "act": "Regulation (EU) 2026/1744 (Digital Omnibus on AI)",
+      "celex": "32026R1744",
+      "eli": "http://data.europa.eu/eli/reg/2026/1744/oj",
+      "applicableFrom": "2026-07-27",
+      "summary": "Replaces Art 47(3) and related provisions aligning machinery AI-safety assessment with the amended AI Act timeline."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32023R1230R(01)",
+      "note": "EN — fourteen date corrections (the 13/14 July → 19/20 July family; Art 54 point (b) 2023→2026). INCORPORATED in the consolidated text this corpus is built from."
+    },
+    {
+      "id": "32023R1230R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32023R1230R(03)",
+      "note": "DE, SK only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32023R1230_EN.html",
+      "sha256": "5fd0117753c3ddc3c87087b1d7573a4ebc5f76dbe104416d456f765e7353cadb"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02023R1230-20260727_EN.html",
+      "sha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b"
+    }
+  },
+  "sourceSha256": "f2b232a2a59767253da7377600fdd14fecd74e80b9d885348d627170d2af5c7b",
   "recitalsCount": 86,
-  "chaptersCount": 9,
-  "totalArticles": 54,
+  "chaptersCount": 10,
+  "totalArticles": 59,
   "annexesCount": 12,
   "annexes": [
     {
       "annexNumber": "I",
-      "title": "CATEGORIES OF MACHINERY OR RELATED PRODUCTS TO WHICH ONE OF THE PROCEDURES REFERRED TO IN ARTICLE 25(2) AND (3) SHALL BE APPLIED",
+      "title": "",
       "blocks": [
+        "CATEGORIES OF MACHINERY OR RELATED PRODUCTS TO WHICH ONE OF THE PROCEDURES REFERRED TO IN ARTICLE 25(2) AND (3) SHALL BE APPLIED",
         "PART A",
         "Categories of machinery or related products to which a procedure referred to in Article 25(2) shall be applied:",
         "1. Removable mechanical transmission devices including their guards.",
@@ -2795,7 +2743,7 @@ export const machineryAnnexesData = {
         "19. Falling-object protective structures (FOPS)."
       ],
       "tags": [
-        "safety_components"
+        "safety_component"
       ],
       "referencedArticles": [
         25
@@ -2803,8 +2751,9 @@ export const machineryAnnexesData = {
     },
     {
       "annexNumber": "II",
-      "title": "INDICATIVE LIST OF SAFETY COMPONENTS",
+      "title": "",
       "blocks": [
+        "INDICATIVE LIST OF SAFETY COMPONENTS",
         "1. Guards for removable mechanical transmission devices.",
         "2. Protective devices designed to detect the presence of persons.",
         "3. Power-operated interlocking movable guards designed to be used as safeguards in machinery referred to in points 9, 10 and 11 of Annex I, Part B.",
@@ -2834,15 +2783,15 @@ export const machineryAnnexesData = {
         "20. Filtration systems intended to be integrated into machinery cabins in order to protect operators or other persons against hazardous materials and substances, includingplant protection products, and filters for such filtration systems."
       ],
       "tags": [
-        "safety_components",
-        "digital_safety"
+        "safety_component"
       ],
       "referencedArticles": []
     },
     {
       "annexNumber": "III",
-      "title": "ESSENTIAL HEALTH AND SAFETY REQUIREMENTS RELATING TO THE DESIGN AND CONSTRUCTION OF MACHINERY OR RELATED PRODUCTS",
+      "title": "",
       "blocks": [
+        "ESSENTIAL HEALTH AND SAFETY REQUIREMENTS RELATING TO THE DESIGN AND CONSTRUCTION OF MACHINERY OR RELATED PRODUCTS",
         "PART A",
         "Definitions",
         "For the purposes of this Annex, the following definitions apply:",
@@ -2857,7 +2806,8 @@ export const machineryAnnexesData = {
         "(i) ‘reasonably foreseeable misuse’ means the use of machinery or a related product in a way not intended in the instructions for use, but which may result from readily predictable human behaviour.",
         "PART B",
         "General principles",
-        "1. The manufacturer of machinery or a related product shall ensure that a risk assessment is carried out in order to determine the essential health and safety requirements which apply to the machinery or related product. The machinery or related product shall then be designed and constructed to eliminate hazards or, if that is not possible, to minimise all relevant risks, taking into account the results of the risk assessment. By the iterative process of risk assessment and risk reduction referred to in the first subparagraph, the manufacturer shall:",
+        "1. The manufacturer of machinery or a related product shall ensure that a risk assessment is carried out in order to determine the essential health and safety requirements which apply to the machinery or related product. The machinery or related product shall then be designed and constructed to eliminate hazards or, if that is not possible, to minimise all relevant risks, taking into account the results of the risk assessment.",
+        "By the iterative process of risk assessment and risk reduction referred to in the first subparagraph, the manufacturer shall:",
         "(a) determine the limits of the machinery or related product, which include the intended use and any reasonably foreseeable misuse thereof;",
         "(b) identify the hazards that may be generated by the machinery or related product and the associated hazardous situations;",
         "(c) estimate the risks, taking into account the severity of the possible injury or damage to health and the probability of its occurrence;",
@@ -3217,7 +3167,13 @@ export const machineryAnnexesData = {
         "(i) the A-weighted emission sound pressure level at workstations, where this exceeds 70 dB (A); where this level does not exceed 70 dB (A), this fact shall be indicated;",
         "(ii) the peak C-weighted instantaneous sound pressure value at workstations, where this exceeds 63 Pa (130 dB in relation to 20 μPa);",
         "(iii) the A-weighted sound power level emitted by the machinery or related product, where the A-weighted emission sound pressure level at workstations exceeds 80 dB (A).",
-        "These values shall be either those actually measured for the machinery or related product in question or those established on the basis of measurements taken for technically comparable machinery or for a technically comparable related product, which is representative of the machinery or related product to be produced. In the case of very large machinery or a related product, instead of the A-weighted sound power level, the A-weighted emission sound pressure levels at specified positions around the machinery or related product may be indicated. Where the harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) cannot be applied, sound levels shall be measured using the most appropriate method for the machinery or related product. Whenever sound emission values are indicated, the uncertainties surrounding these values shall be specified. The operating conditions of the machinery or related product during measurement and the measuring methods used shall be described. Where the workstation(s) are undefined or cannot be defined, A-weighted sound pressure levels shall be measured at a distance of 1 m from the surface of the machinery or related product and at a height of 1,6 m from the floor or access platform. The position and value of the maximum sound pressure shall be indicated. With respect to noise reduction machinery or related products, the instructions for use shall specify, where appropriate, how to correctly assemble and install that equipment (see also section 1.7.4.2(1), point (j)). Where specific Union legal acts lay down other requirements for the measurement of sound pressure levels or sound power levels, those legal acts shall be applied and the corresponding provisions of this section shall not apply;",
+        "These values shall be either those actually measured for the machinery or related product in question or those established on the basis of measurements taken for technically comparable machinery or for a technically comparable related product, which is representative of the machinery or related product to be produced.",
+        "In the case of very large machinery or a related product, instead of the A-weighted sound power level, the A-weighted emission sound pressure levels at specified positions around the machinery or related product may be indicated.",
+        "Where the harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) cannot be applied, sound levels shall be measured using the most appropriate method for the machinery or related product.",
+        "Whenever sound emission values are indicated, the uncertainties surrounding these values shall be specified. The operating conditions of the machinery or related product during measurement and the measuring methods used shall be described.",
+        "Where the workstation(s) are undefined or cannot be defined, A-weighted sound pressure levels shall be measured at a distance of 1 m from the surface of the machinery or related product and at a height of 1,6 m from the floor or access platform. The position and value of the maximum sound pressure shall be indicated.",
+        "With respect to noise reduction machinery or related products, the instructions for use shall specify, where appropriate, how to correctly assemble and install that equipment (see also section 1.7.4.2(1), point (j)).",
+        "Where specific Union legal acts lay down other requirements for the measurement of sound pressure levels or sound power levels, those legal acts shall be applied and the corresponding provisions of this section shall not apply;",
         "(v) information on the necessary precautions, devices and means for the immediate and gentle rescue of persons;",
         "(w) where machinery or related products are likely to emit non-ionising radiation, which may cause harm to persons, in particular persons with active or non-active implantable medical devices, information concerning the radiation emitted for the operator and exposed persons;",
         "(x) where the design of machinery or related products allows emissions of hazardous substances from the machinery or related product, the characteristics of the capturing, filtration or discharge device if such device is not provided with the machinery or related product, and any of the following:",
@@ -3281,60 +3237,20 @@ export const machineryAnnexesData = {
         "(c) the machinery or related product shall be equipped with an automatic brake that stops the tool in a sufficiently short time if there is a risk of contact with the tool whilst it runs down;",
         "(d) where the tool is incorporated into non-fully automated machinery or a related product, that machinery or related product shall be designed and constructed in such a way as to eliminate or reduce the risk of accidental injury.",
         "2.4. Machinery or related products for plant protection products application",
-        "2.4.1. For the purposes of section 2.4., the following definition applies:",
-        "‘Machinery or related products for plant protection products application’ means machinery or related products specifically intended for the application of plant protection products within the meaning of Article 2(1), of Regulation (EC) No 1107/2009 of the European Parliament and of the Council .",
-        "2.4.2. General",
-        "The manufacturer of machinery or related products for plant protection products application shall ensure that an assessment is carried out of the risks of unintended exposure of the environment to plant protection products, in accordance with the process of risk assessment and risk reduction referred to in the General Principles, point 1.",
-        "Machinery or related products for plant protection products application shall be designed and constructed taking into account the results of the risk assessment referred to in the first subparagraph so that the machinery or related products can be operated, adjusted and maintained without unintended exposure of the environment to plant protection products.",
-        "Leakage shall be prevented at all times.",
-        "2.4.3. Controls and monitoring",
-        "It shall be possible to easily and accurately control, monitor and immediately stop the plant protection products application from the operating positions.",
-        "2.4.4. Filling and emptying",
-        "The machinery or related product shall be designed and constructed to facilitate precise filling with the necessary quantity of plant protection products and to ensure easy and complete emptying, while preventing spillage of plant protection products and avoiding the contamination of the water source during such operations.",
-        "2.4.5. Application of plant protection products",
-        "2.4.5.1. Application rate",
-        "The machinery or related product shall be fitted with means of adjusting the application rate easily, accurately and reliably.",
-        "2.4.5.2. Distribution, deposition and drift of plant protection products",
-        "The machinery or related product shall be designed and constructed to ensure that the plant protection product is deposited on target areas, to minimise losses to other areas and to prevent drift of plant protection products to the environment. Where appropriate, an even distribution and homogeneous deposition shall be ensured.",
-        "2.4.5.3. Tests",
-        "In order to verify that the relevant parts of the machinery or related product comply with the requirements set out in sections 2.4.5.1 and 2.4.5.2, the manufacturer shall, for each type of machinery or related product concerned, perform appropriate tests, or have such tests performed.",
-        "2.4.5.4. Losses during stoppage",
-        "The machinery or related product shall be designed and constructed to prevent losses while the plant protection products application function is stopped.",
-        "2.4.6. Maintenance",
-        "2.4.6.1. Cleaning",
-        "The machinery or related product shall be designed and constructed to allow its easy and thorough cleaning without contamination of the environment.",
-        "2.4.6.2. Servicing",
-        "The machinery or related product shall be designed and constructed to facilitate the changing of worn parts without contamination of the environment.",
-        "2.4.7. Inspections",
-        "It shall be possible to easily connect the necessary measuring instruments to the machinery or related product to check the correct functioning of the machinery or related product.",
-        "2.4.8. Marking of nozzles, strainers and filters",
-        "Nozzles, strainers and filters shall be marked so that their type and size can be clearly identified.",
-        "2.4.9. Indication of the plant protection product in use",
-        "Where appropriate, the machinery or related product shall be fitted with a specific mounting on which the operator can place the name of the plant protection product in use.",
-        "2.4.10. Instructions for use",
-        "The instructions for use shall provide the following information:",
-        "(a) precautions to be taken during mixing, loading, application, emptying, cleaning, servicing and transport operations in order to avoid contamination of the environment;",
-        "(b) detailed conditions of use for the different operating environments envisaged, including the corresponding preparation and adjustments required to ensure the deposition of the plant protection product on target areas while minimising losses to other areas, to prevent drift to the environment and, where appropriate, to ensure an even distribution and homogeneous deposition of the plant protection product;",
-        "(c) the range of types and sizes of nozzles, strainers and filters that can be used with the machinery or related product;",
-        "(d) the frequency of checks and the criteria and method for the replacement of parts subject to wear that affect the correct functioning of the machinery or related product, such as nozzles, strainers and filters;",
-        "(e) specification of calibration, daily maintenance, winter preparation and other checks necessary to ensure the correct functioning of the machinery or related product;",
-        "(f) types of plant protection products that may cause incorrect functioning of the machinery or related product;",
-        "(g) an indication that the operator should keep updated the name of the plant protection product in use on the specific mounting referred to in section 2.4.9;",
-        "(h) the connexion and use of any special equipment or accessories, and the necessary precautions to be taken;",
-        "(i) an indication that the machinery or related product may be subject to national requirements for regular inspection by designated bodies, as provided for in Directive 2009/128/EC of the European Parliament and of the Council ;",
-        "(j) the features of the machinery or related product, which shall be inspected to ensure its correct functioning;",
-        "(k) instructions for connecting the necessary measuring instruments.",
+        "2.4.1. For the purposes of section 2.4., the following definition applies: ‘Machinery or related products for plant protection products application’ means machinery or related products specifically intended for the application of plant protection products within the meaning of Article 2(1), of Regulation (EC) No 1107/2009 of the European Parliament and of the Council .",
+        "2.4.2. General The manufacturer of machinery or related products for plant protection products application shall ensure that an assessment is carried out of the risks of unintended exposure of the environment to plant protection products, in accordance with the process of risk assessment and risk reduction referred to in the General Principles, point 1. Machinery or related products for plant protection products application shall be designed and constructed taking into account the results of the risk assessment referred to in the first subparagraph so that the machinery or related products can be operated, adjusted and maintained without unintended exposure of the environment to plant protection products. Leakage shall be prevented at all times.",
+        "2.4.3. Controls and monitoring It shall be possible to easily and accurately control, monitor and immediately stop the plant protection products application from the operating positions.",
+        "2.4.4. Filling and emptying The machinery or related product shall be designed and constructed to facilitate precise filling with the necessary quantity of plant protection products and to ensure easy and complete emptying, while preventing spillage of plant protection products and avoiding the contamination of the water source during such operations.",
+        "2.4.5. Application of plant protection products 2.4.5.1. Application rate The machinery or related product shall be fitted with means of adjusting the application rate easily, accurately and reliably. 2.4.5.2. Distribution, deposition and drift of plant protection products The machinery or related product shall be designed and constructed to ensure that the plant protection product is deposited on target areas, to minimise losses to other areas and to prevent drift of plant protection products to the environment. Where appropriate, an even distribution and homogeneous deposition shall be ensured. 2.4.5.3. Tests In order to verify that the relevant parts of the machinery or related product comply with the requirements set out in sections 2.4.5.1 and 2.4.5.2, the manufacturer shall, for each type of machinery or related product concerned, perform appropriate tests, or have such tests performed. 2.4.5.4. Losses during stoppage The machinery or related product shall be designed and constructed to prevent losses while the plant protection products application function is stopped.",
+        "2.4.6. Maintenance 2.4.6.1. Cleaning The machinery or related product shall be designed and constructed to allow its easy and thorough cleaning without contamination of the environment. 2.4.6.2. Servicing The machinery or related product shall be designed and constructed to facilitate the changing of worn parts without contamination of the environment.",
+        "2.4.7. Inspections It shall be possible to easily connect the necessary measuring instruments to the machinery or related product to check the correct functioning of the machinery or related product.",
+        "2.4.8. Marking of nozzles, strainers and filters Nozzles, strainers and filters shall be marked so that their type and size can be clearly identified.",
+        "2.4.9. Indication of the plant protection product in use Where appropriate, the machinery or related product shall be fitted with a specific mounting on which the operator can place the name of the plant protection product in use.",
+        "2.4.10. Instructions for use The instructions for use shall provide the following information: (a) precautions to be taken during mixing, loading, application, emptying, cleaning, servicing and transport operations in order to avoid contamination of the environment; (b) detailed conditions of use for the different operating environments envisaged, including the corresponding preparation and adjustments required to ensure the deposition of the plant protection product on target areas while minimising losses to other areas, to prevent drift to the environment and, where appropriate, to ensure an even distribution and homogeneous deposition of the plant protection product; (c) the range of types and sizes of nozzles, strainers and filters that can be used with the machinery or related product; (d) the frequency of checks and the criteria and method for the replacement of parts subject to wear that affect the correct functioning of the machinery or related product, such as nozzles, strainers and filters; (e) specification of calibration, daily maintenance, winter preparation and other checks necessary to ensure the correct functioning of the machinery or related product; (f) types of plant protection products that may cause incorrect functioning of the machinery or related product; (g) an indication that the operator should keep updated the name of the plant protection product in use on the specific mounting referred to in section 2.4.9; (h) the connexion and use of any special equipment or accessories, and the necessary precautions to be taken; (i) an indication that the machinery or related product may be subject to national requirements for regular inspection by designated bodies, as provided for in Directive 2009/128/EC of the European Parliament and of the Council ; (j) the features of the machinery or related product, which shall be inspected to ensure its correct functioning; (k) instructions for connecting the necessary measuring instruments.",
         "3. SUPPLEMENTARY ESSENTIAL HEALTH AND SAFETY REQUIREMENTS TO OFFSET RISKS DUE TO THE MOBILITY OF MACHINERY OR RELATED PRODUCTS",
         "Machinery or related products presenting risks due to their mobility shall meet all the essential health and safety requirements set out in this chapter (see General Principles, point 4).",
         "3.1. General",
-        "3.1.1. For the purposes of this section, the following definitions apply:",
-        "(a) ‘Machinery or related products presenting risks due to their mobility’ means:",
-        "(i) machinery or related products, the operation of which requires either mobility while working, or continuous or semi continuous movement between a succession of fixed working locations; or",
-        "(ii) machinery or related products which are operatedwithout being moved, but which may be equipped in such a way as to enable it to be moved more easily from one place to another;",
-        "(b) ‘Driver’ means an operator responsible for the movement of machinery or a related product, who may be transported by the machinery or may be on foot, accompanying the machinery, or may guide the machinery by remote control;",
-        "(c) ‘Autonomous mobile machinery’ means mobile machinery which has an autonomous mode, in which all the essential safety functions of the mobile machinery are ensured in its travel and working operations area without permanent interaction of an operator;",
-        "(d) ‘Supervisor’ means a person responsible for the supervision of autonomous mobile machinery;",
-        "(e) ‘Supervisory function’ means remote non permanent surveillance of autonomous mobile machinery by a device allowing to receive information or alerts and to give limited orders to this machinery.",
+        "3.1.1. For the purposes of this section, the following definitions apply: (a) ‘Machinery or related products presenting risks due to their mobility’ means: (i) machinery or related products, the operation of which requires either mobility while working, or continuous or semi continuous movement between a succession of fixed working locations; or (ii) machinery or related products which are operatedwithout being moved, but which may be equipped in such a way as to enable it to be moved more easily from one place to another; (b) ‘Driver’ means an operator responsible for the movement of machinery or a related product, who may be transported by the machinery or may be on foot, accompanying the machinery, or may guide the machinery by remote control; (c) ‘Autonomous mobile machinery’ means mobile machinery which has an autonomous mode, in which all the essential safety functions of the mobile machinery are ensured in its travel and working operations area without permanent interaction of an operator; (d) ‘Supervisor’ means a person responsible for the supervision of autonomous mobile machinery; (e) ‘Supervisory function’ means remote non permanent surveillance of autonomous mobile machinery by a device allowing to receive information or alerts and to give limited orders to this machinery.",
         "3.2. Work positions",
         "3.2.1. Driving position",
         "Visibility from the driving position shall be such that the driver can, in complete safety for himself or herself and the exposed persons operate the machinery or related product and its tools in their reasonably foreseeable conditions of use. Where necessary, appropriate devices shall be provided to remedy risks due to inadequate direct vision.",
@@ -3342,7 +3258,9 @@ export const machineryAnnexesData = {
         "The driving position of ride-on drivers shall be designed and constructed in such a way that a driver’s cab may be fitted, provided this does not increase the risk and there is room for it. The cab shall incorporate a place for the instructions for use needed for the driver.",
         "3.2.2. Seating",
         "Where there is a risk that operators or other persons transported by the machinery may be crushed between parts of the machinery and the surroundings should the machinery roll or tip over, in particular for machinery equipped with a protective structure referred to in section 3.4.3 or 3.4.4:",
-        "(a) the machinery shall be designed or equipped with a restraint system so as to keep the persons in their seats or in the protective structure, without restricting movements necessary for operations or movements relative to the structure caused by the suspension of the seats; where there is a significant risk of roll or tip over and its restraint system is not used it shall not be possible for the machinery to move; such restraint systems or provision shall take ergonomic principles into account and shall not be fitted if they increase the risk;",
+        "(a) the machinery shall be designed or equipped with a restraint system so as to keep the persons in their seats or in the protective structure, without restricting movements necessary for operations or movements relative to the structure caused by the suspension of the seats;",
+        "where there is a significant risk of roll or tip over and its restraint system is not used it shall not be possible for the machinery to move;",
+        "such restraint systems or provision shall take ergonomic principles into account and shall not be fitted if they increase the risk;",
         "(b) a visual and audible signal shall be provided at the driving position alerting the driver when the driver is in the driving position and not using the restraint system.",
         "3.2.3. Positions for other persons",
         "If the conditions of use provide that persons other than the driver may occasionally or regularly be transported by the machinery or work on it, appropriate positions shall be provided which enable them to be transported or to work on it without risk.",
@@ -3473,74 +3391,9 @@ export const machineryAnnexesData = {
         "4. SUPPLEMENTARY ESSENTIAL HEALTH AND SAFETY REQUIREMENTS TO OFFSET RISKS DUE TO LIFTING OPERATIONS",
         "Machinery or related products presenting risks due to lifting operations shall meet all the relevant essential health and safety requirements set out in this chapter (see General Principles, point 4).",
         "4.1. General",
-        "4.1.1. For the purposes of section 4.1., the following definitions apply:",
-        "(a) ‘Lifting operation’ means a movement of unit loads consisting of goods and/or persons necessitating, at a given moment, a change of level;",
-        "(b) ‘Guided load’ means a load where the total movement is made along rigid or flexible guides whose position is determined by fixed points;",
-        "(c) ‘Working coefficient’ means the arithmetic ratio between the load guaranteed by the manufacturer up to which a component is able to hold it and the maximum working load marked on the component;",
-        "(d) ‘Test coefficient’ means the arithmetic ratio between the load used to carry out the static or dynamic tests on the machinery or related product or lifting accessory and the maximum working load marked on the machinery or related product or lifting accessory;",
-        "(e) ‘Static test’ means the test during which the machinery or related product or lifting accessory is first inspected and subjected to a force corresponding to the maximum working load multiplied by the appropriate static test coefficient and then re-inspected once the said load has been released to ensure that no damage has occurred;",
-        "(f) ‘Dynamic test’ means the test during which the machinery or related product is operated in all its possible configurations at the maximum working load multiplied by the appropriate dynamic test coefficient with account being taken of the dynamic behaviour of the lifting machinery in order to check that it functions properly;",
-        "(g) ‘Carrier’ means a part of the machinery or related product on or in which persons and/or goods are supported in order to be lifted.",
-        "4.1.2. Protection against mechanical risks",
-        "4.1.2.1. Risks due to lack of stability",
-        "Machinery or related products shall be designed and constructed in such a way that the stability required by section 1.3.1 is maintained both in service and out of service, including all stages of transportation, assembly and dismantling, during foreseeable component failures and also during the tests carried out in accordance with the instructions for use. To that end, the manufacturer shall use the appropriate verification methods.",
-        "4.1.2.2. Machinery or related products running on guide rails and rail tracks",
-        "Machinery or related products shall be provided with devices, which act on the guide rails or tracks to prevent derailment.",
-        "If, despite such devices, there remains a risk of derailment or of failure of a rail or of a running component, devices shall be provided which prevent the equipment, component or load from falling or the machinery from overturning.",
-        "4.1.2.3. Mechanical strength",
-        "Machinery or related products, including lifting accessories and their components, shall be capable of withstanding the stresses to which they are subjected during their lifetime, both in and, where applicable, out of use, under the installation and operating conditions provided for and in all relevant configurations, with due regard, where appropriate, to the effects of atmospheric factors and forces exerted by persons. This requirement shall also be satisfied during transport, assembly and dismantling.",
-        "Machinery or related products, including lifting accessories, shall be designed and constructed in such a way as to prevent failure from fatigue and wear, taking due account of their intended use and any reasonably foreseeable misuse.",
-        "The materials used shall be chosen on the basis of the intended working environments, with particular regard to corrosion, abrasion, impacts, extreme temperatures, fatigue, brittleness, radiation and ageing.",
-        "Machinery or related products, including lifting accessories, shall be designed and constructed in such a way as to withstand the overload in the static tests without permanent deformation or patent defect. Strength calculations shall take account of the value of the static test coefficient chosen to guarantee an adequate level of safety. That coefficient has, as a general rule, the following values:",
-        "(a) manually-operated machinery or related products, including lifting accessories: 1,5;",
-        "(b) other machinery or related products: 1,25.",
-        "Machinery or related products shall be designed and constructed in such a way as to undergo, without failure, the dynamic tests carried out using the maximum working load multiplied by the dynamic test coefficient. This dynamic test coefficient is chosen so as to guarantee an adequate level of safety: the coefficient is, as a general rule, equal to 1,1. As a general rule, the tests will be performed at the nominal speeds provided for. Should the control circuit of the machinery or related product allow for a number of simultaneous movements, the tests shall be carried out under the least favourable conditions, as a general rule by combining the movements concerned.",
-        "4.1.2.4. Pulleys, drums, wheels, ropes and chains",
-        "Pulleys, drums and wheels shall have a diameter commensurate with the size of the ropes or chains with which they can be fitted.",
-        "Drums and wheels shall be designed, constructed and installed in such a way that the ropes or chains with which they are equipped can be wound without coming off.",
-        "Ropes used directly for lifting or supporting the load shall not include any splicing other than at their ends. Splicings are, however, tolerated in installations, which are intended by design to be modified regularly according to needs of use.",
-        "Complete ropes and their endings shall have a working coefficient chosen in such a way as to guarantee an adequate level of safety. As a general rule, this coefficient is equal to 5.",
-        "Lifting chains shall have a working coefficient chosen in such a way as to guarantee an adequate level of safety. As a general rule, this coefficient is equal to 4.",
-        "In order to verify that an adequate working coefficient has been attained, the manufacturer shall, for each type of chain and rope used directly for lifting the load and for the rope ends, perform the appropriate tests or have such tests performed.",
-        "4.1.2.5. Lifting accessories and their components",
-        "Lifting accessories and their components shall be sized with due regard to fatigue and ageing processes for a number of operating cycles consistent with their expected life-span as specified in the operating conditions for a given application.",
-        "Moreover:",
-        "(a) the working coefficient of wire-rope/rope-end combinations shall be chosen in such a way as to guarantee an adequate level of safety; this coefficient is, as a general rule, equal to 5. Ropes shall not comprise any splices or loops other than at their ends;",
-        "(b) where chains with welded links are used, they shall be of the short-link type. The working coefficient of chains shall be chosen in such a way as to guarantee an adequate level of safety; this coefficient is, as a general rule, equal to 4;",
-        "(c) the working coefficient for textile ropes, slings or webbing is dependent on the material, method of manufacture, dimensions and use. This coefficient shall be chosen in such a way as to guarantee an adequate level of safety; it is, as a general rule, equal to 7, provided the materials used are shown to be of very good quality and the method of manufacture is appropriate to the intended use. Should this not be the case, the coefficient is, as a general rule, set at a higher level in order to secure an equivalent level of safety. Textile ropes, slings or webbings shall not include any knots, connections or splicing other than at the ends of the sling, except in the case of an endless sling;",
-        "(d) all metallic components making up, or used with, a sling shall have a working coefficient chosen in such a way as to guarantee an adequate level of safety; this coefficient is, as a general rule, equal to 4;",
-        "(e) the maximum working load of a multilegged sling is determined on the basis of the working coefficient of the weakest leg, the number of legs and a reduction factor which depends on the slinging configuration;",
-        "(f) in order to verify that an adequate working coefficient has been attained, the manufacturer shall, for each type of component referred to in points (a) to (d), perform the appropriate tests or have such tests performed.",
-        "4.1.2.6. Control of movements",
-        "Devices for controlling movements shall act in such a way that the machinery or related product on which they are installed is kept safe.",
-        "(a) Machinery or related products shall be designed and constructed or fitted with devices in such a way that the amplitude of movement of its components is kept within the specified limits. The operation of such devices shall, where appropriate, be preceded by a warning;",
-        "(b) Where several fixed or rail-mounted machinery or related products can be manoeuvred simultaneously in the same place, with risks of collision, such machinery shall be designed and constructed in such a way as to make it possible to fit systems enabling these risks to be avoided;",
-        "(c) Machinery or related products shall be designed and constructed in such a way that the loads cannot creep dangerously or fall freely and unexpectedly, even in the event of partial or total failure of the power supply or when the operator stops operating the machinery;",
-        "(d) It shall not be possible, under normal operating conditions, to lower the load solely by friction brake, except in the case of machinery or related products whose function requires it to operate in that way;",
-        "(e) Holding devices shall be designed and constructed in such a way that inadvertent dropping of the loads is avoided.",
-        "4.1.2.7. Movements of loads during handling",
-        "The operating position of machinery shall be located in such a way as to ensure the widest possible view of trajectories of the moving parts, in order to avoid possible collisions with persons, equipment or other machinery, which might be manoeuvring at the same time and liable to constitute a hazard.",
-        "Machinery with guided loads shall be designed and constructed in such a way as to prevent persons from being injured by movement of the load, the carrier or the counterweights, if any.",
-        "4.1.2.8. Machinery serving fixed landings",
-        "4.1.2.8.1. Movements of the carrier",
-        "The movement of the carrier of machinery serving fixed landings shall be rigidly guided to and at the landings. Scissor systems are also regarded as rigid guidance.",
-        "4.1.2.8.2. Access to the carrier",
-        "Where persons have access to the carrier, the machinery shall be designed and constructed in such a way as to ensure that the carrier remains stationary during access, in particular while it is being loaded or unloaded.",
-        "The machinery shall be designed and constructed in such a way as to ensure that the difference in level between the carrier and the landing being served does not create a risk of tripping.",
-        "4.1.2.8.3. Risks due to contact with the moving carrier",
-        "Where necessary in order to fulfil the requirement expressed in the second paragraph of section 4.1.2.7, the travel zone shall be rendered inaccessible during normal operation.",
-        "When, during inspection or maintenance, there is a risk that persons situated under or above the carrier may be crushed between the carrier and any fixed parts, sufficient free space shall be provided either by means of physical refuges or by means of mechanical devices blocking the movement of the carrier.",
-        "4.1.2.8.4. Risk due to the load falling off the carrier",
-        "Where there is a risk due to the load falling off the carrier, the machinery shall be designed and constructed in such a way as to prevent this risk.",
-        "4.1.2.8.5. Landings",
-        "Risks due to contact of persons at landings with the moving carrier or other moving parts shall be prevented.",
-        "Where there is a risk due to persons falling into the travel zone when the carrier is not present at the landings, guards shall be fitted in order to prevent this risk. Such guards shall not open in the direction of the travel zone. They shall be fitted with an interlocking device with guard locking controlled by the position of the carrier that prevents:",
-        "(a) hazardous movements of the carrier until the guards are closed and locked;",
-        "(b) hazardous opening of a guard until the carrier has stopped at the corresponding landing.",
-        "4.1.3. Fitness for purpose",
-        "When lifting machinery or related products, including lifting accessories, are placed on the market or are first put into service, the manufacturer shall ensure, by taking appropriate measures or having them taken, that the machinery or related products, including lifting accessories, which are ready for use – whether manually or power-operated – can fulfil their specified functions safely.",
-        "The static and dynamic tests referred to in section 4.1.2.3 shall be performed on all lifting machinery or related products ready to be put into service.",
-        "Where the machinery or related products cannot be assembled in the manufacturer’s premises, the appropriate measures shall be taken at the place of use by the manufacturer. Otherwise, the measures may be taken either in the manufacturer’s premises or at the place of use.",
+        "4.1.1. For the purposes of section 4.1., the following definitions apply: (a) ‘Lifting operation’ means a movement of unit loads consisting of goods and/or persons necessitating, at a given moment, a change of level; (b) ‘Guided load’ means a load where the total movement is made along rigid or flexible guides whose position is determined by fixed points; (c) ‘Working coefficient’ means the arithmetic ratio between the load guaranteed by the manufacturer up to which a component is able to hold it and the maximum working load marked on the component; (d) ‘Test coefficient’ means the arithmetic ratio between the load used to carry out the static or dynamic tests on the machinery or related product or lifting accessory and the maximum working load marked on the machinery or related product or lifting accessory; (e) ‘Static test’ means the test during which the machinery or related product or lifting accessory is first inspected and subjected to a force corresponding to the maximum working load multiplied by the appropriate static test coefficient and then re-inspected once the said load has been released to ensure that no damage has occurred; (f) ‘Dynamic test’ means the test during which the machinery or related product is operated in all its possible configurations at the maximum working load multiplied by the appropriate dynamic test coefficient with account being taken of the dynamic behaviour of the lifting machinery in order to check that it functions properly; (g) ‘Carrier’ means a part of the machinery or related product on or in which persons and/or goods are supported in order to be lifted.",
+        "4.1.2. Protection against mechanical risks 4.1.2.1. Risks due to lack of stability Machinery or related products shall be designed and constructed in such a way that the stability required by section 1.3.1 is maintained both in service and out of service, including all stages of transportation, assembly and dismantling, during foreseeable component failures and also during the tests carried out in accordance with the instructions for use. To that end, the manufacturer shall use the appropriate verification methods. 4.1.2.2. Machinery or related products running on guide rails and rail tracks Machinery or related products shall be provided with devices, which act on the guide rails or tracks to prevent derailment. If, despite such devices, there remains a risk of derailment or of failure of a rail or of a running component, devices shall be provided which prevent the equipment, component or load from falling or the machinery from overturning. 4.1.2.3. Mechanical strength Machinery or related products, including lifting accessories and their components, shall be capable of withstanding the stresses to which they are subjected during their lifetime, both in and, where applicable, out of use, under the installation and operating conditions provided for and in all relevant configurations, with due regard, where appropriate, to the effects of atmospheric factors and forces exerted by persons. This requirement shall also be satisfied during transport, assembly and dismantling. Machinery or related products, including lifting accessories, shall be designed and constructed in such a way as to prevent failure from fatigue and wear, taking due account of their intended use and any reasonably foreseeable misuse. The materials used shall be chosen on the basis of the intended working environments, with particular regard to corrosion, abrasion, impacts, extreme temperatures, fatigue, brittleness, radiation and ageing. Machinery or related products, including lifting accessories, shall be designed and constructed in such a way as to withstand the overload in the static tests without permanent deformation or patent defect. Strength calculations shall take account of the value of the static test coefficient chosen to guarantee an adequate level of safety. That coefficient has, as a general rule, the following values: (a) manually-operated machinery or related products, including lifting accessories: 1,5; (b) other machinery or related products: 1,25. Machinery or related products shall be designed and constructed in such a way as to undergo, without failure, the dynamic tests carried out using the maximum working load multiplied by the dynamic test coefficient. This dynamic test coefficient is chosen so as to guarantee an adequate level of safety: the coefficient is, as a general rule, equal to 1,1. As a general rule, the tests will be performed at the nominal speeds provided for. Should the control circuit of the machinery or related product allow for a number of simultaneous movements, the tests shall be carried out under the least favourable conditions, as a general rule by combining the movements concerned. 4.1.2.4. Pulleys, drums, wheels, ropes and chains Pulleys, drums and wheels shall have a diameter commensurate with the size of the ropes or chains with which they can be fitted. Drums and wheels shall be designed, constructed and installed in such a way that the ropes or chains with which they are equipped can be wound without coming off. Ropes used directly for lifting or supporting the load shall not include any splicing other than at their ends. Splicings are, however, tolerated in installations, which are intended by design to be modified regularly according to needs of use. Complete ropes and their endings shall have a working coefficient chosen in such a way as to guarantee an adequate level of safety. As a general rule, this coefficient is equal to 5. Lifting chains shall have a working coefficient chosen in such a way as to guarantee an adequate level of safety. As a general rule, this coefficient is equal to 4. In order to verify that an adequate working coefficient has been attained, the manufacturer shall, for each type of chain and rope used directly for lifting the load and for the rope ends, perform the appropriate tests or have such tests performed. 4.1.2.5. Lifting accessories and their components Lifting accessories and their components shall be sized with due regard to fatigue and ageing processes for a number of operating cycles consistent with their expected life-span as specified in the operating conditions for a given application. Moreover: (a) the working coefficient of wire-rope/rope-end combinations shall be chosen in such a way as to guarantee an adequate level of safety; this coefficient is, as a general rule, equal to 5. Ropes shall not comprise any splices or loops other than at their ends; (b) where chains with welded links are used, they shall be of the short-link type. The working coefficient of chains shall be chosen in such a way as to guarantee an adequate level of safety; this coefficient is, as a general rule, equal to 4; (c) the working coefficient for textile ropes, slings or webbing is dependent on the material, method of manufacture, dimensions and use. This coefficient shall be chosen in such a way as to guarantee an adequate level of safety; it is, as a general rule, equal to 7, provided the materials used are shown to be of very good quality and the method of manufacture is appropriate to the intended use. Should this not be the case, the coefficient is, as a general rule, set at a higher level in order to secure an equivalent level of safety. Textile ropes, slings or webbings shall not include any knots, connections or splicing other than at the ends of the sling, except in the case of an endless sling; (d) all metallic components making up, or used with, a sling shall have a working coefficient chosen in such a way as to guarantee an adequate level of safety; this coefficient is, as a general rule, equal to 4; (e) the maximum working load of a multilegged sling is determined on the basis of the working coefficient of the weakest leg, the number of legs and a reduction factor which depends on the slinging configuration; (f) in order to verify that an adequate working coefficient has been attained, the manufacturer shall, for each type of component referred to in points (a) to (d), perform the appropriate tests or have such tests performed. 4.1.2.6. Control of movements Devices for controlling movements shall act in such a way that the machinery or related product on which they are installed is kept safe. (a) Machinery or related products shall be designed and constructed or fitted with devices in such a way that the amplitude of movement of its components is kept within the specified limits. The operation of such devices shall, where appropriate, be preceded by a warning; (b) Where several fixed or rail-mounted machinery or related products can be manoeuvred simultaneously in the same place, with risks of collision, such machinery shall be designed and constructed in such a way as to make it possible to fit systems enabling these risks to be avoided; (c) Machinery or related products shall be designed and constructed in such a way that the loads cannot creep dangerously or fall freely and unexpectedly, even in the event of partial or total failure of the power supply or when the operator stops operating the machinery; (d) It shall not be possible, under normal operating conditions, to lower the load solely by friction brake, except in the case of machinery or related products whose function requires it to operate in that way; (e) Holding devices shall be designed and constructed in such a way that inadvertent dropping of the loads is avoided. 4.1.2.7. Movements of loads during handling The operating position of machinery shall be located in such a way as to ensure the widest possible view of trajectories of the moving parts, in order to avoid possible collisions with persons, equipment or other machinery, which might be manoeuvring at the same time and liable to constitute a hazard. Machinery with guided loads shall be designed and constructed in such a way as to prevent persons from being injured by movement of the load, the carrier or the counterweights, if any. 4.1.2.8. Machinery serving fixed landings 4.1.2.8.1. Movements of the carrier The movement of the carrier of machinery serving fixed landings shall be rigidly guided to and at the landings. Scissor systems are also regarded as rigid guidance. 4.1.2.8.2. Access to the carrier Where persons have access to the carrier, the machinery shall be designed and constructed in such a way as to ensure that the carrier remains stationary during access, in particular while it is being loaded or unloaded. The machinery shall be designed and constructed in such a way as to ensure that the difference in level between the carrier and the landing being served does not create a risk of tripping. 4.1.2.8.3. Risks due to contact with the moving carrier Where necessary in order to fulfil the requirement expressed in the second paragraph of section 4.1.2.7, the travel zone shall be rendered inaccessible during normal operation. When, during inspection or maintenance, there is a risk that persons situated under or above the carrier may be crushed between the carrier and any fixed parts, sufficient free space shall be provided either by means of physical refuges or by means of mechanical devices blocking the movement of the carrier. 4.1.2.8.4. Risk due to the load falling off the carrier Where there is a risk due to the load falling off the carrier, the machinery shall be designed and constructed in such a way as to prevent this risk. 4.1.2.8.5. Landings Risks due to contact of persons at landings with the moving carrier or other moving parts shall be prevented. Where there is a risk due to persons falling into the travel zone when the carrier is not present at the landings, guards shall be fitted in order to prevent this risk. Such guards shall not open in the direction of the travel zone. They shall be fitted with an interlocking device with guard locking controlled by the position of the carrier that prevents: (a) hazardous movements of the carrier until the guards are closed and locked; (b) hazardous opening of a guard until the carrier has stopped at the corresponding landing.",
+        "4.1.3. Fitness for purpose When lifting machinery or related products, including lifting accessories, are placed on the market or are first put into service, the manufacturer shall ensure, by taking appropriate measures or having them taken, that the machinery or related products, including lifting accessories, which are ready for use – whether manually or power-operated – can fulfil their specified functions safely. The static and dynamic tests referred to in section 4.1.2.3 shall be performed on all lifting machinery or related products ready to be put into service. Where the machinery or related products cannot be assembled in the manufacturer’s premises, the appropriate measures shall be taken at the place of use by the manufacturer. Otherwise, the measures may be taken either in the manufacturer’s premises or at the place of use.",
         "4.2. Requirements for machinery or related products whose power source is other than manual effort",
         "4.2.1. Control of movements",
         "Hold-to-run control devices shall be used to control the movements of the machinery or related products or their equipment. However, for partial or complete movements in which there is no risk of the load or the machinery or related product colliding, the said devices may be replaced by control devices authorising automatic stops at pre-selected positions without the operator holding a hold-to-run control device.",
@@ -3646,14 +3499,9 @@ export const machineryAnnexesData = {
         "(b) the maximum working load."
       ],
       "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "safety_components",
-        "digital_safety",
-        "documentation",
-        "standards"
+        "safety_component",
+        "protection_against_corruption",
+        "control_systems"
       ],
       "referencedArticles": [
         2,
@@ -3664,8 +3512,9 @@ export const machineryAnnexesData = {
     },
     {
       "annexNumber": "IV",
-      "title": "Technical documentation",
+      "title": "",
       "blocks": [
+        "Technical documentation",
         "PART A",
         "Technical documentation for machinery and related products",
         "The technical documentation shall specify the means used by the manufacturer to ensure the conformity of the machinery or related product with the applicable essential health and safety requirements set out in Annex III.",
@@ -3707,21 +3556,16 @@ export const machineryAnnexesData = {
         "(l) for sensor-fed, remotely-driven, or autonomous partly completed machinery, if the safety related operations are controlled by sensor data, a description, where appropriate, of the general characteristics, capabilities and limitations of the system, data, development, testing and validation processes used;",
         "(m) the results of research and tests on components, fittings or the partly completed machinery carried out by the manufacturer to determine whether by its design or construction it is capable of being assembled and incorporated safely."
       ],
-      "tags": [
-        "ehsr",
-        "operator_roles",
-        "digital_safety",
-        "documentation",
-        "standards"
-      ],
+      "tags": [],
       "referencedArticles": [
         20
       ]
     },
     {
       "annexNumber": "V",
-      "title": "EU DECLARATION OF CONFORMITY AND EU DECLARATION OF INCORPORATION",
+      "title": "",
       "blocks": [
+        "EU DECLARATION OF CONFORMITY AND EU DECLARATION OF INCORPORATION",
         "PART A",
         "EU declaration of conformity of machinery and related products No …",
         "The EU declaration of conformity shall contain the following particulars:",
@@ -3734,7 +3578,10 @@ export const machineryAnnexesData = {
         "7. References to the harmonised standards referred to in Article 20(1) or common specifications adopted by the Commission in accordance with Article 20(3) that were applied, including the date of the publication of the reference to harmonised standards in the Official Journal of the European Union or of the common specification, or references to the other technical specifications, including their date, in relation to which conformity is declared. In the event of partial application of harmonised standards or common specifications, the EU declaration of conformity shall specify the parts which were applied.",
         "8. Where applicable, the notified body … (name, number) … performed the EU type-examination (Module B) and issued the EU type-examination certificate … (reference to that certificate), followed by conformity to type based on internal production control (module C) or the conformity based on unit verification (module G) or full quality assurance (module H).",
         "9. Where applicable, the machinery or related product is subject to the conformity assessment procedure based on internal production control (Module A).",
-        "10. Additional information: Signed for and on behalf of: … (place and date of issue): (name, function) (signature):",
+        "10. Additional information:",
+        "Signed for and on behalf of: …",
+        "(place and date of issue):",
+        "(name, function) (signature):",
         "PART B",
         "EU declaration of incorporation of partly completed machinery No …",
         "The declaration of incorporation shall contain the following particulars:",
@@ -3746,240 +3593,112 @@ export const machineryAnnexesData = {
         "6. References to the harmonised standards referred to in Article 20(1) or common specifications adopted by the Commission in accordance with Article 20(3) that were applied, including the date of the standard or of the common specification, or references to the other technical specifications, including their date, in relation to which conformity is declared. In the event of partial application of harmonised standards or common specifications, the EU declaration of incorporation shall specify the parts which were applied.",
         "7. An undertaking to transmit, in response to a reasoned request by the national authorities, relevant information on the partly completed machinery. This shall include the method of transmission and shall be without prejudice to the intellectual property rights of the manufacturer of the partly completed machinery.",
         "8. A statement that the partly completed machinery shall not be put into service until the final machinery into which it is to be incorporated has been declared in conformity with this Regulation.",
-        "9. Additional information: Signed for and on behalf of: … (place and date of issue): (name, function) (signature):"
+        "9. Additional information:",
+        "Signed for and on behalf of: …",
+        "(place and date of issue):",
+        "(name, function) (signature):"
       ],
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation",
-        "standards"
-      ],
+      "tags": [],
       "referencedArticles": [
         20
       ]
     },
     {
       "annexNumber": "VI",
-      "title": "INTERNAL PRODUCTION CONTROL",
+      "title": "",
       "blocks": [
+        "INTERNAL PRODUCTION CONTROL",
         "(Module A)",
         "1. Internal production control is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2, 3 and 4, and ensures and declares on its sole responsibility that the machinery or related product concerned satisfies the applicable requirements of this Regulation.",
-        "2. Technical documentation",
-        "The manufacturer shall draw up the technical documentation described in Annex IV, Part A.",
-        "3. Manufacturing",
-        "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure compliance of the manufactured machinery or related products with the technical documentation referred to in point 2 and with the applicable requirements of this Regulation.",
-        "4. CE marking and EU declaration of conformity",
-        "4.1. The manufacturer shall affix the CE marking to machinery or related products, individually, that satisfies the applicable requirements of this Regulation.",
-        "4.2. The manufacturer shall draw up an EU declaration of conformity for each machinery or related product model in accordance with Article 21 and keep it, together with the technical documentation, at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product model for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "5. Authorised representative",
-        "The manufacturer’s obligations set out in point 4 may be fulfilled by its authorised representative, on its behalf and under its responsibility, provided that they are specified in the mandate."
+        "2. Technical documentation The manufacturer shall draw up the technical documentation described in Annex IV, Part A.",
+        "3. Manufacturing The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure compliance of the manufactured machinery or related products with the technical documentation referred to in point 2 and with the applicable requirements of this Regulation.",
+        "4. CE marking and EU declaration of conformity 4.1. The manufacturer shall affix the CE marking to machinery or related products, individually, that satisfies the applicable requirements of this Regulation. 4.2. The manufacturer shall draw up an EU declaration of conformity for each machinery or related product model in accordance with Article 21 and keep it, together with the technical documentation, at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product model for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "5. Authorised representative The manufacturer’s obligations set out in point 4 may be fulfilled by its authorised representative, on its behalf and under its responsibility, provided that they are specified in the mandate."
       ],
-      "tags": [
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation"
-      ],
+      "tags": [],
       "referencedArticles": [
         21
       ]
     },
     {
       "annexNumber": "VII",
-      "title": "EU TYPE-EXAMINATION",
+      "title": "",
       "blocks": [
+        "EU TYPE-EXAMINATION",
         "(Module B)",
         "1. EU type-examination is the part of a conformity assessment procedure in which a notified body examines the technical design of machinery or a related product and verifies and attests that the technical design of the machinery or related product meets the applicable requirements of this Regulation.",
         "2. EU type-examination shall be carried out by assessment of the adequacy of the technical design of the machinery or related product through examination of the technical documentation, plus examination of a specimen of the machinery or related product that is representative of the production envisaged (production type).",
-        "3. Application for EU type-examination",
-        "The manufacturer shall lodge an application for EU type-examination with a single notified body of its choice.",
-        "The application shall include:",
-        "(a) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative;",
-        "(b) a written declaration that the same application has not been lodged with any other notified body;",
-        "(c) the technical documentation described in Annex IV, Part A;",
-        "(d) the access to the specimen(s) of the machinery or related product representative of the production envisaged. The notified body may request further specimens if needed for carrying out the test programme. For machinery or related products produced in series where each item is adapted to fit an individual user, specimens shall be provided that are representative of the range of different users, while for machinery or related products produced as a single unit to accommodate the special needs of an individual user, a basic model shall be provided.",
-        "4. EU type-examination",
-        "The notified body shall:",
-        "(a) examine the technical documentation to assess the adequacy of the technical design of the machinery or related product. In conducting such an examination, Annex IV, Part A, second subparagraph, points (h) and (l), need not be taken into account;",
-        "(b) for machinery or related products produced in series where each item is adapted to fit an individual user, examine the description of the measures to assess their adequacy;",
-        "(c) verify that the specimen(s) have been manufactured in conformity with the technical documentation, and identify the elements that have been designed in accordance with the applicable provisions of the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3), as well as the elements that have been designed in accordance with other technical specifications;",
-        "(d) carry out appropriate examinations and tests, or have them carried out, to check whether, where the manufacturer has chosen to apply the solutions in the relevant harmonised standards, or common specifications adopted by the Commission in accordance with Article 20(3), those have been applied correctly;",
-        "(e) carry out appropriate examinations and tests, or have them carried out, to check whether, where the solutions in the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) have not been applied, the solutions adopted by the manufacturer, including those in other technical specifications applied, meet the corresponding essential health and safety requirements and have been applied correctly.",
-        "5. Evaluation report",
-        "The notified body shall draw up an evaluation report that records the activities undertaken in accordance with point 4 and their outcomes. Without prejudice to its obligations vis-à-vis the notifying authorities, the notified body shall release the content of that report, in full or in part, only with the agreement of the manufacturer.",
-        "6. EU type-examination certificate",
-        "6.1. Where the type meets the applicable essential health and safety requirements, the notified body shall issue an EU type-examination certificate to the manufacturer. The period of validity of a newly issued certificate and, where appropriate, of a renewed certificate shall not exceed five years.",
-        "6.2. The EU type-examination certificate shall contain at least the following information:",
-        "(a) the name and identification number of the notified body;",
-        "(b) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative;",
-        "(c) an identification of the machinery or related product covered by the certificate (type number);",
-        "(d) a statement that the machinery or related product type complies with the applicable essential health and safety requirements;",
-        "(e) where harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) have been fully or partially applied, the references of those standards or common specifications or parts thereof;",
-        "(f) where other technical specifications have been applied, the references of those technical specifications;",
-        "(g) the date of issue, the date of expiry and, where appropriate, the date(s) of renewal;",
-        "(h) any conditions attached to the issuing of the certificate.",
-        "6.3. The EU type-examination certificate may have one or more annexes attached.",
-        "6.4. Where the type does not satisfy the applicable essential health and safety requirements, the notified body shall refuse to issue an EU type-examination certificate and shall inform the applicant accordingly, giving detailed reasons for its refusal.",
-        "7. Review of the EU type-examination certificate",
-        "7.1. The notified body shall keep itself apprised of any changes in the generally acknowledged state of the art, which indicate that the approved type may no longer comply with the applicable essential health and safety requirements, and shall determine whether such changes require further investigation. If so, the notified body shall inform the manufacturer accordingly.",
-        "7.2. The manufacturer shall inform the notified body that holds the technical documentation relating to the EU type- examination certificate of all modifications to the approved type and of all modifications to the technical documentation that may affect the conformity of the machinery or related product with the applicable essential health and safety requirements or the conditions for validity of that certificate. Such modifications shall require additional approval in the form of an addition to the original EU type-examination certificate.",
-        "7.3. The manufacturer shall ensure that the machinery or related product continues to fulfil the applicable essential health and safety requirements in light of the state of the art.",
-        "7.4. The manufacturer shall ask the notified body to review the EU type-examination certificate either:",
-        "(a) in the case of a modification to the approved type referred to in point 7.2;",
-        "(b) in the case of a change in the state of the art referred to in point 7.3;",
-        "(c) at the latest, before the date of expiry of the certificate.",
-        "In the case referred to in point (c), the review may lead to a renewal of the EU type-examination certificate only when the application is submitted by the manufacturer at the earliest 12 months and at the latest 6 months prior to the expiry date of the EU type-examination certificate. Where the manufacturer fails to comply with the deadlines mentioned above, the review may lead only to an approval in the form of an addition to the original EU type-examination certificate and the expiry date of the certificate shall be that of the original certificate.",
-        "7.5. The notified body shall examine the machinery or related product type and, where necessary in the light of the changes made, carry out the relevant tests to ensure that the approved type continues to fulfil the applicable essential health and safety requirements. If the notified body is satisfied that the approved type continues to fulfil the applicable essential health and safety requirements, it shall renew the EU type-examination certificate or issue an addition to the original EU type-examination certificate. The notified body shall ensure that the review procedure is finalised before the expiry date of the EU type-examination certificate.",
-        "7.6. Where the conditions referred to in points (a) and (b) of point 7.4 are not met, a simplified review procedure shall apply. The manufacturer shall supply the notified body with the following:",
-        "(a) its name and address and data identifying the EU type-examination certificate concerned;",
-        "(b) confirmation that there has been no modification to the approved type as referred to in point 7.2, including materials, sub-components or sub-assemblies, nor to the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) or other technical specifications applied;",
-        "(c) confirmation that there has been no change in the state of the art as referred to in point 7.3; and",
-        "(d) where not already supplied, copies of current product drawings and photographs, product marking and information;",
-        "Where the notified body has confirmed that no modification to the approved type referred to in point 7.2 and no change in the state of the art referred to in point 7.3 has occurred, the simplified review procedure shall be applied and the examinations and tests referred to in point 7.5 shall not be carried out. In that case, the notified body shall renew the EU type-examination certificate. The costs associated with that renewal shall be proportionate to the administrative burden of the simplified procedure. If the notified body finds that a change in the state of the art referred to in point 7.3 has occurred, the procedure set out in point 7.5 shall apply.",
-        "7.7. If, following the review, the notified body concludes that the EU type-examination certificate is no longer valid, the body shall withdraw it and the manufacturer shall cease the placing on the market of the machinery or related product concerned.",
-        "8. Each notified body shall inform its notifying authority concerning the EU type-examination certificates and/or any additions thereto which it has issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of such certificates and/or any additions thereto refused, suspended or otherwise restricted.",
-        "Each notified body shall inform the other notified bodies concerning the EU type-examination certificates and/or any additions thereto, which it has refused, withdrawn, suspended or otherwise restricted, and, upon request, concerning the EU type-examination certificates and/or additions thereto which it has issued.",
-        "The Commission, the Member States and the other notified bodies may, on request, obtain a copy of the EU type-examination certificates and/or additions thereto. On request, the Commission and the Member States may obtain a copy of the technical documentation and the results of the examinations carried out by the notified body.",
-        "The notified body shall keep a copy of the EU type-examination certificate, its annexes and additions, as well as the technical file including the documentation submitted by the manufacturer, for a period of five years after the expiry of the validity of that certificate.",
+        "3. Application for EU type-examination The manufacturer shall lodge an application for EU type-examination with a single notified body of its choice. The application shall include: (a) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative; (b) a written declaration that the same application has not been lodged with any other notified body; (c) the technical documentation described in Annex IV, Part A; (d) the access to the specimen(s) of the machinery or related product representative of the production envisaged. The notified body may request further specimens if needed for carrying out the test programme. For machinery or related products produced in series where each item is adapted to fit an individual user, specimens shall be provided that are representative of the range of different users, while for machinery or related products produced as a single unit to accommodate the special needs of an individual user, a basic model shall be provided.",
+        "4. EU type-examination The notified body shall: (a) examine the technical documentation to assess the adequacy of the technical design of the machinery or related product. In conducting such an examination, Annex IV, Part A, second subparagraph, points (h) and (l), need not be taken into account; (b) for machinery or related products produced in series where each item is adapted to fit an individual user, examine the description of the measures to assess their adequacy; (c) verify that the specimen(s) have been manufactured in conformity with the technical documentation, and identify the elements that have been designed in accordance with the applicable provisions of the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3), as well as the elements that have been designed in accordance with other technical specifications; (d) carry out appropriate examinations and tests, or have them carried out, to check whether, where the manufacturer has chosen to apply the solutions in the relevant harmonised standards, or common specifications adopted by the Commission in accordance with Article 20(3), those have been applied correctly; (e) carry out appropriate examinations and tests, or have them carried out, to check whether, where the solutions in the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) have not been applied, the solutions adopted by the manufacturer, including those in other technical specifications applied, meet the corresponding essential health and safety requirements and have been applied correctly.",
+        "5. Evaluation report The notified body shall draw up an evaluation report that records the activities undertaken in accordance with point 4 and their outcomes. Without prejudice to its obligations vis-à-vis the notifying authorities, the notified body shall release the content of that report, in full or in part, only with the agreement of the manufacturer.",
+        "6. EU type-examination certificate 6.1. Where the type meets the applicable essential health and safety requirements, the notified body shall issue an EU type-examination certificate to the manufacturer. The period of validity of a newly issued certificate and, where appropriate, of a renewed certificate shall not exceed five years. 6.2. The EU type-examination certificate shall contain at least the following information: (a) the name and identification number of the notified body; (b) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative; (c) an identification of the machinery or related product covered by the certificate (type number); (d) a statement that the machinery or related product type complies with the applicable essential health and safety requirements; (e) where harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) have been fully or partially applied, the references of those standards or common specifications or parts thereof; (f) where other technical specifications have been applied, the references of those technical specifications; (g) the date of issue, the date of expiry and, where appropriate, the date(s) of renewal; (h) any conditions attached to the issuing of the certificate. 6.3. The EU type-examination certificate may have one or more annexes attached. 6.4. Where the type does not satisfy the applicable essential health and safety requirements, the notified body shall refuse to issue an EU type-examination certificate and shall inform the applicant accordingly, giving detailed reasons for its refusal.",
+        "7. Review of the EU type-examination certificate 7.1. The notified body shall keep itself apprised of any changes in the generally acknowledged state of the art, which indicate that the approved type may no longer comply with the applicable essential health and safety requirements, and shall determine whether such changes require further investigation. If so, the notified body shall inform the manufacturer accordingly. 7.2. The manufacturer shall inform the notified body that holds the technical documentation relating to the EU type- examination certificate of all modifications to the approved type and of all modifications to the technical documentation that may affect the conformity of the machinery or related product with the applicable essential health and safety requirements or the conditions for validity of that certificate. Such modifications shall require additional approval in the form of an addition to the original EU type-examination certificate. 7.3. The manufacturer shall ensure that the machinery or related product continues to fulfil the applicable essential health and safety requirements in light of the state of the art. 7.4. The manufacturer shall ask the notified body to review the EU type-examination certificate either: (a) in the case of a modification to the approved type referred to in point 7.2; (b) in the case of a change in the state of the art referred to in point 7.3; (c) at the latest, before the date of expiry of the certificate. In the case referred to in point (c), the review may lead to a renewal of the EU type-examination certificate only when the application is submitted by the manufacturer at the earliest 12 months and at the latest 6 months prior to the expiry date of the EU type-examination certificate. Where the manufacturer fails to comply with the deadlines mentioned above, the review may lead only to an approval in the form of an addition to the original EU type-examination certificate and the expiry date of the certificate shall be that of the original certificate. 7.5. The notified body shall examine the machinery or related product type and, where necessary in the light of the changes made, carry out the relevant tests to ensure that the approved type continues to fulfil the applicable essential health and safety requirements. If the notified body is satisfied that the approved type continues to fulfil the applicable essential health and safety requirements, it shall renew the EU type-examination certificate or issue an addition to the original EU type-examination certificate. The notified body shall ensure that the review procedure is finalised before the expiry date of the EU type-examination certificate. 7.6. Where the conditions referred to in points (a) and (b) of point 7.4 are not met, a simplified review procedure shall apply. The manufacturer shall supply the notified body with the following: (a) its name and address and data identifying the EU type-examination certificate concerned; (b) confirmation that there has been no modification to the approved type as referred to in point 7.2, including materials, sub-components or sub-assemblies, nor to the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) or other technical specifications applied; (c) confirmation that there has been no change in the state of the art as referred to in point 7.3; and (d) where not already supplied, copies of current product drawings and photographs, product marking and information; Where the notified body has confirmed that no modification to the approved type referred to in point 7.2 and no change in the state of the art referred to in point 7.3 has occurred, the simplified review procedure shall be applied and the examinations and tests referred to in point 7.5 shall not be carried out. In that case, the notified body shall renew the EU type-examination certificate. The costs associated with that renewal shall be proportionate to the administrative burden of the simplified procedure. If the notified body finds that a change in the state of the art referred to in point 7.3 has occurred, the procedure set out in point 7.5 shall apply. 7.7. If, following the review, the notified body concludes that the EU type-examination certificate is no longer valid, the body shall withdraw it and the manufacturer shall cease the placing on the market of the machinery or related product concerned.",
+        "8. Each notified body shall inform its notifying authority concerning the EU type-examination certificates and/or any additions thereto which it has issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of such certificates and/or any additions thereto refused, suspended or otherwise restricted. Each notified body shall inform the other notified bodies concerning the EU type-examination certificates and/or any additions thereto, which it has refused, withdrawn, suspended or otherwise restricted, and, upon request, concerning the EU type-examination certificates and/or additions thereto which it has issued. The Commission, the Member States and the other notified bodies may, on request, obtain a copy of the EU type-examination certificates and/or additions thereto. On request, the Commission and the Member States may obtain a copy of the technical documentation and the results of the examinations carried out by the notified body. The notified body shall keep a copy of the EU type-examination certificate, its annexes and additions, as well as the technical file including the documentation submitted by the manufacturer, for a period of five years after the expiry of the validity of that certificate.",
         "9. The manufacturer shall keep a copy of the EU type-examination certificate, its annexes and additions, together with the technical documentation at the disposal of the national authorities, for at least 10 years after the machinery or related product has been placed on the market or put into service.",
         "10. The manufacturer’s authorised representative may lodge the application referred to in point 3 and fulfil the obligations set out in points 7.2, 7.4 and 9, provided that they are specified in the mandate."
       ],
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "documentation",
-        "standards"
-      ],
+      "tags": [],
       "referencedArticles": [
         20
       ]
     },
     {
       "annexNumber": "VIII",
-      "title": "CONFORMITY TO TYPE BASED ON INTERNAL PRODUCTION CONTROL",
+      "title": "",
       "blocks": [
+        "CONFORMITY TO TYPE BASED ON INTERNAL PRODUCTION CONTROL",
         "(Module C)",
         "1. Conformity to type based on internal production control is the part of a conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2 and 3, and ensures and declares under its sole responsibility that the machinery or related product concerned is in conformity with the type described in the EU type-examination certificate and satisfies the applicable requirements of this Regulation.",
-        "2. Manufacturing",
-        "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured machinery or related products with the type described in the EU type-examination certificate and with the applicable requirements of this Regulation.",
-        "3. CE marking and EU declaration of conformity",
-        "3.1. The manufacturer shall affix the CE marking to all machinery or related products that are in conformity with the type described in the EU type-examination certificate and satisfy the applicable requirements of this Regulation.",
-        "3.2. The manufacturer shall draw up an EU declaration of conformity for a machinery or related product model and keep it at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "4. Authorised representative",
-        "The manufacturer’s obligations set out in point 3 may be fulfilled by its authorised representative, on its behalf and under its responsibility, provided that they are specified in the mandate."
+        "2. Manufacturing The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured machinery or related products with the type described in the EU type-examination certificate and with the applicable requirements of this Regulation.",
+        "3. CE marking and EU declaration of conformity 3.1. The manufacturer shall affix the CE marking to all machinery or related products that are in conformity with the type described in the EU type-examination certificate and satisfy the applicable requirements of this Regulation. 3.2. The manufacturer shall draw up an EU declaration of conformity for a machinery or related product model and keep it at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "4. Authorised representative The manufacturer’s obligations set out in point 3 may be fulfilled by its authorised representative, on its behalf and under its responsibility, provided that they are specified in the mandate."
       ],
-      "tags": [
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking"
-      ],
+      "tags": [],
       "referencedArticles": []
     },
     {
       "annexNumber": "IX",
-      "title": "CONFORMITY BASED ON FULL QUALITY ASSURANCE",
+      "title": "",
       "blocks": [
+        "CONFORMITY BASED ON FULL QUALITY ASSURANCE",
         "(Module H)",
         "1. Conformity based on full quality assurance is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2 and 5, and ensures and declares on its sole responsibility that the machinery or related product concerned satisfies the requirements of this Regulation that apply to it.",
-        "2. Manufacturing",
-        "The manufacturer shall operate an approved quality system for design, manufacture and final product inspection and testing of the machinery or related products concerned as specified in point 3 and shall be subject to surveillance as specified in point 4.",
-        "3. Quality system",
-        "3.1. The manufacturer shall lodge an application for assessment of its quality system with the notified body of its choice, for the machinery or related products concerned. The application shall include:",
-        "(a) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative;",
-        "(b) the technical documentation described in Annex IV, Part A, points (a) to (g), (i) to (k) and (m) to (o) for one model of each category of machinery or related products intended to be manufactured.",
-        "(c) the documentation concerning the quality system; and",
-        "(d) a written declaration that the same application has not been lodged with any other notified body.",
-        "3.2. The quality system shall ensure compliance of the machinery or related products with the requirements of this Regulation that apply to them. All the elements, requirements and provisions adopted by the manufacturer shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions. That quality system documentation shall permit a consistent interpretation of the quality programmes, plans, manuals and records. It shall, in particular, contain an adequate description of:",
-        "(a) the quality objectives and the organisational structure, responsibilities and powers of the management with regard to design and product quality;",
-        "(b) the technical design specifications, including standards, that will be applied and, where the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) will not be applied in full, the means, including other technical specifications, that will be used to ensure that the essential health and safety requirements of this Regulation that apply to the machinery or related product will be met;",
-        "(c) the design control and design verification techniques, processes and systematic actions that will be used when designing the machinery or related product;",
-        "(d) the corresponding manufacturing, quality control and quality assurance techniques, processes and systematic actions that will be used;",
-        "(e) the examinations and tests that will be carried out before, during and after manufacture and the frequency with which they will be carried out;",
-        "(f) the quality records, such as inspection reports and test data, calibration data, qualification reports on the personnel concerned, etc.;",
-        "(g) the means of monitoring the achievement of the required design and product quality and the effective operation of the quality system.",
-        "3.3. The notified body shall assess the quality system to determine whether it satisfies the requirements referred to in point 3.2. It shall presume conformity with those requirements in respect of the elements of the quality system that comply with the corresponding specifications of the relevant harmonised standard. In addition to experience in quality management systems, the auditing team shall have at least one member experienced as an assessor in the relevant machinery or related product field and technology concerned, and with knowledge of the applicable essential health and safety requirements set out in Annex III. The audit shall include an assessment visit to the manufacturer’s premises. The auditing team shall review the technical documentation referred to in point 3.1(b), to verify the manufacturer’s ability to identify the applicable essential health and safety requirements set out in Annex III and to carry out the necessary examinations with a view to ensuring compliance of the machinery or related product with those requirements. The manufacturer or its authorised representative shall be notified of the decision. The notification shall contain the conclusions of the audit and the reasoned assessment decision.",
-        "3.4. The manufacturer shall undertake to fulfil the obligations arising out of the quality system as approved and to maintain it so that it remains adequate and efficient.",
-        "3.5. The manufacturer shall keep the notified body that has approved the quality system informed of any intended change to the quality system. The notified body shall evaluate any proposed changes and decide whether the modified quality system will continue to satisfy the requirements referred to in point 3.2 or whether a reassessment is necessary. It shall notify the manufacturer of its decision. The notification shall contain the conclusions of the examination and the reasoned assessment decision.",
-        "4. Surveillance under the responsibility of the notified body",
-        "4.1. The purpose of surveillance is to make sure that the manufacturer duly fulfils the obligations arising out of the approved quality system.",
-        "4.2. The manufacturer shall, for assessment purposes, allow the notified body access to the design, manufacture, inspection, testing and storage sites, and shall provide that body with all necessary information, in particular:",
-        "(a) the quality system documentation;",
-        "(b) the quality records as provided for by the design part of the quality system, such as results of analyses, calculations, tests, etc.;",
-        "(c) the quality records as provided for by the manufacturing part of the quality system, such as inspection reports and test data, calibration data, qualification reports on the personnel concerned, etc.",
-        "4.3. The notified body shall carry out periodic audits to make sure that the manufacturer maintains and applies the quality system and shall provide the manufacturer with an audit report.",
-        "4.4. In addition, the notified body may pay unexpected visits to the manufacturer. During such visits, the notified body may, if necessary, carry out product tests, or have them carried out, in order to check the proper functioning of the quality system. It shall provide the manufacturer with a visit report and, if tests have been carried out, with a test report.",
-        "5. CE marking and EU declaration of conformity",
-        "5.1. The manufacturer shall affix the required CE marking set out in this Regulation, and, under the responsibility of the notified body referred to in point 3.1, the latter’s identification number to each individual product that satisfies the applicable requirements of this Regulation.",
-        "5.2. The manufacturer shall draw up a written EU declaration of conformity for each machinery or related product model and keep it at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product model for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "6. The manufacturer shall, for at least 10 years after the machinery or related product has been placed on the market or put into service, keep at the disposal of the national authorities:",
-        "(a) the technical documentation referred to in point 3.1(b);",
-        "(b) the documentation concerning the quality system referred to in point 3.1(c);",
-        "(c) the information relating to the change referred to in point 3.5, as approved;",
-        "(d) the decisions and reports of the notified body referred to in points 3.5, 4.3 and 4.4.",
-        "7. Each notified body shall inform its notifying authority of quality system approval decisions issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of quality system approval decisions refused, suspended or otherwise restricted.",
-        "Each notified body shall inform the other notified bodies of quality system approval decisions, which it has refused, suspended or withdrawn, and, upon request, of quality system approval decisions, which it has issued.",
-        "8. Authorised representative",
-        "The manufacturer’s obligations set out in points 3.1, 3.5, 5 and 6 may be fulfilled by its authorised representative, on its behalf and under its responsibility, provided that they are specified in the mandate."
+        "2. Manufacturing The manufacturer shall operate an approved quality system for design, manufacture and final product inspection and testing of the machinery or related products concerned as specified in point 3 and shall be subject to surveillance as specified in point 4.",
+        "3. Quality system 3.1. The manufacturer shall lodge an application for assessment of its quality system with the notified body of its choice, for the machinery or related products concerned. The application shall include: (a) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative; (b) the technical documentation described in Annex IV, Part A, points (a) to (g), (i) to (k) and (m) to (o) for one model of each category of machinery or related products intended to be manufactured. (c) the documentation concerning the quality system; and (d) a written declaration that the same application has not been lodged with any other notified body. 3.2. The quality system shall ensure compliance of the machinery or related products with the requirements of this Regulation that apply to them. All the elements, requirements and provisions adopted by the manufacturer shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions. That quality system documentation shall permit a consistent interpretation of the quality programmes, plans, manuals and records. It shall, in particular, contain an adequate description of: (a) the quality objectives and the organisational structure, responsibilities and powers of the management with regard to design and product quality; (b) the technical design specifications, including standards, that will be applied and, where the relevant harmonised standards or common specifications adopted by the Commission in accordance with Article 20(3) will not be applied in full, the means, including other technical specifications, that will be used to ensure that the essential health and safety requirements of this Regulation that apply to the machinery or related product will be met; (c) the design control and design verification techniques, processes and systematic actions that will be used when designing the machinery or related product; (d) the corresponding manufacturing, quality control and quality assurance techniques, processes and systematic actions that will be used; (e) the examinations and tests that will be carried out before, during and after manufacture and the frequency with which they will be carried out; (f) the quality records, such as inspection reports and test data, calibration data, qualification reports on the personnel concerned, etc.; (g) the means of monitoring the achievement of the required design and product quality and the effective operation of the quality system. 3.3. The notified body shall assess the quality system to determine whether it satisfies the requirements referred to in point 3.2. It shall presume conformity with those requirements in respect of the elements of the quality system that comply with the corresponding specifications of the relevant harmonised standard. In addition to experience in quality management systems, the auditing team shall have at least one member experienced as an assessor in the relevant machinery or related product field and technology concerned, and with knowledge of the applicable essential health and safety requirements set out in Annex III. The audit shall include an assessment visit to the manufacturer’s premises. The auditing team shall review the technical documentation referred to in point 3.1(b), to verify the manufacturer’s ability to identify the applicable essential health and safety requirements set out in Annex III and to carry out the necessary examinations with a view to ensuring compliance of the machinery or related product with those requirements. The manufacturer or its authorised representative shall be notified of the decision. The notification shall contain the conclusions of the audit and the reasoned assessment decision. 3.4. The manufacturer shall undertake to fulfil the obligations arising out of the quality system as approved and to maintain it so that it remains adequate and efficient. 3.5. The manufacturer shall keep the notified body that has approved the quality system informed of any intended change to the quality system. The notified body shall evaluate any proposed changes and decide whether the modified quality system will continue to satisfy the requirements referred to in point 3.2 or whether a reassessment is necessary. It shall notify the manufacturer of its decision. The notification shall contain the conclusions of the examination and the reasoned assessment decision.",
+        "4. Surveillance under the responsibility of the notified body 4.1. The purpose of surveillance is to make sure that the manufacturer duly fulfils the obligations arising out of the approved quality system. 4.2. The manufacturer shall, for assessment purposes, allow the notified body access to the design, manufacture, inspection, testing and storage sites, and shall provide that body with all necessary information, in particular: (a) the quality system documentation; (b) the quality records as provided for by the design part of the quality system, such as results of analyses, calculations, tests, etc.; (c) the quality records as provided for by the manufacturing part of the quality system, such as inspection reports and test data, calibration data, qualification reports on the personnel concerned, etc. 4.3. The notified body shall carry out periodic audits to make sure that the manufacturer maintains and applies the quality system and shall provide the manufacturer with an audit report. 4.4. In addition, the notified body may pay unexpected visits to the manufacturer. During such visits, the notified body may, if necessary, carry out product tests, or have them carried out, in order to check the proper functioning of the quality system. It shall provide the manufacturer with a visit report and, if tests have been carried out, with a test report.",
+        "5. CE marking and EU declaration of conformity 5.1. The manufacturer shall affix the required CE marking set out in this Regulation, and, under the responsibility of the notified body referred to in point 3.1, the latter’s identification number to each individual product that satisfies the applicable requirements of this Regulation. 5.2. The manufacturer shall draw up a written EU declaration of conformity for each machinery or related product model and keep it at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product model for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "6. The manufacturer shall, for at least 10 years after the machinery or related product has been placed on the market or put into service, keep at the disposal of the national authorities: (a) the technical documentation referred to in point 3.1(b); (b) the documentation concerning the quality system referred to in point 3.1(c); (c) the information relating to the change referred to in point 3.5, as approved; (d) the decisions and reports of the notified body referred to in points 3.5, 4.3 and 4.4.",
+        "7. Each notified body shall inform its notifying authority of quality system approval decisions issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of quality system approval decisions refused, suspended or otherwise restricted. Each notified body shall inform the other notified bodies of quality system approval decisions, which it has refused, suspended or withdrawn, and, upon request, of quality system approval decisions, which it has issued.",
+        "8. Authorised representative The manufacturer’s obligations set out in points 3.1, 3.5, 5 and 6 may be fulfilled by its authorised representative, on its behalf and under its responsibility, provided that they are specified in the mandate."
       ],
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation",
-        "standards"
-      ],
+      "tags": [],
       "referencedArticles": [
         20
       ]
     },
     {
       "annexNumber": "X",
-      "title": "CONFORMITY BASED ON UNIT VERIFICATION",
+      "title": "",
       "blocks": [
+        "CONFORMITY BASED ON UNIT VERIFICATION",
         "(Module G)",
         "1. Conformity based on unit verification is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2, 3 and 5, and ensures and declares on its sole responsibility that the machinery or related product, which is subject to point 4, is in conformity with the essential health and safety requirements set out in Annex III.",
-        "2. Technical documentation",
-        "The manufacturer shall establish the technical documentation and make it available to the notified body referred to in point 4. The documentation shall make it possible to assess the machinery or related product’s conformity with the relevant essential health and safety requirements set out in Annex III, and shall include an adequate analysis and assessment of the risk(s). The technical documentation shall specify the applicable essential health and safety requirements and cover, as far as relevant for the assessment, the design, manufacture and operation of the machinery or related product.",
-        "The technical documentation shall, wherever applicable, contain at least the following elements:",
-        "(a) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative;",
-        "(b) the technical documentation for the unit of machinery or related products intended to be manufactured.",
-        "In addition, the technical documentation shall, wherever applicable, contain at least:",
-        "(i) the elements set out in points (a) to (g) of Annex IV, Part A;",
-        "(ii) the documentation concerning the quality system; and",
-        "(iii) a written declaration that the same application has not been lodged with any other notified body.",
-        "2.1. The manufacturer shall keep the technical documentation at the disposal of the relevant national authorities for at least 10 years after the machinery or related product has been placed on the market.",
-        "3. Manufacturing",
-        "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured machinery or related product with the applicable essential health and safety requirements set out in Annex III.",
-        "4. Verification",
-        "A notified body chosen by the manufacturer shall carry out appropriate examinations and tests, set out in the relevant harmonised standards and/or common specifications, or equivalent tests, to check the conformity of the machinery or related product with the applicable essential health and safety requirements set out in Annex III, or have them carried out. In the absence of such a harmonised standard and/or common specification the notified body concerned shall decide on the appropriate tests to be carried out.",
-        "The notified body shall issue a certificate in respect of the examinations and tests carried out and shall affix its identification number to the approved machinery or related product, or have it affixed under its responsibility.",
-        "The manufacturer shall keep the certificates at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market.",
-        "5. CE marking and EU declaration of conformity",
-        "5.1. The manufacturer shall affix the required CE marking set out in Article 10(2) and, under the responsibility of the notified body referred to in point 4, that body’s identification number, to the machinery or related product that satisfies the applicable essential health and safety requirements set out in Annex III.",
-        "5.2. The manufacturer shall draw up a written EU declaration of conformity and keep it at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "6. Authorised representative",
-        "The manufacturer’s obligations set out in points 2.1 and 5 may be fulfilled by its authorised representative, acting on its behalf and under its responsibility, provided that those obligations are specified in the mandate."
+        "2. Technical documentation The manufacturer shall establish the technical documentation and make it available to the notified body referred to in point 4. The documentation shall make it possible to assess the machinery or related product’s conformity with the relevant essential health and safety requirements set out in Annex III, and shall include an adequate analysis and assessment of the risk(s). The technical documentation shall specify the applicable essential health and safety requirements and cover, as far as relevant for the assessment, the design, manufacture and operation of the machinery or related product. The technical documentation shall, wherever applicable, contain at least the following elements: (a) the name and address of the manufacturer and, if the application is lodged by an authorised representative, the name and address of that authorised representative; (b) the technical documentation for the unit of machinery or related products intended to be manufactured. In addition, the technical documentation shall, wherever applicable, contain at least: (i) the elements set out in points (a) to (g) of Annex IV, Part A; (ii) the documentation concerning the quality system; and (iii) a written declaration that the same application has not been lodged with any other notified body. 2.1. The manufacturer shall keep the technical documentation at the disposal of the relevant national authorities for at least 10 years after the machinery or related product has been placed on the market.",
+        "3. Manufacturing The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured machinery or related product with the applicable essential health and safety requirements set out in Annex III.",
+        "4. Verification A notified body chosen by the manufacturer shall carry out appropriate examinations and tests, set out in the relevant harmonised standards and/or common specifications, or equivalent tests, to check the conformity of the machinery or related product with the applicable essential health and safety requirements set out in Annex III, or have them carried out. In the absence of such a harmonised standard and/or common specification the notified body concerned shall decide on the appropriate tests to be carried out. The notified body shall issue a certificate in respect of the examinations and tests carried out and shall affix its identification number to the approved machinery or related product, or have it affixed under its responsibility. The manufacturer shall keep the certificates at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market.",
+        "5. CE marking and EU declaration of conformity 5.1. The manufacturer shall affix the required CE marking set out in Article 10(2) and, under the responsibility of the notified body referred to in point 4, that body’s identification number, to the machinery or related product that satisfies the applicable essential health and safety requirements set out in Annex III. 5.2. The manufacturer shall draw up a written EU declaration of conformity and keep it at the disposal of the national authorities for at least 10 years after the machinery or related product has been placed on the market or put into service. The EU declaration of conformity shall identify the machinery or related product for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "6. Authorised representative The manufacturer’s obligations set out in points 2.1 and 5 may be fulfilled by its authorised representative, acting on its behalf and under its responsibility, provided that those obligations are specified in the mandate."
       ],
-      "tags": [
-        "ehsr",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "documentation",
-        "standards"
-      ],
+      "tags": [],
       "referencedArticles": [
         10
       ]
     },
     {
       "annexNumber": "XI",
-      "title": "ASSEMBLY INSTRUCTIONS FOR PARTLY COMPLETED MACHINERY",
+      "title": "",
       "blocks": [
+        "ASSEMBLY INSTRUCTIONS FOR PARTLY COMPLETED MACHINERY",
         "1. The assembly instructions for partly completed machinery shall contain a description of the conditions, which are to be met to ensure that the partly completed machinery is correctly incorporated in the machinery or other partly completed machinery or equipment, and that the machinery or other partly completed machinery or equipment with the incorporated partly completed machinery does not compromise the health and safety of persons and, where appropriate, domestic animals and property, and, where applicable, of the environment.",
         "2. The assembly instructions shall contain relevant information to be used in the instructions of the machinery or other partly completed machinery or equipment, in which the partly completed machinery is to be assembled. Each assembly instruction shall contain, where applicable, at least the following information:",
         "(a) a general description of the partly completed machinery;",
@@ -3999,16 +3718,14 @@ export const machineryAnnexesData = {
         "If the partly completed machinery is intended to be used in machinery covered by Annex III, chapters 2 to 6, the assembly instructions must also contain relevant information to be used in the instructions for use for these machinery.",
         "3. The assembly instructions for partly completed machinery shall contain the EU declaration of incorporation, or the internet address or machine readable code where the EU declaration of incorporation can be accessed."
       ],
-      "tags": [
-        "ehsr",
-        "documentation"
-      ],
+      "tags": [],
       "referencedArticles": []
     },
     {
       "annexNumber": "XII",
-      "title": "CORRELATION TABLE",
+      "title": "",
       "blocks": [
+        "CORRELATION TABLE",
         "Directive 2006/42/EC This Regulation",
         "Article 1 Article 2",
         "Article 2 Article 3",

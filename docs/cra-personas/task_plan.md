@@ -1225,3 +1225,27 @@ Tasks: **15.1** CRA corrigenda + EHDS pending · **15.2** NIS2 R(04) ·
 **15.3** AI Act consolidated pivot + milestone corrections ·
 **15.4** Machinery consolidated pivot · **15.5** lifecycle guard ·
 then GPSR + the remaining 14.4 acts.
+
+- **15.3+15.4 done 2026-08-16 (+ GPSR corpus)** The consolidated pivot:
+  new dialect parser (`eu_consolidated_parser.mjs` — title-division
+  chapters incl. letter suffixes, no-parag paragraph markers, grid-list
+  points, gap-text capture between elements, footnote-definition and
+  modref apparatus excluded), hybrid builder
+  (`build_consolidated_act_corpus.mjs`: recitals from the ORIGINAL OJ
+  source, articles+annexes from the CONSOLIDATED source, both sha-pinned,
+  amendment trail + corrigenda disposition in metadata), consolidated D2
+  with negative control, and `verify_consolidated_corpus.mjs` (A1
+  INVERTED: the consolidated source must self-identify as a documentation
+  text; F1 keeps the disclosure carried). AI Act now 119 articles
+  (4a, 60a, 75a–75d inserted; Annex XIV new; Art 113(c) carries
+  2 Dec 2027 / 2 Aug 2028), Machinery 59 articles (25a–25e, chapter IVa;
+  corrigendum date fixes incorporated), GPSR joins as the NINTH corpus
+  (55 articles, 8a–8c). Readers disclose the basis and reach the inserted
+  articles (Art 25a live, screenshot reviewed); AI Act seeded keyDates
+  corrected to the Omnibus dates (verified against 1744's own Art 113(c)
+  replacement); OJ pipeline retired for the two pivoted acts (rebuilding
+  there would resurrect superseded law). D2 caught THREE parser defects
+  during the build (lost inter-element ";", footnote-definition capture,
+  title-annex-2 mis-titling) before anything shipped. Gates: G1/G3 ·
+  G2 724/0/0 · G4/G5/G8 = 0 · NINE corpus verifiers green with negative
+  controls · G6 live with reviewed screenshots.

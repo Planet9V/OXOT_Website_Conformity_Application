@@ -325,7 +325,7 @@ const FILE_ACT = [
  * them is correct by definition, and "correcting" one would corrupt the very
  * thing every other citation is checked against. Never scan the source of truth.
  */
-const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|red_delegated_2022_30)\//;
+const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|red_delegated_2022_30|gpsr_statutory_corpus)\//;
 
 /**
  * Which act does this file default to? Returns the act, or a skip reason.

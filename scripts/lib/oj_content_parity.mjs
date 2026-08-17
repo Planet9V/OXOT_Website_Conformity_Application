@@ -177,3 +177,114 @@ export function negativeControl({ corpusDir, sourceFile }) {
     fs.writeFileSync(artPath, original);
   }
 }
+
+/**
+ * D2 for CONSOLIDATED-text corpora (task 15.3/15.4): same doctrine, different
+ * dialect. Regions are `div.eli-subdivision#art_X` (balanced) and
+ * `p.title-annex-1` spans; the consolidation APPARATUS (`p.modref` ▼-markers,
+ * superscript footnote refs, page chrome) is excluded BY DEFINITION — it is
+ * EUR-Lex's marking, not the law. Corrigenda/amendments are already
+ * incorporated in a consolidated text, so nothing is applied here.
+ */
+function flattenConsolidatedRegion(html) {
+  return decode(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[\s\S]*?<\/style>/gi, "")
+      .replace(/<p[^>]*class="modref"[^>]*>[\s\S]*?<\/p>/g, "")
+      // Footnote DEFINITIONS (anchored via href="#src.E…") are apparatus,
+      // excluded on both sides — same doctrine as oj-note paragraphs.
+      .replace(/<p\b(?:[^>]*)>(?:(?!<\/p>)[\s\S])*?href="#src\.E[\s\S]*?<\/p>/g, "")
+      .replace(/<span[^>]*class="superscript"[^>]*>[\s\S]*?<\/span>/g, "")
+      .replace(/<[^>]+>/g, " ")
+  )
+    .replace(/\(\s*\)/g, "")
+    .replace(/\s+/g, "");
+}
+
+function balancedDivEndAt(html, start) {
+  let depth = 0;
+  const re = /<div\b|<\/div>/g;
+  re.lastIndex = start;
+  let m;
+  while ((m = re.exec(html)) !== null) {
+    depth += m[0] === "</div>" ? -1 : 1;
+    if (depth === 0) return re.lastIndex;
+  }
+  return html.length;
+}
+
+export function checkConsolidatedContentParity({ corpusDir, consolidatedFile }) {
+  const html = fs.readFileSync(path.join(corpusDir, consolidatedFile), "utf8");
+  const artJson = JSON.parse(fs.readFileSync(path.join(corpusDir, "02_articles_full.json"), "utf8"));
+  const anxJson = JSON.parse(fs.readFileSync(path.join(corpusDir, "03_annexes_full.json"), "utf8"));
+  const articles = artJson.chapters.flatMap((c) => c.articles);
+
+  const heads = [...html.matchAll(/<div class="eli-subdivision" id="art_([0-9]+[a-z]*)">/g)].map((m) => ({
+    n: m[1],
+    index: m.index,
+  }));
+  if (heads.length !== articles.length) {
+    throw new Error(`D2: ${heads.length} article regions in the source vs ${articles.length} in the corpus`);
+  }
+  for (let i = 0; i < heads.length; i++) {
+    const a = articles[i];
+    if (String(a.articleNumber) !== heads[i].n) {
+      throw new Error(`D2: article order mismatch at position ${i + 1}: source art_${heads[i].n} vs corpus ${a.articleNumber}`);
+    }
+    const src = flattenConsolidatedRegion(html.slice(heads[i].index, balancedDivEndAt(html, heads[i].index)));
+    const rebuilt = norm(
+      `Article ${a.articleNumber}` +
+        a.title +
+        a.paragraphs.map((p) => (p.paragraphNumber > 0 ? `${p.paragraphNumber}.` : "") + p.text).join(""),
+    );
+    if (src !== rebuilt) {
+      throw new Error(
+        `D2: Article ${a.articleNumber} character content diverges from the consolidated source (${src.length} vs ${rebuilt.length} chars) ${firstDivergence(src, rebuilt)}`,
+      );
+    }
+  }
+
+  const anxHeads = [...html.matchAll(/<p class="title-annex-1"[^>]*>([\s\S]*?)<\/p>/g)]
+    .map((m) => ({ label: m[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(), index: m.index }))
+    .filter((h) => /^ANNEX\b/i.test(h.label.replace(/ /g, " ")));
+  const annexes = anxJson.annexes;
+  if (anxHeads.length !== annexes.length) {
+    throw new Error(`D2: ${anxHeads.length} annex headings vs ${annexes.length} in the corpus`);
+  }
+  for (let i = 0; i < annexes.length; i++) {
+    const a = annexes[i];
+    const start = anxHeads[i].index;
+    const end = i + 1 < anxHeads.length ? anxHeads[i + 1].index : html.length;
+    const src = flattenConsolidatedRegion(html.slice(start, end));
+    const label = anxHeads[i].label.replace(/ /g, " ");
+    const rebuilt = norm(label + a.title + a.blocks.join(""));
+    if (src !== rebuilt) {
+      throw new Error(
+        `D2: Annex ${a.annexNumber} character content diverges from the consolidated source (${src.length} vs ${rebuilt.length} chars) ${firstDivergence(src, rebuilt)}`,
+      );
+    }
+  }
+  return { articles: articles.length, annexes: annexes.length };
+}
+
+/** Negative control for the consolidated check (L51). */
+export function consolidatedNegativeControl({ corpusDir, consolidatedFile }) {
+  const artPath = path.join(corpusDir, "02_articles_full.json");
+  const original = fs.readFileSync(artPath, "utf8");
+  const mutated = JSON.parse(original);
+  const arts = mutated.chapters.flatMap((c) => c.articles);
+  const target = arts[0].paragraphs[0];
+  target.text = target.text.length > 10 ? `X${target.text.slice(1)}` : `${target.text}X`;
+  try {
+    fs.writeFileSync(artPath, JSON.stringify(mutated));
+    try {
+      checkConsolidatedContentParity({ corpusDir, consolidatedFile });
+      return false;
+    } catch {
+      return true;
+    }
+  } finally {
+    fs.writeFileSync(artPath, original);
+  }
+}

@@ -29,73 +29,10 @@ import {
 const ROOT = process.cwd();
 
 const ACTS = {
-  ai_act: {
-    dir: "docs/ai_act_statutory_corpus",
-    source: "source/CELEX_32024R1689_EN.html",
-    meta: {
-      regulation: "Regulation (EU) 2024/1689",
-      shortTitle: "AI Act",
-      officialJournalReference: "OJ L, 2024/1689, 12.7.2024",
-      celex: "32024R1689",
-      eli: "http://data.europa.eu/eli/reg/2024/1689/oj",
-      sourceUrl: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R1689",
-      adopted: "2024-06-13",
-      entryIntoForce: "2024-08-01",
-      instrumentType: "regulation",
-      nationalTranspositionRequired: false,
-      corrigenda: [],
-      corrigendaVerified: false,
-    },
-    expected: { recitals: 180, chapters: 13, articles: 113, annexes: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII"] },
-    keywords: [
-      [/high-risk AI system/i, "high_risk"],
-      [/prohibited|unacceptable risk/i, "prohibited_practices"],
-      [/general-purpose AI/i, "gpai"],
-      [/transparen/i, "transparency"],
-      [/conformity assessment|notified bod/i, "conformity_assessment"],
-      [/provider|deployer|importer|distributor/i, "operator_roles"],
-      [/market surveillance|enforcement|penalt/i, "supervision_enforcement"],
-      [/risk management system/i, "risk_management"],
-      [/data governance|training data/i, "data_governance"],
-      [/CE marking|declaration of conformity/i, "ce_marking"],
-      [/serious incident/i, "incident_reporting"],
-      [/regulatory sandbox/i, "sandbox"],
-    ],
-  },
-  machinery: {
-    dir: "docs/machinery_statutory_corpus",
-    source: "source/CELEX_32023R1230_EN.html",
-    meta: {
-      regulation: "Regulation (EU) 2023/1230",
-      shortTitle: "Machinery Regulation",
-      officialJournalReference: "OJ L 165, 29.6.2023, p. 1",
-      celex: "32023R1230",
-      eli: "http://data.europa.eu/eli/reg/2023/1230/oj",
-      sourceUrl: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1230",
-      adopted: "2023-06-14",
-      entryIntoForce: "2023-07-19",
-      instrumentType: "regulation",
-      nationalTranspositionRequired: false,
-      corrigenda: [],
-      corrigendaVerified: false,
-    },
-    // Pinned from --discover 2026-08-16, cross-checked against the OJ
-    // document (54 articles ending "Entry into force"; annexes I..XII by
-    // visible headings — the source's own anx_ ids are BROKEN beyond VIII).
-    expected: { recitals: 86, chapters: 9, articles: 54, annexes: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"] },
-    keywords: [
-      [/essential health and safety requirement/i, "ehsr"],
-      [/conformity assessment|notified bod/i, "conformity_assessment"],
-      [/manufacturer|importer|distributor/i, "operator_roles"],
-      [/CE marking|declaration of conformity/i, "ce_marking"],
-      [/market surveillance|enforcement|penalt/i, "supervision_enforcement"],
-      [/safety component/i, "safety_components"],
-      [/substantial modification/i, "substantial_modification"],
-      [/digital|software|cybersecurity|corruption/i, "digital_safety"],
-      [/technical documentation|instructions/i, "documentation"],
-      [/harmonised standard|technical specification/i, "standards"],
-    ],
-  },
+  // ai_act and machinery moved to the CONSOLIDATED pipeline in 15.3/15.4
+  // (amended in force; see build_consolidated_act_corpus.mjs). Rebuilding them
+  // here would resurrect superseded law over the as-amended corpora.
+
   red: {
     dir: "docs/red_statutory_corpus",
     source: "source/CELEX_32014L0053_EN.html",

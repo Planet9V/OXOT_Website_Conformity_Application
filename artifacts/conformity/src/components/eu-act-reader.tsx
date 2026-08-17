@@ -34,13 +34,13 @@ export function EuActReader({
   recitalsData: any;
   articlesData: any;
   annexesData: any;
-  defaultArticle: number;
+  defaultArticle: number | string;
   bodyTestId: string;
 }) {
   type Mode = "articles" | "recitals" | "annexes";
   const [mode, setMode] = useState<Mode>("articles");
   const [query, setQuery] = useState("");
-  const [selectedArticle, setSelectedArticle] = useState<number>(defaultArticle);
+  const [selectedArticle, setSelectedArticle] = useState<number | string>(defaultArticle);
   const [selectedRecital, setSelectedRecital] = useState<number>(1);
   const [selectedAnnex, setSelectedAnnex] = useState<string>(
     annexesData.annexes[0]?.annexNumber ?? "I",
@@ -72,7 +72,7 @@ export function EuActReader({
   );
   const annexes = annexesData.annexes;
 
-  const article = allArticles.find((a: any) => a.articleNumber === selectedArticle);
+  const article = allArticles.find((a: any) => String(a.articleNumber) === String(selectedArticle));
   const recital = recitalsData.recitals.find((r: any) => r.number === selectedRecital);
   const annex = annexes.find((a: any) => a.annexNumber === selectedAnnex);
 
@@ -161,7 +161,7 @@ export function EuActReader({
           {mode === "articles" && article && (
             <>
               <Badge variant="outline" className="font-mono text-[10px]">
-                {actLabel} Art. {article.articleNumber} · Chapter {article.chapterNumber}
+                {actLabel} Art. {article.articleNumber} · Chapter {article.chapterLabel ?? article.chapterNumber}
               </Badge>
               <h2 className="text-xl font-serif text-foreground">{article.title}</h2>
               {article.paragraphs.map((p: any, i: number) => (

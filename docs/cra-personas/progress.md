@@ -253,3 +253,11 @@ the meaning of Art. 64(10).
   reader panel on /library/red with both lifecycle dates quoted verbatim;
   the three Art 3(3) seed rows now name their designated categories.
   G1/G3/G4/G5/G8 green, G2 723/0/0, G6 all PASS, screenshots reviewed.
+
+## 2026-08-16 (night, cont.) — Phase 15 repairs shipped
+- 15.1+15.2 (4aa5176): CRA R(04) + NIS2 R(04) EN corrigenda applied;
+  EHDS pending-amendment metadata; corrigenda dispositions recorded.
+- 15.3+15.4+GPSR: consolidated pivot — AI Act + Machinery corpora now AS
+  AMENDED (Digital Omnibus 2026/1744; 2024/2748 chapter IVa), GPSR ninth
+  corpus; consolidated parser + hybrid builder + D2 + verifier; readers
+  disclose; AI keyDates corrected. All gates green, 724/0/0.

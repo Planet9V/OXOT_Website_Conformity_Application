@@ -3,24 +3,29 @@ import { EuActReader } from "@/components/eu-act-reader";
 import { aiActRecitalsData, aiActArticlesData, aiActAnnexesData } from "@/data/aiActCorpusData";
 
 /**
- * The AI Act reader (task 10.3) — Regulation (EU) 2024/1689 verbatim, from
- * the same reproducible OJ pipeline as every other corpus.
+ * The AI Act reader (task 10.3; consolidated basis since 15.3) — Regulation
+ * (EU) 2024/1689 AS AMENDED, from the EUR-Lex consolidated text. The banner
+ * states the amendment basis from the corpus metadata; the component asserts
+ * nothing of its own about the law.
  */
 export default function AiActReaderPage() {
   return (
     <EuActReader
-      kicker="REFERENCE · VERBATIM OFFICIAL JOURNAL TEXT"
+      kicker="REFERENCE · VERBATIM CONSOLIDATED TEXT (AS AMENDED)"
       actLabel="AI Act"
       title="AI Act"
-      subtitle={`${aiActArticlesData.regulation} · ${aiActArticlesData.officialJournalReference} · CELEX ${aiActArticlesData.celex}. ${aiActArticlesData.totalArticles} articles, ${aiActRecitalsData.recitalsCount} recitals, ${aiActAnnexesData.annexesCount} annexes — reproduced from the Official Journal source and verified byte-for-byte in CI.`}
+      subtitle={`${aiActArticlesData.regulation} as amended · consolidated ${(aiActArticlesData as any).consolidationDate} · CELEX ${(aiActArticlesData as any).consolidatedCelex}. ${aiActArticlesData.totalArticles} articles, ${aiActRecitalsData.recitalsCount} recitals, ${aiActAnnexesData.annexesCount} annexes — articles and annexes from the EUR-Lex consolidated text, recitals from the original OJ publication, verified character-exact in CI.`}
       banner={
         <div className="rounded-2xl border border-border/60 bg-muted/20 px-5 py-4 text-sm text-muted-foreground flex gap-3">
           <Landmark className="h-4 w-4 text-primary shrink-0 mt-0.5" />
           <p>
             <span className="font-medium text-foreground">The AI Act is a regulation</span> —
-            directly applicable, one text in every Member State. Its obligations phase in on
-            the dates the text itself sets; this reader shows the verbatim act and nothing
-            else. This application never renders a verdict on any system under it.
+            directly applicable, one text in every Member State. This reader shows the act{" "}
+            <span className="font-medium text-foreground">as amended by {(aiActArticlesData as any).amendmentTrail?.[0]?.act}</span>{" "}
+            (in force {(aiActArticlesData as any).amendmentTrail?.[0]?.applicableFrom}), built from
+            the EUR-Lex consolidated text — which is a documentation tool without legal effect of
+            its own; the amending acts are the law. This application never renders a verdict on
+            any system under it.
           </p>
         </div>
       }

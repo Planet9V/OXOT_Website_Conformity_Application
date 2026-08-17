@@ -22,28 +22,8 @@ import { checkOjContentParity, negativeControl } from "./lib/oj_content_parity.m
 const ROOT = process.cwd();
 
 const ACTS = {
-  ai_act: {
-    dir: "docs/ai_act_statutory_corpus",
-    source: "source/CELEX_32024R1689_EN.html",
-    bundle: "artifacts/conformity/src/data/aiActCorpusData.ts",
-    marker: "2024/1689",
-    probes: [
-      { article: 6, phrase: "Classification rules for high-risk AI systems" },
-      { article: 50, phrase: "Transparency obligations for providers and deployers" },
-      { article: 5, phrase: "Prohibited AI practices" },
-    ],
-  },
-  machinery: {
-    dir: "docs/machinery_statutory_corpus",
-    source: "source/CELEX_32023R1230_EN.html",
-    bundle: "artifacts/conformity/src/data/machineryCorpusData.ts",
-    marker: "2023/1230",
-    probes: [
-      { article: 10, phrase: "Obligations of manufacturers of machinery" },
-      { article: 25, phrase: "Conformity assessment procedures for machinery" },
-      { article: 23, phrase: "General principles of the CE marking" },
-    ],
-  },
+  // ai_act and machinery are verified by verify_consolidated_corpus.mjs (15.3/15.4).
+
   red: {
     dir: "docs/red_statutory_corpus",
     source: "source/CELEX_32014L0053_EN.html",

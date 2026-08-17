@@ -1,0 +1,1763 @@
+{
+  "regulation": "Regulation (EU) 2023/988",
+  "shortTitle": "General Product Safety Regulation",
+  "officialJournalReference": "OJ L 135, 23.5.2023",
+  "celex": "32023R0988",
+  "consolidatedCelex": "02023R0988-20260529",
+  "eli": "http://data.europa.eu/eli/reg/2023/988/oj",
+  "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R0988",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02023R0988-20260529",
+  "adopted": "2023-05-10",
+  "instrumentType": "regulation",
+  "nationalTranspositionRequired": false,
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-05-29",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2024/2748 (internal market emergency procedures)",
+      "celex": "32024R2748",
+      "eli": "http://data.europa.eu/eli/reg/2024/2748/oj",
+      "applicableFrom": "2026-05-29",
+      "summary": "Inserts chapter IIa (Arts 8a–8c, emergency procedures), Art 3 points 29–30 and amends Art 2(1)."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32023R0988R(01)",
+      "note": "ES, ET, DE, HR, NL, RO, FI only — the English text is not affected."
+    },
+    {
+      "id": "32023R0988R(02)",
+      "note": "PT only."
+    },
+    {
+      "id": "32023R0988R(03)",
+      "note": "ES only."
+    },
+    {
+      "id": "32023R0988R(04)",
+      "note": "ES only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32023R0988_EN.html",
+      "sha256": "2b87abcae7a508bb565ed35a99c42d47d6c85e35e017b97d35cba3da196b478f"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02023R0988-20260529_EN.html",
+      "sha256": "71c9a06a26e76e2cb9f6b2a3eb6b3f10be25cda387f25f17a5ca7a2f93b9f040"
+    }
+  },
+  "sourceSha256": "71c9a06a26e76e2cb9f6b2a3eb6b3f10be25cda387f25f17a5ca7a2f93b9f040",
+  "recitalsCount": 108,
+  "chaptersCount": 11,
+  "totalArticles": 55,
+  "annexesCount": 1,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterLabel": "I",
+      "chapterTitle": "GENERAL PROVISIONS",
+      "articles": [
+        {
+          "articleNumber": "1",
+          "title": "Objective and subject matter",
+          "chapterNumber": 1,
+          "chapterLabel": "I",
+          "chapterTitle": "GENERAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The objective of this Regulation is to improve the functioning of the internal market while providing for a high level of consumer protection."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "This Regulation lays down essential rules on the safety of consumer products placed or made available on the market."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "2",
+          "title": "Scope",
+          "chapterNumber": 1,
+          "chapterLabel": "I",
+          "chapterTitle": "GENERAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "This Regulation applies to products that are placed or made available on the market insofar as there are no specific provisions with the same objective under Union law which regulate the safety of the products concerned.\nWhere products are subject to specific safety requirements imposed by Union law, this Regulation applies only to those aspects and risks or categories of risks which are not covered by those requirements.\nWith regard to products subject to specific requirements imposed by Union harmonisation legislation as defined in Article 3, point (27):\n(a) Chapter II does not apply insofar as the risks or categories of risks covered by Union harmonisation legislation are concerned;\n(b) Chapter IIa, Chapter III, Section 1, Chapters V and VII and Chapters IX to XI do not apply."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "This Regulation does not apply to:\n(a) medicinal products for human or veterinary use;\n(b) food;\n(c) feed;\n(d) living plants and animals, genetically modified organisms and genetically modified microorganisms in contained use, as well as products of plants and animals relating directly to their future reproduction;\n(e) animal by-products and derived products;\n(f) plant protection products;\n(g) equipment on which consumers ride or travel where that equipment is directly operated by a service provider within the context of a transport service provided to consumers and is not operated by the consumers themselves;\n(h) aircraft referred to in Article 2(3), point (d) of Regulation (EU) 2018/1139;\n(i) antiques."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "This Regulation applies to products placed or made available on the market whether new, used, repaired or reconditioned. It does not apply to products to be repaired or reconditioned prior to being used where those products are placed or made available on the market and are clearly marked as such."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "This Regulation is without prejudice to the rules laid down by Union law on consumer protection."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "This Regulation shall be implemented taking due account of the precautionary principle."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            2,
+            3
+          ]
+        },
+        {
+          "articleNumber": "3",
+          "title": "Definitions",
+          "chapterNumber": 1,
+          "chapterLabel": "I",
+          "chapterTitle": "GENERAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "For the purposes of this Regulation the following definitions apply:\n(1) ‘product’ means any item, whether or not it is interconnected to other items, supplied or made available, whether for consideration or not, including in the context of providing a service, which is intended for consumers or is likely, under reasonably foreseeable conditions, to be used by consumers even if not intended for them;\n(2) ‘safe product’ means any product which, under normal or reasonably foreseeable conditions of use, including the actual duration of use, does not present any risk or only the minimum risks compatible with the product’s use, considered acceptable and consistent with a high level of protection of the health and safety of consumers;\n(3) ‘dangerous product’ means any product which is not a ‘safe product’;\n(4) ‘risk’ means the combination of the probability of an occurrence of a hazard causing harm and the degree of severity of that harm;\n(5) ‘serious risk’ means a risk which, based on a risk assessment and taking into account the normal and foreseeable use of the product, is considered to require rapid intervention by the market surveillance authorities, including cases where the effects of the risk are not immediate;\n(6) ‘making available on the market’ means any supply of a product for distribution, consumption or use on the Union market in the course of a commercial activity, whether in return for payment or free of charge;\n(7) ‘placing on the market’ means the first making available of a product on the Union market;\n(8) ‘manufacturer’ means any natural or legal person who manufactures a product or has a product designed or manufactured, and markets that product under that person’s name or trademark;\n(9) ‘authorised representative’ means any natural or legal person established within the Union who has received a written mandate from a manufacturer to act on that manufacturer’s behalf in relation to specified tasks with regard to the manufacturer’s obligations under this Regulation;\n(10) ‘importer’ means any natural or legal person established within the Union who places a product from a third country on the Union market;\n(11) ‘distributor’ means any natural or legal person in the supply chain, other than the manufacturer or the importer, who makes a product available on the market;\n(12) ‘fulfilment service provider’ means any natural or legal person offering, in the course of commercial activity, at least two of the following services: warehousing, packaging, addressing and dispatching, without having ownership of the products involved, excluding postal services as defined in Article 2, point (1) of Directive 97/67/EC of the European Parliament and of the Council , parcel delivery services as defined in Article 2, point (2) of Regulation (EU) 2018/644 of the European Parliament and of the Council , and any other postal services or freight transport services;\n(13) ‘economic operator’ means the manufacturer, the authorised representative, the importer, the distributor, the fulfilment service provider or any other natural or legal person who is subject to obligations in relation to the manufacture of products or making them available on the market in accordance with this Regulation;\n(14) ‘provider of an online marketplace’ means a provider of an intermediary service using an online interface which allows consumers to conclude distance contracts with traders for the sale of products;\n(15) ‘online interface’ means any software, including a website, part of a website or an application, including mobile applications;\n(16) ‘distance contract’ means a distance contract as defined in Article 2, point (7), of Directive 2011/83/EU;\n(17) ‘consumer’ means any natural person who acts for purposes which are outside that person’s trade, business, craft or profession;\n(18) ‘trader’ means any natural person or any legal person irrespective of whether privately or publicly owned, who is acting, including through any person acting in that natural or legal person’s name or on that natural or legal person’s behalf, for purposes relating to the natural or legal person’s trade, business, craft or profession;\n(19) ‘European standard’ means a European standard as defined in Article 2, point (1), point (b) of Regulation (EU) No 1025/2012;\n(20) ‘international standard’ means an international standard as defined in Article 2, point (1), point (a) of Regulation (EU) No 1025/2012;\n(21) ‘national standard’ means a national standard as defined in Article 2, point (1), point (d) of Regulation (EU) No 1025/2012;\n(22) ‘European standardisation organisation’ means a European standardisation organisation as listed in Annex I to Regulation (EU) No 1025/2012;\n(23) ‘market surveillance’ means the activities carried out and measures taken by market surveillance authorities to ensure that products comply with the requirements set out in this Regulation;\n(24) ‘market surveillance authority’ means an authority designated by a Member State under Article 10 of Regulation (EU) 2019/1020 as responsible for organising and carrying out market surveillance in the territory of that Member State;\n(25) ‘recall’ means any measure aimed at achieving the return of a product that has already been made available to the consumer;\n(26) ‘withdrawal’ means any measure aimed at preventing a product in the supply chain from being made available on the market;\n(27) ‘Union harmonisation legislation’ means Union legislation listed in Annex I to Regulation (EU) 2019/1020 and any other Union legislation harmonising the conditions for the marketing of products to which that Regulation applies;\n(28) ‘antiques’ means products, such as collectors’ items or works of art, in relation to which consumers cannot reasonably expect that they fulfil state-of-the-art safety standards;\n(29) ‘crisis-relevant goods’ means crisis-relevant goods as defined in Article 3, point (6), of Regulation (EU) 2024/2747 of the European Parliament and of the Council ;\n(30) ‘internal market emergency mode’ means internal market emergency mode as defined in Article 3, point (3), of Regulation (EU) 2024/2747."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "recall",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            2,
+            3,
+            10
+          ]
+        },
+        {
+          "articleNumber": "4",
+          "title": "Distance sales",
+          "chapterNumber": 1,
+          "chapterLabel": "I",
+          "chapterTitle": "GENERAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Products offered for sale online or through other means of distance sales shall be deemed to be made available on the market if the offer is targeted at consumers in the Union. An offer for sale shall be considered to be targeted at consumers in the Union if the relevant economic operator directs, by any means, its activities to one or more Member States."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        }
+      ]
+    },
+    {
+      "chapterNumber": 2,
+      "chapterLabel": "II",
+      "chapterTitle": "SAFETY REQUIREMENTS",
+      "articles": [
+        {
+          "articleNumber": "5",
+          "title": "General safety requirement",
+          "chapterNumber": 2,
+          "chapterLabel": "II",
+          "chapterTitle": "SAFETY REQUIREMENTS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Economic operators shall place or make available on the market only safe products."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "6",
+          "title": "Aspects for assessing the safety of products",
+          "chapterNumber": 2,
+          "chapterLabel": "II",
+          "chapterTitle": "SAFETY REQUIREMENTS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "When assessing whether a product is a safe product, the following aspects in particular shall be taken into account:\n(a) the characteristics of the product, including its design, technical features, composition, packaging, instructions for assembly and, where applicable, for installation, use and maintenance;\n(b) the effect on other products, where it is reasonably foreseeable that the product will be used with other products, including the interconnection of those products;\n(c) the effect that other products might have on the product to be assessed, where it is reasonably foreseeable that other products will be used with that product, including the effect of non-embedded items that are meant to determine, change or complete the way the product to be assessed works, which has to be taken into consideration when assessing the safety of the product to be assessed;\n(d) the presentation of the product, the labelling, including the labelling regarding age suitability for children, any warnings and instructions for its safe use and disposal, and any other indication or information regarding the product;\n(e) the categories of consumers using the product, in particular by assessing the risk for vulnerable consumers such as children, older people and persons with disabilities, as well as the impact of gender differences on health and safety;\n(f) the appearance of the product where it is likely to lead consumers to use the product in a way different to what it was designed for, and in particular:\n(i) where a product, although not foodstuff, resembles foodstuff and is likely to be confused with foodstuff due to its form, odour, colour, appearance, packaging, labelling, volume, size or other characteristics and might therefore be placed in the mouth, sucked or ingested by consumers, especially by children;\n(ii) where a product, although neither designed nor intended for use by children, is likely to be used by children or resembles an object commonly recognised as appealing to or intended for use by children because of its design, packaging or characteristics;\n(g) when required by the nature of the product, the appropriate cybersecurity features necessary to protect the product against external influences, including malicious third parties, where such an influence might have an impact on the safety of the product, including the possible loss of interconnection;\n(h) when required by the nature of the product, the evolving, learning and predictive functionalities of the product."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The feasibility of obtaining higher levels of safety or the availability of other products presenting a lesser degree of risk shall not constitute grounds for considering a product to be a dangerous product."
+            }
+          ],
+          "tags": [
+            "dangerous_product"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "7",
+          "title": "Presumption of conformity with the general safety requirement",
+          "chapterNumber": 2,
+          "chapterLabel": "II",
+          "chapterTitle": "SAFETY REQUIREMENTS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "For the purpose of this Regulation, a product shall be presumed to be in conformity with the general safety requirement laid down in Article 5 of this Regulation in the following cases:\n(a) it conforms to relevant European standards or parts thereof as far as the risks and risk categories covered by those standards are concerned, the references of which have been published in the Official Journal of the European Union in accordance with Article 10(7) of Regulation (EU) No 1025/2012; or\n(b) in the absence of any relevant European standards as referred to in point (a) of this paragraph, the product conforms to national requirements, as regards the risks and risk categories covered by health and safety requirements laid down in the national law of the Member State in which it is made available on the market, provided that such law is in compliance with Union law."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission shall adopt implementing acts determining the specific safety requirements to be covered by European standards in order to ensure that products which conform to those European standards satisfy the general safety requirement laid down in Article 5. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 46(3)."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "However, the presumption of conformity with the general safety requirement under paragraph 1 shall not prevent market surveillance authorities from taking all appropriate measures under this Regulation where there is evidence that, despite such presumption, the product is dangerous."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            5,
+            10,
+            46
+          ]
+        },
+        {
+          "articleNumber": "8",
+          "title": "Additional elements to be taken into account for assessing the safety of products",
+          "chapterNumber": 2,
+          "chapterLabel": "II",
+          "chapterTitle": "SAFETY REQUIREMENTS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "For the purpose of Article 6 and where the presumption of safety under Article 7 does not apply, when assessing whether a product is safe, the following elements in particular shall be taken into account, when available:\n(a) European standards other than those the references of which have been published in the Official Journal of the European Union in accordance with Article 10(7) of Regulation (EU) No 1025/2012;\n(b) international standards;\n(c) international agreements;\n(d) voluntary certification schemes or similar third-party conformity assessment frameworks, in particular those conceived to support Union law;\n(e) Commission recommendations or guidelines on product safety assessment;\n(f) national standards drawn up in the Member State in which the product is made available;\n(g) the state of the art and technology, including the opinion of recognised scientific bodies and expert committees;\n(h) product safety codes of good practice in force in the sector concerned;\n(i) reasonable consumer expectations concerning safety;\n(j) safety requirements adopted in accordance with Article 7(2)."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            6,
+            7,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 1,
+      "chapterLabel": "",
+      "chapterTitle": "EMERGENCY PROCEDURES",
+      "articles": [
+        {
+          "articleNumber": "8a",
+          "title": "Application of emergency procedures",
+          "chapterNumber": 1,
+          "chapterLabel": "",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Articles 8b and 8c of this Regulation shall apply only if the Commission has adopted an implementing act pursuant to Article 28 of Regulation (EU) 2024/2747 with respect to products covered by this Regulation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Articles 8b and 8c of this Regulation shall apply only to products covered by this Regulation which have been designated as crisis-relevant goods pursuant to Article 18(4) of Regulation (EU) 2024/2747."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Articles 8b and 8c of this Regulation shall apply only during the internal market emergency mode that has been activated in accordance with Article 18 of Regulation (EU) 2024/2747."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            18,
+            28
+          ]
+        },
+        {
+          "articleNumber": "8b",
+          "title": "Presumption of conformity with the general safety requirement in the context of an internal market emergency",
+          "chapterNumber": 1,
+          "chapterLabel": "",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "In addition to the presumption of conformity laid down in Article 7 of this Regulation, where severe disruptions to the functioning of the internal market, which were taken into consideration when the internal market emergency mode was activated in accordance with Article 18 of Regulation (EU) 2024/2747, significantly restrict the possibilities for manufacturers to make use of relevant European standards the references of which have already been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012, the presumption of conformity with the general safety requirement laid down in Article 5 may also be established for the purpose of placing products on the market if the product conforms to national requirements as regards the risks and risk categories covered by health and safety requirements laid down in the national law of the Member State in which the product is made available on the market, provided that such law is in compliance with Union law."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "In addition to the cases where the presumption of conformity with the general safety requirement laid down in Article 5 of this Regulation applies under paragraph 1 of this Article and Article 7(1) of this Regulation, Member States shall take all appropriate measures to ensure that, for the purpose of placing or making available of products on the market, their competent authorities consider that products which comply with relevant European standards other than those the references of which have been published in the Official Journal of the European Union in accordance with Article 10(7) of Regulation (EU) No 1025/2012, with relevant international standards developed by a recognised international standardisation body as defined in Article 2(9) of Regulation (EU) No 1025/2012, or with relevant national standards developed by a national standardisation body as defined in Article 2(10) of Regulation (EU) No 1025/2012, are presumed to meet the general safety requirement laid down in this Regulation as far as the risks and risk categories covered by those standards are concerned, unless such standards are not adequate in view of the other elements of Articles 6 and 8 of this Regulation."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Article 7(3) applies to the presumption of conformity established in accordance with this Article."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            2,
+            5,
+            7,
+            10,
+            18
+          ]
+        },
+        {
+          "articleNumber": "8c",
+          "title": "Prioritisation of market surveillance activities and mutual assistance among authorities",
+          "chapterNumber": 1,
+          "chapterLabel": "",
+          "chapterTitle": "EMERGENCY PROCEDURES",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall prioritise market surveillance activities for products covered by this Regulation that are listed in the implementing act referred to in Article 8a(1)."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The market surveillance authorities of the Member States shall ensure that best efforts are made to provide assistance to other market surveillance authorities during an internal market emergency mode."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        }
+      ]
+    },
+    {
+      "chapterNumber": 3,
+      "chapterLabel": "III",
+      "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+      "articles": [
+        {
+          "articleNumber": "9",
+          "title": "Obligations of manufacturers",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "When placing their products on the market, manufacturers shall ensure that those products have been designed and manufactured in accordance with the general safety requirement laid down in Article 5."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Before placing their products on the market, manufacturers shall carry out an internal risk analysis and draw up technical documentation containing at least a general description of the product and its essential characteristics relevant for assessing its safety.\nWhere appropriate with regard to possible risks related to the product, the technical documentation referred to in the first subparagraph shall also contain, as applicable:\n(a) an analysis of the possible risks related to the product and the solutions adopted to eliminate or mitigate such risks, including the outcome of any reports related to tests conducted by the manufacturer or by another party on their behalf; and\n(b) the list of any relevant European standards as referred to in Article 7(1), point (a), or the other elements referred to in Article 7(1), point (b) or Article 8, applied to meet the general safety requirement laid down in Article 5.\nWhere any of the European standards, health and safety requirements or elements as referred to in Article 7(1) or Article 8 have been only partly applied, the manufacturers shall identify the parts which have been applied."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Manufacturers shall ensure that the technical documentation referred to in paragraph 2 is up to date. They shall keep that documentation at the disposal of the market surveillance authorities for a period of 10 years after the product has been placed on the market and make that documentation available to those authorities upon request."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Manufacturers shall ensure that procedures are in place for products produced in series to remain in conformity with the general safety requirement laid down in Article 5."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Manufacturers shall ensure that their products bear a type, batch or serial number or other element enabling the identification of the product and which is easily visible and legible for consumers, or, where the size or nature of the product does not allow it, that the required information is provided on the packaging or in a document accompanying the product."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Manufacturers shall indicate their name, their registered trade name or registered trade mark, their postal and electronic address and, where different, the postal or electronic address of the single contact point at which they can be contacted. That information shall be placed on the product or, where that is not possible, on its packaging or in a document accompanying the product."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "Manufacturers shall ensure that their product is accompanied by clear instructions and safety information in a language which can be easily understood by consumers, as determined by the Member State in which the product is made available on the market. That requirement shall not apply where the product can be used safely and as intended by the manufacturer without such instructions and safety information."
+            },
+            {
+              "paragraphNumber": 8,
+              "text": "Where a manufacturer considers or has reason to believe, on the basis of the information in that manufacturer’s possession, that a product which it has placed on the market is a dangerous product, the manufacturer shall immediately:\n(a) take the corrective measures necessary to bring in an effective manner the product into conformity, including a withdrawal or recall, as appropriate;\n(b) inform consumers thereof, in accordance with Article 35 or 36, or both; and\n(c) inform, through the Safety Business Gateway, the market surveillance authorities of the Member States in which the product has been made available on the market thereof.\nFor the purposes of points (b) and (c) of the first subparagraph, the manufacturer shall give details, in particular, of the risk to the health and safety of consumers and of any corrective measure already taken, and, if available, of the quantity, by Member State, of products still circulating on the market."
+            },
+            {
+              "paragraphNumber": 9,
+              "text": "The Commission shall ensure that the information meant to alert consumers can be provided by manufacturers through the Safety Business Gateway and is made available to consumers on the Safety Gate Portal without undue delay."
+            },
+            {
+              "paragraphNumber": 10,
+              "text": "Manufacturers shall ensure that other economic operators, responsible persons, and providers of online marketplaces in the supply chain concerned are kept informed in a timely manner of any safety issue that they have identified."
+            },
+            {
+              "paragraphNumber": 11,
+              "text": "Manufacturers shall make publicly available communication channels such as a telephone number, electronic address or dedicated section of their website, taking into account accessibility needs for persons with disabilities, enabling consumers to submit complaints and to inform manufacturers of any accident or safety issue they have experienced with a product."
+            },
+            {
+              "paragraphNumber": 12,
+              "text": "Manufacturers shall investigate complaints submitted, and information received on accidents, that concern the safety of products they made available on the market and which have been alleged to be dangerous by the complainant, and shall keep an internal register of those complaints as well as of product recalls and any corrective measures taken to bring the product into conformity."
+            },
+            {
+              "paragraphNumber": 13,
+              "text": "The internal register of complaints shall only store those personal data that are necessary for the manufacturer to investigate the complaint about an alleged dangerous product. Such data shall only be kept as long as is necessary for the purposes of the investigation and in any event no longer than five years after the data have been entered."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "recall",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            5,
+            7,
+            8,
+            35
+          ]
+        },
+        {
+          "articleNumber": "10",
+          "title": "Obligations of authorised representatives",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A manufacturer may, by means of a written mandate, appoint an authorised representative."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "An authorised representative shall perform the tasks specified in the mandate received from the manufacturer. The authorised representative shall provide the market surveillance authorities with a copy of that mandate upon request. The mandate shall allow the authorised representative to perform at least the following tasks:\n(a) providing a market surveillance authority, upon that authority’s reasoned request, with all information and documentation necessary to demonstrate the safety of the product in an official language which can be understood by that authority;\n(b) where the authorised representative considers or has reason to believe that a product in question is a dangerous product, informing the manufacturer thereof;\n(c) informing the competent national authorities about any action taken to eliminate the risks posed by products covered by their mandate through a notification in the Safety Business Gateway, where the information has not been already provided by the manufacturer or upon instruction of the manufacturer;\n(d) cooperating with the competent national authorities, at their request, on any action taken to eliminate in an effective manner the risks posed by products covered by their mandate."
+            }
+          ],
+          "tags": [
+            "dangerous_product"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "11",
+          "title": "Obligations of importers",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Before placing a product on the market, importers shall ensure that the product complies with the general safety requirement laid down in Article 5 and that the manufacturer has complied with the requirements set out in Article 9(2), (5) and (6)."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Where an importer considers or has reason to believe, on the basis of the information in that importer’s possession, that a product is not in conformity with Article 5 and Article 9(2), (5) and (6), the importer shall not place the product on the market until the product has been brought into conformity. Furthermore, where the product is a dangerous product, the importer shall immediately inform the manufacturer thereof and ensure that the market surveillance authorities are informed thereof through the Safety Business Gateway."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Importers shall indicate their name, their registered trade name or registered trade mark, their postal and electronic address and, where different, the postal or electronic address of the single contact point at which they can be contacted. That information shall be placed on the product or, where that is not possible, on its packaging or in a document accompanying the product. Importers shall ensure that any additional label does not obscure any information required by Union law on the label provided by the manufacturer."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Importers shall ensure that the product they imported is accompanied by clear instructions and safety information in a language which can be easily understood by consumers, as determined by the Member State in which the product is made available on the market, except where the product can be used safely and as intended by the manufacturer without such instructions and safety information."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Importers shall ensure that, while a product is under their responsibility, storage or transport conditions do not jeopardise its conformity with the general safety requirement laid down in Article 5 and its conformity with Article 9(5) and (6)."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Importers shall keep the copy of technical documentation referred to in Article 9(2) at the disposal of the market surveillance authorities for a period of 10 years after they have placed the product on the market and shall ensure that the documents referred to in Article 9(2), as applicable, can be made available to those authorities, upon request."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "Importers shall cooperate with market surveillance authorities and the manufacturer to ensure that a product is safe."
+            },
+            {
+              "paragraphNumber": 8,
+              "text": "Where an importer considers or has reason to believe, on the basis of the information in that importer’s possession, that a product which it has placed on the market is a dangerous product, the importer shall immediately:\n(a) inform the manufacturer thereof;\n(b) ensure that the corrective measures necessary to bring in an effective manner the product into conformity are taken including withdrawal or recall, as appropriate; where such measures have not been taken, the importer shall immediately take them;\n(c) ensure that consumers are immediately informed thereof in accordance with Article 35 or 36, or both; and\n(d) inform the market surveillance authorities of the Member States in which the product has been made available on the market thereof, through the Safety Business Gateway.\nFor the purposes of points (c) and (d) of the first subparagraph the importer shall give details, in particular, of the risk to health and safety of consumers and of any corrective measure already taken, and, if available, of the quantity, by Member State, of products still circulating on the market."
+            },
+            {
+              "paragraphNumber": 9,
+              "text": "Importers shall verify whether the communication channels referred to in Article 9(11) are publicly available to consumers, thereby allowing them to present complaints and communicate any accident or safety issue they have experienced with the product. If such channels are not available, importers shall provide for them, taking into account accessibility needs for persons with disabilities."
+            },
+            {
+              "paragraphNumber": 10,
+              "text": "Importers shall investigate complaints submitted, and information received on accidents, that concern the safety of products they made available on the market, which the complainant has alleged to be dangerous, and file those complaints, as well as product recalls and any corrective measures taken to bring the product into conformity, in the register referred to in Article 9(12), or in their own internal register. Importers shall keep the manufacturer, distributors and, where relevant, fulfilment service providers and providers of online marketplaces informed in a timely manner of the investigation performed and of the results of the investigation."
+            },
+            {
+              "paragraphNumber": 11,
+              "text": "The register of complaints shall only store those personal data that are necessary for the importer to investigate the complaint about an alleged dangerous product. Such data shall only be kept for as long as is necessary for the purposes of the investigation and in any event no longer than five years after the data have been entered."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "recall",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            5,
+            9,
+            35
+          ]
+        },
+        {
+          "articleNumber": "12",
+          "title": "Obligations of distributors",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Before making a product available on the market, distributors shall verify that the manufacturer and, where applicable, the importer have complied with the requirements set out in Article 9(5), (6) and (7) and Article 11(3) and (4), as applicable."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Distributors shall ensure that, while a product is under their responsibility, storage or transport conditions do not jeopardise its conformity with the general safety requirement laid down in Article 5 and its conformity with Article 9(5), (6) and (7) and Article 11(3) and (4), as applicable."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Where a distributor considers or has reason to believe, on the basis of the information in that distributor’s possession, that a product is not in conformity with Article 5, Article 9(5), (6) and (7), and Article 11(3) and (4), as applicable, the distributor shall not make the product available on the market unless the product has been brought into conformity."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Where a distributor considers or has reason to believe, on the basis of the information in that distributor’s possession, that a product which it has made available on the market is a dangerous product or is not in conformity with Article 9(5), (6) and (7) and Article 11(3) and (4), as applicable, the distributor shall:\n(a) immediately inform the manufacturer or the importer, as applicable, thereof;\n(b) ensure that the corrective measures necessary to bring in an effective manner the product into conformity are taken, including withdrawal or recall, as appropriate; and\n(c) ensure that the market surveillance authorities of the Member States in which the product has been made available on the market are immediately informed thereof through the Safety Business Gateway.\nFor the purposes of points (b) and (c) of the first subparagraph the distributor shall give appropriate details available to it of the risk to health and safety of consumers, of the number of products involved and of any corrective measure already taken."
+            }
+          ],
+          "tags": [
+            "recall",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            5,
+            9,
+            11
+          ]
+        },
+        {
+          "articleNumber": "13",
+          "title": "Cases in which obligations of manufacturers apply to other persons",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A natural or legal person shall be deemed to be a manufacturer for the purposes of this Regulation and shall be subject to the obligations of the manufacturer set out in Article 9 where that natural or legal person places a product on the market under the natural or legal person’s name or trademark."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "A natural or legal person, other than the manufacturer, that substantially modifies the product, shall be deemed to be a manufacturer for the purposes of this Regulation and shall be subject to the obligations of the manufacturer set out in Article 9 for the part of the product affected by the modification or for the entire product if the substantial modification has an impact on its safety."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "A modification of a product, by physical or digital means, shall be deemed to be substantial where it has an impact on the safety of the product and the following criteria are met:\n(a) the modification changes the product in a manner which was not foreseen in the initial risk assessment of the product;\n(b) the nature of the hazard has changed, a new hazard has been created or the level of risk has increased because of the modification; and\n(c) the modifications have not been made by the consumers themselves or on their behalf for their own use."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            9
+          ]
+        },
+        {
+          "articleNumber": "14",
+          "title": "Internal processes for product safety",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Economic operators shall ensure that they have internal processes for product safety in place, allowing them to comply with the relevant requirements of this Regulation."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "15",
+          "title": "Cooperation of economic operators with market surveillance authorities",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Economic operators shall cooperate with market surveillance authorities regarding actions which could eliminate or mitigate risks that are presented by the products which they made available on the market."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "On request by a market surveillance authority, the economic operator shall provide all necessary information, in particular:\n(a) a full description of the risk presented by the product, related complaints and known accidents; and\n(b) a description of any corrective measure taken to address the risk."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "On request, the economic operators shall also identify and communicate the following relevant traceability information for the product:\n(a) any economic operator who has supplied them with the product, or with a part, a component or any software embedded into the product; and\n(b) any economic operator to whom they have supplied the product."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Economic operators shall be able to present the information referred to in paragraph 2 for a period of 10 years after they have been supplied with the product or after they have supplied the product, as applicable."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Economic operators shall be able to present the information referred to in paragraph 3 for a period of six years after they have been supplied with the product, or with a part, a component or any software embedded into the product, or after they have supplied the product, as applicable."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Market surveillance authorities may request the economic operators to submit regular progress reports and may decide whether or when the corrective measure can be considered completed."
+            }
+          ],
+          "tags": [
+            "traceability"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "16",
+          "title": "Responsible person for products placed on the Union market",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A product covered by this Regulation shall not be placed on the market unless there is an economic operator established in the Union who is responsible for the tasks set out in Article 4(3) of Regulation (EU) 2019/1020 in respect to that product. Article 4(2) and (3) of that Regulation shall apply to products covered by this Regulation. For the purposes of this Regulation, references to ‘Union harmonisation legislation’ and ‘applicable Union harmonisation legislation’ in Article 4(3) of that Regulation shall be read as ‘this Regulation’."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Without prejudice to any obligations of economic operators under this Regulation, in addition to the tasks referred to in Article 4(3) of Regulation (EU) 2019/1020, and to ensure the safety of the product it is responsible for, where appropriate with regard to the possible risks related to a product, the economic operator referred to in paragraph 1 of this Article shall regularly check:\n(a) that the product complies with the technical documentation referred to in Article 9(2) of this Regulation;\n(b) that the product complies with the requirements provided for in Article 9(5), (6) and (7) of this Regulation.\nThe economic operator referred to in paragraph 1 of this Article shall, upon request by the market surveillance authorities, provide documented evidence of the checks performed."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The name, registered trade name or registered trade mark, and contact details, including the postal and electronic address, of the economic operator referred to in paragraph 1 shall be indicated on the product or on its packaging, the parcel or an accompanying document."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            4,
+            9
+          ]
+        },
+        {
+          "articleNumber": "17",
+          "title": "Information to economic operators",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall provide economic operators, free of charge, with general information with respect to this Regulation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Member States shall provide economic operators, at their request and free of charge, with specific information with respect to the implementation of this Regulation at national level and national rules on product safety applicable to products covered by this Regulation. For that purpose, Article 9(1) and (4) of Regulation (EU) 2019/515 of the European Parliament and of the Council shall apply.\nThe Commission shall adopt specific guidelines for economic operators, with particular regard to the needs of those that qualify as SMEs, including micro-enterprises, on how to fulfil the obligations laid down in this Regulation."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            9
+          ]
+        },
+        {
+          "articleNumber": "18",
+          "title": "Specific traceability requirements for certain products, categories or groups of products",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "For certain products, categories or groups of products which are likely to present a serious risk to the health and safety of consumers, based on accidents registered in the Safety Business Gateway, the Safety Gate statistics, the results of the joint activities on product safety and other relevant indicators or evidence, and after consulting the Consumer Safety Network, relevant expert groups and relevant stakeholders, the Commission may set up a system of traceability to which economic operators who place and make available those products on the market shall adhere."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The system of traceability shall consist of the collection and storage of data, including by electronic means, enabling the identification of the product, its components or of the economic operators involved in its supply chain, as well as in modalities to display and to access those data, including placement of a data carrier on the product, its packaging or accompanying documents."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Commission is empowered to adopt delegated acts in accordance with Article 45 to supplement this Regulation by:\n(a) determining the products, categories or groups of products or components likely to present a serious risk to the health and safety of consumers as referred to in paragraph 1; the Commission shall state in the delegated acts concerned whether it has used the risk analysis methodology provided for in Commission Implementing Decision (EU) 2019/417 or, if that methodology is not appropriate for the product concerned, it shall give a detailed description of the methodology used;\n(b) specifying the type of data which economic operators are to collect and store by means of the system of traceability referred to in paragraph 2;\n(c) specifying the modalities to display and to access data, including placement of a data carrier on the product, its packaging or accompanying documents as referred to in paragraph 2;\n(d) specifying the actors that shall have access to the data as referred to in point (b) and to what data they shall have access, including consumers, economic operators, providers of online marketplaces, competent national authorities, the Commission, and public interest organisations, or any organisation acting on their behalf."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Market surveillance authorities, consumers, economic operators and other relevant actors shall have access free of charge to the data referred to in paragraph 3 based on their respective access rights set out in the applicable delegated act adopted pursuant to paragraph 3, point (d)."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "When adopting the measures referred to in paragraph 3, the Commission shall take into account:\n(a) the cost-effectiveness of the measures, including the impact of the measures on businesses, in particular SMEs;\n(b) an adequate timeframe to allow economic operators to prepare for those measures; and\n(c) the compatibility and interoperability with other product traceability systems already set up at Union or at international level."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "traceability"
+          ],
+          "referencedArticles": [
+            45
+          ]
+        },
+        {
+          "articleNumber": "19",
+          "title": "Obligations of economic operators in the case of distance sales",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Where economic operators make products available on the market online or through other means of distance sales, the offer of those products shall clearly and visibly indicate at least the following information:\n(a) name, registered trade name or registered trade mark of the manufacturer, as well as the postal and electronic address at which they can be contacted;\n(b) where the manufacturer is not established in the Union, the name, postal and electronic address of the responsible person within the meaning of Article 16(1) of this Regulation or Article 4(1) of Regulation (EU) 2019/1020;\n(c) information allowing the identification of the product, including a picture of it, its type and any other product identifier; and\n(d) any warning or safety information to be affixed to the product or to the packaging or included in an accompanying document in accordance with this Regulation or the applicable Union harmonisation legislation in a language which can be easily understood by consumers, as determined by the Member State in which the product is made available on the market."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            4,
+            16
+          ]
+        },
+        {
+          "articleNumber": "20",
+          "title": "Obligations of economic operators in the case of accidents related to safety of products",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The manufacturer shall ensure that, through the Safety Business Gateway, an accident caused by a product placed or made available on the market is notified, without undue delay from the moment it knows about the accident, to the competent authorities of the Member State where the accident has occurred. The notification shall include the type and identification number of the product as well as the circumstances of the accident, if known. The manufacturer shall notify, upon request, to the competent authorities any other relevant information."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "For the purpose of paragraph 1, the manufacturer shall notify the competent authorities of the occurrences associated with the use of a product that resulted in an individual’s death or in serious adverse effects on that individual’s health and safety, permanent or temporary, including injuries, other damage to the body, illnesses and chronic health effects."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The importers and the distributors which have knowledge of an accident caused by a product that they placed or made available on the market shall without undue delay inform the manufacturer thereof. The manufacturer shall make the notification in accordance with paragraph 1 or instruct the importer or one of the distributors to make the notification."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Where the manufacturer of the product is not established in the Union, the responsible person within the meaning of Article 16(1) of this Regulation or Article 4(1) of Regulation (EU) 2019/1020 who has knowledge of an accident shall ensure that the notification is made."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            4,
+            16
+          ]
+        },
+        {
+          "articleNumber": "21",
+          "title": "Information in electronic format",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Without prejudice to Article 9(5), (6) and (7), Article 11(3) and Article 16(3), and the relevant provisions of Union harmonisation legislation, economic operators may additionally make the information referred to in those provisions available in a digital format by means of electronic technical solutions clearly visible on the product or, where that is not possible, on its packaging or in a document accompanying the product. That information shall be in a language which can be easily understood by consumers, as determined by the Member State in which the product is made available on the market, including in accessible formats for persons with disabilities."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            9,
+            11,
+            16
+          ]
+        },
+        {
+          "articleNumber": "22",
+          "title": "Specific obligations of providers of online marketplaces related to product safety",
+          "chapterNumber": 3,
+          "chapterLabel": "III",
+          "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Without prejudice to the general obligations provided for in Article 11 of Regulation (EU) 2022/2065, providers of online marketplaces shall designate a single point of contact allowing for direct communication, by electronic means, with Member States’ market surveillance authorities in relation to product safety issues, in particular for the purpose of notifying orders issued pursuant to paragraph 4 of this Article.\nProviders of online marketplaces shall register with the Safety Gate Portal and shall indicate on the Safety Gate Portal the information concerning their single contact point."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Without prejudice to the general obligations provided for in Article 12 of Regulation (EU) 2022/2065, providers of online marketplaces shall designate a single point of contact to enable consumers to communicate directly and rapidly with them in relation to product safety issues."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Providers of online marketplaces shall ensure that they have internal processes for product safety in place in order to comply without undue delay with the relevant requirements of this Regulation."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "As regards powers conferred by Member States in accordance with Article 14 of Regulation (EU) 2019/1020, Member States shall confer on their market surveillance authorities the necessary power, as regards specific content referring to an offer of a dangerous product, to issue an order requiring the providers of online marketplaces to remove such content from their online interface, to disable access to it or to display an explicit warning. Such orders shall be issued in accordance with the minimum conditions set out in Article 9(2) of Regulation (EU) 2022/2065.\nProviders of online marketplaces shall take the necessary measures to receive and process orders issued pursuant to this paragraph and they shall act without undue delay, and in any event within two working days from receipt of the order. They shall inform the issuing market surveillance authority of the effect given to the order by electronic means using the contact details of the market surveillance authority published in the Safety Gate Portal."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Orders issued pursuant to paragraph 4 may require the provider of an online marketplace, for the prescribed period, to remove from its online interface all identical content referring to an offer of the dangerous product in question, to disable access to it or to display an explicit warning, provided that the search for the content concerned is limited to the information identified in the order and does not require the provider of an online marketplace to carry out an independent assessment of that content, and that the search and the removal can be carried out in a proportionate manner by reliable automated tools."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Providers of online marketplaces shall take into account regular information on dangerous products notified by the market surveillance authorities in line with Article 26, received through the Safety Gate Portal, for the purpose of applying their voluntary measures aimed at detecting, identifying, removing or disabling access to the content referring to offers of dangerous products on their online marketplace, where applicable, including by making use of the interoperable interface to the Safety Gate Portal in accordance with Article 34. They shall inform the authority that made the notification to the Safety Gate Rapid Alert System of any action taken by using the contact details of the market surveillance authority published in the Safety Gate Portal."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "For the purpose of compliance with Article 31(3) of Regulation (EU) 2022/2065, as regards product safety, providers of online marketplaces shall use at least the Safety Gate Portal."
+            },
+            {
+              "paragraphNumber": 8,
+              "text": "Providers of online marketplaces shall, without undue delay and in any event within three working days from the receipt of the notice, process the notices related to product safety issues with regard to the product offered for sale online through their services, received in accordance with Article 16 of Regulation (EU) 2022/2065."
+            },
+            {
+              "paragraphNumber": 9,
+              "text": "For the purpose of compliance with the requirements of Article 31(1) and (2) of Regulation (EU) 2022/2065 as regards product safety information, providers of online marketplaces shall design and organise their online interface in a way that enables traders offering the product to provide at least the following information for each product offered and that ensures that the information is displayed or otherwise made easily accessible by consumers on the product listing:\n(a) name, registered trade name or registered trade mark of the manufacturer, as well as the postal and electronic address at which the manufacturer can be contacted;\n(b) where the manufacturer is not established in the Union, the name, postal and electronic address of the responsible person within the meaning of Article 16(1) of this Regulation or Article 4(1) of Regulation (EU) 2019/1020;\n(c) information allowing the identification of the product, including a picture of it, its type and any other product identifier; and\n(d) any warning or safety information to be affixed on the product or to accompany it in accordance with this Regulation or the applicable Union harmonisation legislation in a language which can be easily understood by consumers as determined by the Member State in which the product is made available on the market."
+            },
+            {
+              "paragraphNumber": 10,
+              "text": "The internal processes referred to in paragraph 3 shall include mechanisms which enable traders to provide:\n(a) information in accordance with paragraph 9 of this Article including information on the manufacturer established in the Union or, where applicable, the responsible person within the meaning of Article 16(1) of this Regulation or Article 4(1) of Regulation (EU) 2019/1020; and\n(b) their self-certification committing to offer only products that comply with this Regulation and additional identification information, in accordance with Article 30(1) of Regulation (EU) 2022/2065, where applicable."
+            },
+            {
+              "paragraphNumber": 11,
+              "text": "For the purpose of compliance with Article 23 of Regulation (EU) 2022/2065 regarding product safety, providers of online marketplaces shall suspend, for a reasonable period of time and after having issued a prior warning, the provision of their services to traders that frequently offer products which are non-compliant with this Regulation."
+            },
+            {
+              "paragraphNumber": 12,
+              "text": "Providers of online marketplaces shall cooperate with the market surveillance authorities, with traders and with relevant economic operators to facilitate any action taken to eliminate or, if that is not possible, to mitigate the risks presented by a product that is or was offered online through their services.\nIn particular, providers of online marketplaces shall:\n(a) ensure that they provide appropriate and timely information to consumers including by:\n(i) directly notifying all affected consumers who bought through their interfaces the relevant product in the event of a product safety recall of which they have actual knowledge or where certain information has to be brought to the attention of consumers to ensure the safe use of a product (the ‘safety warning’) in accordance with Article 35 or 36, or both;\n(ii) publishing information on product safety recalls on their online interfaces;\n(b) inform the relevant economic operator of the decision to remove or disable access to the content referring to an offer of a dangerous product;\n(c) cooperate with market surveillance authorities and with relevant economic operators to ensure effective product recalls, including by abstaining from obstructing product recalls;\n(d) immediately inform, through the Safety Business Gateway, the market surveillance authorities of the Member States in which the relevant product has been made available on the market about dangerous products that were offered on their online interfaces, of which they have actual knowledge, by providing the appropriate details available to them of the risk to the health and safety of consumers, of the quantity by Member State of products still circulating on the market, if available, and of any corrective measure that, to their knowledge, has already been taken;\n(e) cooperate with regard to accidents notified to them, including by:\n(i) informing the relevant traders and economic operators without delay about the information they have received regarding accidents or safety issues, where they have knowledge that the product in question was offered by those traders through their interfaces;\n(ii) notifying without undue delay through the Safety Business Gateway of any accident, of which they have been informed, resulting in a serious risk or actual damage to the health or safety of a consumer, caused by a product made available on their online marketplace and inform the manufacturer thereof;\n(f) cooperate with law enforcement agencies at Union and national level, including the European Anti-Fraud Office (OLAF), through regular and structured exchange of information on offers that have been removed on the basis of this Article by providers of online marketplaces;\n(g) allow access to their interfaces for the online tools operated by market surveillance authorities to identify dangerous products;\n(h) cooperate in identifying, as far as possible, the supply chain of dangerous products by responding to data requests where the relevant information is not publicly available;\n(i) upon a reasoned request of the market surveillance authorities, when providers of online marketplaces or online sellers have put in place technical obstacles to the extraction of data from their online interfaces (data scraping), allow the scraping of such data only for product safety purposes based on the identification parameters provided by the requesting market surveillance authorities."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "recall",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            4,
+            9,
+            11,
+            12,
+            14,
+            16,
+            23,
+            26,
+            30,
+            31,
+            34,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 5,
+      "chapterLabel": "V",
+      "chapterTitle": "MARKET SURVEILLANCE AND IMPLEMENTATION",
+      "articles": [
+        {
+          "articleNumber": "23",
+          "title": "Market Surveillance",
+          "chapterNumber": 5,
+          "chapterLabel": "V",
+          "chapterTitle": "MARKET SURVEILLANCE AND IMPLEMENTATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Article 10, Article 11(1) to (7), Articles 12 to 15, Article 16(1) to (5), Articles 18 and 19 and Articles 21 to 24 of Regulation (EU) 2019/1020 shall apply to products covered by this Regulation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "For the purpose of this Regulation, Regulation (EU) 2019/1020 shall apply as follows:\n(a) references to ‘Union harmonisation legislation’, ‘applicable Union harmonisation legislation’, ‘this Regulation and for the application of Union harmonisation legislation’, ‘the relevant Union harmonisation legislation’ and ‘Union harmonisation legislation or this Regulation’ in Articles 11, 13, 14, 16, 18 and 23 of that Regulation shall be read as references to ‘this Regulation’;\n(b) reference to ‘that legislation and this Regulation’ in Article 11(1), point (b) of that Regulation shall be read as a reference to ‘this Regulation’;\n(c) references to ‘Network’ in Articles 11 to 13 and Article 21 of that Regulation shall be read as references to ‘Network and Consumer Safety Network referred to in Article 30 of this Regulation’;\n(d) references to ‘non-compliance’, ‘non-compliances’ and ‘non-compliant’ in Article 11, Articles 13 to 16, Articles 22 and 23 of that Regulation shall be read as references to ‘failure to comply with this Regulation’;\n(e) the reference to ‘Article 41’ in Article 14(4), point (i) of that Regulation shall be read as a reference to ‘Article 44 of this Regulation’;\n(f) the reference to ‘Article 20’ in Article 19(1) of that Regulation shall be read as a reference to ‘Article 26 of this Regulation’."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Where a dangerous product has been identified, market surveillance authorities may request from the manufacturer information on other products, produced using the same procedure, containing the same components or being part of the same production batch, which are affected by the same risk."
+            }
+          ],
+          "tags": [
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            10,
+            11,
+            14,
+            16,
+            19,
+            20,
+            21,
+            26,
+            30,
+            41,
+            44
+          ]
+        },
+        {
+          "articleNumber": "24",
+          "title": "Reporting",
+          "chapterNumber": 5,
+          "chapterLabel": "V",
+          "chapterTitle": "MARKET SURVEILLANCE AND IMPLEMENTATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall communicate to the Commission, not later than two years after the adoption of the implementing act referred to in paragraph 2 and every year thereafter, data concerning the application of this Regulation.\nFollowing the communication from the Member States, the Commission shall draw up annually a summary report and make it available to the public."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission shall, by means of implementing acts, determine the output indicators on the basis of which Member States are to communicate the data referred to in paragraph 1 of this Article. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 46(3)."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 6,
+      "chapterLabel": "VI",
+      "chapterTitle": "SAFETY GATE RAPID ALERT SYSTEM AND SAFETY BUSINESS GATEWAY",
+      "articles": [
+        {
+          "articleNumber": "25",
+          "title": "Safety Gate Rapid Alert System",
+          "chapterNumber": 6,
+          "chapterLabel": "VI",
+          "chapterTitle": "SAFETY GATE RAPID ALERT SYSTEM AND SAFETY BUSINESS GATEWAY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall further develop, modernise and maintain the rapid alert system for the exchange of information on corrective measures concerning dangerous products (‘the Safety Gate Rapid Alert System’) and enhance its efficiency."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission and the Member States shall have access to the Safety Gate Rapid Alert System. For that purpose, each Member State shall designate a single national contact point which shall be responsible at least for checking the completeness of the notifications and for the submission thereof for validation by the Commission, as well as for communication with the Commission with regard to the tasks provided for in Article 26(1) to (6).\nThe Commission shall adopt an implementing act specifying the roles and tasks of single national contact points. That implementing act shall be adopted in accordance with the examination procedure referred to in Article 46(3)."
+            }
+          ],
+          "tags": [
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            26,
+            46
+          ]
+        },
+        {
+          "articleNumber": "26",
+          "title": "Notification of dangerous products through the Safety Gate Rapid Alert System",
+          "chapterNumber": 6,
+          "chapterLabel": "VI",
+          "chapterTitle": "SAFETY GATE RAPID ALERT SYSTEM AND SAFETY BUSINESS GATEWAY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall notify through the Safety Gate Rapid Alert System corrective measures taken by their authorities or by economic operators on the basis of:\n(a) provisions of this Regulation, in relation to dangerous products presenting a serious risk to the health and safety of consumers; and\n(b) Article 20 of Regulation (EU) 2019/1020."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Member States may also notify envisaged corrective measures in relation to products presenting a serious risk through the Safety Gate Rapid Alert System if they consider it necessary with regard to the urgency of the risk to the health or safety of consumers."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Without prejudice to paragraph 1 of this Article, Member States shall inform the Commission about corrective measures taken by their authorities or by economic operators on the basis of this Regulation and the Commission shall forward that information to the other Member States. For that purpose, Member States may notify through the Safety Gate Rapid Alert System corrective measures taken by their authorities or by economic operators on the basis of this Regulation, of Union harmonisation legislation and of Regulation (EU) 2019/1020 in relation to products presenting a less than serious risk."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The national authorities shall submit notifications as referred to in paragraph 1 through the Safety Gate Rapid Alert System without delay and in any event within four working days after the corrective measure is taken."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "By four working days after receiving a complete notification, the Commission shall check whether it complies with this Article and with the requirements related to the operation of the Safety Gate Rapid Alert System defined by the Commission on the basis of paragraph 10. If the notification complies with this Article and those requirements, the Commission shall transmit it to the other Member States."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Member States shall notify through the Safety Gate Rapid Alert System without undue delay any update, modification or withdrawal of the corrective measures referred in paragraphs 1, 2 and 3."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "Where a Member State notifies corrective measures taken in relation to products presenting a serious risk, the other Member States shall notify through the Safety Gate Rapid Alert System the corrective measures or other actions taken subsequently in relation to the same products and any other relevant information, including the results of any tests or analyses carried out, without undue delay and in any event no later than four working days after the measures or actions are taken."
+            },
+            {
+              "paragraphNumber": 8,
+              "text": "If the Commission identifies, including on the basis of information received by consumers or consumer organisations, products which are likely to present a serious risk and for which Member States have not submitted a notification through the Safety Gate Rapid Alert System, it shall inform the Member States thereof. Member States shall undertake the appropriate verifications and, if they adopt measures, notify them through the Safety Gate Rapid Alert System in accordance with paragraph 1."
+            },
+            {
+              "paragraphNumber": 9,
+              "text": "The Commission shall implement the interface referred to in Article 20(5) of Regulation (EU) 2019/1020 between the information and communication system referred to in Article 34 of that Regulation and the Safety Gate Rapid Alert System to enable a draft Safety Gate Rapid Alert System notification to be triggered from that information and communication system in order to avoid double data entry."
+            },
+            {
+              "paragraphNumber": 10,
+              "text": "The Commission shall adopt delegated acts in accordance with Article 45 to supplement this Regulation by specifying, in particular:\n(a) the access to the Safety Gate Rapid Alert System;\n(b) the operation of the Safety Gate Rapid Alert System;\n(c) the information to be entered in the Safety Gate Rapid Alert System;\n(d) the requirements notifications must meet; and\n(e) the criteria for assessment of the level of risk."
+            }
+          ],
+          "tags": [
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            20,
+            34,
+            45
+          ]
+        },
+        {
+          "articleNumber": "27",
+          "title": "Safety Business Gateway",
+          "chapterNumber": 6,
+          "chapterLabel": "VI",
+          "chapterTitle": "SAFETY GATE RAPID ALERT SYSTEM AND SAFETY BUSINESS GATEWAY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall maintain a web portal enabling economic operators and providers of online marketplaces to provide, in an easy way, market surveillance authorities and consumers with the information referred to in Article 9(8) and (9), Article 10(2), point (c), Article 11(2) and (8), Article 12(4), Articles 20 and 22 (the ‘Safety Business Gateway’)."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission shall draw up guidelines for the practical implementation of the Safety Business Gateway."
+            }
+          ],
+          "tags": [
+            "online_marketplace"
+          ],
+          "referencedArticles": [
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 7,
+      "chapterLabel": "VII",
+      "chapterTitle": "COMMISSION’S ROLE AND ENFORCEMENT COORDINATION",
+      "articles": [
+        {
+          "articleNumber": "28",
+          "title": "Union action against products presenting a serious risk",
+          "chapterNumber": 7,
+          "chapterLabel": "VII",
+          "chapterTitle": "COMMISSION’S ROLE AND ENFORCEMENT COORDINATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "If the Commission becomes aware of a product, or a specific category or group of products, presenting a serious risk to the health and safety of consumers, it may take any appropriate measures, either on its own initiative or upon request of Member States, by means of implementing acts, adapted to the gravity and urgency of the situation if:\n(a) the risk cannot be dealt with, in view of the nature of the safety issue posed by the product, category or group of products, in a manner compatible with the degree of gravity or urgency of the case, under other procedures laid down by the specific Union law applicable to the products concerned; and\n(b) the risk can be eliminated in an effective manner only by adopting appropriate measures applicable at Union level, in order to ensure a consistent and high level of protection of the health and safety of consumers and the proper functioning of the internal market.\nThose measures may include measures prohibiting, suspending or restricting the placing or making available on the market of such products or laying down special conditions for their conformity assessment with regard to the safety requirement, as applicable, or for their marketing, such as representative sample testing of those products, in order to ensure a high level of consumer safety protection.\nMember States shall, within their jurisdiction, take all appropriate enforcement measures necessary to ensure the effective implementation of those implementing acts. The competent authorities of the Member States concerned shall inform the Commission of the enforcement measures taken.\nThe Commission shall regularly evaluate the efficiency of the enforcement measures taken by Member States and inform the Consumer Safety Network of the outcome of that evaluation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The implementing acts referred to in the paragraph 1 shall be adopted in accordance with the examination procedure referred to in Article 46(3). Those implementing acts shall specify the date on which they will cease to apply."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "On duly justified imperative grounds of urgency relating to the health and safety of consumers the Commission may adopt immediately applicable implementing acts in accordance with the procedure referred to in Article 46(4)."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The export from the Union of a product that has been prohibited to be placed or made available on the Union market pursuant to a measure adopted in accordance with paragraph 1 or paragraph 3 shall be prohibited, unless the measure expressly so permits for duly justified reasons."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Any Member State may submit a substantiated request to the Commission to examine the need for the adoption of a measure referred to in paragraph 1 or paragraph 3."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            46
+          ]
+        },
+        {
+          "articleNumber": "29",
+          "title": "Request for an opinion from the Commission on divergences in risk assessment",
+          "chapterNumber": 7,
+          "chapterLabel": "VII",
+          "chapterTitle": "COMMISSION’S ROLE AND ENFORCEMENT COORDINATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Products that have been deemed to be dangerous on the basis of a decision of a market surveillance authority in one Member State under this Regulation shall be presumed dangerous by market surveillance authorities in other Member States."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Where market surveillance authorities in different Member States reach divergent conclusions in terms of identification or level of the risk on the basis of their own investigation and risk assessment, any Member State may refer the matter to the Commission, requesting its opinion on the matter and the Commission shall, without undue delay, issue an opinion on the identification or on the level of the risk of the relevant product, as appropriate. Where the matter has not been referred to the Commission, the Commission may nevertheless issue an opinion on its own initiative. For the purpose of issuing an opinion referred to in this paragraph, the Commission may ask for relevant information and documents and shall invite all Member States to express their views."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Where the Commission issues an opinion pursuant to paragraph 2, the Member States shall take it into due account."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The Commission shall draw up guidelines for the practical implementation of this Article."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "The Commission shall periodically draw up a report on the application of this Article and shall present it to the Consumer Safety Network."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "30",
+          "title": "Consumer Safety Network",
+          "chapterNumber": 7,
+          "chapterLabel": "VII",
+          "chapterTitle": "COMMISSION’S ROLE AND ENFORCEMENT COORDINATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "A European network of the authorities of the Member States competent for product safety (the ‘Consumer Safety Network’) is hereby established.\nThe purpose of the Consumer Safety Network shall be to serve as a platform for structured coordination and cooperation between authorities of the Member States and the Commission in enhancing product safety in the Union."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission shall promote and take part in the operation of the Consumer Safety Network, in particular in the form of administrative cooperation."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The tasks of the Consumer Safety Network shall be, in particular, to:\n(a) facilitate the regular exchange of information on risk assessments, dangerous products, test methods and results, standards, methodologies for the collection of data, interoperability of information and communication systems, recent scientific developments and the use of new technologies as well as other aspects relevant for control activities;\n(b) organise the establishment and execution of joint surveillance and testing projects, including in the context of e-commerce;\n(c) promote the exchange of expertise and best practices and cooperation in training activities;\n(d) improve cooperation at Union level with regard to the tracing, withdrawal and recall of dangerous products;\n(e) facilitate enhanced and structured cooperation on product safety enforcement between Member States, in particular to facilitate the activities referred to in Article 32; and\n(f) facilitate the implementation of this Regulation."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The Consumer Safety Network shall coordinate its action with the other existing Union activities related to market surveillance and consumer safety and, where relevant, shall cooperate and exchange information with other Union networks, groups and bodies."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "The Consumer Safety Network shall adopt its work programme, which, inter alia, shall set out the priorities for safety of the products and for the risks covered by this Regulation, in the Union.\nThe Consumer Safety Network shall meet at regular intervals and, where necessary, at the duly justified request of the Commission or a Member State.\nThe Consumer Safety Network may invite experts and other third parties, including consumer organisations, to attend its meetings."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "The Consumer Safety Network shall be duly represented and regularly participate in the relevant activities of the Union Product Compliance Network established under Article 29 of Regulation (EU) 2019/1020 and shall contribute to its activities in relation to product safety to ensure adequate coordination of market surveillance activities in both harmonised and non-harmonised areas."
+            }
+          ],
+          "tags": [
+            "recall",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            29,
+            32
+          ]
+        },
+        {
+          "articleNumber": "31",
+          "title": "Joint activities on product safety",
+          "chapterNumber": 7,
+          "chapterLabel": "VII",
+          "chapterTitle": "COMMISSION’S ROLE AND ENFORCEMENT COORDINATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "In the framework of the activities referred to in Article 30(3), point (b), market surveillance authorities may agree with other relevant authorities or with organisations representing economic operators or consumers to carry out activities aimed at ensuring safety and protection of consumers health with respect to specific categories of products made available on the market, in particular categories of products that are often found to present a serious risk to the health and safety of consumers."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The relevant market surveillance authorities and the parties referred to in paragraph 1 shall ensure that the agreement to carry out such activities does not lead to unfair competition between economic operators and does not affect the objectivity, independence and impartiality of those parties."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Commission shall organise on a regular basis joint activities of market surveillance authorities whereby the market surveillance authorities conduct inspections regarding products offered online or offline, which those authorities acquired under a cover identity."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "A market surveillance authority may use any information obtained as a result of the joint activities carried out as part of any investigation undertaken by it regarding the safety of products."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "The market surveillance authority concerned shall make the agreement on joint activities, including the names of the parties involved, available to the public and shall enter that agreement in the information and communication system referred to in Article 34 of Regulation (EU) 2019/1020. The Commission shall make that agreement available on the Safety Gate Portal."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            30,
+            34
+          ]
+        },
+        {
+          "articleNumber": "32",
+          "title": "Simultaneous coordinated control actions of market surveillance authorities (‘Sweeps’)",
+          "chapterNumber": 7,
+          "chapterLabel": "VII",
+          "chapterTitle": "COMMISSION’S ROLE AND ENFORCEMENT COORDINATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The market surveillance authorities concerned shall conduct simultaneous coordinated control actions (‘sweeps’) of particular products or categories of products with the objective of checking compliance with this Regulation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Unless otherwise agreed upon by the market surveillance authorities involved, sweeps shall be coordinated by the Commission. The coordinator of the sweep shall, where appropriate, make the aggregated results publicly available."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "When conducting sweeps, the market surveillance authorities involved may use the investigation powers set out in Chapter V and any other powers conferred upon them by national law."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Market surveillance authorities may invite Commission officials and other accompanying persons authorised by the Commission to participate in sweeps."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        }
+      ]
+    },
+    {
+      "chapterNumber": 8,
+      "chapterLabel": "VIII",
+      "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+      "articles": [
+        {
+          "articleNumber": "33",
+          "title": "Information between authorities and general public",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Information available to the authorities of the Member States or to the Commission relating to measures on products presenting risks to the health and safety of consumers shall in general be made available to the public, in accordance with the requirements of transparency and without prejudice to the restrictions required for monitoring and investigation activities. In particular, the public shall have access to information on product identification, the nature of the risk and the measures taken. That information shall also be provided in accessible formats for persons with disabilities."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Member States and the Commission shall take the necessary steps to ensure that their officials and agents are required to protect information obtained for the purposes of this Regulation. That information shall be treated as confidential in accordance with Union and national law."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Protection of professional secrecy shall not prevent the dissemination to the competent authorities of Member States and to the Commission of information relevant for ensuring the effectiveness of market monitoring and surveillance activities. The authorities receiving information covered by professional secrecy shall ensure its protection in accordance with Union and national law."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Member States shall give consumers and other interested parties the opportunity to submit complaints to the competent authorities on product safety, on surveillance and control activities related to specific products as well as on instances where remedies offered to consumers in the case of product recalls are not satisfactory. Such complaints shall be followed up appropriately. The competent authorities shall provide the complainant with appropriate information on the follow-up, in accordance with national law."
+            }
+          ],
+          "tags": [
+            "recall"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "34",
+          "title": "Safety Gate Portal",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "For the purpose of Article 9(9), Articles 20 and 22, Article 31(5) and Article 33(1), the Commission shall maintain a Safety Gate Portal, providing the general public with free of charge and open access to selected information notified in accordance with Article 26 (the ‘Safety Gate Portal’)."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Safety Gate Portal shall have an interface which is intuitive for users and the information provided on that portal shall be easily accessible by the public, including by persons with disabilities."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Consumers and other interested parties shall have the possibility to inform the Commission of products that might present a risk to the health and safety of consumers through a separate section of the Safety Gate Portal. The Commission shall give due consideration to the information received and, after verification of its accuracy, where appropriate, forward that information to the relevant Member States without undue delay to ensure that that information is appropriately followed-up. The Commission shall inform consumers and other interested parties of its action."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The Commission shall, by means of an implementing act, adopt the modalities for the sending of information by consumers in accordance with paragraph 3, as well as for the transmission of such information to the national authorities concerned for possible follow up. This implementing act shall be adopted in accordance with the examination procedure referred to in Article 46(3)."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "By 13 December 2024 the Commission shall develop an interoperable interface that allows providers of online marketplaces to link their interfaces to the Safety Gate Portal."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "The Commission shall adopt implementing acts specifying the implementation of the interoperable interface on the Safety Gate Portal in accordance with paragraph 5, in particular concerning the access to the system and its operation. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 46(3)."
+            }
+          ],
+          "tags": [
+            "online_marketplace"
+          ],
+          "referencedArticles": [
+            9,
+            26,
+            31,
+            33,
+            46
+          ]
+        },
+        {
+          "articleNumber": "35",
+          "title": "Information from economic operators and providers of online marketplaces to consumers on product safety",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "In the case of a product safety recall, or where certain information has to be brought to the attention of consumers to ensure the safe use of a product (‘safety warning’), economic operators, in accordance with their respective obligations as provided for in Articles 9, 10, 11 and 12, and providers of online marketplaces in accordance with their obligations as provided for in Article 22(12), shall ensure that all affected consumers that can be identified are notified directly and without undue delay. Economic operators and, where applicable, providers of online marketplaces that collect their customers’ personal data shall make use of that information for recalls and safety warnings."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Where economic operators and providers of online marketplaces have in place product registration systems or customer loyalty programs enabling the identification of products bought by consumers for purposes other than contacting their customers with safety information, they shall offer the possibility to their customers to provide separate contact details only for safety-related purposes. The personal data collected for that purpose shall be limited to the necessary minimum and shall only be used to contact consumers in the event of a recall or safety warning."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Commission may, by means of implementing acts, set out, for specific products or categories of products, requirements to be met by economic operators and providers of online marketplaces to provide the possibility for consumers to register a product they have purchased in order to be notified directly in the case of a product safety recall or safety warning in relation to that product, in accordance with paragraph 1 of this Article. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 46(3)."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Where not all of the affected consumers can be contacted under paragraph 1, economic operators and providers of online marketplaces, in accordance with their respective responsibilities, shall disseminate a clear and visible recall notice or safety warning through other appropriate channels, ensuring the widest possible reach including, where available, the company’s website, social media channels, newsletters and retail outlets and, as appropriate, announcements in mass media and other communication channels. Information shall be accessible to persons with disabilities."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "recall"
+          ],
+          "referencedArticles": [
+            22,
+            46
+          ]
+        },
+        {
+          "articleNumber": "36",
+          "title": "Recall notice",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where information on a product safety recall is provided to consumers in a written form, in accordance with Article 35(1) and (4), it shall take the form of a recall notice."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "A recall notice which can be easily understood by consumers shall be available in the language(s) of the Member State(s) where the product has been made available on the market and include the following elements:\n(a) a headline consisting of the words ‘Product safety recall’;\n(b) a clear description of the recalled product, including:\n(i) picture, name and brand of the product;\n(ii) product identification numbers, such as batch or serial number, and, if applicable, graphical indication of where to find them on the product; and\n(iii) information on when, where and by whom the product was sold, if available;\n(c) a clear description of the hazard associated with the recalled product, avoiding any elements that may decrease consumers’ perception of risk, such as by using terms and expressions such as ‘voluntary’, ‘precautionary’, ‘discretionary’, ‘in rare situations’ or ‘in specific situations’ or by indicating that there have been no reported accidents;\n(d) a clear description of the action consumers should take, including an instruction to immediately stop using the recalled product;\n(e) a clear description of the remedies available to consumers in accordance with Article 37;\n(f) a free phone number or interactive online service, where consumers can get more information in relevant official language(s) of the Union; and\n(g) encouragement to share the information about the recall with other persons, if appropriate."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Commission shall, by means of implementing acts, set out the template for a recall notice, taking into account scientific and market developments. Those implementing acts shall be adopted in accordance with the advisory procedure referred to in Article 46(2). That template shall be made available by the Commission in a format that enables economic operators to easily create a recall notice, including in accessible formats for persons with disabilities."
+            }
+          ],
+          "tags": [
+            "recall"
+          ],
+          "referencedArticles": [
+            35,
+            37,
+            46
+          ]
+        },
+        {
+          "articleNumber": "37",
+          "title": "Remedies in the event of a product safety recall",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Without prejudice to Directives (EU) 2019/770 and (EU) 2019/771, in the case of a product safety recall initiated by an economic operator or ordered by a national competent authority, the economic operator responsible for the product safety recall shall offer the consumer an effective, cost-free and timely remedy."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Without prejudice to any other remedies that the economic operator responsible for the recall may offer the consumer, the economic operator shall offer the consumer the choice between at least two of the following remedies:\n(a) the repair of the recalled product;\n(b) a replacement of the recalled product with a safe one of the same type and at least the same value and quality; or\n(c) an adequate refund of the value of the recalled product, provided that the amount of the refund shall be at least equal to the price paid by the consumer.\nBy way of exception to the first subparagraph, the economic operator may offer the consumer only one remedy where other remedies would be impossible or, compared to the proposed remedy, would impose costs on the economic operator responsible for the product safety recall that would be disproportionate, taking into account all circumstances, including whether the alternative remedy could be provided without significant inconvenience to the consumer.\nThe consumer shall always be entitled to a refund of the product when the economic operator responsible for the product safety recall has not completed the repair or replacement within a reasonable time and without significant inconvenience to the consumer."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Repair by a consumer shall only be considered an effective remedy where it can be carried out easily and safely by the consumer and where envisaged in the recall notice. In such cases, the economic operator responsible for the product safety recall shall provide consumers with the necessary instructions, free replacement parts or software updates. Repair by a consumer shall not deprive the consumer of the rights provided for in Directives (EU) 2019/770 and (EU) 2019/771."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Disposal of the product by consumers shall only be included in the actions to be taken by consumers under Article 36(2), point (d) where such disposal can be carried out easily and safely by the consumer, and shall not affect the right of the consumer to receive a refund for or replacement of the recalled product under paragraph 1 of this Article."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "The remedy shall not entail significant inconvenience for the consumer. The consumer shall not bear the costs of shipping or otherwise returning the product. For products that by their nature are not portable, the economic operator shall arrange for the collection of the product."
+            }
+          ],
+          "tags": [
+            "recall"
+          ],
+          "referencedArticles": [
+            36
+          ]
+        },
+        {
+          "articleNumber": "38",
+          "title": "Memoranda of understanding",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "National competent authorities and the Commission may promote voluntary memoranda of understanding with economic operators or providers of online marketplaces, as well as with organisations representing consumers or economic operators, aimed at undertaking voluntary commitments to enhance product safety."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Voluntary commitments under such memoranda of understanding shall be without prejudice to the obligations of economic operators and providers of online marketplaces under this Regulation and other relevant Union law."
+            }
+          ],
+          "tags": [
+            "online_marketplace"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "39",
+          "title": "Representative actions",
+          "chapterNumber": 8,
+          "chapterLabel": "VIII",
+          "chapterTitle": "RIGHT TO INFORMATION AND TO A REMEDY",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Directive (EU) 2020/1828 shall apply to the representative actions brought against infringements by economic operators and providers of online marketplaces of provisions of this Regulation that harm, or may harm, the collective interests of consumers."
+            }
+          ],
+          "tags": [
+            "online_marketplace"
+          ],
+          "referencedArticles": []
+        }
+      ]
+    },
+    {
+      "chapterNumber": 9,
+      "chapterLabel": "IX",
+      "chapterTitle": "INTERNATIONAL COOPERATION",
+      "articles": [
+        {
+          "articleNumber": "40",
+          "title": "International cooperation",
+          "chapterNumber": 9,
+          "chapterLabel": "IX",
+          "chapterTitle": "INTERNATIONAL COOPERATION",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "In order to improve the overall level of safety of products made available on the market and to ensure a level playing field at international level, the Commission may cooperate, including through the exchange of information, with authorities of third countries or international organisations in the field of application of this Regulation. Any such cooperation shall be based on reciprocity, shall include provisions on confidentiality corresponding to those applicable in the Union and shall ensure that any exchange of information take place in accordance with applicable Union law. The cooperation or exchange of information may relate, inter alia, to the following:\n(a) enforcement activities and measures related to safety, also with a view to preventing the circulation of dangerous products, including market surveillance;\n(b) risk assessment methods and product testing;\n(c) coordinated product recalls and other similar actions;\n(d) scientific, technical and regulatory matters, aiming to improve product safety and to develop common priorities and approaches at international level;\n(e) emerging issues of significant health and safety relevance;\n(f) use of new technologies to improve product safety and increase traceability in the supply chain;\n(g) standardisation-related activities;\n(h) exchange of officials and training programmes."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission may provide third countries or international organisations with selected information from the Safety Gate Rapid Alert System and receive relevant information on the safety of products and on preventive, restrictive and corrective measures taken by those third countries or international organisations. The Commission shall share such information with national authorities, where relevant."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The information exchange referred to in paragraph 2 may take the form of either:\n(a) a non-systematic exchange, in duly justified and specific cases; or\n(b) a systematic exchange, based on an administrative arrangement specifying the type of information to be exchanged and the modalities for the exchange."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Full participation in the Safety Gate Rapid Alert System may be open to applicant countries and third countries, provided that their legislation is aligned with the relevant Union law and that they participate in the European Standardisation System. Such participation shall entail the same obligations as for Member States according to this Regulation, including notification and follow-up obligations. Full participation in the Safety Gate Rapid Alert System shall be based on agreements between the Union and those countries, according to arrangements defined in those agreements."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Any information exchange under this Article shall, to the extent it involves personal data, be carried out in accordance with Union data protection rules. Personal data shall only be transferred to the extent that such exchange is necessary for the sole purpose of the protection of the health or safety of consumers."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "The information exchanged pursuant to this Article shall be used for the sole purpose of the protection of the health or safety of consumers."
+            }
+          ],
+          "tags": [
+            "recall",
+            "traceability",
+            "dangerous_product"
+          ],
+          "referencedArticles": []
+        }
+      ]
+    },
+    {
+      "chapterNumber": 10,
+      "chapterLabel": "X",
+      "chapterTitle": "FINANCIAL PROVISIONS",
+      "articles": [
+        {
+          "articleNumber": "41",
+          "title": "Financing activities",
+          "chapterNumber": 10,
+          "chapterLabel": "X",
+          "chapterTitle": "FINANCIAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Union shall finance the following activities in relation to the application of this Regulation:\n(a) performance of the tasks of the Consumer Safety Network;\n(b) the development and operation of the Safety Gate Rapid Alert System, including the development of electronic interoperability solutions for the exchange of data:\n(i) between the Safety Gate Rapid Alert System and the national market surveillance systems;\n(ii) between the Safety Gate Rapid Alert System and customs systems;\n(iii) with other relevant restricted systems used by market surveillance authorities for their enforcement purposes;\n(c) the development and maintenance of the Safety Gate Portal and the Safety Business Gateway, including a public non-restricted software interface for data exchange with platforms and third parties."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Union may finance the following activities in relation to the application of this Regulation:\n(a) the development of instruments of international cooperation referred to in Article 40;\n(b) the drawing up and updating of contributions to guidelines on market surveillance and product safety;\n(c) the making available to the Commission of technical or scientific expertise for the purpose of assisting the Commission in its implementation of market surveillance administrative cooperation;\n(d) the performance of preliminary or ancillary work in connection with the implementation of market surveillance activities linked to the application of this Regulation such as studies, programmes, evaluations, guidelines, comparative analyses, mutual joint visits and visit programmes, exchange of personnel, research work, the development and maintenance of databases, training activities, laboratory work, proficiency testing, inter-laboratory tests and conformity assessment work;\n(e) Union market surveillance campaigns and associated activities, including resources and equipment, IT tools and training;\n(f) activities carried out under programmes of technical assistance, cooperation with third countries and the promotion and enhancement of Union market surveillance policies and systems among interested parties at Union and international levels, including activities carried out by consumer organisations for the enhancement of consumer information."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Union’s financial assistance to the activities under this Regulation shall be implemented in accordance with Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council , either directly, or indirectly by delegating budget implementation tasks to the entities listed in Article 62(1), point (c) of that Regulation."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The appropriations allocated to activities referred to in this Regulation shall be determined each year by the European Parliament and the Council within the limits of the financial framework in force."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "The appropriations determined by the European Parliament and the Council for the financing of market surveillance activities may also cover expenses pertaining to preparatory, monitoring, control, audit and evaluation activities which are required for the management of the activities pursuant to this Regulation and the achievement of their objectives; in particular, studies, meetings of experts, information and communication actions, including corporate communication of the political priorities of the Union insofar as they are related to the general objectives of market surveillance activities, expenses linked to information technology networks focusing on information processing and exchange, together with all other technical and administrative assistance expenses incurred by the Commission for the management of the activities pursuant to this Regulation."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            40
+          ]
+        },
+        {
+          "articleNumber": "42",
+          "title": "Protection of the Union’s financial interests",
+          "chapterNumber": 10,
+          "chapterLabel": "X",
+          "chapterTitle": "FINANCIAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall take appropriate measures to ensure that, when actions financed under this Regulation are implemented, the financial interests of the Union are protected by the application of preventive measures against fraud, corruption and any other illegal activities, by effective checks and, if irregularities are detected, by the recovery of the amounts wrongly paid and, where appropriate, by effective, proportionate and dissuasive administrative and financial penalties."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission or its representatives and the Court of Auditors shall have the power of audit, on the basis of documents and of on-the-spot inspections, over all grant beneficiaries, contractors and subcontractors who have received Union funds under the Single Market Programme and its successor in accordance with the provisions and procedures laid down in Council Regulation (Euratom, EC) No 2185/96 ."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "OLAF may carry out investigations, including on-the-spot checks and inspections, in accordance with the provisions and procedures laid down in Regulation (EU, Euratom) No 883/2013 of the European Parliament and of the Council and Regulation (Euratom, EC) No 2185/96, with a view to establishing whether there has been fraud, corruption or any other illegal activity affecting the financial interests of the Union in connection with a grant agreement or grant decision or a contract funded under the programme."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Without prejudice to paragraphs 1, 2 and 3, cooperation agreements with third countries and with international organisations, contracts, grant agreements and grant decisions resulting from the implementation of this Regulation shall contain provisions expressly empowering the Commission, the Court of Auditors and OLAF to conduct such audits and investigations, in accordance with their respective competences."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        }
+      ]
+    },
+    {
+      "chapterNumber": 11,
+      "chapterLabel": "XI",
+      "chapterTitle": "FINAL PROVISIONS",
+      "articles": [
+        {
+          "articleNumber": "43",
+          "title": "Liability",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Any decision taken pursuant to this Regulation that imposes restrictions on the placing of or making a product available on the market or requires its withdrawal or its recall shall not affect the assessment of the liability of the party concerned, in the light of the national law applicable in the case in question."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "This Regulation shall not affect Council Directive 85/374/EEC ."
+            }
+          ],
+          "tags": [
+            "recall"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "44",
+          "title": "Penalties",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall lay down the rules on penalties applicable to infringements of this Regulation that impose obligations on economic operators and providers of online marketplaces and shall take all measures necessary to ensure that they are implemented in accordance with national law."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The penalties provided for shall be effective, proportionate and dissuasive."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Member States shall, by 13 December 2024, notify the Commission of those rules and of those measures, where they have not previously been notified, and shall notify it, without delay, of any subsequent amendment affecting them."
+            }
+          ],
+          "tags": [
+            "online_marketplace"
+          ],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "45",
+          "title": "Exercise of the delegation",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The power to adopt delegated acts is conferred on the Commission subject to the conditions laid down in this Article."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The power to adopt delegated acts referred to in Article 18(3) and Article 26(10) shall be conferred on the Commission for an indeterminate period of time from 12 June 2023."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The delegation of power referred to in Article 18(3) and Article 26(10) may be revoked at any time by the European Parliament or by the Council. A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the Official Journal of the European Union or at a later date specified therein. It shall not affect the validity of any delegated acts already in force."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Before adopting a delegated act, the Commission shall consult experts designated by each Member State in accordance with the principles laid down in the Interinstitutional Agreement of 13 April 2016 on Better Law-Making."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "As soon as it adopts a delegated act, the Commission shall notify it simultaneously to the European Parliament and to the Council."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "A delegated act adopted pursuant to Article 18(3) or Article 26(10) shall enter into force only if no objection has been expressed either by the European Parliament or by the Council within a period of three months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by two months at the initiative of the European Parliament or of the Council."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            18,
+            26
+          ]
+        },
+        {
+          "articleNumber": "46",
+          "title": "Committee procedure",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The Commission shall be assisted by a committee. That committee shall be a committee within the meaning of Regulation (EU) No 182/2011."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Where reference is made to this paragraph, Article 4 of Regulation (EU) No 182/2011 shall apply."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Where reference is made to this paragraph, Article 5 of Regulation (EU) No 182/2011 shall apply."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Where reference is made to this paragraph, Article 8 of Regulation (EU) No 182/2011, in conjunction with Article 5 thereof, shall apply."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            4,
+            5,
+            8
+          ]
+        },
+        {
+          "articleNumber": "47",
+          "title": "Evaluation and review",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "By 13 December 2029 the Commission shall carry out an evaluation of this Regulation. The Commission shall submit to the European Parliament, the Council and to the European Economic and Social Committee a report on the main findings. That report shall assess whether this Regulation, and in particular Articles 18, 22 and 25, achieved the objective of enhancing the protection of consumers against dangerous products while taking into account the challenges posed by new technologies and its impact on businesses and in particular on SMEs."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "By 13 December 2029, the Commission shall draw up an evaluation report on the implementation of Article 16. That report shall in particular assess the scope, effects, and costs and benefits of that Article. The report shall be accompanied, where appropriate, by a legislative proposal."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "By 13 December 2027 the Commission shall assess the modalities for implementation of the provisions on the removal of illegal content from online marketplaces referred to in Article 22(4), (5) and (6) by means of a Union notification system designed and developed within the Safety Gate Portal. Such assessment shall be accompanied, where appropriate, by a legislative proposal."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "By 13 December 2026 the Commission shall publish a report on the functioning of the interconnection between information and communication system referred to in Article 34 of Regulation (EU) 2019/1020 and the Safety Gate Portal referred to in this Regulation, including information on their respective functionalities, further improvements or on the development of a new interface, if appropriate."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "By 13 December 2029, the Commission shall draw up an evaluation report on the implementation of Article 44. That report shall in particular assess the effectiveness and deterrent effect of the penalties imposed under that Article. The report shall be accompanied, where appropriate, by a legislative proposal."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "On request, Member States shall provide the Commission with information necessary for the evaluation of this Regulation."
+            }
+          ],
+          "tags": [
+            "online_marketplace",
+            "dangerous_product"
+          ],
+          "referencedArticles": [
+            16,
+            22,
+            34,
+            44
+          ]
+        },
+        {
+          "articleNumber": "48",
+          "title": "Amendments to Regulation (EU) No 1025/2012",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Regulation (EU) No 1025/2012 is amended as follows:\n(1) in Article 10, the following paragraph is added:\n‘7.\nWhere a European standard drafted in support of Regulation (EU) 2023/988 of the European Parliament and of the Council satisfies the general safety requirement laid down in Article 5 of that Regulation and the specific safety requirements referred to in Article 7(2) of that Regulation, the Commission shall publish a reference to that European standard without delay in the Official Journal of the European Union .\n(2) in Article 11, paragraphs 1, 2 and 3 are replaced by the following:\n‘1.\nWhen a Member State or the European Parliament considers that a harmonised standard or European standard drafted in support of Regulation (EU) 2023/988 does not entirely satisfy the requirements which it aims to cover and which are set out in the relevant Union harmonisation legislation or in that Regulation, it shall inform the Commission thereof with a detailed explanation. The Commission shall, after consulting the committee set up by the corresponding Union harmonisation legislation, if it exists, or the committee set up by that Regulation, or after other forms of consultation of sectoral experts, decide:\n(a) to publish, not to publish or to publish with restriction the references to the harmonised standard or European standard concerned drafted in support of that Regulation in the Official Journal of the European Union; and\n(b) to maintain, to maintain with restriction or to withdraw the references to the harmonised standard or European standard concerned drafted in support of that Regulation in or from the Official Journal of the European Union ."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Commission shall publish information on its website on the harmonised standards and European standards drafted in support of Regulation (EU) 2023/988 that have been subject to a decision pursuant to paragraph 1."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The Commission shall inform the European standardisation organisation concerned of any decision adopted pursuant to paragraph 1 and, if necessary, request the revision of the harmonised standards or of the European standards concerned drafted in support of Regulation (EU) 2023/988.’\n."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            5,
+            7,
+            10,
+            11
+          ]
+        },
+        {
+          "articleNumber": "49",
+          "title": "Amendment to Directive (EU) 2020/1828",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "In Annex I to Directive (EU) 2020/1828, point (8) is replaced by the following:\n‘(8) Regulation (EU) 2023/988 of the European Parliament and of the Council of 10 May 2023 on general product safety, amending Regulation (EU) No 1025/2012 of the European Parliament and of the Council and Directive (EU) 2020/1828 of the European Parliament and the Council, and repealing Directive 2001/95/EC of the European Parliament and of the Council and Council Directive 87/357/EEC (OJ L 135, 23.5.2023, p. 1).’."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "50",
+          "title": "Repeal",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Directives 87/357/EEC and 2001/95/EC are repealed with effect from 13 December 2024."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "References to the repealed directives shall be construed as references to this Regulation and to Regulation (EU) No 1025/2012, and shall be read in accordance with the correlation table in the Annex to this Regulation."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "51",
+          "title": "Transitional provision",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Member States shall not impede the making available on the market of products covered by Directive 2001/95/EC which are in conformity with that Directive and which were placed on the market before 13 December 2024."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        },
+        {
+          "articleNumber": "52",
+          "title": "Entry into force and application",
+          "chapterNumber": 11,
+          "chapterLabel": "XI",
+          "chapterTitle": "FINAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union .\nIt shall apply from 13 December 2024."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": []
+        }
+      ]
+    }
+  ]
+}
