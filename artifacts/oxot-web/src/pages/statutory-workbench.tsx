@@ -415,7 +415,7 @@ const STATUTORY_DATA: ChapterNode[] = [
         recitals: [111],
         officialCitation: "OJ L 2024/2847, Art 69, p. 90",
         summary: "Products placed on market before general application date may remain without retrofitting unless substantially modified.",
-        fullText: "Products with digital elements which have been placed on the market before 10 December 2027 shall be subject to requirements of this Regulation only if those products undergo substantial modifications.",
+        fullText: "Products with digital elements that have been placed on the market before 11 December 2027 shall be subject to the requirements set out in this Regulation only if, from that date, those products are subject to a substantial modification.",
         ieccMapping: "Legacy Product Exception",
         nis2Mapping: "NIS2 Art 41",
         aiActMapping: "EU AI Act Art 111"
@@ -427,8 +427,8 @@ const STATUTORY_DATA: ChapterNode[] = [
         chapter: "Chapter VIII",
         recitals: [116, 117, 118, 119, 120],
         officialCitation: "OJ L 2024/2847, Art 71, p. 94",
-        summary: "36-month general transition (10 Dec 2027); Article 14 PSIRT reporting applies earlier at 21 months (10 Sept 2026).",
-        fullText: "This Regulation shall apply from 10 December 2027. However, Article 14 shall apply from 10 September 2026.",
+        summary: "General application 11 Dec 2027; Article 14 reporting applies earlier, from 11 Sept 2026.",
+        fullText: "This Regulation shall apply from 11 December 2027. However, Article 14 shall apply from 11 September 2026 and Chapter IV (Articles 35 to 51) shall apply from 11 June 2026.",
         ieccMapping: "Implementation Roadmap Anchor",
         nis2Mapping: "NIS2 Transposition Timeline",
         aiActMapping: "EU AI Act Application Dates"

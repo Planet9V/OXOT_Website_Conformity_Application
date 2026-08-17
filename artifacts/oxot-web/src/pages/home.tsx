@@ -15,7 +15,7 @@ import { JsonLd } from '@/components/json-ld';
 import { LiveRegulatoryNewsFeed } from '@/components/sections/live-regulatory-news-feed';
 import { LiveCraBlogGuidesFeed } from '@/components/sections/live-cra-blog-guides-feed';
 import { useLocale } from '@/providers/locale-provider';
-import { entranceVariants, revealVariants } from '@/lib/motion';
+import { revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -175,23 +175,21 @@ export default function CraHomePage() {
           url: typeof window !== 'undefined' ? window.location.origin : undefined,
         }}
       />
-      {/* Hero */}
+      {/* Hero — deliberately NOT animated (Phase 20a): entrance animations
+          start at opacity 0 and wait for hydration, and on this page the
+          bundle parse left the headline and BOTH conversion CTAs invisible
+          for the first seconds of a first visit. The primary CTA must never
+          depend on JavaScript to be seen. */}
       <section className="border-b border-border bg-gradient-to-b from-primary/5 to-transparent">
         <div className="container mx-auto px-4 md:px-8 py-20 md:py-28 max-w-4xl text-center">
-          <motion.p className="oxot-kicker" {...entranceVariants(0)}>{t.kicker}</motion.p>
-          <motion.h1 className="oxot-h1 mt-4 text-foreground" {...entranceVariants(0.1)}>
+          <p className="oxot-kicker">{t.kicker}</p>
+          <h1 className="oxot-h1 mt-4 text-foreground">
             {t.heroTitle}
-          </motion.h1>
-          <motion.p
-            className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground"
-            {...entranceVariants(0.2)}
-          >
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             {t.heroBody}
-          </motion.p>
-          <motion.div
-            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
-            {...entranceVariants(0.3)}
-          >
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/demo"
               className="cta-lift inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
@@ -204,7 +202,7 @@ export default function CraHomePage() {
             >
               <ClipboardCheck className="h-4 w-4" /> {t.takeCheck}
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

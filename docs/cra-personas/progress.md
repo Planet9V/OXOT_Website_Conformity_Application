@@ -321,3 +321,12 @@ the meaning of Art. 64(10).
   verified REAL. Full review + specs: docs/marketing/
   website-realignment-2026-08.md. Implementation phases 20a–20d + 21
   offered, not assumed.
+- 20a shipped: EN self-check's 13 wrong dates corrected to the
+  statutory 11 Dec 2027 / 11 Sep 2026 (NL was already right — the two
+  locales had forked); runway WALL constant 2027-12-10 → 2027-12-11;
+  statutory-workbench's two fabricated "fullText" quotes replaced with
+  the corpus verbatim Art 69(2)/71(2); home hero de-animated (the CTA
+  was invisible pre-hydration — measured opacity 0). Served source
+  docs re-checked: their "10 Dec" hits are the 2024 entry into force
+  (correct). Gates: G1 · G2 726/726 · G3 · G4/G5/G8 = 0 · G6 hero
+  visible on first paint.
