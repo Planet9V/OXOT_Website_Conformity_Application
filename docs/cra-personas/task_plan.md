@@ -1271,3 +1271,27 @@ then GPSR + the remaining 14.4 acts.
   G4/G5/G8 = 0 · verifiers green (4 consolidated + CRA + NIS2 + Cbw +
   BSIG + red-delegated) · G6 live incl. Art 3a and Art 43a rendering,
   screenshots reviewed (one banner truncation caught by pixels, fixed).
+
+## Phase 16 — UX/gap review of the loaded regulations (opened 2026-08-16, user-directed)
+
+User decision recorded: **DORA and CER are PARKED** — declarable, honestly
+amber-noted as un-modelled (11.4), no corpus/seeds/reader until a customer
+declaration needs them. Phase 17 (after 16) = GDPR + Data Act corpora,
+readers and statute-first seeds + GPSR seed rows.
+
+Method (high due diligence): AUDIT FIRST, fix second.
+- **16.1 Audit** — a scripted walk of every destination and every Library
+  surface as the admin persona, screenshot per page, pixel review of each;
+  plus API-level probes per regulationKey (classes, routes, requirements,
+  assessment creation) for every loaded act. Findings land in findings.md
+  with severity; nothing is fixed until the sweep is complete.
+- **16.2+ Fix batches** in severity order, each gated (G1–G8, G6 with
+  reviewed screenshots) and committed separately.
+
+Known suspects going in (to verify, not assume): empty Product Classes /
+Conformity Routes tables on act-detail pages for acts without seeded
+classes (seen on RED tonight); cockpit "Referred to as…" role-term
+flattening; mappings/themes surfacing for the Phase-11 acts; statutory
+flyout still CRA-only against nine corpora; reader navigation at
+119 articles; whether assessments can be created under non-CRA acts the
+org declares.
