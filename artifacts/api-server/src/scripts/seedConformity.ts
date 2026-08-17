@@ -139,6 +139,7 @@ const regulations: InsertRegulation[] = [
       { date: "2016-06-13", label: "Radio Equipment Directive applies" },
       { date: "2022-01-12", label: "Delegated Regulation (EU) 2022/30 published" },
       { date: "2025-08-01", label: "Cybersecurity requirements (Art 3(3)(d)(e)(f)) apply" },
+      { date: "2027-12-11", label: "Art 3(3)(d)(e)(f) requirements END — Delegated Regulation (EU) 2022/30 repealed by 2026/339; the CRA governs from this date" },
     ],
     sortOrder: 6,
   },

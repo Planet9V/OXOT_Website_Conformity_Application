@@ -1171,10 +1171,12 @@ Tasks (one batch):
 - **14.2 done** `verify_nis2_reader_playwright.mjs` — the Phase-12 ad-hoc
   annex check now repeatable: banner, Art. 23 verbatim, Annex I
   entity-definition column. All PASS, screenshots reviewed.
-- **14.3 in progress** RED→CRA handover milestone (2027-12-11) on the
-  act timeline. G6 pixel review CAUGHT a pre-existing defect: formatDate
+- **14.3 done** RED→CRA handover milestone (2027-12-11) on the act
+  timeline. G6 pixel review CAUGHT a pre-existing defect: formatDate
   rendered every plain calendar date ONE DAY EARLY in negative-offset
   timezones (UTC-midnight parse, local render) — statutory dates wrong
   on the shipped timeline. Fixed at the choke point (calendar dates
-  format in UTC; timestamps keep local rendering).
+  format in UTC; timestamps keep local rendering); re-verified live:
+  13 Jun 2016 / 12 Jan 2022 / 1 Aug 2025 / 11 Dec 2027, off-by-one
+  variants asserted ABSENT, screenshot reviewed.
 - **14.4 next** Obligation content for the still-unseeded acts.

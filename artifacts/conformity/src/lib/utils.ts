@@ -7,10 +7,18 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatDate(dateString: string) {
   const date = new Date(dateString);
+  // A plain calendar date ("2027-12-11") parses as UTC midnight; rendering it
+  // in a negative-offset timezone shifted every statutory date one day early
+  // (caught by G6 pixel review — the RED timeline showed "10 Dec 2027" for
+  // the 11 December 2027 repeal). Calendar dates are timezone-less: format
+  // them in UTC so the date shown is the date written. Full timestamps keep
+  // rendering in the viewer's local time.
+  const isCalendarDate = /^\d{4}-\d{2}-\d{2}$/.test(dateString);
   return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
     month: "short",
-    year: "numeric"
+    year: "numeric",
+    ...(isCalendarDate ? { timeZone: "UTC" } : {}),
   }).format(date);
 }
 
