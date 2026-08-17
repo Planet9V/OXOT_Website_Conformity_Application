@@ -225,3 +225,11 @@ the meaning of Art. 64(10).
   importer/distributor, deployer Art 26, registration, transparency);
   operator termFor +ai_act "deployer"; GPAI refusal documented. G2
   721/0/0; G6 both lenses green, screenshots reviewed.
+
+## 2026-08-16 (night) — 11.3 shipped
+- Machinery: 3 misnumbered Annex III rows CORRECTED (duties actually in
+  1.1.9 / 1.2.1(d) / 1.2.1(f); numbering verified against the OJ source
+  because the flattened annex blocks drop section headings); DoC moved off
+  "Annex II" (the safety-components list!) to Art 21; "technical file" →
+  technical documentation. +12 rows (Art 10 chain, AR, importers,
+  distributors, Art 19 traceability). G2 722/0/0; G6 machinery · 15.

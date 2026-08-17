@@ -119,6 +119,23 @@ describe("GET /conformity/org/obligations", () => {
     expect(res.json.obligations.some((o: any) => o.refCode === "Art 17")).toBe(false);
   });
 
+  it("serves the machinery seed at its corrected statutory addresses", async () => {
+    await declareExactly(["manufacturer"], ["machinery"]);
+    const res = await api("GET", "/conformity/org/obligations");
+    expect(res.status).toBe(200);
+    const refCodes = new Set(
+      res.json.obligations.filter((o: any) => o.regulationKey === "machinery").map((o: any) => o.refCode),
+    );
+    // The cyber EHSRs at their real section numbers (11.3 fixed three misnumbered rows).
+    for (const ref of ["Annex III 1.1.9", "Annex III 1.2.1", "Annex III 1.2.1(d)", "Annex III 1.2.1(f)"]) {
+      expect(refCodes.has(ref), `${ref} missing`).toBe(true);
+    }
+    // The DoC lives in Art 21 — Annex II is the safety-components list, not an obligation.
+    expect(refCodes.has("Art 21")).toBe(true);
+    expect(refCodes.has("Annex II")).toBe(false);
+    expect(refCodes.has("Annex III 1.2.1(a)")).toBe(false);
+  });
+
   it("contributes nothing from an act that is not declared", async () => {
     await declareExactly(["manufacturer"], ["cra"]);
     const res = await api("GET", "/conformity/org/obligations");

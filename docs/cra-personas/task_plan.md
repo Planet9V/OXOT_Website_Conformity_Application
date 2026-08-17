@@ -1051,10 +1051,23 @@ Tasks (one batch each; statute read from the corpus BEFORE writing a row):
   seed validation 125 req/82 map · G6 live (api+seed images rebuilt;
   ai_act badge under BOTH lenses, operator = nis2·12 + ai_act·3,
   screenshots reviewed, declaration restored).
-- **11.3** Machinery seed verified + extended — the 8 rows checked against
-  `docs/machinery_statutory_corpus/` (Annex III numbering especially);
-  extend with the manufacturer/importer/distributor chapter as the corpus
-  supports.
+- **11.3 done 2026-08-16** THREE MISNUMBERED rows found and fixed (L41 —
+  the annex corpus blocks carry no section numbers, so numbering was
+  verified against the committed OJ source): the software-protection and
+  intervention-evidence duties live in **1.1.9** (not "1.2.1(a)/(b)");
+  the modification-restraint duty is **1.2.1(d)**; the tracing-log duty
+  (five years) is **1.2.1(f)**; the real 1.2.1(a)–(c) say something else.
+  The DoC row cited **Annex II — the safety-components list** — corrected
+  to Art 21 / Annex V Part A; "technical file" (2006/42/EC language)
+  corrected to "technical documentation" (Annex IV Part A). TWELVE new
+  rows: Art 10 chain (10(3)(4)(6)(7)(9)(10)), Art 12 AR mandate,
+  Art 13(1)/(7)/(8) importers, Art 15(2)/(5) distributors, Art 19
+  traceability (all four operators, Art 3(22) verified). Partly-completed
+  chain (Arts 11/14/16) NOT seeded — refusal in the seed comment. 5
+  mappings corrected + 1 added (Art 19 ≡ CRA Art 23); regression test
+  pins the corrected addresses. Gates: G1 · G2 722/0/0 · G3 · G4/G5/G8 =
+  0 · seed validation 137 req/83 map · G6 live (machinery · 15 badge,
+  screenshot reviewed, declaration restored).
 - **11.4** Derivers + endpoint honesty + G7 — register only derivers whose
   input data exists (default: none new; the refusal and its reason go in
   the statusDerivers header); obligations response names any DECLARED
