@@ -55,15 +55,48 @@ const DIRECTIVE = {
   instrumentType: "directive",
   nationalTranspositionRequired: true,
   /**
-   * Checked on 2026-08-15 by probing CELEX 32022L2555R(01)/R(02) and by
-   * scanning the authentic source for "corrigendum" — neither found one. The
-   * EUR-Lex record page was unreachable at the time (bot challenge), so this is
-   * NOT a verified absence. Re-check before relying on it. The CRA had a
-   * corrigendum (OJ L 2025/90555) that changed the meaning of Art. 64(10).
+   * The full corrigenda list was read from the EUR-Lex ALL view on 2026-08-16
+   * (the L55 lifecycle sweep). Nine corrigenda exist; ONE affects the English
+   * text — R(04), applied below by applyCorrigenda with a must-fire check.
+   * The committed corrigendum document is source/CELEX_32022L2555R04_EN.html.
    */
-  corrigenda: [],
-  corrigendaVerified: false,
+  corrigenda: [
+    {
+      id: "32022L2555R(04)",
+      ojRef: "OJ L, 2023/90795, 22.12.2023",
+      eli: "http://data.europa.eu/eli/dir/2022/2555/corrigendum/2023-12-22/oj",
+      note: "Page 125, Article 19(1), first sentence: the Cooperation Group establishes the peer-review methodology BY 17 January 2025, not ON that day.",
+      article: 19,
+      paragraph: 1,
+      from: "The Cooperation Group shall, on 17 January 2025, establish",
+      to: "The Cooperation Group shall, by 17 January 2025, establish",
+    },
+  ],
+  corrigendaNoted: [
+    { id: "32022L2555R(01)", note: "IT, NL only — the English text is not affected." },
+    { id: "32022L2555R(02)", note: "NL only." },
+    { id: "32022L2555R(03)", note: "SL only." },
+    { id: "32022L2555R(05)", note: "HR, MT, RO, SK, SL, SV only." },
+    { id: "32022L2555R(06)", note: "ET only." },
+    { id: "32022L2555R(07)", note: "IT only." },
+    { id: "32022L2555R(08)", note: "FR, HU only." },
+    { id: "32022L2555R(09)", note: "ET, PL only." },
+  ],
+  corrigendaVerified: true,
 };
+
+/** Apply the EN corrigenda — each must fire, or the build fails (L55). */
+function applyCorrigenda(articles) {
+  for (const fix of DIRECTIVE.corrigenda) {
+    const art = articles.find((a) => a.articleNumber === fix.article);
+    const para = art?.paragraphs.find((p) => p.paragraphNumber === fix.paragraph);
+    if (!para || !para.text.includes(fix.from)) {
+      throw new Error(`Corrigendum ${fix.id} did not fire on Article ${fix.article}(${fix.paragraph})`);
+    }
+    para.text = para.text.replace(fix.from, fix.to);
+  }
+  return DIRECTIVE.corrigenda.length;
+}
 
 /** Structure of the Directive, asserted so a silent parse failure cannot pass. */
 const EXPECTED = {
@@ -148,6 +181,8 @@ function main() {
   const recitals = parseRecitals(html, tagsFor, EXPECTED.recitals, EXPECTED.articles);
   const chapters = parseChapters(html);
   const articles = parseArticles(html, chapters, tagsFor, EXPECTED.articles);
+  const corrigendaApplied = applyCorrigenda(articles);
+  console.log(`Corrigenda applied: ${corrigendaApplied}`);
   const annexes = parseAnnexes(html, EXPECTED.annexes, tagsFor, EXPECTED.articles);
 
   assertStructure(recitals, chapters, articles, annexes);

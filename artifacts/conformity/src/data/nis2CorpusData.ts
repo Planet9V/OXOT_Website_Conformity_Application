@@ -23,8 +23,53 @@ export const nis2RecitalsData = {
   "transpositionDeadline": "2024-10-17",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
+  "corrigenda": [
+    {
+      "id": "32022L2555R(04)",
+      "ojRef": "OJ L, 2023/90795, 22.12.2023",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/corrigendum/2023-12-22/oj",
+      "note": "Page 125, Article 19(1), first sentence: the Cooperation Group establishes the peer-review methodology BY 17 January 2025, not ON that day.",
+      "article": 19,
+      "paragraph": 1,
+      "from": "The Cooperation Group shall, on 17 January 2025, establish",
+      "to": "The Cooperation Group shall, by 17 January 2025, establish"
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32022L2555R(01)",
+      "note": "IT, NL only — the English text is not affected."
+    },
+    {
+      "id": "32022L2555R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32022L2555R(03)",
+      "note": "SL only."
+    },
+    {
+      "id": "32022L2555R(05)",
+      "note": "HR, MT, RO, SK, SL, SV only."
+    },
+    {
+      "id": "32022L2555R(06)",
+      "note": "ET only."
+    },
+    {
+      "id": "32022L2555R(07)",
+      "note": "IT only."
+    },
+    {
+      "id": "32022L2555R(08)",
+      "note": "FR, HU only."
+    },
+    {
+      "id": "32022L2555R(09)",
+      "note": "ET, PL only."
+    }
+  ],
+  "corrigendaVerified": true,
   "builtFrom": "docs/nis2_statutory_corpus/source/CELEX_32022L2555_EN.html",
   "recitalsCount": 144,
   "chaptersCount": 9,
@@ -1594,8 +1639,53 @@ export const nis2ArticlesData = {
   "transpositionDeadline": "2024-10-17",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
+  "corrigenda": [
+    {
+      "id": "32022L2555R(04)",
+      "ojRef": "OJ L, 2023/90795, 22.12.2023",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/corrigendum/2023-12-22/oj",
+      "note": "Page 125, Article 19(1), first sentence: the Cooperation Group establishes the peer-review methodology BY 17 January 2025, not ON that day.",
+      "article": 19,
+      "paragraph": 1,
+      "from": "The Cooperation Group shall, on 17 January 2025, establish",
+      "to": "The Cooperation Group shall, by 17 January 2025, establish"
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32022L2555R(01)",
+      "note": "IT, NL only — the English text is not affected."
+    },
+    {
+      "id": "32022L2555R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32022L2555R(03)",
+      "note": "SL only."
+    },
+    {
+      "id": "32022L2555R(05)",
+      "note": "HR, MT, RO, SK, SL, SV only."
+    },
+    {
+      "id": "32022L2555R(06)",
+      "note": "ET only."
+    },
+    {
+      "id": "32022L2555R(07)",
+      "note": "IT only."
+    },
+    {
+      "id": "32022L2555R(08)",
+      "note": "FR, HU only."
+    },
+    {
+      "id": "32022L2555R(09)",
+      "note": "ET, PL only."
+    }
+  ],
+  "corrigendaVerified": true,
   "builtFrom": "docs/nis2_statutory_corpus/source/CELEX_32022L2555_EN.html",
   "recitalsCount": 144,
   "chaptersCount": 9,
@@ -2334,7 +2424,7 @@ export const nis2ArticlesData = {
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "The Cooperation Group shall, on 17 January 2025, establish, with the assistance of the Commission and ENISA, and, where relevant, the CSIRTs network, the methodology and organisational aspects of peer reviews with a view to learning from shared experiences, strengthening mutual trust, achieving a high common level of cybersecurity, as well as enhancing Member States’ cybersecurity capabilities and policies necessary to implement this Directive. Participation in peer reviews is voluntary. The peer reviews shall be carried out by cybersecurity experts. The cybersecurity experts shall be designated by at least two Member States, different from the Member State being reviewed.\nThe peer reviews shall cover at least one of the following:\n(a) the level of implementation of the cybersecurity risk-management measures and reporting obligations laid down in Articles 21 and 23;\n(b) the level of capabilities, including the available financial, technical and human resources, and the effectiveness of the exercise of the tasks of the competent authorities;\n(c) the operational capabilities of the CSIRTs;\n(d) the level of implementation of mutual assistance referred to in Article 37;\n(e) the level of implementation of the cybersecurity information-sharing arrangements referred to in Article 29;\n(f) specific issues of cross-border or cross-sector nature."
+              "text": "The Cooperation Group shall, by 17 January 2025, establish, with the assistance of the Commission and ENISA, and, where relevant, the CSIRTs network, the methodology and organisational aspects of peer reviews with a view to learning from shared experiences, strengthening mutual trust, achieving a high common level of cybersecurity, as well as enhancing Member States’ cybersecurity capabilities and policies necessary to implement this Directive. Participation in peer reviews is voluntary. The peer reviews shall be carried out by cybersecurity experts. The cybersecurity experts shall be designated by at least two Member States, different from the Member State being reviewed.\nThe peer reviews shall cover at least one of the following:\n(a) the level of implementation of the cybersecurity risk-management measures and reporting obligations laid down in Articles 21 and 23;\n(b) the level of capabilities, including the available financial, technical and human resources, and the effectiveness of the exercise of the tasks of the competent authorities;\n(c) the operational capabilities of the CSIRTs;\n(d) the level of implementation of mutual assistance referred to in Article 37;\n(e) the level of implementation of the cybersecurity information-sharing arrangements referred to in Article 29;\n(f) specific issues of cross-border or cross-sector nature."
             },
             {
               "paragraphNumber": 2,
@@ -3257,8 +3347,53 @@ export const nis2AnnexesData = {
   "transpositionDeadline": "2024-10-17",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
+  "corrigenda": [
+    {
+      "id": "32022L2555R(04)",
+      "ojRef": "OJ L, 2023/90795, 22.12.2023",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/corrigendum/2023-12-22/oj",
+      "note": "Page 125, Article 19(1), first sentence: the Cooperation Group establishes the peer-review methodology BY 17 January 2025, not ON that day.",
+      "article": 19,
+      "paragraph": 1,
+      "from": "The Cooperation Group shall, on 17 January 2025, establish",
+      "to": "The Cooperation Group shall, by 17 January 2025, establish"
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32022L2555R(01)",
+      "note": "IT, NL only — the English text is not affected."
+    },
+    {
+      "id": "32022L2555R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32022L2555R(03)",
+      "note": "SL only."
+    },
+    {
+      "id": "32022L2555R(05)",
+      "note": "HR, MT, RO, SK, SL, SV only."
+    },
+    {
+      "id": "32022L2555R(06)",
+      "note": "ET only."
+    },
+    {
+      "id": "32022L2555R(07)",
+      "note": "IT only."
+    },
+    {
+      "id": "32022L2555R(08)",
+      "note": "FR, HU only."
+    },
+    {
+      "id": "32022L2555R(09)",
+      "note": "ET, PL only."
+    }
+  ],
+  "corrigendaVerified": true,
   "builtFrom": "docs/nis2_statutory_corpus/source/CELEX_32022L2555_EN.html",
   "recitalsCount": 144,
   "chaptersCount": 9,

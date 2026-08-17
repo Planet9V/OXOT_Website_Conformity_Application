@@ -167,8 +167,13 @@ function checkVerbatim(recitals, articlesJson, annexes) {
 
   let checked = 0;
   const miss = [];
+  // Corrected paragraphs legitimately differ from the original publication
+  // (same rule as the CRA verifier) — their parity is proven by D5, which
+  // applies the corrigenda to the source side and requires them to fire.
+  const corrected = new Set((articlesJson.corrigenda ?? []).map((c) => `${c.article}:${c.paragraph}`));
   for (const a of articles) {
     for (const p of a.paragraphs) {
+      if (corrected.has(`${a.articleNumber}:${p.paragraphNumber}`)) continue;
       for (const seg of String(p.text).split("\n")) {
         const s = norm(seg);
         if (s.length < MIN_SEGMENT) continue;

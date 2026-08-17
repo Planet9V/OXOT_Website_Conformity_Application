@@ -1180,3 +1180,48 @@ Tasks (one batch):
   13 Jun 2016 / 12 Jan 2022 / 1 Aug 2025 / 11 Dec 2027, off-by-one
   variants asserted ABSENT, screenshot reviewed.
 - **14.4 next** Obligation content for the still-unseeded acts.
+
+## Phase 15 — the shipped corpora meet their lifecycles (opened 2026-08-16, repair-first per user)
+
+The L55 ALL-view sweep of every shipped OJ act found the covenant broken
+four ways (findings verified against fetched EUR-Lex documents tonight):
+
+- **CRA**: EN corrigenda R(01) (title wording, 2024-12-05) and R(04)
+  (Art 67 quoted-insertion numbering "69."→"72.", 2025-10-17) never
+  applied — R(02) (Art 64(10), 2025-07-02) is the one we have. Also
+  AMENDED by Regulation (EU) 2025/327 (European Health Data Space):
+  Art 31(3) replaced + Art 32(5a) added, applicable 2027-03-26 — FUTURE,
+  so recorded as pending, not incorporated.
+- **NIS2**: EN corrigendum R(04) (Art 19(1) "on"→"by 17 January 2025",
+  2023-12-22) never applied.
+- **AI Act**: AMENDED IN FORCE since 2026-07-27 by Regulation (EU)
+  2026/1744 (the Digital Omnibus on AI): Art 6(1a)/(1b) added, Art 75(1)
+  replaced, high-risk application dates moved (Annex III standalone →
+  2027-12-02; embedded in Annex I products → 2028-08-02), more. Our
+  corpus AND our seeded milestones state superseded law.
+- **Machinery**: EN corrigendum R(01) = FOURTEEN date corrections
+  (13/14 July → 19/20 July family; one 2023→2026) never applied; AMENDED
+  IN FORCE since 2026-05-29 by 2024/2748 (chapter IVa emergency
+  procedures, Art 3 points 37–38) and since 2026-07-27 by 2026/1744
+  (Art 47(3) etc.).
+- **GPSR** (queued in 14.4) shares the 2024/2748 amendment (chapter IIa).
+
+Strategy (evidence-based, per precedent):
+- Small corrections → documented corrigenda applied to the ORIGINAL
+  (CRA machinery already exists; NIS2 builder gains it).
+- Chapter-scale amended acts (AI Act, Machinery, GPSR) → pivot to the
+  EUR-Lex CONSOLIDATED text at the exact in-force date (02024R1689-
+  20260727, 02023R1230-20260727, 02023R0988-20260529 — all fetched and
+  verified present) as a DISCLOSED DEPARTURE, BSIG-style: consolidated
+  source committed, amendment trail (acts, dates, subdivisions) in
+  metadata, D2 parity against the consolidated source.
+- Future-dated amendments (CRA ← EHDS 2027-03-26) → pendingAmendments
+  metadata; surfaces state the date.
+- Permanent guard: corpus metadata records its known lifecycle relations;
+  a lifecycle check script compares against the live ALL view (three-state:
+  meh when EUR-Lex unreachable).
+
+Tasks: **15.1** CRA corrigenda + EHDS pending · **15.2** NIS2 R(04) ·
+**15.3** AI Act consolidated pivot + milestone corrections ·
+**15.4** Machinery consolidated pivot · **15.5** lifecycle guard ·
+then GPSR + the remaining 14.4 acts.

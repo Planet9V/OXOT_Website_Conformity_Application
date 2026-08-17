@@ -180,3 +180,48 @@ users, and the app must follow.
   `OBJECT_STORAGE_BACKEND=local` selects local; anything else keeps the
   Replit sidecar path exactly as today. The docker stack gains a volume —
   it was broken before, so local-backend-on is strictly an improvement.
+
+## 2026-08-16 — Phase 15 lifecycle sweep: verified facts + consolidated-format parser design
+
+### Verified lifecycle facts (all from fetched EUR-Lex documents, saved this session)
+- CRA: R(01) EN title-fix (already served corrected at base URL — recorded no-op);
+  R(02) = our Art 64(10) fix (applied since 2026-08-15); R(04) Art 67 "69."→"72."
+  (NOW applied); EHDS Reg (EU) 2025/327 Art 104 amends CRA Arts 13(4)/31(3)/32(5a)
+  from 2027-03-26 (recorded pendingAmendments); "Completed by" 32025R1535 +
+  32026R0881 (supplementing acts — future content candidates, not text changes).
+- NIS2: R(04) Art 19(1) "on"→"by 17 January 2025" (NOW applied); 8 other corrigenda
+  language-scoped (recorded).
+- AI Act: amended IN FORCE 2026-07-27 by Reg (EU) 2026/1744 "Digital Omnibus on AI"
+  (inserts Art 4a and others — consolidated shows ~119 articles; Annex III
+  standalone high-risk application moved to 2027-12-02; embedded high-risk to
+  2028-08-02; Art 75(1) replaced; new prohibited practices). Our corpus + seeded
+  keyDates state superseded law. Corrigenda: none EN.
+- Machinery: R(01) EN = FOURTEEN date corrections (the 13/14→19/20 family; item 12
+  "14 October 2023"→"20 October 2026"); amended in force 2026-05-29 by 2024/2748
+  (chapter IVa = Arts 25a–25e emergency procedures, Art 3 pts 37–38) and
+  2026-07-27 by 2026/1744 (Art 47(3) etc.).
+- GPSR: corrigenda none EN; amended in force 2026-05-29 by 2024/2748 (chapter IIa).
+- CONSOLIDATED sources verified to exist: 02024R1689-20260727, 02023R1230-20260727,
+  02023R0988-20260529 (fetched; sizes 854/649/267 KB).
+
+### Consolidated-format parser design (for 15.3/15.4 + GPSR)
+Consolidated EUR-Lex HTML is a DIFFERENT dialect from OJ HTML:
+- NO preamble/recitals → hybrid corpus: recitals from the committed ORIGINAL OJ
+  source; articles+annexes from the committed CONSOLIDATED source; both sha-pinned.
+- Article container: `div.eli-subdivision#art_X` (X may carry letter suffixes:
+  4a, 25a–25e). Number: `p.title-article-norm` ("Article 25a"). Title:
+  `div.eli-title > p.(s)title-article-norm|p.norm`.
+- Paragraphs: `div.norm` with `span.no-parag` "N." then `div.norm.inline-element`
+  text; continuation `p.norm`; points as `div.grid-container.grid-list` rows
+  (grid-list-column-1 = "(a)", column-2 = text); tables `tbl-norm`.
+- Chapters: `p.title-division-1` ("CHAPTER IVa") + `p.title-division-2` (title);
+  letter chapters need chapterLabel alongside numeric chapterNumber.
+- Annexes: `p.title-annex-1` headings; `separator-annex` markers.
+- CONSOLIDATION APPARATUS to exclude everywhere incl. D2: `p.modref` (▼M1/▼B
+  markers), the "documentation tool" header block, superscript footnote refs.
+- Extraction requires balanced-div walking (regions nest); reuse the balanced-
+  scanner approach from tableLines/eu_oj_parser rather than regex-only slicing.
+- Article iteration must follow DOCUMENT-ORDER ids (art_4, art_4a, art_5 …),
+  never 1..N.
+- Readers/corpus shape: articleNumber becomes string-safe ("25a"); sort by
+  document order; citation gate ranges unaffected (regex captures digits only).

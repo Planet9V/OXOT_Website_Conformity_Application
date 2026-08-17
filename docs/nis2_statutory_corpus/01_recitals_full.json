@@ -10,8 +10,53 @@
   "transpositionDeadline": "2024-10-17",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
+  "corrigenda": [
+    {
+      "id": "32022L2555R(04)",
+      "ojRef": "OJ L, 2023/90795, 22.12.2023",
+      "eli": "http://data.europa.eu/eli/dir/2022/2555/corrigendum/2023-12-22/oj",
+      "note": "Page 125, Article 19(1), first sentence: the Cooperation Group establishes the peer-review methodology BY 17 January 2025, not ON that day.",
+      "article": 19,
+      "paragraph": 1,
+      "from": "The Cooperation Group shall, on 17 January 2025, establish",
+      "to": "The Cooperation Group shall, by 17 January 2025, establish"
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32022L2555R(01)",
+      "note": "IT, NL only — the English text is not affected."
+    },
+    {
+      "id": "32022L2555R(02)",
+      "note": "NL only."
+    },
+    {
+      "id": "32022L2555R(03)",
+      "note": "SL only."
+    },
+    {
+      "id": "32022L2555R(05)",
+      "note": "HR, MT, RO, SK, SL, SV only."
+    },
+    {
+      "id": "32022L2555R(06)",
+      "note": "ET only."
+    },
+    {
+      "id": "32022L2555R(07)",
+      "note": "IT only."
+    },
+    {
+      "id": "32022L2555R(08)",
+      "note": "FR, HU only."
+    },
+    {
+      "id": "32022L2555R(09)",
+      "note": "ET, PL only."
+    }
+  ],
+  "corrigendaVerified": true,
   "builtFrom": "docs/nis2_statutory_corpus/source/CELEX_32022L2555_EN.html",
   "recitalsCount": 144,
   "chaptersCount": 9,

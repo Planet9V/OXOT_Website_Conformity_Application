@@ -120,7 +120,55 @@ const CORRIGENDA = [
       },
     ],
   },
+  {
+    // Found by the 15.x lifecycle sweep (L55) — published 2025-10-17,
+    // unapplied until 2026-08-16.
+    ojRef: "OJ L, 2025/91117, 17.10.2025",
+    eli: "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj",
+    url: "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj/eng",
+    corrections: [
+      {
+        note: "Page 66, Article 67 — the point number this Regulation takes in Annex I to Directive (EU) 2020/1828 is 72, not 69 (three other acts joined the annex first).",
+        article: 67,
+        paragraph: 0,
+        from: "‘69. Regulation (EU) 2024/2847",
+        to: "‘72. Regulation (EU) 2024/2847",
+      },
+    ],
+  },
 ];
+
+/**
+ * Corrections and amendments that exist but are NOT applied, with the reason
+ * stated — recorded so the lifecycle can never again drift silently (L55).
+ */
+const LIFECYCLE_NOTES = {
+  corrigendaNoted: [
+    {
+      id: "32024R2847R(01)",
+      eli: "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2024-12-05/oj",
+      note: "EN, title wording only ('(EU) No 2019/1020' → '(EU) 2019/1020'). The committed EUR-Lex source already serves the corrected title; no stored string carries the superseded form.",
+    },
+    { id: "32024R2847R(03)", note: "FR, HU only — the English text is not affected." },
+    { id: "32024R2847R(05)", note: "SK only." },
+    { id: "32024R2847R(06)", note: "FR only." },
+    { id: "32024R2847R(07)", note: "DE only." },
+  ],
+  pendingAmendments: [
+    {
+      act: "Regulation (EU) 2025/327 (European Health Data Space)",
+      celex: "32025R0327",
+      eli: "http://data.europa.eu/eli/reg/2025/327/oj",
+      applicableFrom: "2027-03-26",
+      changes: [
+        "Article 13(4) replaced (cybersecurity risk assessment may join other Union acts' risk assessment for Art 12 / Art 32(5a) products)",
+        "Article 31(3) replaced (single set of technical documentation for those products)",
+        "Article 32(5a) inserted (EHR systems under 2025/327 demonstrate conformity via that Regulation's procedure)",
+      ],
+      note: "ADOPTED but applicable only from 2027-03-26 — the law in force today is the unamended text; incorporate in the batch that opens when the date nears.",
+    },
+  ],
+};
 
 function applyCorrigenda(articles) {
   const applied = [];
@@ -202,7 +250,7 @@ function main() {
       };
     });
 
-    const provenance = { ...REG, corrigenda: corrigendaApplied };
+    const provenance = { ...REG, corrigenda: corrigendaApplied, ...LIFECYCLE_NOTES };
     const recitalsFull = { ...provenance, totalRecitals: recitals.length, recitals };
     const articlesFull = {
       ...provenance,
