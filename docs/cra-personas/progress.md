@@ -245,3 +245,11 @@ the meaning of Art. 64(10).
   losses found+fixed (NIS2 entity column ~7.6k chars, grseq headings,
   footer/statement leakage, one footnote leak). L54 recorded. All gates
   green; NIS2 Annex I entity column verified rendering live.
+
+## 2026-08-16 (late night) — 13.1 built: RED Delegated Regulation 2022/30
+- Three authentic OJ sources committed (base + 2023/2444 amending +
+  2026/339 repealing); corpus applies the two amendments (must-fire, D2
+  parity + negative control); verifier (8th corpus) + CI + reproducibility;
+  reader panel on /library/red with both lifecycle dates quoted verbatim;
+  the three Art 3(3) seed rows now name their designated categories.
+  G1/G3/G4/G5/G8 green, G2 723/0/0, G6 all PASS, screenshots reviewed.

@@ -270,7 +270,7 @@ const WAIVER = /citation-ok:\s*(.+)$/;
  * instrument suppressed a real error — the CRA's penalties are Article 64, and
  * the line claiming Article 61 went unflagged because it also mentioned IEC.
  */
-const OTHER_INSTRUMENT = /NIS2|2022\/2555|2019\/1020|2019\/881|765\/2008|1182\/71|GDPR|2016\/679|AI Act|2024\/1689|Machinery Regulation|2023\/1230|RED\b|2014\/53|\bMDR\b|2017\/745|\bIVDR\b|2017\/746|\bDORA\b|2022\/2554|\bCER\b|2022\/2557|\bGPSR\b|2023\/988|Data Act|2023\/2854/i;
+const OTHER_INSTRUMENT = /NIS2|2022\/2555|2019\/1020|2019\/881|765\/2008|1182\/71|GDPR|2016\/679|AI Act|2024\/1689|Machinery Regulation|2023\/1230|RED\b|2014\/53|\bMDR\b|2017\/745|\bIVDR\b|2017\/746|\bDORA\b|2022\/2554|\bCER\b|2022\/2557|\bGPSR\b|2023\/988|Data Act|2023\/2854|2022\/30\b|2023\/2444|2026\/339/i;
 /**
  * How close another instrument's name must be to a citation to be taken as its
  * referent. "Article 21 of NIS2" attributes; a passing mention 200 characters
@@ -325,7 +325,7 @@ const FILE_ACT = [
  * them is correct by definition, and "correcting" one would corrupt the very
  * thing every other citation is checked against. Never scan the source of truth.
  */
-const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus)\//;
+const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory_corpus|cbw_statutory_corpus|bsig_statutory_corpus|ai_act_statutory_corpus|machinery_statutory_corpus|red_statutory_corpus|red_delegated_2022_30)\//;
 
 /**
  * Which act does this file default to? Returns the act, or a skip reason.

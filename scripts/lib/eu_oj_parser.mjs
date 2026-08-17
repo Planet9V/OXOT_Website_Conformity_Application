@@ -285,14 +285,18 @@ export function romanToInt(roman) {
 }
 export const ROMAN = new Proxy({}, { get: (_t, p) => (typeof p === "string" ? romanToInt(p) || undefined : undefined) });
 
-export function parseArticles(html, chapters, tagsFor, maxArticle) {
+export function parseArticles(html, chapters, tagsFor, maxArticle, opts = {}) {
+  // Short Commission acts (the RED's Delegated Regulation 2022/30 among
+  // them) publish articles with NO titles; `titleOptional` admits that
+  // without weakening the invariant for the acts that do carry titles.
+  const { titleOptional = false } = opts;
   const articles = [];
   for (let n = 1; n <= maxArticle; n++) {
     const frag = sliceById(html, `art_${n}`, [`art_${n + 1}`, "fnp_1", "anx_I"]);
     if (!frag) throw new Error(`Article ${n} not found in source`);
     const titleM = frag.match(/class="oj-sti-art"[^>]*>([\s\S]*?)<\/p>/);
     const title = titleM ? textOf(titleM[1]) : "";
-    if (!title) throw new Error(`Article ${n} has no title in source`);
+    if (!title && !titleOptional) throw new Error(`Article ${n} has no title in source`);
 
     const paragraphs = [];
     let cur = null;

@@ -1107,3 +1107,53 @@ User-prioritised candidate #1 after Phase 11. One batch.
 
 Follow-up candidate noted in the G7 retro: a repeatable
 verify_nis2_reader G6 script (the ad-hoc annex check deserves a home).
+
+## Phase 13 — RED Art 3(3)(d)/(e)/(f) delegated-acts content (opened 2026-08-16)
+
+User chose the candidate. Authentic sources located FIRST (Legal
+circuit-breaker) and the full lifecycle discovered from EUR-Lex, all
+verbatim:
+
+- **Delegated Regulation (EU) 2022/30** (CELEX 32022R0030): designates
+  the categories for RED Art 3(3)(d)/(e)/(f) — (d) internet-connected
+  radio equipment; (e) equipment processing personal/traffic/location
+  data (incl. childcare, toys under 2009/48/EC, wearables); (f) internet-
+  connected equipment enabling transfer of money, monetary value or
+  virtual currency. Art 2 carves out MDR/IVDR (and aviation/vehicle/toll
+  legislation for (e)/(f)).
+- **Delegated Regulation (EU) 2023/2444**: replaces Art 3 para 2
+  ("It shall apply from 1 August 2025.") and corrects the Art 1(2)
+  introductory wording. Applied as documented amendments, CRA-corrigendum
+  style — from/to verbatim, provenance recorded, required to fire.
+- **Delegated Regulation (EU) 2026/339** (16 Feb 2026): "Delegated
+  Regulation (EU) 2022/30 is repealed with effect from 11 December 2027"
+  — because the CRA's Annex I "include[s] all the elements" of the three
+  essential requirements. The corpus carries this repeal as metadata;
+  the surface must state BOTH dates (applies since 2025-08-01; repealed
+  from 2027-12-11 in favour of the CRA).
+- A Bulgarian-language corrigendum (32022R0030R(01)) does not touch the
+  EN text — recorded, not applied.
+
+Tasks (one batch):
+
+- **13.1 done 2026-08-16** Corpus `docs/red_delegated_2022_30/` — three
+  committed authentic sources; builder applies the TWO 2023/2444
+  amendments (from/to verbatim, provenance-quoted, must fire at build AND
+  in D2); repeal metadata quoted verbatim from 2026/339; 19 recitals + 3
+  title-less articles (the OJ has no titles — `titleOptional` added to
+  parseArticles rather than inventing any). EIGHTH corpus verifier
+  (A1 ×3 sources, B1 quotes anchored, B2 amendments in effect +
+  superseded wording absent, C1 reproducible, C3 bundle sync, D1 probes,
+  D2/D2N parity via the shared module — extended to merge `amendments`
+  with `corrigenda` and tolerate annex-less corpora), wired into CI with
+  reproducibility. `/library/red` gains the delegated-regulation panel:
+  all three articles verbatim in full, lifecycle banner stating BOTH
+  dates with the repealing act's article and reason quoted from the
+  bundle metadata (the component asserts nothing of its own about the
+  law). The three Art 3(3) seed rows now name their designated
+  categories (internet-connected equipment; childcare/toys/wearables for
+  (e); money/monetary value/virtual currency for (f)). Content-gate
+  exclusions extended (bundle in G4 SKIP; corpus dir in G5
+  SOURCE_OF_TRUTH; 2022/30, 2023/2444, 2026/339 in OTHER_INSTRUMENT).
+  Gates: G1 · G2 723/0/0 · G3 · G4/G5/G8 = 0 · 8 verifiers · G6 all PASS
+  with reviewed screenshots (panel + banner).

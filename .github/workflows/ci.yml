@@ -199,6 +199,9 @@ jobs:
       - name: RED source of truth
         if: always()
         run: node scripts/verify_euact_corpus.mjs red
+      - name: RED Delegated Regulation 2022/30 source of truth
+        if: always()
+        run: node scripts/verify_red_delegated_corpus.mjs
 
       # Belt and braces: the corpus must also be reproducible byte-for-byte, so
       # a hand-edit of craCorpusData.ts cannot survive.
@@ -219,4 +222,6 @@ jobs:
           node scripts/sync_euact_corpus_data.mjs machinery
           node scripts/build_euact_corpus_from_eurlex.mjs red
           node scripts/sync_euact_corpus_data.mjs red
-          git diff --exit-code -- artifacts/*/src/**/craCorpusData.ts artifacts/conformity/src/data/nis2CorpusData.ts artifacts/conformity/src/data/cbwCorpusData.ts artifacts/conformity/src/data/bsigCorpusData.ts artifacts/conformity/src/data/aiActCorpusData.ts artifacts/conformity/src/data/machineryCorpusData.ts artifacts/conformity/src/data/redCorpusData.ts docs/cra_statutory_corpus/ docs/nis2_statutory_corpus/ docs/cbw_statutory_corpus/ docs/bsig_statutory_corpus/ docs/ai_act_statutory_corpus/ docs/machinery_statutory_corpus/ docs/red_statutory_corpus/
+          node scripts/build_red_delegated_corpus.mjs
+          node scripts/sync_red_delegated_corpus_data.mjs
+          git diff --exit-code -- artifacts/*/src/**/craCorpusData.ts artifacts/conformity/src/data/nis2CorpusData.ts artifacts/conformity/src/data/cbwCorpusData.ts artifacts/conformity/src/data/bsigCorpusData.ts artifacts/conformity/src/data/aiActCorpusData.ts artifacts/conformity/src/data/machineryCorpusData.ts artifacts/conformity/src/data/redCorpusData.ts artifacts/conformity/src/data/redDelegatedCorpusData.ts docs/cra_statutory_corpus/ docs/nis2_statutory_corpus/ docs/cbw_statutory_corpus/ docs/bsig_statutory_corpus/ docs/ai_act_statutory_corpus/ docs/machinery_statutory_corpus/ docs/red_statutory_corpus/ docs/red_delegated_2022_30/

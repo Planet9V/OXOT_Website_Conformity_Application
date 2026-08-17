@@ -83,15 +83,20 @@ function firstDivergence(a, b) {
 export function checkOjContentParity({ corpusDir, sourceFile }) {
   const html = fs.readFileSync(path.join(corpusDir, sourceFile), "utf8");
   const artJson = JSON.parse(fs.readFileSync(path.join(corpusDir, "02_articles_full.json"), "utf8"));
-  const anxJson = JSON.parse(fs.readFileSync(path.join(corpusDir, "03_annexes_full.json"), "utf8"));
+  const anxPath = path.join(corpusDir, "03_annexes_full.json");
+  // An annex-less act (the RED's Delegated Regulation 2022/30) has no annex
+  // file; zero corpus annexes against zero source headings verifies below.
+  const anxJson = fs.existsSync(anxPath) ? JSON.parse(fs.readFileSync(anxPath, "utf8")) : { annexes: [] };
   const articles = artJson.chapters ? artJson.chapters.flatMap((c) => c.articles) : artJson.articles;
 
-  // Corrigenda: applied to the source side, and they MUST fire.
-  const corrigenda = (artJson.corrigenda ?? []).map((c) => ({
+  // Corrigenda AND documented amendments (2023/2444-style): both are
+  // declared from→to transformations with provenance, applied to the source
+  // side, and they MUST fire.
+  const corrigenda = [...(artJson.corrigenda ?? []), ...(artJson.amendments ?? [])].map((c) => ({
     article: c.article,
     from: norm(c.from),
     to: norm(c.to),
-    ojRef: c.ojRef,
+    ojRef: c.ojRef ?? c.act,
   }));
 
   for (const a of articles) {

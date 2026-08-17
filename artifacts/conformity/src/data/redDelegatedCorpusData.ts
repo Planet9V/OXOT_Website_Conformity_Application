@@ -1,0 +1,441 @@
+/**
+ * RED Delegated Regulation (EU) 2022/30 statutory corpus — Commission Delegated Regulation (EU) 2022/30,
+ * as amended by Delegated Regulation (EU) 2023/2444, repealed with effect
+ * from 2027-12-11 by Delegated Regulation (EU) 2026/339.
+ *
+ * GENERATED FILE — DO NOT EDIT BY HAND.
+ * Built from the Official Journal text (OJ L 7, 12.1.2022, p. 6,
+ * CELEX 32022R0030) by scripts/build_red_delegated_corpus.mjs and
+ * copied here by scripts/sync_red_delegated_corpus_data.mjs.
+ *
+ * Regenerate:
+ *   node scripts/build_red_delegated_corpus.mjs
+ *   node scripts/sync_red_delegated_corpus_data.mjs
+ */
+export const redDelegatedRecitalsData = {
+  "regulation": "Commission Delegated Regulation (EU) 2022/30",
+  "shortTitle": "RED Delegated Regulation (EU) 2022/30",
+  "supplements": "Directive 2014/53/EU (RED), Article 3(3), points (d), (e) and (f)",
+  "officialJournalReference": "OJ L 7, 12.1.2022, p. 6",
+  "celex": "32022R0030",
+  "eli": "http://data.europa.eu/eli/reg_del/2022/30/oj",
+  "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022R0030",
+  "adopted": "2021-10-29",
+  "instrumentType": "delegated_regulation",
+  "appliesFrom": "2025-08-01",
+  "languageNote": "A Bulgarian-language corrigendum (32022R0030R(01)) exists and does not affect the English text; it is recorded, not applied.",
+  "amendments": [
+    {
+      "act": "Commission Delegated Regulation (EU) 2023/2444",
+      "celex": "32023R2444",
+      "eli": "http://data.europa.eu/eli/reg_del/2023/2444/oj",
+      "provision": "Article 1 — Amendment to Delegated Regulation (EU) 2022/30",
+      "note": "Defers the date of application from 1 August 2024 to 1 August 2025 (harmonised standards for the three cybersecurity essential requirements were not ready).",
+      "article": 3,
+      "quoted": "‘It shall apply from 1 August 2025.’",
+      "from": "It shall apply from 1 August 2024.",
+      "to": "It shall apply from 1 August 2025."
+    },
+    {
+      "act": "Commission Delegated Regulation (EU) 2023/2444",
+      "celex": "32023R2444",
+      "eli": "http://data.europa.eu/eli/reg_del/2023/2444/oj",
+      "provision": "Article 2 — Correction to Delegated Regulation (EU) 2022/30",
+      "note": "Corrects the Art 1(2) introductory wording: 'traffic data and location data' becomes 'traffic data or location data'.",
+      "article": 1,
+      "quoted": "‘2. The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data or location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:’",
+      "from": "The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data and location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:",
+      "to": "The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data or location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:"
+    }
+  ],
+  "repeal": {
+    "act": "Commission Delegated Regulation (EU) 2026/339",
+    "celex": "32026R0339",
+    "eli": "http://data.europa.eu/eli/reg_del/2026/339/oj",
+    "adopted": "2026-02-16",
+    "withEffectFrom": "2027-12-11",
+    "articleQuote": "Delegated Regulation (EU) 2022/30 is repealed with effect from 11 December 2027.",
+    "reasonQuote": "The essential cybersecurity requirements set out in Annex I to Regulation (EU) 2024/2847 include all the elements of the essential requirements referred to in Article 3(3), points (d), (e) and (f), of Directive 2014/53/EU."
+  },
+  "builtFrom": {
+    "base": {
+      "file": "source/CELEX_32022R0030_EN.html",
+      "sha256": "94dc47e2f2cf7b4621c3d058e2704d5d431e5683324433f56eb9034a1b17480f"
+    },
+    "amending": {
+      "file": "source/CELEX_32023R2444_EN.html",
+      "sha256": "922b7a8a8f32565613f75a6a6a6b4983ec42a0295c05c39640be68467fee0677"
+    },
+    "repealing": {
+      "file": "source/CELEX_32026R0339_EN.html",
+      "sha256": "291a1e7f1075cd649d3ecb1a25c61f140b41485c8db93a98983c1b4df5dbd6db"
+    }
+  },
+  "sourceSha256": "94dc47e2f2cf7b4621c3d058e2704d5d431e5683324433f56eb9034a1b17480f",
+  "recitalsCount": 19,
+  "totalArticles": 3,
+  "annexesCount": 0,
+  "recitals": [
+    {
+      "number": 1,
+      "title": "Recital 1",
+      "text": "Protection of the network or its functioning from harm, protection of personal data and privacy of the user and of the subscriber and protection from fraud are elements that support protection against cybersecurity risks.",
+      "tags": [
+        "personal_data",
+        "fraud",
+        "network_protection"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 2,
+      "title": "Recital 2",
+      "text": "As stated in recital 13 of Directive 2014/53/EU, the protection of personal data and privacy of users and of subscribers of radio equipment and the protection from fraud may be enhanced by particular features of radio equipment. According to that recital, radio equipment should therefore in appropriate cases be designed in such a way that it supports those features.",
+      "tags": [
+        "personal_data",
+        "fraud"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 3,
+      "title": "Recital 3",
+      "text": "5G will play a key role in the development of the Union digital economy and society in the years to come and will potentially affect almost every aspect of Union citizens’ lives. The document with title ‘Cybersecurity of 5G networks EU Toolbox of risk mitigating measures’ identifies a possible common set of measures which are able to mitigate the main cybersecurity risks of 5G networks and provides guidance for the selection of measures which should be prioritised in mitigation plans at national and at Union level. In addition to those measures, it is very important to follow a harmonised approach to essential requirements relating to elements of cybersecurity protection applicable to 5G radio equipment when it is placed on the Union market.",
+      "tags": [
+        "network_protection"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 4,
+      "title": "Recital 4",
+      "text": "The level of security applicable under Union essential requirements set out in Article 3(3)(d), (e) and (f) to ensure network protection, safeguards for the protection of personal data and privacy and protection from fraud shall not undermine the high level of security requested at national level for decentralised smart grids in the field of energy where smart meters subject to those requirements are to be used, and for 5G network equipment used by providers of public electronic communications networks and publicly available electronic communications services within the meaning of in Directive (EU) 2018/1972 of the European Parliament and of the Council .",
+      "tags": [
+        "personal_data",
+        "fraud",
+        "network_protection"
+      ],
+      "relatedArticles": [
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 5,
+      "title": "Recital 5",
+      "text": "Numerous concerns have also been expressed in relation to increasing cybersecurity risks as a result of the increased use by professionals and consumers, including children, of radio equipment which: (i) is capable itself to communicate over the internet, regardless if it communicates directly or via any other equipment (‘internet-connected radio equipment’), i.e., such internet-connected equipment operates protocols necessary to exchange data with the internet either directly or by means of an intermediate equipment; (ii) can be either a toy with radio function which also falls within the scope of Directive 2009/48/EC of the European Parliament and of the Council or is designed or intended exclusively for childcare, such as child monitors; or (iii) is designed or intended, whether exclusively or not exclusively, to be worn on, strapped to, or hung from any part of the human body (including the head, neck, trunk, arms, hands, legs and feet) or any clothing (including headwear, hand wear and footwear) worn by human beings such as radio equipment in the form of wrist watch, ring, wristband, headset, earphone or glasses (‘wearable radio equipment’).",
+      "tags": [
+        "internet_connected",
+        "toys",
+        "childcare",
+        "wearables"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 6,
+      "title": "Recital 6",
+      "text": "In this respect, any radio equipment for childcare, radio equipment covered by Directive 2009/48/EC or wearable radio equipment, which is capable itself to communicate over the internet, regardless if it communicates directly or via any other equipment, should be deemed to be internet-connected radio equipment. Implants, for example, should not be considered as wearable radio equipment as they are not worn on, strapped to, or hung from any part of the human body or any clothing. However, implants should be deemed to be internet-connected radio equipment, if they are capable themselves to communicate over the internet, regardless if they communicate directly or via any other equipment.",
+      "tags": [
+        "internet_connected",
+        "childcare",
+        "wearables"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 7,
+      "title": "Recital 7",
+      "text": "Given the concerns raised due to the fact that radio equipment does not ensure protection against elements of cybersecurity risks, it is necessary to render applicable, for radio equipment within certain categories or classes, the essential requirements of Directive 2014/53/EU associated with the protection from harm to the network, protection of personal data and privacy of users and of subscribers and protection from fraud.",
+      "tags": [
+        "personal_data",
+        "fraud",
+        "network_protection"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 8,
+      "title": "Recital 8",
+      "text": "Directive 2014/53/EU applies to products that meet the definition of ‘radio equipment’ in Article 2 of that Directive, subject to specific exclusions specified in Article 1(2) and Article 1(3) of that Directive. Whilst the definition of radio equipment in Article 2 of Directive 2014/53/EU refers to equipment that can communicate with radio waves, no requirements of Directive 2014/53/EU make a distinction between the radio and non-radio functions of the radio equipment and therefore all aspects and parts of the equipment should comply with the essential requirements provided for in this delegated regulation.",
+      "tags": [],
+      "relatedArticles": [
+        1,
+        2
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 9,
+      "title": "Recital 9",
+      "text": "As regards harm to the network or its functioning or misuse of network resources, unacceptable degradation of services can be caused by internet-connected radio equipment which do not ensure that networks are not harmed or are not misused. For example, an attacker may maliciously flood the internet network to prevent legitimate network traffic, disrupt the connections between two radio products, thus preventing access to a service, prevent a particular person from accessing a service, disrupt a service to a specific system or person or disrupt information. The degradation of online services can thus result in malicious cyber-attacks, which will lead to increased costs, inconveniences or risks for operators, service providers or users. Article 3(3), point (d), of Directive 2014/53/EU, which requires that radio equipment does not harm the network or its functioning nor misuse network resources, thereby causing an unacceptable degradation of service, should therefore apply to internet-connected radio equipment.",
+      "tags": [
+        "internet_connected",
+        "network_protection"
+      ],
+      "relatedArticles": [
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 10,
+      "title": "Recital 10",
+      "text": "Concerns have also been raised as regards the protection of personal data and privacy of the user and of the subscriber of internet-connected radio equipment due to the ability of that radio equipment to record, store and share information, interact with the user, including children, when speakers, microphones and other sensors are integrated in that radio equipment. Those concerns relate, in particular to the ability of that radio equipment to record photos, videos, localisation data, data linked to the play experience as well as heartrate, sleeping habits or other personal data. For instance, advanced settings of the radio equipment can be accessed through a default password if the connection or the data are not encrypted or if a strong authentication mechanism is not in place.",
+      "tags": [
+        "internet_connected",
+        "personal_data"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 11,
+      "title": "Recital 11",
+      "text": "It is thus important that internet-connected radio equipment, which is placed on the Union market, incorporate safeguards to ensure that personal data and privacy are protected when they are capable of processing personal data as defined in Article 4(1) of Regulation (EU) 2016/679 of the European Parliament and of the Council or data defined in Article 2, points (b) and (c), of Directive 2002/58/EC of the European Parliament and of the Council . Article 3(3), point (e), of Directive 2014/53/EU should therefore apply to internet-connected radio equipment.",
+      "tags": [
+        "internet_connected",
+        "personal_data"
+      ],
+      "relatedArticles": [
+        2,
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 12,
+      "title": "Recital 12",
+      "text": "Additionally, as regards the protection of personal data and privacy, radio equipment for childcare, radio equipment covered by Directive 2009/48/EC and wearable radio equipment pose security risks even in the absence of an internet connection. Personal data can be intercepted when that radio equipment emit or receive radio waves and lack safeguards that ensure personal data and privacy protection. The radio equipment for childcare, the radio equipment covered by Directive 2009/48/EC and the wearable radio equipment can monitor and register a number of the user’s sensitive (personal) data over time and retransmit them through communication technologies that might be insecure. The radio equipment for childcare, the radio equipment covered by Directive 2009/48/EC and the wearable radio equipment should also ensure protection of personal data and privacy, when they are capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, of personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data and location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC. Article 3(3), point (e), of Directive 2014/53/EU should therefore apply to that radio equipment.",
+      "tags": [
+        "internet_connected",
+        "personal_data",
+        "childcare",
+        "wearables"
+      ],
+      "relatedArticles": [
+        2,
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 13,
+      "title": "Recital 13",
+      "text": "As regards fraud, information including personal data can be stolen from internet-connected radio equipment, which do not ensure protection from fraud. Specific kinds of frauds concern internet-connected radio equipment when they are used to perform payments over the internet. The costs can be high and do not only concern the person who suffered the fraud, but also society as a whole (for example, the cost of police investigation, the costs of victim services, the costs of trials to establish responsibilities). It is therefore necessary to ensure trustworthy transactions and minimise the risk of incurring financial loss of the users of internet-connected radio equipment executing the payment via that radio equipment and of the recipient of the payment carried out via that radio equipment.",
+      "tags": [
+        "internet_connected",
+        "personal_data",
+        "fraud"
+      ],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 14,
+      "title": "Recital 14",
+      "text": "Internet-connected radio equipment placed on the Union market should support features for ensuring protection from fraud when they enable the holder or user to transfer money, monetary value or virtual currency as defined in Article 2, point (d), of Directive (EU) 2019/713 of the European Parliament and of the Council . Article 3(3), point (f), of Directive 2014/53/EU should therefore apply to that radio equipment.",
+      "tags": [
+        "internet_connected",
+        "fraud"
+      ],
+      "relatedArticles": [
+        2,
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 15,
+      "title": "Recital 15",
+      "text": "Regulation (EU) 2017/745 of the European Parliament and of the Council lays down rules on medical devices and Regulation (EU) 2017/746 of the European Parliament and of the Council lays down rules on in vitro diagnostic medical devices. Both Regulations (EU) 2017/745 and (EU) 2017/746 address certain elements of cybersecurity risks associated with the risks addressed by Article 3(3), points (d), (e) and (f), of Directive 2014/53/EU. Radio equipment to which either of those Regulations apply should therefore not fall within the categories or classes of radio equipment which should comply with the essential requirements set out in Article 3(3), points (d), (e) and (f), of Directive 2014/53/EU.",
+      "tags": [],
+      "relatedArticles": [
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 16,
+      "title": "Recital 16",
+      "text": "Regulation (EU) 2019/2144 of the European Parliament and of the Council establishes requirements for the type-approval of vehicles, and of their systems and components. In addition, the principal objective of Regulation (EU) 2018/1139 of the European Parliament and of the Council is to establish and maintain a high uniform level of civil aviation safety in the Union. Moreover, Directive (EU) 2019/520 of the European Parliament and of the Council lays down the conditions for the interoperability of electronic road toll systems and for facilitating cross-border exchange of information on the failure to pay road fees in the Union. Regulations (EU) 2019/2144 and (EU) 2018/1139 and Directive (EU) 2019/520 address elements of cybersecurity risks associated with the risks set out in Article 3(3), points (e) and (f), of Directive 2014/53/EU. Radio equipment to which Regulations (EU) 2019/2144 and (EU) 2018/1139 or Directive (EU) 2019/520 apply should therefore not fall within the categories or classes of radio equipment which should comply with the essential requirements set out in Article 3(3), points (e) and (f), of Directive 2014/53/EU.",
+      "tags": [],
+      "relatedArticles": [
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 17,
+      "title": "Recital 17",
+      "text": "Article 3 of Directive 2014/53/EU provides for essential requirements with which economic operators shall comply. In order to facilitate conformity assessment with those requirements, it provides for a presumption of conformity for radio equipment that complies with voluntary harmonised standards that are adopted in accordance with Regulation (EU) No 1025/2012 of the European Parliament and of the Council for the purpose of expressing detailed technical specifications of those requirements. The specifications will consider and address the level of risks that correspond to the intended use of each category or class of radio equipment concerned by this Regulation.",
+      "tags": [],
+      "relatedArticles": [
+        3
+      ],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 18,
+      "title": "Recital 18",
+      "text": "Economic operators should be provided with a sufficient time to adapt to the requirements of this Regulation. The application of this Regulation should therefore be deferred. This Regulation is not to prevent economic operators from complying with it from the date of its entry into force.",
+      "tags": [],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    },
+    {
+      "number": 19,
+      "title": "Recital 19",
+      "text": "The Commission has carried out appropriate consultations during the preparatory work of the measures set out in this Regulation and has consulted the Expert Group on Radio Equipment,\nHAS ADOPTED THIS REGULATION:",
+      "tags": [],
+      "relatedArticles": [],
+      "relatedAnnexes": []
+    }
+  ]
+};
+
+export const redDelegatedArticlesData = {
+  "regulation": "Commission Delegated Regulation (EU) 2022/30",
+  "shortTitle": "RED Delegated Regulation (EU) 2022/30",
+  "supplements": "Directive 2014/53/EU (RED), Article 3(3), points (d), (e) and (f)",
+  "officialJournalReference": "OJ L 7, 12.1.2022, p. 6",
+  "celex": "32022R0030",
+  "eli": "http://data.europa.eu/eli/reg_del/2022/30/oj",
+  "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022R0030",
+  "adopted": "2021-10-29",
+  "instrumentType": "delegated_regulation",
+  "appliesFrom": "2025-08-01",
+  "languageNote": "A Bulgarian-language corrigendum (32022R0030R(01)) exists and does not affect the English text; it is recorded, not applied.",
+  "amendments": [
+    {
+      "act": "Commission Delegated Regulation (EU) 2023/2444",
+      "celex": "32023R2444",
+      "eli": "http://data.europa.eu/eli/reg_del/2023/2444/oj",
+      "provision": "Article 1 — Amendment to Delegated Regulation (EU) 2022/30",
+      "note": "Defers the date of application from 1 August 2024 to 1 August 2025 (harmonised standards for the three cybersecurity essential requirements were not ready).",
+      "article": 3,
+      "quoted": "‘It shall apply from 1 August 2025.’",
+      "from": "It shall apply from 1 August 2024.",
+      "to": "It shall apply from 1 August 2025."
+    },
+    {
+      "act": "Commission Delegated Regulation (EU) 2023/2444",
+      "celex": "32023R2444",
+      "eli": "http://data.europa.eu/eli/reg_del/2023/2444/oj",
+      "provision": "Article 2 — Correction to Delegated Regulation (EU) 2022/30",
+      "note": "Corrects the Art 1(2) introductory wording: 'traffic data and location data' becomes 'traffic data or location data'.",
+      "article": 1,
+      "quoted": "‘2. The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data or location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:’",
+      "from": "The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data and location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:",
+      "to": "The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data or location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:"
+    }
+  ],
+  "repeal": {
+    "act": "Commission Delegated Regulation (EU) 2026/339",
+    "celex": "32026R0339",
+    "eli": "http://data.europa.eu/eli/reg_del/2026/339/oj",
+    "adopted": "2026-02-16",
+    "withEffectFrom": "2027-12-11",
+    "articleQuote": "Delegated Regulation (EU) 2022/30 is repealed with effect from 11 December 2027.",
+    "reasonQuote": "The essential cybersecurity requirements set out in Annex I to Regulation (EU) 2024/2847 include all the elements of the essential requirements referred to in Article 3(3), points (d), (e) and (f), of Directive 2014/53/EU."
+  },
+  "builtFrom": {
+    "base": {
+      "file": "source/CELEX_32022R0030_EN.html",
+      "sha256": "94dc47e2f2cf7b4621c3d058e2704d5d431e5683324433f56eb9034a1b17480f"
+    },
+    "amending": {
+      "file": "source/CELEX_32023R2444_EN.html",
+      "sha256": "922b7a8a8f32565613f75a6a6a6b4983ec42a0295c05c39640be68467fee0677"
+    },
+    "repealing": {
+      "file": "source/CELEX_32026R0339_EN.html",
+      "sha256": "291a1e7f1075cd649d3ecb1a25c61f140b41485c8db93a98983c1b4df5dbd6db"
+    }
+  },
+  "sourceSha256": "94dc47e2f2cf7b4621c3d058e2704d5d431e5683324433f56eb9034a1b17480f",
+  "recitalsCount": 19,
+  "totalArticles": 3,
+  "annexesCount": 0,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "chapterTitle": "",
+      "articles": [
+        {
+          "articleNumber": 1,
+          "title": "",
+          "chapterNumber": 1,
+          "chapterTitle": "",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "The essential requirement set out in Article 3(3), point (d), of Directive 2014/53/EU shall apply to any radio equipment that can communicate itself over the internet, whether it communicates directly or via any other equipment (‘internet-connected radio equipment’)."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The essential requirement set out in Article 3(3), point (e), of Directive 2014/53/EU shall apply to any of the following radio equipment, if that radio equipment is capable of processing, within the meaning of Article 4(2) of Regulation (EU) 2016/679, personal data, as defined in Article 4(1) of Regulation (EU) 2016/679, or traffic data or location data, as defined in Article 2, points (b) and (c), of Directive 2002/58/EC:\n(a) internet-connected radio equipment, other than the equipment referred to in points (b), (c) or (d);\n(b) radio equipment designed or intended exclusively for childcare;\n(c) radio equipment covered by Directive 2009/48/EC;\n(d) radio equipment designed or intended, whether exclusively or not exclusively, to be worn on, strapped to, or hung from any of the following:\n(i) any part of the human body, including the head, neck, trunk, arms, hands, legs and feet;\n(ii) any clothing, including headwear, hand wear and footwear, which is worn by human beings."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The essential requirement set out in Article 3(3), point (f), of Directive 2014/53/EU shall apply to any internet-connected radio equipment, if that equipment enables the holder or user to transfer money, monetary value or virtual currency as defined in Article 2, point (d), of Directive (EU) 2019/713."
+            }
+          ],
+          "tags": [
+            "internet_connected",
+            "personal_data",
+            "childcare"
+          ],
+          "referencedArticles": [
+            2,
+            3
+          ],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 2,
+          "title": "",
+          "chapterNumber": 1,
+          "chapterTitle": "",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "By way of derogation from Article 1, the essential requirements set out in Article 3(3), points (d), (e) and (f), of Directive 2014/53/EU shall not apply to radio equipment to which either of the following Union legislation also applies:\n(a) Regulation (EU) 2017/745;\n(b) Regulation (EU) 2017/746."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "By way of derogation from Article 1(2) and Article 1(3), the essential requirements set out in Article 3(3), points (e) and (f), of Directive 2014/53/EU shall not apply to radio equipment to which any of the following Union legislation also applies:\n(a) Regulation (EU) 2018/1139;\n(b) Regulation (EU) 2019/2144;\n(c) Directive (EU) 2019/520."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [
+            1,
+            3
+          ],
+          "referencedAnnexes": []
+        },
+        {
+          "articleNumber": 3,
+          "title": "",
+          "chapterNumber": 1,
+          "chapterTitle": "",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "This Regulation shall enter into force on the twentieth day following that of its publication in the Official Journal of the European Union .\nIt shall apply from 1 August 2025."
+            }
+          ],
+          "tags": [],
+          "referencedArticles": [],
+          "referencedAnnexes": []
+        }
+      ]
+    }
+  ]
+};
