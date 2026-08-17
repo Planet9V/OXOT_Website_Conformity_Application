@@ -1103,3 +1103,41 @@ fixture pattern working, not failing).
 across eight acts · G8 = 20/0 · eleven corpus verifiers + lifecycle
 guard · demo products all redInScope = null (unanswered is the honest
 seed state).
+
+## L59 — A surface that hardcodes "the one X" breaks silently when X multiplies
+
+**What happened (Phase 19):** the oxot-web regulations cards carried a
+"CRA Wiki View" button written when the CRA wiki was the only reader in
+existence. As acts gained readers (Phases 8–17), nobody revisited the
+button: the NIS2 card sent users to the CRA wiki's *recitals* tab, the
+IEC card to the CRA's *annexes*, and the acts that most deserved a
+reader link had none. Every gate was green throughout — the button was
+well-typed, reachable and honest about nothing. The USER found it by
+looking at a screenshot.
+
+**The rule:** when a feature generalizes (one reader → many readers),
+grep for the singular era's hardcodings — labels, slugs, "the wiki",
+"the statute" — in EVERY app, not just the one being changed. This is
+the moved-premise pattern (Phase 17 retro) wearing UI clothes: a test
+that pins "X is the only one" and a button that assumes it both break
+the day X earns company.
+
+## Phase 19 retro (G7) — the wiki pattern for every act
+
+**What worked:** parameterizing the pattern once (EuActReader v2)
+instead of cloning cra-wiki six times — nis2-reader's migration DELETED
+its 205-line twin and its scripted G6 passed unchanged. Data-boundary
+discipline held: corrigenda callouts render only where the corpus
+records them per-article; the CRA-only graph/commentary layers were
+not imitated with invented content. The weekly lifecycle LaunchAgent
+notifies only on REAL failure — a WAF-blocked run states "not
+verified" and exits clean (no crying wolf), because the guard already
+had honest three-state semantics (L56's design paying off).
+
+**What recurred:** wrong-cwd gate runs, twice, caught both times by
+MODULE_NOT_FOUND rather than by discipline — gates now always start
+with `cd` to the repo root in the same command.
+
+**Floors after this phase:** unchanged — G2 726/0/0 zero-skips · G4 0
+· G5 0 · G8 20/0. New standing infra: the weekly lifecycle LaunchAgent
+(reinstall after the repo move).

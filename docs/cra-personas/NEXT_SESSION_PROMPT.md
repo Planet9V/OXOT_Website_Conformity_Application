@@ -19,7 +19,7 @@ map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–18 are COMPLETE with G7 retros. 17 =
+**Where things stand:** Phases 0–19 are COMPLETE with G7 retros. 17 =
 GDPR + Data Act + GPSR content (ELEVEN corpora, 156 requirements across
 NINE modelled acts); 18 = the RED→CRA handover as per-product guidance
 (tri-state `redInScope` fact + a product-file panel whose dates/quotes
@@ -74,13 +74,13 @@ change beyond the audio script.
 **No task is in flight.** DORA/CER stay parked. Open candidates (ask
 which, or take #1 if told to proceed):
 
-1. Ops: scheduled local `check_lifecycle.mjs` runs.
-2. Reader polish: chapter-aware search grouping; amendment trail on
-   regulation-detail pages.
-3. **User-only, between sessions:** move the repo out of `~/Downloads`.
+1. **User-only, between sessions:** move the repo out of `~/Downloads`,
+   then re-run `scripts/ops/install_lifecycle_launchagent.sh`.
 
-(RED→CRA handover: DELIVERED as Phase 18 — per-product tri-state
-`redInScope` fact + corpus-metadata-driven panel; suite floor 726/0/0.)
+(Phase 18 delivered the RED→CRA per-product handover; Phase 19 the
+wiki pattern for every act, per-act wiki buttons in oxot-web, the
+Text-currency panel, and the weekly lifecycle LaunchAgent. Suite
+floor 726/0/0.)
 
 Batch cadence for everything: survey → scope one shippable batch → build →
 all gates (bare) → G6 with reviewed screenshots → plan done-marker →

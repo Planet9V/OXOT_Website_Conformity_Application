@@ -1365,13 +1365,13 @@ cyber baseline move?" Per-product guidance needs a per-product FACT.
 - **18.3 done** Gates bare (G1–G5, G8), container rebuild, G6 with reviewed
   screenshots across all three states, commit/push, CI watch, G7 retro.
 
-## Phase 19 — The wiki pattern for every act + reader polish + lifecycle habit (opened 2026-08-17)
+## Phase 19 — The wiki pattern for every act + reader polish + lifecycle habit (opened + closed 2026-08-17)
 
 User: the CRA wiki (`/library/statute`) is the browsing experience — the
 other acts should have it too; plus the two deferred polish items and
 the scheduled lifecycle check.
 
-- **19.1** EuActReader v2 = the wiki pattern, parameterized: tabs with
+- **19.1 done** EuActReader v2 = the wiki pattern, parameterized: tabs with
   counts, index count badge, search by number/title/text, Cite buttons
   (per-act `citeAs`), numbered paragraph chips with anchor links, URL
   deep-links (?tab&num&q), per-article/recital corrigenda callouts read
@@ -1390,14 +1390,14 @@ the scheduled lifecycle check.
   OWN reader (CRA in-app; the rest cross the SPA boundary to
   /conformity/library/*); acts with no loaded text (IEC, DORA, CER)
   get no button.
-- **19.2** Regulation-detail lifecycle panel: amendment trail +
+- **19.2 done** Regulation-detail lifecycle panel: amendment trail +
   corrigenda + repeal facts rendered from the act's OWN corpus
   metadata via per-act lazy imports (bundle stays split; statutory
   constants stay in one place — L57).
-- **19.3** Scheduled local lifecycle check: macOS LaunchAgent running
+- **19.3 done** Scheduled local lifecycle check: macOS LaunchAgent running
   `scripts/ops/run_lifecycle_check.sh` weekly (logs to
   ~/Library/Logs/oxot-lifecycle.log, notification on failure);
   documented caveat: plist pins the repo path, re-run installer after
   the planned move out of ~/Downloads.
-- **19.4** Gates bare, G6 with reviewed screenshots, commit/push, CI
+- **19.4 done** Gates bare, G6 with reviewed screenshots, commit/push, CI
   watch, G7.
