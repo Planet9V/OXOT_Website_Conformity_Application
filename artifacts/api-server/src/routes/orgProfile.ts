@@ -243,6 +243,9 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
         appliesTo,
         // The regulator's own word for the role, so the UI can speak its language.
         roleTerms: appliesTo.map((a) => termForRole(a, r.regulationKey)),
+        // Keyed by canonical role, so a role-scoped surface can say what THIS
+        // role is called in THIS act without guessing from the flat list.
+        roleTermByRole: Object.fromEntries(appliesTo.map((a) => [a, termForRole(a, r.regulationKey)])),
         // Derived where a deriver is registered; otherwise the worst recorded
         // evaluation, so nothing is flattered.
         status: derived ? derived.status : worstStatus(evals.map((e) => e.status)),

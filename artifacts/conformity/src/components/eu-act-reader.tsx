@@ -117,18 +117,31 @@ export function EuActReader({
       <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6">
         <nav className="max-h-[70vh] overflow-y-auto rounded-xl border border-border/60 divide-y divide-border/40">
           {mode === "articles" &&
-            articles.map((a: any) => (
-              <button
-                key={a.articleNumber}
-                onClick={() => setSelectedArticle(a.articleNumber)}
-                className={cn(
-                  "w-full text-left px-3 py-2 text-xs hover:bg-muted/40",
-                  selectedArticle === a.articleNumber && "bg-primary/10 text-primary",
-                )}
-              >
-                <span className="font-mono">Art. {a.articleNumber}</span> — {a.title}
-              </button>
-            ))}
+            articles.map((a: any, i: number) => {
+              const prev = articles[i - 1];
+              const label = a.chapterLabel ?? a.chapterNumber;
+              const showChapter =
+                label && (!prev || (prev.chapterLabel ?? prev.chapterNumber) !== label);
+              return (
+                <div key={a.articleNumber}>
+                  {showChapter && (
+                    <div className="px-3 pt-3 pb-1 text-[10px] font-mono uppercase tracking-wider text-muted-foreground bg-muted/20">
+                      Chapter {label}
+                      {a.chapterTitle ? ` — ${a.chapterTitle}` : ""}
+                    </div>
+                  )}
+                  <button
+                    onClick={() => setSelectedArticle(a.articleNumber)}
+                    className={cn(
+                      "w-full text-left px-3 py-2 text-xs hover:bg-muted/40",
+                      String(selectedArticle) === String(a.articleNumber) && "bg-primary/10 text-primary",
+                    )}
+                  >
+                    <span className="font-mono">Art. {a.articleNumber}</span> — {a.title}
+                  </button>
+                </div>
+              );
+            })}
           {mode === "recitals" &&
             recitals.map((r: any) => (
               <button

@@ -23,7 +23,7 @@ const SECTIONS: {
     href: "/library/statute",
     title: "The CRA, verbatim",
     description:
-      "Regulation (EU) 2024/2847 as published — 71 articles, 130 recitals, 8 annexes — reproduced from the Official Journal source and verified byte-for-byte in CI.",
+      "Regulation (EU) 2024/2847 with its EN corrigenda applied — 71 articles, 130 recitals, 8 annexes — reproduced from the Official Journal source and verified character-exact in CI.",
     icon: BookOpen,
   },
   {
@@ -37,7 +37,7 @@ const SECTIONS: {
     href: "/library/nis2",
     title: "NIS2, verbatim",
     description:
-      "Directive (EU) 2022/2555 as published — 46 articles, 144 recitals — from the same reproducible Official Journal pipeline as the CRA reader. The Dutch transposition is loaded (below); other Member States' measures are not.",
+      "Directive (EU) 2022/2555 with its EN corrigendum applied — 46 articles, 144 recitals, 3 annexes — from the same reproducible Official Journal pipeline as the CRA reader. The Dutch and German transpositions are loaded (below); other Member States' measures are not.",
     icon: BookOpen,
   },
   {
@@ -56,23 +56,23 @@ const SECTIONS: {
   },
   {
     href: "/library/ai-act",
-    title: "AI Act, verbatim",
+    title: "AI Act, verbatim (as amended)",
     description:
-      "Regulation (EU) 2024/1689 as published — 113 articles, 180 recitals, 13 annexes — from the same reproducible Official Journal pipeline as the CRA reader.",
+      "Regulation (EU) 2024/1689 as amended by the Digital Omnibus (Regulation (EU) 2026/1744) — 119 articles, 180 recitals, 14 annexes — built from the EUR-Lex consolidated text, recitals from the original OJ publication, verified character-exact in CI.",
     icon: BookOpen,
   },
   {
     href: "/library/machinery",
-    title: "Machinery Regulation, verbatim",
+    title: "Machinery Regulation, verbatim (as amended)",
     description:
-      "Regulation (EU) 2023/1230 as published — 54 articles, 86 recitals, 12 annexes — from the same reproducible Official Journal pipeline.",
+      "Regulation (EU) 2023/1230 as amended (emergency procedures chapter IVa; the Digital Omnibus) with its corrigendum date fixes — 59 articles, 86 recitals, 12 annexes — from the EUR-Lex consolidated text, verified character-exact in CI.",
     icon: BookOpen,
   },
   {
     href: "/library/red",
-    title: "Radio Equipment Directive, verbatim",
+    title: "Radio Equipment Directive, verbatim (as amended)",
     description:
-      "Directive 2014/53/EU as published — 52 articles, 75 recitals, 8 annexes. A directive: the reader states plainly that national transposition governs and none is loaded.",
+      "Directive 2014/53/EU as amended (common charger, chapter Va and more) — 58 articles, 75 recitals, 9 annexes — from the EUR-Lex consolidated text, with Delegated Regulation (EU) 2022/30 shown verbatim on the same page. A directive: national transposition governs and none is loaded.",
     icon: BookOpen,
   },
   {

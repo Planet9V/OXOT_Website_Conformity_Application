@@ -28,6 +28,7 @@ export interface Obligation {
   obligationType: string;
   appliesTo: string[];
   roleTerms: string[];
+  roleTermByRole?: Record<string, string>;
   status: string;
   evaluationCount: number;
   owners: string[];
@@ -235,11 +236,22 @@ export function PersonaCockpit() {
             </Badge>
           ))}
         </div>
-        {/* The regulator's own word for this role, so the language matches the act. */}
-        {forRole.length > 0 && (
+        {/* The regulator's own word for THIS role, act by act. */}
+        {forRole.length > 0 && activeRole && (
           <p className="text-[11px] text-muted-foreground">
-            Referred to as {[...new Set(forRole.flatMap((o) => o.roleTerms))].join(", ")} in these
-            acts.
+            {(() => {
+              const byTerm = new Map<string, Set<string>>();
+              for (const o of forRole) {
+                const term = o.roleTermByRole?.[activeRole];
+                if (!term) continue;
+                if (!byTerm.has(term)) byTerm.set(term, new Set());
+                byTerm.get(term)!.add(o.regulationKey);
+              }
+              const parts = [...byTerm.entries()].map(
+                ([term, regs]) => `"${term}" (${[...regs].join(", ")})`,
+              );
+              return parts.length ? `This role is the ${parts.join(" · ")}.` : null;
+            })()}
           </p>
         )}
         {/* A declared act with no seeded content is named, never silently absent (11.4). */}

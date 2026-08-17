@@ -1295,3 +1295,22 @@ flattening; mappings/themes surfacing for the Phase-11 acts; statutory
 flyout still CRA-only against nine corpora; reader navigation at
 119 articles; whether assessments can be created under non-CRA acts the
 org declares.
+
+- **16.1+16.2 done 2026-08-16/17** Audit: 25-page screenshot walk + API
+  probes; findings F1–F8 in findings.md (F4 verified a NON-issue: the
+  CRA-only assessment boundary is honest on both sides). Fixes shipped:
+  acts list header now "6 modelled · 5 reference-only" (was "11
+  Frameworks Active"); zero-content acts carry amber Reference-only
+  badges on cards AND an explanatory banner on their detail pages; empty
+  Product Classes/Conformity Routes render an honest line instead of
+  bare headings; "Official Directive Text" → "Official Text (EUR-Lex)"
+  + a "Read verbatim in the Library" link for acts with readers; Library
+  reader cards' HARDCODED stale counts and "as published" claims
+  corrected to as-amended reality (AI 119/14, Machinery 59, RED 58/9,
+  corrigenda noted for CRA/NIS2); IEC's "IN FORCE Pending" → "—";
+  cockpit role line now per-act ("This role is the 'manufacturer' (cra)
+  · 'product supplier' (iec_62443)") via a new roleTermByRole field;
+  reader nav gains chapter group headers; RED badge color; leaked
+  "G6 Art148 Probe" product deleted from the demo workspace. Gates:
+  G1/G3 · G2 724/0/0 · G4/G5/G8 = 0 · G6 re-walk 22/22 PASS with
+  reviewed screenshots.

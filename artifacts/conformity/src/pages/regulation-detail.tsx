@@ -5,6 +5,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getRegColor, formatDate } from "@/lib/utils";
+
+/** Acts with an in-app verbatim reader (Library). */
+const READER_PATHS: Record<string, string> = {
+  cra: "/library/statute",
+  nis2: "/library/nis2",
+  ai_act: "/library/ai-act",
+  machinery: "/library/machinery",
+  red: "/library/red",
+};
 import { ArrowLeft, ExternalLink, AlertTriangle } from "lucide-react";
 
 export default function RegulationDetail() {
@@ -57,12 +66,31 @@ export default function RegulationDetail() {
             rel="noreferrer"
             className="inline-flex items-center gap-1.5 text-primary hover:underline"
           >
-            Official Directive Text <ExternalLink className="w-3 h-3" />
+            Official Text (EUR-Lex) <ExternalLink className="w-3 h-3" />
           </a>
+          {READER_PATHS[reg.key] && (
+            <>
+              <span className="text-muted-foreground">&bull;</span>
+              <Link
+                href={READER_PATHS[reg.key]!}
+                className="inline-flex items-center gap-1.5 text-primary hover:underline"
+              >
+                Read verbatim in the Library
+              </Link>
+            </>
+          )}
           <span className="text-muted-foreground">&bull;</span>
           <span className="font-mono text-muted-foreground">{reg.requirementCount} extracted obligations</span>
         </div>
       </div>
+
+      {reg.requirementCount === 0 && (
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 px-5 py-4 text-sm text-amber-600 dark:text-amber-400">
+          Reference-only: this act is listed for scope awareness and can be declared on the
+          Organisation page, but its obligations are not yet modelled in this application.
+          Zero here means un-modelled, not compliant.
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
@@ -77,6 +105,11 @@ export default function RegulationDetail() {
 
           <div className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight border-b border-border pb-2">Product Classes</h2>
+            {reg.classes.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                No product classes are modelled for this act.
+              </p>
+            )}
             <div className="grid gap-4">
               {reg.classes.map(cls => (
                 <Card key={cls.id} className="rounded-md shadow-none">
@@ -103,6 +136,11 @@ export default function RegulationDetail() {
 
           <div className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight border-b border-border pb-2">Conformity Routes</h2>
+            {reg.routes.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                No conformity routes are modelled for this act.
+              </p>
+            )}
             <Table>
               <TableHeader>
                 <TableRow>

@@ -66,7 +66,8 @@ export default function Regulations() {
           </p>
         </div>
         <div className="text-xs font-mono text-muted-foreground bg-muted/40 px-3 py-1.5 rounded-lg border border-border/50 self-start sm:self-auto">
-          {regulations.length} Frameworks Active
+          {regulations.filter((r) => r.requirementCount > 0).length} modelled ·{" "}
+          {regulations.filter((r) => r.requirementCount === 0).length} reference-only
         </div>
       </div>
 
@@ -103,6 +104,12 @@ export default function Regulations() {
                 {reg.summary}
               </p>
 
+              {reg.requirementCount === 0 && (
+                <p className="text-[11px] text-amber-600 dark:text-amber-400 mb-2">
+                  Reference-only — obligations not yet modelled.
+                </p>
+              )}
+
               {/* Compact Key Metric Spec Grid */}
               <div className="grid grid-cols-2 gap-2 text-xs bg-muted/40 p-2.5 rounded-lg border border-border/40 font-mono">
                 <div>
@@ -110,7 +117,7 @@ export default function Regulations() {
                     In Force
                   </span>
                   <span className="font-semibold text-foreground">
-                    {reg.inForceDate ? new Date(reg.inForceDate).getFullYear() : "Pending"}
+                    {reg.inForceDate ? new Date(reg.inForceDate).getFullYear() : "—"}
                   </span>
                 </div>
                 <div>

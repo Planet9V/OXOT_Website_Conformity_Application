@@ -225,3 +225,36 @@ Consolidated EUR-Lex HTML is a DIFFERENT dialect from OJ HTML:
   never 1..N.
 - Readers/corpus shape: articleNumber becomes string-safe ("25a"); sort by
   document order; citation gate ranges unaffected (regex captures digits only).
+
+## 2026-08-16 — Phase 16.1 UX/gap audit findings (screenshot walk + API probes)
+
+Verified live against the running stack; screenshots in artifacts_verify/p16_audit/.
+
+- **F1 HIGH (honesty)** — /library/acts claims "11 Frameworks Active" and
+  renders zero-content acts (GDPR, CER, DORA, GPSR, Data Act — all
+  "0 Mapped") identically to modelled ones; their act-detail pages show
+  "0 extracted obligations" plus EMPTY Product Classes / Conformity Routes
+  sections with no explanation. The 11.4 amber un-modelled note exists only
+  on the Home cockpit. GPSR's page doesn't know its corpus exists.
+- **F2 HIGH (stale claims)** — Library home reader cards HARDCODE counts
+  and "as published": AI Act "113 articles… 13 annexes" (now 119/14, as
+  amended), Machinery "54 articles" (59), RED "52 articles, 8 annexes"
+  (58/9, as amended); CRA/NIS2 cards say "as published" though corrigenda
+  are now applied. Counts-as-claims (L36) hardcoded in UI copy.
+- **F3 MED (consistency)** — act-detail: link label "Official Directive
+  Text" is hardcoded even for regulations; no internal link to our own
+  readers; empty Classes/Routes sections render as bare headings.
+- **F4 OK (verified non-issue)** — assessments are CRA-only by design AND
+  the UI only offers CRA creation; no broken affordance.
+- **F5 LOW** — getRegColor has no colors for red/gpsr/gdpr/cer/dora/
+  data_act → gray badges (red at least deserves one; it has content).
+- **F6 LOW (demo hygiene)** — leftover "G6 Art148 Probe" product in the
+  demo workspace (escaped G6 fixture).
+- **F7 MED (UX)** — cockpit "Referred to as…" line flattens role terms
+  across acts into one undifferentiated list; reader nav is a flat list
+  even at 119 articles (no chapter grouping).
+- **F8 LOW** — IEC 62443 card shows "IN FORCE Pending" (a standard series
+  has no in-force date; mislabel).
+
+Fix batches: 16.2a = F1+F2+F3+F8 (honesty & staleness). 16.2b = F7.
+16.2c = F5+F6.

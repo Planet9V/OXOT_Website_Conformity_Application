@@ -29,6 +29,7 @@ export function getRegColor(key: string) {
     case 'machinery': return 'bg-reg-machinery text-white';
     case 'iec_62443': return 'bg-reg-iec text-white';
     case 'nis2': return 'bg-reg-nis2 text-white';
+    case 'red': return 'bg-orange-700 text-white';
     default: return 'bg-muted text-muted-foreground';
   }
 }
