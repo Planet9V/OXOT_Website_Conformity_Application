@@ -136,6 +136,16 @@ describe("GET /conformity/org/obligations", () => {
     expect(refCodes.has("Annex III 1.2.1(a)")).toBe(false);
   });
 
+  it("names a declared act that has no seeded requirement content", async () => {
+    await declareExactly(["manufacturer"], ["gdpr", "red"]);
+    const res = await api("GET", "/conformity/org/obligations");
+    expect(res.status).toBe(200);
+    // GDPR is a known regulation with zero requirement rows — named, not silent.
+    expect(res.json.regulationsWithoutSeededContent).toEqual(["gdpr"]);
+    // RED has content, so it is not in the list and its rows are served.
+    expect(res.json.obligations.some((o: any) => o.regulationKey === "red")).toBe(true);
+  });
+
   it("contributes nothing from an act that is not declared", async () => {
     await declareExactly(["manufacturer"], ["cra"]);
     const res = await api("GET", "/conformity/org/obligations");

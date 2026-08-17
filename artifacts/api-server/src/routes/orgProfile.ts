@@ -212,6 +212,15 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
     return appliesTo.some((a) => roles.includes(a));
   });
 
+  /**
+   * A declared act with NO seeded requirement rows would otherwise vanish from
+   * this response — zero obligations reading like a clean bill of health for
+   * an act nobody has modelled yet (that was RED's state until 11.1). Name
+   * those acts so the caller can say so (11.4).
+   */
+  const seededRegs = new Set(reqRows.map((r) => r.regulationKey));
+  const regulationsWithoutSeededContent = regs.filter((r) => !seededRegs.has(r)).sort();
+
   const obligations = applicable
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((r) => {
@@ -255,6 +264,7 @@ router.get("/conformity/org/obligations", requireAuth, async (_req: Request, res
   res.json({
     declaredRoles: roles,
     declaredRegulations: regs,
+    regulationsWithoutSeededContent,
     total: obligations.length,
     obligations,
   });

@@ -20,10 +20,25 @@
  *
  * ── What this deliberately does NOT do ──
  *
- * There is no NIS2 or AI Act deriver here. Neither act has obligations seeded
- * yet, and a deriver for data that does not exist would be a guess about a
- * schema nobody has written. The registry earns its place by removing the
- * branch that exists; it does not pre-populate branches that do not.
+ * Phase 11 seeded the AI Act, Machinery and RED obligation sets and revisited
+ * this registry (11.4). The decision stands: NO new deriver, because none has
+ * real data to read. What each candidate would need before it may exist:
+ *
+ * - `ai_act::Art 73` (serious-incident reporting): an AI-Act incident record
+ *   with its own submission ledger. `conformity_incidents` is CRA Art 14
+ *   shaped (24h/72h clocks) and `conformity_entity_incidents` is NIS2 Art 23
+ *   shaped; the AI Act's 15-day/2-day/10-day anchors fit neither.
+ * - `nis2::Art 23`: the entity-incident engine exists (`nis2Reporting.ts`),
+ *   but its records are per-incident with CAPTURED submissions, and wiring an
+ *   org-level status here means deciding how an empty register reads — a
+ *   design question, not a registration.
+ * - DoC derivers (`ai_act::Art 47`, `machinery::Art 21`, `red::Art 18`): the
+ *   attestation ledger signs CRA Annex V declarations only; other acts' DoCs
+ *   have no record type to read.
+ *
+ * A deriver for data that does not exist would be a guess about a schema
+ * nobody has written. The registry earns its place by removing the branch
+ * that exists; it does not pre-populate branches that do not.
  *
  * Nor are there registries for determinations, clocks or artifacts. Those are
  * not currently if/else chains — they are separate modules called directly, and

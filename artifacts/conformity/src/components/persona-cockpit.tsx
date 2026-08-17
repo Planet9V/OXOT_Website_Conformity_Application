@@ -39,6 +39,8 @@ export interface Obligation {
 interface ObligationsResponse {
   declaredRoles: string[];
   declaredRegulations: string[];
+  /** Declared acts with no seeded requirement content — named, never silent (11.4). */
+  regulationsWithoutSeededContent?: string[];
   total: number;
   obligations: Obligation[];
   incomplete?: string;
@@ -238,6 +240,14 @@ export function PersonaCockpit() {
           <p className="text-[11px] text-muted-foreground">
             Referred to as {[...new Set(forRole.flatMap((o) => o.roleTerms))].join(", ")} in these
             acts.
+          </p>
+        )}
+        {/* A declared act with no seeded content is named, never silently absent (11.4). */}
+        {(obligations.data?.regulationsWithoutSeededContent?.length ?? 0) > 0 && (
+          <p className="text-[11px] text-amber-600 dark:text-amber-400">
+            Declared but carrying no obligation content in this application yet:{" "}
+            {obligations.data!.regulationsWithoutSeededContent!.join(", ")}. Zero here means
+            un-modelled, not compliant.
           </p>
         )}
       </div>

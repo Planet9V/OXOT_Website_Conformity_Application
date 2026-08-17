@@ -233,3 +233,9 @@ the meaning of Art. 64(10).
   "Annex II" (the safety-components list!) to Art 21; "technical file" →
   technical documentation. +12 rows (Art 10 chain, AR, importers,
   distributors, Art 19 traceability). G2 722/0/0; G6 machinery · 15.
+
+## 2026-08-16 (night) — 11.4 shipped; Phase 11 complete pending G7
+- No new deriver (none has data); refusals documented per candidate in the
+  statusDerivers header. Obligations response names declared-but-unseeded
+  acts; cockpit renders "Zero here means un-modelled, not compliant"
+  (GDPR live example, screenshot reviewed). G2 723/0/0.

@@ -1068,10 +1068,16 @@ Tasks (one batch each; statute read from the corpus BEFORE writing a row):
   pins the corrected addresses. Gates: G1 · G2 722/0/0 · G3 · G4/G5/G8 =
   0 · seed validation 137 req/83 map · G6 live (machinery · 15 badge,
   screenshot reviewed, declaration restored).
-- **11.4** Derivers + endpoint honesty + G7 — register only derivers whose
-  input data exists (default: none new; the refusal and its reason go in
-  the statusDerivers header); obligations response names any DECLARED
-  regulation that contributed zero requirement rows (spec-first: openapi →
-  orval) so an empty act is never a silent clean bill; lessons + re-tune.
+- **11.4 done 2026-08-16** Deriver decision: NO new deriver — none has
+  real data to read; the statusDerivers header now documents each
+  candidate (ai_act Art 73, nis2 Art 23, three DoC derivers) and names
+  the record type that must exist first. Endpoint honesty: the
+  obligations response gains `regulationsWithoutSeededContent` (the
+  endpoint predates the spec pipeline and is consumed by raw fetch, so
+  no orval step) and the cockpit renders the amber note "Zero here means
+  un-modelled, not compliant" for any declared-but-unseeded act (GDPR is
+  the live example). Gates: G1 · G2 723/0/0 · G3 · G4/G5/G8 = 0 · G6
+  live (GDPR declared via the real switch, note rendered, screenshot
+  reviewed, declaration restored).
 
 Done-markers appended per batch below as each closes.
