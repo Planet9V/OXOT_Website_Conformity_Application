@@ -1401,3 +1401,22 @@ the scheduled lifecycle check.
   the planned move out of ~/Downloads.
 - **19.4 done** Gates bare, G6 with reviewed screenshots, commit/push, CI
   watch, G7.
+
+## Phase 20 — Informational-website realignment review (opened 2026-08-17)
+
+User: the marketing site is stale after Phases 7–19; it undersells and
+misdescribes the application; the "CRA 2-minute assessment" is
+inaccurate; the site must drive the lead funnel. Deliverable: a
+CRITICAL review + true recommendations + implementable specifications
+(audit-first, the Phase 16 method). Plus: answer whether the
+operator/asset-owner "manage supplier CRA information" use case is a
+real persona in the app, with evidence.
+
+- **20.1 done** Site + claims audit: inventory oxot-web pages, walk the key
+  surfaces live (landing, platform, pricing, 2-minute assessment),
+  list every claim and test it against the application as shipped.
+- **20.2 done** Operator-persona evidence check in the conformity app.
+- **20.3 done** Competitive landscape research (live web).
+- **20.4 done** The review + page-by-page specification, written to
+  docs/marketing/ and reported honestly; implementation phases offered
+  as candidates, not assumed.

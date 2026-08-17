@@ -308,3 +308,16 @@ the meaning of Art. 64(10).
   challenges all 9 ALL-views — stated as unverified, not counted
   clean; CI runs the same guard per-push). Installer re-run needed
   after the planned repo move.
+
+## 2026-08-17 (early am) — Phase 20: website realignment review (deliverable)
+- Audit-first review of oxot-web vs the shipped app; live walk + live
+  web competitive read. Headline findings: F1 the 2-minute check's
+  dates are statutorily WRONG by one day everywhere (10 vs 11 Dec
+  2027 / Sep 2026) while home states them correctly; F2 the site sells
+  the Phase-6 CRA-only product; F3 the operator/asset-owner segment is
+  one sentence despite being a real in-app persona and the market's
+  white space; F6 the hero's CTA is invisible for the first seconds
+  (entrance animation measured at opacity 0). CIR 2025/2392 citation
+  verified REAL. Full review + specs: docs/marketing/
+  website-realignment-2026-08.md. Implementation phases 20a–20d + 21
+  offered, not assumed.
