@@ -71,6 +71,7 @@ do not".
 | 19 | **The wiki pattern for every act (user-requested).** EuActReader v2 carries the CRA-wiki browsing pattern parameterized (tabbed counts, number/title/text search, Cite buttons, numbered paragraph chips + anchors, ?tab&num&q deep links, per-article corrigenda callouts from corpus provenance); nis2-reader migrated onto it (scripted G6 unchanged) — SIX acts share the pattern. oxot-web cards' hardcoded "CRA Wiki View" (NIS2 → CRA recitals!) replaced by per-act WIKI_VIEWS (L59). Regulation detail gains the "Text currency" panel (amendment trail/corrigenda lazy-read from each act's own bundle). Weekly lifecycle LaunchAgent installed (notifies only on REAL failure; reinstall after repo move). |
 | 20 | **Website realignment (audit-first).** Review + specs in docs/marketing/website-realignment-2026-08.md (F1–F10, competitive read). 20a: the 2-minute check's off-by-one statutory dates fixed EN-side (NL had forked correct), runway WALL 2027-12-11, workbench "fullText" now corpus verbatim, hero de-animated (CTA was invisible pre-hydration). 20b/20c: repositioned as the EU conformance system of record — operator band + honesty strip (visible G4 waiver: quotes the claim to refuse it) + 7 personas + 4 pillars on home; new /operators page; platform modules = the shipped shell; operator pricing note; operator branch in the check. **20d (public wikis) OPEN.** |
 | 21 | **The operator shape (user: "make it the star").** Supplier register (assets outlive relationships), per-product procurement check (tri-state ×7, anchors corpus-verified: Art 13(12)+30, 13(15)–(20); SBOM labelled contractual), per-supplier posture board (unlinked products NAMED), supplier documents (sha256, storage-GC'd incl. product delete), asks with expiring revocable tokens + the PUBLIC door /supplier-portal (rate-limited, no-enumeration, link/note only — L60: file upload deferred to security review). Demo seeds the Fieldbus story. Suite **751/0/0** (+25); G8 26/0 (+6 capabilities); door round-trip proven live end-to-end. |
+| 22 | **The funnel's magnets + the door takes files.** 22.1: door FILE upload (token-scoped two-step over the storage seam's one-time ids; 50 MB cap + allow-list; rate-limited; sha256; traversal rejected) — **formal security review is a tracked MUST-DO** (user-accepted ordering). 22.2: the reading room /wiki — seven acts full-text public, sync scripts dual-target both apps with the CI repro diff watching both copies, lazy per-act chunks, Legislation JSON-LD, contextual CTAs, blogs/podcast cross-links. L61: production nginx had NEVER served the sitemap (dev-middleware only) — now proxied, /operators + eight wiki routes included. Suite 754/0/0. |
 
 ## The application map (key files)
 
@@ -239,11 +240,13 @@ the known benign one).
 reference-only framing; revisit only when a customer declaration needs
 them). Open candidates:
 
-1. **20d** — public statutory wikis as SEO lead magnets (option A:
-   open the Library read-only; option B: static per-article pages).
-2. Supplier-door FILE upload — only after a security review (L60).
-3. Podcast narration date audit before regeneration (user-flagged).
-4. Native-Dutch review of nl marketing strings before paid traffic.
+1. **MUST-DO: formal security review of the supplier-door upload path**
+   (public write surface — shipped in 22.1 by user decision, review
+   deliberately deferred; do it before GA marketing drives traffic).
+2. Podcast narration date audit before regeneration (user-flagged).
+3. Native-Dutch review of nl marketing strings before paid traffic.
+4. SEO follow-ups when wanted: static per-article wiki pages (option
+   B), Cbw/BSIG wikis for the NL/DE market, absolute sitemap origins.
 5. **User-only, between sessions:** move the repo out of `~/Downloads`,
    then re-run `scripts/ops/install_lifecycle_launchagent.sh`.
 

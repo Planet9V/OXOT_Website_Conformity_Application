@@ -1181,3 +1181,35 @@ native-Dutch review of nl strings before paid traffic.
 **Floors after this phase:** G2 = 751/0/0 zero-skips · G4 = 0 (one new
 visible waiver) · G5 = 0 · G8 = 26/0 · eleven corpus verifiers +
 lifecycle guard + weekly LaunchAgent.
+
+## L61 — A dev-server middleware is not a deployment
+
+**What happened (Phase 22.2):** the SEO plugin proxied /sitemap.xml and
+/robots.txt to the API — in the VITE DEV SERVER. Production nginx had
+no such location, so every crawler that ever fetched the live sitemap
+got the SPA's HTML shell. The feature "worked" for as long as anyone
+only checked it in dev, and it broke precisely for the one audience
+that never runs a dev server: crawlers.
+
+**The rule:** anything a dev-server middleware does for a PUBLIC
+consumer must have a production twin (nginx location, edge rule), and
+the G6 check for such a feature must hit the CONTAINER, not the dev
+server. Grep vite-*-plugin files for proxy behaviour when auditing
+what production actually serves.
+
+## Phase 22 retro (G7) — the funnel gets its magnets and the door takes files
+
+**What worked:** the corpus discipline scaled to a second app for
+free — the sync scripts gained a target list, CI's reproducibility
+diff now watches both copies, and the public wiki can never drift
+from the product's Library because neither is hand-written. Lazy
+per-act chunks kept 2.3 MB of statute off the funnel path. The door
+upload reused the storage seam's own one-time-id semantics instead of
+inventing new ones; its riskiest property (public write) is printed in
+the code, the spec description, and the task plan as a MUST-DO review.
+
+**Found and fixed:** the dev-only sitemap (L61) — plus /operators had
+been missing from the sitemap since 20c.
+
+**Floors:** G2 = 754/0/0 zero-skips · G4 0 · G5 0 · G8 26/0. The
+reading room is live at /wiki with eight acts in the sitemap.
