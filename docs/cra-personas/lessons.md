@@ -913,3 +913,53 @@ batch: fold the ad-hoc NIS2-annex live check into a repeatable
 verify_nis2_reader script (the reader had no G6 script of its own).
 
 **New lessons:** L54.
+
+## L55 — An act's text is not its status: read the EUR-Lex ALL view first
+
+**Seen:** 13.1. Fetching CELEX 32022R0030 gives a perfectly authentic OJ
+text — of an act whose application date that text states WRONG (deferred a
+year by 2023/2444) and whose days are numbered (repealed with effect from
+11 December 2027 by 2026/339, in favour of the CRA). Neither fact is
+anywhere in the base document. The `/legal-content/EN/ALL/` view carries
+the relationship table — "Corrected by", "Modified by", "Repealed by" —
+and one fetch of it turned a text-transcription task into the actual
+deliverable: the lifecycle. A customer asking about RED cyber compliance
+is really asking "which regime governs me, until when" — shipping the
+2022/30 text without the 2026/339 handover would have been verbatim,
+reproducible, parity-checked and MISLEADING.
+**Apply:** before building any corpus, fetch the act's ALL/ELI page and
+walk the relationship table; commit every relevant instrument (amending,
+correcting, repealing) as its own source; apply amendments as documented
+from/to transformations that must fire; carry repeals as metadata the
+surface must state. Language-scoped corrigenda (the BG one here) are
+recorded, not applied.
+
+## Phase 13 — RED Art 3(3)(d)/(e)/(f) delegated-acts content — completed 2026-08-16
+
+**What worked:** source-first paid immediately — the ALL-view fetch (L55)
+surfaced the amendment AND the repeal before a line of code existed, so
+the design absorbed the lifecycle from the start: three committed
+sources, amendments as must-fire from/to transformations (the CRA
+corrigendum machinery generalised in the D2 module to `amendments`),
+repeal as quoted metadata the reader states with both dates. The
+existing pipeline absorbed the new corpus almost entirely: shared
+parser (+ one honest `titleOptional` flag — the OJ publishes these
+articles without titles and we invent nothing), shared D2 module
+(annex-less tolerance), eighth verifier from the house template, CI
+reproducibility by extension.
+
+**Product judgment:** no new destination — the three articles render IN
+FULL below the RED reader (they are short, and the person reading RED
+Art 3(3) needs the designations in the same glance), and the obligation
+rows now name the designated categories so the register speaks
+concretely ("internet-connected radio equipment", childcare/toys/
+wearables, money/monetary value/virtual currency).
+
+**Re-tuning applied:** open candidates: (1) storage file GC; (2)
+obligation content for still-unseeded acts when a declaration needs it;
+(3) verify_nis2_reader G6 script; (4) user-only repo move. The
+2027-12-11 handover date is also a natural future surface for the
+Products file (a RED-relevant product's obligations migrate to the CRA
+on that date) — noted as a candidate, not scoped.
+
+**New lessons:** L55.

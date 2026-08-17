@@ -45,12 +45,12 @@ do not".
 2. **`task_plan.md`** — constraints, the IEC 62443 posture (evidence
    framework, **never** an Art. 27 presumption), the gate table, and the
    per-phase task lists with done-markers.
-3. **`lessons.md`** — L1–L54 plus a retro per phase. Not optional; each
+3. **`lessons.md`** — L1–L55 plus a retro per phase. Not optional; each
    lesson cost real time.
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 12
+## Phases — all complete through Phase 13
 
 | Phase | Delivered |
 |---|---|
@@ -62,6 +62,7 @@ do not".
 | 10 | **Portable evidence storage** (backend seam: Replit sidecar vs local volume, chooser no-regression proven by unit test; suite reached ZERO SKIPS; restart-persistence proven live) · **Art. 14(8) product-user register + notification record** (tri-state impacted derivation states its rule ON THE WIRE; the app records the org's act, transmits nothing) · **AI Act / Machinery / RED corpora + readers** (authentic OJ, pinned structures, seven verifiers total, five-act citation gate — formerly-skipped AI-Act content now VALIDATES; NIS2 chapter-IX misassignment found+fixed) · **last dead chain deleted** (4 unwritten tables, unauth /api/ecosystem, fake-timestamp seal engine) · L52 (a piped gate launders its exit code) · CI green end-to-end after fixing an invalid workflow env (`runner.temp` is step-only) |
 | 11 | **Obligation content ×3 acts (10.3c)** — zero engine changes (D10 held: requirements × declarations). 11.1 RED seeded from nothing (22 rows: Art 3(3)(d)/(e)/(f) cyber essential requirements, Art 10 chain, importer/distributor, Art 15 traceability) — `orgObligations.test.ts` is the endpoint's FIRST suite. 11.2 AI Act verified+extended (3 corrections incl. Art 73's real 15/2/10-day anchors; +11 rows: provider chapter, deployer Art 26 → operator role now termed 'deployer', registration, transparency; GPAI refusal documented). 11.3 Machinery: **three misnumbered Annex III addresses fixed** (duties live in 1.1.9/1.2.1(d)/1.2.1(f); DoC was cited to the SAFETY-COMPONENTS annex — now Art 21) + 12 rows (L53: verify annex section numbers against the OJ SOURCE — the flattened bundle drops them). 11.4 declared-but-unseeded acts now NAMED (`regulationsWithoutSeededContent` + cockpit amber note "Zero here means un-modelled, not compliant"); deriver refusals documented per candidate in the statusDerivers header. Suite 723/0/0. |
 | 12 | **D2 full-content parity for the five OJ corpora** (`scripts/lib/oj_content_parity.mjs` — independent flatten, corrigenda must fire, negative control per corpus). Building it exposed FOUR shipped extraction losses, fixed in the shared parser (L54): nested-table truncation (NIS2 Annexes I/II had lost the whole "Type of entity" column), `oj-ti-grseq` heading loss in every annex (CRA Class I/II, Machinery Part A/B…), OJ footer / Parliament-statement leakage into last annexes, one footnote leak into an amendment quote. All five corpora rebuilt, bundles resynced ×3 apps, readers verified live. |
+| 13 | **RED Delegated Regulation (EU) 2022/30** — the Art 3(3)(d)/(e)/(f) designations as an EIGHTH corpus (`docs/red_delegated_2022_30/`, THREE committed sources: base + amending 2023/2444 + repealing 2026/339). Amendments applied as must-fire from/to transformations; **repealed with effect from 2027-12-11 in favour of the CRA** — the reader panel on `/library/red` states both lifecycle dates with verbatim quotes; the three Art 3(3) seed rows name their designated categories. L55: read the EUR-Lex ALL view (amendments/repeals) BEFORE building any corpus. |
 
 ## The application map (key files)
 
@@ -98,14 +99,18 @@ byte-for-byte reproducible in CI — never hand-edit a corpus or bundle:
   HTML ships BROKEN annex ids, so annexes parse by VISIBLE headings.
 - `docs/cbw_statutory_corpus/` — the Dutch NIS2 transposition, from the
   promulgated Staatsblad XML, Stb. 2026, 187 (`build_cbw_corpus_from_stb.mjs`).
+- `docs/red_delegated_2022_30/` — Delegated Regulation (EU) 2022/30 (the
+  Art 3(3)(d)/(e)/(f) designations), base + amending + repealing sources
+  committed, amendments applied must-fire, repeal (2027-12-11, CRA
+  handover) as quoted metadata (`build_red_delegated_corpus.mjs`).
 - `docs/bsig_statutory_corpus/` — the German transposition core (BSIG),
   from the CONSOLIDATED gesetze-im-internet XML — a disclosed departure
   (Artikelgesetz promulgation is PDF-only and already amended); the
   verbatim standangabe amendment trail is in the metadata
   (`build_bsig_corpus_from_gii.mjs`).
 
-Each has its own verifier — `verify_{cra,nis2,cbw,bsig}_corpus.mjs` plus
-`verify_euact_corpus.mjs <ai_act|machinery|red>`, ALL in CI; the
+Each has its own verifier — `verify_{cra,nis2,cbw,bsig,red_delegated}_corpus.mjs`
+plus `verify_euact_corpus.mjs <ai_act|machinery|red>` (EIGHT in all), ALL in CI; the
 transposition verifiers include **D2 full-content parity**, and since
 Phase 12 the FIVE OJ corpora carry it too (D5/D5N in the CRA and NIS2
 verifiers, D2/D2N in the euact verifier) — every check negative-
@@ -214,21 +219,21 @@ on evidence with the user, not guessed); the same approach failed twice;
 or `git log`/`git status` shows an unexpected change (the audio script is
 the known benign one).
 
-## Next steps (Phase 12 closed 2026-08-16 with G7, all floors held)
+## Next steps (Phase 13 closed 2026-08-16 with G7, all floors held)
 
 **No task is in flight. The open candidates, for the user to prioritise:**
 
-1. **RED Art. 3(3)(d)/(e)/(f) delegated-acts cyber requirements** —
-   Delegated Regulation (EU) 2022/30 as its own authentic committed
-   source (Legal circuit-breaker: locate the OJ text first), feeding the
-   CRA-adjacent content a customer will actually ask about.
-2. Small: storage file GC (deleting evidence rows does not remove stored
+1. Small: storage file GC (deleting evidence rows does not remove stored
    files — a property inherited from the GCS backend and stated in 10.1).
-3. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
+2. **Obligation content for the still-unseeded acts** (GDPR, DORA, CER,
    GPSR, Data Act) if and when a customer's declaration needs them — the
    11.4 cockpit note marks that gap honestly in the meantime.
-4. Small: a repeatable `verify_nis2_reader` G6 script (the Phase-12
+3. Small: a repeatable `verify_nis2_reader` G6 script (the Phase-12
    annex check was ad-hoc; the NIS2 reader has no script of its own).
+4. **The 2027-12-11 RED→CRA handover as product-file guidance** — a
+   RED-relevant product's Art 3(3) obligations end when the CRA applies
+   in full (2026/339); surfacing that date per product is a natural
+   future batch, noted in the Phase-13 retro.
 5. **User-only, between sessions:** move the repo out of `~/Downloads`
    (quit session → move folder → `docker compose up -d` from the new
    path → reopen).
