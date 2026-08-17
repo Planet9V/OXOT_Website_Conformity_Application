@@ -72,10 +72,10 @@ export default function RedReaderPage() {
   return (
     <>
     <EuActReader
-      kicker="REFERENCE · VERBATIM OFFICIAL JOURNAL TEXT"
+      kicker="REFERENCE · VERBATIM CONSOLIDATED TEXT (AS AMENDED)"
       actLabel="RED"
       title="Radio Equipment Directive"
-      subtitle={`${redArticlesData.directive} · ${redArticlesData.officialJournalReference} · CELEX ${redArticlesData.celex}. ${redArticlesData.totalArticles} articles, ${redRecitalsData.recitalsCount} recitals, ${redAnnexesData.annexesCount} annexes — reproduced from the Official Journal source and verified byte-for-byte in CI.`}
+      subtitle={`${(redArticlesData as any).regulation} as amended · consolidated ${(redArticlesData as any).consolidationDate} · CELEX ${(redArticlesData as any).consolidatedCelex}. ${redArticlesData.totalArticles} articles, ${redRecitalsData.recitalsCount} recitals, ${redAnnexesData.annexesCount} annexes — articles and annexes from the EUR-Lex consolidated text, recitals from the original OJ publication, verified character-exact in CI.`}
       banner={
         <div className="rounded-2xl border border-border/60 bg-muted/20 px-5 py-4 text-sm text-muted-foreground flex gap-3">
           <Landmark className="h-4 w-4 text-primary shrink-0 mt-0.5" />
@@ -83,8 +83,14 @@ export default function RedReaderPage() {
             <span className="font-medium text-foreground">RED is a directive.</span> The
             duties that bind an economic operator flow through each Member State's
             implementing law — no national transposition of RED is loaded in this
-            application, and this reader shows only what the Directive itself says. Where a
-            national measure diverges, the national measure governs.
+            application, and this reader shows what the Directive itself says{" "}
+            <span className="font-medium text-foreground">as amended</span> (
+            {((redArticlesData as any).amendmentTrail ?? [])
+              .map((t: any) => t.act)
+              .join("; ")}
+            ), built from the EUR-Lex consolidated text — a documentation tool without
+            legal effect of its own; the amending acts are the law. Where a national
+            measure diverges, the national measure governs.
           </p>
         </div>
       }

@@ -107,6 +107,7 @@ function tagsFor(text) {
  */
 const CORRIGENDA = [
   {
+    id: "32024R2847R(02)",
     ojRef: "OJ L, 2025/90555, 2.7.2025",
     eli: "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
     url: "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
@@ -123,6 +124,7 @@ const CORRIGENDA = [
   {
     // Found by the 15.x lifecycle sweep (L55) — published 2025-10-17,
     // unapplied until 2026-08-16.
+    id: "32024R2847R(04)",
     ojRef: "OJ L, 2025/91117, 17.10.2025",
     eli: "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj",
     url: "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj/eng",
@@ -186,7 +188,7 @@ function applyCorrigenda(articles) {
         );
       }
       para.text = para.text.replace(fix.from, fix.to);
-      applied.push({ ojRef: c.ojRef, eli: c.eli, url: c.url, ...fix });
+      applied.push({ id: c.id, ojRef: c.ojRef, eli: c.eli, url: c.url, ...fix });
     }
   }
   return applied;

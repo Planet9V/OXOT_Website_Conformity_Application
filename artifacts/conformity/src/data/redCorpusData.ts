@@ -3,33 +3,94 @@
  *
  * GENERATED FILE — DO NOT EDIT BY HAND.
  * Built from the Official Journal text (OJ L 153, 22.5.2014, p. 62,
- * CELEX 32014L0053) by scripts/build_euact_corpus_from_eurlex.mjs and
+ * CELEX 32014L0053) by scripts/build_consolidated_act_corpus.mjs and
  * copied here by scripts/sync_euact_corpus_data.mjs. Every recital, article
  * paragraph and annex line is verbatim OJ text.
  *
  * Regenerate:
- *   node scripts/build_euact_corpus_from_eurlex.mjs red
+ *   node scripts/build_consolidated_act_corpus.mjs red
  *   node scripts/sync_euact_corpus_data.mjs red
  */
 export const redRecitalsData = {
-  "directive": "Directive 2014/53/EU",
+  "regulation": "Directive 2014/53/EU",
   "shortTitle": "RED",
   "officialJournalReference": "OJ L 153, 22.5.2014, p. 62",
   "celex": "32014L0053",
+  "consolidatedCelex": "02014L0053-20260530",
   "eli": "http://data.europa.eu/eli/dir/2014/53/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0053",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014L0053-20260530",
   "adopted": "2014-04-16",
-  "entryIntoForce": "2014-06-11",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/red_statutory_corpus/source/CELEX_32014L0053_EN.html",
-  "sourceSha256": "3d5567193d7f2f7f868bde0eb1db125cfc111034e9c607670934cfbf36cdb986",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-05-30",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2018/1139 (Basic Aviation Regulation)",
+      "celex": "32018R1139",
+      "eli": "http://data.europa.eu/eli/reg/2018/1139/oj",
+      "applicableFrom": "2018-09-11",
+      "summary": "Replaces Annex I point 3 (aviation exclusion scope)."
+    },
+    {
+      "act": "Directive (EU) 2022/2380 (common charger)",
+      "celex": "32022L2380",
+      "eli": "http://data.europa.eu/eli/dir/2022/2380/oj",
+      "applicableFrom": "2022-12-27",
+      "summary": "Adds Art 3(4) (charging interoperability), Art 3a and Annex Ia (USB Type-C specifications); replaces Art 3(3)(a), Art 10(8), Art 17(2) and market-surveillance provisions (Arts 40, 43, 44); adds charger information duties to Arts 12 and 13."
+    },
+    {
+      "act": "Commission Delegated Directive (EU) 2023/1717",
+      "celex": "32023R1717",
+      "eli": "http://data.europa.eu/eli/dir_del/2023/1717/oj",
+      "applicableFrom": "2023-10-01",
+      "summary": "Replaces Annex Ia part I points 2.1, 2.2 and 3.1 (USB Power Delivery references)."
+    },
+    {
+      "act": "Directive (EU) 2024/2749 (internal market emergency procedures)",
+      "celex": "32024L2749",
+      "eli": "http://data.europa.eu/eli/dir/2024/2749/oj",
+      "applicableFrom": "2024-11-28",
+      "summary": "Inserts chapter Va (Arts 43a–43e, emergency procedures) and Art 2(1) points 27–28."
+    },
+    {
+      "act": "Directive (EU) 2024/2839",
+      "celex": "32024L2839",
+      "eli": "http://data.europa.eu/eli/dir/2024/2839/oj",
+      "applicableFrom": "2024-11-27",
+      "summary": "Replaces Art 47(1) (Commission reporting)."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32014L0053R(01)",
+      "note": "DE, BG, SV only — the English text is not affected."
+    },
+    {
+      "id": "32014L0053R(02)",
+      "note": "SV only."
+    },
+    {
+      "id": "32014L0053R(03)",
+      "note": "FR only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32014L0053_EN.html",
+      "sha256": "3d5567193d7f2f7f868bde0eb1db125cfc111034e9c607670934cfbf36cdb986"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02014L0053-20260530_EN.html",
+      "sha256": "20b34c37d54174d9ff6638b6184d0d9bf4eac3899a7e5ef22c06189613e1f770"
+    }
+  },
+  "sourceSha256": "20b34c37d54174d9ff6638b6184d0d9bf4eac3899a7e5ef22c06189613e1f770",
   "recitalsCount": 75,
-  "chaptersCount": 7,
-  "totalArticles": 52,
-  "annexesCount": 8,
+  "chaptersCount": 8,
+  "totalArticles": 58,
+  "annexesCount": 9,
   "recitals": [
     {
       "number": 1,
@@ -44,9 +105,7 @@ export const redRecitalsData = {
       "title": "Recital 2",
       "text": "Regulation (EC) No 765/2008 of the European Parliament and of the Council lays down rules on the accreditation of conformity assessment bodies, provides a framework for the market surveillance of products and for controls on products from third countries, and lays down the general principles of the CE marking.",
       "tags": [
-        "conformity_assessment",
-        "ce_marking",
-        "supervision_enforcement"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -153,7 +212,8 @@ export const redRecitalsData = {
       "text": "The protection of personal data and privacy of users and of subscribers of radio equipment and the protection from fraud may be enhanced by particular features of radio equipment. Radio equipment should therefore in appropriate cases be designed in such a way that it supports those features.",
       "tags": [
         "radio",
-        "privacy_security"
+        "privacy",
+        "fraud"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -193,9 +253,7 @@ export const redRecitalsData = {
       "number": 17,
       "title": "Recital 17",
       "text": "In order to supplement or amend certain non-essential elements of this Directive, the power to adopt acts in accordance with Article 290 of the Treaty on the Functioning of the European Union (TFEU) should be delegated to the Commission. It is of particular importance that the Commission carry out appropriate consultations during its preparatory work, including at expert level. The Commission, when preparing and drawing up delegated acts, should ensure a simultaneous, timely and appropriate transmission of relevant documents to the European Parliament and to the Council.",
-      "tags": [
-        "delegated_acts"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -206,7 +264,8 @@ export const redRecitalsData = {
       "tags": [
         "essential_requirements",
         "radio",
-        "privacy_security"
+        "privacy",
+        "fraud"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -217,8 +276,7 @@ export const redRecitalsData = {
       "text": "Verification by radio equipment of the compliance of its combination with software should not be abused in order to prevent its use with software provided by independent parties. The availability to public authorities, manufacturers and users of information on the compliance of intended combinations of radio equipment and software should contribute to facilitate competition. In order to achieve those objectives, the power to adopt acts in accordance with Article 290 TFEU should be delegated to the Commission in respect of the specification of categories or classes of radio equipment for which manufacturers have to provide information on the compliance of intended combinations of radio equipment and software with the essential requirements set out in this Directive.",
       "tags": [
         "essential_requirements",
-        "radio",
-        "operator_roles"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -229,9 +287,7 @@ export const redRecitalsData = {
       "text": "A requirement to register in a central system radio equipment to be placed on the market may enhance the efficiency and effectiveness of market surveillance and thereby contribute to ensuring a high level of compliance with this Directive. Such a requirement entails additional burden to economic operators and should therefore be introduced only for those categories of radio equipment where a high level of compliance has not been attained. In order to ensure the application of such a requirement, the power to adopt acts in accordance with Article 290 TFEU should be delegated to the Commission in respect of the specification of the categories of radio equipment which manufacturers have to register within a central system and the elements of the technical documentation to be provided on the basis of the information on the compliance of radio equipment to be provided by Member States and following an evaluation of the risk of non-implementation of the essential requirements.",
       "tags": [
         "essential_requirements",
-        "radio",
-        "operator_roles",
-        "supervision_enforcement"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -272,8 +328,7 @@ export const redRecitalsData = {
       "title": "Recital 24",
       "text": "In accordance with Commission Decision 2007/344/EC , Member States are to use the Frequency Information System (EFIS) of the European Communications Office (ECO) in order to make comparable information regarding the use of radio spectrum in each Member State available to the public via the internet. Manufacturers can search in EFIS frequency information for all Member States prior to the placing on the market of radio equipment and thereby evaluate whether and under which conditions such radio equipment may be used within each Member State. There is therefore no need to include in this Directive additional provisions, such as prior notification, allowing manufacturers to be informed of the conditions of use of radio equipment using non-harmonised frequency bands.",
       "tags": [
-        "radio",
-        "operator_roles"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -312,9 +367,7 @@ export const redRecitalsData = {
       "number": 28,
       "title": "Recital 28",
       "text": "In order to facilitate communication between economic operators, market surveillance authorities and consumers, Member States should encourage economic operators to include a website address in addition to the postal address.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -323,8 +376,7 @@ export const redRecitalsData = {
       "title": "Recital 29",
       "text": "The manufacturer, having detailed knowledge of the design and production process, is best placed to carry out the conformity assessment procedure. Conformity assessment should therefore remain solely the obligation of the manufacturer.",
       "tags": [
-        "conformity_assessment",
-        "operator_roles"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -335,8 +387,7 @@ export const redRecitalsData = {
       "text": "The manufacturer should provide sufficient information on the intended use of the radio equipment so as to allow its use in compliance with the essential requirements. Such information may need to include a description of accessories such as antennas and of components such as software, and specifications of the installation process of the radio equipment.",
       "tags": [
         "essential_requirements",
-        "radio",
-        "operator_roles"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -346,9 +397,7 @@ export const redRecitalsData = {
       "title": "Recital 31",
       "text": "The requirement laid down in Directive 1999/5/EC to include an EU declaration of conformity with equipment has been found to simplify and to enhance the information and the efficiency of market surveillance. The possibility to provide a simplified EU declaration of conformity has allowed the burden associated with this requirement to be reduced without reduction of its effectiveness, and should therefore be provided for within this Directive. Furthermore, in order to ensure easy and efficient access to an EU declaration of conformity, including a simplified EU declaration of conformity, it should be possible to affix it to the packaging of the radio equipment concerned.",
       "tags": [
-        "radio",
-        "ce_marking",
-        "supervision_enforcement"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -359,8 +408,7 @@ export const redRecitalsData = {
       "text": "It is necessary to ensure that radio equipment from third countries entering the Union market complies with this Directive, and in particular that appropriate conformity assessment procedures have been carried out by manufacturers with regard to that radio equipment. Provision should therefore be made for importers to make sure that the radio equipment they place on the market complies with the requirements of this Directive and that they do not place on the market radio equipment which does not comply with such requirements or presents a risk. Provision should also be made for importers to make sure that conformity assessment procedures have been carried out and that marking of radio equipment and documentation drawn up by manufacturers are available for inspection by the competent national authorities.",
       "tags": [
         "radio",
-        "conformity_assessment",
-        "operator_roles"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -370,8 +418,7 @@ export const redRecitalsData = {
       "title": "Recital 33",
       "text": "When placing radio equipment on the market, every importer should indicate on the radio equipment his name, registered trade name or registered trade mark and the postal address at which he can be contacted. Exceptions should be provided for in cases where the size or nature of the radio equipment does not allow it. This includes cases where the importer would have to open the packaging in order to put his name and address on the radio equipment.",
       "tags": [
-        "radio",
-        "operator_roles"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -381,8 +428,7 @@ export const redRecitalsData = {
       "title": "Recital 34",
       "text": "The distributor makes radio equipment available on the market after it has been placed on the market by the manufacturer or the importer and should act with due care to ensure that its handling of the radio equipment does not adversely affect the compliance of the radio equipment.",
       "tags": [
-        "radio",
-        "operator_roles"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -392,8 +438,7 @@ export const redRecitalsData = {
       "title": "Recital 35",
       "text": "Any economic operator that either places radio equipment on the market under his own name or trade mark or modifies radio equipment in such a way that compliance with this Directive may be affected should be considered to be the manufacturer and should assume the obligations of the manufacturer.",
       "tags": [
-        "radio",
-        "operator_roles"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -403,9 +448,7 @@ export const redRecitalsData = {
       "title": "Recital 36",
       "text": "Distributors and importers, being close to the market place, should be involved in market surveillance tasks carried out by the competent national authorities, and should be prepared to participate actively, providing those authorities with all necessary information relating to the radio equipment concerned.",
       "tags": [
-        "radio",
-        "operator_roles",
-        "supervision_enforcement"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -415,8 +458,7 @@ export const redRecitalsData = {
       "title": "Recital 37",
       "text": "Ensuring traceability of radio equipment throughout the whole supply chain helps to make market surveillance simpler and more efficient. An efficient traceability system facilitates market surveillance authorities' task of tracing economic operators who made non-compliant radio equipment available on the market. When keeping the information required under this Directive for the identification of other economic operators, economic operators should not be required to update such information in respect of other economic operators who have either supplied them with radio equipment or to whom they have supplied radio equipment.",
       "tags": [
-        "radio",
-        "supervision_enforcement"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -428,8 +470,7 @@ export const redRecitalsData = {
       "tags": [
         "essential_requirements",
         "radio",
-        "conformity_assessment",
-        "standards"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -438,9 +479,7 @@ export const redRecitalsData = {
       "number": 39,
       "title": "Recital 39",
       "text": "Regulation (EU) No 1025/2012 provides for a procedure for objections to harmonised standards where those standards do not entirely satisfy the requirements of this Directive.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -461,9 +500,7 @@ export const redRecitalsData = {
       "title": "Recital 41",
       "text": "Manufacturers should draw up an EU declaration of conformity to provide information required under this Directive on the conformity of radio equipment with the requirements of this Directive and of the other relevant Union harmonisation legislation.",
       "tags": [
-        "radio",
-        "operator_roles",
-        "ce_marking"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -472,10 +509,7 @@ export const redRecitalsData = {
       "number": 42,
       "title": "Recital 42",
       "text": "To ensure effective access to information for market surveillance purposes, the information required to identify all applicable Union acts should be available in a single EU declaration of conformity. In order to reduce the administrative burden on economic operators, that single EU declaration of conformity may be a dossier made up of relevant individual declarations of conformity.",
-      "tags": [
-        "ce_marking",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -485,8 +519,7 @@ export const redRecitalsData = {
       "text": "The CE marking, indicating the conformity of radio equipment, is the visible consequence of a whole process comprising conformity assessment in a broad sense. General principles governing the CE marking are set out in Regulation (EC) No 765/2008. Rules governing the affixing of the CE marking should be laid down in this Directive.",
       "tags": [
         "radio",
-        "conformity_assessment",
-        "ce_marking"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -495,9 +528,7 @@ export const redRecitalsData = {
       "number": 44,
       "title": "Recital 44",
       "text": "The requirement to affix the CE marking on products is important for the information of consumers and public authorities. The possibility laid down in Directive 1999/5/EC to affix a reduced CE mark on small-sized equipment, provided that it remains visible and legible, has allowed the application of that requirement to be simplified without reducing its effectiveness, and should therefore be included in this Directive.",
-      "tags": [
-        "ce_marking"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -505,10 +536,7 @@ export const redRecitalsData = {
       "number": 45,
       "title": "Recital 45",
       "text": "The requirement laid down in Directive 1999/5/EC to affix the CE marking on the packaging of equipment has been found to simplify the task of market surveillance, and should therefore be included in this Directive.",
-      "tags": [
-        "ce_marking",
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -528,9 +556,7 @@ export const redRecitalsData = {
       "title": "Recital 47",
       "text": "In view of the rapid pace of technological change towards a paperless environment, where radio equipment is fitted with an integral screen, the Commission should examine, as part of a review of the operation of this Directive, the feasibility of replacing the requirements for affixing: the manufacturer's name, registered trade name or registered trade mark and a single point or postal address at which they can be contacted, CE marking and EU declaration of conformity with either a function whereby such information is automatically displayed upon starting up the radio equipment, or a function allowing the end-user to select the display of the relevant information. Furthermore, as part of that examination of feasibility, where radio equipment fitted with an integral screen operates from an integral battery which does not hold an initial charge, the Commission should also consider the use of removable transparent integral screen covering labels which would display the same information.",
       "tags": [
-        "radio",
-        "operator_roles",
-        "ce_marking"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -560,8 +586,7 @@ export const redRecitalsData = {
       "title": "Recital 50",
       "text": "If a conformity assessment body demonstrates conformity with the criteria laid down in harmonised standards, it should be presumed to comply with the corresponding requirements set out in this Directive.",
       "tags": [
-        "conformity_assessment",
-        "standards"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -602,8 +627,7 @@ export const redRecitalsData = {
       "text": "Conformity assessment bodies frequently subcontract parts of their activities linked to the assessment of conformity or have recourse to a subsidiary. In order to safeguard the level of protection required for radio equipment to be placed on the Union market, it is essential that conformity assessment subcontractors and subsidiaries fulfil the same requirements as notified bodies in relation to the performance of conformity assessment tasks. Therefore, it is important that the assessment of the competence and the performance of bodies to be notified and the monitoring of bodies already notified cover also activities carried out by subcontractors and subsidiaries.",
       "tags": [
         "radio",
-        "conformity_assessment",
-        "supervision_enforcement"
+        "conformity_assessment"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -641,8 +665,7 @@ export const redRecitalsData = {
       "title": "Recital 58",
       "text": "In order to ensure legal certainty, it is necessary to clarify that rules on Union market surveillance and control of products entering the Union market provided for in Regulation (EC) No 765/2008 apply to radio equipment covered by this Directive. This Directive should not prevent Member States from choosing the competent authorities to carry out those tasks.",
       "tags": [
-        "radio",
-        "supervision_enforcement"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -651,9 +674,7 @@ export const redRecitalsData = {
       "number": 59,
       "title": "Recital 59",
       "text": "Directive 1999/5/EC already provides for a safeguard procedure which applies only in the event of disagreement between Member States over measures taken by a Member State. In order to increase transparency and to reduce processing time, it is necessary to improve the existing safeguard procedure, with a view to making it more efficient and drawing on the expertise available in Member States.",
-      "tags": [
-        "supervision_enforcement"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -673,8 +694,7 @@ export const redRecitalsData = {
       "title": "Recital 61",
       "text": "The existing system should be supplemented by a procedure under which interested parties are informed of measures intended to be taken with regard to radio equipment presenting a risk to the health or safety of persons or to other aspects of public interest protection covered by this Directive. It should also allow market surveillance authorities, in cooperation with the relevant economic operators, to act at an earlier stage in respect of such equipment.",
       "tags": [
-        "radio",
-        "supervision_enforcement"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -683,9 +703,7 @@ export const redRecitalsData = {
       "number": 62,
       "title": "Recital 62",
       "text": "Where the Member States and the Commission agree as to the justification of a measure taken by a Member State, no further involvement of the Commission should be required, except where non-compliance can be attributed to shortcomings of a harmonised standard.",
-      "tags": [
-        "standards"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -701,10 +719,7 @@ export const redRecitalsData = {
       "number": 64,
       "title": "Recital 64",
       "text": "The advisory procedure should be used for the adoption of implementing acts specifying how to present information in cases of restrictions on putting into service or of existing requirements for authorisation of use; and requesting the notifying Member State to take the necessary corrective measures in respect of a notified body that does not meet or no longer meets the requirements for its notification.",
-      "tags": [
-        "conformity_assessment",
-        "delegated_acts"
-      ],
+      "tags": [],
       "relatedArticles": [],
       "relatedAnnexes": []
     },
@@ -713,8 +728,7 @@ export const redRecitalsData = {
       "title": "Recital 65",
       "text": "The examination procedure should be used for the adoption of implementing acts: determining whether certain categories of electrical or electronic products meet the definition of ‘radio equipment’; laying down the operational rules for making the information on compliance available; laying down the operational rules for registration and the operational rules for affixing the registration number on radio equipment; and establishing the equivalence between notified radio interfaces and assigning a radio equipment class. It should also be used with respect to compliant radio equipment which presents a risk to the health or safety of persons or to other aspects of public interest protection.",
       "tags": [
-        "radio",
-        "delegated_acts"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -724,8 +738,7 @@ export const redRecitalsData = {
       "title": "Recital 66",
       "text": "The Commission should adopt immediately applicable implementing acts where, in duly justified cases relating to compliant radio equipment which presents a risk to the health or safety of persons, imperative grounds of urgency so require.",
       "tags": [
-        "radio",
-        "delegated_acts"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -751,8 +764,7 @@ export const redRecitalsData = {
       "title": "Recital 69",
       "text": "The Commission should, by means of implementing acts and, given their special nature, acting without the application of Regulation (EU) No 182/2011, determine whether measures taken by Member States in respect of non-compliant radio equipment are justified or not.",
       "tags": [
-        "radio",
-        "delegated_acts"
+        "radio"
       ],
       "relatedArticles": [],
       "relatedAnnexes": []
@@ -815,34 +827,96 @@ export const redRecitalsData = {
 };
 
 export const redArticlesData = {
-  "directive": "Directive 2014/53/EU",
+  "regulation": "Directive 2014/53/EU",
   "shortTitle": "RED",
   "officialJournalReference": "OJ L 153, 22.5.2014, p. 62",
   "celex": "32014L0053",
+  "consolidatedCelex": "02014L0053-20260530",
   "eli": "http://data.europa.eu/eli/dir/2014/53/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0053",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014L0053-20260530",
   "adopted": "2014-04-16",
-  "entryIntoForce": "2014-06-11",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/red_statutory_corpus/source/CELEX_32014L0053_EN.html",
-  "sourceSha256": "3d5567193d7f2f7f868bde0eb1db125cfc111034e9c607670934cfbf36cdb986",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-05-30",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2018/1139 (Basic Aviation Regulation)",
+      "celex": "32018R1139",
+      "eli": "http://data.europa.eu/eli/reg/2018/1139/oj",
+      "applicableFrom": "2018-09-11",
+      "summary": "Replaces Annex I point 3 (aviation exclusion scope)."
+    },
+    {
+      "act": "Directive (EU) 2022/2380 (common charger)",
+      "celex": "32022L2380",
+      "eli": "http://data.europa.eu/eli/dir/2022/2380/oj",
+      "applicableFrom": "2022-12-27",
+      "summary": "Adds Art 3(4) (charging interoperability), Art 3a and Annex Ia (USB Type-C specifications); replaces Art 3(3)(a), Art 10(8), Art 17(2) and market-surveillance provisions (Arts 40, 43, 44); adds charger information duties to Arts 12 and 13."
+    },
+    {
+      "act": "Commission Delegated Directive (EU) 2023/1717",
+      "celex": "32023R1717",
+      "eli": "http://data.europa.eu/eli/dir_del/2023/1717/oj",
+      "applicableFrom": "2023-10-01",
+      "summary": "Replaces Annex Ia part I points 2.1, 2.2 and 3.1 (USB Power Delivery references)."
+    },
+    {
+      "act": "Directive (EU) 2024/2749 (internal market emergency procedures)",
+      "celex": "32024L2749",
+      "eli": "http://data.europa.eu/eli/dir/2024/2749/oj",
+      "applicableFrom": "2024-11-28",
+      "summary": "Inserts chapter Va (Arts 43a–43e, emergency procedures) and Art 2(1) points 27–28."
+    },
+    {
+      "act": "Directive (EU) 2024/2839",
+      "celex": "32024L2839",
+      "eli": "http://data.europa.eu/eli/dir/2024/2839/oj",
+      "applicableFrom": "2024-11-27",
+      "summary": "Replaces Art 47(1) (Commission reporting)."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32014L0053R(01)",
+      "note": "DE, BG, SV only — the English text is not affected."
+    },
+    {
+      "id": "32014L0053R(02)",
+      "note": "SV only."
+    },
+    {
+      "id": "32014L0053R(03)",
+      "note": "FR only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32014L0053_EN.html",
+      "sha256": "3d5567193d7f2f7f868bde0eb1db125cfc111034e9c607670934cfbf36cdb986"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02014L0053-20260530_EN.html",
+      "sha256": "20b34c37d54174d9ff6638b6184d0d9bf4eac3899a7e5ef22c06189613e1f770"
+    }
+  },
+  "sourceSha256": "20b34c37d54174d9ff6638b6184d0d9bf4eac3899a7e5ef22c06189613e1f770",
   "recitalsCount": 75,
-  "chaptersCount": 7,
-  "totalArticles": 52,
-  "annexesCount": 8,
+  "chaptersCount": 8,
+  "totalArticles": 58,
+  "annexesCount": 9,
   "chapters": [
     {
       "chapterNumber": 1,
-      "label": "CHAPTER I",
-      "title": "GENERAL PROVISIONS",
+      "chapterLabel": "I",
+      "chapterTitle": "GENERAL PROVISIONS",
       "articles": [
         {
-          "articleNumber": 1,
+          "articleNumber": "1",
           "title": "Subject matter and scope",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -867,20 +941,18 @@ export const redArticlesData = {
           ],
           "referencedArticles": [
             3
-          ],
-          "referencedAnnexes": [
-            "I"
           ]
         },
         {
-          "articleNumber": 2,
+          "articleNumber": "2",
           "title": "Definitions",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "For the purposes of this Directive, the following definitions apply:\n(1) ‘radio equipment’ means an electrical or electronic product, which intentionally emits and/or receives radio waves for the purpose of radio communication and/or radiodetermination, or an electrical or electronic product which must be completed with an accessory, such as antenna, so as to intentionally emit and/or receive radio waves for the purpose of radio communication and/or radiodetermination;\n(2) ‘radio communication’ means communication by means of radio waves;\n(3) ‘radiodetermination’ means the determination of the position, velocity and/or other characteristics of an object, or the obtaining of information relating to those parameters, by means of the propagation properties of radio waves;\n(4) ‘radio waves’ means electromagnetic waves of frequencies lower than 3 000 GHz, propagated in space without artificial guide;\n(5) ‘radio interface’ means the specification of the regulated use of radio spectrum;\n(6) ‘radio equipment class’ means a class identifying particular categories of radio equipment which, under this Directive, are considered similar and those radio interfaces for which the radio equipment is designed;\n(7) ‘harmful interference’ means harmful interference as defined in point (r) of Article 2 of Directive 2002/21/EC of the European Parliament and of the Council ;\n(8) ‘electromagnetic disturbance’ means electromagnetic disturbance as defined in point 5 of Article 3(1) of Directive 2014/30/EU;\n(9) ‘making available on the market’ means any supply of radio equipment for distribution, consumption or use on the Union market in the course of a commercial activity, whether in return for payment or free of charge;\n(10) ‘placing on the market’ means the first making available of radio equipment on the Union market;\n(11) ‘putting into service’ means the first use of radio equipment in the Union by its end-user;\n(12) ‘manufacturer’ means any natural or legal person who manufactures radio equipment or has radio equipment designed or manufactured, and markets that equipment under his name or trade mark;\n(13) ‘authorised representative’ means any natural or legal person established within the Union who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks;\n(14) ‘importer’ means any natural or legal person established within the Union who places radio equipment from a third country on the Union market;\n(15) ‘distributor’ means any natural or legal person in the supply chain, other than the manufacturer or the importer, who makes radio equipment available on the market;\n(16) ‘economic operators’ means the manufacturer, the authorised representative, the importer and the distributor;\n(17) ‘technical specification’ means a document that prescribes technical requirements to be fulfilled by radio equipment;\n(18) ‘harmonised standard’ means harmonised standard as defined in point (c) of point 1 of Article 2 of Regulation (EU) No 1025/2012;\n(19) ‘accreditation’ means accreditation as defined in point 10 of Article 2 of Regulation (EC) No 765/2008;\n(20) ‘national accreditation body’ means national accreditation body as defined in point 11 of Article 2 of Regulation (EC) No 765/2008;\n(21) ‘conformity assessment’ means the process demonstrating whether the essential requirements of this Directive relating to radio equipment have been fulfilled;\n(22) ‘conformity assessment body’ means a body that performs conformity assessment activities;\n(23) ‘recall’ means any measure aimed at achieving the return of radio equipment that has already been made available to the end-user;\n(24) ‘withdrawal’ means any measure aimed at preventing radio equipment in the supply chain from being made available on the market;\n(25) ‘Union harmonisation legislation’ means any Union legislation harmonising the conditions for the marketing of products;\n(26) ‘CE marking’ means a marking by which the manufacturer indicates that the radio equipment is in conformity with the applicable requirements set out in Union harmonisation legislation providing for its affixing."
+              "text": "For the purposes of this Directive, the following definitions apply:\n(1) ‘radio equipment’ means an electrical or electronic product, which intentionally emits and/or receives radio waves for the purpose of radio communication and/or radiodetermination, or an electrical or electronic product which must be completed with an accessory, such as antenna, so as to intentionally emit and/or receive radio waves for the purpose of radio communication and/or radiodetermination;\n(2) ‘radio communication’ means communication by means of radio waves;\n(3) ‘radiodetermination’ means the determination of the position, velocity and/or other characteristics of an object, or the obtaining of information relating to those parameters, by means of the propagation properties of radio waves;\n(4) ‘radio waves’ means electromagnetic waves of frequencies lower than 3 000 GHz, propagated in space without artificial guide;\n(5) ‘radio interface’ means the specification of the regulated use of radio spectrum;\n(6) ‘radio equipment class’ means a class identifying particular categories of radio equipment which, under this Directive, are considered similar and those radio interfaces for which the radio equipment is designed;\n(7) ‘harmful interference’ means harmful interference as defined in point (r) of Article 2 of Directive 2002/21/EC of the European Parliament and of the Council ;\n(8) ‘electromagnetic disturbance’ means electromagnetic disturbance as defined in point 5 of Article 3(1) of Directive 2014/30/EU;\n(9) ‘making available on the market’ means any supply of radio equipment for distribution, consumption or use on the Union market in the course of a commercial activity, whether in return for payment or free of charge;\n(10) ‘placing on the market’ means the first making available of radio equipment on the Union market;\n(11) ‘putting into service’ means the first use of radio equipment in the Union by its end-user;\n(12) ‘manufacturer’ means any natural or legal person who manufactures radio equipment or has radio equipment designed or manufactured, and markets that equipment under his name or trade mark;\n(13) ‘authorised representative’ means any natural or legal person established within the Union who has received a written mandate from a manufacturer to act on his behalf in relation to specified tasks;\n(14) ‘importer’ means any natural or legal person established within the Union who places radio equipment from a third country on the Union market;\n(15) ‘distributor’ means any natural or legal person in the supply chain, other than the manufacturer or the importer, who makes radio equipment available on the market;\n(16) ‘economic operators’ means the manufacturer, the authorised representative, the importer and the distributor;\n(17) ‘technical specification’ means a document that prescribes technical requirements to be fulfilled by radio equipment;\n(18) ‘harmonised standard’ means harmonised standard as defined in point (c) of point 1 of Article 2 of Regulation (EU) No 1025/2012;\n(19) ‘accreditation’ means accreditation as defined in point 10 of Article 2 of Regulation (EC) No 765/2008;\n(20) ‘national accreditation body’ means national accreditation body as defined in point 11 of Article 2 of Regulation (EC) No 765/2008;\n(21) ‘conformity assessment’ means the process demonstrating whether the essential requirements of this Directive relating to radio equipment have been fulfilled;\n(22) ‘conformity assessment body’ means a body that performs conformity assessment activities;\n(23) ‘recall’ means any measure aimed at achieving the return of radio equipment that has already been made available to the end-user;\n(24) ‘withdrawal’ means any measure aimed at preventing radio equipment in the supply chain from being made available on the market;\n(25) ‘Union harmonisation legislation’ means any Union legislation harmonising the conditions for the marketing of products;\n(26) ‘CE marking’ means a marking by which the manufacturer indicates that the radio equipment is in conformity with the applicable requirements set out in Union harmonisation legislation providing for its affixing;\n(27) ‘crisis-relevant goods’ means crisis-relevant goods as defined in Article 3, point (6), of Regulation (EU) 2024/2747. of the European Parliament and of the Council ;\n(28) ‘internal market emergency mode’ means internal market emergency mode as defined in Article 3, point (3), of Regulation (EU) 2024/2747."
             },
             {
               "paragraphNumber": 2,
@@ -890,22 +962,19 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "standards",
-            "delegated_acts"
+            "conformity_assessment"
           ],
           "referencedArticles": [
+            2,
             3,
             45
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 3,
+          "articleNumber": "3",
           "title": "Essential requirements",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -918,25 +987,60 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 3,
-              "text": "Radio equipment within certain categories or classes shall be so constructed that it complies with the following essential requirements:\n(a) radio equipment interworks with accessories, in particular with common chargers;\n(b) radio equipment interworks via networks with other radio equipment;\n(c) radio equipment can be connected to interfaces of the appropriate type throughout the Union;\n(d) radio equipment does not harm the network or its functioning nor misuse network resources, thereby causing an unacceptable degradation of service;\n(e) radio equipment incorporates safeguards to ensure that the personal data and privacy of the user and of the subscriber are protected;\n(f) radio equipment supports certain features ensuring protection from fraud;\n(g) radio equipment supports certain features ensuring access to emergency services;\n(h) radio equipment supports certain features in order to facilitate its use by users with a disability;\n(i) radio equipment supports certain features in order to ensure that software can only be loaded into the radio equipment where the compliance of the combination of the radio equipment and software has been demonstrated.\nThe Commission shall be empowered to adopt delegated acts in accordance with Article 44 specifying which categories or classes of radio equipment are concerned by each of the requirements set out in points (a) to (i) of the first subparagraph of this paragraph."
+              "text": "Radio equipment within certain categories or classes shall be so constructed that it complies with the following essential requirements:\n(a) radio equipment interworks with accessories other than the charging devices for the categories or classes of radio equipment, specified in Part I of Annex Ia, which are specifically referred to in paragraph 4 of this Article;\n(b) radio equipment interworks via networks with other radio equipment;\n(c) radio equipment can be connected to interfaces of the appropriate type throughout the Union;\n(d) radio equipment does not harm the network or its functioning nor misuse network resources, thereby causing an unacceptable degradation of service;\n(e) radio equipment incorporates safeguards to ensure that the personal data and privacy of the user and of the subscriber are protected;\n(f) radio equipment supports certain features ensuring protection from fraud;\n(g) radio equipment supports certain features ensuring access to emergency services;\n(h) radio equipment supports certain features in order to facilitate its use by users with a disability;\n(i) radio equipment supports certain features in order to ensure that software can only be loaded into the radio equipment where the compliance of the combination of the radio equipment and software has been demonstrated.\nThe Commission shall be empowered to adopt delegated acts in accordance with Article 44 specifying which categories or classes of radio equipment are concerned by each of the requirements set out in points (a) to (i) of the first subparagraph of this paragraph."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Radio equipment falling within the categories or classes specified in Part I of Annex Ia shall be so constructed that it complies with the specifications relating to charging capabilities set out in that Annex for the relevant category or class of radio equipment.\nWith respect to radio equipment capable of being recharged by means of wired charging, the Commission is empowered to adopt delegated acts in accordance with Article 44 to amend Part I of Annex Ia in the light of scientific and technological progress or market developments in order to ensure a minimum common interoperability between radio equipment and its charging devices, as well as to improve consumer convenience, to reduce environmental waste and to avoid market fragmentation, by:\n(a) modifying, adding or removing categories or classes of radio equipment;\n(b) modifying, adding or removing technical specifications, including references and descriptions, in relation to the charging receptacle(s) and charging communication protocol(s), for each category or class of radio equipment concerned.\nThe Commission shall continuously assess market developments, market fragmentation and technological progress with a view to identifying categories or classes of radio equipment capable of being recharged by means of wired charging for which the inclusion in Part I of Annex Ia would lead to significant consumer convenience and reduction of environmental waste.\nThe Commission shall submit a report on the assessment referred to in the third subparagraph to the European Parliament and to the Council, for the first time by 28 December 2025 and every 5 years thereafter, and shall adopt delegated acts pursuant to the second subparagraph, point (a), accordingly.\nWith respect to radio equipment capable of being recharged by means other than wired charging, the Commission is empowered to adopt delegated acts in accordance with Article 44 in order to amend Part I of Annex Ia in the light of scientific and technological progress or market developments in order to ensure a minimum common interoperability between radio equipment and its charging devices, as well as to improve consumer convenience, to reduce environmental waste and to avoid market fragmentation, by:\n(a) introducing, modifying, adding or removing categories or classes of radio equipment;\n(b) introducing, modifying, adding or removing technical specifications, including references and descriptions, in relation to charging interface(s) and charging communication protocol(s), for each category or class of radio equipment concerned.\nThe Commission shall, in accordance with Article 10(1) of Regulation (EU) No 1025/2012, and by 28 December 2024, request one or more European standardisation organisations to draft harmonised standards laying down technical specifications for the charging interface(s) and charging communication protocol(s) for radio equipment capable of being recharged by means other than wired charging. In accordance with the procedure laid down in Article 10(2) of Regulation (EU) No 1025/2012, the Commission shall consult the committee set up under Article 45(1) of this Directive. The requirements as to the content of the requested harmonised standards shall be based on an assessment carried out by the Commission of the current state of wireless charging technologies for radio equipment, covering in particular market developments, market penetration, market fragmentation, technological performance, interoperability, energy efficiency and charging performance.\nWhen preparing the delegated acts referred to in this Article with respect to radio equipment capable of being recharged by means of wired charging, as well as with respect to radio equipment capable of being recharged by means other than wired charging, the Commission shall take into account the degree of market acceptance of the technical specifications under consideration, the resulting consumer convenience and the extent of the reduction of environmental waste and market fragmentation that can be expected from such technical specifications. Technical specifications that are based on relevant available European or international standards shall be deemed to meet the objectives set out in the previous sentence. However, where such European or international standards do not exist, or where the Commission determines, based on its technical assessment, that they do not meet those objectives in an optimal manner, the Commission may set out other technical specifications which better meet those objectives."
             }
           ],
           "tags": [
             "essential_requirements",
             "radio",
-            "supervision_enforcement",
-            "delegated_acts",
-            "privacy_security"
+            "common_charger",
+            "privacy",
+            "fraud"
           ],
           "referencedArticles": [
-            44
-          ],
-          "referencedAnnexes": []
+            10,
+            44,
+            45
+          ]
         },
         {
-          "articleNumber": 4,
+          "articleNumber": "3a",
+          "title": "",
+          "chapterNumber": 1,
+          "chapterLabel": "I",
+          "chapterTitle": "GENERAL PROVISIONS",
+          "paragraphs": [
+            {
+              "paragraphNumber": 0,
+              "text": "Possibility for consumers and other end-users to acquire certain categories or classes of radio equipment without a charging device"
+            },
+            {
+              "paragraphNumber": 1,
+              "text": "Where an economic operator offers to consumers and other end-users the possibility to acquire the radio equipment referred to in Article 3(4) together with a charging device, the economic operator shall also offer the consumers and other end-users the possibility of acquiring that radio equipment without any charging device."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Economic operators shall ensure that the information on whether or not a charging device is included with the radio equipment referred to in Article 3(4) is displayed in a graphic form using a user-friendly and easily accessible pictogram as set out in Part III of Annex Ia when such radio equipment is made available to consumers and other end-users. The pictogram shall be printed on the packaging or affixed to the packaging as a sticker. When the radio equipment is made available to consumers and other end-users, the pictogram shall be displayed in a visible and legible manner and, in the case of distance selling, close to the price indication.\nThe Commission is empowered to adopt delegated acts in accordance with Article 44 in order to amend Part III of Annex Ia as a consequence of amendments to Parts I and II of that Annex, or as a consequence of future amendments to labelling requirements, or in the light of technological progress, by introducing, modifying, adding or removing any graphic or textual elements."
+            }
+          ],
+          "tags": [
+            "radio",
+            "common_charger"
+          ],
+          "referencedArticles": [
+            3,
+            44
+          ]
+        },
+        {
+          "articleNumber": "4",
           "title": "Provision of information on the compliance of combinations of radio equipment and software",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -955,24 +1059,20 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "delegated_acts"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             3,
             17,
             44,
             45
-          ],
-          "referencedAnnexes": [
-            "VI"
           ]
         },
         {
-          "articleNumber": 5,
+          "articleNumber": "5",
           "title": "Registration of radio equipment types within some categories",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -998,24 +1098,20 @@ export const redArticlesData = {
           ],
           "tags": [
             "essential_requirements",
-            "radio",
-            "operator_roles",
-            "delegated_acts"
+            "radio"
           ],
           "referencedArticles": [
             3,
             44,
             45,
             47
-          ],
-          "referencedAnnexes": [
-            "V"
           ]
         },
         {
-          "articleNumber": 6,
+          "articleNumber": "6",
           "title": "Making available on the market",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1026,13 +1122,13 @@ export const redArticlesData = {
           "tags": [
             "radio"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 7,
+          "articleNumber": "7",
           "title": "Putting into service and use",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1045,13 +1141,13 @@ export const redArticlesData = {
           ],
           "referencedArticles": [
             9
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 8,
+          "articleNumber": "8",
           "title": "Notification of radio interface specifications and assignment of radio equipment classes",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1064,18 +1160,17 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "delegated_acts"
+            "radio"
           ],
           "referencedArticles": [
             45
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 9,
+          "articleNumber": "9",
           "title": "Free movement of radio equipment",
           "chapterNumber": 1,
+          "chapterLabel": "I",
           "chapterTitle": "GENERAL PROVISIONS",
           "paragraphs": [
             {
@@ -1090,20 +1185,20 @@ export const redArticlesData = {
           "tags": [
             "radio"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 2,
-      "label": "CHAPTER II",
-      "title": "OBLIGATIONS OF ECONOMIC OPERATORS",
+      "chapterLabel": "II",
+      "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
       "articles": [
         {
-          "articleNumber": 10,
+          "articleNumber": "10",
           "title": "Obligations of manufacturers",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1136,7 +1231,7 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 8,
-              "text": "Manufacturers shall ensure that the radio equipment is accompanied by instructions and safety information in a language which can be easily understood by consumers and other end-users, as determined by the Member State concerned. Instructions shall include the information required to use radio equipment in accordance with its intended use. Such information shall include, where applicable, a description of accessories and components, including software, which allow the radio equipment to operate as intended. Such instructions and safety information, as well as any labelling, shall be clear, understandable and intelligible.\nThe following information shall also be included in the case of radio equipment intentionally emitting radio waves:\n(a) frequency band(s) in which the radio equipment operates;\n(b) maximum radio-frequency power transmitted in the frequency band(s) in which the radio equipment operates."
+              "text": "Manufacturers shall ensure that the radio equipment is accompanied by instructions and safety information. Instructions shall include the information required to use radio equipment in accordance with its intended use. Such information shall include, where applicable, a description of accessories and components, including software, which allow the radio equipment to operate as intended. Such instructions and safety information, as well as any labelling, shall be clear, understandable and intelligible.\nThe following information shall also be included in the instructions in the case of radio equipment intentionally emitting radio waves:\n(a) frequency band(s) in which the radio equipment operates;\n(b) maximum radio-frequency power transmitted in the frequency band(s) in which the radio equipment operates.\nIn the case of radio equipment referred to in Article 3(4), the instructions shall contain information on the specifications relating to the radio equipment’s charging capabilities and the compatible charging devices, as set out in Part II of Annex Ia. In addition to being included in the instructions, when the manufacturers make such radio equipment available to consumers and other end-users, the information shall be also displayed on a label, as set out in Part IV of Annex Ia. The label shall be printed in the instructions and on the packaging or affixed to the packaging as a sticker. In the absence of packaging, the sticker with the label shall be affixed to the radio equipment. When the radio equipment is made available to consumers and other end-users, the label shall be displayed in a visible and legible manner and, in the case of distance selling, close to the price indication. Where the size or nature of the radio equipment does not allow otherwise, the label may be printed as a separate document accompanying the radio equipment.\nThe instructions and safety information referred to in the first, second and third subparagraphs of this paragraph shall be in a language which can be easily understood by consumers and other end-users, as determined by the Member State concerned.\nThe Commission is empowered to adopt delegated acts in accordance with Article 44 in order to amend Parts II and IV of Annex Ia, as a consequence of amendments to Part I of that Annex, or as a consequence of future amendments to labelling requirements, or in the light of technological progress, by introducing, modifying, adding or removing any details in relation to the information, graphic or textual elements, as set out in this Article."
             },
             {
               "paragraphNumber": 9,
@@ -1158,25 +1253,22 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement",
-            "standards",
-            "delegated_acts"
+            "common_charger",
+            "conformity_assessment"
           ],
           "referencedArticles": [
             3,
             17,
             21,
+            44,
             45
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 11,
+          "articleNumber": "11",
           "title": "Authorised representatives",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1189,20 +1281,17 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement"
+            "radio"
           ],
           "referencedArticles": [
             10
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 12,
+          "articleNumber": "12",
           "title": "Obligations of importers",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1219,7 +1308,7 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 4,
-              "text": "Importers shall ensure that the radio equipment is accompanied by instructions and safety information in a language which can be easily understood by consumers and other end-users, as determined by the Member State concerned."
+              "text": "Importers shall ensure that the radio equipment is accompanied by instructions and safety information in a language which can be easily understood by consumers and other end-users, as determined by the Member State concerned.\nWhen making the radio equipment referred to in Article 3(4) available to consumers and other end-users, importers shall ensure that:\n(a) such radio equipment displays, or is supplied with, a label in accordance with Article 10(8), third subparagraph;\n(b) that label is displayed in a visible and legible manner and, in the case of distance selling, close to the price indication."
             },
             {
               "paragraphNumber": 5,
@@ -1245,22 +1334,19 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             3,
             10,
             17
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 13,
+          "articleNumber": "13",
           "title": "Obligations of distributors",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1269,7 +1355,7 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 2,
-              "text": "Before making radio equipment available on the market distributors shall verify that the radio equipment bears the CE marking, that it is accompanied by the documents required by this Directive and by the instructions and safety information in a language which can be easily understood by consumers and other end-users in the Member State in which the radio equipment is to be made available on the market, and that the manufacturer and the importer have complied with the requirements set out in Article 10(2) and (6) to (10) and Article 12(3) respectively.\nWhere a distributor considers or has reason to believe that radio equipment is not in conformity with the essential requirements set out in Article 3, he shall not make the radio equipment available on the market until it has been brought into conformity. Furthermore, where the radio equipment presents a risk, the distributor shall inform the manufacturer or the importer to that effect as well as the market surveillance authorities."
+              "text": "Before making radio equipment available on the market distributors shall verify that the radio equipment bears the CE marking, that it is accompanied by the documents required by this Directive and by the instructions and safety information in a language which can be easily understood by consumers and other end-users in the Member State in which the radio equipment is to be made available on the market, and that the manufacturer and the importer have complied with the requirements set out in Article 10(2) and (6) to (10) and Article 12(3) respectively.\nWhere a distributor considers or has reason to believe that radio equipment is not in conformity with the essential requirements set out in Article 3, he shall not make the radio equipment available on the market until it has been brought into conformity. Furthermore, where the radio equipment presents a risk, the distributor shall inform the manufacturer or the importer to that effect as well as the market surveillance authorities.\nWhen making the radio equipment referred to in Article 3(4) available to consumers and other end-users, distributors shall ensure that:\n(a) such radio equipment displays, or is supplied with, a label in accordance with Article 10(8), third subparagraph;\n(b) that label is displayed in a visible and legible manner and, in the case of distance selling, close to the price indication."
             },
             {
               "paragraphNumber": 3,
@@ -1286,22 +1372,19 @@ export const redArticlesData = {
           ],
           "tags": [
             "essential_requirements",
-            "radio",
-            "operator_roles",
-            "ce_marking",
-            "supervision_enforcement"
+            "radio"
           ],
           "referencedArticles": [
             3,
             10,
             12
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 14,
+          "articleNumber": "14",
           "title": "Cases in which obligations of manufacturers apply to importers and distributors",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1310,18 +1393,17 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "operator_roles"
+            "radio"
           ],
           "referencedArticles": [
             10
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 15,
+          "articleNumber": "15",
           "title": "Identification of economic operators",
           "chapterNumber": 2,
+          "chapterLabel": "II",
           "chapterTitle": "OBLIGATIONS OF ECONOMIC OPERATORS",
           "paragraphs": [
             {
@@ -1330,23 +1412,22 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "supervision_enforcement"
+            "radio"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 3,
-      "label": "CHAPTER III",
-      "title": "CONFORMITY OF RADIO EQUIPMENT",
+      "chapterLabel": "III",
+      "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
       "articles": [
         {
-          "articleNumber": 16,
+          "articleNumber": "16",
           "title": "Presumption of conformity of radio equipment",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
           "paragraphs": [
             {
@@ -1356,18 +1437,17 @@ export const redArticlesData = {
           ],
           "tags": [
             "essential_requirements",
-            "radio",
-            "standards"
+            "radio"
           ],
           "referencedArticles": [
             3
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 17,
+          "articleNumber": "17",
           "title": "Conformity assessment procedures",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
           "paragraphs": [
             {
@@ -1376,7 +1456,7 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 2,
-              "text": "Manufacturers shall demonstrate compliance of radio equipment with the essential requirements set out in Article 3(1) using any of the following conformity assessment procedures:\n(a) internal production control set out in Annex II;\n(b) EU-type examination that is followed by the conformity to type based on internal production control set out in Annex III;\n(c) conformity based on full quality assurance set out in Annex IV."
+              "text": "Manufacturers shall demonstrate compliance of radio equipment with the essential requirements set out in ►M2 Article 3(1) and (4) ◄ using any of the following conformity assessment procedures:\n(a) internal production control set out in Annex II;\n(b) EU-type examination that is followed by the conformity to type based on internal production control set out in Annex III;\n(c) conformity based on full quality assurance set out in Annex IV."
             },
             {
               "paragraphNumber": 3,
@@ -1390,23 +1470,17 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "standards"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             3
-          ],
-          "referencedAnnexes": [
-            "II",
-            "III",
-            "IV"
           ]
         },
         {
-          "articleNumber": 18,
+          "articleNumber": "18",
           "title": "EU declaration of conformity",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
           "paragraphs": [
             {
@@ -1428,23 +1502,18 @@ export const redArticlesData = {
           ],
           "tags": [
             "essential_requirements",
-            "radio",
-            "operator_roles",
-            "ce_marking"
+            "radio"
           ],
           "referencedArticles": [
             3,
             10
-          ],
-          "referencedAnnexes": [
-            "VI",
-            "VII"
           ]
         },
         {
-          "articleNumber": 19,
+          "articleNumber": "19",
           "title": "General principles of the CE marking",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
           "paragraphs": [
             {
@@ -1457,18 +1526,17 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "ce_marking"
+            "radio"
           ],
           "referencedArticles": [
             30
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 20,
+          "articleNumber": "20",
           "title": "Rules and conditions for affixing the CE marking and the identification number of the notified body",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
           "paragraphs": [
             {
@@ -1490,19 +1558,15 @@ export const redArticlesData = {
           ],
           "tags": [
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "ce_marking"
+            "conformity_assessment"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "IV"
-          ]
+          "referencedArticles": []
         },
         {
-          "articleNumber": 21,
+          "articleNumber": "21",
           "title": "Technical documentation",
           "chapterNumber": 3,
+          "chapterLabel": "III",
           "chapterTitle": "CONFORMITY OF RADIO EQUIPMENT",
           "paragraphs": [
             {
@@ -1524,29 +1588,24 @@ export const redArticlesData = {
           ],
           "tags": [
             "essential_requirements",
-            "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "supervision_enforcement"
+            "radio"
           ],
           "referencedArticles": [
             3
-          ],
-          "referencedAnnexes": [
-            "V"
           ]
         }
       ]
     },
     {
       "chapterNumber": 4,
-      "label": "CHAPTER IV",
-      "title": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
+      "chapterLabel": "IV",
+      "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
       "articles": [
         {
-          "articleNumber": 22,
+          "articleNumber": "22",
           "title": "Notification",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1557,13 +1616,13 @@ export const redArticlesData = {
           "tags": [
             "conformity_assessment"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 23,
+          "articleNumber": "23",
           "title": "Notifying authorities",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1589,13 +1648,13 @@ export const redArticlesData = {
           "referencedArticles": [
             24,
             28
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 24,
+          "articleNumber": "24",
           "title": "Requirements relating to notifying authorities",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1624,16 +1683,15 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "conformity_assessment",
-            "supervision_enforcement"
+            "conformity_assessment"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 25,
+          "articleNumber": "25",
           "title": "Information obligation on notifying authorities",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1644,13 +1702,13 @@ export const redArticlesData = {
           "tags": [
             "conformity_assessment"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 26,
+          "articleNumber": "26",
           "title": "Requirements relating to notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1701,19 +1759,17 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "standards"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             3
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 27,
+          "articleNumber": "27",
           "title": "Presumption of conformity of notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1722,18 +1778,17 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "conformity_assessment",
-            "standards"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             26
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 28,
+          "articleNumber": "28",
           "title": "Subsidiaries of and subcontracting by notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1758,13 +1813,13 @@ export const redArticlesData = {
           ],
           "referencedArticles": [
             26
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 29,
+          "articleNumber": "29",
           "title": "Application for notification",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1786,13 +1841,13 @@ export const redArticlesData = {
           ],
           "referencedArticles": [
             26
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 30,
+          "articleNumber": "30",
           "title": "Notification procedure",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1827,13 +1882,13 @@ export const redArticlesData = {
           "referencedArticles": [
             26,
             29
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 31,
+          "articleNumber": "31",
           "title": "Identification numbers and lists of notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1845,16 +1900,14 @@ export const redArticlesData = {
               "text": "The Commission shall make publicly available the list of the bodies notified under this Directive, including the identification numbers that have been assigned to them and the activities for which they have been notified.\nThe Commission shall ensure that the list is kept up to date."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 32,
+          "articleNumber": "32",
           "title": "Changes to notifications",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1866,19 +1919,16 @@ export const redArticlesData = {
               "text": "In the event of restriction, suspension or withdrawal of notification, or where the notified body has ceased its activity, the notifying Member State shall take appropriate steps to ensure that the files of that body are either processed by another notified body or kept available for the responsible notifying and market surveillance authorities at their request."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "supervision_enforcement"
-          ],
+          "tags": [],
           "referencedArticles": [
             26
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 33,
+          "articleNumber": "33",
           "title": "Challenge of the competence of notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1898,19 +1948,16 @@ export const redArticlesData = {
               "text": "Where the Commission ascertains that a notified body does not meet or no longer meets the requirements for its notification, it shall adopt an implementing act requesting the notifying Member State to take the necessary corrective measures, including withdrawal of notification if necessary.\nThat implementing act shall be adopted in accordance with the advisory procedure referred to in Article 45(2)."
             }
           ],
-          "tags": [
-            "conformity_assessment",
-            "delegated_acts"
-          ],
+          "tags": [],
           "referencedArticles": [
             45
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 34,
+          "articleNumber": "34",
           "title": "Operational obligations of notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1937,19 +1984,17 @@ export const redArticlesData = {
           "tags": [
             "essential_requirements",
             "radio",
-            "conformity_assessment",
-            "operator_roles",
-            "standards"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             3
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 35,
+          "articleNumber": "35",
           "title": "Appeal against decisions of notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1957,16 +2002,14 @@ export const redArticlesData = {
               "text": "Member States shall ensure that an appeal procedure against decisions of the notified bodies is available."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         },
         {
-          "articleNumber": 36,
+          "articleNumber": "36",
           "title": "Information obligation on notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -1984,16 +2027,15 @@ export const redArticlesData = {
           ],
           "tags": [
             "radio",
-            "conformity_assessment",
-            "supervision_enforcement"
+            "conformity_assessment"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 37,
+          "articleNumber": "37",
           "title": "Exchange of experience",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2002,13 +2044,13 @@ export const redArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 38,
+          "articleNumber": "38",
           "title": "Coordination of notified bodies",
           "chapterNumber": 4,
+          "chapterLabel": "IV",
           "chapterTitle": "NOTIFICATION OF CONFORMITY ASSESSMENT BODIES",
           "paragraphs": [
             {
@@ -2016,23 +2058,21 @@ export const redArticlesData = {
               "text": "The Commission shall ensure that appropriate coordination and cooperation between bodies notified under this Directive are put in place and properly operated in the form of a sectoral group of notified bodies.\nMember States shall ensure that the bodies notified by them participate in the work of that group, directly or by means of designated representatives."
             }
           ],
-          "tags": [
-            "conformity_assessment"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": []
         }
       ]
     },
     {
       "chapterNumber": 5,
-      "label": "CHAPTER V",
-      "title": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
+      "chapterLabel": "V",
+      "chapterTitle": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
       "articles": [
         {
-          "articleNumber": 39,
+          "articleNumber": "39",
           "title": "Union market surveillance and control of radio equipment entering the Union market",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
           "paragraphs": [
             {
@@ -2045,18 +2085,18 @@ export const redArticlesData = {
           ],
           "referencedArticles": [
             15
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 40,
-          "title": "Procedure for dealing with radio equipment presenting a risk at national level",
+          "articleNumber": "40",
+          "title": "Procedure at national level for dealing with radio equipment presenting a risk or not in compliance with essential requirements",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Where the market surveillance authorities of one Member State have sufficient reason to believe that radio equipment covered by this Directive presents a risk to the health or safety of persons or to other aspects of public interest protection covered by this Directive, they shall carry out an evaluation in relation to the radio equipment concerned covering all relevant requirements laid down in this Directive. The relevant economic operators shall cooperate as necessary with the market surveillance authorities for that purpose.\nWhere, in the course of the evaluation referred to in the first subparagraph, the market surveillance authorities find that the radio equipment does not comply with the requirements laid down in this Directive, they shall without delay require the relevant economic operator to take all appropriate corrective actions to bring the radio equipment into compliance with those requirements, to withdraw the radio equipment from the market, or to recall it within a reasonable period, commensurate with the nature of the risk, as they may prescribe.\nThe market surveillance authorities shall inform the relevant notified body accordingly.\nArticle 21 of Regulation (EC) No 765/2008 shall apply to the measures referred to in the second subparagraph of this paragraph."
+              "text": "►M2 Where the market surveillance authorities of a Member State have sufficient reason to believe that radio equipment covered by this Directive presents a risk to the health or safety of persons or to other aspects of public interest protection covered by this Directive, or that it does not comply with at least one of the applicable essential requirements set out in Article 3, they shall carry out an evaluation in relation to the radio equipment concerned covering all relevant requirements laid down in this Directive. The relevant economic operators shall cooperate as necessary with the market surveillance authorities for that purpose. ◄\nWhere, in the course of the evaluation referred to in the first subparagraph, the market surveillance authorities find that the radio equipment does not comply with the requirements laid down in this Directive, they shall without delay require the relevant economic operator to take all appropriate corrective actions to bring the radio equipment into compliance with those requirements, to withdraw the radio equipment from the market, or to recall it within a reasonable period, commensurate with the nature of the risk, as they may prescribe.\nThe market surveillance authorities shall inform the relevant notified body accordingly.\nArticle 21 of Regulation (EC) No 765/2008 shall apply to the measures referred to in the second subparagraph of this paragraph."
             },
             {
               "paragraphNumber": 2,
@@ -2089,22 +2129,19 @@ export const redArticlesData = {
           ],
           "tags": [
             "essential_requirements",
-            "radio",
-            "conformity_assessment",
-            "supervision_enforcement",
-            "standards"
+            "radio"
           ],
           "referencedArticles": [
             3,
             16,
             21
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 41,
+          "articleNumber": "41",
           "title": "Union safeguard procedure",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
           "paragraphs": [
             {
@@ -2121,20 +2158,18 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "standards",
-            "delegated_acts"
+            "radio"
           ],
           "referencedArticles": [
             11,
             40
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 42,
+          "articleNumber": "42",
           "title": "Compliant radio equipment which presents a risk",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
           "paragraphs": [
             {
@@ -2159,24 +2194,23 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "radio",
-            "delegated_acts"
+            "radio"
           ],
           "referencedArticles": [
             40,
             45
-          ],
-          "referencedAnnexes": []
+          ]
         },
         {
-          "articleNumber": 43,
+          "articleNumber": "43",
           "title": "Formal non-compliance",
           "chapterNumber": 5,
+          "chapterLabel": "V",
           "chapterTitle": "UNION MARKET SURVEILLANCE, CONTROL OF RADIO EQUIPMENT ENTERING THE UNION MARKET AND UNION SAFEGUARD PROCEDURE",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Without prejudice to Article 40, where a Member State makes one of the following findings, it shall require the relevant economic operator to put an end to the non-compliance concerned:\n(a) the CE marking has been affixed in violation of Article 30 of Regulation (EC) No 765/2008 or of Article 20 of this Directive;\n(b) the CE marking has not been affixed;\n(c) the identification number of the notified body, where the conformity assessment procedure set out in Annex IV is applied, has been affixed in violation of Article 20 or has not been affixed;\n(d) the EU declaration of conformity has not been drawn up;\n(e) the EU declaration of conformity has not been drawn up correctly;\n(f) technical documentation is either not available or not complete;\n(g) the information referred to in Article 10(6) or (7) or Article 12(3) is absent, false or incomplete;\n(h) information on the intended use of radio equipment, the EU declaration of conformity or usage restrictions as set out in Article 10(8), (9) and (10) does not accompany the radio equipment;\n(i) requirements on identification of economic operators set out in Article 15 are not fulfilled;\n(j) Article 5 is not complied with."
+              "text": "Without prejudice to Article 40, where a Member State makes one of the following findings, it shall require the relevant economic operator to put an end to the non-compliance concerned:\n(a) the CE marking has been affixed in violation of Article 30 of Regulation (EC) No 765/2008 or of Article 20 of this Directive;\n(b) the CE marking has not been affixed;\n(c) the identification number of the notified body, where the conformity assessment procedure set out in Annex IV is applied, has been affixed in violation of Article 20 or has not been affixed;\n(d) the EU declaration of conformity has not been drawn up;\n(e) the EU declaration of conformity has not been drawn up correctly;\n(f) technical documentation is either not available or not complete;\n(fa) the pictogram as referred to in Article 3a(2), or the label as referred to in Article 10(8), has not been drawn up correctly;\n(fb) the label as referred to in Article 10(8) does not accompany the radio equipment concerned;\n(fc) the pictogram or the label is not affixed or displayed in accordance with Article 3a(2) or Article 10(8), respectively;\n(g) the information referred to in Article 10(6) or (7) or Article 12(3) is absent, false or incomplete;\n(h) the information referred to in Article 10(8), the EU declaration of conformity referred to in Article 10(9) or the information on usage restrictions referred to in Article 10(10) does not accompany the radio equipment;\n(i) requirements on identification of economic operators set out in Article 15 are not fulfilled;\n(j) Article 3a(1) or Article 5 is not complied with."
             },
             {
               "paragraphNumber": 2,
@@ -2185,8 +2219,7 @@ export const redArticlesData = {
           ],
           "tags": [
             "radio",
-            "conformity_assessment",
-            "ce_marking"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             5,
@@ -2196,22 +2229,220 @@ export const redArticlesData = {
             20,
             30,
             40
+          ]
+        }
+      ]
+    },
+    {
+      "chapterNumber": 5,
+      "chapterLabel": "Va",
+      "chapterTitle": "Emergency procedures",
+      "articles": [
+        {
+          "articleNumber": "43a",
+          "title": "Application of emergency procedures",
+          "chapterNumber": 5,
+          "chapterLabel": "Va",
+          "chapterTitle": "Emergency procedures",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall ensure that measures taken to transpose Articles 43b to 43e of this Directive apply only if the Commission has adopted an implementing act pursuant to Article 28 of Regulation (EU) 2024/2747 with respect to radio equipment covered by this Directive."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "Member States shall ensure that measures taken to transpose Articles 43b to 43e of this Directive apply only to radio equipment which has been designated as crisis-relevant goods pursuant to Article 18(4) of Regulation (EU) 2024/2747."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "Member States shall ensure that measures taken to transpose Articles 43b to 43e of this Directive apply only during the internal market emergency mode that has been activated in accordance with Article 18 of Regulation (EU) 2024/2747.\nHowever, Article 43c(7) of this Directive shall apply during the internal market emergency mode and after its expiry or deactivation."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The Commission may adopt implementing acts regarding the corrective or restrictive actions to be taken, the procedures to be followed and the specific labelling and traceability requirements with respect to radio equipment placed on the market in accordance with Articles 43c and 43d. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 45(3)."
+            }
           ],
-          "referencedAnnexes": [
-            "IV"
+          "tags": [
+            "radio"
+          ],
+          "referencedArticles": [
+            18,
+            28,
+            45
+          ]
+        },
+        {
+          "articleNumber": "43b",
+          "title": "Prioritisation of the conformity assessment of radio equipment designated as crisis-relevant goods",
+          "chapterNumber": 5,
+          "chapterLabel": "Va",
+          "chapterTitle": "Emergency procedures",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "This Article applies to radio equipment listed in the implementing act referred to in Article 43a(1) that is subject to the conformity assessment procedures referred to in Article 17 that require the mandatory involvement of a notified body."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The notified bodies shall make best efforts to process as a matter of priority all applications for a conformity assessment of radio equipment referred to in paragraph 1 of this Article, irrespective of whether those applications have been lodged before or after the activation of the emergency procedures pursuant to Article 43a."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The prioritisation of applications for a conformity assessment of radio equipment pursuant to paragraph 2 shall not result in additional disproportionate costs for the manufacturers who have lodged those applications."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "The notified bodies shall make reasonable efforts to increase their testing capacities for radio equipment referred to in paragraph 1 in respect of which they have been notified."
+            }
+          ],
+          "tags": [
+            "radio",
+            "conformity_assessment"
+          ],
+          "referencedArticles": [
+            17
+          ]
+        },
+        {
+          "articleNumber": "43c",
+          "title": "Derogation from the conformity assessment procedures requiring the mandatory involvement of a notified body",
+          "chapterNumber": 5,
+          "chapterLabel": "Va",
+          "chapterTitle": "Emergency procedures",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "By way of derogation from Article 17, a Member State may authorise, on a duly justified request from an economic operator, the placing on the market within the territory of that Member State, of specific radio equipment listed in the implementing act referred to in Article 43a(1) and for which the conformity assessment procedures referred to in Article 17 that require the mandatory involvement of a notified body have not been carried out but for which the compliance with all the relevant essential requirements set out in Article 3 has been demonstrated in accordance with procedures referred to in that authorisation."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The Member State shall immediately inform the Commission and the other Member States of any authorisation granted in accordance with paragraph 1 of this Article. Provided that the requirements set out in the authorisation ensure conformity with the relevant essential requirements set out in Article 3, the Commission shall adopt, without delay, an implementing act extending the validity of the authorisation granted by a Member State in accordance with paragraph 1 of this Article to the territory of the whole Union and shall set out the conditions under which the specific radio equipment may be placed on the market. When preparing the draft implementing act, the Commission may request national market surveillance authorities to provide relevant information or comments regarding the technical assessment that served as the basis for the authorisation referred to in paragraph 1 of this Article. The implementing act shall be adopted in accordance with the examination procedure referred to in Article 45(3).\nThe radio equipment subject to the extension of validity referred to in the first subparagraph shall bear the information that it is placed on the market as a ‘crisis-relevant good’. The implementing act referred to in the first subparagraph shall specify the content and presentation of that information. That information, as well as any labelling, shall be clear, understandable and intelligible and, where relevant, in a language which can be easily understood by consumers and other end-users, as determined by the Member State concerned."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "On duly justified imperative grounds of urgency relating to the need to preserve the health and safety of persons, the Commission shall adopt immediately applicable implementing acts in accordance with the procedure referred to in Article 45(4)."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "As long as an implementing act as referred to in paragraph 2 or 3 is not adopted, the authorisation granted by a competent national authority in one Member State shall be valid only on the territory of that Member State, and on the territories of any other Member States whose competent national authorities have recognised the validity of that authorisation before the adoption of such an implementing act. Member States shall inform the Commission and the other Member States of any decision to recognise the validity of that authorisation."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Manufacturers of radio equipment subject to the authorisation procedure referred to in paragraph 1 shall declare on their sole responsibility that the radio equipment concerned complies with all the relevant essential requirements set out in Article 3 and shall be responsible for the fulfilment of all the conformity assessment procedures indicated by the competent national authority."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "Any authorisation issued pursuant to paragraph 1 shall set out the conditions and requirements under which the radio equipment may be placed on the market. Such authorisations shall set out at least the following:\n(a) a description of the procedures, by means of which compliance with the relevant essential requirements set out in Article 3 of this Directive was successfully demonstrated;\n(b) any specific requirements regarding the traceability of the radio equipment concerned;\n(c) an end date of validity of the authorisation, which cannot go beyond the last day of the period for which the internal market emergency mode has been activated in accordance with Article 18 Regulation (EU) 2024/2747;\n(d) any specific requirements regarding the need to ensure a continuous conformity assessment with respect to the radio equipment concerned;\n(e) measures to be taken upon expiry or deactivation of the internal market emergency mode with respect to the radio equipment concerned that has been placed on the market."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "By way of derogation from Articles 9, 19 and 20, radio equipment for which an authorisation has been granted in accordance with paragraph 1 of this Article shall not bear the CE marking and Article 9 shall not apply."
+            },
+            {
+              "paragraphNumber": 8,
+              "text": "The market surveillance authorities of a Member State where an authorisation pursuant to paragraphs 1, 2 and 4 of this Article is valid shall be entitled, with respect to such radio equipment, to take all corrective and restrictive actions at national level provided for under Regulation (EU) 2019/1020 of the European Parliament and of the Council and under this Directive. They shall immediately inform the Commission and the market surveillance authorities of all other Member States of these actions."
+            },
+            {
+              "paragraphNumber": 9,
+              "text": "The use of the authorisation procedure set out in paragraphs 1 to 4 of this Article shall not affect the application on the territory of the Member State concerned of the relevant conformity assessment procedures laid down in Article 17."
+            }
+          ],
+          "tags": [
+            "essential_requirements",
+            "radio",
+            "conformity_assessment"
+          ],
+          "referencedArticles": [
+            3,
+            9,
+            17,
+            18,
+            45
+          ]
+        },
+        {
+          "articleNumber": "43d",
+          "title": "Presumption of conformity based on standards and common specifications",
+          "chapterNumber": 5,
+          "chapterLabel": "Va",
+          "chapterTitle": "Emergency procedures",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Where radio equipment has been designated as crisis-relevant goods, the Commission is empowered to adopt implementing acts listing appropriate standards or establishing common specifications for such radio equipment to cover the relevant essential requirements set out in Article 3 of this Directive in the following cases:\n(a) where a reference to harmonised standards covering the relevant essential requirements set out in Article 3 of this Directive has not been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012 and no such reference is expected to be published within a reasonable period; or\n(b) where severe disruptions to the functioning of the internal market, which led to the activation of the internal market emergency mode in accordance with Article 18 of Regulation (EU) 2024/2747, significantly restrict the possibilities of manufacturers to make use of the harmonised standards that cover the relevant essential requirements set out in Article 3 of this Directive and the references of which have already been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The implementing acts referred to in paragraph 1 shall set out the most appropriate alternative technical solution for the purposes of providing a presumption of conformity in accordance with paragraph 5. To that end, references of European standards or references of relevant applicable national or international standards may be published in those implementing acts or, if there is no European standard or relevant applicable national or international standard, common specifications may be established by those implementing acts."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "The implementing acts referred to in paragraph 1 of this Article shall be adopted in accordance with the examination procedure referred to in Article 45(3) and shall apply until the last day of the period during which the internal market emergency mode is activated, unless such implementing acts are amended or repealed in accordance with paragraph 7 of this Article."
+            },
+            {
+              "paragraphNumber": 4,
+              "text": "Before preparing the draft implementing act referred to in paragraph 1 of this Article, the Commission shall inform the committee referred to in Article 22 of Regulation (EU) No 1025/2012 that it considers that the conditions in paragraph 1 of this Article have been fulfilled. When preparing that draft implementing act, the Commission shall take into account the views of relevant bodies or expert groups established under this Directive and shall duly consult all relevant stakeholders."
+            },
+            {
+              "paragraphNumber": 5,
+              "text": "Without prejudice to Article 16, radio equipment that is in conformity with the standards or common specifications referred to in paragraph 1 of this Article, or parts thereof, shall be presumed to be in conformity with the relevant essential requirements set out in Article 3 that are covered by those standards, common specifications or parts thereof. From the day following the expiry or deactivation of the internal market emergency mode, it shall no longer be possible for manufacturers to rely on the presumption of conformity provided by the standards or the common specifications referred to in the implementing acts referred to in paragraph 1 of this Article."
+            },
+            {
+              "paragraphNumber": 6,
+              "text": "By way of derogation from Article 43a(3), first subparagraph, unless there is sufficient reason to believe that the radio equipment covered by the standards or common specifications referred to in paragraph 1 of this Article presents a risk to the health or safety of persons, the radio equipment that is in conformity with those standards or common specifications and which has been placed on the market shall be deemed to be in conformity with the relevant essential requirements set out in Article 3 after the expiry or repeal of an implementing act adopted pursuant to paragraph 3 of this Article and after the expiry or deactivation of the internal market emergency mode."
+            },
+            {
+              "paragraphNumber": 7,
+              "text": "When a Member State considers that a standard or common specification as referred to in paragraph 1 of this Article does not entirely satisfy the relevant essential requirements set out in Article 3, it shall inform the Commission thereof by submitting a detailed explanation. The Commission shall assess that detailed explanation and may, if appropriate, amend or repeal the implementing act listing the standard or establishing the common specification in question."
+            }
+          ],
+          "tags": [
+            "essential_requirements",
+            "radio"
+          ],
+          "referencedArticles": [
+            3,
+            16,
+            18,
+            22,
+            45
+          ]
+        },
+        {
+          "articleNumber": "43e",
+          "title": "Prioritisation of market surveillance activities and mutual assistance among authorities",
+          "chapterNumber": 5,
+          "chapterLabel": "Va",
+          "chapterTitle": "Emergency procedures",
+          "paragraphs": [
+            {
+              "paragraphNumber": 1,
+              "text": "Member States shall prioritise the market surveillance activities for radio equipment listed in the implementing act referred to in Article 43a(1) of this Directive. The Commission shall facilitate coordination of such prioritisation efforts through the Union Product Compliance Network established under Article 29 of Regulation (EU) 2019/1020."
+            },
+            {
+              "paragraphNumber": 2,
+              "text": "The market surveillance authorities of the Member States shall ensure that best efforts are made to provide assistance to other market surveillance authorities during an internal market emergency mode, including by mobilising and dispatching expert teams to temporarily reinforce the staff of market surveillance authorities requesting assistance or by providing logistical support, such as the reinforcement of the testing capacity for radio equipment listed in the implementing act referred to in Article 43a(1)."
+            }
+          ],
+          "tags": [
+            "radio"
+          ],
+          "referencedArticles": [
+            29
           ]
         }
       ]
     },
     {
       "chapterNumber": 6,
-      "label": "CHAPTER VI",
-      "title": "DELEGATED ACTS AND IMPLEMENTING ACTS AND THE COMMITTEE",
+      "chapterLabel": "VI",
+      "chapterTitle": "DELEGATED ACTS AND IMPLEMENTING ACTS AND THE COMMITTEE",
       "articles": [
         {
-          "articleNumber": 44,
+          "articleNumber": "44",
           "title": "Exercise of the delegation",
           "chapterNumber": 6,
+          "chapterLabel": "VI",
           "chapterTitle": "DELEGATED ACTS AND IMPLEMENTING ACTS AND THE COMMITTEE",
           "paragraphs": [
             {
@@ -2220,11 +2451,11 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 2,
-              "text": "The power to adopt delegated acts referred to in the second subparagraph of Articles 3(3), 4(2) and 5(2) shall be conferred on the Commission for a period of five years from 11 June 2014. The Commission shall draw up a report in respect of the delegation of power not later than nine months before the end of the five-year period. The delegation of power shall be tacitly extended for periods of an identical duration, unless the European Parliament or the Council opposes such extension not later than three months before the end of each period."
+              "text": "The power to adopt delegated acts referred to in the second subparagraph of Articles 3(3), 4(2) and 5(2) shall be conferred on the Commission for a period of five years from 11 June 2014. ►M2 The power to adopt delegated acts referred to in Article 3(4), Article 3a(2), second subparagraph, and Article 10(8), fifth subparagraph, shall be conferred on the Commission for a period of 5 years from 27 December 2022 ◄ . The Commission shall draw up a report in respect of the delegation of power not later than nine months before the end of the five-year period. The delegation of power shall be tacitly extended for periods of an identical duration, unless the European Parliament or the Council opposes such extension not later than three months before the end of each period."
             },
             {
               "paragraphNumber": 3,
-              "text": "The delegation of power referred to in the second subparagraph of Articles 3(3), 4(2) and 5(2) may be revoked at any time by the European Parliament or by the Council. A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the Official Journal of the European Union or at a later date specified therein. It shall not affect the validity of any delegated acts already in force."
+              "text": "►M2 The delegation of power referred to in Article 3(3), second subparagraph, Article 3(4), Article 3a(2), second subparagraph, Article 4(2), Article 5(2) and Article 10(8), fifth subparagraph, may be revoked at any time by the European Parliament or by the Council. ◄ A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the Official Journal of the European Union or at a later date specified therein. It shall not affect the validity of any delegated acts already in force.\n3a.\nBefore adopting a delegated act, the Commission shall consult experts designated by each Member State in accordance with the principles laid down in the Interinstitutional Agreement of 13 April 2016 on Better Law-Making ."
             },
             {
               "paragraphNumber": 4,
@@ -2232,19 +2463,22 @@ export const redArticlesData = {
             },
             {
               "paragraphNumber": 5,
-              "text": "A delegated act adopted pursuant to the second subparagraph of Articles 3(3), 4(2) and 5(2) shall enter into force only if no objection has been expressed either by the European Parliament or the Council within a period of two months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by two months at the initiative of the European Parliament or of the Council."
+              "text": "A delegated act adopted pursuant to Article 3(3), second subparagraph, Article 3(4), Article 3a(2), second subparagraph, Article 4(2), Article 5(2) or Article 10(8), fifth subparagraph, shall enter into force only if no objection has been expressed either by the European Parliament or by the Council within a period of 2 months of notification of that act to the European Parliament and the Council or if, before the expiry of that period, the European Parliament and the Council have both informed the Commission that they will not object. That period shall be extended by 2 months at the initiative of the European Parliament or of the Council."
             }
           ],
-          "tags": [
-            "delegated_acts"
-          ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "tags": [],
+          "referencedArticles": [
+            3,
+            4,
+            5,
+            10
+          ]
         },
         {
-          "articleNumber": 45,
+          "articleNumber": "45",
           "title": "Committee procedure",
           "chapterNumber": 6,
+          "chapterLabel": "VI",
           "chapterTitle": "DELEGATED ACTS AND IMPLEMENTING ACTS AND THE COMMITTEE",
           "paragraphs": [
             {
@@ -2269,27 +2503,26 @@ export const redArticlesData = {
             }
           ],
           "tags": [
-            "conformity_assessment",
-            "supervision_enforcement"
+            "conformity_assessment"
           ],
           "referencedArticles": [
             4,
             5,
             8
-          ],
-          "referencedAnnexes": []
+          ]
         }
       ]
     },
     {
       "chapterNumber": 7,
-      "label": "CHAPTER VII",
-      "title": "FINAL AND TRANSITIONAL PROVISIONS",
+      "chapterLabel": "VII",
+      "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
       "articles": [
         {
-          "articleNumber": 46,
+          "articleNumber": "46",
           "title": "Penalties",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
@@ -2298,36 +2531,40 @@ export const redArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 47,
+          "articleNumber": "47",
           "title": "Review and reporting",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
               "paragraphNumber": 1,
-              "text": "Member States shall submit to the Commission regular reports on the application of this Directive by 12 June 2017 and at least every two years thereafter. The reports shall contain a presentation of the market surveillance activities performed by the Member States and provide information on whether and to what extent compliance with the requirements of this Directive has been attained, including in particular requirements on identification of economic operators."
+              "text": "Member States shall submit to the Commission reports on the application of this Directive by 12 December 2027, covering the period from 13 June 2023, and every 5 years thereafter. The reports shall contain a presentation of the market surveillance activities performed by the Member States and provide information on whether and to what extent compliance with the requirements of this Directive has been attained, including in particular requirements on identification of economic operators."
             },
             {
               "paragraphNumber": 2,
               "text": "The Commission shall review the operation of this Directive and report thereon to the European Parliament and to the Council, by 12 June 2018 and every five years thereafter. The report shall cover progress on drawing up the relevant standards, as well as any problems that have arisen in the course of implementation. The report shall also outline the activities of the Telecommunication Conformity Assessment and Market Surveillance Committee, assess progress in achieving an open competitive market for radio equipment at Union level and examine how the regulatory framework for the making available on the market and putting into service of radio equipment should be developed in order to achieve the following:\n(a) ensure that a coherent system is achieved at Union level for all radio equipment;\n(b) allow for convergence of the telecommunications, audiovisual and information technology sectors;\n(c) enable regulatory measures to be harmonised at international level;\n(d) reach a high level of consumer protection;\n(e) ensure that portable radio equipment interworks with accessories, in particular with common chargers;\n(f) where radio equipment is fitted with an integral screen, allow the display of the required information on the integral screen."
+            },
+            {
+              "paragraphNumber": 3,
+              "text": "By 28 December 2026, the Commission shall submit to the European Parliament and the Council a report on the impact of the possibility to acquire radio equipment without any charging device and without cables, particularly with regard to consumer convenience, the reduction of environmental waste, behavioural changes and the development of market practices. That report shall be accompanied, if appropriate, by a legislative proposal to amend this Directive to introduce mandatory unbundling of the sale of charging devices and cables from the sale of radio equipment."
             }
           ],
           "tags": [
             "radio",
-            "conformity_assessment",
-            "supervision_enforcement"
+            "common_charger",
+            "conformity_assessment"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 48,
+          "articleNumber": "48",
           "title": "Transitional provisions",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
@@ -2338,13 +2575,13 @@ export const redArticlesData = {
           "tags": [
             "radio"
           ],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 49,
+          "articleNumber": "49",
           "title": "Transposition",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
@@ -2357,13 +2594,13 @@ export const redArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 50,
+          "articleNumber": "50",
           "title": "Repeal",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
@@ -2372,15 +2609,13 @@ export const redArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": [
-            "VIII"
-          ]
+          "referencedArticles": []
         },
         {
-          "articleNumber": 51,
+          "articleNumber": "51",
           "title": "Entry into force",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
@@ -2389,13 +2624,13 @@ export const redArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         },
         {
-          "articleNumber": 52,
+          "articleNumber": "52",
           "title": "Addressees",
           "chapterNumber": 7,
+          "chapterLabel": "VII",
           "chapterTitle": "FINAL AND TRANSITIONAL PROVISIONS",
           "paragraphs": [
             {
@@ -2404,8 +2639,7 @@ export const redArticlesData = {
             }
           ],
           "tags": [],
-          "referencedArticles": [],
-          "referencedAnnexes": []
+          "referencedArticles": []
         }
       ]
     }
@@ -2413,40 +2647,158 @@ export const redArticlesData = {
 };
 
 export const redAnnexesData = {
-  "directive": "Directive 2014/53/EU",
+  "regulation": "Directive 2014/53/EU",
   "shortTitle": "RED",
   "officialJournalReference": "OJ L 153, 22.5.2014, p. 62",
   "celex": "32014L0053",
+  "consolidatedCelex": "02014L0053-20260530",
   "eli": "http://data.europa.eu/eli/dir/2014/53/oj",
   "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0053",
+  "consolidatedUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014L0053-20260530",
   "adopted": "2014-04-16",
-  "entryIntoForce": "2014-06-11",
   "instrumentType": "directive",
   "nationalTranspositionRequired": true,
-  "corrigenda": [],
-  "corrigendaVerified": false,
-  "builtFrom": "docs/red_statutory_corpus/source/CELEX_32014L0053_EN.html",
-  "sourceSha256": "3d5567193d7f2f7f868bde0eb1db125cfc111034e9c607670934cfbf36cdb986",
+  "textBasis": "consolidated",
+  "consolidationDate": "2026-05-30",
+  "amendmentTrail": [
+    {
+      "act": "Regulation (EU) 2018/1139 (Basic Aviation Regulation)",
+      "celex": "32018R1139",
+      "eli": "http://data.europa.eu/eli/reg/2018/1139/oj",
+      "applicableFrom": "2018-09-11",
+      "summary": "Replaces Annex I point 3 (aviation exclusion scope)."
+    },
+    {
+      "act": "Directive (EU) 2022/2380 (common charger)",
+      "celex": "32022L2380",
+      "eli": "http://data.europa.eu/eli/dir/2022/2380/oj",
+      "applicableFrom": "2022-12-27",
+      "summary": "Adds Art 3(4) (charging interoperability), Art 3a and Annex Ia (USB Type-C specifications); replaces Art 3(3)(a), Art 10(8), Art 17(2) and market-surveillance provisions (Arts 40, 43, 44); adds charger information duties to Arts 12 and 13."
+    },
+    {
+      "act": "Commission Delegated Directive (EU) 2023/1717",
+      "celex": "32023R1717",
+      "eli": "http://data.europa.eu/eli/dir_del/2023/1717/oj",
+      "applicableFrom": "2023-10-01",
+      "summary": "Replaces Annex Ia part I points 2.1, 2.2 and 3.1 (USB Power Delivery references)."
+    },
+    {
+      "act": "Directive (EU) 2024/2749 (internal market emergency procedures)",
+      "celex": "32024L2749",
+      "eli": "http://data.europa.eu/eli/dir/2024/2749/oj",
+      "applicableFrom": "2024-11-28",
+      "summary": "Inserts chapter Va (Arts 43a–43e, emergency procedures) and Art 2(1) points 27–28."
+    },
+    {
+      "act": "Directive (EU) 2024/2839",
+      "celex": "32024L2839",
+      "eli": "http://data.europa.eu/eli/dir/2024/2839/oj",
+      "applicableFrom": "2024-11-27",
+      "summary": "Replaces Art 47(1) (Commission reporting)."
+    }
+  ],
+  "corrigendaNoted": [
+    {
+      "id": "32014L0053R(01)",
+      "note": "DE, BG, SV only — the English text is not affected."
+    },
+    {
+      "id": "32014L0053R(02)",
+      "note": "SV only."
+    },
+    {
+      "id": "32014L0053R(03)",
+      "note": "FR only."
+    }
+  ],
+  "builtFrom": {
+    "original": {
+      "file": "source/CELEX_32014L0053_EN.html",
+      "sha256": "3d5567193d7f2f7f868bde0eb1db125cfc111034e9c607670934cfbf36cdb986"
+    },
+    "consolidated": {
+      "file": "source/CELEX_02014L0053-20260530_EN.html",
+      "sha256": "20b34c37d54174d9ff6638b6184d0d9bf4eac3899a7e5ef22c06189613e1f770"
+    }
+  },
+  "sourceSha256": "20b34c37d54174d9ff6638b6184d0d9bf4eac3899a7e5ef22c06189613e1f770",
   "recitalsCount": 75,
-  "chaptersCount": 7,
-  "totalArticles": 52,
-  "annexesCount": 8,
+  "chaptersCount": 8,
+  "totalArticles": 58,
+  "annexesCount": 9,
   "annexes": [
     {
       "annexNumber": "I",
       "title": "EQUIPMENT NOT COVERED BY THIS DIRECTIVE",
       "blocks": [
-        "1. Radio equipment used by radio amateurs within the meaning of Article 1, definition 56, of the International Telecommunications Union (ITU) Radio Regulations, unless the equipment is made available on the market. The following shall be regarded as not being made available on the market: (a) radio kits for assembly and use by radio amateurs; (b) radio equipment modified by and for the use of radio amateurs; (c) equipment constructed by individual radio amateurs for experimental and scientific purposes related to amateur radio.",
+        "1. Radio equipment used by radio amateurs within the meaning of Article 1, definition 56, of the International Telecommunications Union (ITU) Radio Regulations, unless the equipment is made available on the market.",
+        "The following shall be regarded as not being made available on the market:",
+        "(a) radio kits for assembly and use by radio amateurs;",
+        "(b) radio equipment modified by and for the use of radio amateurs;",
+        "(c) equipment constructed by individual radio amateurs for experimental and scientific purposes related to amateur radio.",
         "2. Marine equipment falling within the scope of Council Directive 96/98/EC .",
-        "3. Airborne products, parts and appliances falling within the scope of Article 3 of Regulation (EC) No 216/2008 of the European Parliament and of the Council .",
+        "3. The following aviation equipment, where that equipment falls within the scope of Regulation (EU) 2018/1139 of the European Parliament and of the Council and is intended exclusively for airborne use:",
+        "(a) aircraft, other than unmanned aircraft, as well as associated engines, propellers, parts and non-installed equipment;",
+        "(b) unmanned aircraft, as well as associated engines, propellers, parts and non-installed equipment, the design of which is certified in accordance with Article 56(1) of that Regulation and which are intended to operate only on frequencies allocated by the Radio Regulations of the International Telecommunications Union for protected aeronautical use.",
         "4. Custom-built evaluation kits destined for professionals to be used solely at research and development facilities for such purposes."
       ],
       "tags": [
         "radio"
       ],
       "referencedArticles": [
-        1,
-        3
+        1
+      ]
+    },
+    {
+      "annexNumber": "Ia",
+      "title": "SPECIFICATIONS AND INFORMATION RELATING TO CHARGING APPLICABLE TO CERTAIN CATEGORIES OR CLASSES OF RADIO EQUIPMENT",
+      "blocks": [
+        "Part I",
+        "Specifications relating to charging capabilities",
+        "1. The requirements set out in points 2 and 3 of this Part shall apply to the following categories or classes of radio equipment:",
+        "1.1. handheld mobile phones;",
+        "1.2. tablets;",
+        "1.3. digital cameras;",
+        "1.4. headphones;",
+        "1.5. headsets;",
+        "1.6. handheld videogame consoles;",
+        "1.7. portable speakers;",
+        "1.8. e-readers;",
+        "1.9. keyboards;",
+        "1.10. mice;",
+        "1.11. portable navigation systems;",
+        "1.12. earbuds;",
+        "1.13. laptops.",
+        "2. In so far as they are capable of being recharged by means of wired charging, the categories or classes of radio equipment referred to in point 1 of this Part shall:",
+        "2.1. be equipped with the USB Type-C receptacle, as described in the standard ►M3 EN IEC 62680-1-3:2022 ◄ ‘Universal serial bus interfaces for data and power – Part 1-3: Common components – USB Type-C® Cable and Connector Specification’, and that receptacle shall remain accessible and operational at all times;",
+        "2.2. be capable of being charged with cables which comply with the standard ►M3 EN IEC 62680-1-3:2022 ◄ ‘Universal serial bus interfaces for data and power – Part 1-3: Common components – USB Type-C® Cable and Connector Specification’.",
+        "3. In so far as they are capable of being recharged by means of wired charging at voltages higher than 5 Volts, currents higher than 3 Amperes or powers higher than 15 Watts, the categories or classes of radio equipment referred to in point 1 of this Part shall:",
+        "3.1. incorporate the USB Power Delivery, as described in the standard ►M3 EN IEC 62680-1-2:2022 ◄ ‘Universal serial bus interfaces for data and power – Part 1-2: Common components – USB Power Delivery specification’;",
+        "3.2. ensure that any additional charging protocol allows for the full functionality of the USB Power Delivery referred to in point 3.1, irrespective of the charging device used.",
+        "Part II",
+        "Information on specifications relating to charging capabilities and the compatible charging devices",
+        "In the case of radio equipment falling within the scope of Article 3(4), first subparagraph, the following information shall be indicated in accordance with the requirements set out in Article 10(8), and may be made available in addition by means of QR codes or similar electronic solutions:",
+        "(a) in the case of all categories or classes of radio equipment which are subject to the requirements set out in Part I, a description of the power requirements of the wired charging devices that can be used with that radio equipment, including the minimum power required to charge the radio equipment, and the maximum power required to charge the radio equipment at the maximum charging speed expressed in Watts by displaying the text: ‘the power delivered by the charger must be between min [xx] Watts required by the radio equipment, and max [yy] Watts in order to achieve the maximum charging speed’. The number of Watts shall express, respectively, the minimum power required by the radio equipment, and the maximum power required by the radio equipment to achieve the maximum charging speed;",
+        "(b) in the case of radio equipment which is subject to the requirements set out in point 3 of Part I, a description of the specifications relating to charging capabilities of the radio equipment, in so far as it is capable of being recharged by means of wired charging at voltages higher than 5 Volts or currents higher than 3 Amperes or powers higher than 15 Watts, including an indication that the radio equipment supports the USB Power Delivery charging protocol by displaying the text ‘USB PD fast charging’ and an indication of any other supported charging protocol by displaying its name in text format.",
+        "Part III",
+        "Pictogram indicating whether or not a charging device is included with the radio equipment",
+        "1. The pictogram shall have the following formats:",
+        "1.1. If a charging device is included with the radio equipment:",
+        "1.2. If no charging device is included with the radio equipment:",
+        "2. The pictogram may vary in appearance (e.g. as to its colour, solid or hollow, line thickness), provided that it remains visible and legible. If the pictogram is reduced or enlarged, the proportions set out in the drawings in point 1 of this Part shall be maintained. The dimension ‘a’ referred to in point 1 of this Part shall be greater than or equal to 7 mm, irrespective of the variation.",
+        "Part IV",
+        "Content and format of the label",
+        "1. The label shall have the following format:",
+        "2. The letters ‘XX’ shall be replaced by the figure corresponding to the minimum power required by the radio equipment to charge, which determines the minimum power that a charging device needs to supply to charge the radio equipment. The letters ‘YY’ shall be replaced by the figure corresponding to the maximum power required by the radio equipment to achieve maximum charging speed, which determines the power that a charging device needs to supply at least to achieve that maximum charging speed. The abbreviation ‘USB PD’ (USB Power Delivery) shall be displayed if the radio equipment supports that charging communication protocol. ‘USB PD’ is a protocol that negotiates the fastest delivery of current from the charging device to the radio equipment without shortening the battery lifetime.",
+        "3. The label may vary in appearance (e.g. as to its colour, solid or hollow, line thickness), provided that it remains visible and legible. If the label is reduced or enlarged, the proportions set out in the drawing in point 1 of this Part shall be maintained. The dimension ‘a’ referred to in point 1 of this Part shall be greater than or equal to 7 mm, irrespective of the variation."
+      ],
+      "tags": [
+        "radio",
+        "common_charger"
+      ],
+      "referencedArticles": [
+        3,
+        10
       ]
     },
     {
@@ -2455,22 +2807,15 @@ export const redAnnexesData = {
       "blocks": [
         "INTERNAL PRODUCTION CONTROL",
         "1. Internal production control is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2, 3 and 4 of this Annex, and ensures and declares on his sole responsibility that the radio equipment concerned satisfies the essential requirements set out in Article 3.",
-        "2. Technical documentation",
-        "The manufacturer shall establish the technical documentation in accordance with Article 21.",
-        "3. Manufacturing",
-        "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure compliance of the manufactured radio equipment with the technical documentation referred to in point 2 of this Annex and with the relevant essential requirements set out in Article 3.",
-        "4. CE marking and EU declaration of conformity",
-        "4.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 to each item of radio equipment that satisfies the applicable requirements of this Directive.",
-        "4.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it together with the technical documentation at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "5. Authorised representative",
-        "The manufacturer's obligations set out in point 4 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
+        "2. Technical documentation The manufacturer shall establish the technical documentation in accordance with Article 21.",
+        "3. Manufacturing The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure compliance of the manufactured radio equipment with the technical documentation referred to in point 2 of this Annex and with the relevant essential requirements set out in Article 3.",
+        "4. CE marking and EU declaration of conformity 4.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 to each item of radio equipment that satisfies the applicable requirements of this Directive. 4.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it together with the technical documentation at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "5. Authorised representative The manufacturer's obligations set out in point 4 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
       ],
       "tags": [
         "essential_requirements",
         "radio",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking"
+        "conformity_assessment"
       ],
       "referencedArticles": [
         3,
@@ -2487,42 +2832,25 @@ export const redAnnexesData = {
         "EU-type examination",
         "1. EU-type examination is the part of a conformity assessment procedure in which a notified body examines the technical design of the radio equipment and verifies and attests that the technical design of the radio equipment meets the essential requirements set out in Article 3.",
         "2. EU-type examination shall be carried out by assessment of the adequacy of the technical design of the radio equipment through examination of the technical documentation and supporting evidence referred to in point 3, without examination of a specimen (design type).",
-        "3. The manufacturer shall lodge an application for EU-type examination with a single notified body of his choice.",
-        "The application shall include:",
-        "(a) the name and address of the manufacturer and, if the application is lodged by the authorised representative, his name and address as well;",
-        "(b) a written declaration that the same application has not been lodged with any other notified body;",
-        "(c) the technical documentation. The technical documentation shall make it possible to assess the radio equipment's conformity with the applicable requirements of this Directive and shall include an adequate analysis and assessment of the risk(s). The technical documentation shall specify the applicable requirements and cover, as far as relevant for the assessment, the design, manufacture and operation of the radio equipment. The technical documentation shall contain, wherever applicable, the elements set out in Annex V;",
-        "(d) the supporting evidence for the adequacy of the technical design solution. That supporting evidence shall mention any documents that have been used, in particular where the relevant harmonised standards have not been applied or have not been fully applied. The supporting evidence shall include, where necessary, the results of tests carried out in accordance with other relevant technical specifications by the appropriate laboratory of the manufacturer, or by another testing laboratory on his behalf and under his responsibility.",
+        "3. The manufacturer shall lodge an application for EU-type examination with a single notified body of his choice. The application shall include: (a) the name and address of the manufacturer and, if the application is lodged by the authorised representative, his name and address as well; (b) a written declaration that the same application has not been lodged with any other notified body; (c) the technical documentation. The technical documentation shall make it possible to assess the radio equipment's conformity with the applicable requirements of this Directive and shall include an adequate analysis and assessment of the risk(s). The technical documentation shall specify the applicable requirements and cover, as far as relevant for the assessment, the design, manufacture and operation of the radio equipment. The technical documentation shall contain, wherever applicable, the elements set out in Annex V; (d) the supporting evidence for the adequacy of the technical design solution. That supporting evidence shall mention any documents that have been used, in particular where the relevant harmonised standards have not been applied or have not been fully applied. The supporting evidence shall include, where necessary, the results of tests carried out in accordance with other relevant technical specifications by the appropriate laboratory of the manufacturer, or by another testing laboratory on his behalf and under his responsibility.",
         "4. The notified body shall examine the technical documentation and supporting evidence to assess the adequacy of the technical design of the radio equipment.",
         "5. The notified body shall draw up an evaluation report that records the activities undertaken in accordance with point 4 and their outcomes. Without prejudice to its obligations as provided in point 8, the notified body shall release the content of that report, in full or in part, only with the agreement of the manufacturer.",
-        "6. Where the type meets the requirements of this Directive that apply to the radio equipment concerned, the notified body shall issue an EU-type examination certificate to the manufacturer. That certificate shall contain the name and address of the manufacturer, the conclusions of the examination, the aspects of the essential requirements covered by the examination, the conditions (if any) for its validity and the necessary data for identification of the assessed type. The EU-type examination certificate may have one or more annexes attached.",
-        "The EU-type examination certificate and its annexes shall contain all relevant information to allow the conformity of manufactured radio equipment with the examined type to be evaluated and to allow for in-service control.",
-        "Where the type does not satisfy the applicable requirements of this Directive, the notified body shall refuse to issue an EU-type examination certificate and shall inform the applicant accordingly, giving detailed reasons for its refusal.",
-        "7. The notified body shall keep itself apprised of any changes in the generally acknowledged state of the art which indicate that the approved type may no longer comply with the applicable requirements of this Directive, and shall determine whether such changes require further investigation. If so, the notified body shall inform the manufacturer accordingly.",
-        "The manufacturer shall inform the notified body that holds the technical documentation relating to the EU-type examination certificate of all modifications to the approved type that may affect the conformity of the radio equipment with the essential requirements of this Directive or the conditions for validity of that certificate. Such modifications shall require additional approval in the form of an addition to the original EU-type examination certificate.",
-        "8. Each notified body shall inform its notifying authority concerning the EU-type examination certificates and/or any additions thereto which it has issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of such certificates and/or any additions thereto refused, suspended or otherwise restricted.",
-        "Each notified body shall inform the other notified bodies concerning the EU-type examination certificates and/or any additions thereto which it has refused, withdrawn, suspended or otherwise restricted, and, upon request, concerning such certificates and/or additions thereto which it has issued.",
-        "Each notified body shall inform the Member States of EU-type examination certificates it has issued and/or additions thereto in those cases where harmonised standards the references of which have been published in the Official Journal of the European Union have not been applied or not been fully applied. The Member States, the Commission and the other notified bodies may, on request, obtain a copy of the EU-type examination certificates and/or additions thereto. On request, the Member States and the Commission may obtain a copy of the technical documentation and the results of the examinations carried out by the notified body. The notified body shall keep a copy of the EU-type examination certificate, its annexes and additions, as well as the technical file including the documentation submitted by the manufacturer for 10 years after the radio equipment has been assessed or until the expiry of the validity of that certificate.",
+        "6. Where the type meets the requirements of this Directive that apply to the radio equipment concerned, the notified body shall issue an EU-type examination certificate to the manufacturer. That certificate shall contain the name and address of the manufacturer, the conclusions of the examination, the aspects of the essential requirements covered by the examination, the conditions (if any) for its validity and the necessary data for identification of the assessed type. The EU-type examination certificate may have one or more annexes attached. The EU-type examination certificate and its annexes shall contain all relevant information to allow the conformity of manufactured radio equipment with the examined type to be evaluated and to allow for in-service control. Where the type does not satisfy the applicable requirements of this Directive, the notified body shall refuse to issue an EU-type examination certificate and shall inform the applicant accordingly, giving detailed reasons for its refusal.",
+        "7. The notified body shall keep itself apprised of any changes in the generally acknowledged state of the art which indicate that the approved type may no longer comply with the applicable requirements of this Directive, and shall determine whether such changes require further investigation. If so, the notified body shall inform the manufacturer accordingly. The manufacturer shall inform the notified body that holds the technical documentation relating to the EU-type examination certificate of all modifications to the approved type that may affect the conformity of the radio equipment with the essential requirements of this Directive or the conditions for validity of that certificate. Such modifications shall require additional approval in the form of an addition to the original EU-type examination certificate.",
+        "8. Each notified body shall inform its notifying authority concerning the EU-type examination certificates and/or any additions thereto which it has issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of such certificates and/or any additions thereto refused, suspended or otherwise restricted. Each notified body shall inform the other notified bodies concerning the EU-type examination certificates and/or any additions thereto which it has refused, withdrawn, suspended or otherwise restricted, and, upon request, concerning such certificates and/or additions thereto which it has issued. Each notified body shall inform the Member States of EU-type examination certificates it has issued and/or additions thereto in those cases where harmonised standards the references of which have been published in the Official Journal of the European Union have not been applied or not been fully applied. The Member States, the Commission and the other notified bodies may, on request, obtain a copy of the EU-type examination certificates and/or additions thereto. On request, the Member States and the Commission may obtain a copy of the technical documentation and the results of the examinations carried out by the notified body. The notified body shall keep a copy of the EU-type examination certificate, its annexes and additions, as well as the technical file including the documentation submitted by the manufacturer for 10 years after the radio equipment has been assessed or until the expiry of the validity of that certificate.",
         "9. The manufacturer shall keep a copy of the EU-type examination certificate, its annexes and additions together with the technical documentation at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market.",
         "10. The manufacturer's authorised representative may lodge the application referred to in point 3 and fulfil the obligations set out in points 7 and 9, provided that they are specified in the mandate.",
         "Module C",
         "Conformity to type based on internal production control",
         "1. Conformity to type based on internal production control is the part of a conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2 and 3, and ensures and declares that the radio equipment concerned is in conformity with the type described in the EU-type examination certificate and satisfies the requirements of this Directive that apply to it.",
-        "2. Manufacturing",
-        "The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured radio equipment with the approved type described in the EU-type examination certificate and with the requirements of this Directive that apply to it.",
-        "3. CE marking and EU declaration of conformity",
-        "3.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 to each item of radio equipment that is in conformity with the type described in the EU-type examination certificate and satisfies the applicable requirements of this Directive.",
-        "3.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment type for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "4. Authorised representative",
-        "The manufacturer's obligations set out in point 3 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
+        "2. Manufacturing The manufacturer shall take all measures necessary so that the manufacturing process and its monitoring ensure conformity of the manufactured radio equipment with the approved type described in the EU-type examination certificate and with the requirements of this Directive that apply to it.",
+        "3. CE marking and EU declaration of conformity 3.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 to each item of radio equipment that is in conformity with the type described in the EU-type examination certificate and satisfies the applicable requirements of this Directive. 3.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment type for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "4. Authorised representative The manufacturer's obligations set out in point 3 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
       ],
       "tags": [
         "essential_requirements",
         "radio",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "standards"
+        "conformity_assessment"
       ],
       "referencedArticles": [
         3
@@ -2534,53 +2862,18 @@ export const redAnnexesData = {
       "blocks": [
         "CONFORMITY BASED ON FULL QUALITY ASSURANCE",
         "1. Conformity based on full quality assurance is the conformity assessment procedure whereby the manufacturer fulfils the obligations laid down in points 2 and 5, and ensures and declares on his sole responsibility that the radio equipment concerned satisfies the requirements of this Directive that apply to it.",
-        "2. Manufacturing",
-        "The manufacturer shall operate an approved quality system for design, manufacture, final radio equipment inspection and testing of the radio equipment concerned as specified in point 3 and shall be subject to surveillance as specified in point 4.",
-        "3. Quality system",
-        "3.1. The manufacturer shall lodge an application for assessment of his quality system with the notified body of his choice, for the radio equipment concerned. The application shall include:",
-        "(a) the name and address of the manufacturer and, if the application is lodged by the authorised representative, his name and address as well;",
-        "(b) the technical documentation for each radio equipment type intended to be manufactured. The technical documentation shall contain, wherever applicable, the elements set out in Annex V;",
-        "(c) the documentation concerning the quality system; and",
-        "(d) a written declaration that the same application has not been lodged with any other notified body.",
-        "3.2. The quality system shall ensure compliance of the radio equipment with the requirements of this Directive that apply to it. All the elements, requirements and provisions adopted by the manufacturer shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions. That quality system documentation shall permit a consistent interpretation of the quality programmes, plans, manuals and records. It shall, in particular, contain an adequate description of:",
-        "(a) the quality objectives and the organisational structure, responsibilities and powers of the management with regard to design and product quality;",
-        "(b) the technical design specifications, including standards, that will be applied and, where the relevant harmonised standards will not be applied in full, the means that will be used to ensure that the essential requirements of this Directive that apply to the radio equipment will be met;",
-        "(c) the design control and design verification techniques, processes and systematic actions that will be used when designing radio equipment pertaining to the radio equipment type covered;",
-        "(d) the corresponding manufacturing, quality control and quality assurance techniques, processes and systematic actions that will be used;",
-        "(e) the examinations and tests that will be carried out before, during and after manufacture, and the frequency with which they will be carried out;",
-        "(f) the quality records, such as inspection reports and test data, calibration data, reports concerning the qualifications of the personnel, etc.;",
-        "(g) the means of monitoring the achievement of the required design and product quality and the effective operation of the quality system.",
-        "3.3. The notified body shall assess the quality system to determine whether it satisfies the requirements referred to in point 3.2. It shall presume conformity with those requirements in respect of the elements of the quality system that comply with the corresponding specifications of the relevant harmonised standard. In addition to experience in quality management systems, the auditing team shall have at least one member experienced as an assessor in the relevant radio equipment field and radio equipment technology concerned, and knowledge of the applicable requirements of this Directive. The audit shall include an assessment visit to the manufacturer's premises. The auditing team shall review the technical documentation referred to in point 3.1(b) to verify the manufacturer's ability to identify the applicable requirements of this Directive and to carry out the necessary examinations with a view to ensuring compliance of the radio equipment with those requirements. The manufacturer or his authorised representative shall be notified of the decision. The notification shall contain the conclusions of the audit and the reasoned assessment decision.",
-        "3.4. The manufacturer shall undertake to fulfil the obligations arising out of the quality system as approved and to maintain it so that it remains adequate and efficient.",
-        "3.5. The manufacturer shall keep the notified body that has approved the quality system informed of any intended change to the quality system. The notified body shall evaluate any proposed changes and decide whether the modified quality system will continue to satisfy the requirements referred to in point 3.2 or whether a reassessment is necessary. It shall notify the manufacturer of its decision. The notification shall contain the conclusions of the examination and the reasoned assessment decision.",
-        "4. Surveillance under the responsibility of the notified body",
-        "4.1. The purpose of surveillance is to make sure that the manufacturer duly fulfils the obligations arising out of the approved quality system.",
-        "4.2. The manufacturer shall, for assessment purposes, allow the notified body access to the design, manufacture, inspection, testing and storage sites, and shall provide it with all necessary information, in particular:",
-        "(a) the quality system documentation;",
-        "(b) the quality records as provided for by the design part of the quality system, such as results of analyses, calculations, tests, etc.;",
-        "(c) the quality records as provided for by the manufacturing part of the quality system, such as inspection reports and test data, calibration data, reports concerning the qualifications of the personnel, etc.",
-        "4.3. The notified body shall carry out periodic audits to make sure that the manufacturer maintains and applies the quality system and shall provide the manufacturer with an audit report.",
-        "4.4. In addition, the notified body may pay unexpected visits to the manufacturer. During such visits, the notified body may, if necessary, carry out radio equipment tests, or have them carried out, in order to check the proper functioning of the quality system. It shall provide the manufacturer with a visit report and, if tests have been carried out, with a test report.",
-        "5. CE marking and EU declaration of conformity",
-        "5.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 and, under the responsibility of the notified body referred to in point 3.1, the latter's identification number to each item of radio equipment that satisfies the applicable requirements set out in Article 3.",
-        "5.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment type for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
-        "6. The manufacturer shall, for a period ending 10 years after the radio equipment has been placed on the market, keep at the disposal of the national authorities:",
-        "(a) the technical documentation referred to in point 3.1;",
-        "(b) the documentation concerning the quality system referred to in point 3.1;",
-        "(c) the change referred to in point 3.5, as approved;",
-        "(d) the decisions and reports of the notified body referred to in points 3.5, 4.3 and 4.4.",
-        "7. Each notified body shall inform its notifying authority of quality system approvals issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of quality system approvals refused, suspended or otherwise restricted.",
-        "Each notified body shall inform the other notified bodies of quality system approvals which it has refused, suspended or withdrawn, and, upon request, of quality system approvals which it has issued.",
-        "8. Authorised representative",
-        "The manufacturer's obligations set out in points 3.1, 3.5, 5 and 6 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
+        "2. Manufacturing The manufacturer shall operate an approved quality system for design, manufacture, final radio equipment inspection and testing of the radio equipment concerned as specified in point 3 and shall be subject to surveillance as specified in point 4.",
+        "3. Quality system 3.1. The manufacturer shall lodge an application for assessment of his quality system with the notified body of his choice, for the radio equipment concerned. The application shall include: (a) the name and address of the manufacturer and, if the application is lodged by the authorised representative, his name and address as well; (b) the technical documentation for each radio equipment type intended to be manufactured. The technical documentation shall contain, wherever applicable, the elements set out in Annex V; (c) the documentation concerning the quality system; and (d) a written declaration that the same application has not been lodged with any other notified body. 3.2. The quality system shall ensure compliance of the radio equipment with the requirements of this Directive that apply to it. All the elements, requirements and provisions adopted by the manufacturer shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions. That quality system documentation shall permit a consistent interpretation of the quality programmes, plans, manuals and records. It shall, in particular, contain an adequate description of: (a) the quality objectives and the organisational structure, responsibilities and powers of the management with regard to design and product quality; (b) the technical design specifications, including standards, that will be applied and, where the relevant harmonised standards will not be applied in full, the means that will be used to ensure that the essential requirements of this Directive that apply to the radio equipment will be met; (c) the design control and design verification techniques, processes and systematic actions that will be used when designing radio equipment pertaining to the radio equipment type covered; (d) the corresponding manufacturing, quality control and quality assurance techniques, processes and systematic actions that will be used; (e) the examinations and tests that will be carried out before, during and after manufacture, and the frequency with which they will be carried out; (f) the quality records, such as inspection reports and test data, calibration data, reports concerning the qualifications of the personnel, etc.; (g) the means of monitoring the achievement of the required design and product quality and the effective operation of the quality system. 3.3. The notified body shall assess the quality system to determine whether it satisfies the requirements referred to in point 3.2. It shall presume conformity with those requirements in respect of the elements of the quality system that comply with the corresponding specifications of the relevant harmonised standard. In addition to experience in quality management systems, the auditing team shall have at least one member experienced as an assessor in the relevant radio equipment field and radio equipment technology concerned, and knowledge of the applicable requirements of this Directive. The audit shall include an assessment visit to the manufacturer's premises. The auditing team shall review the technical documentation referred to in point 3.1(b) to verify the manufacturer's ability to identify the applicable requirements of this Directive and to carry out the necessary examinations with a view to ensuring compliance of the radio equipment with those requirements. The manufacturer or his authorised representative shall be notified of the decision. The notification shall contain the conclusions of the audit and the reasoned assessment decision. 3.4. The manufacturer shall undertake to fulfil the obligations arising out of the quality system as approved and to maintain it so that it remains adequate and efficient. 3.5. The manufacturer shall keep the notified body that has approved the quality system informed of any intended change to the quality system. The notified body shall evaluate any proposed changes and decide whether the modified quality system will continue to satisfy the requirements referred to in point 3.2 or whether a reassessment is necessary. It shall notify the manufacturer of its decision. The notification shall contain the conclusions of the examination and the reasoned assessment decision.",
+        "4. Surveillance under the responsibility of the notified body 4.1. The purpose of surveillance is to make sure that the manufacturer duly fulfils the obligations arising out of the approved quality system. 4.2. The manufacturer shall, for assessment purposes, allow the notified body access to the design, manufacture, inspection, testing and storage sites, and shall provide it with all necessary information, in particular: (a) the quality system documentation; (b) the quality records as provided for by the design part of the quality system, such as results of analyses, calculations, tests, etc.; (c) the quality records as provided for by the manufacturing part of the quality system, such as inspection reports and test data, calibration data, reports concerning the qualifications of the personnel, etc. 4.3. The notified body shall carry out periodic audits to make sure that the manufacturer maintains and applies the quality system and shall provide the manufacturer with an audit report. 4.4. In addition, the notified body may pay unexpected visits to the manufacturer. During such visits, the notified body may, if necessary, carry out radio equipment tests, or have them carried out, in order to check the proper functioning of the quality system. It shall provide the manufacturer with a visit report and, if tests have been carried out, with a test report.",
+        "5. CE marking and EU declaration of conformity 5.1. The manufacturer shall affix the CE marking in accordance with Articles 19 and 20 and, under the responsibility of the notified body referred to in point 3.1, the latter's identification number to each item of radio equipment that satisfies the applicable requirements set out in Article 3. 5.2. The manufacturer shall draw up a written EU declaration of conformity for each radio equipment type and keep it at the disposal of the national authorities for 10 years after the radio equipment has been placed on the market. The EU declaration of conformity shall identify the radio equipment type for which it has been drawn up. A copy of the EU declaration of conformity shall be made available to the relevant authorities upon request.",
+        "6. The manufacturer shall, for a period ending 10 years after the radio equipment has been placed on the market, keep at the disposal of the national authorities: (a) the technical documentation referred to in point 3.1; (b) the documentation concerning the quality system referred to in point 3.1; (c) the change referred to in point 3.5, as approved; (d) the decisions and reports of the notified body referred to in points 3.5, 4.3 and 4.4.",
+        "7. Each notified body shall inform its notifying authority of quality system approvals issued or withdrawn, and shall, periodically or upon request, make available to its notifying authority the list of quality system approvals refused, suspended or otherwise restricted. Each notified body shall inform the other notified bodies of quality system approvals which it has refused, suspended or withdrawn, and, upon request, of quality system approvals which it has issued.",
+        "8. Authorised representative The manufacturer's obligations set out in points 3.1, 3.5, 5 and 6 may be fulfilled by his authorised representative, on his behalf and under his responsibility, provided that they are specified in the mandate."
       ],
       "tags": [
         "essential_requirements",
         "radio",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "standards"
+        "conformity_assessment"
       ],
       "referencedArticles": [
         3
@@ -2607,9 +2900,7 @@ export const redAnnexesData = {
       "tags": [
         "essential_requirements",
         "radio",
-        "conformity_assessment",
-        "ce_marking",
-        "standards"
+        "conformity_assessment"
       ],
       "referencedArticles": [
         3,
@@ -2624,18 +2915,19 @@ export const redAnnexesData = {
         "2. Name and address of the manufacturer or his authorised representative:",
         "3. This declaration of conformity is issued under the sole responsibility of the manufacturer.",
         "4. Object of the declaration (identification of the radio equipment allowing traceability; it may include a colour image of sufficient clarity where necessary for the identification of the radio equipment):",
-        "5. The object of the declaration described above is in conformity with the relevant Union harmonisation legislation: Directive 2014/53/EU Other Union harmonisation legislation where applicable",
+        "5. The object of the declaration described above is in conformity with the relevant Union harmonisation legislation:",
+        "Directive 2014/53/EU",
+        "Other Union harmonisation legislation where applicable",
         "6. References to the relevant harmonised standards used or references to the other technical specifications in relation to which conformity is declared. References must be listed with their identification number and version and, where applicable, date of issue:",
         "7. Where applicable, the notified body … (name, number) … performed … (description of intervention) … and issued the EU-type examination certificate: …",
         "8. Where applicable, description of accessories and components, including software, which allow the radio equipment to operate as intended and covered by the EU declaration of conformity:",
-        "9. Additional information: Signed for and on behalf of: … (place and date of issue): (name, function) (signature):"
+        "9. Additional information:",
+        "Signed for and on behalf of: …",
+        "(place and date of issue):",
+        "(name, function) (signature):"
       ],
       "tags": [
-        "radio",
-        "conformity_assessment",
-        "operator_roles",
-        "ce_marking",
-        "standards"
+        "radio"
       ],
       "referencedArticles": []
     },
@@ -2648,9 +2940,7 @@ export const redAnnexesData = {
         "The full text of the EU declaration of conformity is available at the following internet address:"
       ],
       "tags": [
-        "radio",
-        "operator_roles",
-        "ce_marking"
+        "radio"
       ],
       "referencedArticles": [
         10
@@ -2695,7 +2985,9 @@ export const redAnnexesData = {
         "Annex V Annex IV",
         "Annex VI Article 26",
         "Annex VII(1) to (4) Articles 19 and 20",
-        "Annex VII(5) Article 10(10)"
+        "Annex VII(5) Article 10(10)",
+        "STATEMENT OF THE EUROPEAN PARLIAMENT",
+        "The European Parliament considers that only when and insofar as implementing acts in the sense of Regulation (EU) No 182/2011 are discussed in meetings of committees, can the latter be considered as ‘comitology committees’ within the meaning of Annex I to the Framework Agreement on the relations between the European Parliament and the European Commission. Meetings of committees thus fall within the scope of point 15 of the Framework Agreement when and insofar as other issues are discussed."
       ],
       "tags": [],
       "referencedArticles": [

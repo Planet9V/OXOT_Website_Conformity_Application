@@ -23,6 +23,7 @@ export const recitalsData = {
   "cabNotificationApplicationDate": "2026-06-11",
   "corrigenda": [
     {
+      "id": "32024R2847R(02)",
       "ojRef": "OJ L, 2025/90555, 2.7.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
@@ -33,6 +34,7 @@ export const recitalsData = {
       "to": "By way of derogation from paragraphs 2 to 9,"
     },
     {
+      "id": "32024R2847R(04)",
       "ojRef": "OJ L, 2025/91117, 17.10.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj/eng",
@@ -1627,6 +1629,7 @@ export const articlesData = {
   "cabNotificationApplicationDate": "2026-06-11",
   "corrigenda": [
     {
+      "id": "32024R2847R(02)",
       "ojRef": "OJ L, 2025/90555, 2.7.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
@@ -1637,6 +1640,7 @@ export const articlesData = {
       "to": "By way of derogation from paragraphs 2 to 9,"
     },
     {
+      "id": "32024R2847R(04)",
       "ojRef": "OJ L, 2025/91117, 17.10.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj/eng",
@@ -4317,6 +4321,7 @@ export const annexesData = {
   "cabNotificationApplicationDate": "2026-06-11",
   "corrigenda": [
     {
+      "id": "32024R2847R(02)",
       "ojRef": "OJ L, 2025/90555, 2.7.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-07-02/oj/eng",
@@ -4327,6 +4332,7 @@ export const annexesData = {
       "to": "By way of derogation from paragraphs 2 to 9,"
     },
     {
+      "id": "32024R2847R(04)",
       "ojRef": "OJ L, 2025/91117, 17.10.2025",
       "eli": "http://data.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj",
       "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/corrigendum/2025-10-17/oj/eng",

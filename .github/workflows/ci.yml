@@ -199,12 +199,18 @@ jobs:
       - name: GPSR source of truth (consolidated, as amended)
         if: always()
         run: node scripts/verify_consolidated_corpus.mjs gpsr
-      - name: RED source of truth
+      - name: RED source of truth (consolidated, as amended)
         if: always()
-        run: node scripts/verify_euact_corpus.mjs red
+        run: node scripts/verify_consolidated_corpus.mjs red
       - name: RED Delegated Regulation 2022/30 source of truth
         if: always()
         run: node scripts/verify_red_delegated_corpus.mjs
+      - name: Lifecycle guard (L55 — amendments, corrigenda, repeals)
+        if: always()
+        # Three-state: EUR-Lex is bot-hostile from CI, so unreachable acts
+        # report "----" (stated non-verification) and never fail the build;
+        # an UNACCOUNTED relation on a reachable page fails it.
+        run: node scripts/check_lifecycle.mjs
 
       # Belt and braces: the corpus must also be reproducible byte-for-byte, so
       # a hand-edit of craCorpusData.ts cannot survive.
@@ -224,7 +230,7 @@ jobs:
           node scripts/build_consolidated_act_corpus.mjs machinery
           node scripts/sync_euact_corpus_data.mjs machinery
           node scripts/build_consolidated_act_corpus.mjs gpsr
-          node scripts/build_euact_corpus_from_eurlex.mjs red
+          node scripts/build_consolidated_act_corpus.mjs red
           node scripts/sync_euact_corpus_data.mjs red
           node scripts/build_red_delegated_corpus.mjs
           node scripts/sync_red_delegated_corpus_data.mjs

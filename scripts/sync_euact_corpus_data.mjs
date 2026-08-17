@@ -1,7 +1,7 @@
 /**
  * Copies a built Phase-10 act corpus (AI Act / Machinery / RED) into the
  * conformity app's TypeScript module — same pipeline as every other corpus:
- * built by scripts/build_euact_corpus_from_eurlex.mjs from the committed
+ * built by scripts/build_consolidated_act_corpus.mjs from the committed
  * authentic OJ source, copied verbatim here, byte-for-byte reproducible in
  * CI.
  *
@@ -35,12 +35,12 @@ const banner = `/**
  *
  * GENERATED FILE — DO NOT EDIT BY HAND.
  * Built from the Official Journal text (${recitalsJson.officialJournalReference},
- * CELEX ${recitalsJson.celex}) by scripts/build_euact_corpus_from_eurlex.mjs and
+ * CELEX ${recitalsJson.celex}) by scripts/build_consolidated_act_corpus.mjs and
  * copied here by scripts/sync_euact_corpus_data.mjs. Every recital, article
  * paragraph and annex line is verbatim OJ text.
  *
  * Regenerate:
- *   node scripts/build_euact_corpus_from_eurlex.mjs ${process.argv[2]}
+ *   node scripts/build_consolidated_act_corpus.mjs ${process.argv[2]}
  *   node scripts/sync_euact_corpus_data.mjs ${process.argv[2]}
  */
 `;

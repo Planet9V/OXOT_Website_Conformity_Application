@@ -96,6 +96,36 @@ const ACTS = {
     ],
     tags: [["safety component", "safety_component"], ["cybersecurity", "cybersecurity"], ["corruption", "protection_against_corruption"], ["control system", "control_systems"]],
   },
+  red: {
+    dir: "docs/red_statutory_corpus",
+    original: "source/CELEX_32014L0053_EN.html",
+    consolidated: "source/CELEX_02014L0053-20260530_EN.html",
+    regulation: "Directive 2014/53/EU",
+    shortTitle: "RED",
+    officialJournalReference: "OJ L 153, 22.5.2014, p. 62",
+    celex: "32014L0053",
+    consolidatedCelex: "02014L0053-20260530",
+    eli: "http://data.europa.eu/eli/dir/2014/53/oj",
+    sourceUrl: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014L0053",
+    consolidatedUrl: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02014L0053-20260530",
+    adopted: "2014-04-16",
+    instrumentType: "directive",
+    nationalTranspositionRequired: true,
+    expected: { recitals: 75, articles: 58, annexes: 9, letteredArticles: ["3a", "43a", "43b", "43c", "43d", "43e"] },
+    amendmentTrail: [
+      { act: "Regulation (EU) 2018/1139 (Basic Aviation Regulation)", celex: "32018R1139", eli: "http://data.europa.eu/eli/reg/2018/1139/oj", applicableFrom: "2018-09-11", summary: "Replaces Annex I point 3 (aviation exclusion scope)." },
+      { act: "Directive (EU) 2022/2380 (common charger)", celex: "32022L2380", eli: "http://data.europa.eu/eli/dir/2022/2380/oj", applicableFrom: "2022-12-27", summary: "Adds Art 3(4) (charging interoperability), Art 3a and Annex Ia (USB Type-C specifications); replaces Art 3(3)(a), Art 10(8), Art 17(2) and market-surveillance provisions (Arts 40, 43, 44); adds charger information duties to Arts 12 and 13." },
+      { act: "Commission Delegated Directive (EU) 2023/1717", celex: "32023R1717", eli: "http://data.europa.eu/eli/dir_del/2023/1717/oj", applicableFrom: "2023-10-01", summary: "Replaces Annex Ia part I points 2.1, 2.2 and 3.1 (USB Power Delivery references)." },
+      { act: "Directive (EU) 2024/2749 (internal market emergency procedures)", celex: "32024L2749", eli: "http://data.europa.eu/eli/dir/2024/2749/oj", applicableFrom: "2024-11-28", summary: "Inserts chapter Va (Arts 43a\u201343e, emergency procedures) and Art 2(1) points 27\u201328." },
+      { act: "Directive (EU) 2024/2839", celex: "32024L2839", eli: "http://data.europa.eu/eli/dir/2024/2839/oj", applicableFrom: "2024-11-27", summary: "Replaces Art 47(1) (Commission reporting)." },
+    ],
+    corrigendaNoted: [
+      { id: "32014L0053R(01)", note: "DE, BG, SV only \u2014 the English text is not affected." },
+      { id: "32014L0053R(02)", note: "SV only." },
+      { id: "32014L0053R(03)", note: "FR only." },
+    ],
+    tags: [["essential requirement", "essential_requirements"], ["radio", "radio"], ["charging", "common_charger"], ["personal data", "privacy"], ["fraud", "fraud"], ["conformity assessment", "conformity_assessment"]],
+  },
   gpsr: {
     dir: "docs/gpsr_statutory_corpus",
     original: "source/CELEX_32023R0988_EN.html",
@@ -189,7 +219,7 @@ const meta = {
   consolidatedUrl: act.consolidatedUrl,
   adopted: act.adopted,
   instrumentType: act.instrumentType,
-  nationalTranspositionRequired: false,
+  nationalTranspositionRequired: act.nationalTranspositionRequired ?? false,
   /**
    * The disclosed departure: articles and annexes are built from the EUR-Lex
    * CONSOLIDATED text (which itself has no legal effect) because the act has

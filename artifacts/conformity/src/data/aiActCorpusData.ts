@@ -3,12 +3,12 @@
  *
  * GENERATED FILE — DO NOT EDIT BY HAND.
  * Built from the Official Journal text (OJ L, 2024/1689, 12.7.2024,
- * CELEX 32024R1689) by scripts/build_euact_corpus_from_eurlex.mjs and
+ * CELEX 32024R1689) by scripts/build_consolidated_act_corpus.mjs and
  * copied here by scripts/sync_euact_corpus_data.mjs. Every recital, article
  * paragraph and annex line is verbatim OJ text.
  *
  * Regenerate:
- *   node scripts/build_euact_corpus_from_eurlex.mjs ai_act
+ *   node scripts/build_consolidated_act_corpus.mjs ai_act
  *   node scripts/sync_euact_corpus_data.mjs ai_act
  */
 export const aiActRecitalsData = {

@@ -156,6 +156,9 @@ function main() {
     appliesFrom: "2025-08-01",
     languageNote:
       "A Bulgarian-language corrigendum (32022R0030R(01)) exists and does not affect the English text; it is recorded, not applied.",
+    corrigendaNoted: [
+      { id: "32022R0030R(01)", note: "BG only — the English text is not affected." },
+    ],
     amendments: applied,
     repeal: REPEAL,
     builtFrom: {

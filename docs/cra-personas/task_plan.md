@@ -1249,3 +1249,25 @@ then GPSR + the remaining 14.4 acts.
   title-annex-2 mis-titling) before anything shipped. Gates: G1/G3 ·
   G2 724/0/0 · G4/G5/G8 = 0 · NINE corpus verifiers green with negative
   controls · G6 live with reviewed screenshots.
+
+- **15.5 done 2026-08-16 (+ RED pivot)** The lifecycle guard
+  (`scripts/check_lifecycle.mjs`, in CI): for every EU-act corpus, the
+  EUR-Lex ALL view's text-affecting relations (Corrected/Modified/
+  Repealed by) must each be ACCOUNTED FOR in corpus metadata (applied or
+  noted corrigenda, amendment trail, pending amendments, repeal), with a
+  per-act POSITIVE CONTROL and three-state honesty. Running it audited
+  US: CRA corrigenda gained machine-readable ids; the 2022/30 BG
+  corrigendum became id-noted; and it EXPOSED THE RED — amended FIVE
+  times since 2014 (Basic Aviation 2018; common charger 2022/2380 with
+  20 rows incl. Art 3(4)/3a/Annex Ia and a REPLACED Art 10(8); USB-PD
+  delegated 2023/1717; chapter Va emergency procedures 2024/2749;
+  Art 47(1) 2024/2839) — all predating our build. RED pivoted to the
+  consolidated pipeline (58 articles incl. 3a + 43a–43e, 9 annexes incl.
+  Ia, consolidated 2026-05-30); the OJ euact builder/verifier DELETED
+  (all their acts pivoted — a stale rebuild can never resurrect
+  superseded text); the Art 10(8) and Art 13(2) seed rows updated
+  statute-first with the charger-information duties. Lifecycle guard now
+  PASSES across all seven EU acts. Gates: G1/G3 · G2 724/0/0 ·
+  G4/G5/G8 = 0 · verifiers green (4 consolidated + CRA + NIS2 + Cbw +
+  BSIG + red-delegated) · G6 live incl. Art 3a and Art 43a rendering,
+  screenshots reviewed (one banner truncation caught by pixels, fixed).

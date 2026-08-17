@@ -46,6 +46,22 @@ const ACTS = {
       { article: "47", phrase: "19 July 2023" },
     ],
   },
+  red: {
+    dir: "docs/red_statutory_corpus",
+    original: "source/CELEX_32014L0053_EN.html",
+    consolidated: "source/CELEX_02014L0053-20260530_EN.html",
+    bundle: "artifacts/conformity/src/data/redCorpusData.ts",
+    marker: "2014/53",
+    expected: { recitals: 75, articles: 58, annexes: 9, lettered: "3a,43a,43b,43c,43d,43e", amendingActs: ["32018R1139", "32022L2380", "32023R1717", "32024L2749", "32024L2839"] },
+    probes: [
+      { article: "3", phrase: "Essential requirements" },
+      // Common-charger addition (Art 3(4)) in force since 2022-12-27:
+      { article: "3", phrase: "specifications relating to charging capabilities" },
+      { article: "3a", phrase: "" },
+      { article: "43a", phrase: "" },
+      { article: "10", phrase: "Obligations of manufacturers" },
+    ],
+  },
   gpsr: {
     dir: "docs/gpsr_statutory_corpus",
     original: "source/CELEX_32023R0988_EN.html",
@@ -173,6 +189,9 @@ function checkFraming() {
     if (!celexes.includes(expected)) return bad("F1", `amendment trail lost ${expected}`);
   }
   if (!meta.consolidationDate) return bad("F1", "metadata lost the consolidation date");
+  if (meta.instrumentType === "directive" && meta.nationalTranspositionRequired !== true) {
+    return bad("F1", "a DIRECTIVE's metadata lost nationalTranspositionRequired — the transposition caveat must survive the pivot");
+  }
   ok("F1", `disclosed departure carried: consolidated ${meta.consolidationDate}, amended by ${celexes.join(", ")}`);
 }
 
