@@ -280,3 +280,9 @@ the meaning of Art. 64(10).
   test) · G3 · G4 0 · G5 0 · G8 20/0. First G2 rerun FAILED silently
   masked by a tail pipe + missing CI env (SESSION_SECRET etc.) — reran
   with full env and unpiped exit code.
+- 18.3: live stack migrated (red_in_scope on the live db), api+web
+  rebuilt, G6 walk of all three states (prompt / timeline with the
+  2027-12-11 repeal quotes / dismissal line) with reload persistence;
+  demo restored to unanswered. Commit ec4769a pushed; CI run
+  32006168614 SUCCESS. G7 closed with L58 (a CI mirror is the
+  environment, not just the command).

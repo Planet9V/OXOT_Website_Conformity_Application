@@ -67,6 +67,7 @@ do not".
 | 15 | **The lifecycle repair + guard (L54/L55/L56).** The ALL-view sweep found FOUR shipped corpora carrying superseded/uncorrected text with every gate green. 15.1/15.2: CRA + NIS2 EN corrigenda applied; EHDS 2025/327 recorded pending (2027-03-26). 15.3/15.4: AI Act + Machinery pivoted to the CONSOLIDATED pipeline (as amended by the Digital Omnibus 2026/1744 and 2024/2748 — new parser dialect, hybrid corpus, disclosed-departure verifier, D2 + negative control); GPSR joined as ninth corpus; seeded AI keyDates corrected to the Omnibus dates. 15.5: `check_lifecycle.mjs` (in CI) — whose first run caught the RED eleven years behind (five amending acts incl. common charger: Art 3(4), 3a, Annex Ia, chapter Va, REPLACED Art 10(8)); RED pivoted; OJ euact pipeline deleted; Art 10(8)/13(2) seed rows updated statute-first. Guard passes across all seven EU acts. |
 | 16 | **UX/gap review** (audit-first: 25-surface screenshot walk + API probes; findings F1–F8). The reference layer now tells the truth about itself everywhere: acts list "N modelled · M reference-only", amber Reference-only badges + explanatory banners on zero-content acts, honest empty-states for classes/routes, in-app reader links, Library cards derived from as-amended reality, per-act role vocabulary on the cockpit (roleTermByRole), chapter-grouped reader nav. L57: honesty implemented once is honesty in one place. |
 | 17 | **GDPR + Data Act + GPSR content.** Tenth/eleventh corpora on the resurrected OJ+corrigenda pipeline (`build_oj_act_corpus.mjs` — GDPR R(02) = 19 must-fire corrections incl. recital-level; Data Act R(01) = 1); 19 statute-first obligation rows (GDPR ×9 for the operator as "controller or processor"; Data Act ×5 — Chapter II binds the manufacturer as "manufacturer / data holder"; GPSR ×5 incl. the Art 6(1)(g) cyber hook); readers + cards + enforced citation gates; acts list "9 modelled · 2 reference-only". **DORA and CER PARKED by decision.** Suite 725/0/0; 156 requirements / 92 mappings. |
+| 18 | **RED→CRA handover as per-product guidance.** Nullable tri-state `redInScope` fact on conformity_products (spec-first → orval; null = unanswered, L40); product-file panel for EVERY role rendering the timeline (applies 2025-08-01 · RED governs until 2027-12-11 · repealed by 2026/339, CRA governs from that date) with every date/quote read from the 2022/30 corpus metadata at render time (L57). No new route (G8 untouched). Suite **726/0/0** (+1: tri-state persistence). L58: a CI mirror is the environment, not just the command — and never pipe a gate. |
 
 ## The application map (key files)
 
@@ -235,12 +236,12 @@ the known benign one).
 reference-only framing; revisit only when a customer declaration needs
 them). Open candidates:
 
-1. **The 2027-12-11 RED→CRA handover as product-file guidance** (Phase-13
-   retro candidate).
-2. Ops habit: scheduled local `check_lifecycle.mjs` runs.
-3. Reader polish (deferred from 16): chapter-aware search grouping;
+1. Ops habit: scheduled local `check_lifecycle.mjs` runs.
+2. Reader polish (deferred from 16): chapter-aware search grouping;
    amendment trail on regulation-detail pages for pivoted acts.
-4. **User-only, between sessions:** move the repo out of `~/Downloads`.
+3. **User-only, between sessions:** move the repo out of `~/Downloads`.
+
+(The RED→CRA handover candidate was DELIVERED as Phase 18.)
 
 No new phase is opened until the user chooses among these or names new
 scope.

@@ -1064,3 +1064,42 @@ db-package constants changed (the container bakes the workspace).
 **Re-tuning applied:** open candidates: RED→CRA handover per product;
 scheduled lifecycle runs; DORA/CER stay parked. No new lesson number —
 the phase was L-lessons applied, not learned.
+
+## L58 — A CI mirror is the environment, not just the command
+
+**What happened (Phase 18):** the G2 rerun after compaction re-derived
+the CI *command* (pgvector, push-force, seed, `vitest run`) but not the
+CI *env block*. Without `SESSION_SECRET`/`ADMIN_*`/`NODE_ENV=test`,
+testAuth could not mint a cookie and 24 files failed — none of them
+about the change under test. Worse, the command ended in `| tail -15`,
+so the shell reported the pipe's exit code and the background-task
+notification said **success** over a red suite; only reading the output
+revealed the failure.
+
+**The rule:** a gate is its command AND its environment AND its exit
+code. Mirror the workflow's full `env:` block when running a gate
+outside CI, and never pipe a gate's command — capture output to a file
+or let it stream, so the exit code you read is the gate's own.
+
+**Relation:** L36 (counts are claims — the notification's "success" was
+a claim about `tail`, not about vitest); L52 (run gates bare — "bare"
+includes the environment).
+
+## Phase 18 retro (G7) — the handover becomes a product answer
+
+**What worked:** the fact/derivation split — the server stores ONE
+nullable boolean; every statutory date and quote renders from the
+2022/30 corpus metadata at runtime (L57), so 2026/339's dates exist in
+exactly one reviewed place. The D5 orgRole pattern (null → honest
+prompt) transplanted cleanly to a second product fact. Spec-first held:
+schema → openapi → orval → route → panel, no hand-edited generated
+code.
+
+**What recurred:** the false-red G2 (now L58); two engine-test fixtures
+needed the new column (the type system caught them — that is the
+fixture pattern working, not failing).
+
+**Floors after this phase:** G2 = 726/0/0 zero-skips · G4 = 0 · G5 = 0
+across eight acts · G8 = 20/0 · eleven corpus verifiers + lifecycle
+guard · demo products all redInScope = null (unanswered is the honest
+seed state).

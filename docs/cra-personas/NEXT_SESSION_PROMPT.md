@@ -19,12 +19,13 @@ map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–17 are COMPLETE with G7 retros. 16 = the
-UX/gap audit (the reference layer now tells the truth about itself
-everywhere — L57); 17 = GDPR + Data Act + GPSR content (ELEVEN corpora,
-156 requirements across NINE modelled acts, "9 modelled · 2
-reference-only"). **DORA and CER are PARKED by user decision.** MAIN-ONLY,
-pushed, GitHub CI green. Floors: G2 = **725/0/0** · G4 = 0 COVENANT ·
+**Where things stand:** Phases 0–18 are COMPLETE with G7 retros. 17 =
+GDPR + Data Act + GPSR content (ELEVEN corpora, 156 requirements across
+NINE modelled acts); 18 = the RED→CRA handover as per-product guidance
+(tri-state `redInScope` fact + a product-file panel whose dates/quotes
+all render from the 2022/30 corpus metadata — L57/L58). **DORA and CER
+are PARKED by user decision.** MAIN-ONLY,
+pushed, GitHub CI green. Floors: G2 = **726/0/0** · G4 = 0 COVENANT ·
 G5 = 0 across EIGHT enforced acts · G8 = 0 COVENANT (20) · ELEVEN corpus
 verifiers + the lifecycle guard, all with negative controls.
 
@@ -73,11 +74,13 @@ change beyond the audio script.
 **No task is in flight.** DORA/CER stay parked. Open candidates (ask
 which, or take #1 if told to proceed):
 
-1. **RED→CRA 2027-12-11 handover as product-file guidance.**
-2. Ops: scheduled local `check_lifecycle.mjs` runs.
-3. Reader polish: chapter-aware search grouping; amendment trail on
+1. Ops: scheduled local `check_lifecycle.mjs` runs.
+2. Reader polish: chapter-aware search grouping; amendment trail on
    regulation-detail pages.
-4. **User-only, between sessions:** move the repo out of `~/Downloads`.
+3. **User-only, between sessions:** move the repo out of `~/Downloads`.
+
+(RED→CRA handover: DELIVERED as Phase 18 — per-product tri-state
+`redInScope` fact + corpus-metadata-driven panel; suite floor 726/0/0.)
 
 Batch cadence for everything: survey → scope one shippable batch → build →
 all gates (bare) → G6 with reviewed screenshots → plan done-marker →
