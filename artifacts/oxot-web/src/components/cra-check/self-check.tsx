@@ -424,6 +424,28 @@ export function CraSelfCheck({
           </ul>
         )}
 
+        {/* The operator branch (20c): a buyer's exposure is the SUPPLIERS' —
+            the CE-route framing below still shows what their suppliers face,
+            but the operator's own next step is supplier CRA management. */}
+        {answers.position === "operator" && (
+          <div className="rounded-xl border border-primary/40 bg-primary/5 p-5">
+            <p className="text-xs font-medium uppercase tracking-wide text-primary">
+              {locale === "nl" ? "Voor exploitanten & asset owners" : "For operators & asset owners"}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-foreground">
+              {locale === "nl"
+                ? "Uw praktische CRA-blootstelling is die van uw leveranciers — en NIS2 artikel 21(2)(d) maakt de beveiliging van de toeleveringsketen uw eigen plicht. De uitkomst hieronder beschrijft wat uw LEVERANCIERS te wachten staat; uw eigen volgende stap is een register per apparaat van wat elke leverancier heeft geleverd."
+                : "Your practical CRA exposure is your suppliers' — and NIS2 Article 21(2)(d) makes supply-chain security your own duty. The readout below describes what your SUPPLIERS face; your own next step is a per-device register of what each supplier has provided."}
+            </p>
+            <a
+              href="/operators"
+              className="mt-3 inline-block text-sm font-medium text-primary-ink hover:underline"
+            >
+              {locale === "nl" ? "Bekijk CRA-leveranciersbeheer \u2192" : "See supplier CRA management \u2192"}
+            </a>
+          </div>
+        )}
+
         {/* Classification readout */}
         <div className={`rounded-xl border border-l-4 border-border ${CLASS_ACCENT[result.craClass]} bg-card p-5 shadow-sm`}>
           <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">

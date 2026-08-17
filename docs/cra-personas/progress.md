@@ -364,3 +364,23 @@ the meaning of Art. 64(10).
   /supplier-portal token page → supplier text submission → ask
   fulfilled + document filed with supplier_token provenance (verified
   in the live db). G2 751/751 zero-skips (+25). Screenshots reviewed.
+
+## 2026-08-17 (morning) — Phases 20b+20c: the site sells the real product
+- Home repositioned: "THE EU CONFORMANCE SYSTEM OF RECORD", multi-act
+  hero, FOUR pillars (+"The statute itself, verbatim" and "Supplier CRA
+  management for operators"), a NEW operator band above the fold-line
+  linking /operators, the honesty strip ("What this application will
+  never tell you" — waived in G4 as a refusal that quotes the claim),
+  SEVEN personas with the operator first. EN+NL.
+- New /operators page ("For operators" in the nav, EN+NL): the
+  statutory frame with the Art 13 citations, the five-step story
+  (register → link → record → ask via the door → posture board), the
+  honesty note, own-duties section, supplier-list CTA.
+- Platform page: modules now describe the shipped shell (+Library,
+  +supplier management, +external doors); pricing gains the operator
+  metering sentence; the 2-minute check's operator result now leads
+  with the supplier framing and links /operators (source+build
+  verified; pattern mirrors the existing manufacturer-warning block).
+- G6 live: home band, /operators, nav active state (screenshots
+  reviewed). G1/G3/G4(1 new visible waiver)/G5/G8 green.
+- 20d (public statutory wikis as SEO lead magnets) remains OPEN.

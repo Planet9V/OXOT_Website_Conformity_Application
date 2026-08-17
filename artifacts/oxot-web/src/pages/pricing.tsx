@@ -20,7 +20,7 @@ const copy = {
     kicker: 'PRICING',
     headerTitle: 'Priced on the products you actually manage',
     headerDescription:
-      'Tiers are metered on products with digital elements under management — the honest unit for the CRA, and the one you can count. It is a single-tenant product whose cost depends on your deployment, so the scope is fixed and public; the price is a quote.',
+      'Tiers are metered on products with digital elements under management — the honest unit for the CRA, and the one you can count. For an operator that unit is the purchased devices in your estate register; for a manufacturer, your catalogue. It is a single-tenant product whose cost depends on your deployment, so the scope is fixed and public; the price is a quote.',
     mostChosen: 'Most chosen',
     requestQuote: 'Request a quote',
     deploymentLabel: 'Deployment',
@@ -100,7 +100,7 @@ const copy = {
     kicker: 'PRIJZEN',
     headerTitle: 'Geprijsd op de producten die u daadwerkelijk beheert',
     headerDescription:
-      'De tiers worden gemeten op producten met digitale elementen die u beheert — de eerlijke eenheid voor de CRA, en de eenheid die u kunt tellen. Het is een single-tenant product waarvan de kosten afhangen van uw implementatie, dus de scope ligt vast en is openbaar; de prijs is een offerte.',
+      'De tiers worden gemeten op producten met digitale elementen die u beheert — de eerlijke eenheid voor de CRA, en de eenheid die u kunt tellen. Voor een exploitant is die eenheid de gekochte apparaten in uw installatieregister; voor een fabrikant uw catalogus. Het is een single-tenant product waarvan de kosten afhangen van uw implementatie, dus de scope ligt vast en is openbaar; de prijs is een offerte.',
     mostChosen: 'Meest gekozen',
     requestQuote: 'Offerte aanvragen',
     deploymentLabel: 'Implementatie',

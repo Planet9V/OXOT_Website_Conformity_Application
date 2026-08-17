@@ -6,7 +6,9 @@ import {
   ShieldCheck,
   Clock,
   FileStack,
-  Layers,
+  BookOpen,
+  Factory,
+  Scale,
   ServerCog,
 } from 'lucide-react';
 import { useSeo } from '@/hooks/use-seo';
@@ -22,18 +24,27 @@ import { revealVariants } from '@/lib/motion';
 // English source so every visible string has a Dutch equivalent.
 const copy = {
   en: {
-    seoTitle: 'OXOT Conformance Platform — run CRA conformity as an operation',
+    seoTitle: 'OXOT Conformance Platform — the EU conformance system of record',
     seoDescription:
-      'Every product with digital elements in one workbench: a guided compliance journey per product, statutory Article 14 clocks running live, Annex VII technical files generated from your own evidence.',
-    kicker: 'The CRA Conformance Application',
-    heroTitle: 'Run CRA conformity as an operation, not a fire drill.',
+      'One working record per product with digital elements: the guided CRA journey to a defensible Annex VII file, statutory clocks running live, verbatim statutory texts for seven EU acts — and supplier CRA management for operators and asset owners.',
+    kicker: 'The EU Conformance System of Record',
+    heroTitle: 'Run product conformity as an operation, not a fire drill.',
     heroBody:
-      'Every product with digital elements in one workbench: a guided compliance journey per product, statutory Article 14 clocks running live, Annex VII technical files generated from your own evidence, and blockers ranked before they cost you the CE mark.',
+      'Every product with digital elements in one working record: the guided CRA journey from classification to a defensible Annex VII technical file, statutory clocks running live — and the same record carries NIS2, RED, the AI Act, GDPR and the Data Act, each cited in the act\u2019s own words.',
     bookDemo: 'Book a demo',
     takeCheck: 'Take the 2-minute check',
     clockStrong: '11 December 2027 — full application.',
     clockRest:
       ' From 11 September 2026, reporting obligations are already enforceable — a 24-hour clock, for products already on the market.',
+    operatorKicker: 'New — for operators & asset owners',
+    operatorTitle: 'Your suppliers carry the CRA duties. Now hold them to it.',
+    operatorBody:
+      'If you buy and operate connected equipment, the CRA binds your suppliers — and NIS2 Article 21(2)(d) makes supply-chain security your own duty. Register your estate, record what each supplier has actually provided against the CRA\u2019s own Article 13 duties, chase what\u2019s missing through a secure supplier door, and read the posture per supplier — without the tool ever pretending a verdict.',
+    operatorLink: 'See supplier CRA management \u2192',
+    honestyTitle: 'What this application will never tell you',
+    honestyBody:
+      // honesty-ok: quotes the claim precisely to REFUSE it — the sentence says the app will never make it.
+      'It will never tell you that you are compliant. Article 32 keeps the conformity assessment with the manufacturer — or a notified body. What it shows is the state of your evidence against the statute\u2019s own words, and where the answer is \u201cnobody has answered yet\u201d, it says exactly that.',
     stallsKicker: 'Why teams stall',
     stallsTitle: 'The CRA is an operations problem before it is a paperwork problem',
     stalls: [
@@ -52,7 +63,7 @@ const copy = {
     ],
     pillarsKicker: 'The platform',
     pillarsTitle: 'One record, every regulation',
-    pillarsLink: 'Explore the six modules →',
+    pillarsLink: 'Explore the platform \u2192',
     pillars: [
       {
         title: 'A guided compliance journey, per product',
@@ -63,8 +74,12 @@ const copy = {
         body: 'The 24-hour early warning and 72-hour notification tracked per product, with a PSIRT triage board and ENISA single-reporting-platform filing.',
       },
       {
-        title: 'One portfolio, every class',
-        body: 'Default, Class I and Class II routed correctly across your whole catalogue — blockers ranked before they cost you the CE mark.',
+        title: 'The statute itself, verbatim',
+        body: 'Readable, citable wikis for the CRA, NIS2, the AI Act, Machinery, RED, GDPR and the Data Act — as amended, corrigenda applied and disclosed, character-verified in CI. The law, not a summary of it.',
+      },
+      {
+        title: 'Supplier CRA management for operators',
+        body: 'Register the equipment you operate, record what each supplier has provided against the CRA\u2019s Article 13 duties, and ask for what\u2019s missing through a secure supplier door.',
       },
     ],
     deployTitle: 'Single tenant, always',
@@ -74,29 +89,39 @@ const copy = {
     personasKicker: "Who it's for",
     personasTitle: 'Wherever you sit in the value chain',
     personas: [
+      ['Owner / operators — NEW', 'Your suppliers carry the CRA; you carry NIS2 supply-chain security. Register your estate, file supplier evidence per device, chase gaps through the supplier door.'],
       ['Product manufacturers', 'The full Annex VII file, the CE marking, and the reporting duties from day one.'],
       ['OEMs', 'Portfolio math against 11 Dec 2027 — where Module H is the only route that fits.'],
       ['Integrators', 'Article 22: know which side of "substantial modification" your projects sit on.'],
       ['Distributors', 'Verify CE marking and the Declaration of Conformity on every line you offer.'],
-      ['Owner / operators', 'Test your suppliers now, while you can still switch.'],
+      ['Authorised representatives', 'Article 18 mandates recorded with their scope — what the mandate grants, and what it does not.'],
+      ['Open-source stewards', 'Article 24\u2019s lighter regime stated honestly — including the Article 64(10)(b) exemption from fines.'],
     ] as [string, string][],
     finalTitle: 'See your own portfolio in the workbench',
     finalBody:
       'A 45-minute walkthrough covers classification, the evidence you already hold, and what a defensible Annex VII technical file looks like for your products.',
   },
   nl: {
-    seoTitle: 'OXOT Conformance Platform — voer CRA-conformiteit uit als een operatie',
+    seoTitle: 'OXOT Conformance Platform — het EU-conformiteitssysteem van vastlegging',
     seoDescription:
-      'Elk product met digitale elementen in één workbench: een begeleid conformiteitstraject per product, wettelijke Artikel 14-klokken die live lopen, en technische documentatie volgens Bijlage VII, gegenereerd uit uw eigen bewijs.',
-    kicker: 'De CRA Conformance-applicatie',
-    heroTitle: 'Voer CRA-conformiteit uit als een operatie, niet als een brandoefening.',
+      'Eén werkend dossier per product met digitale elementen: het begeleide CRA-traject naar een verdedigbaar Bijlage VII-dossier, wettelijke klokken die live lopen, woordelijke wetteksten voor zeven EU-verordeningen — en CRA-leveranciersbeheer voor exploitanten en asset owners.',
+    kicker: 'Het EU-conformiteitssysteem van vastlegging',
+    heroTitle: 'Voer productconformiteit uit als een operatie, niet als een brandoefening.',
     heroBody:
-      'Elk product met digitale elementen in één workbench: een begeleid conformiteitstraject per product, wettelijke Artikel 14-klokken die live lopen, technische documentatie volgens Bijlage VII gegenereerd uit uw eigen bewijs, en knelpunten die worden geprioriteerd voordat ze u de CE-markering kosten.',
+      'Elk product met digitale elementen in één werkend dossier: het begeleide CRA-traject van classificatie tot een verdedigbaar technisch dossier volgens Bijlage VII, wettelijke klokken die live lopen — en hetzelfde dossier draagt NIS2, RED, de AI-verordening, de AVG en de Dataverordening, elk geciteerd in de eigen woorden van de wet.',
     bookDemo: 'Demo aanvragen',
     takeCheck: 'Doe de 2-minutencheck',
     clockStrong: '11 december 2027 — volledige toepassing.',
     clockRest:
       ' Vanaf 11 september 2026 zijn de meldingsverplichtingen al afdwingbaar — een klok van 24 uur, voor producten die al op de markt zijn.',
+    operatorKicker: 'Nieuw — voor exploitanten & asset owners',
+    operatorTitle: 'Uw leveranciers dragen de CRA-plichten. Houd ze eraan.',
+    operatorBody:
+      'Koopt en exploiteert u verbonden apparatuur, dan bindt de CRA uw leveranciers — en maakt NIS2 artikel 21(2)(d) de beveiliging van de toeleveringsketen uw eigen plicht. Registreer uw installatiebestand, leg vast wat elke leverancier daadwerkelijk heeft geleverd tegen de eigen artikel 13-plichten van de CRA, vraag het ontbrekende op via een beveiligde leveranciersdeur, en lees de stand per leverancier — zonder dat het systeem ooit een oordeel veinst.',
+    operatorLink: 'Bekijk CRA-leveranciersbeheer \u2192',
+    honestyTitle: 'Wat deze applicatie u nooit zal vertellen',
+    honestyBody:
+      'Zij zal u nooit vertellen dat u conform bent. Artikel 32 laat de conformiteitsbeoordeling bij de fabrikant — of een aangemelde instantie. Wat zij toont is de stand van uw bewijs tegen de eigen woorden van de wet, en waar het antwoord \u201cnog door niemand beantwoord\u201d is, staat dat er precies zo.',
     stallsKicker: 'Waarom teams vastlopen',
     stallsTitle: 'De CRA is een operationeel probleem voordat het een papierprobleem is',
     stalls: [
@@ -115,7 +140,7 @@ const copy = {
     ],
     pillarsKicker: 'Het platform',
     pillarsTitle: 'Eén dossier, elke verordening',
-    pillarsLink: 'Bekijk de zes modules →',
+    pillarsLink: 'Bekijk het platform \u2192',
     pillars: [
       {
         title: 'Een begeleid conformiteitstraject, per product',
@@ -126,8 +151,12 @@ const copy = {
         body: 'De vroegtijdige waarschuwing van 24 uur en de melding van 72 uur, per product bijgehouden, met een PSIRT-triageboard en indiening via het ENISA single reporting platform.',
       },
       {
-        title: 'Eén portfolio, elke klasse',
-        body: 'Standaard, Klasse I en Klasse II correct gerouteerd over uw hele catalogus — knelpunten geprioriteerd voordat ze u de CE-markering kosten.',
+        title: 'De wet zelf, woordelijk',
+        body: 'Leesbare, citeerbare wiki\u2019s voor de CRA, NIS2, de AI-verordening, de Machineverordening, RED, de AVG en de Dataverordening — zoals gewijzigd, rectificaties toegepast en vermeld, tekengetrouw geverifieerd in CI. De wet, geen samenvatting ervan.',
+      },
+      {
+        title: 'CRA-leveranciersbeheer voor exploitanten',
+        body: 'Registreer de apparatuur die u exploiteert, leg vast wat elke leverancier heeft geleverd tegen de artikel 13-plichten van de CRA, en vraag het ontbrekende op via een beveiligde leveranciersdeur.',
       },
     ],
     deployTitle: 'Altijd single tenant',
@@ -137,11 +166,13 @@ const copy = {
     personasKicker: 'Voor wie het is',
     personasTitle: 'Waar u zich ook in de waardeketen bevindt',
     personas: [
+      ['Eigenaren / exploitanten — NIEUW', 'Uw leveranciers dragen de CRA; u draagt de NIS2-plicht voor de toeleveringsketen. Registreer uw installatiebestand, archiveer leveranciersbewijs per apparaat, en vraag het ontbrekende op via de leveranciersdeur.'],
       ['Productfabrikanten', 'Het volledige Bijlage VII-dossier, de CE-markering en de meldingsplichten vanaf dag één.'],
       ['OEM’s', 'Portfolioberekening richting 11 dec 2027 — waar Module H de enige passende route is.'],
       ['Integrators', 'Artikel 22: weet aan welke kant van een “substantiële wijziging” uw projecten vallen.'],
       ['Distributeurs', 'Verifieer de CE-markering en de conformiteitsverklaring op elke lijn die u aanbiedt.'],
-      ['Eigenaren / exploitanten', 'Test uw leveranciers nu, nu u nog kunt wisselen.'],
+      ['Gemachtigde vertegenwoordigers', 'Artikel 18-mandaten vastgelegd met hun reikwijdte — wat het mandaat verleent, en wat niet.'],
+      ['Open-source stewards', 'Het lichtere regime van artikel 24 eerlijk weergegeven — inclusief de vrijstelling van boetes onder artikel 64(10)(b).'],
     ] as [string, string][],
     finalTitle: 'Bekijk uw eigen portfolio in de workbench',
     finalBody:
@@ -149,7 +180,7 @@ const copy = {
   },
 } as const;
 
-const PILLAR_ICONS = [FileStack, Clock, Layers];
+const PILLAR_ICONS = [FileStack, Clock, BookOpen, Factory];
 
 export default function CraHomePage() {
   const { locale } = useLocale();
@@ -218,6 +249,30 @@ export default function CraHomePage() {
         </div>
       </section>
 
+      {/* The operator shape (Phase 21) — the segment nobody else serves. */}
+      <section className="border-b border-border bg-primary/[0.04]">
+        <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-4xl">
+          <div className="flex items-start gap-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+              <Factory className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <p className="oxot-kicker">{t.operatorKicker}</p>
+              <h2 className="oxot-h2 mt-1 text-foreground">{t.operatorTitle}</h2>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                {t.operatorBody}
+              </p>
+              <Link
+                href="/operators"
+                className="mt-4 inline-block text-sm font-medium text-primary-ink hover:underline"
+              >
+                {t.operatorLink}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Live regulatory news — API-driven, degrades gracefully */}
       <LiveRegulatoryNewsFeed />
 
@@ -260,7 +315,7 @@ export default function CraHomePage() {
               {t.pillarsLink}
             </Link>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {t.pillars.map((p, i) => {
               const Icon = PILLAR_ICONS[i];
               return (
@@ -278,6 +333,19 @@ export default function CraHomePage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* The honesty doctrine — the differentiator nobody else will say. */}
+      <section className="border-t border-border bg-card">
+        <div className="container mx-auto px-4 md:px-8 py-12 max-w-3xl text-center">
+          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
+            <Scale className="h-5 w-5 text-primary" />
+          </div>
+          <h2 className="oxot-h3 mt-3 text-foreground">{t.honestyTitle}</h2>
+          <p className="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            {t.honestyBody}
+          </p>
         </div>
       </section>
 

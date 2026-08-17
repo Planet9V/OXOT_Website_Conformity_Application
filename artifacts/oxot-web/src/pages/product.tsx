@@ -7,6 +7,9 @@ import {
   FileCheck2,
   ShieldAlert,
   FileBarChart,
+  BookOpen,
+  Factory,
+  KeyRound,
   ArrowRight,
 } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
@@ -23,11 +26,11 @@ const copy = {
   en: {
     seoTitle: 'The platform — OXOT Conformance Platform',
     seoDescription:
-      'Six modules and an eight-step compliance journey: from classification to a defensible Annex VII technical file, with statutory Article 14 clocks running live.',
+      'The shipped platform: role-aware product files, the eight-step CRA journey, incidents and statutory clocks, the verbatim statutory Library, supplier CRA management for operators, and reports — one record, every regulation.',
     headerKicker: 'THE PLATFORM',
     headerTitle: 'One record, every regulation',
     headerDescription:
-      'The OXOT Conformance Platform runs CRA conformity as an operation: every product with digital elements as a living dossier, a guided journey per product, and the statutory clocks running where you can see them. Six modules, one record.',
+      'The OXOT Conformance Platform runs product conformity as an operation: every product with digital elements as a living dossier, a guided journey per product, and the statutory clocks running where you can see them. One record — and it speaks each act\u2019s own language.',
     modules: [
       {
         name: 'Product portfolio',
@@ -53,6 +56,18 @@ const copy = {
         name: 'Conformity assessment reports',
         body: 'Full, board-edition and custom reports — the state of every product against its obligations, ready for an auditor or a board.',
       },
+      {
+        name: 'The statutory Library',
+        body: 'Verbatim, as-amended wikis for the CRA, NIS2, the AI Act, Machinery, RED, GDPR and the Data Act — plus the Dutch and German NIS2 transpositions — corrigenda applied and disclosed, character-verified in CI.',
+      },
+      {
+        name: 'Supplier CRA management (operators)',
+        body: 'A supplier register over your equipment estate: per-device procurement facts against the CRA\u2019s Article 13 duties, a secure door for supplier submissions, and a per-supplier posture board.',
+      },
+      {
+        name: 'External doors: auditors & suppliers',
+        body: 'Expiring, revocable token access for a notified-body auditor into a technical file — and for a supplier answering an evidence ask. No accounts, no exposure.',
+      },
     ],
     journeyKicker: 'The compliance journey',
     journeyTitle: 'Eight steps, per product',
@@ -74,11 +89,11 @@ const copy = {
   nl: {
     seoTitle: 'Het platform — OXOT Conformance Platform',
     seoDescription:
-      'Zes modules en een conformiteitstraject van acht stappen: van classificatie tot een verdedigbaar technisch dossier volgens Bijlage VII, met wettelijke Artikel 14-klokken die live lopen.',
+      'Het geleverde platform: rolbewuste productdossiers, het CRA-traject van acht stappen, incidenten en wettelijke klokken, de woordelijke wettenbibliotheek, CRA-leveranciersbeheer voor exploitanten, en rapporten — één dossier, elke verordening.',
     headerKicker: 'HET PLATFORM',
     headerTitle: 'Eén dossier, elke verordening',
     headerDescription:
-      'Het OXOT Conformance Platform voert CRA-conformiteit uit als een operatie: elk product met digitale elementen als een levend dossier, een begeleid traject per product, en de wettelijke klokken die lopen waar u ze kunt zien. Zes modules, één dossier.',
+      'Het OXOT Conformance Platform voert productconformiteit uit als een operatie: elk product met digitale elementen als een levend dossier, een begeleid traject per product, en de wettelijke klokken die lopen waar u ze kunt zien. Eén dossier — en het spreekt de eigen taal van elke wet.',
     modules: [
       {
         name: 'Productportfolio',
@@ -104,6 +119,18 @@ const copy = {
         name: 'Conformiteitsbeoordelingsrapporten',
         body: 'Volledige rapporten, bestuursedities en maatwerkrapporten — de status van elk product ten opzichte van zijn verplichtingen, klaar voor een auditor of een bestuur.',
       },
+      {
+        name: 'De wettenbibliotheek',
+        body: 'Woordelijke, geactualiseerde wiki\u2019s voor de CRA, NIS2, de AI-verordening, de Machineverordening, RED, de AVG en de Dataverordening — plus de Nederlandse en Duitse NIS2-omzettingen — rectificaties toegepast en vermeld, tekengetrouw geverifieerd in CI.',
+      },
+      {
+        name: 'CRA-leveranciersbeheer (exploitanten)',
+        body: 'Een leveranciersregister over uw apparatuurbestand: inkoopfeiten per apparaat tegen de artikel 13-plichten van de CRA, een beveiligde deur voor leveranciersinzendingen, en een standenbord per leverancier.',
+      },
+      {
+        name: 'Externe deuren: auditors & leveranciers',
+        body: 'Verlopende, intrekbare token-toegang voor een aangemelde-instantie-auditor tot een technisch dossier — en voor een leverancier die een bewijsverzoek beantwoordt. Geen accounts, geen blootstelling.',
+      },
     ],
     journeyKicker: 'Het conformiteitstraject',
     journeyTitle: 'Acht stappen, per product',
@@ -124,7 +151,7 @@ const copy = {
   },
 } as const;
 
-const MODULE_ICONS = [Boxes, Compass, ClipboardList, FileCheck2, ShieldAlert, FileBarChart];
+const MODULE_ICONS = [Boxes, Compass, ClipboardList, FileCheck2, ShieldAlert, FileBarChart, BookOpen, Factory, KeyRound];
 
 export default function ProductPage() {
   const { locale } = useLocale();

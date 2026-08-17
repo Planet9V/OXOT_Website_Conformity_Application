@@ -18,6 +18,7 @@ import { useLocale } from '@/providers/locale-provider';
 // by index from the locale copy object below so the nav renders per-locale.
 const FUNNEL_NAV = [
   { href: '/product' },
+  { href: '/operators' },
   { href: '/pricing' },
   { href: '/deployment' },
   { href: '/blog' },
@@ -28,7 +29,7 @@ const FUNNEL_NAV = [
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'Pricing', 'Deployment', 'Blogs', 'Resources'],
+    nav: ['Platform', 'For operators', 'Pricing', 'Deployment', 'Blogs', 'Resources'],
     homeAria: 'OXOT Conformance Platform — home',
     lightMode: 'Switch to light mode',
     darkMode: 'Switch to dark mode',
@@ -42,7 +43,7 @@ const copy = {
     switchToNl: 'Schakel naar Nederlands',
   },
   nl: {
-    nav: ['Platform', 'Prijzen', 'Implementatie', 'Blogs', 'Bronnen'],
+    nav: ['Platform', 'Voor exploitanten', 'Prijzen', 'Implementatie', 'Blogs', 'Bronnen'],
     homeAria: 'OXOT Conformance Platform — startpagina',
     lightMode: 'Schakel naar lichte modus',
     darkMode: 'Schakel naar donkere modus',
