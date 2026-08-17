@@ -330,3 +330,37 @@ the meaning of Art. 64(10).
   docs re-checked: their "10 Dec" hits are the 2024 entry into force
   (correct). Gates: G1 · G2 726/726 · G3 · G4/G5/G8 = 0 · G6 hero
   visible on first paint.
+
+## 2026-08-17 (morning) — Phase 21: the operator shape (21.1–21.5 build)
+- 21.1 Supplier register: conformity_suppliers + products.supplierId
+  (FK, set-null on supplier delete — assets outlive relationships) +
+  spec-first CRUD + product linkage validation (400, never a 500 FK
+  blast) + Organisation Suppliers panel + product-edit picker. 6 tests.
+- 21.2 Procurement check: tri-state facts per product, each anchored to
+  the CRA duty binding the SUPPLIER's manufacturer — anchors verified
+  verbatim from the corpus (Art 13(12)+30, 13(15)–(20)); SBOM honestly
+  labelled contractual. Pure derivation lib (on-file / not-provided /
+  unanswered, no verdicts) + unit tests; OperatorProcurementPanel
+  mounts for orgRole=operator. 9 more tests.
+- 21.3 Posture board: per-supplier rollup (counts + soonest support
+  end; unlinked operator products NAMED, never omitted) + drill-in on
+  the Suppliers panel. 5 more tests.
+- 21.4 Supplier documents (upload/link, sha256-fingerprinted, files
+  GC'd on delete AND on product delete) + asks with expiring revocable
+  door tokens (auditor-portal pattern) + the PUBLIC door
+  /supplier-portal: rate-limited, no-enumeration 401s, link/note
+  submissions only — a public file-write path deliberately deferred to
+  a security review. Full door flow tested (ask → workspace → submit →
+  fulfilled document with provenance). 5 more tests.
+- 21.5 Demo story: Fieldbus Automation GmbH + a purchased FA-2200
+  gateway with the honest mixed check state seeded idempotently, so
+  every demo shows the whitespace shape.
+- G8 grew 20 → 26 capabilities, all reached. G1/G3/G4/G5 green.
+- 21 G6: full operator walk live — Suppliers panel + posture drill-in
+  (3/6 on file · 1 not provided · 3 unanswered · support horizon
+  31 Mar 2029), the operator product file (checklist with verbatim
+  anchors, seeded DoC, RED handover beneath), and the DOOR round-trip
+  end-to-end in the browser: ask (support_period_statement) → public
+  /supplier-portal token page → supplier text submission → ask
+  fulfilled + document filed with supplier_token provenance (verified
+  in the live db). G2 751/751 zero-skips (+25). Screenshots reviewed.

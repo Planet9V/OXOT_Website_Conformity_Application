@@ -1420,3 +1420,46 @@ real persona in the app, with evidence.
 - **20.4 done** The review + page-by-page specification, written to
   docs/marketing/ and reported honestly; implementation phases offered
   as candidates, not assumed.
+
+## OPEN ITEM (user-flagged 2026-08-17, address later)
+Podcast narration scripts still carry pre-correction CRA dates (e.g.
+docs/cra_podcast/episodes/EP_1.01 has "10 December 2027" forms; the
+user reports the date fix was SUPPOSED to have been applied across all
+podcast narratives). Podcasts will be regenerated from the scripts, so
+the scripts must be date-audited (10→11 Dec 2027, 10→11 Sep 2026, and
+any other statutory facts) BEFORE the next generation run. Not in
+scope for Phase 21.
+
+## Phase 21 — The operator shape: supplier CRA management (opened + closed 2026-08-17)
+
+User: "finish the operator role completely and make it the star — this
+IS the whitespace." Design doctrine: the CRA binds the SUPPLIER, not
+the operator — the operator's statutory hook is NIS2 Art 21(2)(d)
+supply-chain security; every checklist item must cite what obliges the
+supplier (corpus-verified), and contractual asks (SBOM) are labelled
+contractual, never statutory. Nothing concludes "supplier compliant" —
+the register records what is on file and what is not.
+
+- **21. done** The supplier register: `conformity_suppliers` +
+  `products.supplier_id` (nullable FK) + `conformity_supplier_documents`
+  (productId, docType, objectPath/sha256, submittedVia, storage-GC'd
+  like evidence — evidence rides assessments, which operators honestly
+  do not have). Spec-first CRUD + linkage; Organisation-page Suppliers
+  panel; API tests; G8 reach for every new capability.
+- **21. done** Procurement facts + the operator product-file shape:
+  tri-state per-product procurement checklist (CE sighted, DoC on
+  file, user information received, support period stated, security
+  contact known; SBOM = contractual) with each item's supplier-side
+  anchor verified against the CRA corpus; pure derivation lib
+  (gaps, never verdicts) + unit tests; OperatorProcurementPanel
+  mounted for orgRole=operator.
+- **21. done** The posture board: per-supplier portfolio derivation
+  (products, document coverage, support-period horizon, checklist
+  completion, open asks) as a pure lib + endpoint + drill-in UI.
+- **21. done** Supplier asks + the external door: token-scoped submission
+  page (auditor-portal pattern: expiring, revocable, rate-limited)
+  where a supplier uploads the asked document; fulfilment attaches it
+  as a supplier document with provenance.
+- **21. done** Star polish: demo workspace seeds an operator story;
+  cockpit/Home tie-in; full operator G6 walk with reviewed
+  screenshots; G7 retro. Then Phases 20b–20d (website) highlight it.

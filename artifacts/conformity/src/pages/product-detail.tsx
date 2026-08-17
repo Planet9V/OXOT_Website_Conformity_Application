@@ -7,6 +7,7 @@ import {
   useDeleteConformityAssessment,
   useDeleteConformityProduct,
   useUpdateConformityProduct,
+  useListConformitySuppliers,
 } from "@workspace/api-client-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -45,6 +46,7 @@ import { AuditorAccessPanel } from "@/components/product-file/auditor-access-pan
 import { ProductUsersPanel } from "@/components/product-file/product-users-panel";
 import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufacturer-panel";
 import { RedHandoverPanel } from "@/components/product-file/red-handover-panel";
+import { OperatorProcurementPanel } from "@/components/product-file/operator-procurement-panel";
 import {
   Select,
   SelectContent,
@@ -387,6 +389,7 @@ export default function ProductDetail() {
     manufacturerAddress: "",
     description: "",
     orgRole: "unassigned",
+    supplierId: "none",
   });
 
   useEffect(() => {
@@ -401,10 +404,12 @@ export default function ProductDetail() {
         manufacturerAddress: data.product.manufacturerAddress || "",
         description: data.product.description || "",
         orgRole: (data.product as any).orgRole ?? "unassigned",
+        supplierId: (data.product as any).supplierId != null ? String((data.product as any).supplierId) : "none",
       });
     }
   }, [data?.product]);
 
+  const suppliersQuery = useListConformitySuppliers();
   const updateProduct = useUpdateConformityProduct({
     mutation: {
       onSuccess: () => {
@@ -482,6 +487,7 @@ export default function ProductDetail() {
         ...editForm,
         name: editForm.name.trim(),
         orgRole: editForm.orgRole === "unassigned" ? null : editForm.orgRole,
+        supplierId: editForm.supplierId === "none" ? null : Number(editForm.supplierId),
       } as any,
     });
   };
@@ -590,6 +596,15 @@ export default function ProductDetail() {
           The file shows the standard content until the role is set in
           "Edit Product Information" — it does not guess.
         </p>
+      )}
+
+      {/* 21.2 — the operator shape: what the supplier's manufacturer has
+          provided. Only the operator wears this hat. */}
+      {orgRole === "operator" && (
+        <OperatorProcurementPanel
+          productId={id}
+          supplierId={(product as any).supplierId ?? null}
+        />
       )}
 
       {/* The 2022/30 scoping fact and the RED→CRA handover it drives (18.2).
@@ -873,6 +888,25 @@ export default function ProductDetail() {
                   {ORG_ROLE_OPTIONS.map((o) => (
                     <SelectItem key={o.value} value={o.value}>
                       {o.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </FormField>
+
+            <FormField label="Procured From (supplier)">
+              <Select
+                value={editForm.supplierId}
+                onValueChange={(v) => setEditForm({ ...editForm, supplierId: v })}
+              >
+                <SelectTrigger className="rounded-lg h-9 text-xs" id="edit-product-supplier">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">Not recorded / own product</SelectItem>
+                  {(suppliersQuery.data?.suppliers ?? []).map((sup) => (
+                    <SelectItem key={sup.id} value={String(sup.id)}>
+                      {sup.name}
                     </SelectItem>
                   ))}
                 </SelectContent>

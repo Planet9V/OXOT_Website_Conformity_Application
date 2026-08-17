@@ -32,6 +32,10 @@ import {
   conformityIncidentSubmissionsTable,
   conformityAlertStateTable,
   conformityActivityTable,
+  conformitySuppliersTable,
+  conformitySupplierDocumentsTable,
+  conformitySupplierRequestsTable,
+  conformityProcurementChecksTable,
   conformityEmbeddingsTable,
   conformityMembersTable,
   conformityProductRevisionsTable,
@@ -220,6 +224,8 @@ function toProductDto(p: ConformityProductRow) {
     supportPeriodEnd: p.supportPeriodEnd ?? null,
     // 2022/30 scoping fact (18.1) — null means nobody has answered yet.
     redInScope: p.redInScope ?? null,
+    // Procurement relationship (21.1) — null for own products or unrecorded.
+    supplierId: p.supplierId ?? null,
     createdAt: p.createdAt.toISOString(),
     updatedAt: p.updatedAt.toISOString(),
   };
@@ -893,6 +899,15 @@ router.get("/conformity/cra-analytics", requireAuth, async (req, res): Promise<v
 // Products
 // ---------------------------------------------------------------------------
 
+/** 400 (not a 500 FK violation) when a product body names a supplier that does not exist. */
+async function supplierExists(supplierId: number): Promise<boolean> {
+  const [row] = await db
+    .select({ id: conformitySuppliersTable.id })
+    .from(conformitySuppliersTable)
+    .where(eq(conformitySuppliersTable.id, supplierId));
+  return !!row;
+}
+
 router.get("/conformity/products", requireAuth, async (_req, res): Promise<void> => {
   const rows = await db
     .select()
@@ -903,6 +918,10 @@ router.get("/conformity/products", requireAuth, async (_req, res): Promise<void>
 
 router.post("/conformity/products", requireAuth, async (req, res): Promise<void> => {
   const body = CreateConformityProductBody.parse(req.body);
+  if (body.supplierId != null && !(await supplierExists(body.supplierId))) {
+    res.status(400).json({ error: `Supplier ${body.supplierId} does not exist` });
+    return;
+  }
   const [row] = await db.transaction(async (tx) => {
     const rows = await tx
       .insert(conformityProductsTable)
@@ -919,6 +938,7 @@ router.post("/conformity/products", requireAuth, async (req, res): Promise<void>
         supportPeriodStart: body.supportPeriodStart ?? null,
         supportPeriodEnd: body.supportPeriodEnd ?? null,
         redInScope: body.redInScope ?? null,
+        supplierId: body.supplierId ?? null,
       })
       .returning();
     // Workspace-level ledger row (assessmentId null): products exist above
@@ -1092,6 +1112,10 @@ router.get("/conformity/products/:id", requireAuth, async (req, res): Promise<vo
 router.put("/conformity/products/:id", requireAuth, async (req, res): Promise<void> => {
   const { id } = UpdateConformityProductParams.parse(req.params);
   const body = UpdateConformityProductBody.parse(req.body);
+  if (body.supplierId != null && !(await supplierExists(body.supplierId))) {
+    res.status(400).json({ error: `Supplier ${body.supplierId} does not exist` });
+    return;
+  }
   const existing = await loadProduct(id);
   if (!existing) {
     res.status(404).json({ error: "Product not found" });
@@ -1109,6 +1133,7 @@ router.put("/conformity/products/:id", requireAuth, async (req, res): Promise<vo
   if (body.supportPeriodStart !== undefined) set.supportPeriodStart = body.supportPeriodStart;
   if (body.supportPeriodEnd !== undefined) set.supportPeriodEnd = body.supportPeriodEnd;
   if (body.redInScope !== undefined) set.redInScope = body.redInScope;
+  if (body.supplierId !== undefined) set.supplierId = body.supplierId;
 
   const [row] = await db.transaction(async (tx) => {
     const rows = await tx
@@ -1148,7 +1173,23 @@ router.delete("/conformity/products/:id", requireAuth, async (req, res): Promise
       eq(conformityEvidenceTable.assessmentId, conformityAssessmentsTable.id),
     )
     .where(eq(conformityAssessmentsTable.productId, id));
+  // 21.4: supplier documents don't cascade (no FK) — collect their stored
+  // files and delete their rows (plus the procurement check and open asks)
+  // inside the same transaction.
+  const supplierDocs = await db
+    .select({ objectPath: conformitySupplierDocumentsTable.objectPath })
+    .from(conformitySupplierDocumentsTable)
+    .where(eq(conformitySupplierDocumentsTable.productId, id));
   await db.transaction(async (tx) => {
+    await tx
+      .delete(conformitySupplierDocumentsTable)
+      .where(eq(conformitySupplierDocumentsTable.productId, id));
+    await tx
+      .delete(conformitySupplierRequestsTable)
+      .where(eq(conformitySupplierRequestsTable.productId, id));
+    await tx
+      .delete(conformityProcurementChecksTable)
+      .where(eq(conformityProcurementChecksTable.productId, id));
     await tx.delete(conformityProductsTable).where(eq(conformityProductsTable.id, id));
     // Assessment-scoped activity rows cascade away with their assessments;
     // this workspace-level row (assessmentId null) is what survives to record
@@ -1162,7 +1203,10 @@ router.delete("/conformity/products/:id", requireAuth, async (req, res): Promise
       summary: `Product "${existing.name}" deleted`,
     });
   });
-  await removeStoredEvidenceFiles(req, orphaned.map((r) => r.objectPath));
+  await removeStoredEvidenceFiles(req, [
+    ...orphaned.map((r) => r.objectPath),
+    ...supplierDocs.map((r) => r.objectPath),
+  ]);
   res.json(DeleteConformityProductResponse.parse({ success: true }));
 });
 

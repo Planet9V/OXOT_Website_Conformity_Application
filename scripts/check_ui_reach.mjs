@@ -69,6 +69,16 @@ const CAPABILITIES = [
   { name: "product users",       path: "/users",                        home: "Products -> product file", hook: "useListProductUsers" },
   { name: "impacted users",      path: "/impacted-users",               home: "Incidents -> advisory",    hook: "useGetAdvisoryImpactedUsers" },
   { name: "user notifications",  path: "/user-notifications",           home: "Products -> product file; Incidents", hook: "useListUserNotifications" },
+  // 21.1 — the operator shape's supplier register.
+  { name: "suppliers",           path: "/conformity/suppliers",         home: "Organisation -> Suppliers", hook: "useListConformitySuppliers" },
+  // 21.2 — the operator's per-product procurement check.
+  { name: "procurement check",   path: "/procurement-check",            home: "Products -> product file (operator)", hook: "useGetProcurementCheck" },
+  // 21.3 — the per-supplier posture board.
+  { name: "supplier posture",    path: "/conformity/suppliers/posture", home: "Organisation -> Suppliers", hook: "useGetSupplierPosture" },
+  // 21.4 — supplier documents, asks, and the public door.
+  { name: "supplier documents",  path: "/supplier-documents",           home: "Products -> product file (operator)", hook: "useListSupplierDocuments" },
+  { name: "supplier requests",   path: "/supplier-requests",            home: "Products -> product file (operator)", hook: "useListSupplierRequests" },
+  { name: "supplier door",       path: "/conformity/supplier-portal",   home: "/supplier-portal (external)" },
 ];
 
 /** Every /api/... literal, including template-literal segments like ${id}. */

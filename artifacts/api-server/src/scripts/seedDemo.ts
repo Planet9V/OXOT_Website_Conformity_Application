@@ -22,6 +22,9 @@ import { and, asc, eq, sql } from "drizzle-orm";
 import {
   db,
   conformityProductsTable,
+  conformitySuppliersTable,
+  conformityProcurementChecksTable,
+  conformitySupplierDocumentsTable,
   conformityAssessmentsTable,
   conformityAnswersTable,
   conformityEvaluationsTable,
@@ -447,6 +450,99 @@ export async function seedDemo(): Promise<void> {
         .returning();
     } else {
       [product] = await tx.insert(conformityProductsTable).values(productValues).returning();
+    }
+
+    // --- The operator story (21.5): the demo org also OPERATES purchased
+    // equipment, so the whitespace shape is visible in every demo — a
+    // supplier, a linked purchased device, a half-answered procurement
+    // check (the honest mixed state), and one supplier document on file.
+    const OPERATOR_PRODUCT = "FA-2200 Remote I/O Gateway (purchased)";
+    const SUPPLIER_NAME = "Fieldbus Automation GmbH";
+    const [existingSupplier] = await tx
+      .select()
+      .from(conformitySuppliersTable)
+      .where(eq(conformitySuppliersTable.name, SUPPLIER_NAME));
+    const supplierValues = {
+      name: SUPPLIER_NAME,
+      contact: "product-security@fieldbus-automation.example",
+      website: "https://fieldbus-automation.example",
+      notes: "OT remote-I/O vendor for the demo plant.",
+    };
+    const [demoSupplier] = existingSupplier
+      ? await tx
+          .update(conformitySuppliersTable)
+          .set(supplierValues)
+          .where(eq(conformitySuppliersTable.id, existingSupplier.id))
+          .returning()
+      : await tx.insert(conformitySuppliersTable).values(supplierValues).returning();
+
+    const operatorProductValues = {
+      name: OPERATOR_PRODUCT,
+      description:
+        "A purchased remote I/O gateway on the demo plant network. The organisation OPERATES this device — the CRA binds its supplier; this file records what the supplier has provided.",
+      manufacturerName: "Fieldbus Automation GmbH",
+      manufacturerAddress: "Industriestraße 7, 76131 Karlsruhe, Germany",
+      productType: "hardware",
+      version: "FA-2200 fw 3.1",
+      intendedUse: "Remote I/O aggregation for the packaging line PLCs.",
+      orgRole: "operator",
+      supplierId: demoSupplier!.id,
+      supportPeriodEnd: "2029-03-31",
+    };
+    const [existingOperatorProduct] = await tx
+      .select()
+      .from(conformityProductsTable)
+      .where(eq(conformityProductsTable.name, OPERATOR_PRODUCT));
+    const [operatorProduct] = existingOperatorProduct
+      ? await tx
+          .update(conformityProductsTable)
+          .set(operatorProductValues)
+          .where(eq(conformityProductsTable.id, existingOperatorProduct.id))
+          .returning()
+      : await tx.insert(conformityProductsTable).values(operatorProductValues).returning();
+
+    const checkValues = {
+      productId: operatorProduct!.id,
+      // The honest mixed state: some facts on file, one reported missing,
+      // the rest genuinely unanswered — the state a real intake starts in.
+      ceMarkingSighted: true,
+      docOnFile: true,
+      supportPeriodStated: false,
+      userInformationReceived: null,
+      securityContactKnown: null,
+      manufacturerIdentified: true,
+      sbomReceived: null,
+      note: "DoC received with the shipment; support period missing from the invoice and datasheet — chase.",
+      updatedBy: "seed:demo",
+    };
+    const [existingCheck] = await tx
+      .select()
+      .from(conformityProcurementChecksTable)
+      .where(eq(conformityProcurementChecksTable.productId, operatorProduct!.id));
+    if (existingCheck) {
+      await tx
+        .update(conformityProcurementChecksTable)
+        .set(checkValues)
+        .where(eq(conformityProcurementChecksTable.id, existingCheck.id));
+    } else {
+      await tx.insert(conformityProcurementChecksTable).values(checkValues);
+    }
+
+    const DOC_TITLE = "EU declaration of conformity — FA-2200 (supplier PDF)";
+    const [existingDoc] = await tx
+      .select()
+      .from(conformitySupplierDocumentsTable)
+      .where(eq(conformitySupplierDocumentsTable.productId, operatorProduct!.id));
+    if (!existingDoc) {
+      await tx.insert(conformitySupplierDocumentsTable).values({
+        productId: operatorProduct!.id,
+        docType: "declaration_of_conformity",
+        title: DOC_TITLE,
+        url: "https://fieldbus-automation.example/compliance/fa-2200-doc.pdf",
+        note: "Received with the delivery note, 2026-07.",
+        submittedVia: "internal_upload",
+        submittedBy: "seed:demo",
+      });
     }
 
     // --- Upsert the assessment (by product + regulation) ---

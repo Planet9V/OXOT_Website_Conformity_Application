@@ -98,6 +98,7 @@ function product(): ConformityProductRow {
     supportPeriodStart: null,
     supportPeriodEnd: null,
     redInScope: null,
+    supplierId: null,
   expectedUseTimeMonths: null,
   supportPeriodRationale: "",
     createdAt: NOW,

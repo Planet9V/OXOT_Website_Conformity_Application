@@ -1,4 +1,5 @@
 import { pgTable, serial, text, timestamp, integer, boolean } from "drizzle-orm/pg-core";
+import { conformitySuppliersTable } from "./conformitySuppliers";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
@@ -43,6 +44,16 @@ export const conformityProductsTable = pgTable("conformity_products", {
    * scoping FACT, never defaulted or guessed.
    */
   redInScope: boolean("red_in_scope"),
+  /**
+   * The supplier this product was procured from (conformity_suppliers) — the
+   * operator/asset-owner pivot (Phase 21). Null for products the organisation
+   * makes itself, or until somebody records the relationship. Deliberately a
+   * SEPARATE fact from manufacturerName: who built it and who sold it to you
+   * are different questions (a distributor sells another maker's device).
+   */
+  supplierId: integer("supplier_id").references(() => conformitySuppliersTable.id, {
+    onDelete: "set null",
+  }),
   /**
    * ISO date the product was placed on the market, or null before it has been.
    * This is the anchor for the Art. 13(13) and 13(18) retention clocks. It is

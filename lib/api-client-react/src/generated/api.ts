@@ -78,6 +78,9 @@ import type {
   ConformityPsirtProfile,
   ConformityReportExport,
   ConformitySummary,
+  ConformitySupplier,
+  ConformitySupplierInput,
+  ConformitySupplierList,
   ConformityVulnReport,
   ConnectionTestResult,
   CreateAdvisoryInput,
@@ -108,6 +111,7 @@ import type {
   GetConformityReport200,
   GetIntegrationActivityParams,
   GetSocialStatusParams,
+  GetSupplierPortalWorkspaceParams,
   HealthStatus,
   ImportConformityProductsInput,
   ImportConformityProductsResult,
@@ -149,6 +153,8 @@ import type {
   PageSummary,
   PageTemplate,
   PageVersion,
+  ProcurementCheck,
+  ProcurementFactsInput,
   ProductUser,
   ProductUserList,
   PublicSecurityAdvisory,
@@ -184,6 +190,15 @@ import type {
   SubmitVulnReportInput,
   SubscribeInput,
   SuggestLinksInput,
+  SupplierDocument,
+  SupplierDocumentInput,
+  SupplierDocumentList,
+  SupplierPortalSubmitBody,
+  SupplierPortalWorkspace,
+  SupplierPostureList,
+  SupplierRequest,
+  SupplierRequestInput,
+  SupplierRequestList,
   TeamDirectoryEntry,
   TeamMember,
   ThemeCoverage,
@@ -8439,6 +8454,1121 @@ export function useGetConformityFlow<TData = Awaited<ReturnType<typeof getConfor
 
 
 
+
+export const getListConformitySuppliersUrl = () => {
+
+
+
+
+  return `/api/conformity/suppliers`
+}
+
+/**
+ * The operator/asset-owner supplier register (Phase 21). A supplier row is a business-relationship record — nothing here states or implies a legal status about the supplier.
+ * @summary List suppliers with their product counts
+ */
+export const listConformitySuppliers = async ( options?: RequestInit): Promise<ConformitySupplierList> => {
+
+  return customFetch<ConformitySupplierList>(getListConformitySuppliersUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListConformitySuppliersQueryKey = () => {
+    return [
+    `/api/conformity/suppliers`
+    ] as const;
+    }
+
+
+export const getListConformitySuppliersQueryOptions = <TData = Awaited<ReturnType<typeof listConformitySuppliers>>, TError = ErrorType<UnauthorizedResponse>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listConformitySuppliers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListConformitySuppliersQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listConformitySuppliers>>> = ({ signal }) => listConformitySuppliers({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listConformitySuppliers>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListConformitySuppliersQueryResult = NonNullable<Awaited<ReturnType<typeof listConformitySuppliers>>>
+export type ListConformitySuppliersQueryError = ErrorType<UnauthorizedResponse>
+
+
+/**
+ * @summary List suppliers with their product counts
+ */
+
+export function useListConformitySuppliers<TData = Awaited<ReturnType<typeof listConformitySuppliers>>, TError = ErrorType<UnauthorizedResponse>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listConformitySuppliers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListConformitySuppliersQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateConformitySupplierUrl = () => {
+
+
+
+
+  return `/api/conformity/suppliers`
+}
+
+/**
+ * @summary Register a supplier
+ */
+export const createConformitySupplier = async (conformitySupplierInput: ConformitySupplierInput, options?: RequestInit): Promise<ConformitySupplier> => {
+
+  return customFetch<ConformitySupplier>(getCreateConformitySupplierUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(conformitySupplierInput)
+  }
+);}
+
+
+
+
+
+export const getCreateConformitySupplierMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createConformitySupplier>>, TError,{data: BodyType<ConformitySupplierInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createConformitySupplier>>, TError,{data: BodyType<ConformitySupplierInput>}, TContext> => {
+
+const mutationKey = ['createConformitySupplier'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createConformitySupplier>>, {data: BodyType<ConformitySupplierInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createConformitySupplier(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateConformitySupplierMutationResult = NonNullable<Awaited<ReturnType<typeof createConformitySupplier>>>
+    export type CreateConformitySupplierMutationBody = BodyType<ConformitySupplierInput>
+    export type CreateConformitySupplierMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse>
+
+    /**
+ * @summary Register a supplier
+ */
+export const useCreateConformitySupplier = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createConformitySupplier>>, TError,{data: BodyType<ConformitySupplierInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createConformitySupplier>>,
+        TError,
+        {data: BodyType<ConformitySupplierInput>},
+        TContext
+      > => {
+      return useMutation(getCreateConformitySupplierMutationOptions(options));
+    }
+
+export const getGetSupplierPostureUrl = () => {
+
+
+
+
+  return `/api/conformity/suppliers/posture`
+}
+
+/**
+ * For every supplier: its linked products with each product's procurement-check counts and support-period end. Pure derivation from recorded facts — on-file / not-provided / unanswered counts, never a verdict about any supplier.
+ * @summary Portfolio posture per supplier
+ */
+export const getSupplierPosture = async ( options?: RequestInit): Promise<SupplierPostureList> => {
+
+  return customFetch<SupplierPostureList>(getGetSupplierPostureUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupplierPostureQueryKey = () => {
+    return [
+    `/api/conformity/suppliers/posture`
+    ] as const;
+    }
+
+
+export const getGetSupplierPostureQueryOptions = <TData = Awaited<ReturnType<typeof getSupplierPosture>>, TError = ErrorType<UnauthorizedResponse>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupplierPosture>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupplierPostureQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupplierPosture>>> = ({ signal }) => getSupplierPosture({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupplierPosture>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupplierPostureQueryResult = NonNullable<Awaited<ReturnType<typeof getSupplierPosture>>>
+export type GetSupplierPostureQueryError = ErrorType<UnauthorizedResponse>
+
+
+/**
+ * @summary Portfolio posture per supplier
+ */
+
+export function useGetSupplierPosture<TData = Awaited<ReturnType<typeof getSupplierPosture>>, TError = ErrorType<UnauthorizedResponse>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupplierPosture>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupplierPostureQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getUpdateConformitySupplierUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/suppliers/${id}`
+}
+
+/**
+ * @summary Update a supplier
+ */
+export const updateConformitySupplier = async (id: number,
+    conformitySupplierInput: ConformitySupplierInput, options?: RequestInit): Promise<ConformitySupplier> => {
+
+  return customFetch<ConformitySupplier>(getUpdateConformitySupplierUrl(id),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(conformitySupplierInput)
+  }
+);}
+
+
+
+
+
+export const getUpdateConformitySupplierMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateConformitySupplier>>, TError,{id: number;data: BodyType<ConformitySupplierInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateConformitySupplier>>, TError,{id: number;data: BodyType<ConformitySupplierInput>}, TContext> => {
+
+const mutationKey = ['updateConformitySupplier'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateConformitySupplier>>, {id: number;data: BodyType<ConformitySupplierInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  updateConformitySupplier(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateConformitySupplierMutationResult = NonNullable<Awaited<ReturnType<typeof updateConformitySupplier>>>
+    export type UpdateConformitySupplierMutationBody = BodyType<ConformitySupplierInput>
+    export type UpdateConformitySupplierMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Update a supplier
+ */
+export const useUpdateConformitySupplier = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateConformitySupplier>>, TError,{id: number;data: BodyType<ConformitySupplierInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateConformitySupplier>>,
+        TError,
+        {id: number;data: BodyType<ConformitySupplierInput>},
+        TContext
+      > => {
+      return useMutation(getUpdateConformitySupplierMutationOptions(options));
+    }
+
+export const getDeleteConformitySupplierUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/suppliers/${id}`
+}
+
+/**
+ * @summary Delete a supplier (products are unlinked, never deleted)
+ */
+export const deleteConformitySupplier = async (id: number, options?: RequestInit): Promise<OkResponse> => {
+
+  return customFetch<OkResponse>(getDeleteConformitySupplierUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteConformitySupplierMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteConformitySupplier>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteConformitySupplier>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteConformitySupplier'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteConformitySupplier>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteConformitySupplier(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteConformitySupplierMutationResult = NonNullable<Awaited<ReturnType<typeof deleteConformitySupplier>>>
+
+    export type DeleteConformitySupplierMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Delete a supplier (products are unlinked, never deleted)
+ */
+export const useDeleteConformitySupplier = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteConformitySupplier>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteConformitySupplier>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteConformitySupplierMutationOptions(options));
+    }
+
+export const getListSupplierDocumentsUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/supplier-documents`
+}
+
+/**
+ * @summary Documents the supplier has provided for this product
+ */
+export const listSupplierDocuments = async (id: number, options?: RequestInit): Promise<SupplierDocumentList> => {
+
+  return customFetch<SupplierDocumentList>(getListSupplierDocumentsUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListSupplierDocumentsQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/supplier-documents`
+    ] as const;
+    }
+
+
+export const getListSupplierDocumentsQueryOptions = <TData = Awaited<ReturnType<typeof listSupplierDocuments>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listSupplierDocuments>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListSupplierDocumentsQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listSupplierDocuments>>> = ({ signal }) => listSupplierDocuments(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listSupplierDocuments>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListSupplierDocumentsQueryResult = NonNullable<Awaited<ReturnType<typeof listSupplierDocuments>>>
+export type ListSupplierDocumentsQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary Documents the supplier has provided for this product
+ */
+
+export function useListSupplierDocuments<TData = Awaited<ReturnType<typeof listSupplierDocuments>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listSupplierDocuments>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListSupplierDocumentsQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getAddSupplierDocumentUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/supplier-documents`
+}
+
+/**
+ * @summary Record a supplier document (internal upload or external link)
+ */
+export const addSupplierDocument = async (id: number,
+    supplierDocumentInput: SupplierDocumentInput, options?: RequestInit): Promise<SupplierDocument> => {
+
+  return customFetch<SupplierDocument>(getAddSupplierDocumentUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supplierDocumentInput)
+  }
+);}
+
+
+
+
+
+export const getAddSupplierDocumentMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof addSupplierDocument>>, TError,{id: number;data: BodyType<SupplierDocumentInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof addSupplierDocument>>, TError,{id: number;data: BodyType<SupplierDocumentInput>}, TContext> => {
+
+const mutationKey = ['addSupplierDocument'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof addSupplierDocument>>, {id: number;data: BodyType<SupplierDocumentInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  addSupplierDocument(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type AddSupplierDocumentMutationResult = NonNullable<Awaited<ReturnType<typeof addSupplierDocument>>>
+    export type AddSupplierDocumentMutationBody = BodyType<SupplierDocumentInput>
+    export type AddSupplierDocumentMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Record a supplier document (internal upload or external link)
+ */
+export const useAddSupplierDocument = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof addSupplierDocument>>, TError,{id: number;data: BodyType<SupplierDocumentInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof addSupplierDocument>>,
+        TError,
+        {id: number;data: BodyType<SupplierDocumentInput>},
+        TContext
+      > => {
+      return useMutation(getAddSupplierDocumentMutationOptions(options));
+    }
+
+export const getDeleteSupplierDocumentUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/supplier-documents/${id}`
+}
+
+/**
+ * @summary Delete a supplier document (its stored file is removed too)
+ */
+export const deleteSupplierDocument = async (id: number, options?: RequestInit): Promise<OkResponse> => {
+
+  return customFetch<OkResponse>(getDeleteSupplierDocumentUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteSupplierDocumentMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteSupplierDocument>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteSupplierDocument>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteSupplierDocument'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteSupplierDocument>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteSupplierDocument(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteSupplierDocumentMutationResult = NonNullable<Awaited<ReturnType<typeof deleteSupplierDocument>>>
+
+    export type DeleteSupplierDocumentMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Delete a supplier document (its stored file is removed too)
+ */
+export const useDeleteSupplierDocument = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteSupplierDocument>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteSupplierDocument>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteSupplierDocumentMutationOptions(options));
+    }
+
+export const getListSupplierRequestsUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/supplier-requests`
+}
+
+/**
+ * @summary Evidence asks sent to the supplier for this product
+ */
+export const listSupplierRequests = async (id: number, options?: RequestInit): Promise<SupplierRequestList> => {
+
+  return customFetch<SupplierRequestList>(getListSupplierRequestsUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListSupplierRequestsQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/supplier-requests`
+    ] as const;
+    }
+
+
+export const getListSupplierRequestsQueryOptions = <TData = Awaited<ReturnType<typeof listSupplierRequests>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listSupplierRequests>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListSupplierRequestsQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listSupplierRequests>>> = ({ signal }) => listSupplierRequests(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listSupplierRequests>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListSupplierRequestsQueryResult = NonNullable<Awaited<ReturnType<typeof listSupplierRequests>>>
+export type ListSupplierRequestsQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary Evidence asks sent to the supplier for this product
+ */
+
+export function useListSupplierRequests<TData = Awaited<ReturnType<typeof listSupplierRequests>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listSupplierRequests>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListSupplierRequestsQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateSupplierRequestUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/supplier-requests`
+}
+
+/**
+ * @summary Ask the supplier for a document (issues an expiring door token)
+ */
+export const createSupplierRequest = async (id: number,
+    supplierRequestInput: SupplierRequestInput, options?: RequestInit): Promise<SupplierRequest> => {
+
+  return customFetch<SupplierRequest>(getCreateSupplierRequestUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supplierRequestInput)
+  }
+);}
+
+
+
+
+
+export const getCreateSupplierRequestMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createSupplierRequest>>, TError,{id: number;data: BodyType<SupplierRequestInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createSupplierRequest>>, TError,{id: number;data: BodyType<SupplierRequestInput>}, TContext> => {
+
+const mutationKey = ['createSupplierRequest'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createSupplierRequest>>, {id: number;data: BodyType<SupplierRequestInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  createSupplierRequest(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateSupplierRequestMutationResult = NonNullable<Awaited<ReturnType<typeof createSupplierRequest>>>
+    export type CreateSupplierRequestMutationBody = BodyType<SupplierRequestInput>
+    export type CreateSupplierRequestMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Ask the supplier for a document (issues an expiring door token)
+ */
+export const useCreateSupplierRequest = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createSupplierRequest>>, TError,{id: number;data: BodyType<SupplierRequestInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createSupplierRequest>>,
+        TError,
+        {id: number;data: BodyType<SupplierRequestInput>},
+        TContext
+      > => {
+      return useMutation(getCreateSupplierRequestMutationOptions(options));
+    }
+
+export const getWithdrawSupplierRequestUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/supplier-requests/${id}/withdraw`
+}
+
+/**
+ * @summary Withdraw an ask (its door token stops working)
+ */
+export const withdrawSupplierRequest = async (id: number, options?: RequestInit): Promise<SupplierRequest> => {
+
+  return customFetch<SupplierRequest>(getWithdrawSupplierRequestUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getWithdrawSupplierRequestMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof withdrawSupplierRequest>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof withdrawSupplierRequest>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['withdrawSupplierRequest'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof withdrawSupplierRequest>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  withdrawSupplierRequest(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type WithdrawSupplierRequestMutationResult = NonNullable<Awaited<ReturnType<typeof withdrawSupplierRequest>>>
+
+    export type WithdrawSupplierRequestMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Withdraw an ask (its door token stops working)
+ */
+export const useWithdrawSupplierRequest = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof withdrawSupplierRequest>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof withdrawSupplierRequest>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getWithdrawSupplierRequestMutationOptions(options));
+    }
+
+export const getGetSupplierPortalWorkspaceUrl = (params: GetSupplierPortalWorkspaceParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/conformity/supplier-portal/workspace?${stringifiedParams}` : `/api/conformity/supplier-portal/workspace`
+}
+
+/**
+ * @summary Supplier door: what is being asked (token-authenticated, rate-limited)
+ */
+export const getSupplierPortalWorkspace = async (params: GetSupplierPortalWorkspaceParams, options?: RequestInit): Promise<SupplierPortalWorkspace> => {
+
+  return customFetch<SupplierPortalWorkspace>(getGetSupplierPortalWorkspaceUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSupplierPortalWorkspaceQueryKey = (params?: GetSupplierPortalWorkspaceParams,) => {
+    return [
+    `/api/conformity/supplier-portal/workspace`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetSupplierPortalWorkspaceQueryOptions = <TData = Awaited<ReturnType<typeof getSupplierPortalWorkspace>>, TError = ErrorType<void>>(params: GetSupplierPortalWorkspaceParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupplierPortalWorkspace>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSupplierPortalWorkspaceQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSupplierPortalWorkspace>>> = ({ signal }) => getSupplierPortalWorkspace(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSupplierPortalWorkspace>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSupplierPortalWorkspaceQueryResult = NonNullable<Awaited<ReturnType<typeof getSupplierPortalWorkspace>>>
+export type GetSupplierPortalWorkspaceQueryError = ErrorType<void>
+
+
+/**
+ * @summary Supplier door: what is being asked (token-authenticated, rate-limited)
+ */
+
+export function useGetSupplierPortalWorkspace<TData = Awaited<ReturnType<typeof getSupplierPortalWorkspace>>, TError = ErrorType<void>>(
+ params: GetSupplierPortalWorkspaceParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSupplierPortalWorkspace>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSupplierPortalWorkspaceQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getSubmitSupplierPortalUrl = () => {
+
+
+
+
+  return `/api/conformity/supplier-portal/submit`
+}
+
+/**
+ * @summary Supplier door: submit a link or note against the ask
+ */
+export const submitSupplierPortal = async (supplierPortalSubmitBody: SupplierPortalSubmitBody, options?: RequestInit): Promise<OkResponse> => {
+
+  return customFetch<OkResponse>(getSubmitSupplierPortalUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supplierPortalSubmitBody)
+  }
+);}
+
+
+
+
+
+export const getSubmitSupplierPortalMutationOptions = <TError = ErrorType<BadRequestResponse | void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof submitSupplierPortal>>, TError,{data: BodyType<SupplierPortalSubmitBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof submitSupplierPortal>>, TError,{data: BodyType<SupplierPortalSubmitBody>}, TContext> => {
+
+const mutationKey = ['submitSupplierPortal'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof submitSupplierPortal>>, {data: BodyType<SupplierPortalSubmitBody>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  submitSupplierPortal(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SubmitSupplierPortalMutationResult = NonNullable<Awaited<ReturnType<typeof submitSupplierPortal>>>
+    export type SubmitSupplierPortalMutationBody = BodyType<SupplierPortalSubmitBody>
+    export type SubmitSupplierPortalMutationError = ErrorType<BadRequestResponse | void>
+
+    /**
+ * @summary Supplier door: submit a link or note against the ask
+ */
+export const useSubmitSupplierPortal = <TError = ErrorType<BadRequestResponse | void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof submitSupplierPortal>>, TError,{data: BodyType<SupplierPortalSubmitBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof submitSupplierPortal>>,
+        TError,
+        {data: BodyType<SupplierPortalSubmitBody>},
+        TContext
+      > => {
+      return useMutation(getSubmitSupplierPortalMutationOptions(options));
+    }
+
+export const getGetProcurementCheckUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/procurement-check`
+}
+
+/**
+ * Tri-state facts about what the supplier's manufacturer has provided (each anchored to the CRA duty that binds the MANUFACTURER), with the derived posture. Reports on-file / not-provided / unanswered — never a verdict about the supplier.
+ * @summary The operator's procurement check for one product
+ */
+export const getProcurementCheck = async (id: number, options?: RequestInit): Promise<ProcurementCheck> => {
+
+  return customFetch<ProcurementCheck>(getGetProcurementCheckUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetProcurementCheckQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/procurement-check`
+    ] as const;
+    }
+
+
+export const getGetProcurementCheckQueryOptions = <TData = Awaited<ReturnType<typeof getProcurementCheck>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getProcurementCheck>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetProcurementCheckQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getProcurementCheck>>> = ({ signal }) => getProcurementCheck(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getProcurementCheck>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetProcurementCheckQueryResult = NonNullable<Awaited<ReturnType<typeof getProcurementCheck>>>
+export type GetProcurementCheckQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The operator's procurement check for one product
+ */
+
+export function useGetProcurementCheck<TData = Awaited<ReturnType<typeof getProcurementCheck>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getProcurementCheck>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetProcurementCheckQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getPutProcurementCheckUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/procurement-check`
+}
+
+/**
+ * @summary Record procurement facts for one product (upsert)
+ */
+export const putProcurementCheck = async (id: number,
+    procurementFactsInput: ProcurementFactsInput, options?: RequestInit): Promise<ProcurementCheck> => {
+
+  return customFetch<ProcurementCheck>(getPutProcurementCheckUrl(id),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(procurementFactsInput)
+  }
+);}
+
+
+
+
+
+export const getPutProcurementCheckMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof putProcurementCheck>>, TError,{id: number;data: BodyType<ProcurementFactsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof putProcurementCheck>>, TError,{id: number;data: BodyType<ProcurementFactsInput>}, TContext> => {
+
+const mutationKey = ['putProcurementCheck'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof putProcurementCheck>>, {id: number;data: BodyType<ProcurementFactsInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  putProcurementCheck(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type PutProcurementCheckMutationResult = NonNullable<Awaited<ReturnType<typeof putProcurementCheck>>>
+    export type PutProcurementCheckMutationBody = BodyType<ProcurementFactsInput>
+    export type PutProcurementCheckMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Record procurement facts for one product (upsert)
+ */
+export const usePutProcurementCheck = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof putProcurementCheck>>, TError,{id: number;data: BodyType<ProcurementFactsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof putProcurementCheck>>,
+        TError,
+        {id: number;data: BodyType<ProcurementFactsInput>},
+        TContext
+      > => {
+      return useMutation(getPutProcurementCheckMutationOptions(options));
+    }
 
 export const getListConformityProductsUrl = () => {
 

@@ -1578,6 +1578,281 @@ export interface SocialPostLogEntry {
   createdAt: string;
 }
 
+export type SupplierDocumentDocType = typeof SupplierDocumentDocType[keyof typeof SupplierDocumentDocType];
+
+
+export const SupplierDocumentDocType = {
+  declaration_of_conformity: 'declaration_of_conformity',
+  user_information: 'user_information',
+  support_period_statement: 'support_period_statement',
+  security_advisory_channel: 'security_advisory_channel',
+  sbom: 'sbom',
+  other: 'other',
+} as const;
+
+export type SupplierDocumentSubmittedVia = typeof SupplierDocumentSubmittedVia[keyof typeof SupplierDocumentSubmittedVia];
+
+
+export const SupplierDocumentSubmittedVia = {
+  internal_upload: 'internal_upload',
+  supplier_token: 'supplier_token',
+} as const;
+
+export interface SupplierDocument {
+  id: number;
+  productId: number;
+  docType: SupplierDocumentDocType;
+  title: string;
+  objectPath: string;
+  fileName: string;
+  fileHash: string;
+  url: string;
+  note: string;
+  submittedVia: SupplierDocumentSubmittedVia;
+  submittedBy: string;
+  createdAt: string;
+}
+
+export interface SupplierDocumentList {
+  documents: SupplierDocument[];
+}
+
+export type SupplierDocumentInputDocType = typeof SupplierDocumentInputDocType[keyof typeof SupplierDocumentInputDocType];
+
+
+export const SupplierDocumentInputDocType = {
+  declaration_of_conformity: 'declaration_of_conformity',
+  user_information: 'user_information',
+  support_period_statement: 'support_period_statement',
+  security_advisory_channel: 'security_advisory_channel',
+  sbom: 'sbom',
+  other: 'other',
+} as const;
+
+export interface SupplierDocumentInput {
+  docType: SupplierDocumentInputDocType;
+  /** @minLength 1 */
+  title: string;
+  objectPath?: string;
+  fileName?: string;
+  url?: string;
+  note?: string;
+}
+
+export type SupplierRequestStatus = typeof SupplierRequestStatus[keyof typeof SupplierRequestStatus];
+
+
+export const SupplierRequestStatus = {
+  open: 'open',
+  fulfilled: 'fulfilled',
+  withdrawn: 'withdrawn',
+} as const;
+
+export interface SupplierRequest {
+  id: number;
+  supplierId: number;
+  productId: number;
+  docType: string;
+  message: string;
+  accessToken: string;
+  expiresAt: string;
+  status: SupplierRequestStatus;
+  /** @nullable */
+  fulfilledAt: string | null;
+  createdBy: string;
+  createdAt: string;
+}
+
+export interface SupplierRequestList {
+  requests: SupplierRequest[];
+}
+
+export type SupplierRequestInputDocType = typeof SupplierRequestInputDocType[keyof typeof SupplierRequestInputDocType];
+
+
+export const SupplierRequestInputDocType = {
+  declaration_of_conformity: 'declaration_of_conformity',
+  user_information: 'user_information',
+  support_period_statement: 'support_period_statement',
+  security_advisory_channel: 'security_advisory_channel',
+  sbom: 'sbom',
+  other: 'other',
+} as const;
+
+export interface SupplierRequestInput {
+  docType: SupplierRequestInputDocType;
+  message?: string;
+  /**
+     * @minimum 1
+     * @maximum 90
+     */
+  expiresInDays?: number;
+}
+
+/**
+ * What the supplier sees through the door — only what it needs: who is asking, for which product, for what, until when. No internal ids.
+ */
+export interface SupplierPortalWorkspace {
+  organisationAsking: string;
+  supplierName: string;
+  productName: string;
+  docType: string;
+  message: string;
+  status: string;
+  expiresAt: string;
+}
+
+export interface SupplierPortalSubmitBody {
+  /** @minLength 1 */
+  token: string;
+  /** A link to the document (the door takes links/notes; no file upload). */
+  url?: string;
+  note?: string;
+  submitterEmail?: string;
+}
+
+/**
+ * Tri-state facts (true / false / null = unanswered; omitted fields are left unchanged). Each fact concerns a duty of the SUPPLIER's manufacturer, not of this organisation.
+ */
+export interface ProcurementFactsInput {
+  /** @nullable */
+  ceMarkingSighted?: boolean | null;
+  /** @nullable */
+  docOnFile?: boolean | null;
+  /** @nullable */
+  userInformationReceived?: boolean | null;
+  /** @nullable */
+  supportPeriodStated?: boolean | null;
+  /** @nullable */
+  securityContactKnown?: boolean | null;
+  /** @nullable */
+  manufacturerIdentified?: boolean | null;
+  /** @nullable */
+  sbomReceived?: boolean | null;
+  note?: string;
+}
+
+export type ProcurementPostureItemKind = typeof ProcurementPostureItemKind[keyof typeof ProcurementPostureItemKind];
+
+
+export const ProcurementPostureItemKind = {
+  statutory: 'statutory',
+  contractual: 'contractual',
+} as const;
+
+export type ProcurementPostureItemStatus = typeof ProcurementPostureItemStatus[keyof typeof ProcurementPostureItemStatus];
+
+
+export const ProcurementPostureItemStatus = {
+  on_file: 'on_file',
+  not_provided: 'not_provided',
+  unanswered: 'unanswered',
+} as const;
+
+export interface ProcurementPostureItem {
+  key: string;
+  label: string;
+  anchor: string;
+  kind: ProcurementPostureItemKind;
+  status: ProcurementPostureItemStatus;
+}
+
+export type ProcurementCheckFacts = {
+  /** @nullable */
+  ceMarkingSighted: boolean | null;
+  /** @nullable */
+  docOnFile: boolean | null;
+  /** @nullable */
+  userInformationReceived: boolean | null;
+  /** @nullable */
+  supportPeriodStated: boolean | null;
+  /** @nullable */
+  securityContactKnown: boolean | null;
+  /** @nullable */
+  manufacturerIdentified: boolean | null;
+  /** @nullable */
+  sbomReceived: boolean | null;
+};
+
+export type ProcurementCheckPosture = {
+  items: ProcurementPostureItem[];
+  onFile: number;
+  notProvided: number;
+  unanswered: number;
+  statutoryOnFile: number;
+  statutoryTotal: number;
+};
+
+export interface ProcurementCheck {
+  productId: number;
+  facts: ProcurementCheckFacts;
+  note: string;
+  updatedBy: string;
+  /** @nullable */
+  updatedAt: string | null;
+  posture: ProcurementCheckPosture;
+}
+
+export interface SupplierPostureProduct {
+  id: number;
+  name: string;
+  productType: string;
+  /** @nullable */
+  supportPeriodEnd: string | null;
+  /** @nullable */
+  redInScope: boolean | null;
+  statutoryOnFile: number;
+  statutoryTotal: number;
+  notProvided: number;
+  unanswered: number;
+}
+
+export interface SupplierPosture {
+  id: number;
+  name: string;
+  contact: string;
+  products: SupplierPostureProduct[];
+  productCount: number;
+  statutoryOnFile: number;
+  statutoryTotal: number;
+  unanswered: number;
+  /**
+     * The soonest support-period end among this supplier's products, or null when none is recorded.
+     * @nullable
+     */
+  earliestSupportEnd: string | null;
+}
+
+export interface SupplierPostureList {
+  suppliers: SupplierPosture[];
+  /** Operator-filed products with no supplier recorded — named so zero-linkage never reads as clean. */
+  unlinkedProductCount: number;
+}
+
+export interface ConformitySupplier {
+  id: number;
+  name: string;
+  contact: string;
+  website: string;
+  notes: string;
+  /** How many products in the register are linked to this supplier. */
+  productCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ConformitySupplierInput {
+  /** @minLength 1 */
+  name: string;
+  contact?: string;
+  website?: string;
+  notes?: string;
+}
+
+export interface ConformitySupplierList {
+  suppliers: ConformitySupplier[];
+}
+
 /**
  * The role THIS organisation holds for THIS product (D5 — Siemens manufactures some products and imports others). Selects which stages the product file renders. Null until declared; the file then prompts for the declaration instead of guessing.
  * @nullable
@@ -1619,6 +1894,11 @@ export interface ConformityProduct {
      * @nullable
      */
   redInScope?: boolean | null;
+  /**
+     * The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.
+     * @nullable
+     */
+  supplierId?: number | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -1660,6 +1940,11 @@ export interface ConformityProductInput {
      * @nullable
      */
   redInScope?: boolean | null;
+  /**
+     * The supplier this product was procured from (operator shape). Must reference an existing supplier; null clears the link.
+     * @nullable
+     */
+  supplierId?: number | null;
 }
 
 export interface ProductUser {
@@ -3349,6 +3634,10 @@ regulation?: string;
 theme?: string;
 obligationType?: string;
 q?: string;
+};
+
+export type GetSupplierPortalWorkspaceParams = {
+token: string;
 };
 
 export type DeleteProductUser200 = {

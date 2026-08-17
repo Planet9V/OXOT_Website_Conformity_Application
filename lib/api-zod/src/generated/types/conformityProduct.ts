@@ -31,6 +31,11 @@ export interface ConformityProduct {
      * @nullable
      */
   redInScope?: boolean | null;
+  /**
+     * The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.
+     * @nullable
+     */
+  supplierId?: number | null;
   createdAt: string;
   updatedAt: string;
 }

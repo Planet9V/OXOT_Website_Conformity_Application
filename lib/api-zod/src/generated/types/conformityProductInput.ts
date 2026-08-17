@@ -28,4 +28,9 @@ export interface ConformityProductInput {
      * @nullable
      */
   redInScope?: boolean | null;
+  /**
+     * The supplier this product was procured from (operator shape). Must reference an existing supplier; null clears the link.
+     * @nullable
+     */
+  supplierId?: number | null;
 }

@@ -2364,6 +2364,324 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/suppliers:
+    get:
+      operationId: listConformitySuppliers
+      tags: [conformity]
+      summary: List suppliers with their product counts
+      description: >-
+        The operator/asset-owner supplier register (Phase 21). A supplier row
+        is a business-relationship record — nothing here states or implies a
+        legal status about the supplier.
+      responses:
+        "200":
+          description: Suppliers
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConformitySupplierList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+    post:
+      operationId: createConformitySupplier
+      tags: [conformity]
+      summary: Register a supplier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConformitySupplierInput"
+      responses:
+        "200":
+          description: Created supplier
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConformitySupplier"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+  /conformity/suppliers/posture:
+    get:
+      operationId: getSupplierPosture
+      tags: [conformity]
+      summary: Portfolio posture per supplier
+      description: >-
+        For every supplier: its linked products with each product's
+        procurement-check counts and support-period end. Pure derivation
+        from recorded facts — on-file / not-provided / unanswered counts,
+        never a verdict about any supplier.
+      responses:
+        "200":
+          description: Per-supplier posture
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierPostureList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+  /conformity/suppliers/{id}:
+    put:
+      operationId: updateConformitySupplier
+      tags: [conformity]
+      summary: Update a supplier
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConformitySupplierInput"
+      responses:
+        "200":
+          description: Updated supplier
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConformitySupplier"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      operationId: deleteConformitySupplier
+      tags: [conformity]
+      summary: Delete a supplier (products are unlinked, never deleted)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/supplier-documents:
+    get:
+      operationId: listSupplierDocuments
+      tags: [conformity]
+      summary: Documents the supplier has provided for this product
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Supplier documents
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierDocumentList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: addSupplierDocument
+      tags: [conformity]
+      summary: Record a supplier document (internal upload or external link)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupplierDocumentInput"
+      responses:
+        "200":
+          description: Recorded document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierDocument"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/supplier-documents/{id}:
+    delete:
+      operationId: deleteSupplierDocument
+      tags: [conformity]
+      summary: Delete a supplier document (its stored file is removed too)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/supplier-requests:
+    get:
+      operationId: listSupplierRequests
+      tags: [conformity]
+      summary: Evidence asks sent to the supplier for this product
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Requests
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierRequestList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createSupplierRequest
+      tags: [conformity]
+      summary: Ask the supplier for a document (issues an expiring door token)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupplierRequestInput"
+      responses:
+        "200":
+          description: The ask, with its door token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierRequest"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/supplier-requests/{id}/withdraw:
+    post:
+      operationId: withdrawSupplierRequest
+      tags: [conformity]
+      summary: Withdraw an ask (its door token stops working)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Withdrawn
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/supplier-portal/workspace:
+    get:
+      operationId: getSupplierPortalWorkspace
+      tags: [conformity]
+      summary: "Supplier door: what is being asked (token-authenticated, rate-limited)"
+      security: []
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: The ask, as the supplier sees it
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierPortalWorkspace"
+        "401":
+          description: Missing, unknown, expired or withdrawn token
+        "429":
+          description: Rate limited
+  /conformity/supplier-portal/submit:
+    post:
+      operationId: submitSupplierPortal
+      tags: [conformity]
+      summary: "Supplier door: submit a link or note against the ask"
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupplierPortalSubmitBody"
+      responses:
+        "200":
+          description: Submission recorded; the ask is fulfilled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OkResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          description: Missing, unknown, expired or withdrawn token
+        "429":
+          description: Rate limited
+  /conformity/products/{id}/procurement-check:
+    get:
+      operationId: getProcurementCheck
+      tags: [conformity]
+      summary: The operator's procurement check for one product
+      description: >-
+        Tri-state facts about what the supplier's manufacturer has provided
+        (each anchored to the CRA duty that binds the MANUFACTURER), with the
+        derived posture. Reports on-file / not-provided / unanswered — never
+        a verdict about the supplier.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Facts and derived posture
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProcurementCheck"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      operationId: putProcurementCheck
+      tags: [conformity]
+      summary: Record procurement facts for one product (upsert)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProcurementFactsInput"
+      responses:
+        "200":
+          description: Updated facts and derived posture
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProcurementCheck"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
   /conformity/products:
     get:
       operationId: listConformityProducts
@@ -7043,6 +7361,241 @@ components:
         - source
         - createdAt
     # ----- Conformity execution ("working") layer -----
+    SupplierDocument:
+      type: object
+      properties:
+        id: { type: integer }
+        productId: { type: integer }
+        docType:
+          type: string
+          enum: [declaration_of_conformity, user_information, support_period_statement, security_advisory_channel, sbom, other]
+        title: { type: string }
+        objectPath: { type: string }
+        fileName: { type: string }
+        fileHash: { type: string }
+        url: { type: string }
+        note: { type: string }
+        submittedVia: { type: string, enum: [internal_upload, supplier_token] }
+        submittedBy: { type: string }
+        createdAt: { type: string }
+      required:
+        [id, productId, docType, title, objectPath, fileName, fileHash, url,
+         note, submittedVia, submittedBy, createdAt]
+    SupplierDocumentList:
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: "#/components/schemas/SupplierDocument"
+      required: [documents]
+    SupplierDocumentInput:
+      type: object
+      properties:
+        docType:
+          type: string
+          enum: [declaration_of_conformity, user_information, support_period_statement, security_advisory_channel, sbom, other]
+        title: { type: string, minLength: 1 }
+        objectPath: { type: string }
+        fileName: { type: string }
+        url: { type: string }
+        note: { type: string }
+      required: [docType, title]
+    SupplierRequest:
+      type: object
+      properties:
+        id: { type: integer }
+        supplierId: { type: integer }
+        productId: { type: integer }
+        docType: { type: string }
+        message: { type: string }
+        accessToken: { type: string }
+        expiresAt: { type: string }
+        status: { type: string, enum: [open, fulfilled, withdrawn] }
+        fulfilledAt: { type: ["string", "null"] }
+        createdBy: { type: string }
+        createdAt: { type: string }
+      required:
+        [id, supplierId, productId, docType, message, accessToken, expiresAt,
+         status, fulfilledAt, createdBy, createdAt]
+    SupplierRequestList:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: "#/components/schemas/SupplierRequest"
+      required: [requests]
+    SupplierRequestInput:
+      type: object
+      properties:
+        docType:
+          type: string
+          enum: [declaration_of_conformity, user_information, support_period_statement, security_advisory_channel, sbom, other]
+        message: { type: string }
+        expiresInDays: { type: integer, minimum: 1, maximum: 90 }
+      required: [docType]
+    SupplierPortalWorkspace:
+      type: object
+      description: >-
+        What the supplier sees through the door — only what it needs: who is
+        asking, for which product, for what, until when. No internal ids.
+      properties:
+        organisationAsking: { type: string }
+        supplierName: { type: string }
+        productName: { type: string }
+        docType: { type: string }
+        message: { type: string }
+        status: { type: string }
+        expiresAt: { type: string }
+      required:
+        [organisationAsking, supplierName, productName, docType, message,
+         status, expiresAt]
+    SupplierPortalSubmitBody:
+      type: object
+      properties:
+        token: { type: string, minLength: 1 }
+        url:
+          type: string
+          description: A link to the document (the door takes links/notes; no file upload).
+        note: { type: string }
+        submitterEmail: { type: string }
+      required: [token]
+    ProcurementFactsInput:
+      type: object
+      description: >-
+        Tri-state facts (true / false / null = unanswered; omitted fields are
+        left unchanged). Each fact concerns a duty of the SUPPLIER's
+        manufacturer, not of this organisation.
+      properties:
+        ceMarkingSighted: { type: ["boolean", "null"] }
+        docOnFile: { type: ["boolean", "null"] }
+        userInformationReceived: { type: ["boolean", "null"] }
+        supportPeriodStated: { type: ["boolean", "null"] }
+        securityContactKnown: { type: ["boolean", "null"] }
+        manufacturerIdentified: { type: ["boolean", "null"] }
+        sbomReceived: { type: ["boolean", "null"] }
+        note: { type: string }
+    ProcurementPostureItem:
+      type: object
+      properties:
+        key: { type: string }
+        label: { type: string }
+        anchor: { type: string }
+        kind: { type: string, enum: [statutory, contractual] }
+        status: { type: string, enum: [on_file, not_provided, unanswered] }
+      required: [key, label, anchor, kind, status]
+    ProcurementCheck:
+      type: object
+      properties:
+        productId: { type: integer }
+        facts:
+          type: object
+          properties:
+            ceMarkingSighted: { type: ["boolean", "null"] }
+            docOnFile: { type: ["boolean", "null"] }
+            userInformationReceived: { type: ["boolean", "null"] }
+            supportPeriodStated: { type: ["boolean", "null"] }
+            securityContactKnown: { type: ["boolean", "null"] }
+            manufacturerIdentified: { type: ["boolean", "null"] }
+            sbomReceived: { type: ["boolean", "null"] }
+          required:
+            [ceMarkingSighted, docOnFile, userInformationReceived,
+             supportPeriodStated, securityContactKnown,
+             manufacturerIdentified, sbomReceived]
+        note: { type: string }
+        updatedBy: { type: string }
+        updatedAt: { type: ["string", "null"] }
+        posture:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                $ref: "#/components/schemas/ProcurementPostureItem"
+            onFile: { type: integer }
+            notProvided: { type: integer }
+            unanswered: { type: integer }
+            statutoryOnFile: { type: integer }
+            statutoryTotal: { type: integer }
+          required: [items, onFile, notProvided, unanswered, statutoryOnFile, statutoryTotal]
+      required: [productId, facts, note, updatedBy, updatedAt, posture]
+    SupplierPostureProduct:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        productType: { type: string }
+        supportPeriodEnd: { type: ["string", "null"] }
+        redInScope: { type: ["boolean", "null"] }
+        statutoryOnFile: { type: integer }
+        statutoryTotal: { type: integer }
+        notProvided: { type: integer }
+        unanswered: { type: integer }
+      required:
+        [id, name, productType, supportPeriodEnd, redInScope,
+         statutoryOnFile, statutoryTotal, notProvided, unanswered]
+    SupplierPosture:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        contact: { type: string }
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/SupplierPostureProduct"
+        productCount: { type: integer }
+        statutoryOnFile: { type: integer }
+        statutoryTotal: { type: integer }
+        unanswered: { type: integer }
+        earliestSupportEnd:
+          type: ["string", "null"]
+          description: The soonest support-period end among this supplier's products, or null when none is recorded.
+      required:
+        [id, name, contact, products, productCount, statutoryOnFile,
+         statutoryTotal, unanswered, earliestSupportEnd]
+    SupplierPostureList:
+      type: object
+      properties:
+        suppliers:
+          type: array
+          items:
+            $ref: "#/components/schemas/SupplierPosture"
+        unlinkedProductCount:
+          type: integer
+          description: Operator-filed products with no supplier recorded — named so zero-linkage never reads as clean.
+      required: [suppliers, unlinkedProductCount]
+    ConformitySupplier:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        contact: { type: string }
+        website: { type: string }
+        notes: { type: string }
+        productCount:
+          type: integer
+          description: How many products in the register are linked to this supplier.
+        createdAt: { type: string }
+        updatedAt: { type: string }
+      required: [id, name, contact, website, notes, productCount, createdAt, updatedAt]
+    ConformitySupplierInput:
+      type: object
+      properties:
+        name: { type: string, minLength: 1 }
+        contact: { type: string }
+        website: { type: string }
+        notes: { type: string }
+      required: [name]
+    ConformitySupplierList:
+      type: object
+      properties:
+        suppliers:
+          type: array
+          items:
+            $ref: "#/components/schemas/ConformitySupplier"
+      required: [suppliers]
     ConformityProduct:
       type: object
       properties:
@@ -7071,6 +7624,11 @@ components:
             Whether the product is radio equipment in a category designated
             by Delegated Regulation (EU) 2022/30 (RED Art 3(3)(d)/(e)/(f)).
             Null until answered; the product file prompts instead of guessing.
+        supplierId:
+          type: ["integer", "null"]
+          description: >-
+            The supplier this product was procured from (operator shape).
+            Null for own products or until the relationship is recorded.
         createdAt: { type: string }
         updatedAt: { type: string }
       required:
@@ -7110,6 +7668,11 @@ components:
             Whether the product is radio equipment in a category designated
             by Delegated Regulation (EU) 2022/30 (RED Art 3(3)(d)/(e)/(f)).
             Null until answered — a scoping fact, never defaulted.
+        supplierId:
+          type: ["integer", "null"]
+          description: >-
+            The supplier this product was procured from (operator shape).
+            Must reference an existing supplier; null clears the link.
       required:
         - name
     ProductUser:

@@ -2933,6 +2933,394 @@ export const GetConformityFlowResponse = zod.object({
 
 
 /**
+ * The operator/asset-owner supplier register (Phase 21). A supplier row is a business-relationship record — nothing here states or implies a legal status about the supplier.
+ * @summary List suppliers with their product counts
+ */
+export const ListConformitySuppliersResponse = zod.object({
+  "suppliers": zod.array(zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "website": zod.string(),
+  "notes": zod.string(),
+  "productCount": zod.number().describe('How many products in the register are linked to this supplier.'),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+}))
+})
+
+
+/**
+ * @summary Register a supplier
+ */
+
+
+
+export const CreateConformitySupplierBody = zod.object({
+  "name": zod.string().min(1),
+  "contact": zod.string().optional(),
+  "website": zod.string().optional(),
+  "notes": zod.string().optional()
+})
+
+export const CreateConformitySupplierResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "website": zod.string(),
+  "notes": zod.string(),
+  "productCount": zod.number().describe('How many products in the register are linked to this supplier.'),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * For every supplier: its linked products with each product's procurement-check counts and support-period end. Pure derivation from recorded facts — on-file / not-provided / unanswered counts, never a verdict about any supplier.
+ * @summary Portfolio posture per supplier
+ */
+export const GetSupplierPostureResponse = zod.object({
+  "suppliers": zod.array(zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "products": zod.array(zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "productType": zod.string(),
+  "supportPeriodEnd": zod.string().nullable(),
+  "redInScope": zod.boolean().nullable(),
+  "statutoryOnFile": zod.number(),
+  "statutoryTotal": zod.number(),
+  "notProvided": zod.number(),
+  "unanswered": zod.number()
+})),
+  "productCount": zod.number(),
+  "statutoryOnFile": zod.number(),
+  "statutoryTotal": zod.number(),
+  "unanswered": zod.number(),
+  "earliestSupportEnd": zod.string().nullable().describe('The soonest support-period end among this supplier\'s products, or null when none is recorded.')
+})),
+  "unlinkedProductCount": zod.number().describe('Operator-filed products with no supplier recorded — named so zero-linkage never reads as clean.')
+})
+
+
+/**
+ * @summary Update a supplier
+ */
+export const UpdateConformitySupplierParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+
+
+
+export const UpdateConformitySupplierBody = zod.object({
+  "name": zod.string().min(1),
+  "contact": zod.string().optional(),
+  "website": zod.string().optional(),
+  "notes": zod.string().optional()
+})
+
+export const UpdateConformitySupplierResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "contact": zod.string(),
+  "website": zod.string(),
+  "notes": zod.string(),
+  "productCount": zod.number().describe('How many products in the register are linked to this supplier.'),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * @summary Delete a supplier (products are unlinked, never deleted)
+ */
+export const DeleteConformitySupplierParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const DeleteConformitySupplierResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
+ * @summary Documents the supplier has provided for this product
+ */
+export const ListSupplierDocumentsParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListSupplierDocumentsResponse = zod.object({
+  "documents": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "docType": zod.enum(['declaration_of_conformity', 'user_information', 'support_period_statement', 'security_advisory_channel', 'sbom', 'other']),
+  "title": zod.string(),
+  "objectPath": zod.string(),
+  "fileName": zod.string(),
+  "fileHash": zod.string(),
+  "url": zod.string(),
+  "note": zod.string(),
+  "submittedVia": zod.enum(['internal_upload', 'supplier_token']),
+  "submittedBy": zod.string(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
+ * @summary Record a supplier document (internal upload or external link)
+ */
+export const AddSupplierDocumentParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+
+
+
+export const AddSupplierDocumentBody = zod.object({
+  "docType": zod.enum(['declaration_of_conformity', 'user_information', 'support_period_statement', 'security_advisory_channel', 'sbom', 'other']),
+  "title": zod.string().min(1),
+  "objectPath": zod.string().optional(),
+  "fileName": zod.string().optional(),
+  "url": zod.string().optional(),
+  "note": zod.string().optional()
+})
+
+export const AddSupplierDocumentResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "docType": zod.enum(['declaration_of_conformity', 'user_information', 'support_period_statement', 'security_advisory_channel', 'sbom', 'other']),
+  "title": zod.string(),
+  "objectPath": zod.string(),
+  "fileName": zod.string(),
+  "fileHash": zod.string(),
+  "url": zod.string(),
+  "note": zod.string(),
+  "submittedVia": zod.enum(['internal_upload', 'supplier_token']),
+  "submittedBy": zod.string(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Delete a supplier document (its stored file is removed too)
+ */
+export const DeleteSupplierDocumentParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const DeleteSupplierDocumentResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
+ * @summary Evidence asks sent to the supplier for this product
+ */
+export const ListSupplierRequestsParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListSupplierRequestsResponse = zod.object({
+  "requests": zod.array(zod.object({
+  "id": zod.number(),
+  "supplierId": zod.number(),
+  "productId": zod.number(),
+  "docType": zod.string(),
+  "message": zod.string(),
+  "accessToken": zod.string(),
+  "expiresAt": zod.string(),
+  "status": zod.enum(['open', 'fulfilled', 'withdrawn']),
+  "fulfilledAt": zod.string().nullable(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
+ * @summary Ask the supplier for a document (issues an expiring door token)
+ */
+export const CreateSupplierRequestParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const createSupplierRequestBodyExpiresInDaysMax = 90;
+
+
+
+export const CreateSupplierRequestBody = zod.object({
+  "docType": zod.enum(['declaration_of_conformity', 'user_information', 'support_period_statement', 'security_advisory_channel', 'sbom', 'other']),
+  "message": zod.string().optional(),
+  "expiresInDays": zod.number().min(1).max(createSupplierRequestBodyExpiresInDaysMax).optional()
+})
+
+export const CreateSupplierRequestResponse = zod.object({
+  "id": zod.number(),
+  "supplierId": zod.number(),
+  "productId": zod.number(),
+  "docType": zod.string(),
+  "message": zod.string(),
+  "accessToken": zod.string(),
+  "expiresAt": zod.string(),
+  "status": zod.enum(['open', 'fulfilled', 'withdrawn']),
+  "fulfilledAt": zod.string().nullable(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Withdraw an ask (its door token stops working)
+ */
+export const WithdrawSupplierRequestParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const WithdrawSupplierRequestResponse = zod.object({
+  "id": zod.number(),
+  "supplierId": zod.number(),
+  "productId": zod.number(),
+  "docType": zod.string(),
+  "message": zod.string(),
+  "accessToken": zod.string(),
+  "expiresAt": zod.string(),
+  "status": zod.enum(['open', 'fulfilled', 'withdrawn']),
+  "fulfilledAt": zod.string().nullable(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Supplier door: what is being asked (token-authenticated, rate-limited)
+ */
+export const GetSupplierPortalWorkspaceQueryParams = zod.object({
+  "token": zod.coerce.string()
+})
+
+export const GetSupplierPortalWorkspaceResponse = zod.object({
+  "organisationAsking": zod.string(),
+  "supplierName": zod.string(),
+  "productName": zod.string(),
+  "docType": zod.string(),
+  "message": zod.string(),
+  "status": zod.string(),
+  "expiresAt": zod.string()
+}).describe('What the supplier sees through the door — only what it needs: who is asking, for which product, for what, until when. No internal ids.')
+
+
+/**
+ * @summary Supplier door: submit a link or note against the ask
+ */
+
+
+
+export const SubmitSupplierPortalBody = zod.object({
+  "token": zod.string().min(1),
+  "url": zod.string().optional().describe('A link to the document (the door takes links\/notes; no file upload).'),
+  "note": zod.string().optional(),
+  "submitterEmail": zod.string().optional()
+})
+
+export const SubmitSupplierPortalResponse = zod.object({
+  "success": zod.boolean()
+})
+
+
+/**
+ * Tri-state facts about what the supplier's manufacturer has provided (each anchored to the CRA duty that binds the MANUFACTURER), with the derived posture. Reports on-file / not-provided / unanswered — never a verdict about the supplier.
+ * @summary The operator's procurement check for one product
+ */
+export const GetProcurementCheckParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const GetProcurementCheckResponse = zod.object({
+  "productId": zod.number(),
+  "facts": zod.object({
+  "ceMarkingSighted": zod.boolean().nullable(),
+  "docOnFile": zod.boolean().nullable(),
+  "userInformationReceived": zod.boolean().nullable(),
+  "supportPeriodStated": zod.boolean().nullable(),
+  "securityContactKnown": zod.boolean().nullable(),
+  "manufacturerIdentified": zod.boolean().nullable(),
+  "sbomReceived": zod.boolean().nullable()
+}),
+  "note": zod.string(),
+  "updatedBy": zod.string(),
+  "updatedAt": zod.string().nullable(),
+  "posture": zod.object({
+  "items": zod.array(zod.object({
+  "key": zod.string(),
+  "label": zod.string(),
+  "anchor": zod.string(),
+  "kind": zod.enum(['statutory', 'contractual']),
+  "status": zod.enum(['on_file', 'not_provided', 'unanswered'])
+})),
+  "onFile": zod.number(),
+  "notProvided": zod.number(),
+  "unanswered": zod.number(),
+  "statutoryOnFile": zod.number(),
+  "statutoryTotal": zod.number()
+})
+})
+
+
+/**
+ * @summary Record procurement facts for one product (upsert)
+ */
+export const PutProcurementCheckParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const PutProcurementCheckBody = zod.object({
+  "ceMarkingSighted": zod.boolean().nullish(),
+  "docOnFile": zod.boolean().nullish(),
+  "userInformationReceived": zod.boolean().nullish(),
+  "supportPeriodStated": zod.boolean().nullish(),
+  "securityContactKnown": zod.boolean().nullish(),
+  "manufacturerIdentified": zod.boolean().nullish(),
+  "sbomReceived": zod.boolean().nullish(),
+  "note": zod.string().optional()
+}).describe('Tri-state facts (true \/ false \/ null = unanswered; omitted fields are left unchanged). Each fact concerns a duty of the SUPPLIER\'s manufacturer, not of this organisation.')
+
+export const PutProcurementCheckResponse = zod.object({
+  "productId": zod.number(),
+  "facts": zod.object({
+  "ceMarkingSighted": zod.boolean().nullable(),
+  "docOnFile": zod.boolean().nullable(),
+  "userInformationReceived": zod.boolean().nullable(),
+  "supportPeriodStated": zod.boolean().nullable(),
+  "securityContactKnown": zod.boolean().nullable(),
+  "manufacturerIdentified": zod.boolean().nullable(),
+  "sbomReceived": zod.boolean().nullable()
+}),
+  "note": zod.string(),
+  "updatedBy": zod.string(),
+  "updatedAt": zod.string().nullable(),
+  "posture": zod.object({
+  "items": zod.array(zod.object({
+  "key": zod.string(),
+  "label": zod.string(),
+  "anchor": zod.string(),
+  "kind": zod.enum(['statutory', 'contractual']),
+  "status": zod.enum(['on_file', 'not_provided', 'unanswered'])
+})),
+  "onFile": zod.number(),
+  "notProvided": zod.number(),
+  "unanswered": zod.number(),
+  "statutoryOnFile": zod.number(),
+  "statutoryTotal": zod.number()
+})
+})
+
+
+/**
  * Requires an admin session.
  * @summary List products under assessment
  */
@@ -2950,6 +3338,7 @@ export const ListConformityProductsResponseItem = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })
@@ -2974,7 +3363,8 @@ export const CreateConformityProductBody = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullish(),
   "supportPeriodStart": zod.string().nullish(),
   "supportPeriodEnd": zod.string().nullish(),
-  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered — a scoping fact, never defaulted.')
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered — a scoping fact, never defaulted.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Must reference an existing supplier; null clears the link.')
 })
 
 export const CreateConformityProductResponse = zod.object({
@@ -2991,6 +3381,7 @@ export const CreateConformityProductResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })
@@ -3030,6 +3421,7 @@ export const ImportConformityProductsResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })),
@@ -3070,6 +3462,7 @@ export const GetConformityProductResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3117,7 +3510,8 @@ export const UpdateConformityProductBody = zod.object({
   "orgRole": zod.union([zod.literal('manufacturer'),zod.literal('authorised_representative'),zod.literal('importer'),zod.literal('distributor'),zod.literal('oss_steward'),zod.literal('system_integrator'),zod.literal('operator'),zod.literal(null)]).nullish(),
   "supportPeriodStart": zod.string().nullish(),
   "supportPeriodEnd": zod.string().nullish(),
-  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered — a scoping fact, never defaulted.')
+  "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered — a scoping fact, never defaulted.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Must reference an existing supplier; null clears the link.')
 })
 
 export const UpdateConformityProductResponse = zod.object({
@@ -3134,6 +3528,7 @@ export const UpdateConformityProductResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 })
@@ -3201,6 +3596,7 @@ export const CreateConformityAssessmentResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3299,6 +3695,7 @@ export const GetConformityAssessmentResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3421,6 +3818,7 @@ export const SaveConformityAnswersResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3523,6 +3921,7 @@ export const SelectConformityRouteResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3640,6 +4039,7 @@ export const SaveConformityStandardsResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
@@ -3738,6 +4138,7 @@ export const InstantiateConformityRequirementsResponse = zod.object({
   "supportPeriodStart": zod.string().nullable(),
   "supportPeriodEnd": zod.string().nullable(),
   "redInScope": zod.boolean().nullish().describe('Whether the product is radio equipment in a category designated by Delegated Regulation (EU) 2022\/30 (RED Art 3(3)(d)\/(e)\/(f)). Null until answered; the product file prompts instead of guessing.'),
+  "supplierId": zod.number().nullish().describe('The supplier this product was procured from (operator shape). Null for own products or until the relationship is recorded.'),
   "createdAt": zod.string(),
   "updatedAt": zod.string()
 }),
