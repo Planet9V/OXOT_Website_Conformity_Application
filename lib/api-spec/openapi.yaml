@@ -2609,6 +2609,35 @@ paths:
           description: Missing, unknown, expired or withdrawn token
         "429":
           description: Rate limited
+  /conformity/supplier-portal/upload-url:
+    post:
+      operationId: supplierPortalUploadUrl
+      tags: [conformity]
+      summary: "Supplier door: mint a one-time upload URL for the asked document (token-authenticated, rate-limited)"
+      description: >-
+        Same size cap and file-type allow-list as the internal upload flow.
+        SECURITY REVIEW PENDING: this is a public write surface accepted by
+        explicit decision; the formal review is a tracked open item.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SupplierDoorUploadInput"
+      responses:
+        "200":
+          description: One-time upload URL and its object path
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SupplierDoorUploadTarget"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          description: Missing, unknown, expired or withdrawn token
+        "429":
+          description: Rate limited
   /conformity/supplier-portal/submit:
     post:
       operationId: submitSupplierPortal
@@ -7457,10 +7486,30 @@ components:
         token: { type: string, minLength: 1 }
         url:
           type: string
-          description: A link to the document (the door takes links/notes; no file upload).
+          description: A link to the document.
         note: { type: string }
+        objectPath:
+          type: string
+          description: >-
+            Object path of a file uploaded through the door's one-time upload
+            URL. Fingerprinted server-side at link time.
+        fileName: { type: string }
         submitterEmail: { type: string }
       required: [token]
+    SupplierDoorUploadInput:
+      type: object
+      properties:
+        token: { type: string, minLength: 1 }
+        name: { type: string, minLength: 1 }
+        size: { type: integer, minimum: 1 }
+        contentType: { type: string, minLength: 1 }
+      required: [token, name, size, contentType]
+    SupplierDoorUploadTarget:
+      type: object
+      properties:
+        uploadURL: { type: string }
+        objectPath: { type: string }
+      required: [uploadURL, objectPath]
     ProcurementFactsInput:
       type: object
       description: >-

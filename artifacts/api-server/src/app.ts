@@ -83,7 +83,10 @@ app.use(cookieParser());
 // which may be application/json (SBOMs). It must receive raw bytes, so it is
 // excluded from the JSON body parser rather than parsed and destroyed by it.
 const isLocalUploadPut = (req: Request) =>
-  req.method === "PUT" && req.path.startsWith("/api/storage/uploads/local/");
+  req.method === "PUT" &&
+  (req.path.startsWith("/api/storage/uploads/local/") ||
+    // The supplier door's token-scoped upload PUT (22.1) — same raw-bytes need.
+    req.path.startsWith("/api/conformity/supplier-portal/upload/"));
 app.use((req, res, next) =>
   isLocalUploadPut(req) ? express.raw({ type: () => true, limit: "55mb" })(req, res, next) : next(),
 );

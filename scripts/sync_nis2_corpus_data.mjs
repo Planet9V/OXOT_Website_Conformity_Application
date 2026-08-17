@@ -37,6 +37,9 @@ const tsContent =
   `export const nis2ArticlesData = ${JSON.stringify(articlesJson, null, 2)};\n\n` +
   `export const nis2AnnexesData = ${JSON.stringify(annexesJson, null, 2)};\n`;
 
-const target = path.join(rootDir, "artifacts/conformity/src/data/nis2CorpusData.ts");
-fs.writeFileSync(target, tsContent);
-console.log(`Wrote ${target} (${(tsContent.length / 1024).toFixed(0)} KiB)`);
+// Dual target since 22.2 (conformity Library + public marketing wikis).
+for (const appDir of ["artifacts/conformity/src/data", "artifacts/oxot-web/src/data"]) {
+  const target = path.join(rootDir, appDir, "nis2CorpusData.ts");
+  fs.writeFileSync(target, tsContent);
+  console.log(`Wrote ${target} (${(tsContent.length / 1024).toFixed(0)} KiB)`);
+}

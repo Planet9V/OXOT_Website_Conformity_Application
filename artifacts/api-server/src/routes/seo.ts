@@ -11,11 +11,21 @@ const router: IRouter = Router();
 const STATIC_FUNNEL_ROUTES = [
   "/",
   "/product",
+  "/operators",
   "/pricing",
   "/deployment",
   "/resources",
   "/cra-check",
   "/demo",
+  // 22.2 — the public statutory wikis (the reading room).
+  "/wiki",
+  "/wiki/cra",
+  "/wiki/nis2",
+  "/wiki/ai-act",
+  "/wiki/machinery",
+  "/wiki/red",
+  "/wiki/gdpr",
+  "/wiki/data-act",
 ];
 
 // --- Helpers ---------------------------------------------------------------

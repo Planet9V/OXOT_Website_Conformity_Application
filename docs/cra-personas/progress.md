@@ -384,3 +384,27 @@ the meaning of Art. 64(10).
 - G6 live: home band, /operators, nav active state (screenshots
   reviewed). G1/G3/G4(1 new visible waiver)/G5/G8 green.
 - 20d (public statutory wikis as SEO lead magnets) remains OPEN.
+
+## 2026-08-17 (morning) — Phase 22: door upload + the reading room
+- 22.1 Door FILE upload shipped (user-accepted ordering; formal
+  security review is a tracked MUST-DO): token-scoped two-step flow
+  mirroring the admin one (mint one-time URL → PUT bytes → submit with
+  objectPath), same 50 MB cap + allow-list, door rate limiter on all
+  endpoints, sha256 at link time, one-time ids proven spent (second
+  PUT 404s), path-traversal submissions rejected. Portal page gains
+  the attach button with the honest capability line. +3 tests → G2
+  754/754 zero-skips.
+- 22.2 The reading room: sync scripts dual-target oxot-web (CI repro
+  diff extended to the new copies — drift in either app fails the
+  build); the wiki-pattern reader ported; /wiki hub ("The law,
+  verbatim. Free.") + six lazy per-act pages (each corpus its own
+  chunk: AI Act 668 KB stays off the funnel path) + /wiki/cra kept;
+  Legislation JSON-LD + per-page SEO; contextual CTAs (check on all,
+  operators on NIS2); blogs+podcast cross-links; footer/home links.
+  FOUND+FIXED: production nginx never proxied /sitemap.xml and
+  /robots.txt (they served the SPA shell — the sitemap only ever
+  worked in dev); now proxied to the API, serving real XML with
+  /operators and all eight wiki routes.
+- G6 live: hub, GDPR wiki deep-link ?tab=articles&num=37 with its
+  corrigendum callout, sitemap XML, door attach button. Probe ask
+  withdrawn after the walk.

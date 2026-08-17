@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,8 +10,9 @@ import { Factory, CheckCircle2, ShieldAlert } from "lucide-react";
  * The supplier door (21.4) — a public, token-scoped page where a supplier
  * answers one specific ask ("send us the DoC for this product"). Mirrors the
  * auditor portal: the token is the whole identity, it expires, and it can be
- * withdrawn. Submissions are a LINK and/or a NOTE — no file upload through
- * the public door (that waits on a security review), and the page says so.
+ * withdrawn. Submissions can attach a FILE (22.1 — same size cap and
+ * file-type allow-list as the internal flow; SECURITY REVIEW of this public
+ * write surface is a tracked open item), a LINK, and/or a NOTE.
  */
 
 type Workspace = {
@@ -43,6 +44,8 @@ export default function SupplierPortalPage() {
   const [url, setUrl] = useState("");
   const [note, setNote] = useState("");
   const [email, setEmail] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -65,10 +68,43 @@ export default function SupplierPortalPage() {
     setSubmitting(true);
     setError("");
     try {
+      // Attach the file first, when one was picked: mint a one-time upload
+      // URL scoped to this token, PUT the bytes, then submit its objectPath.
+      let objectPath = "";
+      let fileName = "";
+      if (file) {
+        const minted = await fetch("/api/conformity/supplier-portal/upload-url", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            token,
+            name: file.name,
+            size: file.size,
+            contentType: file.type || "application/octet-stream",
+          }),
+        });
+        const mintedBody = await minted.json().catch(() => ({}));
+        if (!minted.ok) throw new Error(mintedBody.error || "Upload refused");
+        const put = await fetch(mintedBody.uploadURL, {
+          method: "PUT",
+          headers: { "Content-Type": file.type || "application/octet-stream" },
+          body: file,
+        });
+        if (!put.ok) throw new Error("Upload failed — try again with a fresh page.");
+        objectPath = mintedBody.objectPath;
+        fileName = file.name;
+      }
       const res = await fetch("/api/conformity/supplier-portal/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, url: url.trim(), note: note.trim(), submitterEmail: email.trim() }),
+        body: JSON.stringify({
+          token,
+          url: url.trim(),
+          note: note.trim(),
+          objectPath,
+          fileName,
+          submitterEmail: email.trim(),
+        }),
       });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(body.error || "Submission failed");
@@ -140,8 +176,23 @@ export default function SupplierPortalPage() {
               </div>
 
               <div className="space-y-2 pt-2">
+                <input
+                  ref={fileInput}
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+                />
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => fileInput.current?.click()}
+                  data-testid="door-file"
+                >
+                  {file ? `Attached: ${file.name}` : "Attach the document (PDF, Office, image or data file)"}
+                </Button>
                 <Input
-                  placeholder="Link to the document (https://…)"
+                  placeholder="…or a link to the document (https://…)"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   data-testid="door-url"
@@ -159,13 +210,13 @@ export default function SupplierPortalPage() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <p className="text-[11px] text-muted-foreground">
-                  This page takes links and text. If the document only exists as a
-                  file, host it where your customer can reach it and paste the link.
+                  Files up to 50 MB: PDF, Office documents, images, or data files
+                  (JSON, CSV, XML, TXT). A link or a text answer works too.
                 </p>
                 {error && <p className="text-xs text-destructive">{error}</p>}
                 <Button
                   className="w-full"
-                  disabled={submitting || (!url.trim() && !note.trim())}
+                  disabled={submitting || (!file && !url.trim() && !note.trim())}
                   onClick={submit}
                   data-testid="door-submit"
                 >

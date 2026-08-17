@@ -378,3 +378,113 @@ describe("Supplier documents + the door (operator shape, 21.4)", () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe("The door's file upload (22.1 — public write surface, review pending)", () => {
+  let supplierId: number;
+  let productId: number;
+  let token: string;
+
+  beforeAll(async () => {
+    supplierId = (
+      await api("POST", "/conformity/suppliers", { name: "Vitest Upload GmbH" })
+    ).json.id;
+    productId = (
+      await api("POST", "/conformity/products", {
+        name: "Vitest Upload Device",
+        orgRole: "operator",
+        supplierId,
+      })
+    ).json.id;
+    token = (
+      await api("POST", `/conformity/products/${productId}/supplier-requests`, {
+        docType: "declaration_of_conformity",
+      })
+    ).json.accessToken;
+  });
+
+  afterAll(async () => {
+    if (productId) await api("DELETE", `/conformity/products/${productId}`);
+    if (supplierId) await api("DELETE", `/conformity/suppliers/${supplierId}`);
+  });
+
+  it("refuses an upload URL for an unknown token (401) and a disallowed file (400)", async () => {
+    const bad = await api(
+      "POST",
+      "/conformity/supplier-portal/upload-url",
+      { token: "deadbeef", name: "doc.pdf", size: 100, contentType: "application/pdf" },
+      false,
+    );
+    expect(bad.status).toBe(401);
+
+    const exe = await api(
+      "POST",
+      "/conformity/supplier-portal/upload-url",
+      { token, name: "malware.exe", size: 100, contentType: "application/octet-stream" },
+      false,
+    );
+    expect(exe.status).toBe(400);
+  });
+
+  it("runs the full upload flow: mint URL → PUT bytes → submit → fingerprinted document", async () => {
+    const minted = await api(
+      "POST",
+      "/conformity/supplier-portal/upload-url",
+      { token, name: "doc-fa2200.pdf", size: 1000, contentType: "application/pdf" },
+      false,
+    );
+    expect(minted.status).toBe(200);
+    expect(minted.json.uploadURL).toContain("/conformity/supplier-portal/upload/");
+    expect(minted.json.uploadURL).toContain("token=");
+    expect(minted.json.objectPath).toMatch(/^\/objects\/uploads\//);
+
+    // PUT the raw bytes to the door's token-scoped upload endpoint (public).
+    const bytes = Buffer.from("%PDF-1.4 vitest supplier declaration of conformity");
+    const putRes = await fetch(`${baseUrl}${minted.json.uploadURL.replace("/api", "")}`, {
+      method: "PUT",
+      headers: { "content-type": "application/pdf" },
+      body: bytes,
+    });
+    expect(putRes.status).toBe(200);
+
+    // The one-time id is spent: a second PUT must 404.
+    const again = await fetch(`${baseUrl}${minted.json.uploadURL.replace("/api", "")}`, {
+      method: "PUT",
+      headers: { "content-type": "application/pdf" },
+      body: bytes,
+    });
+    expect(again.status).toBe(404);
+
+    const submit = await api(
+      "POST",
+      "/conformity/supplier-portal/submit",
+      { token, objectPath: minted.json.objectPath, fileName: "doc-fa2200.pdf" },
+      false,
+    );
+    expect(submit.status).toBe(200);
+
+    const docs = await api("GET", `/conformity/products/${productId}/supplier-documents`);
+    const doorDoc = docs.json.documents.find((d: any) => d.submittedVia === "supplier_token");
+    expect(doorDoc, "door-uploaded document missing").toBeDefined();
+    expect(doorDoc.objectPath).toBe(minted.json.objectPath);
+    expect(doorDoc.fileName).toBe("doc-fa2200.pdf");
+    // The stored bytes were fingerprinted server-side.
+    const expectedHash = (await import("crypto"))
+      .createHash("sha256")
+      .update(bytes)
+      .digest("hex");
+    expect(doorDoc.fileHash).toBe(expectedHash);
+  });
+
+  it("rejects a submission naming a path the upload flow did not mint (400)", async () => {
+    const ask = await api("POST", `/conformity/products/${productId}/supplier-requests`, {
+      docType: "other",
+    });
+    const res = await api(
+      "POST",
+      "/conformity/supplier-portal/submit",
+      { token: ask.json.accessToken, objectPath: "/objects/../../etc/passwd" },
+      false,
+    );
+    expect(res.status).toBe(400);
+  });
+});

@@ -331,6 +331,8 @@ export * from './supplierDocumentInput';
 export * from './supplierDocumentInputDocType';
 export * from './supplierDocumentList';
 export * from './supplierDocumentSubmittedVia';
+export * from './supplierDoorUploadInput';
+export * from './supplierDoorUploadTarget';
 export * from './supplierPortalSubmitBody';
 export * from './supplierPortalWorkspace';
 export * from './supplierPosture';

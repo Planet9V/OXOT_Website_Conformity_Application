@@ -55,6 +55,10 @@ import { CookieConsentProvider } from '@/components/cookie-consent';
 // for every public page. Mirrors the pattern already proven in
 // conformity/src/pages/dashboard.tsx (its own CommandCenter lazy-load).
 const ConformityDashboard = lazy(() => import('@/pages/conformity-dashboard'));
+// 22.2 — the public statutory wikis. Each act page carries a large corpus
+// bundle; lazy per-route so the reading room never taxes the funnel pages.
+const WikiHubPage = lazy(() => import('@/pages/wiki-hub'));
+const WikiActRoutes = lazy(() => import('@/pages/wiki-act-routes'));
 const AdminLogin = lazy(() => import('@/pages/admin-login'));
 const AdminDashboard = lazy(() => import('@/pages/admin-dashboard'));
 const AdminLeads = lazy(() => import('@/pages/admin-leads'));
@@ -203,11 +207,14 @@ function PublicRoutes() {
       <Route path="/wiki/cra/">
         {() => <PublicRoute component={CraWikiPage} />}
       </Route>
+      <Route path="/wiki/:slug">
+        {() => <PublicRoute component={WikiActRoutes} />}
+      </Route>
       <Route path="/wiki">
-        {() => <PublicRoute component={CraWikiPage} />}
+        {() => <PublicRoute component={WikiHubPage} />}
       </Route>
       <Route path="/wiki/">
-        {() => <PublicRoute component={CraWikiPage} />}
+        {() => <PublicRoute component={WikiHubPage} />}
       </Route>
       <Route path="/frameworks">
         {() => <PublicRoute component={FrameworksPage} />}

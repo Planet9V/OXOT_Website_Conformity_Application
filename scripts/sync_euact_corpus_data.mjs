@@ -53,6 +53,11 @@ const tsContent =
   `export const ${act.prefix}ArticlesData = ${JSON.stringify(articlesJson, null, 2)};\n\n` +
   `export const ${act.prefix}AnnexesData = ${JSON.stringify(annexesJson, null, 2)};\n`;
 
-const target = path.join(rootDir, "artifacts/conformity/src/data", act.target);
-fs.writeFileSync(target, tsContent);
-console.log(`Wrote ${target} (${(tsContent.length / 1024).toFixed(0)} KiB)`);
+// Both consuming apps get identical bundles: the conformity Library reader
+// and (since 22.2) the public marketing wikis. One source, two targets —
+// CI's reproducibility step rewrites both, so drift in either fails the diff.
+for (const appDir of ["artifacts/conformity/src/data", "artifacts/oxot-web/src/data"]) {
+  const target = path.join(rootDir, appDir, act.target);
+  fs.writeFileSync(target, tsContent);
+  console.log(`Wrote ${target} (${(tsContent.length / 1024).toFixed(0)} KiB)`);
+}

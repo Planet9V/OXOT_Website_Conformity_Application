@@ -40,6 +40,8 @@ import {
   GetSupplierPortalWorkspaceResponse,
   SubmitSupplierPortalBody,
   SubmitSupplierPortalResponse,
+  SupplierPortalUploadUrlBody,
+  SupplierPortalUploadUrlResponse,
   GetProcurementCheckParams,
   GetProcurementCheckResponse,
   PutProcurementCheckParams,
@@ -48,7 +50,8 @@ import {
 } from "@workspace/api-zod";
 import { requireAuth, getSession } from "../lib/adminAuth";
 import { RateLimiter } from "../lib/rateLimit";
-import { objectStorage } from "../lib/storageBackend";
+import { objectStorage, localBackend } from "../lib/storageBackend";
+import { validateUpload, MAX_UPLOAD_BYTES } from "./storage";
 import { createHash, randomBytes } from "crypto";
 import {
   deriveProcurementPosture,
@@ -625,6 +628,82 @@ router.get("/conformity/supplier-portal/workspace", async (req, res): Promise<vo
   );
 });
 
+/**
+ * The door's file upload (22.1) — a PUBLIC WRITE SURFACE, shipped by explicit
+ * decision with the formal SECURITY REVIEW PENDING (tracked open item in
+ * task_plan.md). Hardening applied at birth:
+ *   - the token must be an OPEN, unexpired, unwithdrawn ask;
+ *   - same size cap and extension/content-type allow-list as the admin flow;
+ *   - the door rate limiter covers both endpoints;
+ *   - upload ids are one-time with a 15-minute TTL (the storage seam's own
+ *     semantics), and the stored bytes are sha256-fingerprinted at link time.
+ */
+router.post("/conformity/supplier-portal/upload-url", async (req, res): Promise<void> => {
+  if (doorLimited(req)) {
+    res.status(429).json({ error: "Too many requests — try again in a minute." });
+    return;
+  }
+  const body = SupplierPortalUploadUrlBody.parse(req.body);
+  const request = await loadOpenRequestByToken(body.token);
+  if (!request || request.status === "fulfilled") {
+    res.status(401).json(DOOR_401);
+    return;
+  }
+  const rejection = validateUpload(body.name, body.size, body.contentType);
+  if (rejection) {
+    res.status(400).json({ error: rejection });
+    return;
+  }
+  const mintedURL = await objectStorage.getObjectEntityUploadURL();
+  const objectPath = objectStorage.normalizeObjectEntityPath(mintedURL);
+  // The local backend's PUT is admin-gated by design; the door gets its own
+  // token-scoped PUT over the same one-time id. Presigned (GCS) URLs pass
+  // through untouched — they are already bearer-capable by construction.
+  const uploadURL = mintedURL.startsWith("/api/storage/uploads/local/")
+    ? mintedURL.replace(
+        "/api/storage/uploads/local/",
+        "/api/conformity/supplier-portal/upload/",
+      ) + `?token=${encodeURIComponent(body.token)}`
+    : mintedURL;
+  res.json(SupplierPortalUploadUrlResponse.parse({ uploadURL, objectPath }));
+});
+
+router.put("/conformity/supplier-portal/upload/:id", async (req, res): Promise<void> => {
+  if (doorLimited(req)) {
+    res.status(429).json({ error: "Too many requests — try again in a minute." });
+    return;
+  }
+  const token = String(req.query.token ?? "");
+  const request = token ? await loadOpenRequestByToken(token) : null;
+  if (!request || request.status === "fulfilled") {
+    res.status(401).json(DOOR_401);
+    return;
+  }
+  const local = localBackend();
+  if (!local) {
+    res.status(404).json({ error: "Not found" });
+    return;
+  }
+  const body = req.body as unknown;
+  if (!Buffer.isBuffer(body) || body.length === 0) {
+    res.status(400).json({ error: "Missing file body" });
+    return;
+  }
+  if (body.length > MAX_UPLOAD_BYTES) {
+    res.status(400).json({ error: "File is too large." });
+    return;
+  }
+  const contentType =
+    (req.headers["content-type"] as string | undefined)?.split(";")[0].trim() ||
+    "application/octet-stream";
+  const objectPath = local.acceptLocalUpload(String(req.params.id), body, contentType);
+  if (!objectPath) {
+    res.status(404).json({ error: "Upload id unknown or expired" });
+    return;
+  }
+  res.json({ ok: true, objectPath });
+});
+
 router.post("/conformity/supplier-portal/submit", async (req, res): Promise<void> => {
   if (doorLimited(req)) {
     res.status(429).json({ error: "Too many requests — try again in a minute." });
@@ -642,9 +721,26 @@ router.post("/conformity/supplier-portal/submit", async (req, res): Promise<void
   }
   const url = (body.url ?? "").trim();
   const note = (body.note ?? "").trim();
-  if (!url && !note) {
-    res.status(400).json({ error: "Provide a link to the document, a note, or both." });
+  const objectPath = (body.objectPath ?? "").trim();
+  if (!url && !note && !objectPath) {
+    res.status(400).json({ error: "Attach the document, provide a link, or answer in text." });
     return;
+  }
+  // Only paths our own upload flow mints — never an arbitrary storage path.
+  if (objectPath && !objectPath.startsWith("/objects/uploads/")) {
+    res.status(400).json({ error: "Invalid file reference." });
+    return;
+  }
+  // Fingerprint the door-uploaded bytes exactly like every other stored file.
+  let fileHash = "";
+  if (objectPath) {
+    const MAX_HASH_BYTES = 25 * 1024 * 1024;
+    try {
+      const bytes = await objectStorage.downloadToBufferIfWithin(objectPath, MAX_HASH_BYTES);
+      if (bytes) fileHash = createHash("sha256").update(bytes).digest("hex");
+    } catch (err) {
+      req.log.warn({ err, objectPath }, "Could not fingerprint door-submitted file");
+    }
   }
   await db.transaction(async (tx) => {
     await tx.insert(conformitySupplierDocumentsTable).values({
@@ -653,6 +749,9 @@ router.post("/conformity/supplier-portal/submit", async (req, res): Promise<void
       title: `Supplier submission — ${request.docType.replace(/_/g, " ")}`,
       url,
       note,
+      objectPath,
+      fileName: (body.fileName ?? "").trim(),
+      fileHash,
       submittedVia: "supplier_token",
       submittedBy: (body.submitterEmail ?? "").trim(),
     });

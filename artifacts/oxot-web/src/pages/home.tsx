@@ -64,6 +64,7 @@ const copy = {
     pillarsKicker: 'The platform',
     pillarsTitle: 'One record, every regulation',
     pillarsLink: 'Explore the platform \u2192',
+    readLawLink: 'Read the law, verbatim and free \u2192',
     pillars: [
       {
         title: 'A guided compliance journey, per product',
@@ -141,6 +142,7 @@ const copy = {
     pillarsKicker: 'Het platform',
     pillarsTitle: 'Eén dossier, elke verordening',
     pillarsLink: 'Bekijk het platform \u2192',
+    readLawLink: 'Lees de wet, woordelijk en gratis \u2192',
     pillars: [
       {
         title: 'Een begeleid conformiteitstraject, per product',
@@ -311,9 +313,14 @@ export default function CraHomePage() {
                 {t.pillarsTitle}
               </h2>
             </div>
-            <Link href="/product" className="text-sm font-medium text-primary-ink hover:underline">
-              {t.pillarsLink}
-            </Link>
+            <div className="flex flex-col items-start gap-1 sm:items-end">
+              <Link href="/product" className="text-sm font-medium text-primary-ink hover:underline">
+                {t.pillarsLink}
+              </Link>
+              <Link href="/wiki" className="text-sm font-medium text-primary-ink hover:underline">
+                {t.readLawLink}
+              </Link>
+            </div>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {t.pillars.map((p, i) => {

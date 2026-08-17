@@ -9,8 +9,11 @@
 export interface SupplierPortalSubmitBody {
   /** @minLength 1 */
   token: string;
-  /** A link to the document (the door takes links/notes; no file upload). */
+  /** A link to the document. */
   url?: string;
   note?: string;
+  /** Object path of a file uploaded through the door's one-time upload URL. Fingerprinted server-side at link time. */
+  objectPath?: string;
+  fileName?: string;
   submitterEmail?: string;
 }

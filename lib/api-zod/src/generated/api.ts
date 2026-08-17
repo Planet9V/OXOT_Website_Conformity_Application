@@ -3215,6 +3215,29 @@ export const GetSupplierPortalWorkspaceResponse = zod.object({
 
 
 /**
+ * Same size cap and file-type allow-list as the internal upload flow. SECURITY REVIEW PENDING: this is a public write surface accepted by explicit decision; the formal review is a tracked open item.
+ * @summary Supplier door: mint a one-time upload URL for the asked document (token-authenticated, rate-limited)
+ */
+
+
+
+
+
+
+export const SupplierPortalUploadUrlBody = zod.object({
+  "token": zod.string().min(1),
+  "name": zod.string().min(1),
+  "size": zod.number().min(1),
+  "contentType": zod.string().min(1)
+})
+
+export const SupplierPortalUploadUrlResponse = zod.object({
+  "uploadURL": zod.string(),
+  "objectPath": zod.string()
+})
+
+
+/**
  * @summary Supplier door: submit a link or note against the ask
  */
 
@@ -3222,8 +3245,10 @@ export const GetSupplierPortalWorkspaceResponse = zod.object({
 
 export const SubmitSupplierPortalBody = zod.object({
   "token": zod.string().min(1),
-  "url": zod.string().optional().describe('A link to the document (the door takes links\/notes; no file upload).'),
+  "url": zod.string().optional().describe('A link to the document.'),
   "note": zod.string().optional(),
+  "objectPath": zod.string().optional().describe('Object path of a file uploaded through the door\'s one-time upload URL. Fingerprinted server-side at link time.'),
+  "fileName": zod.string().optional(),
   "submitterEmail": zod.string().optional()
 })
 

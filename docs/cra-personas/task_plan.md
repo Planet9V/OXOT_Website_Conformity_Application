@@ -1463,3 +1463,29 @@ the register records what is on file and what is not.
 - **21. done** Star polish: demo workspace seeds an operator story;
   cockpit/Home tie-in; full operator G6 walk with reviewed
   screenshots; G7 retro. Then Phases 20b–20d (website) highlight it.
+
+## Phase 22 — Door file upload + public wiki lead magnets (opened 2026-08-17)
+
+User: "do the supplier-door file upload — we can do the security review
+after, just mark it to be done" and "get the SEO lead magnets going —
+the wikis and regulatory text, plus blogs and podcasts".
+
+- **22.1** Supplier-door FILE upload, hardened at birth even though the
+  formal review comes later (tracked as a MUST-DO open item): token
+  must be an open unexpired ask, same size cap + extension/content-type
+  allow-list as the admin flow, door rate limiter on every endpoint,
+  sha256 fingerprint at link time, one-time upload ids. Two-step flow
+  mirroring the admin one (request-url → PUT bytes → submit with
+  objectPath), with a token-scoped local PUT. Portal page gains the
+  file picker; the "links and text only" line is replaced by the truth.
+- **22.2** Public statutory wikis on the marketing site: corpus bundles
+  synced into oxot-web via the OWNING sync scripts (a third target, so
+  CI reproducibility keeps all copies honest), /wiki hub + /wiki/<act>
+  pages with the wiki-pattern reader, SEO meta + Legislation JSON-LD,
+  contextual CTAs into the check/demo/operators, blogs+podcast cross-
+  links, sitemap entries if a sitemap exists.
+- **22.3** Gates, G6, commit/push, CI, G7.
+
+### OPEN MUST-DO (user-accepted ordering): formal security review of the
+supplier-door upload path (public write surface) — before GA marketing
+pushes traffic at it.

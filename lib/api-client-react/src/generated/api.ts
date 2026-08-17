@@ -193,6 +193,8 @@ import type {
   SupplierDocument,
   SupplierDocumentInput,
   SupplierDocumentList,
+  SupplierDoorUploadInput,
+  SupplierDoorUploadTarget,
   SupplierPortalSubmitBody,
   SupplierPortalWorkspace,
   SupplierPostureList,
@@ -9348,6 +9350,78 @@ export function useGetSupplierPortalWorkspace<TData = Awaited<ReturnType<typeof 
 
 
 
+
+export const getSupplierPortalUploadUrlUrl = () => {
+
+
+
+
+  return `/api/conformity/supplier-portal/upload-url`
+}
+
+/**
+ * Same size cap and file-type allow-list as the internal upload flow. SECURITY REVIEW PENDING: this is a public write surface accepted by explicit decision; the formal review is a tracked open item.
+ * @summary Supplier door: mint a one-time upload URL for the asked document (token-authenticated, rate-limited)
+ */
+export const supplierPortalUploadUrl = async (supplierDoorUploadInput: SupplierDoorUploadInput, options?: RequestInit): Promise<SupplierDoorUploadTarget> => {
+
+  return customFetch<SupplierDoorUploadTarget>(getSupplierPortalUploadUrlUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(supplierDoorUploadInput)
+  }
+);}
+
+
+
+
+
+export const getSupplierPortalUploadUrlMutationOptions = <TError = ErrorType<BadRequestResponse | void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof supplierPortalUploadUrl>>, TError,{data: BodyType<SupplierDoorUploadInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof supplierPortalUploadUrl>>, TError,{data: BodyType<SupplierDoorUploadInput>}, TContext> => {
+
+const mutationKey = ['supplierPortalUploadUrl'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof supplierPortalUploadUrl>>, {data: BodyType<SupplierDoorUploadInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  supplierPortalUploadUrl(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SupplierPortalUploadUrlMutationResult = NonNullable<Awaited<ReturnType<typeof supplierPortalUploadUrl>>>
+    export type SupplierPortalUploadUrlMutationBody = BodyType<SupplierDoorUploadInput>
+    export type SupplierPortalUploadUrlMutationError = ErrorType<BadRequestResponse | void>
+
+    /**
+ * @summary Supplier door: mint a one-time upload URL for the asked document (token-authenticated, rate-limited)
+ */
+export const useSupplierPortalUploadUrl = <TError = ErrorType<BadRequestResponse | void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof supplierPortalUploadUrl>>, TError,{data: BodyType<SupplierDoorUploadInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof supplierPortalUploadUrl>>,
+        TError,
+        {data: BodyType<SupplierDoorUploadInput>},
+        TContext
+      > => {
+      return useMutation(getSupplierPortalUploadUrlMutationOptions(options));
+    }
 
 export const getSubmitSupplierPortalUrl = () => {
 
