@@ -319,6 +319,39 @@ both have their own auto-generated garbage blog files to `git rm`, and TC's garb
 slugs are MIS-DERIVED from the real source topics (follow `truth_and_consequences/TC_xx`,
 NOT the garbage blog slugs).
 
+## Anti-formula v9 (added after the Truth & Consequences grade — A−; the ratchet's last cross-post tells)
+
+The 12 investigative posts graded A− (both halves), ZERO material statutory errors on
+the hardest brief in the programme — every CRA claim exact while five NON-CRA regimes
+(Machinery Reg 2023/1230, ATEX 2014/34/EU, Product Liability Dir 2024/2853, IEC
+61508/62443, NIST/BSI PQC) pressed in, each correctly quarantined and self-standing.
+Two graders independently caught one real Annex error (secure element is Annex IV, not
+Annex III Class II — the Class II chip entry is "tamper-resistant microcontroller") and
+fixed it. Remaining cracks were all cross-post style convergence:
+
+39. **Ban a second WEEKDAY cold-open per batch, and vary the scene-open device.** TC
+    opened 4/6 on a narrative scene and 3 on an explicit weekday ("Tuesday" twice).
+    Assign distinct hook TYPES up front (already v6 rule 27) AND forbid a repeated
+    time-of-day / weekday framing.
+40. **Corpus-wide "the whole ___" grep before ship.** This batch's shared-authorial
+    reflex ran ~12× (one post 5×). Rotate the suspect phrase each batch (v8 rule 38);
+    "the whole X" joins "honest" and the CTA-pair as tracked tells.
+41. **Non-CRA quarantine — house rule now BLESSED:** for cross-regime investigative
+    posts, naming a non-CRA regime inline AND keeping every CRA claim self-standing is
+    acceptable in place of a `> [!NOTE]` box (a NOTE box is still preferred where the
+    non-CRA regime is a discrete sidebar, e.g. ATEX in TC_10). Do NOT route the CRA
+    argument THROUGH the non-CRA regime; the CRA thesis must stand alone either way.
+42. **Frontmatter completeness sweep:** any Recital/Annex/Article the BODY leans on
+    belongs in `statutes` (TC_04 omitted Recital 19, TC_07 omitted Art 3(10), TC_08
+    omitted Annex IV — all caught at grade). Run a frontmatter-vs-body pinpoint diff
+    before commit.
+
+**PROGRAMME COMPLETE — all 67 posts (Series 1–8: 45 · News: 5 · Truth & Consequences: 12)
+rewritten from source, drafted + copy-edited + critically graded, every series A-band with
+zero material statutory errors in the final four batches. The Python-template boilerplate
+that started this effort is fully overwritten. This brief (v1→v9) is the accumulated
+anti-formula record; keep it if the corpus is ever extended.**
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out

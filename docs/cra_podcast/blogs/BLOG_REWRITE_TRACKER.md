@@ -5,7 +5,7 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 55 / 67 done.**
+**Progress: 67 / 67 done. ✅ PROGRAMME COMPLETE.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
 - **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−), Series 7 (A−), Series 8 (A−) — all fixes applied. **All 45 episode posts (Series 1–8) done — corpus reads professional/non-templated/accurate per final grade.**
@@ -96,16 +96,16 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] NEWS_04 — CRA meets NIS2: dual incident-reporting clocks (Art 14 vs NIS2 Art 23/Art 16)
 - [x] NEWS_05 — Harmonised standards M/596 status: presumption not yet live (Art 27)
 
-## Truth & Consequences (12 investigative edge-case posts) — real topics per truth_and_consequences/ catalogue (garbage blog slugs were MIS-DERIVED; catalogue anchors ALSO partly wrong — verify each)
-- [ ] TC_01 — Edge-to-cloud grey zone / microservices & CE (Art 3(1) remote data processing, Art 3(30) substantial mod)
-- [ ] TC_02 — Defunct-OEM dilemma / bankrupt vendor (Art 13(8) support period, NIS2 Art 21; catalogue "Art 61" WRONG)
-- [ ] TC_03 — Autonomous AI / neural weights (CRA Art 12 bridge, AI Act 2024/1689 Art 15, Annex I)
-- [ ] TC_04 — Open-source steward's balance sheet (Art 24, Art 3(14), Recitals 18-19)
-- [ ] TC_05 — Cross-border supply chain / MSA intercepts backdoors (Arts 52-56, Art 54; catalogue "Art 43" WRONG)
-- [ ] TC_06 — Decommissioning & EOL handover (Art 13(8)/(9), Annex VII)
-- [ ] TC_07 — Subsea & space / where the 'product' ends (Art 2, Art 3(1), Art 7(1) integration carve-out)
-- [ ] TC_08 — BESS & Class II notified bodies (Annex III Class II, Art 32(3); catalogue "Art 24" WRONG; IEC 61508 non-CRA)
-- [ ] TC_09 — Quantum-safe crypto for 30-yr MCUs (Annex I Part I, Art 13(8); myth-buster: CRA doesn't name PQC; BSI TR non-CRA)
-- [ ] TC_10 — Hydrogen electrolyzers / secure boot vs ATEX (Annex I, ATEX 2014/34/EU + Machinery 2023/1230 non-CRA)
-- [ ] TC_11 — Autonomous agriculture / field robots vs Machinery Reg (Annex I, Machinery 2023/1230; catalogue "Art 24" WRONG)
-- [ ] TC_12 — Insurance underwriting reckoning (Art 64 penalties, Product Liability Dir 2024/2853; catalogue "Art 61" WRONG)
+## Truth & Consequences (12 investigative edge-case posts) ✅ COMPLETE (grade A− both halves, zero material statutory errors; 12 garbage originals deleted; fixes applied)
+- [x] TC_01 — Edge-to-cloud grey zone / microservices & CE (Art 3(1) remote data processing, Art 3(30) substantial mod)
+- [x] TC_02 — Defunct-OEM dilemma / bankrupt vendor (Art 13(8) support period, NIS2 Art 21; catalogue "Art 61" WRONG)
+- [x] TC_03 — Autonomous AI / neural weights (CRA Art 12 bridge, AI Act 2024/1689 Art 15, Annex I)
+- [x] TC_04 — Open-source steward's balance sheet (Art 24, Art 3(14), Recitals 18-19)
+- [x] TC_05 — Cross-border supply chain / MSA intercepts backdoors (Arts 52-56, Art 54; catalogue "Art 43" WRONG)
+- [x] TC_06 — Decommissioning & EOL handover (Art 13(8)/(9), Annex VII)
+- [x] TC_07 — Subsea & space / where the 'product' ends (Art 2, Art 3(1), Art 7(1) integration carve-out)
+- [x] TC_08 — BESS & Class II notified bodies (Annex III Class II, Art 32(3); catalogue "Art 24" WRONG; IEC 61508 non-CRA)
+- [x] TC_09 — Quantum-safe crypto for 30-yr MCUs (Annex I Part I, Art 13(8); myth-buster: CRA doesn't name PQC; BSI TR non-CRA)
+- [x] TC_10 — Hydrogen electrolyzers / secure boot vs ATEX (Annex I, ATEX 2014/34/EU + Machinery 2023/1230 non-CRA)
+- [x] TC_11 — Autonomous agriculture / field robots vs Machinery Reg (Annex I, Machinery 2023/1230; catalogue "Art 24" WRONG)
+- [x] TC_12 — Insurance underwriting reckoning (Art 64 penalties, Product Liability Dir 2024/2853; catalogue "Art 61" WRONG)
