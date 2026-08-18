@@ -58,7 +58,7 @@ The practical consequence: if a property genuinely does not apply to your compon
 
 Annex I Part II(1) requires you to identify and document the components in your product by drawing up a software bill of materials in a commonly used, machine-readable format — covering, at the very least, the top-level dependencies. That "at the very least" is the floor, not the ceiling — mature buyers will push you deeper — but top-level coverage is the line you must clear to be in scope at all.
 
-I am not going to re-teach SBOM generation here, because [EP_4.02 on generating SBOMs that satisfy Tier-1 OEMs](/wiki/cra) covers the CycloneDX and SPDX mechanics, the bare-metal firmware tooling, and how to ship a machine-readable file without leaking proprietary IP. For the kit, the point is narrower: the SBOM is a *deliverable*, not a report you describe. A buyer's ingestion pipeline expects a file it can parse, diff against a vulnerability feed, and re-check on every release. Hand over a signed CycloneDX JSON that regenerates from your build, and item 2 is done.
+I am not going to re-teach SBOM generation here, because [EP_4.02 on generating SBOMs that satisfy Tier-1 OEMs](/blog/ep-4.02-generating-sboms-that-satisfy-tier-1-oems-cycloned) covers the CycloneDX and SPDX mechanics, the bare-metal firmware tooling, and how to ship a machine-readable file without leaking proprietary IP. For the kit, the point is narrower: the SBOM is a *deliverable*, not a report you describe. A buyer's ingestion pipeline expects a file it can parse, diff against a vulnerability feed, and re-check on every release. Hand over a signed CycloneDX JSON that regenerates from your build, and item 2 is done.
 
 ## 3. Secure-boot and integrity evidence
 

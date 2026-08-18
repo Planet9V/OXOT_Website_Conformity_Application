@@ -5,10 +5,10 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 19 / 67 committed + Series 4 (6) drafted+edited, grade pending.**
+**Progress: 25 / 67 done.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
-- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`. Series 4's 6 files are committed as **drafted+edited (critical grade pending)** — its only open step is the grade + tick boxes.
+- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (grade A−, fixes applied).
 - **All rewritten blogs are on disk AND committed.** Nothing lives only in memory. A fresh session resumes from this file.
 - **Pipeline per series (see `BLOG_WRITING_BRIEF.md` for full rules incl. anti-formula v1–v3):**
   1. Read the series blueprint in `docs/cra_podcast/02-CRA-MARKET-UNCERTAINTY-INDEX-AND-50-EPISODE-BLUEPRINTS.md` (episodes/narrations in `docs/cra_podcast/episodes_solo/`).
@@ -18,6 +18,7 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
   5. One **Opus critical grader per series**; apply flagged fixes (esp. the actor→Art-21-vs-22 check).
   6. Tick tracker boxes, `git add` the series files + manifest + brief + tracker, commit `content(blog): Series N …`.
 - **Model:** Opus for all roles (Sonnet A/B ran ~18% more tokens).
+- **Concurrency throttle (2026-08-18):** cap agent dispatches at ~3–4 per wave (not 6–8) — the API returns 529/mid-response errors under higher parallelism. Batch drafters/editors in groups of 3–4, wait for each batch, then the next. Re-dispatch any failed agent (failures don't corrupt files).
 - **Remaining:** Series 5 (8), 6 (6), 7 (6), 8 (5), News (5), Truth-&-Consequences (12) = 42. News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
 
 
@@ -46,13 +47,13 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_3.05 — The obsolescence stockpile strategy
 - [x] EP_3.06 — Firmware patching in ATEX environments
 
-## Series 4 — Tier-2 Upstream Component Supplier Survival ⏳ drafted+edited, grade pending
-- [ ] EP_4.01 — The Tier-2 dilemma
-- [ ] EP_4.02 — SBOMs that satisfy Tier-1 OEMs
-- [ ] EP_4.03 — Vulnerability data-sharing agreements
-- [ ] EP_4.04 — Open-source firmware & commercial stewards
-- [ ] EP_4.05 — White-label hardware & ODM contracts
-- [ ] EP_4.06 — The Component Supplier's Minimum Viable Security Kit
+## Series 4 — Tier-2 Upstream Component Supplier Survival ✅ COMPLETE
+- [x] EP_4.01 — The Tier-2 dilemma
+- [x] EP_4.02 — SBOMs that satisfy Tier-1 OEMs
+- [x] EP_4.03 — Vulnerability data-sharing agreements
+- [x] EP_4.04 — Open-source firmware & commercial stewards
+- [x] EP_4.05 — White-label hardware & ODM contracts
+- [x] EP_4.06 — The Component Supplier's Minimum Viable Security Kit
 
 ## Series 5 — Critical Sector Deep Dives
 - [ ] EP_5.01 — Data centers & hyperscalers

@@ -64,9 +64,9 @@ Here is what Article 24 actually asks of a steward:
 2. **Cooperation with market surveillance authorities on request** — if an authority reasonably asks, you hand over that documentation in a language they can work with. There is no proactive filing, no conformity assessment, no notified body.
 3. **Vulnerability reporting, but only to the extent you're actually involved** — the Article 14 reporting duties apply to a steward only insofar as it participates in the development, and the incident-reporting parts only where a severe incident hits infrastructure the steward itself provides.
 
-That is the whole cost. Compare it to the manufacturer's world — Annex I essential requirements across the full lifecycle, a technical file, conformity assessment, CE marking, the support period, the actively-exploited-vulnerability clock. The steward carries none of that. In fact the CRA forbids stewards from affixing the CE marking at all, precisely because they are *not* certifying a product to the essential requirements.
+That is the whole cost. Compare it to the manufacturer's world — Annex I essential requirements across the full lifecycle, a technical file, conformity assessment, CE marking, the support period, the actively-exploited-vulnerability clock. The steward carries none of that. A steward has no basis to affix the CE marking at all — it is not certifying a product against the essential requirements, so there is nothing for the mark to attest.
 
-So the honest framing is the opposite of "monetise your compliance." Being a steward is a *reduced* posture with a real but bounded cost: stand up a credible security policy, run coordinated disclosure, and be reachable when an authority calls.
+This is the opposite of "monetise your compliance." Being a steward is a *reduced* posture with a real but bounded cost: stand up a credible security policy, run coordinated disclosure, and be reachable when an authority calls.
 
 ## What about GitHub, package registries, and just hosting the code?
 

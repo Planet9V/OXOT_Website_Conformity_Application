@@ -171,6 +171,33 @@ Jim-isms, flawless accuracy). What survived is a sentence-rhythm fingerprint:
     takeaways ("4-step test") must match what the body delivers (three gates).
     Reconcile before shipping (this is the companion to the v2 lint #10).
 
+## Anti-formula v4 (added after the Series 4 grade — the shared authorial signature)
+
+Series 4 graded A− and broke the formula structurally (six genuinely different
+reading experiences, flawless statute). What leaked across all six was a
+sentence-level authorial signature. Kill it in Series 5:
+
+17. **Em-dash budget: ≤8–10 per post.** Series 4 ran 16–22 (≈one every 60–85
+    words) — the single loudest AI/Series-3 tell. Convert at least half to
+    periods, colons, or commas. Self-check with `grep -c '—' <file>` before
+    handing back.
+18. **Grep the WHOLE series for shared reflexes, not each post alone.** These are
+    invisible per-post and only surface across the set. Limit each to ~once per
+    series: **"worth [verb]-ing"** (worth keeping/naming/stating/repeating),
+    **"load-bearing" / "carry the load"**, **"the failure mode is"**, **"the
+    honest framing"**, **"So the honest framing is…"** (a reflective-pivot tic —
+    banned outright, cf. v3 rule 13).
+19. **Assign six DISTINCT closer shapes up front, no repeats — cap CTA closers at
+    ONE per series.** Series 4 shipped two CTA closers.
+20. **Link-target gate.** An episode cross-reference must link to that episode's
+    real URL `/blog/<slug>` — NOT `/wiki/cra`. `/wiki/cra` = statute; `/demo`,
+    `/tour` = product; `/blog/<slug>` = another episode. A cross-reference that
+    misfires undoes the concept-ownership discipline (v3 rule 14). (Slugs are the
+    filename minus the `BLOG_EP_x.yy_` prefix and `.md`.)
+21. **Soft prose floor ~1,150 words.** A leaner post must "buy back" the brevity
+    with a real artifact (table / clause set / worked example) AND carry one
+    concrete worked example, not ship at the floor on assertion alone.
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out
