@@ -72,6 +72,7 @@ do not".
 | 20 | **Website realignment (audit-first).** Review + specs in docs/marketing/website-realignment-2026-08.md (F1–F10, competitive read). 20a: the 2-minute check's off-by-one statutory dates fixed EN-side (NL had forked correct), runway WALL 2027-12-11, workbench "fullText" now corpus verbatim, hero de-animated (CTA was invisible pre-hydration). 20b/20c: repositioned as the EU conformance system of record — operator band + honesty strip (visible G4 waiver: quotes the claim to refuse it) + 7 personas + 4 pillars on home; new /operators page; platform modules = the shipped shell; operator pricing note; operator branch in the check. **20d (public wikis) OPEN.** |
 | 21 | **The operator shape (user: "make it the star").** Supplier register (assets outlive relationships), per-product procurement check (tri-state ×7, anchors corpus-verified: Art 13(12)+30, 13(15)–(20); SBOM labelled contractual), per-supplier posture board (unlinked products NAMED), supplier documents (sha256, storage-GC'd incl. product delete), asks with expiring revocable tokens + the PUBLIC door /supplier-portal (rate-limited, no-enumeration, link/note only — L60: file upload deferred to security review). Demo seeds the Fieldbus story. Suite **751/0/0** (+25); G8 26/0 (+6 capabilities); door round-trip proven live end-to-end. |
 | 22 | **The funnel's magnets + the door takes files.** 22.1: door FILE upload (token-scoped two-step over the storage seam's one-time ids; 50 MB cap + allow-list; rate-limited; sha256; traversal rejected) — **formal security review is a tracked MUST-DO** (user-accepted ordering). 22.2: the reading room /wiki — seven acts full-text public, sync scripts dual-target both apps with the CI repro diff watching both copies, lazy per-act chunks, Legislation JSON-LD, contextual CTAs, blogs/podcast cross-links. L61: production nginx had NEVER served the sitemap (dev-middleware only) — now proxied, /operators + eight wiki routes included. Suite 754/0/0. |
+| 23 | **The supplier-door upload security review (the 22.1 MUST-DO) — DONE.** docs/security/door-upload-review-2026-08.md registers SR1–SR9. Fixed: stored XSS via url (http(s)-only), content laundering/SVG (strict door rule, re-checked at PUT), trust-proxy IP spoof (true→1), per-ask mint cap + door limiter 20→60/min, internal objectPath guard; NEW auth'd attachment download for supplier docs (untrusted bytes never inline). SR6/SR7 noted, SR9 accepted. Suite 761/0/0; G8 27/0; verified live against the container. **The door path is signed off for GA traffic.** L62: a deferred security review is a phase with a register, not a footnote. |
 
 ## The application map (key files)
 
@@ -240,15 +241,18 @@ the known benign one).
 reference-only framing; revisit only when a customer declaration needs
 them). Open candidates:
 
-1. **MUST-DO: formal security review of the supplier-door upload path**
-   (public write surface — shipped in 22.1 by user decision, review
-   deliberately deferred; do it before GA marketing drives traffic).
-2. Podcast narration date audit before regeneration (user-flagged).
-3. Native-Dutch review of nl marketing strings before paid traffic.
-4. SEO follow-ups when wanted: static per-article wiki pages (option
-   B), Cbw/BSIG wikis for the NL/DE market, absolute sitemap origins.
+1. Podcast narration date audit before regeneration (user-flagged).
+2. Native-Dutch review of nl marketing strings before paid traffic.
+3. SEO follow-ups when wanted: static per-article wiki pages, Cbw/BSIG
+   wikis for the NL/DE market, absolute sitemap origins.
+4. Hardening backlog from the door review (not blocking GA): antivirus
+   scan of uploaded bytes; a background orphan-upload sweeper; wiring
+   the dormant ACL layer (SR7); admin media path validation (SR6).
 5. **User-only, between sessions:** move the repo out of `~/Downloads`,
    then re-run `scripts/ops/install_lifecycle_launchagent.sh`.
+
+(The 22.1 door-upload security review is DONE — Phase 23; the door is
+signed off for GA traffic.)
 
 (Phases 18–21 delivered: RED→CRA handover; the wiki pattern for every
 act + lifecycle habit; the website realignment 20a–20c; the operator

@@ -19,13 +19,13 @@ map, all SEVEN statutory corpora and their verifiers, every gate command
 including the CI-mirror G2 recipe, and the traps. Trust it over any
 conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–22 are COMPLETE with G7 retros. 17 =
+**Where things stand:** Phases 0–23 are COMPLETE with G7 retros. 17 =
 GDPR + Data Act + GPSR content (ELEVEN corpora, 156 requirements across
 NINE modelled acts); 18 = the RED→CRA handover as per-product guidance
 (tri-state `redInScope` fact + a product-file panel whose dates/quotes
 all render from the 2022/30 corpus metadata — L57/L58). **DORA and CER
 are PARKED by user decision.** MAIN-ONLY,
-pushed, GitHub CI green. Floors: G2 = **754/0/0** · G4 = 0 COVENANT ·
+pushed, GitHub CI green. Floors: G2 = **761/0/0** · G4 = 0 COVENANT ·
 G5 = 0 across EIGHT enforced acts · G8 = 0 COVENANT (20) · ELEVEN corpus
 verifiers + the lifecycle guard, all with negative controls.
 
@@ -74,14 +74,17 @@ change beyond the audio script.
 **No task is in flight.** DORA/CER stay parked. Open candidates (ask
 which, or take #1 if told to proceed):
 
-1. **MUST-DO: formal security review of the supplier-door upload path**
-   (shipped 22.1 by user decision; review before GA traffic).
-2. Podcast narration date audit before regeneration (user-flagged).
-3. Native-Dutch review of nl marketing strings.
-4. SEO follow-ups: static per-article wiki pages; Cbw/BSIG wikis;
+1. Podcast narration date audit before regeneration (user-flagged).
+2. Native-Dutch review of nl marketing strings.
+3. SEO follow-ups: static per-article wiki pages; Cbw/BSIG wikis;
    absolute sitemap origins.
+4. Door hardening backlog (non-blocking): AV scan of uploads; orphan
+   sweeper; wire the dormant ACL layer; admin media path validation.
 5. **User-only:** move the repo out of `~/Downloads`, then re-run
    `scripts/ops/install_lifecycle_launchagent.sh`.
+
+(The door-upload security review is DONE — Phase 23, register at
+docs/security/door-upload-review-2026-08.md; signed off for GA.)
 
 (Phases 18–21 delivered; Phase 21 = the operator shape — supplier
 register, procurement checks with corpus-verified Art 13 anchors,

@@ -1213,3 +1213,47 @@ been missing from the sitemap since 20c.
 
 **Floors:** G2 = 754/0/0 zero-skips · G4 0 · G5 0 · G8 26/0. The
 reading room is live at /wiki with eight acts in the sitemap.
+
+## L62 — "Ship now, review later" means the review is a phase, not a footnote
+
+**What happened (Phase 23):** 22.1 shipped the public door upload by
+user decision with the security review deferred. Taking that review
+seriously — reading every path from token to rendered pixel — turned up
+a real stored-XSS vector (`javascript:` in the url field, rendered as
+an `<a href>`), a scriptable-SVG storage path, and an IP-spoofable rate
+limiter (`trust proxy: true`), none of which any functional test would
+have caught because each is well-typed and "works". The deferral was
+honest precisely because the review was scoped as its own phase with
+its own findings register, not a line in a checklist.
+
+**The rule:** when you defer a security review to ship, book it as a
+real phase with a written register and dispositioned findings. A
+review that produces no artifact and changes no code was not a review.
+The threat model for an UNTRUSTED input (a public write surface) is a
+different exercise from the functional tests, and must be run as one.
+
+## Phase 23 retro (G7) — the door's review, and its teeth
+
+**What worked:** reading the whole path (token → storage → serve →
+render) surfaced that the door's bytes had NO serve route at all —
+which was simultaneously the reason the SVG vector wasn't yet
+exploitable and a genuine product gap (documents arrived and vanished).
+Fixing them together (attachment download + strict door content rules)
+closed the gap and the vector in one move. The `attachment`-vs-`inline`
+split between the untrusted door route and the trusted evidence route
+is now a deliberate, documented choice.
+
+**Judgement call recorded:** the door IP limiter went 20→60/min. That
+reads like weakening a control, so it is documented three ways (code
+comment, review §SR5, this retro): 20 was too tight for NAT'd
+suppliers, and the NEW per-ask mint cap (10) is a tighter bound on the
+expensive operation than the IP limiter ever was — net strengthening.
+The login limiter was untouched (house rule) and in fact strengthened
+by the trust-proxy fix.
+
+**What recurred:** the wrong-cwd gate run, once (a lingering `cd` into
+artifacts/conformity). Same fix as always — repo-root `cd` in the gate
+command.
+
+**Floors:** G2 = 761/0/0 zero-skips · G4 0 · G5 0 · G8 27/0. The
+door-upload path is signed off for GA traffic per the register.
