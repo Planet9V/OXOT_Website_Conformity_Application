@@ -5,10 +5,10 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 33 / 67 done.**
+**Progress: 39 / 67 done.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
-- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (grade A−, fixes applied).
+- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−) — all fixes applied.
 - **All rewritten blogs are on disk AND committed.** Nothing lives only in memory. A fresh session resumes from this file.
 - **Pipeline per series (see `BLOG_WRITING_BRIEF.md` for full rules incl. anti-formula v1–v3):**
   1. Read the series blueprint in `docs/cra_podcast/02-CRA-MARKET-UNCERTAINTY-INDEX-AND-50-EPISODE-BLUEPRINTS.md` (episodes/narrations in `docs/cra_podcast/episodes_solo/`).
@@ -19,7 +19,7 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
   6. Tick tracker boxes, `git add` the series files + manifest + brief + tracker, commit `content(blog): Series N …`.
 - **Model:** Opus for all roles (Sonnet A/B ran ~18% more tokens).
 - **Concurrency throttle (2026-08-18):** cap agent dispatches at ~3–4 per wave (not 6–8) — the API returns 529/mid-response errors under higher parallelism. Batch drafters/editors in groups of 3–4, wait for each batch, then the next. Re-dispatch any failed agent (failures don't corrupt files).
-- **Remaining:** Series 5 (8), 6 (6), 7 (6), 8 (5), News (5), Truth-&-Consequences (12) = 42. News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
+- **Remaining:** Series 7 (6), 8 (5), News (5), Truth-&-Consequences (12) = 28. Series 7 source = blueprint line 460 (Conformity Assessment/Audits/CE); Series 8 = line 506 (Executive Liability/Future). News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
 
 
 ## Series 1 — Procurement & Contracting Crisis ✅ COMPLETE (committed f4776e6)
@@ -65,13 +65,13 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_5.07 — Pharmaceutical & process manufacturing
 - [x] EP_5.08 — Automotive & heavy equipment (UN R155 overlap)
 
-## Series 6 — Vulnerability Operations, PSIRT & 24h Clocks
-- [ ] EP_6.01 — The 24-hour early warning / ENISA platform
-- [ ] EP_6.02 — Building an Annex I compliant PSIRT
-- [ ] EP_6.03 — Coordinated vulnerability disclosure
-- [ ] EP_6.04 — The 72-hour full notification
-- [ ] EP_6.05 — Customer security advisories
-- [ ] EP_6.06 — The 14-day final closeout
+## Series 6 — Vulnerability Operations, PSIRT & 24h Clocks ✅ COMPLETE (grade A−, fixes applied)
+- [x] EP_6.01 — The 24-hour early warning / ENISA platform
+- [x] EP_6.02 — Building an Annex I compliant PSIRT
+- [x] EP_6.03 — Coordinated vulnerability disclosure
+- [x] EP_6.04 — The 72-hour full notification
+- [x] EP_6.05 — Customer security advisories
+- [x] EP_6.06 — The 14-day final closeout
 
 ## Series 7 — Conformity Assessment, Audits & CE Marking
 - [ ] EP_7.01 — Self-assessment vs notified body (Modules A/B+C/H)

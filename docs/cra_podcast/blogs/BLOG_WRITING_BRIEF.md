@@ -221,6 +221,34 @@ only cracks were structural/mechanical:
 26. **Cap promotional link density in closers.** The single CTA post gets at most
     two links (wiki + demo); never a triple `/wiki` + `/tour` + `/demo` stack.
 
+## Anti-formula v6 (added after the Series 6 grade — A−; the tics are now enumeration + meta-labels)
+
+Series 6 graded A− with ZERO material statutory errors — the hard Art 14 two-track
+reconciliation (14(2) vuln vs 14(4) incident; 14-day-from-fix vs one-month-from-72h;
+root cause lives only in the incident track) was handled more precisely than most
+published CRA commentary. The remaining weaknesses were purely stylistic:
+
+27. **Assign a distinct HOOK TYPE per post, the way closers are assigned — and cap
+    the "Two ___" numeric-anaphora opener at ONE post per series.** Series 6 opened
+    four of six posts on "Two words / Two clocks / Two sentences / two duties." It
+    is a real tell. Track the assigned hook type per post in the tracker alongside
+    the closer.
+28. **Do NOT headline the closer's shape as an H2.** "The reframe," "The decision
+    rule," "The closeout checklist" as section headings turns the closer device
+    into a visible scaffold. Let the closer land unlabeled.
+29. **Hard citation budget: ≤4 article pinpoints in the body.** Push sibling-owned
+    provisions into a cross-link instead of re-citing (Series 6: 6.02 and 6.06
+    crowded the ceiling with 5+ pinpoints). One owner per provision, per v5 rule 22.
+30. **Cross-post thesis-consistency check in QA.** A claim a sibling post OWNS
+    (e.g. "the final-report clock runs from fix-availability, NOT awareness") must
+    be verified against every table header, column label, and aside in the other
+    posts. (Series 6 slip: 6.01's "Deadline (from awareness)" column header
+    contradicted 6.06's core teaching — caught at grade, now fixed.)
+31. **The essay-format post must still ship ONE concrete artifact** (template,
+    checklist, or decision tree), so a distinctive voice never trades away
+    actionability. (Series 6: 6.03 was the best prose but lowest actionability
+    until a two-line safe-harbor template was added.)
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out
