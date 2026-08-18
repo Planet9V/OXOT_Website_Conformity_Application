@@ -2,7 +2,7 @@
 
 The single entry point for any developer or session picking up the OXOT CRA
 conformity application. Everything below was verified against the working
-tree on 2026-08-16 at commit `0ebc852` (Phase 10 closed, CI green); if a claim here ever contradicts the
+tree on 2026-08-18 at commit `3ea4a7e` (Phase 30 closed, CI green); if a claim here ever contradicts the
 working tree, **the working tree wins** and this file is wrong (that has
 happened — L36 — so check before trusting).
 
@@ -21,9 +21,10 @@ do not".
 
 ## Where the work is
 
-- Branch **`feat/phase-7-shell-redesign`**, level with **`main`** at every
-  batch (fast-forward pushes; never squash — commit messages are the
-  decision history and a deliverable).
+- **`main` only** now (the historical `feat/phase-7-shell-redesign` branch
+  is merged and retired). Every batch is a fast-forward push to `main`;
+  never squash — commit messages are the decision history and a
+  deliverable. GitHub Actions CI is the authority for G2/G3.
 - Restore tag `v0.5-personas-multi-act` (immutable, on GitHub).
 - The stack runs at **localhost:8088** via `docker compose` (web + api +
   pgvector db + migrate/seed one-shots). Develop against the running stack.
@@ -50,7 +51,7 @@ do not".
 4. **`NEXT_SESSION_PROMPT.md`** — the pasteable opening prompt, kept
    pointing at the current first task.
 
-## Phases — all complete through Phase 17
+## Phases — all complete through Phase 30
 
 | Phase | Delivered |
 |---|---|
@@ -73,6 +74,13 @@ do not".
 | 21 | **The operator shape (user: "make it the star").** Supplier register (assets outlive relationships), per-product procurement check (tri-state ×7, anchors corpus-verified: Art 13(12)+30, 13(15)–(20); SBOM labelled contractual), per-supplier posture board (unlinked products NAMED), supplier documents (sha256, storage-GC'd incl. product delete), asks with expiring revocable tokens + the PUBLIC door /supplier-portal (rate-limited, no-enumeration, link/note only — L60: file upload deferred to security review). Demo seeds the Fieldbus story. Suite **751/0/0** (+25); G8 26/0 (+6 capabilities); door round-trip proven live end-to-end. |
 | 22 | **The funnel's magnets + the door takes files.** 22.1: door FILE upload (token-scoped two-step over the storage seam's one-time ids; 50 MB cap + allow-list; rate-limited; sha256; traversal rejected) — **formal security review is a tracked MUST-DO** (user-accepted ordering). 22.2: the reading room /wiki — seven acts full-text public, sync scripts dual-target both apps with the CI repro diff watching both copies, lazy per-act chunks, Legislation JSON-LD, contextual CTAs, blogs/podcast cross-links. L61: production nginx had NEVER served the sitemap (dev-middleware only) — now proxied, /operators + eight wiki routes included. Suite 754/0/0. |
 | 23 | **The supplier-door upload security review (the 22.1 MUST-DO) — DONE.** docs/security/door-upload-review-2026-08.md registers SR1–SR9. Fixed: stored XSS via url (http(s)-only), content laundering/SVG (strict door rule, re-checked at PUT), trust-proxy IP spoof (true→1), per-ask mint cap + door limiter 20→60/min, internal objectPath guard; NEW auth'd attachment download for supplier docs (untrusted bytes never inline). SR6/SR7 noted, SR9 accepted. Suite 761/0/0; G8 27/0; verified live against the container. **The door path is signed off for GA traffic.** L62: a deferred security review is a phase with a register, not a footnote. |
+| 24 | **Deployment reconcile + CRA Transit.** `/deployment` restated as FOUR single-tenant modes (AWS European Sovereign Cloud — C5/ISO 27001/SOC 2, EU residency, GDPR Art 28; delivered hardware appliance; Docker; VM) with the island-mode local AI as the moat ("never phones home"). New `/cra-transit` — a one-time, consultant-led 60-day sprint (8 phases, phase 8 = handover & teardown), the Annex VII technical file + Annex V DoC produced/exported then the platform taken down; Module A honesty boundary; Service JSON-LD. Reusable `diagrams/deployment-diagram.tsx` (hub-and-spoke) + `diagrams/process-flow.tsx` (numbered timeline). AWS Sovereign-Cloud terms researched from source. |
+| 25 | **The product tour (the demo movie).** `components/product-tour/product-tour.tsx` + `/tour` — an auto-advancing keynote-arc reel built from REAL live screenshots (`public/media/tour/*`), both a self-playing movie and a LinkedIn-style carousel; progress segments, pause/play, prev/next, arrow+space keys, sr-only live region, honours prefers-reduced-motion; VideoObject JSON-LD. Two bugs fixed live: a `public/tour` asset dir collided with the `/tour` route (nginx 403 → moved to `/media/tour`); object-cover cropped shots to their nav (→ object-contain, framed, captioned). |
+| 26 | **Visual depth.** Theme-safe SVG diagrams on `/deployment` + `/cra-transit`; default OG image upgraded from a stale placeholder to a real product screenshot (`lib/page-seo.ts` + `index.html`). Flagged: `index.html` hardcodes a Railway production origin and `railway.json` builds the root Dockerfile — a Railway deploy exists whose freshness depends on GitHub auto-deploy (user deferred Railway). |
+| 27 | **Tour bilingual + polish.** ProductTour → `SLIDES.en` / `SLIDES.nl` via `useLocale` (11 slides EN+NL, full parity incl. honesty + CTA slides); a 6th real screenshot (the public Trust Centre) as a "prove it" slide, captioned to respect the honesty boundary; a faint OT technical-diagram texture behind text/CTA slides. |
+| 28 | **SKIPPED by user decision** ("immediately jump to 29"). IA consolidation (content-hub merge + redirects) remains an open candidate if wanted. |
+| 29 | **The revenue pages — capability↔copy aligned.** `/product` gained the "register underneath" proof band (9 acts · 156 article-cited obligations · 7 roles · 11 verbatim CI-verified corpora; the roles list; the text-currency guarantee). NEW `/manufacturers` — the primary CRA subject (Module A, Annex VII, Annex V DoC, Art 13/14, honest non-conclusion), symmetric with `/operators`, in the nav. `/compare` REWRITTEN from an off-brand slate/cyan overclaiming page to a token-themed, theme-aware, HONEST structural comparison (IT-GRC vs firmware scanners vs OXOT, a 9-row Native/Partial/Out-of-scope matrix, "no fabricated verdicts"). Act landing pages already exist via `/frameworks/:key`. |
+| 30 | **Crawler dynamic rendering (the ranking unlock).** Production nginx served every crawler the generic SPA shell; the dev server already proxied crawler UAs to `/api/seo/page-meta`, but that middleware never runs in prod, and the hardcoded funnel routes aren't CMS rows. Fix (browser-free, runs in node:24-slim + on Railway): `api-server/src/lib/funnelMeta.ts` (per-route title/description/OG/JSON-LD for the funnel pages, EN+NL); `GET /api/seo/render?path=` (funnel meta / CMS page meta / noindex-for-shells, now emitting JSON-LD — SoftwareApplication/Service/VideoObject/Organization/WebPage); a `$oxot_is_crawler` UA map + `@crawler_render` in `docker/nginx.conf` (crawlers 418→render, humans → SPA, assets serve as files); `botListDrift.test` extended to guard the THIRD UA list. Verified live: Googlebot gets per-route meta (Dutch on /nl/*), humans get the shell, assets unaffected. L63: reuse the dynamic-rendering path the dev server already proved; don't build a prerender pipeline the deploy can't run. |
 
 ## The application map (key files)
 
@@ -144,6 +152,56 @@ history. One-shot `migrate`/`seed` images bake the schema at build time:
 **rebuild them before any parity run** or they resurrect dropped columns
 (L39).
 
+## The public marketing app (`artifacts/oxot-web`) — the second app
+
+Almost all Phase 20–30 work lives here. It is a **separate SPA** from the
+conformity workbench: Vite + React + **wouter** routing + **framer-motion**
++ Tailwind v4 **design tokens**. nginx serves it from
+`/usr/share/nginx/html/oxot` at the site root; the workbench lives under
+`/conformity*` and the API under `/api`.
+
+**Routing** (`src/App.tsx`): public funnel routes are wrapped in
+`PublicRoute`; a nested `/nl` wouter Router mounts the Dutch variants. Key
+public pages (`src/pages/*`): `home`, `product` (the platform), NEW
+`manufacturers` + `operators` (the two ICP persona pages — symmetric),
+`cra-transit`, `deployment`, `pricing`, `resources`, `competitors-page`
+(`/compare`), `tour`, `demo`, `trust-center-page`, `cra-check`, the
+`frameworks-*` act layer (`/frameworks/:key`), and the public **reading
+room** `wiki-*` (`/wiki`, `/wiki/:act` — full verbatim statutory text via
+the shared `EuActReader`, the same component the workbench Library uses).
+`/admin/*` is the CMS shell. CMS/blog/knowledge pages are DB-backed
+(`slug-page`, `blog-*`, `knowledge-hub`).
+
+**Locale**: `useLocale()` from `@/providers/locale-provider`. **Every page
+carries en + nl copy blocks**; NL uses the professional "u" register and is
+machine-assisted — flagged for native review before paid traffic. `/nl`
+prefix = Dutch, self-canonical.
+
+**Design**: build with the token system — `bg-background`/`bg-card`,
+`border-border`, `text-foreground`/`text-muted-foreground`, `text-primary`
+— never hardcoded colours (the Phase-29 `/compare` rewrite existed because
+the old page hardcoded slate/cyan and broke the theme). Use `PageHeader`,
+`revealVariants` from `@/lib/motion`, and keep it theme-aware (light/dark).
+
+**SEO / ranking (Phase 30)**: a page sets its own tags client-side via
+`useSeo(pageSeo('/route', { title, description }))`. For CRAWLERS (no JS),
+production nginx proxies crawler UAs to `GET /api/seo/render`, which reads
+per-route meta from `api-server/src/lib/funnelMeta.ts`. **Adding a public
+funnel page is a four-touch checklist**:
+1. `pages/x.tsx` — en+nl copy, `PageHeader`, `useSeo(pageSeo('/x', …))`.
+2. `App.tsx` — a `<Route path="/x">` wrapped in `PublicRoute`.
+3. `components/layout/header.tsx` — `FUNNEL_NAV` entry + the `nav[]` label
+   in BOTH locales (positional, by index).
+4. crawler meta: add the route to `api-server/src/routes/seo.ts`
+   `STATIC_FUNNEL_ROUTES` (sitemap) AND `funnelMeta.ts` (title/description/
+   JSON-LD, EN+NL). Then typecheck, `vite build`, rebuild the `web`
+   container, and `curl -A Googlebot` the route to confirm per-page meta.
+
+**Verify a marketing change live**: rebuild the `web` container (and `api`
+if you touched `seo.ts`), then browser-screenshot the page AND
+`curl -A "Googlebot" http://localhost:8088/<route>` for the crawler meta;
+`curl -A "Mozilla…"` must still return the SPA shell.
+
 ## The gates — every one at its floor
 
 ```
@@ -151,8 +209,8 @@ history. One-shot `migrate`/`seed` images bake the schema at build time:
 cd <pkg> && <root>/node_modules/.bin/tsc --noEmit          # G1
 cd artifacts/conformity && ./node_modules/.bin/vite build   # G3
 node scripts/check_honesty.mjs   --baseline 0               # G4 — COVENANT (0 since 9.5)
-node scripts/check_citations.mjs --baseline 0               # G5 — FIVE acts (cra/nis2/ai_act/machinery/red)
-node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT (17 reached)
+node scripts/check_citations.mjs --baseline 0               # G5 — EIGHT acts (cra/nis2/ai_act/machinery/red/gdpr/data_act/gpsr)
+node scripts/check_ui_reach.mjs  --baseline 0               # G8 — COVENANT (27 reached)
 node scripts/verify_cra_corpus.mjs && node scripts/verify_nis2_corpus.mjs \
   && node scripts/verify_cbw_corpus.mjs && node scripts/verify_bsig_corpus.mjs \
   && node scripts/verify_red_delegated_corpus.mjs \
@@ -167,10 +225,14 @@ Run gates BARE — never through a pipe: `cmd | tail -1 && next` proceeds on
 tail's exit code, not the gate's, and shipped a red G4 once (L52). Silence
 with `>/dev/null`, which preserves the status.
 
-**G2 (tests) = ZERO failures AND ZERO SKIPS** (723/723 since Phase 11 —
-717 at the 10.1/10.4 floor plus the six `orgObligations.test.ts` tests),
-run in the CI-mirror environment (add `OBJECT_STORAGE_BACKEND=local` and
-an `OBJECT_STORAGE_DIR` tmpdir to the env below):
+**G2 (tests) = ZERO failures AND ZERO SKIPS**, run in the CI-mirror
+environment (the workbench + api suites; ~770 tests through Phase 30). The
+local mirror needs the FULL env — `PRIVATE_OBJECT_DIR`/storage sidecar and
+`ADMIN_USERNAME` too, or storage-backed tests error instead of skipping
+(L58). **GitHub Actions CI is the authority** (`.github/workflows/ci.yml`
+provisions the DB with push-force + seed then runs zero-skip); last green:
+Phase 30, commit `3ea4a7e`. Add `OBJECT_STORAGE_BACKEND=local` + an
+`OBJECT_STORAGE_DIR` tmpdir to the env below to run it by hand:
 
 ```
 docker run -d --name oxot-test-db -p 127.0.0.1:5544:5432 \
@@ -235,28 +297,36 @@ on evidence with the user, not guessed); the same approach failed twice;
 or `git log`/`git status` shows an unexpected change (the audio script is
 the known benign one).
 
-## Next steps (Phases 16 + 17 closed 2026-08-17, all floors held)
+## Next steps (Phases 24–30 closed 2026-08-18, all floors held; G8 27/0)
 
 **No task is in flight. DORA and CER are PARKED by user decision** (amber
 reference-only framing; revisit only when a customer declaration needs
 them). Open candidates:
 
-1. Podcast narration date audit before regeneration (user-flagged).
-2. Native-Dutch review of nl marketing strings before paid traffic.
-3. SEO follow-ups when wanted: static per-article wiki pages, Cbw/BSIG
-   wikis for the NL/DE market, absolute sitemap origins.
-4. Hardening backlog from the door review (not blocking GA): antivirus
+1. **Phase 30b (optional):** full-body SSG via `renderToString` for the
+   funnel routes — JS-less body indexing + Core Web Vitals, on top of the
+   Phase-30 per-route meta. Left as a follow-on by scope choice.
+2. **Railway:** activate the crawler block (the `$oxot_is_crawler` map +
+   `@crawler_render`) in `docker/nginx.railway.conf.template` — annotated
+   but NOT activated (untestable here) — and verify the production deploy
+   is current. `index.html` hardcodes the Railway origin; `railway.json`
+   builds the root Dockerfile.
+3. **Phase 28 (deferred):** IA consolidation — merge the content hubs
+   (/resources + /knowledge + /news), promote /trust + /security, add
+   redirects. User skipped it to reach 29; still open.
+4. Podcast narration date audit before regeneration (user-flagged).
+5. Native-Dutch review of nl marketing strings before paid traffic.
+6. Hardening backlog from the door review (not blocking GA): antivirus
    scan of uploaded bytes; a background orphan-upload sweeper; wiring
    the dormant ACL layer (SR7); admin media path validation (SR6).
-5. **User-only, between sessions:** move the repo out of `~/Downloads`,
+7. **User-only, between sessions:** move the repo out of `~/Downloads`,
    then re-run `scripts/ops/install_lifecycle_launchagent.sh`.
 
-(The 22.1 door-upload security review is DONE — Phase 23; the door is
-signed off for GA traffic.)
-
-(Phases 18–21 delivered: RED→CRA handover; the wiki pattern for every
-act + lifecycle habit; the website realignment 20a–20c; the operator
-shape as the star.)
+(Phases 24–30 delivered: the deployment reconcile + CRA Transit; the
+bilingual product tour; visual SVG diagrams + real-screenshot OG; the
+revenue pages — /product proof band, /manufacturers, honest /compare; and
+the crawler dynamic-rendering ranking unlock. The 22.1 door-upload
+security review is DONE — Phase 23; the door is signed off for GA.)
 
 No new phase is opened until the user chooses among these or names new
 scope.

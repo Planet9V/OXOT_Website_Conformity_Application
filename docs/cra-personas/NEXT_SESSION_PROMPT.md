@@ -14,20 +14,26 @@ Continue the OXOT CRA persona programme.
 **Before anything else**, read `docs/cra-personas/HANDOVER.md` — the entry
 point, verified claim-by-claim against the working tree. It names the
 reading order (`DESIGN_five_shapes.md` **iteration 2 first**; then
-`task_plan.md`; then `lessons.md` L1–L57), the nine-destination application
-map, all SEVEN statutory corpora and their verifiers, every gate command
-including the CI-mirror G2 recipe, and the traps. Trust it over any
-conversation summary; trust the working tree over it.
+`task_plan.md`; then `lessons.md`), the nine-destination WORKBENCH map, the
+**public marketing app (`artifacts/oxot-web`) section** (routing, the
+locale/token conventions, and the four-touch checklist for adding a funnel
+page + its crawler meta), all ELEVEN statutory corpora and their verifiers,
+every gate command including the CI-mirror G2 recipe, and the traps. Trust
+it over any conversation summary; trust the working tree over it.
 
-**Where things stand:** Phases 0–23 are COMPLETE with G7 retros. 17 =
-GDPR + Data Act + GPSR content (ELEVEN corpora, 156 requirements across
-NINE modelled acts); 18 = the RED→CRA handover as per-product guidance
-(tri-state `redInScope` fact + a product-file panel whose dates/quotes
-all render from the 2022/30 corpus metadata — L57/L58). **DORA and CER
-are PARKED by user decision.** MAIN-ONLY,
-pushed, GitHub CI green. Floors: G2 = **761/0/0** · G4 = 0 COVENANT ·
-G5 = 0 across EIGHT enforced acts · G8 = 0 COVENANT (20) · ELEVEN corpus
-verifiers + the lifecycle guard, all with negative controls.
+**Where things stand:** Phases 0–30 are COMPLETE with G7 retros (Phase 28
+skipped by choice). The recent arc was the PUBLIC WEBSITE: 20–23 the
+operator shape + supplier door + its security review; 24 deployment
+reconcile + the CRA Transit page; 25–27 the bilingual product tour + visual
+diagrams; 29 the revenue pages (/product proof band, new /manufacturers,
+honest /compare); 30 crawler dynamic rendering (per-route meta + JSON-LD
+via `/api/seo/render` + an nginx crawler map — the ranking unlock). The
+engine still models NINE acts (156 obligations) on ELEVEN corpora and
+**never concludes conformity**. **DORA and CER are PARKED.** MAIN-ONLY,
+pushed, GitHub CI green (last: `3ea4a7e`). Floors: G2 = ZERO fail / ZERO
+skip (~770, CI is authority) · G4 = 0 COVENANT · G5 = 0 across EIGHT
+enforced acts · G8 = 0 COVENANT (**27**) · ELEVEN corpus verifiers + the
+lifecycle guard, all with negative controls.
 
 **Working agreement — governs every task, not just the first:**
 
@@ -72,24 +78,25 @@ approach has failed twice; or `git status`/`git log` shows an unexpected
 change beyond the audio script.
 
 **No task is in flight.** DORA/CER stay parked. Open candidates (ask
-which, or take #1 if told to proceed):
+which, or take one if told to proceed):
 
-1. Podcast narration date audit before regeneration (user-flagged).
-2. Native-Dutch review of nl marketing strings.
-3. SEO follow-ups: static per-article wiki pages; Cbw/BSIG wikis;
-   absolute sitemap origins.
-4. Door hardening backlog (non-blocking): AV scan of uploads; orphan
+1. **Phase 30b (optional):** full-body SSG (`renderToString`) for the
+   funnel routes — JS-less body indexing + Core Web Vitals, on top of the
+   Phase-30 per-route meta.
+2. **Railway:** activate the crawler block in
+   `docker/nginx.railway.conf.template` (annotated, not activated) and
+   verify the production deploy is current.
+3. **Phase 28 (deferred):** IA consolidation — merge /resources +
+   /knowledge + /news, promote /trust + /security, add redirects.
+4. Podcast narration date audit before regeneration (user-flagged).
+5. Native-Dutch review of nl marketing strings.
+6. Door hardening backlog (non-blocking): AV scan of uploads; orphan
    sweeper; wire the dormant ACL layer; admin media path validation.
-5. **User-only:** move the repo out of `~/Downloads`, then re-run
+7. **User-only:** move the repo out of `~/Downloads`, then re-run
    `scripts/ops/install_lifecycle_launchagent.sh`.
 
 (The door-upload security review is DONE — Phase 23, register at
 docs/security/door-upload-review-2026-08.md; signed off for GA.)
-
-(Phases 18–21 delivered; Phase 21 = the operator shape — supplier
-register, procurement checks with corpus-verified Art 13 anchors,
-posture board, supplier door — now headlined on the website. Suite
-floor 751/0/0; G8 26 capabilities.)
 
 Batch cadence for everything: survey → scope one shippable batch → build →
 all gates (bare) → G6 with reviewed screenshots → plan done-marker →

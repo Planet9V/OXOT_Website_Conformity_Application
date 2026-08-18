@@ -16,11 +16,13 @@ A statutory conformity platform for the **EU Cyber Resilience Act (Regulation (E
 - **Reports** — executive briefings, full reports, and readouts generated from frozen data snapshots; deterministic sections computed from live assessment records, narrative sections drafted per report with per-section regeneration, finalization locks the document.
 - **BOM vault** — SBOM/CBOM ingestion, component findings, license and dependency views per assessment.
 - **Team directory** — named assessor accounts with organizational mandates, sign-in, and work assignment.
-- **Reference library** — the cross-regulation requirement catalogue (CRA, NIS2, AI Act, IEC 62443, Machinery, RED, GDPR, CER, DORA, GPSR, Data Act), theme coverage views, cross-regulation mappings, and the primary-source document library.
+- **Reference library** — the cross-regulation requirement catalogue across NINE modelled acts (CRA, NIS2, AI Act, Machinery, RED, GDPR, Data Act, GPSR — plus the RED delegated regulation, and the NL Cbw / DE BSIG transpositions), built from ELEVEN verbatim, CI-verified, lifecycle-guarded statutory corpora; theme coverage views, cross-regulation mappings, and the primary-source document library. (CER and DORA are PARKED — shown reference-only, not modelled.)
 
-**Public site** (`/`)
+**Public marketing site** (`/`) — a separate Vite/React/wouter SPA (`artifacts/oxot-web`)
 
-- Bilingual (EN/NL) corporate site with a CMS-backed page system, long-form regulation field guides with in-page navigation (CRA, NIS2, AI Act, IEC 62443, TS 50701, Machinery), and a members-only Knowledge Hub of guides and templates.
+- Bilingual (EN/NL) funnel: the platform overview (`/product`), the two ICP persona pages (`/manufacturers`, `/operators`), the consultant-led `/cra-transit` 60-day sprint, `/deployment` (four single-tenant modes + local island-mode AI), an honest `/compare`, a self-playing product `/tour`, `/pricing`, the `/trust` centre, and the 2-minute `/cra-check`.
+- A public **reading room** (`/wiki`, `/wiki/:act`) — full verbatim statutory text for the nine acts, the same `EuActReader` the workbench uses.
+- A CMS-backed page/blog/knowledge system under `/admin`, and **crawler dynamic rendering** (nginx proxies search/social bots to `/api/seo/render` for per-page title/description/OG/JSON-LD — the SPA stays client-rendered for humans).
 
 ## Tech stack
 
@@ -43,6 +45,17 @@ docker compose up -d --build
 - API: `http://localhost:8088/api/`
 
 The stack migrates the schema, seeds the regulation catalogue and demo workspace, and restores site content from the versioned snapshot on first boot. See `DOCKER.md` for the full deployment guide and the content export/restore lifecycle.
+
+## For developers — start here
+
+The canonical, claim-by-claim developer entry point is
+**`docs/cra-personas/HANDOVER.md`** (and `NEXT_SESSION_PROMPT.md` for a
+pasteable session opener). It carries the two-app map (this public site +
+the `/conformity` workbench), the statutory-corpus system, the full gate
+suite (G1 typecheck · G2 zero-skip tests · G3 build · G4 honesty=0 · G5
+citations=0 · G6 live · G8 UI-reach), the spec-first API pipeline
+(`openapi.yaml` → orval → generated client), and the method/traps. **The
+working tree wins** over any doc; verify before trusting.
 
 ## Content lifecycle
 
