@@ -5,7 +5,21 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 19 / 67 done.**
+**Progress: 19 / 67 committed + Series 4 (6) drafted+edited, grade pending.**
+
+## Resume state (cold-restart spec) — 2026-08-18
+- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`. Series 4's 6 files are committed as **drafted+edited (critical grade pending)** — its only open step is the grade + tick boxes.
+- **All rewritten blogs are on disk AND committed.** Nothing lives only in memory. A fresh session resumes from this file.
+- **Pipeline per series (see `BLOG_WRITING_BRIEF.md` for full rules incl. anti-formula v1–v3):**
+  1. Read the series blueprint in `docs/cra_podcast/02-CRA-MARKET-UNCERTAINTY-INDEX-AND-50-EPISODE-BLUEPRINTS.md` (episodes/narrations in `docs/cra_podcast/episodes_solo/`).
+  2. Dispatch one **drafter per episode (Opus)** — assign each a DISTINCT spine + closer-shape; WARN that blueprint article numbers are unreliable (verify vs `docs/cra_statutory_corpus/`, `nis2_statutory_corpus/`); drafters RETURN image rows, do NOT edit the manifest (parallel-write race).
+  3. Dispatch one **copy-editor per episode (Opus)**.
+  4. Orchestrator: append image rows to `BLOG_IMAGE_MANIFEST.md`; fix byline (`Mckenney`→`McKenney`); rotate closers so no two consecutive share a link; sweep for defects (no `localhost:8088`, no `oxot.ai` in body, no `div className`, no broken `/contact`).
+  5. One **Opus critical grader per series**; apply flagged fixes (esp. the actor→Art-21-vs-22 check).
+  6. Tick tracker boxes, `git add` the series files + manifest + brief + tracker, commit `content(blog): Series N …`.
+- **Model:** Opus for all roles (Sonnet A/B ran ~18% more tokens).
+- **Remaining:** Series 5 (8), 6 (6), 7 (6), 8 (5), News (5), Truth-&-Consequences (12) = 42. News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
+
 
 ## Series 1 — Procurement & Contracting Crisis ✅ COMPLETE (committed f4776e6)
 - [x] EP_1.01 — The 2-Year Lag
@@ -32,7 +46,7 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_3.05 — The obsolescence stockpile strategy
 - [x] EP_3.06 — Firmware patching in ATEX environments
 
-## Series 4 — Tier-2 Upstream Component Supplier Survival
+## Series 4 — Tier-2 Upstream Component Supplier Survival ⏳ drafted+edited, grade pending
 - [ ] EP_4.01 — The Tier-2 dilemma
 - [ ] EP_4.02 — SBOMs that satisfy Tier-1 OEMs
 - [ ] EP_4.03 — Vulnerability data-sharing agreements

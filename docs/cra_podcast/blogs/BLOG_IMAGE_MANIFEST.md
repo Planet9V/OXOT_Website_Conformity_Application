@@ -74,3 +74,22 @@ images.**
 | 13 | `ep-3.06-staged-validation.png` | 1200×675 | Diagram (flat infographic) | A left-to-right staged pipeline: security advisory → offline identical bench-twin test rig → hazardous-area review/sign-off gate → controlled field deployment, with a small branch showing the security fix isolated from a bundled functionality update. Shapes/flow only, no text. |
 
 **Counts (Series 3):** 13 images — 6 photo-real heroes (1200×630) + 7 flat-infographic diagrams.
+
+## Series 4 — Tier-2 Upstream Component Supplier Survival
+
+| # | Filename | Size (px) | Type | What it should show |
+|---|----------|-----------|------|---------------------|
+| 1 | `ep-4.01-hero.jpg` | 1200×630 | Hero (photo-real) | A small embedded circuit board on a workbench dwarfed by a tall stack of supplier-onboarding compliance paperwork from a large OEM — a €40 module set against an OEM-scale audit demand. Muted steel-grey/deep-blue, single accent, no text/logos. |
+| 2 | `ep-4.01-conformity-routes.png` | 1200×800 | Diagram (flat infographic) | Two lanes branching from one product node: a WIDE default lane (internal self-assessment) carrying most components, and a NARROW notified-body lane carrying only a few important/critical categories; the wide lane emphasised. Shapes/flow only, no text. |
+| 3 | `ep-4.02-hero.jpg` | 1200×630 | Hero (photo-real) | A single firmware binary on the left resolving into a short, ordered stack of labelled component blocks on the right, a boundary line separating the small statutory set from a larger buyer-requested set. Muted palette, amber accent, no legible text. |
+| 4 | `ep-4.02-cicd-flow.png` | 1200×675 | Diagram (flat infographic) | A left-to-right pipeline: source/build → SBOM-generation node branching to a hash-binding step and a vulnerability-scan gate → signing → archive box, with one output arrow to a buyer node. Shapes/flow only, no data or text. |
+| 5 | `ep-4.03-hero.jpg` | 1200×630 | Hero (photo-real) | A component vendor's PSIRT dashboard showing a confirmed actively-exploited vulnerability on one monitor; on a second, an OEM inbox with a 24-hour countdown; a firm boundary line between the two desks. Muted, amber accent, no legible text. |
+| 6 | `ep-4.03-tiered-disclosure.png` | 1200×800 | Diagram (flat infographic) | Two envelopes leaving the vendor's boundary: one OPEN (crossing to the OEM — affected versions, severity, exploit conditions, mitigations, patch timing); one SEALED (staying inside — source, exploit reproduction, internal design). Shapes only, no legible text. |
+| 7 | `ep-4.04-hero.jpg` | 1200×630 | Hero (photo-real) | A single painted line across an industrial workshop floor: on one side a lone maintainer's cluttered workbench (non-commercial); on the other a foundation's ordered sustained-support infrastructure (racks, build servers, a governance table). The line is the regulatory threshold. Muted, one accent, no text/faces. |
+| 8 | `ep-4.04-line.png` | 1200×675 | Diagram (flat infographic) | A horizontal spectrum split into three zones by two threshold markers: "published / not on the market" → "steward — light-touch" → "manufacturer — full duties." Shapes/flow only, no legible text or numbers. |
+| 9 | `ep-4.05-hero.jpg` | 1200×630 | Hero (photo-real) | A branded industrial edge-gateway enclosure on a loading dock, factory-neutral, warm authoritative light — "the nameplate is the legal event." No visible logos, text, or people. |
+| 10 | `ep-4.05-roles.png` | 1200×675 | Diagram (flat infographic) | Three supply configurations (your-logo / ODM-brand / re-badged), each mapping via arrows to a single CRA role and to the party that must hold the technical file + declaration. Shapes/flow only, no legible text/logos. |
+| 11 | `ep-4.06-hero.jpg` | 1200×630 | Hero (photo-real) | A small embedded sensor/PCB on a desk beside a slim folder of five tabbed documents at an industrial vendor-onboarding gate — the design is fine; the five-document folder is what gets a small vendor through the Tier-1 door. Muted blues/steel, amber accent, no text/logos. |
+| 12 | `ep-4.06-kit.png` | 1200×675 | Diagram (flat infographic) | Five tabbed document cards feeding into a single onboarding "gate," each card a distinct shade of the muted palette with one amber accent. Shapes/flow only, no legible text/numbers. |
+
+**Counts (Series 4):** 12 images — 6 photo-real heroes (1200×630) + 6 flat-infographic diagrams.
