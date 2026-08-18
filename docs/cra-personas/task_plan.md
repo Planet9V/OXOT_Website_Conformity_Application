@@ -1556,9 +1556,10 @@ Ordered so prerender bakes a FINISHED site last.
 - **Phase 26 done** — SVG diagrams (deployment hub-spoke, CRA Transit
   process flow) + default OG upgraded to a real product shot; found the
   Railway production URL in index.html. [visual, option 2]
-- **Phase 27** — Deepen the tour: +screenshots (auditor portal, PSIRT,
-  trust center, CRA Transit process, wiki hub), NL slides, OT-diagram
-  backgrounds on text slides; GIF/MP4 export for LinkedIn. [option 1]
+- **Phase 27 done** — tour is bilingual (EN+NL, 11 slides), +trust-
+  centre slide, faint OT-texture behind text slides; deployment diagram
+  visually confirmed. GIF/MP4 export DEFERRED (needs a headless render
+  pipeline; the tour already plays natively). [option 1]
 - **Phase 28** — IA consolidation (sitemap audit Part C: content-hub
   merge + redirects + promote trust/security). [option 3a]
 - **Phase 29** — Solutions/act landing layer + /product rewrite +

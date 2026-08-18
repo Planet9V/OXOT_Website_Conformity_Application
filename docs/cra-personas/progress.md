@@ -493,3 +493,19 @@ the meaning of Art. 64(10).
   site is STALE vs main — the likely reason the user "only sees a menu."
   Flagged to the user; Railway MCP tools available to check/trigger.
 - Gates: G1 · G3 · G4 0 · G5 0. G6 pending container rebuild.
+
+## 2026-08-18 — Phase 27: the tour deepened (bilingual + trust slide + texture)
+- ProductTour is now bilingual (SLIDES.en / SLIDES.nl, selected via
+  useLocale) — 11 slides EN and NL, full parity incl. the honesty and
+  CTA slides. Added a 6th real screenshot (the public Trust Centre —
+  "Cryptographic Integrity & CRA Compliance Provenance") as a "prove it"
+  slide, captioned to respect the honesty boundary (declared status +
+  provenance, not our verdict). Text/CTA slides carry a faint OT
+  technical-diagram texture (public/media/ot-texture.png @ 4% opacity)
+  for depth.
+- Verified the Phase-26 deployment diagram renders correctly (hub-spoke:
+  single-tenant/local-AI core + the 4 modes) — the earlier "missing"
+  read was a stale container + a false-negative selector, not a bug.
+- GIF/MP4 export DEFERRED as a noted follow-up: a real render needs a
+  headless-frames pipeline; the tour is already a natively-playable
+  movie. Gates: G1 · G3 · G4 0 · G5 0 · G6 live.
