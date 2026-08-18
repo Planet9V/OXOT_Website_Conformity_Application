@@ -5,7 +5,7 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 25 / 67 done.**
+**Progress: 33 / 67 done.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
 - **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (grade A−, fixes applied).
@@ -55,15 +55,15 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_4.05 — White-label hardware & ODM contracts
 - [x] EP_4.06 — The Component Supplier's Minimum Viable Security Kit
 
-## Series 5 — Critical Sector Deep Dives
-- [ ] EP_5.01 — Data centers & hyperscalers
-- [ ] EP_5.02 — Smart buildings & real estate
-- [ ] EP_5.03 — Power grids & renewable substation automation
-- [ ] EP_5.04 — Water & wastewater utilities
-- [ ] EP_5.05 — Rail & public transit
-- [ ] EP_5.06 — Maritime & port automation
-- [ ] EP_5.07 — Pharmaceutical & process manufacturing
-- [ ] EP_5.08 — Automotive & heavy equipment (UN R155 overlap)
+## Series 5 — Critical Sector Deep Dives ✅ COMPLETE
+- [x] EP_5.01 — Data centers & hyperscalers
+- [x] EP_5.02 — Smart buildings & real estate
+- [x] EP_5.03 — Power grids & renewable substation automation
+- [x] EP_5.04 — Water & wastewater utilities
+- [x] EP_5.05 — Rail & public transit
+- [x] EP_5.06 — Maritime & port automation
+- [x] EP_5.07 — Pharmaceutical & process manufacturing
+- [x] EP_5.08 — Automotive & heavy equipment (UN R155 overlap)
 
 ## Series 6 — Vulnerability Operations, PSIRT & 24h Clocks
 - [ ] EP_6.01 — The 24-hour early warning / ENISA platform

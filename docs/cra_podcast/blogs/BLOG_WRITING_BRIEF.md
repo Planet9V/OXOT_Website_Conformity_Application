@@ -198,6 +198,29 @@ sentence-level authorial signature. Kill it in Series 5:
     with a real artifact (table / clause set / worked example) AND carry one
     concrete worked example, not ship at the floor on assertion alone.
 
+## Anti-formula v5 (added after the Series 5 grade — near-flawless; last cracks)
+
+Series 5 graded A−/B+ with ZERO scope/class errors and every quote verbatim. The
+only cracks were structural/mechanical:
+
+22. **One owner per cross-cutting concept, enforced by a link map.** Recital 39 /
+    substantial modification, "default is a conformity ROUTE, not an exemption,"
+    and the support-period floor recur across sectors. Nominate ONE canonical
+    post per concept; every other post CROSS-LINKS to the correct sibling, never
+    re-teaches. (Series 5 slip: 5.07 re-taught Recital 39 and linked the wrong
+    sibling.)
+23. **Ban verbatim structural scaffolds within a series.** A block like the
+    "Executive Technical Memorandum" header may appear at most ONCE per series —
+    assign each post a distinct OPENING device the way closers are assigned.
+24. **Mechanical proofread gate before "finished":** run a doubled-word grep
+    (`grep -nE '\b(\w+) \1\b'`) + a spell pass. A typo in graded copy ("is is")
+    reads instantly as machine-generated.
+25. **Verbatim-check interpretive statutory phrasing.** Words like "explicitly,"
+    "names directly," and any Annex IV / "HSM" shorthand must trigger a corpus
+    diff so paraphrase is never asserted as quotation.
+26. **Cap promotional link density in closers.** The single CTA post gets at most
+    two links (wiki + demo); never a triple `/wiki` + `/tour` + `/demo` stack.
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out

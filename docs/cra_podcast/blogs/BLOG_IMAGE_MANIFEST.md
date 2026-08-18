@@ -93,3 +93,26 @@ images.**
 | 12 | `ep-4.06-kit.png` | 1200×675 | Diagram (flat infographic) | Five tabbed document cards feeding into a single onboarding "gate," each card a distinct shade of the muted palette with one amber accent. Shapes/flow only, no legible text/numbers. |
 
 **Counts (Series 4):** 12 images — 6 photo-real heroes (1200×630) + 6 flat-infographic diagrams.
+
+## Series 5 — Critical Sector Deep Dives
+
+| # | Filename | Size (px) | Type | What it should show |
+|---|----------|-----------|------|---------------------|
+| 1 | `ep-5.01-hero.jpg` | 1200×630 | Hero (photo-real) | A data-hall electrical/cooling gallery — modular UPS cabinets, switchgear line-ups, PDU busway — as a calm, orderly critical-power estate. Muted deep-blue/steel, single amber accent, no text/logos. |
+| 2 | `ep-5.01-default-core-important-shell.png` | 1200×800 | Diagram (flat infographic) | A large central block (power + cooling) = the default self-assessment tier, surrounded by a thin outer ring of network/security devices = the important tier, plus one small node marked critical. Shapes/flow only, no legible text. |
+| 3 | `ep-5.02-hero.jpg` | 1200×630 | Hero (photo-real) | A commercial-building mechanical/plant room with a wall-mounted building-automation controller cabinet and field cabling; calm, trade-publication feel. No text/logos/screens. |
+| 4 | `ep-5.02-market-date.png` | 1200×675 | Diagram (flat infographic) | A single horizontal boundary line = the deadline; an already-installed device sits left (outside the regulated zone), a newly placed unit sits right (crossing in). Shapes/arrows only, no legible text. |
+| 5 | `ep-5.03-hero.jpg` | 1200×630 | Hero (photo-real) | An engineer at a substation HMI beside a rack of protective-relay IEDs, a 400kV gantry through the window, a laptop showing a pending firmware update. The live-line-vs-pending-patch tension. No legible text. |
+| 6 | `ep-5.03-staged-deploy.png` | 1200×675 | Diagram (flat infographic) | A staged security-update flow — vendor advisory → digital-twin/bench pre-injection → patch the standby relay in a planned window → failover → repeat, the primary relay carrying protection throughout. Shapes/flow only, no text. |
+| 7 | `ep-5.04-hero.jpg` | 1200×630 | Hero (photo-real) | An unmanned remote water pumping station enclosure in open countryside, cellular whip antenna on the cabinet, a chemical dosing skid visible inside. Overcast, utilitarian, no people. |
+| 8 | `ep-5.04-split.png` | 1200×675 | Diagram (flat infographic) | A two-panel split — left: "RTU manufacturer — CRA duty on the product"; right: "water utility — NIS2 duty on the operation" — joined by a single arrow labelled "the purchase order." Shapes only, no legible text. |
+| 9 | `ep-5.05-hero.jpg` | 1200×630 | Hero (photo-real) | An ETCS on-board unit and driver-machine interface in a modern train cab, a wayside signalling cabinet visible through the windscreen. The safety-vital core and connectivity layer sharing a cab. No legible text. |
+| 10 | `ep-5.05-decoupled-architecture.png` | 1200×800 | Diagram (flat infographic) | A train-control product split into an inner authorised safety-vital enclave (frozen baseline) and an outer connectivity zone (radio, crypto, gateway, OTA update) separated by an enforced one-way boundary; security updates flow only into the outer zone. Shapes only, no text. |
+| 11 | `ep-5.06-hero.jpg` | 1200×630 | Hero (photo-real) | A container terminal at the quay edge: a ship-to-shore gantry crane over a moored vessel, the water-line visually separating ship from shore. Factory-neutral, no legible branding. |
+| 12 | `ep-5.06-scope-line.png` | 1200×675 | Diagram (flat infographic) | A vertical quayside line splitting a terminal into a water side (on-board marine equipment → wheelmark/2014-90-EU) and a land side (crane, straddle carrier, terminal PLC → CE/CRA), each routed to its conformity mark. Shapes/arrows only, no legible text. |
+| 13 | `ep-5.07-hero.jpg` | 1200×630 | Hero (photo-real) | A bioreactor process skid and control cabinet/HMI in a pharmaceutical cleanroom, a maintenance tablet showing a software update in progress. Muted blues/steel, single amber accent, no text/logos. |
+| 14 | `ep-5.07-scoped-validation.png` | 1200×675 | Diagram (flat infographic) | A system diagram where the patched component is ringed/highlighted and only the directly-connected functions are marked for re-validation, the rest of the validated system untouched — "scope to the blast radius, not the whole plant." Shapes/flow only, no text. |
+| 15 | `ep-5.08-hero.jpg` | 1200×630 | Hero (photo-real) | An autonomous open-pit haul truck working a mine/construction bench in daylight dust, a public road with small passenger cars in the far background — same autonomy, different legal regime. No legible text. |
+| 16 | `ep-5.08-regime-map.png` | 1200×675 | Diagram (flat infographic) | A single vertical divider — LEFT (out of CRA): road vehicle / Reg 2019/2144 → UN R155/R156; RIGHT (in CRA): off-road hauler, AGV/AMR, harvester, construction skid → CRA + Machinery Reg 2023/1230; bottom straddling the line: telematics/gateway takes the regime of the machine it's built into. Shapes only, no legible text. |
+
+**Counts (Series 5):** 16 images — 8 photo-real heroes (1200×630) + 8 flat-infographic diagrams.
