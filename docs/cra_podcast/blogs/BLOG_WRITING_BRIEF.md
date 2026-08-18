@@ -72,12 +72,14 @@ definition → **Art 3(30)** (security patches are carved out — Recital 39).
 - **Images (mandatory two-part step — do BOTH for every post):**
   1. In the post, insert a non-rendering placeholder as an HTML comment on its
      own line for each image: `<!-- IMAGE-SLOT: <id> | <WxH> | alt: "..." | caption: "..." -->`.
-  2. **Append that image to the SINGLE shared manifest `BLOG_IMAGE_MANIFEST.md`** —
-     one row per image, with its **filename**, **dimensions**, **type**, and a
-     **description of what the picture should show**. There is ONE manifest file
-     for ALL blogs across ALL series (never one file per post) — every series
-     appends its rows to the same file so the whole set can be batch-generated
-     in one pass. A post is not "done" until its images are in the manifest.
+  2. Every image goes into the SINGLE shared manifest `BLOG_IMAGE_MANIFEST.md`
+     (ONE file for ALL blogs across ALL series — never one per post), one row
+     with **filename**, **dimensions**, **type**, and a **description of what the
+     picture should show**. **When you are one of several drafters running in
+     parallel, do NOT edit the manifest yourself — concurrent writers corrupt it.
+     RETURN your image rows in your report and the orchestrator appends them.**
+     Only append directly when you are the sole writer in the run. A post is not
+     "done" until its images are in the manifest.
   - Filename convention: `ep-<series>.<ep>-<slot>.<jpg|png>` (jpg for photo-real
     heroes, png for flat-infographic diagrams), served from
     `artifacts/oxot-web/public/media/blog/`, referenced in-post as
@@ -106,6 +108,43 @@ would recreate the boilerplate problem at scale. Break it deliberately:
 5. **Citation budget: ≤6 article numbers in body prose per post.** Push the rest
    to the linked wiki. Reserve "statutory anchor" tables for genuinely
    legal-defensibility episodes; most posts don't need one.
+
+## Anti-formula v2 (added after the Series 2 grade — the formula hardened)
+
+Series 2 graded A/A−/B+, but read back-to-back the posts had congealed into ONE
+skeleton: a vivid second-person scene open (7/7) → a binary/tripartite framing
+device ("two doors", "three gates") → a centerpiece comparison table (7/7) → a
+"penalty jumps a tier" beat → a three-part instrument list → a "do one thing this
+week" close. Individually good, collectively formulaic. For each new series:
+
+6. **Assign each post a DIFFERENT structural spine up front** — e.g. one
+   narrative case study, one myth-bust Q&A, one checklist-first, one
+   decision-tree walkthrough, one single-worked-calculation, one short dialogue.
+   The "scene → framing device → table → three levers → do-one-thing CTA"
+   skeleton must not repeat across the series.
+7. **Cap the centerpiece comparison table at ~3 of N posts.** The others must
+   carry their payload another way (an annotated single example, a worked number,
+   a short dialogue, a plain list). Mermaid is still rationed (~half, no repeated
+   shape). No post should rely on a table by default.
+8. **Anti-pattern blacklist — lint against it:** the "penalty jumps a tier /
+   €10M→€15M" motif at most ONCE per series; retire recurring Jim-isms once
+   they're visible across posts ("anyone who tells you otherwise is selling
+   something", "not a vibe, it has a definition", "The good news is…", "read that
+   phrase slowly", "isn't paperwork for its own sake").
+9. **Actor → deeming-article check (pre-publish):** if the actor is ALSO the
+   importer or distributor of the item they modify, the deeming provision is
+   **Art 21**, not Art 22 (Art 22 is only for a party that is neither
+   manufacturer, importer, nor distributor). This caught the one real EP_2.02
+   slip — verify it every time an integrator/operator "becomes the manufacturer."
+10. **Frontmatter-vs-body lint:** the visible `title`, the `slug`/filename, `id`,
+    and `statutory_domain` must match the final title and the articles actually
+    cited in the body. Series 2 shipped residues (an "axians-case-study" slug on a
+    de-Axianed post; an "article-18-2" slug under a "Duty to Refrain" title; an
+    orphan "Art 21" domain tag). Reconcile before shipping.
+11. **Quarantine non-CRA law:** when an argument leans on legislation outside the
+    corpus (e.g. Machinery Regulation 2023/1230), box it into a clearly-marked
+    sidebar with its own sourced citation, and make sure the CRA argument stands
+    WITHOUT it — never route "confirm with counsel" hand-waving through the spine.
 
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 

@@ -34,3 +34,23 @@ images.**
 | 10 | `ep-1.06-scoring-matrix.png` | 1200×675 | Diagram (flat infographic) | A clean **weighted scoring-matrix** graphic: a handful of criteria rows with proportional weight bars and a short rating scale. Abstract grid and bars only — no real numbers or legible headings. |
 
 **Counts:** 10 images — 6 photo-real heroes (1200×630) + 4 flat-infographic diagrams (1200×800 / 1200×675).
+
+## Series 2 — The System Integrator & EPC Shield
+
+| # | Filename | Size (px) | Type | What it should show |
+|---|----------|-----------|------|---------------------|
+| 1 | `ep-2.01-hero.jpg` | 1200×630 | Hero (photo-real) | An assembled automation skid: several certified controllers on a DIN rail wired to an edge gateway, an engineer's laptop showing custom control code beside it — framed and lit as one delivered product unit. Muted deep-blue/steel, one amber accent, no text/logos. |
+| 2 | `ep-2.01-safe-harbor-boundary.png` | 1200×800 | Diagram (flat infographic) | The integrator's custom software/orchestration layer above a row of unmodified certified components, separated by a clear isolation boundary, gateway at the edge. Shapes/flow only, 2–3 palette colours, no legible text. |
+| 3 | `ep-2.02-hero.jpg` | 1200×630 | Hero (photo-real) | An OEM industrial managed network switch on a commissioning bench, powered down, beside a laptop running a pre-energisation vulnerability scan and handover paperwork. The moment before energising is the decision point. Muted steel-blue/concrete, amber accent, no faces/text. |
+| 4 | `ep-2.03-hero.jpg` | 1200×630 | Hero (photo-real) | Split composition: a shrink-wrapped boxed software product vs an automation engineer's workstation with a one-off plant HMI and a rung of control logic mid-edit — a subtle vertical divide between "product on the market" and "site-specific engineering." No baked text or CE marks. |
+| 5 | `ep-2.03-scope-spectrum.png` | 1200×900 | Diagram (flat infographic) | A horizontal spectrum from "site-specific configuration" (left) to "productised/reusable/marketed component" (right), a vertical CRA-scope boundary cutting toward the right, the reusable zone in accent colour, three gate markers along the bar. No legible text/numbers. |
+| 6 | `ep-2.04-hero.jpg` | 1200×630 | Hero (photo-real) | Three industrial sites — a chemical process plant, an automotive assembly line, an energy facility — each linked to one central engineering-governance hub: one repeatable pipeline across many plants. Muted, authoritative, no text/logos. |
+| 7 | `ep-2.04-scoping-boundary.png` | 1200×675 | Diagram (flat infographic) | A single retrofit module inside a dashed containment boundary within a larger plant system; the module emphasised in accent colour, the wider plant neutral — the "part affected" vs "whole product" line. Shapes/boundary only, no text. |
+| 8 | `ep-2.05-hero.jpg` | 1200×630 | Hero (photo-real) | A composite process skid (pumps, VFD, bolted-on control cabinet) with a blank, unengraved nameplate as the focal point — certified parts assembled, authorship of the whole still unsigned. Muted palette, amber accent, no text. |
+| 9 | `ep-2.05-component-vs-system.png` | 1200×675 | Diagram (flat infographic) | Several small non-legible component marks flowing via arrows into one larger new system mark on a skid nameplate (accent colour) — inputs to the file, not a sum. Flat shapes only, no text. |
+| 10 | `ep-2.06-hero.jpg` | 1200×630 | Hero (photo-real) | A contract negotiation table: a signature page and a marked-up engineering redline side by side, a soft-focus industrial control cabinet behind, a pen on the signature line. The pen, not the nameplate, decides who owns the technical file. Calm, boardroom-adjacent. |
+| 11 | `ep-2.06-liability-flow.png` | 1200×675 | Diagram (flat infographic) | A two-track flow: a heavy fixed statutory-liability line dropping onto one emphasised "deemed manufacturer" node; a thinner curved contractual-indemnity arrow routing recovery back to a "client" node. Shapes/arrows + one accent colour, no legible text. |
+| 12 | `ep-2.07-hero.jpg` | 1200×630 | Hero (photo-real) | A control-panel skid on a FAT test bench, an inspector's laptop running a security scan beside the functional test rig. Muted blues/steel, amber accent, no legible text. |
+| 13 | `ep-2.07-dossier.png` | 1200×675 | Diagram (flat infographic) | A layered stack: the security half of a commissioning handover dossier (signed acceptance report, SBOM, credential-rotation record, update procedure, disclosure contact), the SBOM slab accented. Flat shapes, no text. |
+
+**Counts (Series 2):** 13 images — 7 photo-real heroes (1200×630) + 6 flat-infographic diagrams.
