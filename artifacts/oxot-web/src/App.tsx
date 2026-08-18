@@ -33,6 +33,7 @@ import DemoPage from '@/pages/demo';
 import PricingPage from '@/pages/pricing';
 import ProductPage from '@/pages/product';
 import OperatorsPage from '@/pages/operators';
+import CraTransitPage from '@/pages/cra-transit';
 import DeploymentPage from '@/pages/deployment';
 import ResourcesPage from '@/pages/resources';
 import CompetitorsPage from '@/pages/competitors-page';
@@ -151,6 +152,9 @@ function PublicRoutes() {
       </Route>
       <Route path="/operators">
         {() => <PublicRoute component={OperatorsPage} />}
+      </Route>
+      <Route path="/cra-transit">
+        {() => <PublicRoute component={CraTransitPage} />}
       </Route>
       <Route path="/pricing">
         {() => <PublicRoute component={PricingPage} />}

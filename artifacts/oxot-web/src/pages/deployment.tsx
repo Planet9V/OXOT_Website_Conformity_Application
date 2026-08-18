@@ -18,19 +18,23 @@ const copy = {
     kicker: 'DEPLOYMENT',
     title: 'Single tenant, always',
     headerDescription:
-      "Run it in a secure datacenter, or on your own premises with a local AI model — your evidence never leaves your control. The platform is single-tenant by design: your conformity record is not something to pool with anyone else's.",
+      "Four ways to run it — sovereign EU cloud, a delivered hardware appliance, Docker on your own infrastructure, or a virtual machine. The platform is single-tenant by design, and its AI runs locally: your conformity record is not something to pool with anyone else's, and your evidence never leaves your control.",
     options: [
       {
-        name: 'Secure compliance datacenter',
-        body: 'Single-tenant, hosted in a compliance-grade datacenter. Your instance, your data — never shared, never pooled.',
+        name: 'AWS European Sovereign Cloud',
+        body: 'Hosted in the AWS European Sovereign Cloud: data and metadata stay in the EU, operated only by EU-resident personnel under EU law. C5, ISO 27001 and SOC 2 certified, aligned to GDPR and NIS2, with a GDPR Article 28 processor arrangement. Your single-tenant instance, in EU jurisdiction.',
       },
       {
-        name: 'On-premise, your hardware',
-        body: 'Deployed on your own premises with our hardware. Your evidence never leaves your control, and it stays available if your link does not.',
+        name: 'Hardware appliance, delivered',
+        body: 'A full hardware-and-software appliance, installed and configured before delivery — shipped ready to run, including into your own datacentre. Your evidence never leaves your control, and the record stays available even if your link does not.',
       },
       {
-        name: 'On-premise with local AI',
-        body: 'A custom AI model that runs island-mode — it processes and stores everything locally. No data leaves the box; the model learns your organisation over time.',
+        name: 'Docker on your infrastructure',
+        body: 'The same single-tenant stack as a Docker deployment on infrastructure you already run. You own the box, the data and the network boundary.',
+      },
+      {
+        name: 'Virtual machine',
+        body: 'Delivered as a virtual-machine image for your hypervisor — the whole platform in an isolated VM inside your own environment.',
       },
     ],
     islandKicker: 'The island-mode advantage',
@@ -55,19 +59,23 @@ const copy = {
     kicker: 'IMPLEMENTATIE',
     title: 'Altijd single tenant',
     headerDescription:
-      'Draai het in een beveiligd datacenter, of op uw eigen locatie met een lokaal AI-model — uw bewijs verlaat nooit uw beheer. Het platform is single-tenant van opzet: uw conformiteitsdossier is niets om samen te voegen met dat van iemand anders.',
+      'Vier manieren om het te draaien — soevereine EU-cloud, een geleverde hardware-appliance, Docker op uw eigen infrastructuur, of een virtuele machine. Het platform is single-tenant van opzet en de AI draait lokaal: uw conformiteitsdossier voegt u niet samen met dat van iemand anders, en uw bewijs verlaat nooit uw beheer.',
     options: [
       {
-        name: 'Beveiligd compliance-datacenter',
-        body: 'Single-tenant, gehost in een datacenter van compliance-niveau. Uw instantie, uw gegevens — nooit gedeeld, nooit samengevoegd.',
+        name: 'AWS European Sovereign Cloud',
+        body: 'Gehost in de AWS European Sovereign Cloud: gegevens en metadata blijven in de EU, uitsluitend beheerd door in de EU gevestigd personeel onder EU-recht. Gecertificeerd voor C5, ISO 27001 en SOC 2, afgestemd op de AVG en NIS2, met een verwerkersovereenkomst volgens AVG-artikel 28. Uw single-tenant-instantie, binnen de EU-jurisdictie.',
       },
       {
-        name: 'On-premise, uw eigen hardware',
-        body: 'Geïmplementeerd op uw eigen locatie met onze hardware. Uw bewijs verlaat nooit uw beheer en blijft beschikbaar, ook als uw verbinding dat niet doet.',
+        name: 'Geleverde hardware-appliance',
+        body: 'Een volledige hardware-en-software-appliance, vóór levering geïnstalleerd en geconfigureerd — kant-en-klaar geleverd, ook in uw eigen datacenter. Uw bewijs verlaat nooit uw beheer en het dossier blijft beschikbaar, ook als uw verbinding dat niet doet.',
       },
       {
-        name: 'On-premise met lokale AI',
-        body: 'Een op maat gemaakt AI-model dat in island-mode draait — het verwerkt en bewaart alles lokaal. Er verlaten geen gegevens de box; het model leert uw organisatie in de loop van de tijd kennen.',
+        name: 'Docker op uw infrastructuur',
+        body: 'Dezelfde single-tenant-stack als Docker-implementatie op infrastructuur die u al beheert. U bezit de box, de gegevens en de netwerkgrens.',
+      },
+      {
+        name: 'Virtuele machine',
+        body: 'Geleverd als virtuele-machine-image voor uw hypervisor — het hele platform in een geïsoleerde VM binnen uw eigen omgeving.',
       },
     ],
     islandKicker: 'Het island-mode-voordeel',
@@ -87,7 +95,7 @@ const copy = {
   },
 } as const;
 
-const OPTION_ICONS = [Building2, HardDrive, Cpu];
+const OPTION_ICONS = [Building2, HardDrive, Cpu, ServerCog];
 const FEATURE_ICONS = [Lock, Cpu, Users, Mail];
 
 export default function DeploymentPage() {
@@ -110,7 +118,7 @@ export default function DeploymentPage() {
         description={t.headerDescription}
       />
 
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {t.options.map((o, i) => {
           const Icon = OPTION_ICONS[i];
           return (

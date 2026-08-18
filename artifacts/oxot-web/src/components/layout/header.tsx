@@ -19,6 +19,7 @@ import { useLocale } from '@/providers/locale-provider';
 const FUNNEL_NAV = [
   { href: '/product' },
   { href: '/operators' },
+  { href: '/cra-transit' },
   { href: '/pricing' },
   { href: '/deployment' },
   { href: '/blog' },
@@ -29,7 +30,7 @@ const FUNNEL_NAV = [
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'For operators', 'Pricing', 'Deployment', 'Blogs', 'Resources'],
+    nav: ['Platform', 'For operators', 'CRA Transit', 'Pricing', 'Deployment', 'Blogs', 'Resources'],
     homeAria: 'OXOT Conformance Platform — home',
     lightMode: 'Switch to light mode',
     darkMode: 'Switch to dark mode',
@@ -43,7 +44,7 @@ const copy = {
     switchToNl: 'Schakel naar Nederlands',
   },
   nl: {
-    nav: ['Platform', 'Voor exploitanten', 'Prijzen', 'Implementatie', 'Blogs', 'Bronnen'],
+    nav: ['Platform', 'Voor exploitanten', 'CRA Transit', 'Prijzen', 'Implementatie', 'Blogs', 'Bronnen'],
     homeAria: 'OXOT Conformance Platform — startpagina',
     lightMode: 'Schakel naar lichte modus',
     darkMode: 'Schakel naar donkere modus',

@@ -12,6 +12,7 @@ const STATIC_FUNNEL_ROUTES = [
   "/",
   "/product",
   "/operators",
+  "/cra-transit",
   "/pricing",
   "/deployment",
   "/resources",

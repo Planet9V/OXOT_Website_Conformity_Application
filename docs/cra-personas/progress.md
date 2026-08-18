@@ -426,3 +426,29 @@ the meaning of Art. 64(10).
   mint → 400, real PDF flows, download serves attachment+nosniff to
   an authed user, unauth → 401; panel download link renders. Probe
   cleaned up.
+
+## 2026-08-17 — Phase 24: CRA Transit service page + deployment reconciliation
+- Corrected the F4 finding: local-AI copy is TRUE (deployment page already
+  markets island-mode AI in depth); only the committed compose is the
+  dev/demo config. No copy weakened.
+- deployment.tsx enriched to FOUR real modes (EN+NL): AWS European
+  Sovereign Cloud (EU data+metadata residency, EU-resident ops, C5/ISO
+  27001/SOC 2, GDPR Art 28, NIS2-aligned — researched exact terms),
+  delivered hardware appliance (incl. customer datacentre), Docker,
+  virtual machine.
+- New /cra-transit page (EN+NL): the 60-day consultant-led one-time
+  service — provision→run→export→teardown; the 8-phase process diagram
+  (phase 8 = Handover & teardown, not ongoing Operate); the Annex VII
+  artifact package (grounded verbatim in the corpus); the honesty
+  boundary (Module A: the CUSTOMER signs the Art 32 declaration — we
+  guide/produce, never certify); data-residency + teardown assurance;
+  Service JSON-LD. Nav + footer + sitemap + home band. Highlighted on
+  the home page.
+- Research: AWS European Sovereign Cloud terms; CRA Module A / Annex VII
+  / Annex V self-attestation deliverables (sources in the marketing
+  review + this file). Full deliverable context in
+  docs/marketing/website-vs-capabilities-and-ranking-2026-08.md.
+- Gates: G1 (all 4 workspaces) · G3 both apps · G4 0 (honesty held
+  despite conformity/declaration language) · G5 0 · G8 pass · G6 live
+  walk (hero, who-it's-for, 60-day model, 8-phase stepper, artifacts,
+  honesty + residency blocks, CTA).

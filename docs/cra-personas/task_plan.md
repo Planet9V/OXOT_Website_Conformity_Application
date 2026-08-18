@@ -1505,3 +1505,28 @@ noted for SR6/SR7. Details in the approved plan.
 - **23.3 done** Tests for every fix.
 - **23.4 done** Gates, schema push, rebuild, G6, docs (MUST-DO → DONE),
   commit/push, CI, G7.
+
+## Phase 24 — CRA Transit service page + deployment reconciliation (opened + closed 2026-08-17)
+
+User: the deployment model IS local-AI (correct the F4 finding — copy is
+true, the committed compose is just the dev/demo config). Deployment
+modes: AWS European Sovereign Cloud (GDPR/NIS2, C5+ISO 27001+SOC 2,
+EU-resident ops, Art 28 processor); on-prem hardware appliance (full
+HW+app pre-installed, incl. customer datacentres); on-prem Docker; VM.
+New productized service "CRA Transit" — a 60-day consultant-led,
+single-tenant provision→run→export→teardown engagement for ONE
+self-attestation (Module A) product; needs a dedicated page with a
+process diagram (the 8-phase journey, phase 8 = Handover & teardown for
+the one-time model), the artifacts produced (Annex VII file, Annex V
+DoC, SBOM, Annex I risk assessment, CVD policy, support-period
+statement, test reports — all verbatim-grounded), and the acceleration
+story. Honesty boundary: Module A = the CUSTOMER declares on their sole
+responsibility; OXOT/the platform GUIDE and PRODUCE the file — never
+"we certify you compliant" (Art 32).
+- **24.1 done** Reconcile deployment.tsx: the four deployment modes + honest
+  local-AI framing; data-residency assurance.
+- **24.2 done** New /cra-transit page (EN+NL): hero, the 60-day model, the
+  8-phase process diagram, artifacts produced, who it's for, deployment
+  + teardown assurance, outcome, CTA; Service JSON-LD; nav + footer +
+  sitemap + route.
+- **24.3 done** Gates (G1/G3/G4/G5/G8), G6 live, commit/push, CI, G7.

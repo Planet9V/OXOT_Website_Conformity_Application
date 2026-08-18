@@ -8,6 +8,7 @@ import {
   FileStack,
   BookOpen,
   Factory,
+  Rocket,
   Scale,
   ServerCog,
 } from 'lucide-react';
@@ -41,6 +42,10 @@ const copy = {
     operatorBody:
       'If you buy and operate connected equipment, the CRA binds your suppliers — and NIS2 Article 21(2)(d) makes supply-chain security your own duty. Register your estate, record what each supplier has actually provided against the CRA\u2019s own Article 13 duties, chase what\u2019s missing through a secure supplier door, and read the posture per supplier — without the tool ever pretending a verdict.',
     operatorLink: 'See supplier CRA management \u2192',
+    transitKicker: 'Assisted · one-time · 60 days',
+    transitTitle: 'Just need one product done? CRA Transit.',
+    transitBody: 'A consultant-led, 60-day sprint for a single self-assessed product: we provision a dedicated instance, run the whole eight-phase process with you, hand you the Annex VII file and your declaration, and take the platform down. The assisted route, done right.',
+    transitLink: 'See how CRA Transit works \u2192',
     honestyTitle: 'What this application will never tell you',
     honestyBody:
       // honesty-ok: quotes the claim precisely to REFUSE it — the sentence says the app will never make it.
@@ -120,6 +125,10 @@ const copy = {
     operatorBody:
       'Koopt en exploiteert u verbonden apparatuur, dan bindt de CRA uw leveranciers — en maakt NIS2 artikel 21(2)(d) de beveiliging van de toeleveringsketen uw eigen plicht. Registreer uw installatiebestand, leg vast wat elke leverancier daadwerkelijk heeft geleverd tegen de eigen artikel 13-plichten van de CRA, vraag het ontbrekende op via een beveiligde leveranciersdeur, en lees de stand per leverancier — zonder dat het systeem ooit een oordeel veinst.',
     operatorLink: 'Bekijk CRA-leveranciersbeheer \u2192',
+    transitKicker: 'Begeleid · eenmalig · 60 dagen',
+    transitTitle: 'Slechts één product nodig? CRA Transit.',
+    transitBody: 'Een door consultants geleide sprint van 60 dagen voor één zelf beoordeeld product: wij richten een toegewijde instantie in, doorlopen het volledige achtfasenproces met u, overhandigen u het Bijlage VII-dossier en uw verklaring, en halen het platform weg. De begeleide route, goed gedaan.',
+    transitLink: 'Bekijk hoe CRA Transit werkt \u2192',
     honestyTitle: 'Wat deze applicatie u nooit zal vertellen',
     honestyBody:
       'Zij zal u nooit vertellen dat u conform bent. Artikel 32 laat de conformiteitsbeoordeling bij de fabrikant — of een aangemelde instantie. Wat zij toont is de stand van uw bewijs tegen de eigen woorden van de wet, en waar het antwoord \u201cnog door niemand beantwoord\u201d is, staat dat er precies zo.',
@@ -269,6 +278,30 @@ export default function CraHomePage() {
                 className="mt-4 inline-block text-sm font-medium text-primary-ink hover:underline"
               >
                 {t.operatorLink}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CRA Transit — the one-time assisted service (Phase 24). */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-4xl">
+          <div className="flex items-start gap-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+              <Rocket className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <p className="oxot-kicker">{t.transitKicker}</p>
+              <h2 className="oxot-h2 mt-1 text-foreground">{t.transitTitle}</h2>
+              <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                {t.transitBody}
+              </p>
+              <Link
+                href="/cra-transit"
+                className="mt-4 inline-block text-sm font-medium text-primary-ink hover:underline"
+              >
+                {t.transitLink}
               </Link>
             </div>
           </div>
