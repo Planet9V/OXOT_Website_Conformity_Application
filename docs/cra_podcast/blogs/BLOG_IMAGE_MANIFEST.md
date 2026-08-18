@@ -54,3 +54,23 @@ images.**
 | 13 | `ep-2.07-dossier.png` | 1200×675 | Diagram (flat infographic) | A layered stack: the security half of a commissioning handover dossier (signed acceptance report, SBOM, credential-rotation record, update procedure, disclosure contact), the SBOM slab accented. Flat shapes, no text. |
 
 **Counts (Series 2):** 13 images — 7 photo-real heroes (1200×630) + 6 flat-infographic diagrams.
+
+## Series 3 — Brownfield OT, Spare Parts & Maintenance
+
+| # | Filename | Size (px) | Type | What it should show |
+|---|----------|-----------|------|---------------------|
+| 1 | `ep-3.01-hero.jpg` | 1200×630 | Hero (photo-real) | A maintenance technician at an aging industrial control cabinet holding two near-identical PLC boards side by side, one tagged with a small red flag. Shop-floor lighting. "Same footprint, different revision." |
+| 2 | `ep-3.01-spec-drift.png` | 1200×675 | Diagram (flat infographic) | A stable "part number" line running straight across ~10 years while three underlying attributes (silicon revision, passive-component source, firmware branch) step-change and cross out of a shaded "identical-specification" zone. No legible text. |
+| 3 | `ep-3.02-hero.jpg` | 1200×630 | Hero (photo-real) | A weathered early-2000s packaging line with a small modern cellular gateway enclosure freshly bolted to its control cabinet; the gateway is the focal point. |
+| 4 | `ep-3.02-two-wirings.png` | 1200×675 | Diagram (flat infographic) | Side by side: left, a segmented one-way telemetry tap isolated behind a data diode ("maintenance"); right, a two-way gateway on the control VLAN with a path to the HMI ("substantial modification"). Shapes/arrows only, no text. |
+| 5 | `ep-3.03-hero.jpg` | 1200×630 | Hero (photo-real) | An aging refinery distillation column with a small modern control cabinet at its base, against a long horizontal asset-lifecycle line where the vendor support window is only a short early segment. Muted, no text. |
+| 6 | `ep-3.03-support-timeline.png` | 1200×675 | Diagram (flat infographic) | A single long horizontal bar = asset design life; a short early segment = "supported"; a long trailing segment = "unsupported / compensating controls." Shapes only, no numbers. |
+| 7 | `ep-3.03-zone-isolation.png` | 1200×800 | Diagram (flat infographic) | A Purdue-model layered stack with one out-of-support device enclosed in a tightly bounded zone, a single choke point on the conduit into it, and a small monitoring tap on the boundary. Flow/enclosure only, no text. |
+| 8 | `ep-3.04-hero.jpg` | 1200×630 | Hero (photo-real) | A legacy Siemens S7-300 rack in a plant cabinet with a network tap feeding a small edge-gateway box, a cloud icon above. "The compliance question lives in one hop." |
+| 9 | `ep-3.04-architecture.png` | 1200×675 | Diagram (flat infographic) | A five-stage horizontal flow: legacy CPU → read-only tap → edge gateway/broker → one-way data diode → cloud ingest; a bracket highlights ONLY the edge gateway as in CRA scope, the legacy side marked "grandfathered." No legible text. |
+| 10 | `ep-3.05-hero.jpg` | 1200×630 | Hero (photo-real) | A climate-controlled industrial spares warehouse: rows of boxed controller/PLC modules on steel shelving, calm and authoritative. No people or text. |
+| 11 | `ep-3.05-decision.png` | 1200×675 | Diagram (flat infographic) | A horizontal timeline of warehoused stock crossing a single vertical threshold (the cutoff), with four stacked bands above representing capital / storage / degradation / warranty. No legible text or numbers. |
+| 12 | `ep-3.06-hero.jpg` | 1200×630 | Hero (photo-real) | A certified explosion-proof pressure transmitter on a refinery process line at night, an engineer at a laptop reviewing a change record nearby. Muted, amber accent, no text. |
+| 13 | `ep-3.06-staged-validation.png` | 1200×675 | Diagram (flat infographic) | A left-to-right staged pipeline: security advisory → offline identical bench-twin test rig → hazardous-area review/sign-off gate → controlled field deployment, with a small branch showing the security fix isolated from a bundled functionality update. Shapes/flow only, no text. |
+
+**Counts (Series 3):** 13 images — 6 photo-real heroes (1200×630) + 7 flat-infographic diagrams.

@@ -5,7 +5,7 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 13 / 67 done.**
+**Progress: 19 / 67 done.**
 
 ## Series 1 — Procurement & Contracting Crisis ✅ COMPLETE (committed f4776e6)
 - [x] EP_1.01 — The 2-Year Lag
@@ -24,13 +24,13 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_2.06 — The Integrator Safe-Harbor Agreement
 - [x] EP_2.07 — The FAT/SAT revolution
 
-## Series 3 — Brownfield OT, Spare Parts & Maintenance
-- [ ] EP_3.01 — The Spare Parts Illusion (Art 2(6) / Recital 29)
-- [ ] EP_3.02 — When maintenance becomes redesign
-- [ ] EP_3.03 — Bridging the 5-year OEM gap under NIS2
-- [ ] EP_3.04 — Legacy brownfield integration
-- [ ] EP_3.05 — The obsolescence stockpile strategy
-- [ ] EP_3.06 — Firmware patching in ATEX environments
+## Series 3 — Brownfield OT, Spare Parts & Maintenance ✅ COMPLETE
+- [x] EP_3.01 — The Spare Parts Illusion (Art 2(6) / Recital 29)
+- [x] EP_3.02 — When maintenance becomes redesign
+- [x] EP_3.03 — Bridging the 5-year OEM gap under NIS2
+- [x] EP_3.04 — Legacy brownfield integration
+- [x] EP_3.05 — The obsolescence stockpile strategy
+- [x] EP_3.06 — Firmware patching in ATEX environments
 
 ## Series 4 — Tier-2 Upstream Component Supplier Survival
 - [ ] EP_4.01 — The Tier-2 dilemma

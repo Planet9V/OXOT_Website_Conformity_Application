@@ -146,6 +146,31 @@ week" close. Individually good, collectively formulaic. For each new series:
     sidebar with its own sourced citation, and make sure the CRA argument stands
     WITHOUT it — never route "confirm with counsel" hand-waving through the spine.
 
+## Anti-formula v3 (added after the Series 3 grade — kill the sentence-rhythm tells)
+
+Series 3 graded A− and broke the formula at the STRUCTURAL level (six spines →
+six reading experiences, tables ≤3, zero penalty-tier motif, zero retired
+Jim-isms, flawless accuracy). What survived is a sentence-rhythm fingerprint:
+
+12. **Rotate the CLOSER SHAPE, not just the link.** Series 3 ended all six posts
+    on "do one thing this week + a CTA link." Vary the *ending itself*: one post
+    ends on a principle, one on an unanswered question, one on a named risk, one
+    on the CTA, one on a single hard sentence with no link at all. The ending
+    must stop being predictable.
+13. **Ban the reflective-pivot tic.** "Here's the trap / Here's the honest part /
+    Here's the part [X] misses" appeared ~6× across Series 3 and is the strongest
+    author fingerprint. Use a different transition every time; never signpost the
+    turn with "Here's the…".
+14. **One home episode per shared OT concept.** Read-only tap / data diode /
+    one-way conduit / Purdue segmentation etc. get explained ONCE in the series,
+    in the episode that owns them; every other episode cross-links rather than
+    re-teaches. No concept is taught twice in a series.
+15. **Citation ceiling ≤5 article numbers in body prose** (tightened from 6).
+    Spotlight one article per post; demote the rest to plain-language duty.
+16. **Frontmatter-vs-body numeric gate:** a numeric claim in the title/slug/
+    takeaways ("4-step test") must match what the body delivers (three gates).
+    Reconcile before shipping (this is the companion to the v2 lint #10).
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out
