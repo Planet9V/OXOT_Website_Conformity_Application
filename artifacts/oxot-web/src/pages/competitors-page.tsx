@@ -1,350 +1,255 @@
-import { Shield, Check, X, ArrowRight, Server, Lock, FileText, Cpu, AlertTriangle, Scale, Zap, Layers } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Link } from 'wouter';
+import { motion } from 'framer-motion';
+import { Scale, Check, Minus, ArrowRight, Cloud, ScanLine, ShieldCheck } from 'lucide-react';
+import { PageHeader } from '@/components/page-header';
+import { useSeo } from '@/hooks/use-seo';
+import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
+import { revealVariants } from '@/lib/motion';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
-// flag Dutch strings for a native reviewer before go-live. Structure mirrors the
-// English source so every visible string has a Dutch equivalent. Competitor
-// brand/product names (Vanta, Drata, Cybellum, Finite State, OXOT Conformity)
-// and regulatory names stay in English and remain inline in the JSX.
+// flag Dutch strings for a native reviewer before go-live. This page compares by
+// CATEGORY, not by fabricated per-feature scorecards of named competitors: the
+// wedges are structural (what a tool is built for), which is honest and fair. It
+// never claims the platform concludes conformity — that boundary is the product.
 const copy = {
   en: {
-    heroBadge: 'Product Security & Compliance Positioning',
-    heroTitle:
-      'Why Industrial OEMs & OT Leaders Choose OXOT Over Generic IT GRC or Binary Scanners',
-    heroBody1: 'The EU Cyber Resilience Act (CRA) demands both deep embedded technical evidence ',
-    heroEmphasis1: '(xBOMs, VEX, 24h/72h SLAs)',
-    heroBody2: ' and statutory audit governance ',
-    heroEmphasis2: '(Annex VII Technical Files & DoCs)',
-    heroBody3: '. OXOT is the only platform built specifically to bridge both worlds.',
-    exploreWorkbench: 'Explore CRA Workbench',
-    viewBriefing: 'View Executive Briefing Deck',
-    gapTitle: 'Understanding the Product Compliance Gap',
-    gapBody:
-      'Most vendors sell solutions designed for IT cloud SaaS or basic firmware binary extraction. Neither provides a complete path to CRA CE Marking.',
-    grcBadge: 'IT Cloud GRC',
-    grcDesc: 'Built for SaaS SOC 2 & ISO 27001',
-    grcQuote: '"Great for IT policy checklists, but blind to embedded OT hardware & physical safety."',
-    grcLi1: 'No IEC 62443 / OT domain awareness',
-    grcLi2: 'Cannot ingest hardware/software xBOMs',
-    grcLi3: 'No CRA Art 14 24h/72h ENISA SLA watch',
-    grcLi4: 'No Notified Body (Module B/H) portal',
-    binBadge: 'Binary Scanners',
-    binDesc: 'Built for firmware scanning',
-    binQuote: '"Produces endless CVE counts without statutory technical files or CE marking workflows."',
-    binLi1: 'Deep binary firmware extraction',
-    binLi2: 'No EU Declarations of Conformity',
-    binLi3: 'No cross-regulation evidence reuse',
-    binLi4: 'No Notified Body engagement workspace',
-    recommended: 'Recommended',
-    oxotBadge: 'All-in-One OT Platform',
-    oxotDesc: 'Industrial AI & CRA Compliance Engine',
-    oxotQuote: '"Single system of record connecting xBOMs, Annex VII Technical Files, and Notified Bodies."',
-    oxotLi1: 'Build once, comply across CRA + AI + 62443',
-    oxotLi2: 'Cryptographic SHA-256 evidence proofs',
-    oxotLi3: 'Live 24h/72h ENISA CSIRT SLA watch',
-    oxotLi4: 'Public Trust Center & Notified Body Portal',
-    matrixTitle: 'Detailed Feature Matrix',
-    colCapability: 'Compliance Capability',
-    colOxot: 'OXOT Platform',
-    none: 'None',
-    rowCrossMap: 'Multi-Regulation Cross-Mapping',
-    rowCrossMapOxot: 'Native (CRA, AI, 62443, NIS2)',
-    rowCrossMapVanta: 'IT Only (SOC 2, ISO)',
-    rowAnnex: 'Annex VII Technical File Generator',
-    rowAnnexOxot: 'Automated Export',
-    rowAnnexVanta: 'Basic Templates',
-    rowArt14: 'Article 14 24h/72h SLA Timers',
-    rowArt14Oxot: 'Native SLA Watch',
-    rowArt14Bin: 'CVE Alerts Only',
-    rowHashes: 'Tamper-Proof Cryptographic Hashes',
-    rowHashesOxot: 'SHA-256 Proofs',
-    rowPortal: 'Notified Body Shared Portal',
-    rowPortalOxot: 'Module B/C & H Workspace',
-    rowXbom: 'xBOM & VEX Exploitability Triage',
-    rowXbomOxot: 'CycloneDX & SPDX Ingest',
-    rowXbomBin: 'Binary Scan Ingest',
-    rowXbomVanta: 'Basic Ingest',
-    ctaTitle: 'Ready to Accelerate Your CRA CE Marking Campaign?',
+    seoTitle: 'OXOT vs. IT GRC and firmware scanners — an honest comparison',
+    seoDescription:
+      'IT GRC suites prove SOC 2 and ISO 27001; firmware scanners count CVEs. Neither is a system of record for the Cyber Resilience Act across the whole value chain. Here is what OXOT is built for, and where the other categories structurally stop.',
+    kicker: 'HOW WE COMPARE',
+    title: 'Built for the CRA, across the whole value chain',
+    description:
+      'Two categories of tool get bought for CRA work, and both leave a gap. IT GRC suites prove IT-security posture; firmware scanners find vulnerabilities. Neither is a system of record that holds a product’s statutory dossier — and neither speaks to the operator who has to manage a fleet of suppliers. We built for exactly that.',
+    honestLead: 'Stated plainly, and without pretending the other tools are useless:',
+    cats: [
+      {
+        icon: 'cloud',
+        badge: 'IT & cloud GRC',
+        name: 'SOC 2 / ISO 27001 suites',
+        builtFor: 'Built for information-security management systems — policies, controls, and continuous evidence for SOC 2 and ISO 27001.',
+        strength: 'Genuinely good at what they are for: IT-security posture and audit readiness.',
+        gap: 'They model the organisation, not the product. There is no per-product technical file, no Annex VII, no essential-requirements assessment, and no notion of the operator managing suppliers device by device.',
+      },
+      {
+        icon: 'scan',
+        badge: 'Product security',
+        name: 'Firmware & binary scanners',
+        builtFor: 'Built to extract SBOMs from firmware and enumerate known vulnerabilities — deep, useful engineering telemetry.',
+        strength: 'Genuinely good at what they are for: finding what is in a binary and which CVEs touch it.',
+        gap: 'A list of CVEs is evidence, not a dossier. They do not compose the technical documentation, hold the declaration of conformity, track the Article 13/14 duties, or carry the other acts that bind the same product.',
+      },
+      {
+        icon: 'shield',
+        badge: 'This platform',
+        name: 'OXOT Conformance Platform',
+        builtFor: 'Built as the single system of record for a product’s conformity — the manufacturer’s dossier and the operator’s supplier register, on the same rails.',
+        strength: 'One record, nine acts, every obligation citing its own article — and a hard refusal to conclude conformity for you.',
+        gap: 'Not a scanner and not an IT-GRC suite: it ingests the evidence those tools produce and turns it into the statutory record neither of them keeps.',
+      },
+    ] as { icon: string; badge: string; name: string; builtFor: string; strength: string; gap: string }[],
+    recommended: 'What we built',
+    matrixTitle: 'Where each category stops',
+    matrixNote: 'A dash is not a criticism — it means the capability is outside what that category is built to do.',
+    colCapability: 'Capability',
+    colGrc: 'IT GRC',
+    colScan: 'Scanners',
+    colOxot: 'OXOT',
+    rows: [
+      ['Per-product Annex VII technical file', false, false, true],
+      ['Annex V EU Declaration of Conformity on the record', false, false, true],
+      ['One record across CRA · NIS2 · AI Act · RED · Machinery · GDPR · Data Act', false, false, true],
+      ['Verbatim statutory text, character-exact and CI-verified', false, false, true],
+      ['Operator supplier register + secure supplier door', false, false, true],
+      ['Article 13/14 duties tracked and timed from the file', 'partial', 'partial', true],
+      ['SBOM / vulnerability evidence ingested and linked to a duty', 'partial', true, true],
+      ['Single-tenant, local island-mode AI — evidence never leaves', false, 'partial', true],
+      ['Refuses to conclude conformity (Article 32 honesty)', false, false, true],
+    ] as [string, boolean | 'partial', boolean | 'partial', boolean | 'partial'][],
+    legendYes: 'Native',
+    legendPartial: 'Partial / adjacent',
+    legendNo: 'Out of scope',
+    ctaTitle: 'See it against your own products',
     ctaBody:
-      'Join leading industrial automation OEMs, OT component suppliers, and robotics vendors using OXOT to manage end-to-end product compliance.',
-    ctaStart: 'Start Free Assessment',
-    ctaBrowse: 'Browse Regulation Matrix',
+      'A 45-minute walkthrough with your real product and supplier list — no fabricated verdicts, just what the record would show on day one.',
+    ctaDemo: 'Book a demo',
+    ctaTour: 'Watch the 90-second tour',
   },
   nl: {
-    heroBadge: 'Positionering productbeveiliging en naleving',
-    heroTitle:
-      'Waarom industriële OEM’s en OT-leiders kiezen voor OXOT in plaats van generieke IT-GRC of binaire scanners',
-    heroBody1: 'De EU Cyber Resilience Act (CRA) vereist zowel diepgaand technisch bewijs voor embedded systemen ',
-    heroEmphasis1: '(xBOM’s, VEX, 24u/72u SLA’s)',
-    heroBody2: ' als wettelijk auditbeheer ',
-    heroEmphasis2: '(technische documentatie volgens Bijlage VII en DoC’s)',
-    heroBody3: '. OXOT is het enige platform dat specifiek is gebouwd om beide werelden te overbruggen.',
-    exploreWorkbench: 'Verken de CRA-workbench',
-    viewBriefing: 'Bekijk de executive briefing-deck',
-    gapTitle: 'De kloof in productnaleving begrijpen',
-    gapBody:
-      'De meeste leveranciers verkopen oplossingen die zijn ontworpen voor IT-cloud-SaaS of eenvoudige binaire firmware-extractie. Geen van beide biedt een volledig traject naar CRA-CE-markering.',
-    grcBadge: 'IT-cloud-GRC',
-    grcDesc: 'Gebouwd voor SaaS SOC 2 en ISO 27001',
-    grcQuote: '"Prima voor IT-beleidschecklists, maar blind voor embedded OT-hardware en fysieke veiligheid."',
-    grcLi1: 'Geen kennis van het IEC 62443- / OT-domein',
-    grcLi2: 'Kan geen hardware-/software-xBOM’s inlezen',
-    grcLi3: 'Geen CRA-Artikel 14-bewaking van 24u/72u ENISA-SLA’s',
-    grcLi4: 'Geen portaal voor aangemelde instanties (Module B/H)',
-    binBadge: 'Binaire scanners',
-    binDesc: 'Gebouwd voor firmwarescanning',
-    binQuote: '"Produceert eindeloze CVE-aantallen zonder wettelijke technische documentatie of CE-markeringsworkflows."',
-    binLi1: 'Diepgaande binaire firmware-extractie',
-    binLi2: 'Geen EU-conformiteitsverklaringen',
-    binLi3: 'Geen hergebruik van bewijs over meerdere verordeningen heen',
-    binLi4: 'Geen samenwerkingsruimte voor aangemelde instanties',
-    recommended: 'Aanbevolen',
-    oxotBadge: 'All-in-one OT-platform',
-    oxotDesc: 'Industriële AI- en CRA-nalevingsengine',
-    oxotQuote: '"Eén centraal registratiesysteem dat xBOM’s, technische documentatie volgens Bijlage VII en aangemelde instanties met elkaar verbindt."',
-    oxotLi1: 'Eenmaal opbouwen, voldoen aan CRA + AI + 62443',
-    oxotLi2: 'Cryptografische SHA-256-bewijzen',
-    oxotLi3: 'Live bewaking van 24u/72u ENISA-CSIRT-SLA’s',
-    oxotLi4: 'Openbaar Trust Center en portaal voor aangemelde instanties',
-    matrixTitle: 'Gedetailleerde functiematrix',
-    colCapability: 'Nalevingsfunctie',
-    colOxot: 'OXOT-platform',
-    none: 'Geen',
-    rowCrossMap: 'Cross-mapping over meerdere verordeningen',
-    rowCrossMapOxot: 'Ingebouwd (CRA, AI, 62443, NIS2)',
-    rowCrossMapVanta: 'Alleen IT (SOC 2, ISO)',
-    rowAnnex: 'Generator voor technische documentatie volgens Bijlage VII',
-    rowAnnexOxot: 'Geautomatiseerde export',
-    rowAnnexVanta: 'Basissjablonen',
-    rowArt14: 'Artikel 14 24u/72u SLA-timers',
-    rowArt14Oxot: 'Ingebouwde SLA-bewaking',
-    rowArt14Bin: 'Alleen CVE-meldingen',
-    rowHashes: 'Manipulatiebestendige cryptografische hashes',
-    rowHashesOxot: 'SHA-256-bewijzen',
-    rowPortal: 'Gedeeld portaal voor aangemelde instanties',
-    rowPortalOxot: 'Werkruimte voor Module B/C en H',
-    rowXbom: 'xBOM- en VEX-triage op misbruikbaarheid',
-    rowXbomOxot: 'CycloneDX- en SPDX-invoer',
-    rowXbomBin: 'Invoer via binaire scan',
-    rowXbomVanta: 'Basisinvoer',
-    ctaTitle: 'Klaar om uw CRA-CE-markeringstraject te versnellen?',
+    seoTitle: 'OXOT versus IT-GRC en firmwarescanners — een eerlijke vergelijking',
+    seoDescription:
+      'IT-GRC-suites bewijzen SOC 2 en ISO 27001; firmwarescanners tellen CVE’s. Geen van beide is een registratiesysteem voor de Cyber Resilience Act over de hele waardeketen. Dit is waarvoor OXOT is gebouwd, en waar de andere categorieën structureel ophouden.',
+    kicker: 'HOE WIJ ONS VERHOUDEN',
+    title: 'Gebouwd voor de CRA, over de hele waardeketen',
+    description:
+      'Twee soorten tools worden gekocht voor CRA-werk, en beide laten een gat. IT-GRC-suites bewijzen de IT-beveiligingsstand; firmwarescanners vinden kwetsbaarheden. Geen van beide is een registratiesysteem dat het wettelijke dossier van een product vasthoudt — en geen van beide spreekt de exploitant aan die een vloot leveranciers moet beheren. Wij hebben precies daarvoor gebouwd.',
+    honestLead: 'Eerlijk gesteld, en zonder te doen alsof de andere tools nutteloos zijn:',
+    cats: [
+      {
+        icon: 'cloud',
+        badge: 'IT- & cloud-GRC',
+        name: 'SOC 2- / ISO 27001-suites',
+        builtFor: 'Gebouwd voor managementsystemen voor informatiebeveiliging — beleid, controls en doorlopend bewijs voor SOC 2 en ISO 27001.',
+        strength: 'Echt goed in waarvoor ze bedoeld zijn: IT-beveiligingsstand en auditgereedheid.',
+        gap: 'Ze modelleren de organisatie, niet het product. Er is geen technisch dossier per product, geen Bijlage VII, geen beoordeling van essentiële eisen, en geen begrip van de exploitant die leveranciers per apparaat beheert.',
+      },
+      {
+        icon: 'scan',
+        badge: 'Productbeveiliging',
+        name: 'Firmware- & binaire scanners',
+        builtFor: 'Gebouwd om SBOM’s uit firmware te halen en bekende kwetsbaarheden op te sommen — diepe, nuttige engineeringtelemetrie.',
+        strength: 'Echt goed in waarvoor ze bedoeld zijn: vinden wat in een binary zit en welke CVE’s die raken.',
+        gap: 'Een lijst CVE’s is bewijs, geen dossier. Ze stellen de technische documentatie niet samen, houden de conformiteitsverklaring niet vast, volgen de artikel 13/14-plichten niet, en dragen de andere wetten die hetzelfde product binden niet.',
+      },
+      {
+        icon: 'shield',
+        badge: 'Dit platform',
+        name: 'OXOT Conformance Platform',
+        builtFor: 'Gebouwd als het centrale registratiesysteem voor de conformiteit van een product — het dossier van de fabrikant en het leveranciersregister van de exploitant, op dezelfde rails.',
+        strength: 'Eén dossier, negen wetten, elke verplichting met eigen artikelverwijzing — en een harde weigering om de conformiteit voor u te concluderen.',
+        gap: 'Geen scanner en geen IT-GRC-suite: het leest het bewijs in dat die tools produceren en maakt daarvan het wettelijke dossier dat geen van beide bijhoudt.',
+      },
+    ] as { icon: string; badge: string; name: string; builtFor: string; strength: string; gap: string }[],
+    recommended: 'Wat wij bouwden',
+    matrixTitle: 'Waar elke categorie ophoudt',
+    matrixNote: 'Een streepje is geen kritiek — het betekent dat de functie buiten valt waarvoor die categorie is gebouwd.',
+    colCapability: 'Functie',
+    colGrc: 'IT-GRC',
+    colScan: 'Scanners',
+    colOxot: 'OXOT',
+    rows: [
+      ['Technisch dossier per product (Bijlage VII)', false, false, true],
+      ['EU-conformiteitsverklaring (Bijlage V) op het dossier', false, false, true],
+      ['Eén dossier over CRA · NIS2 · AI-verordening · RED · Machinerie · AVG · Data Act', false, false, true],
+      ['Woordelijke wettekst, tekengetrouw en geverifieerd in CI', false, false, true],
+      ['Leveranciersregister exploitant + beveiligde leveranciersdeur', false, false, true],
+      ['Artikel 13/14-plichten gevolgd en getimed vanaf het dossier', 'partial', 'partial', true],
+      ['SBOM-/kwetsbaarheidsbewijs ingelezen en aan een plicht gekoppeld', 'partial', true, true],
+      ['Single-tenant, lokale island-mode-AI — bewijs verlaat u niet', false, 'partial', true],
+      ['Weigert conformiteit te concluderen (artikel 32-eerlijkheid)', false, false, true],
+    ] as [string, boolean | 'partial', boolean | 'partial', boolean | 'partial'][],
+    legendYes: 'Ingebouwd',
+    legendPartial: 'Gedeeltelijk / aangrenzend',
+    legendNo: 'Buiten scope',
+    ctaTitle: 'Bekijk het tegen uw eigen producten',
     ctaBody:
-      'Sluit u aan bij toonaangevende OEM’s in industriële automatisering, leveranciers van OT-componenten en robotica-aanbieders die OXOT gebruiken om productnaleving van begin tot eind te beheren.',
-    ctaStart: 'Start een gratis beoordeling',
-    ctaBrowse: 'Bekijk de verordeningenmatrix',
+      'Een rondleiding van 45 minuten met uw echte product en leverancierslijst — geen verzonnen oordelen, alleen wat het dossier op dag één zou tonen.',
+    ctaDemo: 'Demo aanvragen',
+    ctaTour: 'Bekijk de rondleiding van 90 seconden',
   },
 } as const;
+
+const CAT_ICONS: Record<string, typeof Cloud> = { cloud: Cloud, scan: ScanLine, shield: ShieldCheck };
+
+function Cell({ v }: { v: boolean | 'partial' }) {
+  if (v === true) return <Check className="mx-auto h-4 w-4 text-primary" aria-label="Native" />;
+  if (v === 'partial') return <Minus className="mx-auto h-4 w-4 text-amber-500" aria-label="Partial" />;
+  return <Minus className="mx-auto h-4 w-4 text-muted-foreground/40" aria-label="Out of scope" />;
+}
 
 export default function CompetitorsPage() {
   const { locale } = useLocale();
   const t = copy[locale];
 
+  useSeo(
+    pageSeo('/compare', {
+      title: t.seoTitle,
+      description: t.seoDescription,
+    }),
+  );
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-cyan-500 selection:text-slate-950">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-16 md:pt-32 md:pb-24 border-b border-slate-800/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950 pointer-events-none" />
-        
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">
-            <Scale className="w-3.5 h-3.5" /> {t.heroBadge}
-          </div>
+    <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">
+      <PageHeader kicker={t.kicker} title={t.title} icon={Scale} description={t.description} />
 
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent mb-6 max-w-4xl">
-            {t.heroTitle}
-          </h1>
-
-          <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed mb-8">
-            {t.heroBody1}<span className="text-cyan-400 font-semibold">{t.heroEmphasis1}</span>{t.heroBody2}<span className="text-cyan-400 font-semibold">{t.heroEmphasis2}</span>{t.heroBody3}
-          </p>
-
-          <div className="flex flex-wrap gap-4 items-center">
-            <Link href="/conformity-platform">
-              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 shadow-lg shadow-cyan-500/20">
-                {t.exploreWorkbench} <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            <a href="/conformity-briefing/" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="border-slate-700 text-slate-200 hover:bg-slate-900">
-                {t.viewBriefing}
-              </Button>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategic Positioning Split: IT GRC vs Binary Scanners vs OXOT */}
-      <section className="py-20 bg-slate-900/40">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold mb-4">{t.gapTitle}</h2>
-            <p className="text-slate-400">
-              {t.gapBody}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* IT GRC */}
-            <Card className="bg-slate-900/60 border-slate-800 text-slate-200 hover:border-slate-700 transition">
-              <CardHeader>
-                <Badge variant="outline" className="w-fit border-amber-500/30 text-amber-400 bg-amber-950/20 mb-2">
-                  {t.grcBadge}
-                </Badge>
-                <CardTitle className="text-xl">Vanta / Drata</CardTitle>
-                <CardDescription className="text-slate-400">{t.grcDesc}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm text-slate-300">
-                <p className="text-slate-400 italic">{t.grcQuote}</p>
-                <ul className="space-y-2">
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.grcLi1}</li>
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.grcLi2}</li>
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.grcLi3}</li>
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.grcLi4}</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Binary Scanners */}
-            <Card className="bg-slate-900/60 border-slate-800 text-slate-200 hover:border-slate-700 transition">
-              <CardHeader>
-                <Badge variant="outline" className="w-fit border-purple-500/30 text-purple-400 bg-purple-950/20 mb-2">
-                  {t.binBadge}
-                </Badge>
-                <CardTitle className="text-xl">Cybellum / Finite State</CardTitle>
-                <CardDescription className="text-slate-400">{t.binDesc}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm text-slate-300">
-                <p className="text-slate-400 italic">{t.binQuote}</p>
-                <ul className="space-y-2">
-                  <li className="flex items-start text-emerald-400"><Check className="w-4 h-4 mr-2 shrink-0 mt-0.5 text-emerald-400" /> {t.binLi1}</li>
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.binLi2}</li>
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.binLi3}</li>
-                  <li className="flex items-start text-red-400"><X className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.binLi4}</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* OXOT Platform */}
-            <Card className="bg-cyan-950/30 border-cyan-500/50 text-slate-100 relative overflow-hidden shadow-xl shadow-cyan-950/50">
-              <div className="absolute top-0 right-0 bg-cyan-500 text-slate-950 text-[10px] font-black uppercase px-3 py-1 rounded-bl">
-                {t.recommended}
+      {/* Three-category honest split */}
+      <p className="text-sm text-muted-foreground">{t.honestLead}</p>
+      <div className="mt-4 grid gap-5 md:grid-cols-3">
+        {t.cats.map((c, i) => {
+          const Icon = CAT_ICONS[c.icon];
+          const isOxot = c.icon === 'shield';
+          return (
+            <motion.div
+              key={c.name}
+              className={`relative flex flex-col rounded-2xl border p-6 ${
+                isOxot ? 'border-primary/50 bg-primary/[0.04] shadow-e1' : 'border-border bg-card'
+              }`}
+              {...revealVariants(i)}
+            >
+              {isOxot && (
+                <span className="absolute right-4 top-4 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-foreground">
+                  {t.recommended}
+                </span>
+              )}
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                <Icon className="h-5 w-5 text-primary" />
               </div>
-              <CardHeader>
-                <Badge className="w-fit bg-cyan-500 text-slate-950 font-bold mb-2">
-                  {t.oxotBadge}
-                </Badge>
-                <CardTitle className="text-2xl text-cyan-300">OXOT Conformity</CardTitle>
-                <CardDescription className="text-slate-300">{t.oxotDesc}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4 text-sm text-slate-200">
-                <p className="text-cyan-200 font-medium">{t.oxotQuote}</p>
-                <ul className="space-y-2 font-medium">
-                  <li className="flex items-start text-emerald-400"><Check className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.oxotLi1}</li>
-                  <li className="flex items-start text-emerald-400"><Check className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.oxotLi2}</li>
-                  <li className="flex items-start text-emerald-400"><Check className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.oxotLi3}</li>
-                  <li className="flex items-start text-emerald-400"><Check className="w-4 h-4 mr-2 shrink-0 mt-0.5" /> {t.oxotLi4}</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+              <p className="oxot-kicker mt-4">{c.badge}</p>
+              <h3 className="mt-1 font-display text-lg font-normal tracking-tight text-foreground">{c.name}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.builtFor}</p>
+              <p className="mt-3 flex items-start gap-2 text-sm text-foreground">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> <span>{c.strength}</span>
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.gap}</p>
+            </motion.div>
+          );
+        })}
+      </div>
 
-      {/* Comprehensive Functional Feature Matrix */}
-      <section className="py-20 border-t border-slate-800/80">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-12">{t.matrixTitle}</h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left text-sm">
-              <thead>
-                <tr className="border-b border-slate-800 bg-slate-900/80 text-slate-300">
-                  <th className="p-4 font-semibold">{t.colCapability}</th>
-                  <th className="p-4 font-semibold text-cyan-400">{t.colOxot}</th>
-                  <th className="p-4 font-semibold text-slate-400">Cybellum / Finite State</th>
-                  <th className="p-4 font-semibold text-slate-400">Vanta / Drata</th>
+      {/* Capability matrix */}
+      <div className="mt-16">
+        <h2 className="text-center font-display text-3xl font-normal tracking-tight text-foreground">
+          {t.matrixTitle}
+        </h2>
+        <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-muted-foreground">{t.matrixNote}</p>
+        <div className="mt-8 overflow-x-auto rounded-2xl border border-border">
+          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-border bg-card">
+                <th className="p-4 font-medium text-foreground">{t.colCapability}</th>
+                <th className="p-4 text-center font-medium text-muted-foreground">{t.colGrc}</th>
+                <th className="p-4 text-center font-medium text-muted-foreground">{t.colScan}</th>
+                <th className="p-4 text-center font-semibold text-primary">{t.colOxot}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {t.rows.map(([label, grc, scan, oxot], i) => (
+                <tr key={label as string} className={i % 2 ? 'bg-card/40' : ''}>
+                  <td className="p-4 text-foreground">{label}</td>
+                  <td className="p-4"><Cell v={grc} /></td>
+                  <td className="p-4"><Cell v={scan} /></td>
+                  <td className="p-4"><Cell v={oxot} /></td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
-                <tr>
-                  <td className="p-4 font-medium flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-cyan-400" /> {t.rowCrossMap}
-                  </td>
-                  <td className="p-4 text-emerald-400 font-semibold">{t.rowCrossMapOxot}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                  <td className="p-4 text-slate-500">{t.rowCrossMapVanta}</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-cyan-400" /> {t.rowAnnex}
-                  </td>
-                  <td className="p-4 text-emerald-400 font-semibold">{t.rowAnnexOxot}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                  <td className="p-4 text-slate-500">{t.rowAnnexVanta}</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4 text-cyan-400" /> {t.rowArt14}
-                  </td>
-                  <td className="p-4 text-emerald-400 font-semibold">{t.rowArt14Oxot}</td>
-                  <td className="p-4 text-amber-400">{t.rowArt14Bin}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium flex items-center gap-2">
-                    <Lock className="w-4 h-4 text-cyan-400" /> {t.rowHashes}
-                  </td>
-                  <td className="p-4 text-emerald-400 font-semibold">{t.rowHashesOxot}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium flex items-center gap-2">
-                    <Server className="w-4 h-4 text-cyan-400" /> {t.rowPortal}
-                  </td>
-                  <td className="p-4 text-emerald-400 font-semibold">{t.rowPortalOxot}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                  <td className="p-4 text-slate-500">{t.none}</td>
-                </tr>
-                <tr>
-                  <td className="p-4 font-medium flex items-center gap-2">
-                    <Cpu className="w-4 h-4 text-cyan-400" /> {t.rowXbom}
-                  </td>
-                  <td className="p-4 text-emerald-400 font-semibold">{t.rowXbomOxot}</td>
-                  <td className="p-4 text-emerald-400">{t.rowXbomBin}</td>
-                  <td className="p-4 text-amber-400">{t.rowXbomVanta}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </section>
-
-      {/* CTA Footer */}
-      <section className="py-16 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="text-3xl font-bold mb-4">{t.ctaTitle}</h2>
-          <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
-            {t.ctaBody}
-          </p>
-          <div className="flex justify-center gap-4">
-            <Link href="/conformity-platform">
-              <Button size="lg" className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8">
-                {t.ctaStart}
-              </Button>
-            </Link>
-            <Link href="/frameworks">
-              <Button size="lg" variant="outline" className="border-slate-700 text-slate-200">
-                {t.ctaBrowse}
-              </Button>
-            </Link>
-          </div>
+        <div className="mt-4 flex flex-wrap justify-center gap-5 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5"><Check className="h-3.5 w-3.5 text-primary" /> {t.legendYes}</span>
+          <span className="inline-flex items-center gap-1.5"><Minus className="h-3.5 w-3.5 text-amber-500" /> {t.legendPartial}</span>
+          <span className="inline-flex items-center gap-1.5"><Minus className="h-3.5 w-3.5 text-muted-foreground/40" /> {t.legendNo}</span>
         </div>
-      </section>
+      </div>
+
+      {/* CTA */}
+      <div className="mt-16 rounded-2xl border border-border bg-card p-8 text-center">
+        <h2 className="font-display text-2xl font-normal tracking-tight text-foreground">{t.ctaTitle}</h2>
+        <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">{t.ctaBody}</p>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/demo"
+            className="cta-lift inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
+          >
+            {t.ctaDemo} <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/tour"
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-card"
+          >
+            {t.ctaTour}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

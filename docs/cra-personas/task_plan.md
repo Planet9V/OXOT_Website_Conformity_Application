@@ -1562,7 +1562,16 @@ Ordered so prerender bakes a FINISHED site last.
   pipeline; the tour already plays natively). [option 1]
 - **Phase 28** — IA consolidation (sitemap audit Part C: content-hub
   merge + redirects + promote trust/security). [option 3a]
-- **Phase 29** — Solutions/act landing layer + /product rewrite +
-  /solutions/manufacturers + /compare. [option 3b]
+- **Phase 29 done** — revenue/capability alignment: /product gained the
+  "register underneath" proof band (9 acts · 156 obligations · 7 roles ·
+  11 corpora, the roles list, the text-currency guarantee); NEW
+  /manufacturers ICP page (the primary CRA subject — Module A, Annex VII,
+  Annex V DoC, Art 13/14, honest non-conclusion), symmetric with
+  /operators and added to the nav ("For manufacturers"); /compare
+  rewritten from an off-brand slate/cyan overclaiming page to a
+  token-themed HONEST structural comparison (IT-GRC vs scanners vs OXOT,
+  a 9-row capability matrix with a Native/Partial/Out-of-scope legend and
+  "no fabricated verdicts"). Act landing pages already exist via
+  /frameworks/:key. seo.ts sitemap + header nav wired. [option 3b]
 - **Phase 30** — Prerender the finalized routes (the ranking unlock).
   [option 3c — LAST]

@@ -69,6 +69,18 @@ const copy = {
         body: 'Expiring, revocable token access for a notified-body auditor into a technical file — and for a supplier answering an evidence ask. No accounts, no exposure.',
       },
     ],
+    proofKicker: 'The register underneath',
+    proofTitle: 'Not a checklist about the law — the law, made executable.',
+    stats: [
+      ['9', 'EU regulations modelled'],
+      ['156', 'obligations, each citing its article'],
+      ['7', 'roles, each in the act’s own words'],
+      ['11', 'verbatim statutory corpora, CI-verified'],
+    ] as [string, string][],
+    rolesTitle: 'Every hat in the value chain',
+    roles: 'Manufacturer · Authorised representative · Importer · Distributor · Open-source steward · System integrator · Operator / asset owner — each declaration surfaces only the duties that role actually carries, in each act’s own vocabulary (a manufacturer is a “provider” under the AI Act; an operator a “controller or processor” under GDPR).',
+    currencyTitle: 'The law stays current — provably',
+    currencyBody: 'Every corpus is the as-amended text: corrigenda applied and disclosed where you read them, consolidated versions dated, and a CI lifecycle guard that watches EUR-Lex so a change in Brussels cannot silently rot your record. Character-exact, verified on every build.',
     journeyKicker: 'The compliance journey',
     journeyTitle: 'Eight steps, per product',
     journey: [
@@ -132,6 +144,18 @@ const copy = {
         body: 'Verlopende, intrekbare token-toegang voor een aangemelde-instantie-auditor tot een technisch dossier — en voor een leverancier die een bewijsverzoek beantwoordt. Geen accounts, geen blootstelling.',
       },
     ],
+    proofKicker: 'Het register eronder',
+    proofTitle: 'Geen checklist óver de wet — de wet, uitvoerbaar gemaakt.',
+    stats: [
+      ['9', 'EU-verordeningen gemodelleerd'],
+      ['156', 'verplichtingen, elk met artikelverwijzing'],
+      ['7', 'rollen, elk in de eigen woorden van de wet'],
+      ['11', 'woordelijke corpora, geverifieerd in CI'],
+    ] as [string, string][],
+    rolesTitle: 'Elke rol in de waardeketen',
+    roles: 'Fabrikant · Gemachtigde vertegenwoordiger · Importeur · Distributeur · Open-source steward · Systeemintegrator · Exploitant / asset owner — elke verklaring toont alleen de plichten die die rol daadwerkelijk draagt, in de eigen taal van elke wet (een fabrikant is een “aanbieder” onder de AI-verordening; een exploitant een “verwerkingsverantwoordelijke of verwerker” onder de AVG).',
+    currencyTitle: 'De wet blijft actueel — aantoonbaar',
+    currencyBody: 'Elk corpus is de gewijzigde tekst: rectificaties toegepast en vermeld waar u leest, geconsolideerde versies gedateerd, en een CI-levenscyclusbewaker die EUR-Lex volgt zodat een wijziging in Brussel uw dossier niet stil kan laten verouderen. Tekengetrouw, geverifieerd bij elke build.',
     journeyKicker: 'Het conformiteitstraject',
     journeyTitle: 'Acht stappen, per product',
     journey: [
@@ -203,6 +227,32 @@ export default function ProductPage() {
             </motion.div>
           );
         })}
+      </div>
+
+      {/* The register underneath — the capability proof (Phase 29). */}
+      <div className="mt-16">
+        <p className="oxot-kicker text-center">{t.proofKicker}</p>
+        <h2 className="mt-2 text-center font-display text-3xl font-normal tracking-tight text-foreground">
+          {t.proofTitle}
+        </h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {t.stats.map(([n, label]) => (
+            <div key={label} className="rounded-2xl border border-border bg-card p-6 text-center">
+              <p className="font-display text-4xl font-normal tracking-tight text-primary">{n}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <h3 className="font-display text-lg font-normal tracking-tight text-foreground">{t.rolesTitle}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.roles}</p>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <h3 className="font-display text-lg font-normal tracking-tight text-foreground">{t.currencyTitle}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.currencyBody}</p>
+          </div>
+        </div>
       </div>
 
       {/* Eight-step journey */}

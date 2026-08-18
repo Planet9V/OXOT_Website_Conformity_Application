@@ -509,3 +509,34 @@ the meaning of Art. 64(10).
 - GIF/MP4 export DEFERRED as a noted follow-up: a real render needs a
   headless-frames pipeline; the tour is already a natively-playable
   movie. Gates: G1 · G3 · G4 0 · G5 0 · G6 live.
+
+## 2026-08-18 — Phase 29: the revenue pages (capability↔copy alignment)
+- /product: added the "register underneath" proof band — a stat row
+  (9 EU regulations · 156 article-cited obligations · 7 roles · 11
+  verbatim CI-verified corpora), the 7-role list in each act's own
+  vocabulary, and the text-currency guarantee (as-amended, corrigenda
+  disclosed, CI lifecycle guard on EUR-Lex). Surfaces the multi-act
+  engine that was previously invisible on the page.
+- NEW /manufacturers — the primary CRA subject (they DO the CRA), a
+  symmetric sibling to /operators. Honest statutory frame (Module A
+  self-assessment under Annex VIII; you declare on your sole
+  responsibility; Art 32 says the verdict is the notified body's /
+  authority's, not the app's), the 8-step CRA journey per product
+  (scope/classify → Annex I → evidence vault → Annex VII → assess →
+  declare/CE → post-market 13/14 → keep current), "every hat you also
+  wear", CTA to /demo + /tour. Wired into App.tsx routes, header nav
+  ("For manufacturers", before "For operators"), and seo.ts sitemap.
+- /compare rewritten: the old page was off-brand (hardcoded slate/cyan,
+  broke theme + the token system) and carried overclaims ("Live SLA
+  watch") that contradict the honest engine. Now token-themed and
+  theme-aware, comparing by CATEGORY not fabricated competitor
+  scorecards: IT-GRC vs firmware scanners vs OXOT, each with what it's
+  built for + its genuine strength + where it structurally stops. A
+  9-row capability matrix (Native / Partial / Out-of-scope legend) and a
+  "no fabricated verdicts" CTA. Honest by construction.
+- Note: act-specific landing pages already exist via /frameworks/:key —
+  not rebuilt. Phase 28 (IA consolidation) skipped per user instruction
+  ("immediately jump to phase 29").
+- Gates: G1 typecheck · G3 build (7.67s) · G4 honesty 0 · G5 citations 0
+  · G8 UI-reach 27/0 · G6 live (all 5 routes 200; /compare + /manufacturers
+  visually verified; sitemap now lists /manufacturers).
