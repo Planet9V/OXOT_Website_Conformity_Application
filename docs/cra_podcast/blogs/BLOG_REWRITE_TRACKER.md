@@ -5,10 +5,10 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 45 / 67 done.**
+**Progress: 50 / 67 done.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
-- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−), Series 7 (A−) — all fixes applied.
+- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−), Series 7 (A−), Series 8 (A−) — all fixes applied. **All 45 episode posts (Series 1–8) done — corpus reads professional/non-templated/accurate per final grade.**
 - **NOTE (Series 7/8 duplicate-file trap):** originals were auto-generated garbage under DIFFERENT slugs than the rewrites. After drafting, `ls BLOG_EP_<n>.*_*.md` for >1 file/episode and `git rm` the garbage (no IMAGE-SLOT, "Executive Technical Memorandum", "Jim Mckenney", wrong article #s). Series 7's 6 garbage files deleted; Series 8's 5 deleted.
 - **All rewritten blogs are on disk AND committed.** Nothing lives only in memory. A fresh session resumes from this file.
 - **Pipeline per series (see `BLOG_WRITING_BRIEF.md` for full rules incl. anti-formula v1–v3):**
@@ -20,8 +20,7 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
   6. Tick tracker boxes, `git add` the series files + manifest + brief + tracker, commit `content(blog): Series N …`.
 - **Model:** Opus for all roles (Sonnet A/B ran ~18% more tokens).
 - **Concurrency throttle (2026-08-18):** cap agent dispatches at ~3–4 per wave (not 6–8) — the API returns 529/mid-response errors under higher parallelism. Batch drafters/editors in groups of 3–4, wait for each batch, then the next. Re-dispatch any failed agent (failures don't corrupt files).
-- **Remaining:** Series 8 (5, IN PROGRESS — drafters running), News (5), Truth-&-Consequences (12) = 22. Series 8 source = blueprint line 506 (Executive Liability/Future). News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
-- **Series 8 verified anchors (blueprint WRONG):** penalties = Art 64 (64(2) €15M/2.5% Annex I+Arts 13-14; 64(3) €10M/2%; 64(4) €5M/1%) NOT Art 61/62; market surveillance = Arts 52-56 NOT 43-54; executive liability = NIS2 Art 20 + national law, NOT a CRA article.
+- **Remaining:** News (5, source `docs/cra_podcast/news_briefings/`), Truth-&-Consequences (12, source `docs/cra_podcast/truth_and_consequences/`) = 17. BOTH have their own auto-generated garbage blog files (BLOG_NEWS_*, BLOG_TC_*) to `git rm`; TC's garbage slugs are MIS-DERIVED from the real source topics — follow `truth_and_consequences/TC_xx`, NOT the garbage blog slugs. News sources include some dupes (NEWS_04/05 appear twice) — the 5 canonical topics: ENISA reporting platform, notified-body designations, substantial-modification guidance, market-surveillance/port, CEN/CENELEC M-596/M-606 standards.
 
 
 ## Series 1 — Procurement & Contracting Crisis ✅ COMPLETE (committed f4776e6)
@@ -83,12 +82,12 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_7.05 — Presumption of conformity — Art 27 (blueprint's "Art 34" was wrong)
 - [x] EP_7.06 — CE nameplate studio — Art 29/30 (blueprint's "Art 25/26/27" was wrong)
 
-## Series 8 — Executive Liability, Penalties & Future Evolution
-- [ ] EP_8.01 — The €15,000,000 calculation (Art 64)
-- [ ] EP_8.02 — Personal executive liability & boardroom governance
-- [ ] EP_8.03 — Market surveillance raids & recalls
-- [ ] EP_8.04 — CRA meets NIS2 & EU AI Act
-- [ ] EP_8.05 — The 2028 horizon
+## Series 8 — Executive Liability, Penalties & Future Evolution ✅ COMPLETE (grade A−, fixes applied; 5 garbage originals deleted)
+- [x] EP_8.01 — Article 64 administrative fines (blueprint's "Art 61/62" was wrong)
+- [x] EP_8.02 — Executive liability & board governance (CRA Art 64 corporate + NIS2 Art 20 personal)
+- [x] EP_8.03 — Market-surveillance withdrawal orders — Arts 52–56 (blueprint's "43–54" was wrong)
+- [x] EP_8.04 — CRA + NIS2 + AI Act tri-directive (CRA Art 12 AI-bridge)
+- [x] EP_8.05 — Brussels Effect / 2028 horizon (forecast essay)
 
 ## News briefings
 - [ ] NEWS_01 — ENISA Single Reporting Platform / 24h clock

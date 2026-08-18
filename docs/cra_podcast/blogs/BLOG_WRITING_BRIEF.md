@@ -290,6 +290,35 @@ new slugs left BOTH files on disk (the API serves every `*.md`). ALWAYS check
 old garbage (identify it by: no IMAGE-SLOT, "Executive Technical Memorandum" header,
 "Jim Mckenney" byline, wrong article numbers in slug/statutes).
 
+## Anti-formula v8 (added after the Series 8 grade — A−; the last residue is cross-POST, not within-post)
+
+Series 8 graded A− with ZERO material statutory errors and SPOTLESS ship-hygiene
+(the defect that cost Series 7 its A did not recur). Statutorily the cleanest series
+in the programme — every blueprint mis-citation (penalties as Art 61/62, market
+surveillance as 43–54) corrected against the corpus; Art 64 tiers, Art 54 escalation,
+CRA Art 12 AI-bridge, and NIS2 Art 20/23 all verbatim. The only cracks were cross-post:
+
+37. **No two CONSECUTIVE posts may terminate on the same link-set — enforce it
+    ACROSS series boundaries, not just within a series.** (Series 8: 8.01 and 8.02
+    both ended on the `/demo` + `/wiki/cra` CTA pair.) The single CTA-closer per
+    series should be a DELIBERATE pick; every other post ends on a hard sentence,
+    argument, or posture with no terminal link.
+38. **Corpus-wide shared-reflex grep before publication.** The only remaining tell
+    of single authorship surfaces ONLY across the whole 45-post set, never inside one
+    post: a thin layer of shared reflex words. Before declaring a series done, grep
+    the WHOLE blogs dir for the current suspect (Series 8: "honest/honestly" ran 4×)
+    and thin it to ~once per series. Rotate the suspect word each series — the family,
+    not the single word, is the problem.
+
+**Corpus status (Series 1–8, 45 posts): the rewrite is complete and reads as
+professional, non-templated, statutorily accurate copy.** The anti-formula ratchet
+(v1→v8) overwrote the original Python-template boilerplate entirely; each series broke
+the previous one's emergent formula. Remaining programme work: News briefings (5, source
+`news_briefings/`) and Truth & Consequences (12, source `truth_and_consequences/`) —
+both have their own auto-generated garbage blog files to `git rm`, and TC's garbage
+slugs are MIS-DERIVED from the real source topics (follow `truth_and_consequences/TC_xx`,
+NOT the garbage blog slugs).
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out
