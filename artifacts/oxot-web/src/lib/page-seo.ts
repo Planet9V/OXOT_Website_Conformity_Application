@@ -1,7 +1,7 @@
 import type { SeoData } from '@/hooks/use-seo';
 
 // Default social-share image for the funnel (a real captured screenshot asset).
-const DEFAULT_OG_IMAGE = '/workbench-dossier.png';
+const DEFAULT_OG_IMAGE = '/media/tour/01-product-dossier.jpg';
 
 /**
  * Builds complete per-page SEO data for a static funnel route: title,

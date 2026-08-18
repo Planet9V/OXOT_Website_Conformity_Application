@@ -11,6 +11,7 @@ import {
   FileCheck2,
 } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
+import { ProcessFlow } from '@/components/diagrams/process-flow';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { JsonLd } from '@/components/json-ld';
@@ -230,7 +231,10 @@ export default function CraTransitPage() {
         <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-muted-foreground">
           {t.processNote}
         </p>
-        <ol className="mt-10 space-y-3">
+        <div className="mt-8">
+          <ProcessFlow steps={t.phases.map(([h]) => h)} />
+        </div>
+        <ol className="mt-8 space-y-3">
           {t.phases.map(([h, b], i) => {
             const last = i === t.phases.length - 1;
             return (

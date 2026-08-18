@@ -1550,3 +1550,18 @@ backgrounds. Screenshots + tour must land BEFORE prerender (Phase 27).
   + nav; Service/VideoObject JSON-LD.
 - **25.5 done** Gates, G6, commit/push, CI, G7. (GIF/MP4 export for LinkedIn
   offered as a follow-up.)
+
+## Program: visual layer → IA/copy → prerender (user approved "1,2,3", 2026-08-17)
+Ordered so prerender bakes a FINISHED site last.
+- **Phase 26 done** — SVG diagrams (deployment hub-spoke, CRA Transit
+  process flow) + default OG upgraded to a real product shot; found the
+  Railway production URL in index.html. [visual, option 2]
+- **Phase 27** — Deepen the tour: +screenshots (auditor portal, PSIRT,
+  trust center, CRA Transit process, wiki hub), NL slides, OT-diagram
+  backgrounds on text slides; GIF/MP4 export for LinkedIn. [option 1]
+- **Phase 28** — IA consolidation (sitemap audit Part C: content-hub
+  merge + redirects + promote trust/security). [option 3a]
+- **Phase 29** — Solutions/act landing layer + /product rewrite +
+  /solutions/manufacturers + /compare. [option 3b]
+- **Phase 30** — Prerender the finalized routes (the ranking unlock).
+  [option 3c — LAST]

@@ -477,3 +477,19 @@ the meaning of Art. 64(10).
   slide quotes-to-refuse) · G5 0 · G8 pass · G6 live. GIF/MP4 export
   for LinkedIn offered as a follow-up. Screenshots landed BEFORE the
   prerender phase, as planned.
+
+## 2026-08-17 — Phase 26: flagship SVG diagrams + OG upgrade
+- Two theme-safe inline-SVG/flex diagrams: DeploymentDiagram (a
+  hub-and-spoke — the single-tenant/local-AI core reached four ways) on
+  /deployment, and ProcessFlow (a horizontal 8-node timeline, phase 8
+  accented) on /cra-transit above the phase list. EN+NL labels.
+- Default OG image upgraded from the stale /workbench-dossier.png to a
+  real current product screenshot (/media/tour/01-product-dossier.jpg),
+  in both page-seo.ts and index.html's static og/twitter tags.
+- DISCOVERY: index.html hardcodes a Railway production URL
+  (oxotwebsiteconformityapplication-production.up.railway.app) and
+  railway.json builds from the root Dockerfile → there IS a production
+  deploy on Railway. If its GitHub auto-deploy is off, the live public
+  site is STALE vs main — the likely reason the user "only sees a menu."
+  Flagged to the user; Railway MCP tools available to check/trigger.
+- Gates: G1 · G3 · G4 0 · G5 0. G6 pending container rebuild.

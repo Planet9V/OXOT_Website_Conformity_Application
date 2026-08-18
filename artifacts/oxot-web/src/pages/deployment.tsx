@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { ServerCog, Building2, HardDrive, Cpu, Lock, Mail, Users, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
+import { DeploymentDiagram } from '@/components/diagrams/deployment-diagram';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
@@ -135,6 +136,14 @@ export default function DeploymentPage() {
             </motion.div>
           );
         })}
+      </div>
+
+      <div className="mt-8">
+        <DeploymentDiagram
+          labels={locale === 'nl'
+            ? { core: 'Uw single-tenant-instantie', coreSub: 'Lokale AI · uw gegevens blijven bij u' }
+            : { core: 'Your single-tenant instance', coreSub: 'Local AI · your data never leaves' }}
+        />
       </div>
 
       {/* The island-mode moat */}
