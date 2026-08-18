@@ -182,3 +182,17 @@ images.**
 | 15 | `ep-8.05-roadmap-ribbon.png` | 1200×675 | Diagram (flat infographic) | A horizontal five-year timeline ribbon 2026→2030; 2026/2027 solid and tagged as fixed CRA dates (reporting duties; full application + CE marking), 2028–2030 shading from solid toward dotted to signal forecast, each year tagged with the product-org action due. No legible text. |
 
 **Counts (Series 8):** 15 images — 7 photo-real heroes + 8 flat-infographic diagrams.
+
+## News Briefings — The CRA Briefing (News & Policy)
+
+| # | Filename | Size (px) | Type | What it should show |
+|---|----------|-----------|------|---------------------|
+| 1 | `news-01-hero.jpg` | 1200×630 | Hero (photo-real) | A public countdown display in a European institutional setting showing 11 September 2026, paired with an ENISA reporting-platform submission screen — "the deadline is public and the platform is real." Sober news register, EU-blue palette, no fabricated logos/UI. |
+| 2 | `news-01-readiness.png` | 1200×800 | Diagram (flat infographic) | A five-item readiness checklist against a September 2026 marker: coordinating CSIRT identified, platform access provisioned, single point of contact wired, early-warning template drafted, tabletop rehearsed. No legible text. |
+| 3 | `news-02-hero.jpg` | 1200×630 | Hero (photo-real) | Split composition — left a vendor slide crowded with acronyms (PSIRT, CSIRT, CVSS v4, security.txt), right the plain statutory text "Annex I Part II — Vulnerability handling requirements." Marketing shorthand vs legal text. Cool/neutral, no legible fine print. |
+| 4 | `news-02-timeline.png` | 1200×675 | Diagram (flat infographic) | Horizontal timeline: "11 Sep 2026 — Art 14 reporting begins" (earlier, highlighted) and "11 Dec 2027 — CE marking applies" (later); beneath both, a continuous bar "Annex I Part II vulnerability-handling function (running)" — the capability must exist before either date. No legible text. |
+| 5 | `news-03-flowdown.png` | 1200×630 | Diagram (flat infographic, hero) | A single CE-marked finished product at top; three downward obligation arrows into a row of component-supplier boxes labelled SBOM, disclosure contact, support horizon — the OEM's one statutory duty becomes three contract clauses. Brand-neutral, no logos. |
+| 6 | `news-04-hero.jpg` | 1200×630 | Hero (photo-real) | One cyberattack on an industrial gateway forking into two reporting paths — one arrow to the operator's national CSIRT labelled "NIS2 Art 23," one to the coordinating CSIRT + ENISA platform labelled "CRA Art 14," both carrying an identical 24h→72h clock badge (cadence rhymes, destinations split). Cool industrial palette. |
+| 7 | `news-05-hero.jpg` | 1200×630 | Hero (photo-real) | An open gate labelled "presumption of conformity" in front of a nearly empty Official-Journal shelf, a side tray of draft CEN/CENELEC and IEC 62443 documents queued, a faint December 2027 deadline clock — the route is open but the shelf is still bare. Serious regulatory-desk tone, no legible text. |
+
+**Counts (News):** 7 images — 4 photo-real heroes + 3 flat-infographic diagrams.

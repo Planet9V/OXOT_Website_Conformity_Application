@@ -5,7 +5,7 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 50 / 67 done.**
+**Progress: 55 / 67 done.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
 - **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−), Series 7 (A−), Series 8 (A−) — all fixes applied. **All 45 episode posts (Series 1–8) done — corpus reads professional/non-templated/accurate per final grade.**
@@ -20,7 +20,7 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
   6. Tick tracker boxes, `git add` the series files + manifest + brief + tracker, commit `content(blog): Series N …`.
 - **Model:** Opus for all roles (Sonnet A/B ran ~18% more tokens).
 - **Concurrency throttle (2026-08-18):** cap agent dispatches at ~3–4 per wave (not 6–8) — the API returns 529/mid-response errors under higher parallelism. Batch drafters/editors in groups of 3–4, wait for each batch, then the next. Re-dispatch any failed agent (failures don't corrupt files).
-- **Remaining:** News (5, source `docs/cra_podcast/news_briefings/`), Truth-&-Consequences (12, source `docs/cra_podcast/truth_and_consequences/`) = 17. BOTH have their own auto-generated garbage blog files (BLOG_NEWS_*, BLOG_TC_*) to `git rm`; TC's garbage slugs are MIS-DERIVED from the real source topics — follow `truth_and_consequences/TC_xx`, NOT the garbage blog slugs. News sources include some dupes (NEWS_04/05 appear twice) — the 5 canonical topics: ENISA reporting platform, notified-body designations, substantial-modification guidance, market-surveillance/port, CEN/CENELEC M-596/M-606 standards.
+- **Remaining:** Truth-&-Consequences (12, source `docs/cra_podcast/truth_and_consequences/`, IN PROGRESS). Garbage BLOG_TC_* files to `git rm`; slugs MIS-DERIVED — follow the catalogue topics (listed below). Many TC posts lean on NON-CRA regimes (ATEX, Machinery Reg, Product Liability Dir, IEC 61508, BSI TR) — quarantine those as non-CRA. Reporting-copy lint (News grader note): the platform is SIMULTANEOUS to CSIRT + ENISA under Art 14(1), never "file → routed onward."
 
 
 ## Series 1 — Procurement & Contracting Crisis ✅ COMPLETE (committed f4776e6)
@@ -89,23 +89,23 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_8.04 — CRA + NIS2 + AI Act tri-directive (CRA Art 12 AI-bridge)
 - [x] EP_8.05 — Brussels Effect / 2028 horizon (forecast essay)
 
-## News briefings
-- [ ] NEWS_01 — ENISA Single Reporting Platform / 24h clock
-- [ ] NEWS_02 — First notified-body designations
-- [ ] NEWS_03 — Commission guidance on substantial modification
-- [ ] NEWS_04 — Market-surveillance port interception protocols
-- [ ] NEWS_05 — Standardization mandate M/606 timeline
+## News briefings ✅ COMPLETE (grade A−, fixes applied; 5 garbage originals deleted; real topics from news_briefings/ catalogue, NOT the mis-derived garbage slugs)
+- [x] NEWS_01 — ENISA single reporting platform & Sept 2026 countdown (Art 16/14(2)(a)/13(17))
+- [x] NEWS_02 — The PSIRT mandate: the function, not the acronym (Annex I Part II/13(17))
+- [x] NEWS_03 — Downstream supplier flow-down: what components must deliver (Art 13/13(6)/Annex I Part II)
+- [x] NEWS_04 — CRA meets NIS2: dual incident-reporting clocks (Art 14 vs NIS2 Art 23/Art 16)
+- [x] NEWS_05 — Harmonised standards M/596 status: presumption not yet live (Art 27)
 
-## Truth & Consequences (edge-case deep dives)
-- [ ] TC_01 — The edge-to-cloud grey zone
-- [ ] TC_02 — The defunct-OEM dilemma
-- [ ] TC_03 — Autonomous AI / neural weights on the plant floor
-- [ ] TC_04 — The €15M calculation (Art 64 math)
-- [ ] TC_05 — The open-source stewardship illusion
-- [ ] TC_06 — Maritime OT navigational radar
-- [ ] TC_07 — Smart metering & grid substations (NIS2)
-- [ ] TC_08 — Battery energy storage systems (BESS)
-- [ ] TC_09 — The distributor's trap (unmarked spares)
-- [ ] TC_10 — Legacy protocol converters (Modbus→MQTT)
-- [ ] TC_11 — The port surveillance playbook
-- [ ] TC_12 — The insurance underwriting reckoning
+## Truth & Consequences (12 investigative edge-case posts) — real topics per truth_and_consequences/ catalogue (garbage blog slugs were MIS-DERIVED; catalogue anchors ALSO partly wrong — verify each)
+- [ ] TC_01 — Edge-to-cloud grey zone / microservices & CE (Art 3(1) remote data processing, Art 3(30) substantial mod)
+- [ ] TC_02 — Defunct-OEM dilemma / bankrupt vendor (Art 13(8) support period, NIS2 Art 21; catalogue "Art 61" WRONG)
+- [ ] TC_03 — Autonomous AI / neural weights (CRA Art 12 bridge, AI Act 2024/1689 Art 15, Annex I)
+- [ ] TC_04 — Open-source steward's balance sheet (Art 24, Art 3(14), Recitals 18-19)
+- [ ] TC_05 — Cross-border supply chain / MSA intercepts backdoors (Arts 52-56, Art 54; catalogue "Art 43" WRONG)
+- [ ] TC_06 — Decommissioning & EOL handover (Art 13(8)/(9), Annex VII)
+- [ ] TC_07 — Subsea & space / where the 'product' ends (Art 2, Art 3(1), Art 7(1) integration carve-out)
+- [ ] TC_08 — BESS & Class II notified bodies (Annex III Class II, Art 32(3); catalogue "Art 24" WRONG; IEC 61508 non-CRA)
+- [ ] TC_09 — Quantum-safe crypto for 30-yr MCUs (Annex I Part I, Art 13(8); myth-buster: CRA doesn't name PQC; BSI TR non-CRA)
+- [ ] TC_10 — Hydrogen electrolyzers / secure boot vs ATEX (Annex I, ATEX 2014/34/EU + Machinery 2023/1230 non-CRA)
+- [ ] TC_11 — Autonomous agriculture / field robots vs Machinery Reg (Annex I, Machinery 2023/1230; catalogue "Art 24" WRONG)
+- [ ] TC_12 — Insurance underwriting reckoning (Art 64 penalties, Product Liability Dir 2024/2853; catalogue "Art 61" WRONG)
