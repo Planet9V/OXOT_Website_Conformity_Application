@@ -13,7 +13,7 @@ const SHOW_NEWSLETTER = false;
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'For operators', 'CRA Transit', 'Read the law', 'Pricing', 'Deployment', 'Resources', '2-minute check', 'Book a demo'],
+    nav: ['Platform', 'Product tour', 'For operators', 'CRA Transit', 'Read the law', 'Pricing', 'Deployment', 'Resources', '2-minute check', 'Book a demo'],
     homeAria: 'OXOT — home',
     tagline: 'Operational eXcellence in Operational Technology.',
     newsletter: 'Newsletter',
@@ -25,7 +25,7 @@ const copy = {
     terms: 'Terms',
   },
   nl: {
-    nav: ['Platform', 'Voor exploitanten', 'CRA Transit', 'Lees de wet', 'Prijzen', 'Implementatie', 'Bronnen', '2-minutencheck', 'Demo aanvragen'],
+    nav: ['Platform', 'Producttour', 'Voor exploitanten', 'CRA Transit', 'Lees de wet', 'Prijzen', 'Implementatie', 'Bronnen', '2-minutencheck', 'Demo aanvragen'],
     homeAria: 'OXOT — startpagina',
     tagline: 'Operational eXcellence in Operational Technology.',
     newsletter: 'Nieuwsbrief',
@@ -51,6 +51,7 @@ export function Footer() {
   // Labels come from the locale copy above (indexed), hrefs stay code.
   const footerNav = [
     { id: 'platform', href: '/product', external: false },
+    { id: 'tour', href: '/tour', external: false },
     { id: 'operators', href: '/operators', external: false },
     { id: 'transit', href: '/cra-transit', external: false },
     { id: 'wiki', href: '/wiki', external: false },

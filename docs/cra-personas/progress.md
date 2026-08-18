@@ -452,3 +452,28 @@ the meaning of Art. 64(10).
   despite conformity/declaration language) · G5 0 · G8 pass · G6 live
   walk (hero, who-it's-for, 60-day model, 8-phase stepper, artifacts,
   honesty + residency blocks, CTA).
+
+## 2026-08-17 — Phase 25: the product tour ("the movie") + first real imagery
+- The site had TWO images total (favicon + one unused png) and no product
+  screenshots. Captured 5 flagship shots from the LIVE app (product
+  dossier, the 11-framework regulatory intelligence, the CRA/AI-Act/
+  Machinery/IEC act cards, the operator procurement panel with Art 13
+  anchors, the GDPR wiki with the corrigendum callout + "never concludes
+  compliance"), saved to public/media/tour/.
+- Built ProductTour: a web-native auto-advancing cinematic player (= "a
+  movie that plays" AND "LinkedIn PDF auto-forward") — Jobs keynote arc
+  (deadline → problem → product across acts/artifacts/operator/proof/
+  honesty → CRA Transit "one more thing" → contact CTA), 10 slides,
+  progress segments, pause/play, prev/next, arrow+space keys, live
+  region, honours prefers-reduced-motion. /tour page + home hero
+  "Watch the 90-second tour" + footer + sitemap + VideoObject JSON-LD.
+- Two bugs found+fixed live: (1) public/tour DIRECTORY collided with the
+  /tour ROUTE (nginx 301→403) → moved assets to /media/tour; (2)
+  object-cover object-top cropped screenshots to their light nav → now
+  object-contain, framed, caption in a solid bar below. Verified live:
+  the tour plays, controls work, framed product screenshots render.
+- Deployment page (Phase 24) already reconciled to 4 modes; the tour
+  echoes it. Gates: G1 · G3 · G4 0 (the "never tells you compliant"
+  slide quotes-to-refuse) · G5 0 · G8 pass · G6 live. GIF/MP4 export
+  for LinkedIn offered as a follow-up. Screenshots landed BEFORE the
+  prerender phase, as planned.

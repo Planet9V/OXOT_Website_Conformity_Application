@@ -1530,3 +1530,23 @@ responsibility; OXOT/the platform GUIDE and PRODUCE the file — never
   + teardown assurance, outcome, CTA; Service JSON-LD; nav + footer +
   sitemap + route.
 - **24.3 done** Gates (G1/G3/G4/G5/G8), G6 live, commit/push, CI, G7.
+
+## Phase 25 — The product tour ("the movie") + visual enrichment (opened + closed 2026-08-17)
+
+User greenlit the full professional product-demo production. Format: a
+web-native, auto-advancing cinematic tour (= "a movie that plays" AND
+"LinkedIn PDF auto-forward"), built from REAL screenshots of the live
+app, expert-written (Jobs keynote arc + marketing + true capabilities),
+covering acts/process/artifacts/workflows/personas, embedded to drive
+contact. Also: OG share cards; use the images/ OT assets as subtle
+backgrounds. Screenshots + tour must land BEFORE prerender (Phase 27).
+- **25.1 done** Capture the flagship screenshot set from the live app.
+- **25.2 done** Build the auto-advancing ProductTour component (progress,
+  pause/play, keyboard, final CTA), theme-aware + accessible.
+- **25.3 done** Write the ~12-slide script (hook → problem → revelation →
+  demo across acts/artifacts/operator/proof/honesty → CRA Transit "one
+  more thing" → contact CTA), EN (+NL follow).
+- **25.4 done** /tour page + home hero teaser ("Watch the 90-second tour")
+  + nav; Service/VideoObject JSON-LD.
+- **25.5 done** Gates, G6, commit/push, CI, G7. (GIF/MP4 export for LinkedIn
+  offered as a follow-up.)

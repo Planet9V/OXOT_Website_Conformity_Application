@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   ClipboardCheck,
+  PlayCircle,
   ShieldCheck,
   Clock,
   FileStack,
@@ -34,6 +35,7 @@ const copy = {
       'Every product with digital elements in one working record: the guided CRA journey from classification to a defensible Annex VII technical file, statutory clocks running live — and the same record carries NIS2, RED, the AI Act, GDPR and the Data Act, each cited in the act\u2019s own words.',
     bookDemo: 'Book a demo',
     takeCheck: 'Take the 2-minute check',
+    watchTour: 'Watch the 90-second tour',
     clockStrong: '11 December 2027 — full application.',
     clockRest:
       ' From 11 September 2026, reporting obligations are already enforceable — a 24-hour clock, for products already on the market.',
@@ -117,6 +119,7 @@ const copy = {
       'Elk product met digitale elementen in één werkend dossier: het begeleide CRA-traject van classificatie tot een verdedigbaar technisch dossier volgens Bijlage VII, wettelijke klokken die live lopen — en hetzelfde dossier draagt NIS2, RED, de AI-verordening, de AVG en de Dataverordening, elk geciteerd in de eigen woorden van de wet.',
     bookDemo: 'Demo aanvragen',
     takeCheck: 'Doe de 2-minutencheck',
+    watchTour: 'Bekijk de tour van 90 seconden',
     clockStrong: '11 december 2027 — volledige toepassing.',
     clockRest:
       ' Vanaf 11 september 2026 zijn de meldingsverplichtingen al afdwingbaar — een klok van 24 uur, voor producten die al op de markt zijn.',
@@ -243,6 +246,12 @@ export default function CraHomePage() {
               className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               <ClipboardCheck className="h-4 w-4" /> {t.takeCheck}
+            </Link>
+            <Link
+              href="/tour"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              <PlayCircle className="h-4 w-4" /> {t.watchTour}
             </Link>
           </div>
         </div>

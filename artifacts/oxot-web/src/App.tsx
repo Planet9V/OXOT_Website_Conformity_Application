@@ -59,6 +59,7 @@ const ConformityDashboard = lazy(() => import('@/pages/conformity-dashboard'));
 // 22.2 — the public statutory wikis. Each act page carries a large corpus
 // bundle; lazy per-route so the reading room never taxes the funnel pages.
 const WikiHubPage = lazy(() => import('@/pages/wiki-hub'));
+const TourPage = lazy(() => import('@/pages/tour'));
 const WikiActRoutes = lazy(() => import('@/pages/wiki-act-routes'));
 const AdminLogin = lazy(() => import('@/pages/admin-login'));
 const AdminDashboard = lazy(() => import('@/pages/admin-dashboard'));
@@ -155,6 +156,11 @@ function PublicRoutes() {
       </Route>
       <Route path="/cra-transit">
         {() => <PublicRoute component={CraTransitPage} />}
+      </Route>
+      <Route path="/tour">
+        <Suspense fallback={<RouteLoadingFallback />}>
+          <TourPage />
+        </Suspense>
       </Route>
       <Route path="/pricing">
         {() => <PublicRoute component={PricingPage} />}

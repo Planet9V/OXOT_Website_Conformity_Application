@@ -10,6 +10,7 @@ const router: IRouter = Router();
 // sitemap so crawlers can discover them — the CMS-page query below never sees them.
 const STATIC_FUNNEL_ROUTES = [
   "/",
+  "/tour",
   "/product",
   "/operators",
   "/cra-transit",
