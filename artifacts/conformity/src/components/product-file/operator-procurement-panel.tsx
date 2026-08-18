@@ -391,6 +391,15 @@ function SupplierDocumentsSection({
                 )}
               </span>
               <span className="flex items-center gap-2 shrink-0">
+                {d.objectPath && (
+                  <a
+                    href={`/api/conformity/supplier-documents/${d.id}/download`}
+                    className="text-primary hover:underline"
+                    data-testid={`download-supplier-doc-${d.id}`}
+                  >
+                    download
+                  </a>
+                )}
                 {d.fileHash && (
                   <span className="font-mono text-[10px] text-muted-foreground" title={d.fileHash}>
                     sha256 {d.fileHash.slice(0, 8)}…

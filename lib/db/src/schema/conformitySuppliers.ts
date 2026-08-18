@@ -85,6 +85,12 @@ export const conformitySupplierRequestsTable = pgTable(
     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
     /** open | fulfilled | withdrawn */
     status: text("status").notNull().default("open"),
+    /**
+     * How many one-time upload URLs the door has minted for this ask. Capped
+     * per ask so a single token cannot accrete unbounded orphan bytes
+     * (door-upload review SR5). Never a statutory field — pure abuse control.
+     */
+    uploadsMinted: integer("uploads_minted").notNull().default(0),
     fulfilledAt: timestamp("fulfilled_at", { withTimezone: true }),
     createdBy: text("created_by").notNull().default(""),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

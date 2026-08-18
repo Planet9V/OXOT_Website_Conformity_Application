@@ -488,3 +488,151 @@ describe("The door's file upload (22.1 — public write surface, review pending)
     expect(res.status).toBe(400);
   });
 });
+
+describe("Door upload security hardening (23.2 — SR1/SR2/SR3/SR5/SR8)", () => {
+  let supplierId: number;
+  let productId: number;
+  let token: string;
+
+  beforeAll(async () => {
+    supplierId = (
+      await api("POST", "/conformity/suppliers", { name: "Vitest Security GmbH" })
+    ).json.id;
+    productId = (
+      await api("POST", "/conformity/products", {
+        name: "Vitest Security Device",
+        orgRole: "operator",
+        supplierId,
+      })
+    ).json.id;
+    token = (
+      await api("POST", `/conformity/products/${productId}/supplier-requests`, {
+        docType: "declaration_of_conformity",
+      })
+    ).json.accessToken;
+  });
+
+  afterAll(async () => {
+    if (productId) await api("DELETE", `/conformity/products/${productId}`);
+    if (supplierId) await api("DELETE", `/conformity/suppliers/${supplierId}`);
+  });
+
+  it("SR1: refuses a javascript: link at the door (400)", async () => {
+    const res = await api(
+      "POST",
+      "/conformity/supplier-portal/submit",
+      { token, url: "javascript:alert(document.cookie)" },
+      false,
+    );
+    expect(res.status).toBe(400);
+  });
+
+  it("SR1: refuses a javascript: link at the internal document POST (400)", async () => {
+    const res = await api("POST", `/conformity/products/${productId}/supplier-documents`, {
+      docType: "other",
+      title: "hostile",
+      url: "javascript:alert(1)",
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("SR2: refuses an SVG mint at the door (400)", async () => {
+    const res = await api(
+      "POST",
+      "/conformity/supplier-portal/upload-url",
+      { token, name: "logo.svg", size: 100, contentType: "image/svg+xml" },
+      false,
+    );
+    expect(res.status).toBe(400);
+  });
+
+  it("SR2: door PUT rejects a disallowed Content-Type header even with a clean mint", async () => {
+    const minted = await api(
+      "POST",
+      "/conformity/supplier-portal/upload-url",
+      { token, name: "doc.pdf", size: 100, contentType: "application/pdf" },
+      false,
+    );
+    expect(minted.status).toBe(200);
+    // Same one-time id, but now PUT with an SVG content-type header.
+    const put = await fetch(`${baseUrl}${minted.json.uploadURL.replace("/api", "")}`, {
+      method: "PUT",
+      headers: { "content-type": "image/svg+xml" },
+      body: Buffer.from("<svg onload=alert(1)></svg>"),
+    });
+    expect(put.status).toBe(400);
+  });
+
+  it("SR5: caps upload-URL mints per ask (400 past the ceiling)", async () => {
+    const ask = await api("POST", `/conformity/products/${productId}/supplier-requests`, {
+      docType: "sbom",
+    });
+    const t = ask.json.accessToken;
+    let sawCap = false;
+    for (let i = 0; i < 12; i++) {
+      const r = await api(
+        "POST",
+        "/conformity/supplier-portal/upload-url",
+        { token: t, name: `f${i}.pdf`, size: 100, contentType: "application/pdf" },
+        false,
+      );
+      if (r.status === 400) {
+        sawCap = true;
+        break;
+      }
+    }
+    expect(sawCap, "mint cap never triggered").toBe(true);
+  });
+
+  it("SR8: internal document POST rejects a path the upload flow did not mint (400)", async () => {
+    const res = await api("POST", `/conformity/products/${productId}/supplier-documents`, {
+      docType: "other",
+      title: "traversal",
+      objectPath: "/etc/passwd",
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("SR3: an internal user downloads a door-uploaded file as an attachment", async () => {
+    // Upload a real file through the door and submit it.
+    const minted = await api(
+      "POST",
+      "/conformity/supplier-portal/upload-url",
+      { token, name: "declaration.pdf", size: 40, contentType: "application/pdf" },
+      false,
+    );
+    const bytes = Buffer.from("%PDF-1.4 vitest security declaration");
+    await fetch(`${baseUrl}${minted.json.uploadURL.replace("/api", "")}`, {
+      method: "PUT",
+      headers: { "content-type": "application/pdf" },
+      body: bytes,
+    });
+    await api(
+      "POST",
+      "/conformity/supplier-portal/submit",
+      { token, objectPath: minted.json.objectPath, fileName: "declaration.pdf" },
+      false,
+    );
+    const docs = await api("GET", `/conformity/products/${productId}/supplier-documents`);
+    const doc = docs.json.documents.find((d: any) => d.submittedVia === "supplier_token");
+    expect(doc).toBeDefined();
+
+    // Unauthenticated download is refused.
+    const unauth = await fetch(
+      `${baseUrl}/conformity/supplier-documents/${doc.id}/download`,
+      { method: "GET" },
+    );
+    expect(unauth.status).toBe(401);
+
+    // Authenticated download returns the exact bytes as an attachment.
+    const authed = await fetch(
+      `${baseUrl}/conformity/supplier-documents/${doc.id}/download`,
+      { headers: { cookie } },
+    );
+    expect(authed.status).toBe(200);
+    expect(authed.headers.get("content-disposition")).toContain("attachment");
+    expect(authed.headers.get("x-content-type-options")).toBe("nosniff");
+    const got = Buffer.from(await authed.arrayBuffer());
+    expect(got.equals(bytes)).toBe(true);
+  });
+});

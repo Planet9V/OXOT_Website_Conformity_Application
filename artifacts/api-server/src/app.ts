@@ -20,7 +20,12 @@ app.use(helmet());
 
 // Behind Replit's proxy: trust X-Forwarded-For so req.ip is the real client
 // address. Per-IP rate limiting and GDPR consent-IP capture both rely on this.
-app.set("trust proxy", true);
+// Exactly one proxy hop (nginx) sits in front of the API. Trusting the WHOLE
+// X-Forwarded-For chain (`true`) let any client prepend forged hops and
+// present an arbitrary source IP, defeating the per-IP rate limiters (door
+// mints, login). `1` reads only nginx's appended entry, which the client
+// cannot forge. See docs/security/door-upload-review-2026-08.md (SR4).
+app.set("trust proxy", 1);
 
 app.use(
   pinoHttp({

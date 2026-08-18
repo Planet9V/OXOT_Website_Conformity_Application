@@ -51,8 +51,10 @@ import {
 import { requireAuth, getSession } from "../lib/adminAuth";
 import { RateLimiter } from "../lib/rateLimit";
 import { objectStorage, localBackend } from "../lib/storageBackend";
+import { ObjectNotFoundError } from "../lib/objectStorage";
 import { validateUpload, MAX_UPLOAD_BYTES } from "./storage";
 import { createHash, randomBytes } from "crypto";
+import { Readable } from "stream";
 import {
   deriveProcurementPosture,
   rollupSupplierPosture,
@@ -74,6 +76,64 @@ const router: IRouter = Router();
 function actorOf(req: Request): string {
   const s = getSession(req);
   return s ? `${s.role}:${s.username}` : "";
+}
+
+/**
+ * A recorded document link must be a real web URL — never a `javascript:`,
+ * `data:` or other scheme that executes when a later reader clicks it
+ * (door-upload review SR1). Empty is allowed (no link supplied).
+ */
+function isSafeHttpUrl(value: string): boolean {
+  if (!value) return true;
+  try {
+    const u = new URL(value);
+    return u.protocol === "http:" || u.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * The DOOR's file-type rule — STRICTER than the shared admin allow-list
+ * (door-upload review SR2). No blanket `image/*` pass and no SVG: an
+ * untrusted supplier upload is rendered by nobody inline, but the bytes
+ * still must not be a scriptable document masquerading as an image.
+ * `validateUpload` covers size + the admin allow-list; this adds the door
+ * restrictions on top. Returns an error string, or null when acceptable.
+ */
+const DOOR_BLOCKED_EXTENSIONS = new Set(["svg", "svgz"]);
+// The door does NOT honour the shared flow's blanket "any image/*" pass:
+// only these concrete raster image types (SVG carries script; it is out).
+const DOOR_IMAGE_TYPES = new Set([
+  "image/png",
+  "image/jpeg",
+  "image/gif",
+  "image/webp",
+  "image/bmp",
+  "image/tiff",
+  "image/avif",
+]);
+
+/** The door's stricter content-type rule (SR2), reused at mint and at PUT. */
+function doorContentTypeAllowed(contentType: string): boolean {
+  const type = contentType.split(";")[0].trim().toLowerCase();
+  if (type === "image/svg+xml") return false;
+  if (type.startsWith("image/")) return DOOR_IMAGE_TYPES.has(type);
+  // Non-image types: defer to the shared allow-list (validateUpload checks it).
+  return true;
+}
+
+function validateDoorUpload(name: string, size: number, contentType: string): string | null {
+  const shared = validateUpload(name, size, contentType);
+  if (shared) return shared;
+  const ext = name.split(".").pop()?.toLowerCase() ?? "";
+  if (DOOR_BLOCKED_EXTENSIONS.has(ext)) {
+    return "That file type is not accepted here. Send a PDF, Office document, photo (PNG/JPG) or data file.";
+  }
+  if (!doorContentTypeAllowed(contentType)) {
+    return "That content type is not accepted here.";
+  }
+  return null;
 }
 
 function toDto(row: ConformitySupplierRow, productCount: number) {
@@ -415,8 +475,17 @@ router.post(
       res.status(404).json({ error: "Product not found" });
       return;
     }
+    if (!isSafeHttpUrl((body.url ?? "").trim())) {
+      res.status(400).json({ error: "A document link must be an http(s) URL." });
+      return;
+    }
     // Fingerprint stored bytes exactly like evidence (14.1 discipline).
     const objectPath = body.objectPath ?? "";
+    // Only paths our own upload flow mints — never an arbitrary storage path (SR8).
+    if (objectPath && !objectPath.startsWith("/objects/")) {
+      res.status(400).json({ error: "Invalid file reference." });
+      return;
+    }
     let fileHash = "";
     if (objectPath) {
       const MAX_HASH_BYTES = 25 * 1024 * 1024;
@@ -443,6 +512,55 @@ router.post(
       })
       .returning();
     res.json(AddSupplierDocumentResponse.parse(toDocumentDto(row!)));
+  },
+);
+
+// Stream a supplier-uploaded document to an authenticated internal user
+// (SR3). ATTACHMENT, never inline (SR2/SR9): the bytes come from an untrusted
+// supplier, so the browser must save them, not render them — a hostile
+// SVG/HTML then cannot execute in the app origin. X-Content-Type-Options is
+// re-asserted alongside helmet's global one.
+router.get(
+  "/conformity/supplier-documents/:id/download",
+  requireAuth,
+  async (req, res): Promise<void> => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id <= 0) {
+      res.status(400).json({ error: "Invalid document id" });
+      return;
+    }
+    const [row] = await db
+      .select()
+      .from(conformitySupplierDocumentsTable)
+      .where(eq(conformitySupplierDocumentsTable.id, id));
+    if (!row || !row.objectPath) {
+      res.status(404).json({ error: "Supplier document file not found" });
+      return;
+    }
+    try {
+      const objectFile = await objectStorage.getObjectEntityFile(row.objectPath);
+      const response = await objectStorage.downloadObject(objectFile);
+      res.status(response.status);
+      response.headers.forEach((value, key) => res.setHeader(key, value));
+      res.setHeader("X-Content-Type-Options", "nosniff");
+      const filename = row.fileName || `supplier-document-${row.id}`;
+      res.setHeader(
+        "Content-Disposition",
+        `attachment; filename*=UTF-8''${encodeURIComponent(filename)}`,
+      );
+      if (response.body) {
+        Readable.fromWeb(response.body as ReadableStream<Uint8Array>).pipe(res);
+      } else {
+        res.end();
+      }
+    } catch (error) {
+      if (error instanceof ObjectNotFoundError) {
+        res.status(404).json({ error: "Supplier document file not found" });
+        return;
+      }
+      req.log.error({ err: error }, "Error serving supplier document file");
+      res.status(500).json({ error: "Failed to serve supplier document file" });
+    }
   },
 );
 
@@ -591,7 +709,13 @@ async function loadOpenRequestByToken(token: string) {
   return row;
 }
 
-const doorLimiter = new RateLimiter({ windowMs: 60_000, max: 20 });
+// 60/min per IP: the burst ceiling. A legitimate supplier answering one
+// request makes ~8 calls (workspace + a few mint/PUT pairs + submit), and
+// several suppliers can share one corporate NAT IP, so 20 was too tight. The
+// EXPENSIVE operation (a 50 MB upload) is bounded far more tightly by the
+// per-ask mint cap of 10 (SR5), which this limiter now backs up rather than
+// carries alone. See docs/security/door-upload-review-2026-08.md.
+const doorLimiter = new RateLimiter({ windowMs: 60_000, max: 60 });
 function doorLimited(req: Request): boolean {
   return !doorLimiter.hit(`supplier-door:${req.ip ?? "unknown"}`).allowed;
 }
@@ -649,11 +773,24 @@ router.post("/conformity/supplier-portal/upload-url", async (req, res): Promise<
     res.status(401).json(DOOR_401);
     return;
   }
-  const rejection = validateUpload(body.name, body.size, body.contentType);
+  const rejection = validateDoorUpload(body.name, body.size, body.contentType);
   if (rejection) {
     res.status(400).json({ error: rejection });
     return;
   }
+  // Bound orphan bytes per ask (SR5): a handful of mints answers one document
+  // request; anything past the cap is abuse, not a supplier fumbling.
+  const MAX_MINTS_PER_ASK = 10;
+  if (request.uploadsMinted >= MAX_MINTS_PER_ASK) {
+    res.status(400).json({
+      error: "Too many upload attempts for this request. Ask your contact for a fresh link.",
+    });
+    return;
+  }
+  await db
+    .update(conformitySupplierRequestsTable)
+    .set({ uploadsMinted: request.uploadsMinted + 1 })
+    .where(eq(conformitySupplierRequestsTable.id, request.id));
   const mintedURL = await objectStorage.getObjectEntityUploadURL();
   const objectPath = objectStorage.normalizeObjectEntityPath(mintedURL);
   // The local backend's PUT is admin-gated by design; the door gets its own
@@ -696,6 +833,13 @@ router.put("/conformity/supplier-portal/upload/:id", async (req, res): Promise<v
   const contentType =
     (req.headers["content-type"] as string | undefined)?.split(";")[0].trim() ||
     "application/octet-stream";
+  // Re-validate the ACTUAL Content-Type header at write time (SR2): the mint
+  // step checked a client-declared value, and this is the byte-carrying
+  // request. A door PUT must not store a type the door would refuse.
+  if (!doorContentTypeAllowed(contentType)) {
+    res.status(400).json({ error: "That content type is not accepted here." });
+    return;
+  }
   const objectPath = local.acceptLocalUpload(String(req.params.id), body, contentType);
   if (!objectPath) {
     res.status(404).json({ error: "Upload id unknown or expired" });
@@ -724,6 +868,12 @@ router.post("/conformity/supplier-portal/submit", async (req, res): Promise<void
   const objectPath = (body.objectPath ?? "").trim();
   if (!url && !note && !objectPath) {
     res.status(400).json({ error: "Attach the document, provide a link, or answer in text." });
+    return;
+  }
+  // A supplied link must be an http(s) URL — never a scheme that executes
+  // when a later reader clicks it (SR1).
+  if (!isSafeHttpUrl(url)) {
+    res.status(400).json({ error: "A document link must be an http(s) URL." });
     return;
   }
   // Only paths our own upload flow mints — never an arbitrary storage path.

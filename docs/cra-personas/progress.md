@@ -408,3 +408,21 @@ the meaning of Art. 64(10).
 - G6 live: hub, GDPR wiki deep-link ?tab=articles&num=37 with its
   corrigendum callout, sitemap XML, door attach button. Probe ask
   withdrawn after the walk.
+
+## 2026-08-17 — Phase 23: door-upload security review (the MUST-DO, done)
+- Review artifact docs/security/door-upload-review-2026-08.md (SR1–SR9,
+  each with disposition). Fixes: SR1 http(s)-only url validation (door
+  submit + internal POST); SR2 door content rule (no svg / no blanket
+  image/*, re-checked at mint AND at the byte PUT); SR3 NEW auth'd
+  attachment download route for supplier docs + panel link (untrusted
+  bytes now saved, never rendered inline); SR4 trust proxy true→1
+  (spoof-resistant limiters); SR5 per-ask mint cap (uploads_minted,
+  10) + door IP limiter 20→60/min (NAT headroom, net strengthening —
+  the mint cap is the tight bound now); SR8 internal POST objectPath
+  prefix guard. SR6/SR7 noted; SR9 accepted (evidence stays inline;
+  the untrusted door route is attachment — the difference is the
+  point). +7 tests. G2 761/761 zero-skips; G8 27/0.
+- G6 live (curl against the container): javascript: link → 400, svg
+  mint → 400, real PDF flows, download serves attachment+nosniff to
+  an authed user, unauth → 401; panel download link renders. Probe
+  cleaned up.

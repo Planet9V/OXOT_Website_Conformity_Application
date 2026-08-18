@@ -77,6 +77,9 @@ const CAPABILITIES = [
   { name: "supplier posture",    path: "/conformity/suppliers/posture", home: "Organisation -> Suppliers", hook: "useGetSupplierPosture" },
   // 21.4 — supplier documents, asks, and the public door.
   { name: "supplier documents",  path: "/supplier-documents",           home: "Products -> product file (operator)", hook: "useListSupplierDocuments" },
+  // 23.2 — the authenticated attachment download for supplier-uploaded bytes
+  // (raw <a href>, not a generated hook — matched by the path literal).
+  { name: "supplier doc download", path: "/supplier-documents/",         home: "Products -> product file (operator)" },
   { name: "supplier requests",   path: "/supplier-requests",            home: "Products -> product file (operator)", hook: "useListSupplierRequests" },
   { name: "supplier door",       path: "/conformity/supplier-portal",   home: "/supplier-portal (external)" },
 ];

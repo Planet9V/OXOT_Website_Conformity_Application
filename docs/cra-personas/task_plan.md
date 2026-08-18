@@ -1489,3 +1489,19 @@ the wikis and regulatory text, plus blogs and podcasts".
 ### OPEN MUST-DO (user-accepted ordering): formal security review of the
 supplier-door upload path (public write surface) — before GA marketing
 pushes traffic at it.
+
+## Phase 23 — Security review of the supplier-door upload path (opened + closed 2026-08-17)
+
+The tracked MUST-DO from 22.1, executed as review-then-fix: findings
+register in docs/security/door-upload-review-2026-08.md (SR1–SR9),
+fixes for SR1/SR2/SR3/SR4/SR5/SR8, accepted-with-rationale for SR9,
+noted for SR6/SR7. Details in the approved plan.
+- **23.1 done** The review artifact (findings register).
+- **23.2 done** Fixes: trust proxy = 1; http(s)-only url validation (door +
+  internal); door mint/PUT content rules (no svg, allow-list bound at
+  both steps); per-ask mint budget (uploads_minted, cap 10); internal
+  objectPath prefix guard; NEW auth'd attachment download route for
+  supplier documents + panel link + G8 enrollment.
+- **23.3 done** Tests for every fix.
+- **23.4 done** Gates, schema push, rebuild, G6, docs (MUST-DO → DONE),
+  commit/push, CI, G7.
