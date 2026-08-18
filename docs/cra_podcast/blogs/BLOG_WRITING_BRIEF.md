@@ -249,6 +249,47 @@ published CRA commentary. The remaining weaknesses were purely stylistic:
     actionability. (Series 6: 6.03 was the best prose but lowest actionability
     until a two-line safe-harbor template was added.)
 
+## Anti-formula v7 (added after the Series 7 grade — A−; ship-hygiene + a deeper anaphora)
+
+Series 7 graded A− with ZERO material statutory errors on the most citation-dense
+series in the programme — every Art 32 route, Annex V/VII contents list, Art 27
+presumption door, Art 29/30 CE rule, and the 13(13)-vs-13(9) non-conflation verified
+verbatim, on a topic where the source blueprint's article numbers were systematically
+wrong. Held off an A only by shippable-artifact hygiene and a transition tic:
+
+32. **NO WORKING ARTIFACTS IN THE SHIPPED FILE (hard gate).** Before a post is
+    "done," grep it for `IMAGE ROWS FOR MANIFEST`, `Verification note`,
+    `VERIFICATION NOTE`, `Body article pinpoints`, and any `---` horizontal rule
+    followed by meta-commentary. Image rows belong ONLY in the shared
+    `BLOG_IMAGE_MANIFEST.md`; verification notes belong ONLY in the agent's return
+    message. A fenced ```IMAGE ROWS``` block renders as a visible code block in the
+    published post. (Series 7: 7.03 and 7.04 shipped leftover blocks — caught at
+    grade.) EDITOR PROMPTS MUST SAY: strip any embedded IMAGE-ROWS/verification
+    block, keep only the `<!-- IMAGE-SLOT ... -->` HTML comments.
+33. **Image-slot placement lint.** Every `<!-- IMAGE-SLOT -->` must sit inside the
+    prose flow, never after the closing paragraph/CTA. Assert no image-slot appears
+    after the last body paragraph.
+34. **Extend the anti-anaphora rule from OPENERS to paragraph transitions.** Cap
+    "Two things follow / Two things fall out / Two of those" mid-body constructions
+    at once per series — it is the same tell as the "Two ___" opener, one layer
+    down (Series 7 hit it 4×).
+35. **Disambiguate reused count-nouns within a post.** If a `key_metric` number and
+    a section-heading number would otherwise collide (7.01: "routes" meant both the
+    4 product-class lanes AND the 3 modules), use distinct words — "lanes" for the
+    class map, "modules" for A/B+C/H.
+36. **Contents-enumeration citation carve-out.** When a post's payload IS an annex's
+    contents list (7.04 = Annex VII), the enumerated sub-references (Annex I/II,
+    Art 13(8)) legitimately inflate the pinpoint count — push those sub-refs into
+    the table/caption so the ≤4 body rule stays meaningful, or grant that one post a
+    higher ceiling explicitly.
+
+**Duplicate-file trap (process, not style):** Series 7 & 8 originals were auto-
+generated garbage under DIFFERENT slugs than the clean rewrites. Writing rewrites to
+new slugs left BOTH files on disk (the API serves every `*.md`). ALWAYS check
+`ls BLOG_EP_<series>.*_*.md` for >1 file per episode after drafting, and `git rm` the
+old garbage (identify it by: no IMAGE-SLOT, "Executive Technical Memorandum" header,
+"Jim Mckenney" byline, wrong article numbers in slug/statutes).
+
 ## Grading rubric (the critic scores each 1–10, overall A–F)
 
 1. Episode-specificity & substance · 2. Distinctness across the series (call out

@@ -5,10 +5,11 @@ Rewriting all 67 CRA companion blogs from source per `BLOG_WRITING_BRIEF.md`
 then de-formula polish). A post is checked only when written, edited, graded,
 and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 
-**Progress: 39 / 67 done.**
+**Progress: 45 / 67 done.**
 
 ## Resume state (cold-restart spec) — 2026-08-18
-- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−) — all fixes applied.
+- **Committed & pushed (graded A-band):** Series 1 `f4776e6`, Series 2 `71335c8`, Series 3 `165185e`, Series 4 (A−), Series 5 (A−/B+), Series 6 (A−), Series 7 (A−) — all fixes applied.
+- **NOTE (Series 7/8 duplicate-file trap):** originals were auto-generated garbage under DIFFERENT slugs than the rewrites. After drafting, `ls BLOG_EP_<n>.*_*.md` for >1 file/episode and `git rm` the garbage (no IMAGE-SLOT, "Executive Technical Memorandum", "Jim Mckenney", wrong article #s). Series 7's 6 garbage files deleted; Series 8's 5 deleted.
 - **All rewritten blogs are on disk AND committed.** Nothing lives only in memory. A fresh session resumes from this file.
 - **Pipeline per series (see `BLOG_WRITING_BRIEF.md` for full rules incl. anti-formula v1–v3):**
   1. Read the series blueprint in `docs/cra_podcast/02-CRA-MARKET-UNCERTAINTY-INDEX-AND-50-EPISODE-BLUEPRINTS.md` (episodes/narrations in `docs/cra_podcast/episodes_solo/`).
@@ -19,7 +20,8 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
   6. Tick tracker boxes, `git add` the series files + manifest + brief + tracker, commit `content(blog): Series N …`.
 - **Model:** Opus for all roles (Sonnet A/B ran ~18% more tokens).
 - **Concurrency throttle (2026-08-18):** cap agent dispatches at ~3–4 per wave (not 6–8) — the API returns 529/mid-response errors under higher parallelism. Batch drafters/editors in groups of 3–4, wait for each batch, then the next. Re-dispatch any failed agent (failures don't corrupt files).
-- **Remaining:** Series 7 (6), 8 (5), News (5), Truth-&-Consequences (12) = 28. Series 7 source = blueprint line 460 (Conformity Assessment/Audits/CE); Series 8 = line 506 (Executive Liability/Future). News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
+- **Remaining:** Series 8 (5, IN PROGRESS — drafters running), News (5), Truth-&-Consequences (12) = 22. Series 8 source = blueprint line 506 (Executive Liability/Future). News source = `docs/cra_podcast/news_briefings/`; TC source = `docs/cra_podcast/truth_and_consequences/`.
+- **Series 8 verified anchors (blueprint WRONG):** penalties = Art 64 (64(2) €15M/2.5% Annex I+Arts 13-14; 64(3) €10M/2%; 64(4) €5M/1%) NOT Art 61/62; market surveillance = Arts 52-56 NOT 43-54; executive liability = NIS2 Art 20 + national law, NOT a CRA article.
 
 
 ## Series 1 — Procurement & Contracting Crisis ✅ COMPLETE (committed f4776e6)
@@ -73,13 +75,13 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] EP_6.05 — Customer security advisories
 - [x] EP_6.06 — The 14-day final closeout
 
-## Series 7 — Conformity Assessment, Audits & CE Marking
-- [ ] EP_7.01 — Self-assessment vs notified body (Modules A/B+C/H)
-- [ ] EP_7.02 — The notified-body bottleneck
-- [ ] EP_7.03 — Drafting the EU Declaration of Conformity
-- [ ] EP_7.04 — The 10-year technical documentation archive
-- [ ] EP_7.05 — Article 27 presumption of conformity
-- [ ] EP_7.06 — CE nameplate studio (physical/digital/packaging)
+## Series 7 — Conformity Assessment, Audits & CE Marking ✅ COMPLETE (grade A−, fixes applied; 6 garbage originals deleted)
+- [x] EP_7.01 — Self-assessment vs notified body (Modules A/B+C/H) — Art 32
+- [x] EP_7.02 — The notified-body bottleneck — Arts 35/43
+- [x] EP_7.03 — Drafting the EU Declaration of Conformity — Art 28/Annex V
+- [x] EP_7.04 — The 10-year technical documentation archive — Art 31/Annex VII/13(13)
+- [x] EP_7.05 — Presumption of conformity — Art 27 (blueprint's "Art 34" was wrong)
+- [x] EP_7.06 — CE nameplate studio — Art 29/30 (blueprint's "Art 25/26/27" was wrong)
 
 ## Series 8 — Executive Liability, Penalties & Future Evolution
 - [ ] EP_8.01 — The €15,000,000 calculation (Art 64)
