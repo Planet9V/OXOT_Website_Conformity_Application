@@ -28,13 +28,38 @@ function loadCrawlerPatterns(): string[] {
 }
 const CRAWLER_UA_PATTERNS = loadCrawlerPatterns();
 
+function loadNginxPatterns(): string[] {
+  const src = readFileSync(
+    resolve(__dirname, "../../../../../docker/nginx.conf"),
+    "utf8",
+  );
+  const match = src.match(/\$oxot_is_crawler\s*\{[\s\S]*?~\*\(([^)]+)\)/);
+  if (!match) throw new Error("$oxot_is_crawler UA map not found in docker/nginx.conf");
+  const entries = match[1]!.split("|").map((t) => t.trim()).filter(Boolean);
+  if (entries.length === 0) throw new Error("nginx crawler map parsed empty — extraction regex is stale");
+  return entries;
+}
+const NGINX_UA_PATTERNS = loadNginxPatterns();
+
+
 describe("bot/crawler UA list drift guard", () => {
   it("the SEO crawler list and the analytics bot list are identical in content", () => {
     const seo = [...CRAWLER_UA_PATTERNS].sort();
     const analytics = [...BOT_UA_PATTERNS].sort();
+    const nginx = [...NGINX_UA_PATTERNS].sort();
 
     const onlySeo = seo.filter((p) => !analytics.includes(p));
     const onlyAnalytics = analytics.filter((p) => !seo.includes(p));
+    const onlyNginx = nginx.filter((p) => !analytics.includes(p));
+    const missingFromNginx = analytics.filter((p) => !nginx.includes(p));
+    expect(
+      onlyNginx,
+      "patterns only in docker/nginx.conf $oxot_is_crawler map — add them to api-server BOT_UA_PATTERNS (or remove here)",
+    ).toEqual([]);
+    expect(
+      missingFromNginx,
+      "patterns in BOT_UA_PATTERNS but missing from docker/nginx.conf $oxot_is_crawler map — keep the nginx crawler map in sync",
+    ).toEqual([]);
 
     expect(
       onlySeo,
@@ -47,7 +72,7 @@ describe("bot/crawler UA list drift guard", () => {
   });
 
   it("neither list contains duplicates or empty/ambiguous entries", () => {
-    for (const list of [CRAWLER_UA_PATTERNS, BOT_UA_PATTERNS]) {
+    for (const list of [CRAWLER_UA_PATTERNS, BOT_UA_PATTERNS, NGINX_UA_PATTERNS]) {
       expect(new Set(list).size).toBe(list.length);
       for (const p of list) {
         expect(p.trim()).toBe(p);

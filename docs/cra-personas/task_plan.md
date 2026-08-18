@@ -1573,5 +1573,22 @@ Ordered so prerender bakes a FINISHED site last.
   a 9-row capability matrix with a Native/Partial/Out-of-scope legend and
   "no fabricated verdicts"). Act landing pages already exist via
   /frameworks/:key. seo.ts sitemap + header nav wired. [option 3b]
-- **Phase 30** — Prerender the finalized routes (the ranking unlock).
-  [option 3c — LAST]
+- **Phase 30 done** — the ranking unlock, scoped (user pick) to per-route
+  META + JSON-LD via crawler DYNAMIC RENDERING, browser-free so it runs in
+  node:24-slim + on Railway. Reused the existing infra: the dev server's
+  vite-seo-plugin already proxies crawler UAs to /api/seo/page-meta, but
+  production nginx had no crawler branch. Added (a) lib/funnelMeta.ts — the
+  per-route title/description/OG/JSON-LD for the hardcoded React funnel
+  pages (EN+NL), which are not CMS rows so page-meta returned generic; (b)
+  GET /api/seo/render?path= — splits locale/slug, serves funnel meta / CMS
+  page meta / noindex-for-shells, now emitting JSON-LD (SoftwareApplication,
+  Service, VideoObject, Organization, WebPage); (c) a $oxot_is_crawler UA
+  map + @crawler_render in docker/nginx.conf (try_files -> @spa_or_crawler:
+  crawlers 418->render, humans SPA); (d) extended botListDrift.test to guard
+  the nginx UA list == BOT_UA_PATTERNS (3 lists now in sync). Verified live:
+  Googlebot gets per-route <title>/canonical/og/JSON-LD (incl. Dutch on
+  /nl/*), humans get the SPA shell, assets still serve. Railway template
+  annotated (not activated — untestable here). Canonicals are relative
+  locally (PUBLIC_WEB_URL unset, same as the sitemap) → absolute in prod.
+  Full-body SSG remains available as a future 30b if JS-less body indexing
+  is wanted. [option 3c — LAST]

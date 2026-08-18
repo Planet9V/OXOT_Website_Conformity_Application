@@ -69,6 +69,10 @@ server {
         rewrite ^ /conformity-briefing/index.html last;
     }
 
+    # NOTE (Phase 30): crawler dynamic rendering is wired in docker/nginx.conf
+    # (a $oxot_is_crawler UA map + @crawler_render -> /api/seo/render). It is
+    # intentionally NOT yet mirrored here — the Railway map/include context is
+    # untested. Mirror it when the Railway deploy is next verified.
     location / {
         root /usr/share/nginx/html/oxot;
         add_header Cache-Control "no-cache" always;

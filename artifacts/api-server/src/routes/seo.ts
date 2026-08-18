@@ -3,6 +3,7 @@ import { eq, and, asc } from "drizzle-orm";
 import { db, pagesTable, siteSettingsTable, type PageRow } from "@workspace/db";
 import { SUPPORTED_LOCALES, parseLocale, firstParam, type Locale } from "../lib/locale";
 import { absoluteWebUrl } from "../lib/publicUrl";
+import { funnelMetaFor, pathToLocaleSlug, isNonPagePath, type FunnelMeta } from "../lib/funnelMeta";
 
 const router: IRouter = Router();
 
@@ -148,6 +149,13 @@ router.get("/seo/page-meta", async (req, res): Promise<void> => {
   }
   const slug = firstParam(req.query["slug"] as string | string[] | undefined) || "home";
 
+  // Hardcoded React funnel routes are not CMS pages — serve their own meta.
+  const funnel = funnelMetaFor(locale, slug);
+  if (funnel) {
+    res.type("text/html").send(renderFunnelHtml(locale, slug, funnel));
+    return;
+  }
+
   try {
     const [page] = await db
       .select()
@@ -179,61 +187,194 @@ router.get("/seo/page-meta", async (req, res): Promise<void> => {
   }
 });
 
+/** Default per-page WebPage JSON-LD when a route supplies none of its own. */
+function webPageJsonLd(title: string, description: string | null, canonical: string): Record<string, unknown> {
+  const obj: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    url: canonical,
+  };
+  if (description) obj["description"] = description;
+  return obj;
+}
+
 /**
- * Build the crawler-facing HTML document with per-page OG + Twitter tags.
- * Falls back to sensible site-level values when a specific field is unset.
+ * Low-level builder for the crawler-facing HTML document: per-page OG + Twitter
+ * tags, a canonical link, and a JSON-LD block. Shared by the DB-page, funnel and
+ * fallback paths so all three emit the same shape.
  */
-function renderMetaHtml(
-  locale: Locale,
-  page: PageRow | null,
-  siteName: string | null,
-): string {
+function metaDocument(opts: {
+  locale: Locale;
+  title: string;
+  description: string | null;
+  canonical: string;
+  ogTitle: string | null;
+  ogDescription: string | null;
+  ogImage: string | null;
+  siteName: string;
+  noindex: boolean;
+  keywords?: string | null;
+  jsonLd: Record<string, unknown>;
+}): string {
   const tags: string[] = [];
   const meta = (attr: "name" | "property", key: string, value: string | null | undefined) => {
     if (!value) return;
     tags.push(`    <meta ${attr}="${key}" content="${htmlAttr(value)}" />`);
   };
 
-  const title = page ? page.seoTitle || page.title : siteName || "OXOT";
-  const description = page ? page.seoDescription : null;
-  const canonical = page ? canonicalForPage(page) : absoluteWebUrl("/");
-  const ogTitle = (page?.ogTitle || title) ?? null;
-  const ogDescription = (page?.ogDescription || description) ?? null;
-  const ogImage = page?.ogImage ?? null;
+  meta("name", "description", opts.description);
+  meta("name", "keywords", opts.keywords ?? null);
+  meta("name", "robots", opts.noindex ? "noindex,nofollow" : "index,follow");
 
-  meta("name", "description", description);
-  meta("name", "keywords", page?.metaKeywords ?? null);
-  if (page?.noindex) meta("name", "robots", "noindex,nofollow");
-
-  // Open Graph
   meta("property", "og:type", "website");
-  meta("property", "og:site_name", siteName ?? "OXOT");
-  meta("property", "og:title", ogTitle);
-  meta("property", "og:description", ogDescription);
-  meta("property", "og:image", ogImage);
-  meta("property", "og:url", canonical);
-  meta("property", "og:locale", locale === "nl" ? "nl_NL" : "en_US");
+  meta("property", "og:site_name", opts.siteName);
+  meta("property", "og:title", opts.ogTitle);
+  meta("property", "og:description", opts.ogDescription);
+  meta("property", "og:image", opts.ogImage);
+  meta("property", "og:url", opts.canonical);
+  meta("property", "og:locale", opts.locale === "nl" ? "nl_NL" : "en_US");
 
-  // Twitter card
-  meta("name", "twitter:card", ogImage ? "summary_large_image" : "summary");
-  meta("name", "twitter:title", ogTitle);
-  meta("name", "twitter:description", ogDescription);
-  meta("name", "twitter:image", ogImage);
+  meta("name", "twitter:card", opts.ogImage ? "summary_large_image" : "summary");
+  meta("name", "twitter:title", opts.ogTitle);
+  meta("name", "twitter:description", opts.ogDescription);
+  meta("name", "twitter:image", opts.ogImage);
 
-  const canonicalTag = canonical
-    ? `    <link rel="canonical" href="${htmlAttr(canonical)}" />\n`
+  const canonicalTag = opts.canonical
+    ? `    <link rel="canonical" href="${htmlAttr(opts.canonical)}" />\n`
     : "";
+  const jsonLdTag = `    <script type="application/ld+json">${JSON.stringify(opts.jsonLd)}</script>`;
 
   return `<!DOCTYPE html>
-<html lang="${locale}">
+<html lang="${opts.locale}">
   <head>
     <meta charset="UTF-8" />
-    <title>${htmlAttr(title)}</title>
+    <title>${htmlAttr(opts.title)}</title>
 ${canonicalTag}${tags.join("\n")}
+${jsonLdTag}
   </head>
   <body></body>
 </html>
 `;
 }
+
+/** Default social image for funnel/fallback routes with no page-specific image. */
+function defaultOgImage(): string {
+  return absoluteWebUrl("/media/tour/01-product-dossier.jpg");
+}
+
+/** Crawler HTML for a hardcoded React funnel route (Phase 30). */
+function renderFunnelHtml(locale: Locale, slug: string, m: FunnelMeta): string {
+  const canonical = absoluteWebUrl(pagePath(slug, locale));
+  const ogImage = m.ogImage ? absoluteWebUrl(m.ogImage) : defaultOgImage();
+  const jsonLd = m.jsonLd ?? webPageJsonLd(m.title, m.description, canonical);
+  return metaDocument({
+    locale,
+    title: m.title,
+    description: m.description,
+    canonical,
+    ogTitle: m.title,
+    ogDescription: m.description,
+    ogImage,
+    siteName: "OXOT",
+    noindex: false,
+    jsonLd,
+  });
+}
+
+/**
+ * Build the crawler-facing HTML document with per-page OG + Twitter tags for a
+ * published CMS page. Falls back to sensible site-level values when a specific
+ * field is unset.
+ */
+function renderMetaHtml(
+  locale: Locale,
+  page: PageRow | null,
+  siteName: string | null,
+): string {
+  const title = page ? page.seoTitle || page.title : siteName || "OXOT";
+  const description = page ? page.seoDescription : null;
+  const canonical = page ? canonicalForPage(page) : absoluteWebUrl("/");
+  const ogTitle = (page?.ogTitle || title) ?? null;
+  const ogDescription = (page?.ogDescription || description) ?? null;
+  const ogImage = page?.ogImage ?? defaultOgImage();
+  return metaDocument({
+    locale,
+    title,
+    description,
+    canonical,
+    ogTitle,
+    ogDescription,
+    ogImage,
+    siteName: siteName ?? "OXOT",
+    noindex: !!page?.noindex,
+    keywords: page?.metaKeywords ?? null,
+    jsonLd: webPageJsonLd(title, description, canonical),
+  });
+}
+
+// GET /api/seo/render?path=<raw request path>
+//
+// The production entry point for crawler dynamic rendering. nginx proxies a
+// crawler's page request here with the ORIGINAL path; we split its locale and
+// slug, then serve the funnel meta, the CMS page meta, or a minimal noindex
+// document for non-page paths (admin/app shells). Humans never reach this — the
+// nginx crawler map gates it — so it is always safe to return crawler HTML.
+router.get("/seo/render", async (req, res): Promise<void> => {
+  const rawPath = firstParam(req.query["path"] as string | string[] | undefined) || "/";
+  const { locale, slug } = pathToLocaleSlug(rawPath);
+
+  // App shells / assets: return a minimal noindex document, never page content.
+  if (isNonPagePath(rawPath)) {
+    res.type("text/html").send(
+      metaDocument({
+        locale,
+        title: "OXOT",
+        description: null,
+        canonical: "",
+        ogTitle: null,
+        ogDescription: null,
+        ogImage: null,
+        siteName: "OXOT",
+        noindex: true,
+        jsonLd: { "@context": "https://schema.org", "@type": "WebPage" },
+      }),
+    );
+    return;
+  }
+
+  const funnel = funnelMetaFor(locale, slug);
+  if (funnel) {
+    res.type("text/html").send(renderFunnelHtml(locale, slug, funnel));
+    return;
+  }
+
+  try {
+    const [page] = await db
+      .select()
+      .from(pagesTable)
+      .where(
+        and(
+          eq(pagesTable.slug, slug),
+          eq(pagesTable.locale, locale),
+          eq(pagesTable.status, "published"),
+          eq(pagesTable.visibility, "public"),
+        ),
+      );
+    if (!page) {
+      res.status(200).type("text/html").send(renderMetaHtml(locale, null, null));
+      return;
+    }
+    const [settings] = await db
+      .select()
+      .from(siteSettingsTable)
+      .where(eq(siteSettingsTable.locale, locale));
+    res.type("text/html").send(renderMetaHtml(locale, page, settings?.siteName ?? null));
+  } catch (err) {
+    req.log.error({ err }, "Failed to render crawler meta");
+    res.status(500).type("text/plain").send("Failed to render crawler meta");
+  }
+});
+
 
 export default router;

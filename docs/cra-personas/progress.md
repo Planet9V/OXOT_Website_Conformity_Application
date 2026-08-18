@@ -540,3 +540,46 @@ the meaning of Art. 64(10).
 - Gates: G1 typecheck · G3 build (7.67s) · G4 honesty 0 · G5 citations 0
   · G8 UI-reach 27/0 · G6 live (all 5 routes 200; /compare + /manufacturers
   visually verified; sitemap now lists /manufacturers).
+
+## 2026-08-18 — Phase 30: the ranking unlock (crawler dynamic rendering)
+- Scope (user pick): per-route META + JSON-LD, NOT full-body SSG. Chosen
+  because the build must run browser-free (node:24-slim; Railway builds
+  in-image) — a headless prerender there would be heavy/fragile.
+- Root cause found: the dev/preview server ALREADY does crawler dynamic
+  rendering (vite-seo-plugin proxies crawler UAs to /api/seo/page-meta),
+  but PRODUCTION nginx had no crawler branch, so crawlers got the generic
+  SPA shell. And the hardcoded React funnel routes (/product,
+  /manufacturers, /compare, /cra-transit, /tour, /wiki*…) are not CMS
+  rows, so page-meta returned generic fallback for them anyway.
+- Fix, reusing the existing infra:
+  1. artifacts/api-server/src/lib/funnelMeta.ts — single server-side
+     source of per-route title/description/OG/JSON-LD for the funnel
+     pages, EN+NL, mirroring each page's useSeo() copy. Helpers
+     pathToLocaleSlug / isNonPagePath / funnelMetaFor.
+  2. seo.ts — refactored to a shared metaDocument() builder that now
+     emits a JSON-LD block; page-meta short-circuits to funnel meta; NEW
+     GET /api/seo/render?path= (the production entry point) serves funnel
+     meta / CMS page meta / a noindex doc for app shells.
+  3. docker/nginx.conf — a $oxot_is_crawler UA map + location /
+     try_files → @spa_or_crawler (crawler → return 418 → @crawler_render
+     → /api/seo/render; human → SPA shell). Assets serve as files to all.
+  4. botListDrift.test.ts extended to guard the nginx UA map == the two
+     existing lists (three now kept in sync).
+  5. funnelMeta.test.ts — pure-function coverage (path/slug, non-page
+     classification, EN/NL parity, lookup). 10/10 with botListDrift.
+- Railway template annotated (needs the same block) but NOT activated —
+  its include context is untestable here; do it when Railway is verified.
+- Verified live (curl): Googlebot → per-route <title>/canonical/og/
+  JSON-LD with the right @type (product→SoftwareApplication,
+  cra-transit→Service, tour→VideoObject, wiki→WebPage), Dutch on /nl/*;
+  human UA → SPA shell (module script + #root); og-image as Googlebot →
+  200 image/jpeg (assets unaffected). nginx -t OK.
+- Canonicals are relative locally (PUBLIC_WEB_URL unset — identical to the
+  existing sitemap); production origin env makes them absolute.
+- Gates: G1 typecheck · G3 build (api+web) · G4 honesty 0 · G5 citations 0
+  · G6 live (crawler/human/asset split verified). G2: funnelMeta +
+  botListDrift pass 10/10; the full zero-skip covenant runs in CI (the
+  local run's 36 fails are all missing-env — PRIVATE_OBJECT_DIR / storage
+  sidecar + ADMIN_USERNAME — not these changes; L58).
+- FUTURE 30b (optional): full-body SSG via renderToString for JS-less
+  body indexing + CWV, if wanted.
