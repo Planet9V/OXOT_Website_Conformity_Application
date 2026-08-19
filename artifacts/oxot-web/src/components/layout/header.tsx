@@ -10,28 +10,70 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 import { useLocale } from '@/providers/locale-provider';
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
 
-// ─── Static funnel navigation ───────────────────────────────────────────────────
-// This is the standalone CRA platform site: one purpose, booking demos. The nav
-// is hardcoded (no CMS / navigation table dependency) — a flat set of funnel
-// pages, each pointing back to the single "Book a demo" ask. Labels are looked up
-// by index from the locale copy object below so the nav renders per-locale.
-const FUNNEL_NAV = [
-  { href: '/product' },
-  { href: '/manufacturers' },
-  { href: '/operators' },
-  { href: '/cra-transit' },
-  { href: '/pricing' },
-  { href: '/deployment' },
-  { href: '/blog' },
-  { href: '/resources' },
-];
+// ─── Funnel navigation (grouped, persona-first) ─────────────────────────────────
+// Standalone CRA platform site: one purpose, booking demos. Hardcoded (no CMS /
+// navigation table dependency). The top row is deliberately small — 2 direct
+// links + 2 dropdowns — so the single "Book a demo" CTA stays dominant. Labels
+// and one-line subtitles come from the per-locale copy object below (keyed, not
+// positional, so groups can reorder safely).
+const TOP_NAV = [
+  { key: 'product', href: '/product' },
+  { key: 'pricing', href: '/pricing' },
+] as const;
+
+// "Solutions" routes the real buyers + the integrator commercial hook.
+const SOLUTIONS_NAV = [
+  { key: 'manufacturers', href: '/manufacturers' },
+  { key: 'operators', href: '/operators' },
+  { key: 'integrators', href: '/partner-scope' },
+  { key: 'craTransit', href: '/cra-transit' },
+] as const;
+
+// "Resources" surfaces the moat/authority assets (the verbatim-law Library first).
+const RESOURCES_NAV = [
+  { key: 'library', href: '/wiki' },
+  { key: 'compare', href: '/compare' },
+  { key: 'trust', href: '/trust' },
+  { key: 'blog', href: '/blog' },
+  { key: 'faq', href: '/faq' },
+  { key: 'tour', href: '/tour' },
+  { key: 'deployment', href: '/deployment' },
+] as const;
 
 // Localised header/nav copy (nl-NL professional register). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'For manufacturers', 'For operators', 'CRA Transit', 'Pricing', 'Deployment', 'Blogs', 'Resources'],
+    nav: {
+      product: 'Product', solutions: 'Solutions', pricing: 'Pricing', resources: 'Resources',
+      manufacturers: 'For manufacturers', operators: 'For operators',
+      integrators: 'For integrators & partners', craTransit: 'CRA in transit',
+      library: 'The Library — read the law', compare: 'Compare', trust: 'Trust center',
+      blog: 'Blog', faq: 'FAQ', tour: 'Product tour', deployment: 'Deployment',
+    },
+    navDesc: {
+      manufacturers: 'You place it on the market — own the technical file',
+      operators: 'Hold your suppliers to the CRA across your estate',
+      integrators: 'When integration quietly makes you the manufacturer',
+      craTransit: 'One product, one 60-day assisted sprint',
+      library: 'Verbatim EU law — CRA, NIS2, AI Act & more',
+      compare: 'Honest and structural — where we fit and where we don’t',
+      trust: 'How your evidence is secured and hosted',
+      blog: 'CRA guidance written for every role',
+      faq: 'Plain answers to the common CRA questions',
+      tour: 'The platform in 90 seconds',
+      deployment: 'Single-tenant, on-premise, local AI',
+    },
     homeAria: 'OXOT Conformance Platform — home',
     lightMode: 'Switch to light mode',
     darkMode: 'Switch to dark mode',
@@ -45,7 +87,26 @@ const copy = {
     switchToNl: 'Schakel naar Nederlands',
   },
   nl: {
-    nav: ['Platform', 'Voor fabrikanten', 'Voor exploitanten', 'CRA Transit', 'Prijzen', 'Implementatie', 'Blogs', 'Bronnen'],
+    nav: {
+      product: 'Product', solutions: 'Oplossingen', pricing: 'Prijzen', resources: 'Bronnen',
+      manufacturers: 'Voor fabrikanten', operators: 'Voor exploitanten',
+      integrators: 'Voor integrators & partners', craTransit: 'CRA in transit',
+      library: 'De Bibliotheek — lees de wet', compare: 'Vergelijk', trust: 'Trust center',
+      blog: 'Blog', faq: 'FAQ', tour: 'Producttour', deployment: 'Implementatie',
+    },
+    navDesc: {
+      manufacturers: 'U brengt het op de markt — beheer het technisch dossier',
+      operators: 'Houd leveranciers aan de CRA in uw hele park',
+      integrators: 'Wanneer integratie u ongemerkt tot fabrikant maakt',
+      craTransit: 'Eén product, één begeleide sprint van 60 dagen',
+      library: 'Verbatim EU-wetgeving — CRA, NIS2, AI-verordening e.a.',
+      compare: 'Eerlijk en structureel — waar we passen en waar niet',
+      trust: 'Hoe uw bewijs wordt beveiligd en gehost',
+      blog: 'CRA-richtlijnen voor elke rol',
+      faq: 'Heldere antwoorden op veelgestelde CRA-vragen',
+      tour: 'Het platform in 90 seconden',
+      deployment: 'Single-tenant, on-premise, lokale AI',
+    },
     homeAria: 'OXOT Conformance Platform — startpagina',
     lightMode: 'Schakel naar lichte modus',
     darkMode: 'Schakel naar donkere modus',
@@ -140,26 +201,72 @@ export function Header() {
             <>O<span className="text-primary">X</span>OT</>
           </Link>
 
-          {/* Desktop nav — flat funnel links */}
-          <nav className="hidden md:flex items-center gap-0.5">
-            {FUNNEL_NAV.map((item, i) => {
-              const active = isActive(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={active ? 'page' : undefined}
-                  className={`relative inline-flex items-center justify-center text-sm font-medium px-3 h-9 rounded-md transition-colors
-                    ${active
-                      ? 'text-primary-ink after:absolute after:bottom-0 after:left-2 after:right-2 after:h-0.5 after:rounded-full after:bg-primary'
-                      : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                >
-                  {t.nav[i]}
-                </Link>
-              );
-            })}
-          </nav>
+          {/* Desktop nav — persona-first: 2 direct links + 2 dropdowns */}
+          <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList className="gap-0.5">
+              {/* Product (direct) */}
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="/product" aria-current={isActive('/product') ? 'page' : undefined}>
+                    {t.nav.product}
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              {/* Solutions (dropdown) — routes the real buyers */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>{t.nav.solutions}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[360px] gap-0.5 p-2">
+                    {SOLUTIONS_NAV.map((item) => (
+                      <li key={item.href}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="block rounded-md px-3 py-2 no-underline transition-colors hover:bg-accent focus:bg-accent"
+                          >
+                            <span className="block text-sm font-medium text-foreground">{t.nav[item.key]}</span>
+                            <span className="block text-xs text-muted-foreground">{t.navDesc[item.key]}</span>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Pricing (direct) */}
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="/pricing" aria-current={isActive('/pricing') ? 'page' : undefined}>
+                    {t.nav.pricing}
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              {/* Resources (dropdown) — surfaces the moat/authority assets */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>{t.nav.resources}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[360px] gap-0.5 p-2">
+                    {RESOURCES_NAV.map((item) => (
+                      <li key={item.href}>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={item.href}
+                            className="block rounded-md px-3 py-2 no-underline transition-colors hover:bg-accent focus:bg-accent"
+                          >
+                            <span className="block text-sm font-medium text-foreground">{t.nav[item.key]}</span>
+                            <span className="block text-xs text-muted-foreground">{t.navDesc[item.key]}</span>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         {/* Right controls */}
@@ -204,7 +311,8 @@ export function Header() {
           </SheetHeader>
 
           <nav className="flex-1 overflow-y-auto py-2">
-            {FUNNEL_NAV.map((item, i) => (
+            {/* Top-level */}
+            {TOP_NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -213,13 +321,49 @@ export function Header() {
                 className={`block px-5 py-3 text-sm font-medium transition-colors hover:bg-muted/50
                   ${isActive(item.href) ? 'text-primary-ink' : 'text-foreground'}`}
               >
-                {t.nav[i]}
+                {t.nav[item.key]}
               </Link>
             ))}
+
+            {/* Solutions group */}
+            <div className="px-5 pt-4 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              {t.nav.solutions}
+            </div>
+            {SOLUTIONS_NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMobileMenu}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                className={`block px-5 py-2.5 text-sm transition-colors hover:bg-muted/50
+                  ${isActive(item.href) ? 'text-primary-ink font-medium' : 'text-foreground'}`}
+              >
+                {t.nav[item.key]}
+              </Link>
+            ))}
+
+            {/* Resources group */}
+            <div className="px-5 pt-4 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              {t.nav.resources}
+            </div>
+            {RESOURCES_NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMobileMenu}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                className={`block px-5 py-2.5 text-sm transition-colors hover:bg-muted/50
+                  ${isActive(item.href) ? 'text-primary-ink font-medium' : 'text-foreground'}`}
+              >
+                {t.nav[item.key]}
+              </Link>
+            ))}
+
+            {/* Secondary CTA — the lead-magnet check */}
             <Link
               href="/cra-check"
               onClick={closeMobileMenu}
-              className="block px-5 py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors"
+              className="mt-3 block border-t px-5 py-3 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors"
             >
               {t.checkLong}
             </Link>

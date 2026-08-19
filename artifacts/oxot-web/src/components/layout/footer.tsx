@@ -13,7 +13,7 @@ const SHOW_NEWSLETTER = false;
 // flag Dutch strings for a native reviewer before go-live.
 const copy = {
   en: {
-    nav: ['Platform', 'Product tour', 'For operators', 'CRA Transit', 'Read the law', 'Pricing', 'Deployment', 'Resources', '2-minute check', 'Book a demo'],
+    nav: ['Product', 'For manufacturers', 'For operators', 'For integrators & partners', 'Pricing', 'Read the law', 'Compare', 'Trust center', 'Blog', 'FAQ', '2-minute check', 'Book a demo'],
     homeAria: 'OXOT — home',
     tagline: 'Operational eXcellence in Operational Technology.',
     newsletter: 'Newsletter',
@@ -25,7 +25,7 @@ const copy = {
     terms: 'Terms',
   },
   nl: {
-    nav: ['Platform', 'Producttour', 'Voor exploitanten', 'CRA Transit', 'Lees de wet', 'Prijzen', 'Implementatie', 'Bronnen', '2-minutencheck', 'Demo aanvragen'],
+    nav: ['Product', 'Voor fabrikanten', 'Voor exploitanten', 'Voor integrators & partners', 'Prijzen', 'Lees de wet', 'Vergelijk', 'Trust center', 'Blog', 'FAQ', '2-minutencheck', 'Demo aanvragen'],
     homeAria: 'OXOT — startpagina',
     tagline: 'Operational eXcellence in Operational Technology.',
     newsletter: 'Nieuwsbrief',
@@ -50,14 +50,16 @@ export function Footer() {
   // Static funnel footer nav — matches the header; no CMS dependency (durable).
   // Labels come from the locale copy above (indexed), hrefs stay code.
   const footerNav = [
-    { id: 'platform', href: '/product', external: false },
-    { id: 'tour', href: '/tour', external: false },
+    { id: 'product', href: '/product', external: false },
+    { id: 'manufacturers', href: '/manufacturers', external: false },
     { id: 'operators', href: '/operators', external: false },
-    { id: 'transit', href: '/cra-transit', external: false },
-    { id: 'wiki', href: '/wiki', external: false },
+    { id: 'integrators', href: '/partner-scope', external: false },
     { id: 'pricing', href: '/pricing', external: false },
-    { id: 'deployment', href: '/deployment', external: false },
-    { id: 'resources', href: '/resources', external: false },
+    { id: 'wiki', href: '/wiki', external: false },
+    { id: 'compare', href: '/compare', external: false },
+    { id: 'trust', href: '/trust', external: false },
+    { id: 'blog', href: '/blog', external: false },
+    { id: 'faq', href: '/faq', external: false },
     { id: 'cra-check', href: '/cra-check', external: false },
     { id: 'demo', href: '/demo', external: false },
   ];

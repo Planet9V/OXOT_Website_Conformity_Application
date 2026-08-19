@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
   ClipboardCheck,
-  PlayCircle,
   ShieldCheck,
   Clock,
   FileStack,
@@ -246,12 +245,6 @@ export default function CraHomePage() {
               className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               <ClipboardCheck className="h-4 w-4" /> {t.takeCheck}
-            </Link>
-            <Link
-              href="/tour"
-              className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              <PlayCircle className="h-4 w-4" /> {t.watchTour}
             </Link>
           </div>
         </div>
