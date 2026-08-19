@@ -32,6 +32,14 @@ const copy = {
     description:
       'Every finished-product manufacturer that integrates your component must exercise due diligence over it and fold its support period into their own. That pushes a flood of security questionnaires and audits onto you. Answer it once, with a versioned package instead of a hundred bespoke replies.',
     deepDiveLink: 'Security IP & silicon supplier? Read the deep-dive',
+    tourLink: 'Watch the 90-second supplier tour',
+    liveKicker: 'See the built product',
+    liveTitle: 'The supplier cockpit — take the 90-second tour.',
+    liveBody:
+      'The assurance package, the shared-responsibility matrix, the versioned manifest, and the customer link your buyers receive — shown in the real product. Then open the live customer views yourself.',
+    tourCta: 'Watch the supplier tour',
+    manifestLink: 'Delivery manifest view',
+    packageLink: 'Assurance package view',
     framingTitle: 'The statutory frame, stated honestly',
     framingBody:
       'When you license IP that is integrated downstream, the company that sells the finished product normally remains the CRA manufacturer — not you. But the CRA explicitly treats separately-placed hardware and software components as products with digital elements, and it binds the final-product manufacturer to two duties that reach straight back to your evidence: due diligence over integrated third-party components (Art 13(5)), and setting their own support period — generally at least five years — with the support periods of core components in view (Art 13(8)). A capable supplier does not claim its component makes the finished product “CRA compliant.” It provides the technical evidence, integration guidance, lifecycle transparency, and vulnerability cooperation the customer needs to evaluate and manage the component in their own conformity programme.',
@@ -83,6 +91,14 @@ const copy = {
     description:
       'Elke fabrikant van eindproducten die uw component integreert, moet er due diligence over uitvoeren en de ondersteuningsperiode ervan in de eigen periode meenemen. Dat brengt een stroom beveiligingsvragenlijsten en audits naar u toe. Beantwoord die één keer, met een versiegebonden pakket in plaats van honderd aparte antwoorden.',
     deepDiveLink: 'Beveiligings-IP- of siliciumleverancier? Lees de verdieping',
+    tourLink: 'Bekijk de rondleiding van 90 seconden',
+    liveKicker: 'Bekijk het gebouwde product',
+    liveTitle: 'De leveranciers-cockpit — doe de rondleiding van 90 seconden.',
+    liveBody:
+      'Het assurancepakket, de matrix voor gedeelde verantwoordelijkheid, het versiegebonden manifest en de klantlink die uw kopers ontvangen — getoond in het echte product. Open daarna zelf de live klantweergaven.',
+    tourCta: 'Bekijk de leveranciersrondleiding',
+    manifestLink: 'Leveringsmanifest-weergave',
+    packageLink: 'Assurancepakket-weergave',
     framingTitle: 'Het wettelijke kader, eerlijk gesteld',
     framingBody:
       'Wanneer u IP licentieert die verderop wordt geïntegreerd, blijft normaal gesproken het bedrijf dat het eindproduct verkoopt de CRA-fabrikant — niet u. Maar de CRA behandelt afzonderlijk in de handel gebrachte hardware- en softwarecomponenten uitdrukkelijk als producten met digitale elementen, en bindt de fabrikant van het eindproduct aan twee plichten die rechtstreeks teruggrijpen op uw bewijs: due diligence over geïntegreerde componenten van derden (art. 13(5)), en het vaststellen van hun eigen ondersteuningsperiode — doorgaans ten minste vijf jaar — met de ondersteuningsperioden van kerncomponenten in beeld (art. 13(8)). Een capabele leverancier beweert niet dat zijn component het eindproduct “CRA-conform” maakt. Hij levert het technische bewijs, de integratiebegeleiding, de levenscyclustransparantie en de kwetsbaarheidssamenwerking die de klant nodig heeft om het component in het eigen conformiteitsprogramma te beoordelen en te beheren.',
@@ -145,12 +161,18 @@ export default function SuppliersPage() {
       <div className="container mx-auto px-4 md:px-8 pt-12 md:pt-16 pb-12 max-w-6xl">
         <PageHeader kicker={t.kicker} title={t.title} icon={Cpu} description={t.description} />
 
-        <div className="-mt-4 mb-2">
+        <div className="-mt-4 mb-2 flex flex-wrap items-center gap-x-5 gap-y-1">
           <Link
             href="/suppliers/security-ip"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
           >
             {t.deepDiveLink} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+          <Link
+            href="/suppliers/tour"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+          >
+            {t.tourLink} <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
@@ -251,6 +273,33 @@ export default function SuppliersPage() {
           >
             {t.sprintCta} <ArrowRight className="h-4 w-4" />
           </Link>
+        </div>
+
+        {/* See the built product — the supplier tour + the live customer views */}
+        <div className="mt-14 rounded-2xl border border-border bg-card p-6 md:p-8">
+          <p className="oxot-kicker">{t.liveKicker}</p>
+          <h2 className="oxot-h3 mt-1 text-foreground">{t.liveTitle}</h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{t.liveBody}</p>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <Link
+              href="/suppliers/tour"
+              className="cta-lift inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
+            >
+              {t.tourCta} <ArrowRight className="h-4 w-4" />
+            </Link>
+            <a
+              href="/conformity/delivery-manifest"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              <FileStack className="h-4 w-4" /> {t.manifestLink}
+            </a>
+            <a
+              href="/conformity/assurance-package"
+              className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+            >
+              <ShieldCheck className="h-4 w-4" /> {t.packageLink}
+            </a>
+          </div>
         </div>
       </div>
 

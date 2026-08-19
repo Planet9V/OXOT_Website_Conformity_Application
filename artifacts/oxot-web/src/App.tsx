@@ -38,6 +38,7 @@ import ManufacturersPage from '@/pages/manufacturers';
 import CraTransitPage from '@/pages/cra-transit';
 import SuppliersPage from '@/pages/suppliers';
 import SuppliersSecurityIpPage from '@/pages/suppliers-security-ip';
+import SuppliersTourPage from '@/pages/suppliers-tour';
 import DeploymentPage from '@/pages/deployment';
 import ResourcesPage from '@/pages/resources';
 import CompetitorsPage from '@/pages/competitors-page';
@@ -169,6 +170,9 @@ function PublicRoutes() {
       </Route>
       <Route path="/suppliers/security-ip">
         {() => <PublicRoute component={SuppliersSecurityIpPage} />}
+      </Route>
+      <Route path="/suppliers/tour">
+        {() => <PublicRoute component={SuppliersTourPage} />}
       </Route>
       <Route path="/suppliers">
         {() => <PublicRoute component={SuppliersPage} />}

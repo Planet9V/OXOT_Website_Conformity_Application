@@ -18,7 +18,7 @@ import { useLocale } from '@/providers/locale-provider';
  * region announcing each caption, and honouring prefers-reduced-motion.
  */
 
-type Slide =
+export type Slide =
   | { kind: 'text'; eyebrow: string; headline: string; caption: string }
   | { kind: 'shot'; eyebrow: string; headline: string; caption: string; image: string; alt: string }
   | { kind: 'cta'; eyebrow: string; headline: string; caption: string };
@@ -210,9 +210,11 @@ const SLIDES: Record<'en' | 'nl', Slide[]> = {
 
 const SLIDE_MS = 6000;
 
-export function ProductTour() {
+export function ProductTour({
+  slides: slidesProp,
+}: { slides?: Record<'en' | 'nl', Slide[]> } = {}) {
   const { locale } = useLocale();
-  const slides = SLIDES[locale];
+  const slides = (slidesProp ?? SLIDES)[locale];
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(!reduce);
