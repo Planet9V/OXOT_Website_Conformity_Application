@@ -1,6 +1,6 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { Layers, Factory, ShieldCheck, Wrench, Rocket, ClipboardCheck, ArrowRight } from 'lucide-react';
+import { Layers, Factory, ShieldCheck, Wrench, Cpu, Rocket, ClipboardCheck, ArrowRight } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
@@ -35,6 +35,11 @@ const copy = {
         name: 'For integrators & partners',
         body: 'Modify, rebrand, or substantially change a product and Article 22 can make you its manufacturer. Know exactly where that line sits before you cross it.',
         cue: 'Check your deemed-manufacturer risk',
+      },
+      {
+        name: 'For component & IP suppliers',
+        body: 'You supply the security IP or the component, not the finished product — but your customers’ CRA due diligence runs on your evidence. Answer it once, with a versioned assurance package.',
+        cue: 'Explore the supplier path',
       },
       {
         name: 'CRA in transit',
@@ -78,6 +83,11 @@ const copy = {
         cue: 'Controleer uw deemed-manufacturer-risico',
       },
       {
+        name: 'Voor component- & IP-leveranciers',
+        body: 'U levert de beveiligings-IP of het component, niet het eindproduct — maar de CRA-due diligence van uw klanten draait op uw bewijs. Beantwoord die één keer, met een versiegebonden assurancepakket.',
+        cue: 'Bekijk het leverancierspad',
+      },
+      {
         name: 'CRA in transit',
         body: 'Eén product, één begeleide sprint van 60 dagen naar een verdedigbaar zelf-beoordeeld conformiteitsdossier — voor teams die nu moeten handelen.',
         cue: 'Bekijk de sprint van 60 dagen',
@@ -100,6 +110,7 @@ const SOLUTION_META = [
   { icon: Factory, href: '/manufacturers' },
   { icon: ShieldCheck, href: '/operators' },
   { icon: Wrench, href: '/partner-scope' },
+  { icon: Cpu, href: '/suppliers' },
   { icon: Rocket, href: '/cra-transit' },
 ];
 

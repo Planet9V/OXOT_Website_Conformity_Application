@@ -77,7 +77,10 @@ const copy = {
       'The coordinated vulnerability disclosure policy and reporting contact',
       'The support-period statement and end-of-support handling',
       'The test reports evidencing conformity with the essential requirements',
+      'For component & IP suppliers: a versioned, customer-facing delivery manifest',
+      'For component & IP suppliers: a shared-responsibility matrix (supplier ↔ integrator)',
     ],
+    suppliersLink: 'Supply a component or security IP? See the supplier assurance path →',
     honestyTitle: 'What we do — and what stays yours',
     honestyBody:
       'Under Module A the CRA reserves the declaration of conformity to you, the manufacturer, on your sole responsibility (Article 32). Our consultants and the platform get you to a defensible technical file and prepare the declaration in the correct form — we never sign it, certify you, or conclude conformity for you. The file is built the right way; the responsibility, correctly, remains yours.',
@@ -137,7 +140,10 @@ const copy = {
       'Het beleid voor gecoördineerde kwetsbaarheidsmelding en het meldcontact',
       'De verklaring over de ondersteuningsperiode en de afhandeling na einde ondersteuning',
       'De testrapporten die conformiteit met de essentiële eisen aantonen',
+      'Voor component- & IP-leveranciers: een versiegebonden, klantgericht leveringsmanifest',
+      'Voor component- & IP-leveranciers: een matrix voor gedeelde verantwoordelijkheid (leverancier ↔ integrator)',
     ],
+    suppliersLink: 'Levert u een component of beveiligings-IP? Bekijk het leveranciersassurancepad →',
     honestyTitle: 'Wat wij doen — en wat van u blijft',
     honestyBody:
       'Onder Module A behoudt de CRA de conformiteitsverklaring aan u, de fabrikant, op uw eigen verantwoordelijkheid (artikel 32). Onze consultants en het platform brengen u tot een verdedigbaar technisch dossier en bereiden de verklaring in de juiste vorm voor — wij ondertekenen haar niet, certificeren u niet en concluderen geen conformiteit voor u. Het dossier wordt op de juiste manier opgebouwd; de verantwoordelijkheid blijft, terecht, bij u.',
@@ -286,6 +292,12 @@ export default function CraTransitPage() {
             </li>
           ))}
         </ul>
+        <Link
+          href="/suppliers"
+          className="mt-5 inline-flex items-center text-sm font-medium text-primary-ink hover:underline"
+        >
+          {t.suppliersLink}
+        </Link>
       </div>
 
       {/* The honesty boundary + data residency */}
