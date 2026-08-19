@@ -7,6 +7,13 @@ services:
       - ./artifacts/api-server/src:/app/artifacts/api-server/src:ro
       - ./lib:/app/lib:ro
 
+  # Serve blog images live: drop generated files into artifacts/oxot-web/public/media/blog/
+  # and they appear on the running site (nginx root /usr/share/nginx/html/oxot) on refresh,
+  # with no web rebuild. Ideal while iterating through the ~146 manifest images.
+  web:
+    volumes:
+      - ./artifacts/oxot-web/public/media/blog:/usr/share/nginx/html/oxot/media/blog:ro
+
   # Mount live schema source so `migrate` always pushes the current schema,
   # even when its image is stale (only web/api get rebuilt routinely).
   migrate:

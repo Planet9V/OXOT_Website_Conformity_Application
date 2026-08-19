@@ -59,6 +59,36 @@ interface BlogPostDetail {
   nextEpisode?: { code: string; title: string; slug: string } | null;
 }
 
+// Renders an IMAGE-SLOT-derived image. `src` arrives without a file extension
+// (e.g. /media/blog/ep-1.01-hero); we resolve .jpg/.png/etc. in turn and hide the
+// figure entirely if the image has not been generated yet, so ungenerated slots
+// leave no gap or broken-image icon.
+function BlogImage({ src, alt, title }: { src?: string; alt?: string; title?: string }) {
+  const exts = ['.jpg', '.png', '.jpeg', '.webp'];
+  const [extIdx, setExtIdx] = useState(0);
+  const [failed, setFailed] = useState(false);
+  if (!src || failed) return null;
+  const hasExt = /\.(jpe?g|png|webp|gif|svg)$/i.test(src);
+  const resolved = hasExt ? src : `${src}${exts[extIdx]}`;
+  return (
+    <span className="not-prose block my-8">
+      <img
+        src={resolved}
+        alt={alt || ''}
+        loading="lazy"
+        className="w-full h-auto rounded-2xl border border-border/60 bg-card/40"
+        onError={() => {
+          if (!hasExt && extIdx < exts.length - 1) setExtIdx(extIdx + 1);
+          else setFailed(true);
+        }}
+      />
+      {title ? (
+        <span className="block mt-2.5 px-4 text-center text-xs italic text-muted-foreground">{title}</span>
+      ) : null}
+    </span>
+  );
+}
+
 export default function BlogPostPage() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug || '';
@@ -125,11 +155,23 @@ export default function BlogPostPage() {
         text = parts.slice(2).join('---').trim();
       }
     }
-    // Strip HTML comments (e.g. non-rendering IMAGE-SLOT image placeholders) so
-    // this renderer does not display them as raw literal text.
+    // Media filename prefix from the slug: ep-1.01 / tc-08 / news-01.
+    const mediaPrefix = slug.split('-').slice(0, 2).join('-');
+    // Turn each <!-- IMAGE-SLOT: <slot> | <dims> | ... alt: "..." | caption: "..." -->
+    // into a markdown image the custom <img> renderer resolves under /media/blog/.
+    // Early-series posts use bare slot names (hero); later ones are already prefixed
+    // (tc-08-hero) — normalise both to the manifest filename base.
+    text = text.replace(/<!--\s*IMAGE-SLOT:\s*([^|]+?)\s*\|([\s\S]*?)-->/g, (_m, rawSlot: string, rest: string) => {
+      const slot = rawSlot.trim();
+      const base = mediaPrefix && !slot.startsWith(mediaPrefix) ? `${mediaPrefix}-${slot}` : slot;
+      const alt = (rest.match(/alt:\s*"([^"]*)"/i)?.[1] ?? '').replace(/[[\]]/g, '');
+      const caption = (rest.match(/caption:\s*"([^"]*)"/i)?.[1] ?? '').replace(/"/g, '');
+      return `\n\n![${alt}](/media/blog/${base}${caption ? ` "${caption}"` : ''})\n\n`;
+    });
+    // Strip any remaining HTML comments so nothing else renders as raw literal text.
     text = text.replace(/<!--[\s\S]*?-->/g, '');
     return text.trim();
-  }, [markdownContent]);
+  }, [markdownContent, slug]);
 
   if (loading) {
     return (
@@ -342,7 +384,8 @@ export default function BlogPostPage() {
               },
               td({ children }) {
                 return <td className="p-3.5 border-b border-border/40 text-foreground/90 align-top">{children}</td>;
-              }
+              },
+              img: BlogImage,
             }}
           >
             {processedMarkdown}
