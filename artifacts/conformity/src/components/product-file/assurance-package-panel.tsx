@@ -1,11 +1,20 @@
-import { useGetAssurancePackage } from "@workspace/api-client-react";
+import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
+import {
+  useGetAssurancePackage,
+  useListAssuranceRecipients,
+  useCreateAssuranceRecipient,
+  useRevokeAssuranceRecipient,
+} from "@workspace/api-client-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { printHtmlDocument } from "@/lib/print";
-import { cn } from "@/lib/utils";
-import { ClipboardCheck, CheckCircle2, Circle, Printer } from "lucide-react";
+import { cn, formatDate } from "@/lib/utils";
+import { ClipboardCheck, CheckCircle2, Circle, Printer, Send, Copy, Users } from "lucide-react";
 
 /**
  * The supplier assurance package panel (B1) — the capstone of the component/IP-
@@ -16,8 +25,37 @@ import { ClipboardCheck, CheckCircle2, Circle, Printer } from "lucide-react";
  * conforming. Customers receive the manifest itself via its own revocable link.
  */
 export function AssurancePackagePanel({ productId }: { productId: number }) {
+  const qc = useQueryClient();
   const pkg = useGetAssurancePackage(productId);
   const d = pkg.data;
+
+  const recipients = useListAssuranceRecipients(productId);
+  const [recipientName, setRecipientName] = useState("");
+  const packageLink = (token: string) =>
+    `${window.location.origin}/conformity/assurance-package?token=${token}`;
+  const createRecipient = useCreateAssuranceRecipient({
+    mutation: {
+      onSuccess: (row: any) => {
+        qc.invalidateQueries();
+        setRecipientName("");
+        if (row?.accessToken) {
+          navigator.clipboard.writeText(packageLink(row.accessToken));
+          toast.success(`Link for ${row.recipientName} issued — copied to clipboard`);
+        }
+      },
+      onError: (e: any) => toast.error(e?.response?.data?.error ?? "Could not issue the link"),
+    },
+  });
+  const revokeRecipient = useRevokeAssuranceRecipient({
+    mutation: {
+      onSuccess: () => {
+        qc.invalidateQueries();
+        toast.success("Customer link revoked");
+      },
+      onError: (e: any) => toast.error(e?.response?.data?.error ?? "Could not revoke the link"),
+    },
+  });
+  const grants = recipients.data?.recipients ?? [];
 
   const rows = d
     ? [
@@ -135,6 +173,74 @@ export function AssurancePackagePanel({ productId }: { productId: number }) {
             ))}
           </ul>
         )}
+
+        {/* Publish-to-many door (B4): one revocable link per named customer. */}
+        <div className="mt-5 border-t border-border/60 pt-4 space-y-3" data-testid="assurance-recipients">
+          <div className="text-sm font-medium text-foreground flex items-center gap-1.5">
+            <Users className="h-4 w-4 text-primary" /> Publish to customers
+          </div>
+          <div className="flex items-center gap-2">
+            <Input
+              className="h-8 text-xs"
+              placeholder="Customer organisation name"
+              value={recipientName}
+              onChange={(e) => setRecipientName(e.target.value)}
+            />
+            <Button
+              size="sm"
+              className="h-8 shrink-0 gap-1 text-xs"
+              disabled={!recipientName.trim() || createRecipient.isPending}
+              onClick={() => createRecipient.mutate({ id: productId, data: { recipientName: recipientName.trim() } })}
+              data-testid="recipient-issue"
+            >
+              <Send className="h-3 w-3" /> Issue link
+            </Button>
+          </div>
+          {recipients.isLoading ? (
+            <Skeleton className="h-12 w-full rounded-lg" />
+          ) : grants.length === 0 ? (
+            <p className="text-xs text-muted-foreground">
+              No customer links issued yet. Each link resolves to the full package and can be revoked.
+            </p>
+          ) : (
+            <ul className="space-y-2">
+              {grants.map((g) => (
+                <li key={g.id} className="rounded-lg border border-border/60 p-2.5 flex flex-wrap items-center justify-between gap-2">
+                  <span className="text-sm text-foreground">
+                    {g.recipientName}
+                    <span className="text-xs text-muted-foreground font-mono"> · issued {formatDate(g.createdAt)}</span>
+                  </span>
+                  <span className="flex items-center gap-2 shrink-0">
+                    <Badge
+                      variant="outline"
+                      className={cn(
+                        "font-mono text-[10px]",
+                        g.isActive
+                          ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/30"
+                          : "bg-muted text-muted-foreground",
+                      )}
+                    >
+                      {g.isActive ? "active" : "revoked"}
+                    </Badge>
+                    {g.isActive && (
+                      <>
+                        <Button size="sm" variant="outline" className="h-7 gap-1 text-xs"
+                          onClick={() => { navigator.clipboard.writeText(packageLink(g.accessToken)); toast.success("Package link copied"); }}>
+                          <Copy className="h-3 w-3" /> Copy link
+                        </Button>
+                        <Button size="sm" variant="outline" className="h-7 text-xs text-destructive"
+                          disabled={revokeRecipient.isPending}
+                          onClick={() => revokeRecipient.mutate({ id: g.id })}>
+                          Revoke
+                        </Button>
+                      </>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </CardContent>
     </Card>
   );

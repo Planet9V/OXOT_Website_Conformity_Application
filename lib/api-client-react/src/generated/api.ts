@@ -36,6 +36,9 @@ import type {
   ApplyLinksInput,
   AskAssistantInput,
   AssurancePackage,
+  AssurancePackagePublicView,
+  AssuranceRecipient,
+  AssuranceRecipientList,
   AuditorAccess,
   AuditorAccessList,
   AuditorRfi,
@@ -86,6 +89,7 @@ import type {
   ConnectionTestResult,
   CreateAdvisoryInput,
   CreateAssessmentInput,
+  CreateAssuranceRecipientInput,
   CreateConformityReport200,
   CreateConformityReportInput,
   CreateConversationInput,
@@ -114,6 +118,7 @@ import type {
   GenerateNewsletterInput,
   GeneratedNewsletter,
   GetAnalyticsOverviewParams,
+  GetAssurancePackagePublicParams,
   GetConformityReport200,
   GetDeliveryManifestPublicParams,
   GetIntegrationActivityParams,
@@ -9272,6 +9277,310 @@ export function useGetAssurancePackage<TData = Awaited<ReturnType<typeof getAssu
  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
 
   const queryOptions = getGetAssurancePackageQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getListAssuranceRecipientsUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/assurance-recipients`
+}
+
+/**
+ * @summary Named customer recipients of this product's assurance package
+ */
+export const listAssuranceRecipients = async (id: number, options?: RequestInit): Promise<AssuranceRecipientList> => {
+
+  return customFetch<AssuranceRecipientList>(getListAssuranceRecipientsUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListAssuranceRecipientsQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/assurance-recipients`
+    ] as const;
+    }
+
+
+export const getListAssuranceRecipientsQueryOptions = <TData = Awaited<ReturnType<typeof listAssuranceRecipients>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAssuranceRecipients>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListAssuranceRecipientsQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listAssuranceRecipients>>> = ({ signal }) => listAssuranceRecipients(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listAssuranceRecipients>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListAssuranceRecipientsQueryResult = NonNullable<Awaited<ReturnType<typeof listAssuranceRecipients>>>
+export type ListAssuranceRecipientsQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary Named customer recipients of this product's assurance package
+ */
+
+export function useListAssuranceRecipients<TData = Awaited<ReturnType<typeof listAssuranceRecipients>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAssuranceRecipients>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListAssuranceRecipientsQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateAssuranceRecipientUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/assurance-recipients`
+}
+
+/**
+ * @summary Issue a revocable package link to one named customer
+ */
+export const createAssuranceRecipient = async (id: number,
+    createAssuranceRecipientInput: CreateAssuranceRecipientInput, options?: RequestInit): Promise<AssuranceRecipient> => {
+
+  return customFetch<AssuranceRecipient>(getCreateAssuranceRecipientUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(createAssuranceRecipientInput)
+  }
+);}
+
+
+
+
+
+export const getCreateAssuranceRecipientMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createAssuranceRecipient>>, TError,{id: number;data: BodyType<CreateAssuranceRecipientInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createAssuranceRecipient>>, TError,{id: number;data: BodyType<CreateAssuranceRecipientInput>}, TContext> => {
+
+const mutationKey = ['createAssuranceRecipient'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createAssuranceRecipient>>, {id: number;data: BodyType<CreateAssuranceRecipientInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  createAssuranceRecipient(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateAssuranceRecipientMutationResult = NonNullable<Awaited<ReturnType<typeof createAssuranceRecipient>>>
+    export type CreateAssuranceRecipientMutationBody = BodyType<CreateAssuranceRecipientInput>
+    export type CreateAssuranceRecipientMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Issue a revocable package link to one named customer
+ */
+export const useCreateAssuranceRecipient = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createAssuranceRecipient>>, TError,{id: number;data: BodyType<CreateAssuranceRecipientInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createAssuranceRecipient>>,
+        TError,
+        {id: number;data: BodyType<CreateAssuranceRecipientInput>},
+        TContext
+      > => {
+      return useMutation(getCreateAssuranceRecipientMutationOptions(options));
+    }
+
+export const getRevokeAssuranceRecipientUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/assurance-recipients/${id}/revoke`
+}
+
+/**
+ * @summary Revoke one customer's package link
+ */
+export const revokeAssuranceRecipient = async (id: number, options?: RequestInit): Promise<AssuranceRecipient> => {
+
+  return customFetch<AssuranceRecipient>(getRevokeAssuranceRecipientUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getRevokeAssuranceRecipientMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof revokeAssuranceRecipient>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof revokeAssuranceRecipient>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['revokeAssuranceRecipient'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof revokeAssuranceRecipient>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  revokeAssuranceRecipient(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RevokeAssuranceRecipientMutationResult = NonNullable<Awaited<ReturnType<typeof revokeAssuranceRecipient>>>
+
+    export type RevokeAssuranceRecipientMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Revoke one customer's package link
+ */
+export const useRevokeAssuranceRecipient = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof revokeAssuranceRecipient>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof revokeAssuranceRecipient>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getRevokeAssuranceRecipientMutationOptions(options));
+    }
+
+export const getGetAssurancePackagePublicUrl = (params: GetAssurancePackagePublicParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/conformity/assurance-package/view?${stringifiedParams}` : `/api/conformity/assurance-package/view`
+}
+
+/**
+ * @summary Public customer view of the full assurance package (token-authenticated)
+ */
+export const getAssurancePackagePublic = async (params: GetAssurancePackagePublicParams, options?: RequestInit): Promise<AssurancePackagePublicView> => {
+
+  return customFetch<AssurancePackagePublicView>(getGetAssurancePackagePublicUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetAssurancePackagePublicQueryKey = (params?: GetAssurancePackagePublicParams,) => {
+    return [
+    `/api/conformity/assurance-package/view`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetAssurancePackagePublicQueryOptions = <TData = Awaited<ReturnType<typeof getAssurancePackagePublic>>, TError = ErrorType<UnauthorizedResponse | ForbiddenResponse>>(params: GetAssurancePackagePublicParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAssurancePackagePublic>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetAssurancePackagePublicQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAssurancePackagePublic>>> = ({ signal }) => getAssurancePackagePublic(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getAssurancePackagePublic>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetAssurancePackagePublicQueryResult = NonNullable<Awaited<ReturnType<typeof getAssurancePackagePublic>>>
+export type GetAssurancePackagePublicQueryError = ErrorType<UnauthorizedResponse | ForbiddenResponse>
+
+
+/**
+ * @summary Public customer view of the full assurance package (token-authenticated)
+ */
+
+export function useGetAssurancePackagePublic<TData = Awaited<ReturnType<typeof getAssurancePackagePublic>>, TError = ErrorType<UnauthorizedResponse | ForbiddenResponse>>(
+ params: GetAssurancePackagePublicParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAssurancePackagePublic>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetAssurancePackagePublicQueryOptions(params,options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

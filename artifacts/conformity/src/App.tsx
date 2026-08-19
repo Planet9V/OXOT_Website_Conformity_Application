@@ -43,6 +43,7 @@ const ReportWorkspace = lazy(() => import('./pages/report-workspace'));
 const AuditorPortalPage = lazy(() => import('./pages/auditor-portal'));
 const SupplierPortalPage = lazy(() => import('./pages/supplier-portal'));
 const DeliveryManifestPage = lazy(() => import('./pages/delivery-manifest'));
+const AssurancePackagePage = lazy(() => import('./pages/assurance-package'));
 const CraWikiPage = lazy(() => import('./pages/cra-wiki'));
 const Nis2ReaderPage = lazy(() => import('./pages/nis2-reader'));
 const CbwReaderPage = lazy(() => import('./pages/cbw-reader'));
@@ -291,6 +292,12 @@ function Router() {
       <Route path="/delivery-manifest">
         <Suspense fallback={<RouteLoadingFallback />}>
           <DeliveryManifestPage />
+        </Suspense>
+      </Route>
+      {/* Full assurance-package customer view (B4) — token-authenticated, full-bleed. */}
+      <Route path="/assurance-package">
+        <Suspense fallback={<RouteLoadingFallback />}>
+          <AssurancePackagePage />
         </Suspense>
       </Route>
       {/* Full-bleed like the demo front door: onboarding gets full attention. */}

@@ -1699,6 +1699,36 @@ export interface DeliveryManifestPublicView {
   versions: DeliveryManifestVersion[];
 }
 
+export interface AssuranceRecipient {
+  id: number;
+  productId: number;
+  recipientName: string;
+  accessToken: string;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface AssuranceRecipientList {
+  recipients: AssuranceRecipient[];
+}
+
+export interface CreateAssuranceRecipientInput {
+  /** @minLength 1 */
+  recipientName: string;
+}
+
+export interface AssurancePackagePublicView {
+  productName: string;
+  recipientName: string;
+  matrix: SharedResponsibilityRow[];
+  versions: DeliveryManifestVersion[];
+  cvdPolicy: boolean;
+  supportStatement: boolean;
+  sbom: boolean;
+  completeHave: number;
+  completeTotal: number;
+}
+
 export interface AssurancePackage {
   productName: string;
   matrixPresent: boolean;
@@ -3726,6 +3756,10 @@ regulation?: string;
 theme?: string;
 obligationType?: string;
 q?: string;
+};
+
+export type GetAssurancePackagePublicParams = {
+token: string;
 };
 
 export type GetDeliveryManifestPublicParams = {

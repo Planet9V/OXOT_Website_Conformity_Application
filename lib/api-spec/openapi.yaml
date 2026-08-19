@@ -2598,6 +2598,88 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/assurance-recipients:
+    get:
+      operationId: listAssuranceRecipients
+      tags: [conformity]
+      summary: Named customer recipients of this product's assurance package
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The recipient grants (newest first)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssuranceRecipientList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createAssuranceRecipient
+      tags: [conformity]
+      summary: Issue a revocable package link to one named customer
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAssuranceRecipientInput"
+      responses:
+        "200":
+          description: The created recipient grant
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssuranceRecipient"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/assurance-recipients/{id}/revoke:
+    post:
+      operationId: revokeAssuranceRecipient
+      tags: [conformity]
+      summary: Revoke one customer's package link
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The revoked grant
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssuranceRecipient"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/assurance-package/view:
+    get:
+      operationId: getAssurancePackagePublic
+      tags: [conformity]
+      summary: Public customer view of the full assurance package (token-authenticated)
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: The full package for the token's recipient
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssurancePackagePublicView"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
   /conformity/products/{id}/delivery-manifest:
     get:
       operationId: getDeliveryManifest
@@ -7687,6 +7769,50 @@ components:
           items:
             $ref: "#/components/schemas/DeliveryManifestVersion"
       required: [productName, versions]
+    AssuranceRecipient:
+      type: object
+      properties:
+        id: { type: integer }
+        productId: { type: integer }
+        recipientName: { type: string }
+        accessToken: { type: string }
+        isActive: { type: boolean }
+        createdAt: { type: string }
+      required: [id, productId, recipientName, accessToken, isActive, createdAt]
+    AssuranceRecipientList:
+      type: object
+      properties:
+        recipients:
+          type: array
+          items:
+            $ref: "#/components/schemas/AssuranceRecipient"
+      required: [recipients]
+    CreateAssuranceRecipientInput:
+      type: object
+      properties:
+        recipientName: { type: string, minLength: 1 }
+      required: [recipientName]
+    AssurancePackagePublicView:
+      type: object
+      properties:
+        productName: { type: string }
+        recipientName: { type: string }
+        matrix:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedResponsibilityRow"
+        versions:
+          type: array
+          items:
+            $ref: "#/components/schemas/DeliveryManifestVersion"
+        cvdPolicy: { type: boolean }
+        supportStatement: { type: boolean }
+        sbom: { type: boolean }
+        completeHave: { type: integer }
+        completeTotal: { type: integer }
+      required:
+        [productName, recipientName, matrix, versions, cvdPolicy,
+         supportStatement, sbom, completeHave, completeTotal]
     AssurancePackage:
       type: object
       properties:

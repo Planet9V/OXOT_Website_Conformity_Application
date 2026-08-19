@@ -3198,6 +3198,102 @@ export const GetAssurancePackageResponse = zod.object({
 
 
 /**
+ * @summary Named customer recipients of this product's assurance package
+ */
+export const ListAssuranceRecipientsParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const ListAssuranceRecipientsResponse = zod.object({
+  "recipients": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "recipientName": zod.string(),
+  "accessToken": zod.string(),
+  "isActive": zod.boolean(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
+ * @summary Issue a revocable package link to one named customer
+ */
+export const CreateAssuranceRecipientParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+
+
+
+export const CreateAssuranceRecipientBody = zod.object({
+  "recipientName": zod.string().min(1)
+})
+
+export const CreateAssuranceRecipientResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "recipientName": zod.string(),
+  "accessToken": zod.string(),
+  "isActive": zod.boolean(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Revoke one customer's package link
+ */
+export const RevokeAssuranceRecipientParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const RevokeAssuranceRecipientResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "recipientName": zod.string(),
+  "accessToken": zod.string(),
+  "isActive": zod.boolean(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Public customer view of the full assurance package (token-authenticated)
+ */
+export const GetAssurancePackagePublicQueryParams = zod.object({
+  "token": zod.coerce.string()
+})
+
+export const GetAssurancePackagePublicResponse = zod.object({
+  "productName": zod.string(),
+  "recipientName": zod.string(),
+  "matrix": zod.array(zod.object({
+  "area": zod.string(),
+  "supplier": zod.string(),
+  "customer": zod.string(),
+  "note": zod.string()
+})),
+  "versions": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "version": zod.number(),
+  "ipRelease": zod.string(),
+  "node": zod.string(),
+  "options": zod.array(zod.string()),
+  "configBaseline": zod.string(),
+  "changeNote": zod.string(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+})),
+  "cvdPolicy": zod.boolean(),
+  "supportStatement": zod.boolean(),
+  "sbom": zod.boolean(),
+  "completeHave": zod.number(),
+  "completeTotal": zod.number()
+})
+
+
+/**
  * @summary The versioned delivery manifest for one product + its customer token
  */
 export const GetDeliveryManifestParams = zod.object({
