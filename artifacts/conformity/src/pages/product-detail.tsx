@@ -49,6 +49,7 @@ import { RedHandoverPanel } from "@/components/product-file/red-handover-panel";
 import { OperatorProcurementPanel } from "@/components/product-file/operator-procurement-panel";
 import { SharedResponsibilityPanel } from "@/components/product-file/shared-responsibility-panel";
 import { DeliveryManifestPanel } from "@/components/product-file/delivery-manifest-panel";
+import { AssurancePackagePanel } from "@/components/product-file/assurance-package-panel";
 import {
   Select,
   SelectContent,
@@ -667,6 +668,11 @@ export default function ProductDetail() {
       {orgRole === "manufacturer" && <NotifiedBodyPanel productId={id} />}
       {orgRole === "manufacturer" && <AuditorAccessPanel assessments={assessments} />}
       {orgRole === "manufacturer" && <ProductUsersPanel productId={id} />}
+
+      {/* Component/IP-supplier shape (B1–B3). The assurance package composes the
+          matrix + manifest + evidence into one customer-facing bundle (B1); the
+          matrix (B2) and versioned delivery manifest (B3) author its parts. */}
+      {orgRole === "manufacturer" && <AssurancePackagePanel productId={id} />}
 
       {/* Component/IP-supplier shape: the authored shared-responsibility matrix
           (supplier capability vs. customer responsibility) for a component this

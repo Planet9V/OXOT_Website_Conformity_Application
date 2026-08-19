@@ -2574,6 +2574,30 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/assurance-package:
+    get:
+      operationId: getAssurancePackage
+      tags: [conformity]
+      summary: The composed supplier assurance package for one product (computed)
+      description: >-
+        A live composition of the customer-facing evidence a component/IP
+        supplier assembles: the shared-responsibility matrix, the delivery
+        manifest, and the CVD policy / support-period statement / SBOM from the
+        product's conformity artifacts — with a completeness readout. Computed,
+        not stored; never a conformity verdict.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The composed package and its completeness
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AssurancePackage"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
   /conformity/products/{id}/delivery-manifest:
     get:
       operationId: getDeliveryManifest
@@ -7663,6 +7687,22 @@ components:
           items:
             $ref: "#/components/schemas/DeliveryManifestVersion"
       required: [productName, versions]
+    AssurancePackage:
+      type: object
+      properties:
+        productName: { type: string }
+        matrixPresent: { type: boolean }
+        matrixRows: { type: integer }
+        manifestVersions: { type: integer }
+        manifestLatest: { type: string }
+        cvdPolicy: { type: boolean }
+        supportStatement: { type: boolean }
+        sbom: { type: boolean }
+        completeHave: { type: integer }
+        completeTotal: { type: integer }
+      required:
+        [productName, matrixPresent, matrixRows, manifestVersions, manifestLatest,
+         cvdPolicy, supportStatement, sbom, completeHave, completeTotal]
     SupplierRequest:
       type: object
       properties:

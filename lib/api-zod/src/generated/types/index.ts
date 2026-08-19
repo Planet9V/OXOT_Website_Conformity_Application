@@ -46,6 +46,7 @@ export * from './askAssistantInput';
 export * from './assessmentCounts';
 export * from './assistantTurn';
 export * from './assistantTurnRole';
+export * from './assurancePackage';
 export * from './auditorAccess';
 export * from './auditorAccessList';
 export * from './auditorRfi';

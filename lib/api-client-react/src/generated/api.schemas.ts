@@ -1699,6 +1699,19 @@ export interface DeliveryManifestPublicView {
   versions: DeliveryManifestVersion[];
 }
 
+export interface AssurancePackage {
+  productName: string;
+  matrixPresent: boolean;
+  matrixRows: number;
+  manifestVersions: number;
+  manifestLatest: string;
+  cvdPolicy: boolean;
+  supportStatement: boolean;
+  sbom: boolean;
+  completeHave: number;
+  completeTotal: number;
+}
+
 export type SupplierRequestStatus = typeof SupplierRequestStatus[keyof typeof SupplierRequestStatus];
 
 

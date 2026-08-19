@@ -35,6 +35,7 @@ import type {
   AnnexReadiness,
   ApplyLinksInput,
   AskAssistantInput,
+  AssurancePackage,
   AuditorAccess,
   AuditorAccessList,
   AuditorRfi,
@@ -9204,6 +9205,84 @@ export const usePutSharedResponsibilityMatrix = <TError = ErrorType<BadRequestRe
       > => {
       return useMutation(getPutSharedResponsibilityMatrixMutationOptions(options));
     }
+
+export const getGetAssurancePackageUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/assurance-package`
+}
+
+/**
+ * A live composition of the customer-facing evidence a component/IP supplier assembles: the shared-responsibility matrix, the delivery manifest, and the CVD policy / support-period statement / SBOM from the product's conformity artifacts — with a completeness readout. Computed, not stored; never a conformity verdict.
+ * @summary The composed supplier assurance package for one product (computed)
+ */
+export const getAssurancePackage = async (id: number, options?: RequestInit): Promise<AssurancePackage> => {
+
+  return customFetch<AssurancePackage>(getGetAssurancePackageUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetAssurancePackageQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/assurance-package`
+    ] as const;
+    }
+
+
+export const getGetAssurancePackageQueryOptions = <TData = Awaited<ReturnType<typeof getAssurancePackage>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAssurancePackage>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetAssurancePackageQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getAssurancePackage>>> = ({ signal }) => getAssurancePackage(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getAssurancePackage>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetAssurancePackageQueryResult = NonNullable<Awaited<ReturnType<typeof getAssurancePackage>>>
+export type GetAssurancePackageQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The composed supplier assurance package for one product (computed)
+ */
+
+export function useGetAssurancePackage<TData = Awaited<ReturnType<typeof getAssurancePackage>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getAssurancePackage>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetAssurancePackageQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getGetDeliveryManifestUrl = (id: number,) => {
 

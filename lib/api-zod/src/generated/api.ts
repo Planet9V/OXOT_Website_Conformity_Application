@@ -3176,6 +3176,28 @@ export const PutSharedResponsibilityMatrixResponse = zod.object({
 
 
 /**
+ * A live composition of the customer-facing evidence a component/IP supplier assembles: the shared-responsibility matrix, the delivery manifest, and the CVD policy / support-period statement / SBOM from the product's conformity artifacts — with a completeness readout. Computed, not stored; never a conformity verdict.
+ * @summary The composed supplier assurance package for one product (computed)
+ */
+export const GetAssurancePackageParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const GetAssurancePackageResponse = zod.object({
+  "productName": zod.string(),
+  "matrixPresent": zod.boolean(),
+  "matrixRows": zod.number(),
+  "manifestVersions": zod.number(),
+  "manifestLatest": zod.string(),
+  "cvdPolicy": zod.boolean(),
+  "supportStatement": zod.boolean(),
+  "sbom": zod.boolean(),
+  "completeHave": zod.number(),
+  "completeTotal": zod.number()
+})
+
+
+/**
  * @summary The versioned delivery manifest for one product + its customer token
  */
 export const GetDeliveryManifestParams = zod.object({
