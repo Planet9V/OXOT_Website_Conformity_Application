@@ -12,11 +12,17 @@ images.**
 
 ## House style (keep the whole set cohesive)
 
-- Editorial illustration for a serious EU **industrial-cybersecurity / OT** consultancy — think a well-art-directed trade publication, not stock clip-art.
-- **Palette:** muted and authoritative — deep blues, steel greys, concrete, with a single restrained accent (amber or signal-orange). Consistent across every image.
-- **Heroes:** photorealistic-but-clean, calm, professional. 16:9.
-- **Diagram / infographic slots:** flat, minimal, generous whitespace, 2–3 colours from the palette. Shapes and flow only — **no real data, no legible text.**
-- **Avoid:** hacker-in-a-hoodie, glowing padlocks, binary rain, neon "cyber" clichés, faces, brand logos, and any embedded lettering.
+- **Filter & Universal Style:** **Universal Architectural Greyscale / Silver-Gelatin Monochrome.** Every image—hero or diagram—must feature a rich, high-contrast monochrome studio filter with deep charcoal blacks, luminous midtones, crisp highlights, and a subtle warm silver print finish.
+- **Aesthetic:** Minimalist, high-end architectural studio photography — clean, calm, authentic editorial look for a serious EU industrial-cybersecurity consultancy (think *Monocle* or *Architectural Digest* architectural photography).
+- **Lighting:** Soft, diffused natural studio lighting with realistic shadows, matte physical textures, and deep contrast. No hyper-glossy or synthetic CGI glows.
+- **Heroes:** Simple, un-cluttered physical compositions (16:9). Focus on 2–3 key objects with generous negative space.
+- **Diagram / infographic slots:** Minimalist architectural studio block photography (16:9). Simple solid slate/steel geometric blocks sitting on a dark table surface with generous negative space, natural side-lighting, and elegant shadows. NO complex 3D machinery, NO interconnected pipes, NO floating wireframe boxes, NO synthetic CGI video-game graphics.
+
+### Master Prompt Strategy (The "Domain Storytelling" Sweet Spot)
+1. **Universal Monochrome Palette:** Black and white, silver-gelatin monochrome tone, deep charcoal grey, brushed steel, and matte slate. Zero full-spectrum color images.
+2. **Authentic OT Context:** Keep recognizable industrial hardware (PLC racks, DIN-rail modules, terminal blocks, industrial switches, metal enclosures) and technical documentation formats (unlettered Gantt timeline charts, CAD line blueprints, schematic diagrams). The viewer must instantly recognize the industrial cybersecurity topic.
+3. **Zero Pseudo-Text & Zero Numbers:** Use unlettered technical diagrams (pure geometric lines/Gantt bars/CAD drawings) and unprinted paper surfaces. Absolutely NO gibberish script, fake alphabet titles, numbers, or logos.
+4. **Natural Editorial Separation:** NO sci-fi glowing light beams, floating laser dividers, or neon streaks. Use natural physical dividers (shadow lines across desk surfaces, physical rulers, contrast materials, timber seams).
 
 ## Series 1 — The Procurement & Contracting Crisis
 
