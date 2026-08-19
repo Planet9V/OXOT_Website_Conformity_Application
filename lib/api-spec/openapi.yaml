@@ -2526,6 +2526,54 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/shared-responsibility:
+    get:
+      operationId: getSharedResponsibilityMatrix
+      tags: [conformity]
+      summary: The shared-responsibility matrix for one product (supplier vs customer)
+      description: >-
+        The authored split of who owns what for a component/IP supplier: for
+        each responsibility area, what the supplier provides vs. what the
+        integrating customer retains. Authored data, never a conformity verdict.
+        Returns empty rows (version 0) if not yet authored.
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The matrix (empty rows if not yet authored)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SharedResponsibilityMatrix"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    put:
+      operationId: putSharedResponsibilityMatrix
+      tags: [conformity]
+      summary: Author the shared-responsibility matrix for one product (upsert)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SharedResponsibilityInput"
+      responses:
+        "200":
+          description: Updated matrix (version bumped)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SharedResponsibilityMatrix"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
   /conformity/products/{id}/supplier-requests:
     get:
       operationId: listSupplierRequests
@@ -7430,6 +7478,37 @@ components:
         url: { type: string }
         note: { type: string }
       required: [docType, title]
+    SharedResponsibilityRow:
+      type: object
+      properties:
+        area: { type: string }
+        supplier: { type: string }
+        customer: { type: string }
+        note: { type: string }
+      required: [area, supplier, customer, note]
+    SharedResponsibilityMatrix:
+      type: object
+      properties:
+        id: { type: integer }
+        productId: { type: integer }
+        rows:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedResponsibilityRow"
+        version: { type: integer }
+        updatedBy: { type: string }
+        createdAt: { type: string }
+        updatedAt: { type: string }
+      required: [id, productId, rows, version, updatedBy, createdAt, updatedAt]
+    SharedResponsibilityInput:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: "#/components/schemas/SharedResponsibilityRow"
+        updatedBy: { type: string }
+      required: [rows]
     SupplierRequest:
       type: object
       properties:

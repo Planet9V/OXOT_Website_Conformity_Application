@@ -3119,6 +3119,63 @@ export const DeleteSupplierDocumentResponse = zod.object({
 
 
 /**
+ * The authored split of who owns what for a component/IP supplier: for each responsibility area, what the supplier provides vs. what the integrating customer retains. Authored data, never a conformity verdict. Returns empty rows (version 0) if not yet authored.
+ * @summary The shared-responsibility matrix for one product (supplier vs customer)
+ */
+export const GetSharedResponsibilityMatrixParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const GetSharedResponsibilityMatrixResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "rows": zod.array(zod.object({
+  "area": zod.string(),
+  "supplier": zod.string(),
+  "customer": zod.string(),
+  "note": zod.string()
+})),
+  "version": zod.number(),
+  "updatedBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
+ * @summary Author the shared-responsibility matrix for one product (upsert)
+ */
+export const PutSharedResponsibilityMatrixParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const PutSharedResponsibilityMatrixBody = zod.object({
+  "rows": zod.array(zod.object({
+  "area": zod.string(),
+  "supplier": zod.string(),
+  "customer": zod.string(),
+  "note": zod.string()
+})),
+  "updatedBy": zod.string().optional()
+})
+
+export const PutSharedResponsibilityMatrixResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "rows": zod.array(zod.object({
+  "area": zod.string(),
+  "supplier": zod.string(),
+  "customer": zod.string(),
+  "note": zod.string()
+})),
+  "version": zod.number(),
+  "updatedBy": zod.string(),
+  "createdAt": zod.string(),
+  "updatedAt": zod.string()
+})
+
+
+/**
  * @summary Evidence asks sent to the supplier for this product
  */
 export const ListSupplierRequestsParams = zod.object({

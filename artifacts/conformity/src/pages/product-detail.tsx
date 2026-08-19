@@ -47,6 +47,7 @@ import { ProductUsersPanel } from "@/components/product-file/product-users-panel
 import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufacturer-panel";
 import { RedHandoverPanel } from "@/components/product-file/red-handover-panel";
 import { OperatorProcurementPanel } from "@/components/product-file/operator-procurement-panel";
+import { SharedResponsibilityPanel } from "@/components/product-file/shared-responsibility-panel";
 import {
   Select,
   SelectContent,
@@ -665,6 +666,11 @@ export default function ProductDetail() {
       {orgRole === "manufacturer" && <NotifiedBodyPanel productId={id} />}
       {orgRole === "manufacturer" && <AuditorAccessPanel assessments={assessments} />}
       {orgRole === "manufacturer" && <ProductUsersPanel productId={id} />}
+
+      {/* Component/IP-supplier shape: the authored shared-responsibility matrix
+          (supplier capability vs. customer responsibility) for a component this
+          manufacturer supplies upstream (B2). */}
+      {orgRole === "manufacturer" && <SharedResponsibilityPanel productId={id} />}
 
       <StatutoryFile productId={id} />
 

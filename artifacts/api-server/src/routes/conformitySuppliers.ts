@@ -7,11 +7,13 @@ import {
   conformityProcurementChecksTable,
   conformitySupplierDocumentsTable,
   conformitySupplierRequestsTable,
+  conformitySharedResponsibilityTable,
   conformityActivityTable,
   type ConformitySupplierRow,
   type ConformityProcurementCheckRow,
   type ConformitySupplierDocumentRow,
   type ConformitySupplierRequestRow,
+  type ConformitySharedResponsibilityRow,
 } from "@workspace/db";
 import {
   ListConformitySuppliersResponse,
@@ -23,6 +25,11 @@ import {
   DeleteConformitySupplierParams,
   DeleteConformitySupplierResponse,
   GetSupplierPostureResponse,
+  GetSharedResponsibilityMatrixParams,
+  GetSharedResponsibilityMatrixResponse,
+  PutSharedResponsibilityMatrixParams,
+  PutSharedResponsibilityMatrixBody,
+  PutSharedResponsibilityMatrixResponse,
   ListSupplierDocumentsParams,
   ListSupplierDocumentsResponse,
   AddSupplierDocumentParams,
@@ -421,6 +428,91 @@ router.put(
       return saved!;
     });
     res.json(PutProcurementCheckResponse.parse(toCheckDto(id, row)));
+  },
+);
+
+// ---------------------------------------------------------------------------
+// Shared-responsibility matrix (B2) — the component/IP-supplier shape.
+// The authored split of who owns what: per responsibility area, what the
+// supplier provides vs. what the integrating customer retains. Authored data
+// (not derived from an assessment), one row per product, upserted in place
+// with a version bump — never a conformity verdict about the customer.
+// ---------------------------------------------------------------------------
+
+function toMatrixDto(
+  productId: number,
+  row: ConformitySharedResponsibilityRow | undefined,
+) {
+  return {
+    id: row?.id ?? 0,
+    productId,
+    rows: row?.rows ?? [],
+    version: row?.version ?? 0,
+    updatedBy: row?.updatedBy ?? "",
+    createdAt: row?.createdAt ? row.createdAt.toISOString() : "",
+    updatedAt: row?.updatedAt ? row.updatedAt.toISOString() : "",
+  };
+}
+
+router.get(
+  "/conformity/products/:id/shared-responsibility",
+  requireAuth,
+  async (req, res): Promise<void> => {
+    const { id } = GetSharedResponsibilityMatrixParams.parse(req.params);
+    if (!(await productExists(id))) {
+      res.status(404).json({ error: "Product not found" });
+      return;
+    }
+    const [row] = await db
+      .select()
+      .from(conformitySharedResponsibilityTable)
+      .where(eq(conformitySharedResponsibilityTable.productId, id));
+    res.json(GetSharedResponsibilityMatrixResponse.parse(toMatrixDto(id, row)));
+  },
+);
+
+router.put(
+  "/conformity/products/:id/shared-responsibility",
+  requireAuth,
+  async (req, res): Promise<void> => {
+    const { id } = PutSharedResponsibilityMatrixParams.parse(req.params);
+    const body = PutSharedResponsibilityMatrixBody.parse(req.body);
+    if (!(await productExists(id))) {
+      res.status(404).json({ error: "Product not found" });
+      return;
+    }
+    const rows = body.rows.map((r) => ({
+      area: r.area,
+      supplier: r.supplier,
+      customer: r.customer,
+      note: r.note,
+    }));
+    const row = await db.transaction(async (tx) => {
+      const [existing] = await tx
+        .select()
+        .from(conformitySharedResponsibilityTable)
+        .where(eq(conformitySharedResponsibilityTable.productId, id));
+      const [saved] = existing
+        ? await tx
+            .update(conformitySharedResponsibilityTable)
+            .set({ rows, version: existing.version + 1, updatedBy: actorOf(req) })
+            .where(eq(conformitySharedResponsibilityTable.productId, id))
+            .returning()
+        : await tx
+            .insert(conformitySharedResponsibilityTable)
+            .values({ productId: id, rows, version: 1, updatedBy: actorOf(req) })
+            .returning();
+      await tx.insert(conformityActivityTable).values({
+        entityType: "product",
+        entityId: id,
+        action: "updated",
+        actor: actorOf(req),
+        source: "ui",
+        summary: "Shared-responsibility matrix updated",
+      });
+      return saved!;
+    });
+    res.json(PutSharedResponsibilityMatrixResponse.parse(toMatrixDto(id, row)));
   },
 );
 

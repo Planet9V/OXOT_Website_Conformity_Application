@@ -50,6 +50,7 @@ export * from "./requirementMappings";
 // Conformity execution ("working") layer — a product's journey through the rulebook.
 export * from "./conformityProducts";
 export * from "./conformitySuppliers";
+export * from "./conformitySharedResponsibility";
 export * from "./conformityProcurementChecks";
 export * from "./conformityAssessments";
 export * from "./conformityAnswers";

@@ -1639,6 +1639,28 @@ export interface SupplierDocumentInput {
   note?: string;
 }
 
+export interface SharedResponsibilityRow {
+  area: string;
+  supplier: string;
+  customer: string;
+  note: string;
+}
+
+export interface SharedResponsibilityMatrix {
+  id: number;
+  productId: number;
+  rows: SharedResponsibilityRow[];
+  version: number;
+  updatedBy: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SharedResponsibilityInput {
+  rows: SharedResponsibilityRow[];
+  updatedBy?: string;
+}
+
 export type SupplierRequestStatus = typeof SupplierRequestStatus[keyof typeof SupplierRequestStatus];
 
 

@@ -177,6 +177,8 @@ import type {
   SendMessageInput,
   SeoPage,
   SeoPageInput,
+  SharedResponsibilityInput,
+  SharedResponsibilityMatrix,
   SiteSettings,
   SlackSettingsInput,
   SlackTestResult,
@@ -9045,6 +9047,156 @@ export const useDeleteSupplierDocument = <TError = ErrorType<UnauthorizedRespons
         TContext
       > => {
       return useMutation(getDeleteSupplierDocumentMutationOptions(options));
+    }
+
+export const getGetSharedResponsibilityMatrixUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/shared-responsibility`
+}
+
+/**
+ * The authored split of who owns what for a component/IP supplier: for each responsibility area, what the supplier provides vs. what the integrating customer retains. Authored data, never a conformity verdict. Returns empty rows (version 0) if not yet authored.
+ * @summary The shared-responsibility matrix for one product (supplier vs customer)
+ */
+export const getSharedResponsibilityMatrix = async (id: number, options?: RequestInit): Promise<SharedResponsibilityMatrix> => {
+
+  return customFetch<SharedResponsibilityMatrix>(getGetSharedResponsibilityMatrixUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSharedResponsibilityMatrixQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/shared-responsibility`
+    ] as const;
+    }
+
+
+export const getGetSharedResponsibilityMatrixQueryOptions = <TData = Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSharedResponsibilityMatrixQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>> = ({ signal }) => getSharedResponsibilityMatrix(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSharedResponsibilityMatrixQueryResult = NonNullable<Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>>
+export type GetSharedResponsibilityMatrixQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The shared-responsibility matrix for one product (supplier vs customer)
+ */
+
+export function useGetSharedResponsibilityMatrix<TData = Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSharedResponsibilityMatrix>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSharedResponsibilityMatrixQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getPutSharedResponsibilityMatrixUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/shared-responsibility`
+}
+
+/**
+ * @summary Author the shared-responsibility matrix for one product (upsert)
+ */
+export const putSharedResponsibilityMatrix = async (id: number,
+    sharedResponsibilityInput: SharedResponsibilityInput, options?: RequestInit): Promise<SharedResponsibilityMatrix> => {
+
+  return customFetch<SharedResponsibilityMatrix>(getPutSharedResponsibilityMatrixUrl(id),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(sharedResponsibilityInput)
+  }
+);}
+
+
+
+
+
+export const getPutSharedResponsibilityMatrixMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof putSharedResponsibilityMatrix>>, TError,{id: number;data: BodyType<SharedResponsibilityInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof putSharedResponsibilityMatrix>>, TError,{id: number;data: BodyType<SharedResponsibilityInput>}, TContext> => {
+
+const mutationKey = ['putSharedResponsibilityMatrix'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof putSharedResponsibilityMatrix>>, {id: number;data: BodyType<SharedResponsibilityInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  putSharedResponsibilityMatrix(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type PutSharedResponsibilityMatrixMutationResult = NonNullable<Awaited<ReturnType<typeof putSharedResponsibilityMatrix>>>
+    export type PutSharedResponsibilityMatrixMutationBody = BodyType<SharedResponsibilityInput>
+    export type PutSharedResponsibilityMatrixMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Author the shared-responsibility matrix for one product (upsert)
+ */
+export const usePutSharedResponsibilityMatrix = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof putSharedResponsibilityMatrix>>, TError,{id: number;data: BodyType<SharedResponsibilityInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof putSharedResponsibilityMatrix>>,
+        TError,
+        {id: number;data: BodyType<SharedResponsibilityInput>},
+        TContext
+      > => {
+      return useMutation(getPutSharedResponsibilityMatrixMutationOptions(options));
     }
 
 export const getListSupplierRequestsUrl = (id: number,) => {
