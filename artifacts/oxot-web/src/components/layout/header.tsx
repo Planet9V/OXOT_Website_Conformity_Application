@@ -32,7 +32,9 @@ const TOP_NAV = [
 ] as const;
 
 // "Solutions" routes the real buyers + the integrator commercial hook.
+// First item is the gateway page, so clicking the parent has a destination.
 const SOLUTIONS_NAV = [
+  { key: 'solutionsOverview', href: '/solutions' },
   { key: 'manufacturers', href: '/manufacturers' },
   { key: 'operators', href: '/operators' },
   { key: 'integrators', href: '/partner-scope' },
@@ -40,7 +42,9 @@ const SOLUTIONS_NAV = [
 ] as const;
 
 // "Resources" surfaces the moat/authority assets (the verbatim-law Library first).
+// First item is the gateway page, so clicking the parent has a destination.
 const RESOURCES_NAV = [
+  { key: 'resourcesOverview', href: '/resources' },
   { key: 'library', href: '/wiki' },
   { key: 'compare', href: '/compare' },
   { key: 'trust', href: '/trust' },
@@ -56,12 +60,15 @@ const copy = {
   en: {
     nav: {
       product: 'Product', solutions: 'Solutions', pricing: 'Pricing', resources: 'Resources',
+      solutionsOverview: 'All solutions', resourcesOverview: 'All resources',
       manufacturers: 'For manufacturers', operators: 'For operators',
       integrators: 'For integrators & partners', craTransit: 'CRA in transit',
       library: 'The Library — read the law', compare: 'Compare', trust: 'Trust center',
       blog: 'Blog', faq: 'FAQ', tour: 'Product tour', deployment: 'Deployment',
     },
     navDesc: {
+      solutionsOverview: 'Find your CRA role and the path built for it',
+      resourcesOverview: 'The law, the honest compare, guides and trust',
       manufacturers: 'You place it on the market — own the technical file',
       operators: 'Hold your suppliers to the CRA across your estate',
       integrators: 'When integration quietly makes you the manufacturer',
@@ -89,12 +96,15 @@ const copy = {
   nl: {
     nav: {
       product: 'Product', solutions: 'Oplossingen', pricing: 'Prijzen', resources: 'Bronnen',
+      solutionsOverview: 'Alle oplossingen', resourcesOverview: 'Alle bronnen',
       manufacturers: 'Voor fabrikanten', operators: 'Voor exploitanten',
       integrators: 'Voor integrators & partners', craTransit: 'CRA in transit',
       library: 'De Bibliotheek — lees de wet', compare: 'Vergelijk', trust: 'Trust center',
       blog: 'Blog', faq: 'FAQ', tour: 'Producttour', deployment: 'Implementatie',
     },
     navDesc: {
+      solutionsOverview: 'Vind uw CRA-rol en het pad dat daarbij hoort',
+      resourcesOverview: 'De wet, de eerlijke vergelijking, gidsen en trust',
       manufacturers: 'U brengt het op de markt — beheer het technisch dossier',
       operators: 'Houd leveranciers aan de CRA in uw hele park',
       integrators: 'Wanneer integratie u ongemerkt tot fabrikant maakt',

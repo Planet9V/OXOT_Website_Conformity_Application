@@ -1,11 +1,12 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { Library, Download, Newspaper, BookOpen, Scale, ArrowRight, Headphones, HelpCircle } from 'lucide-react';
+import { Library, Download, Newspaper, BookOpen, Scale, ArrowRight, Headphones, HelpCircle, GitCompare, ShieldCheck } from 'lucide-react';
 import { PageHeader } from '@/components/page-header';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
-import { revealVariants } from '@/lib/motion';
+import { revealVariants, entranceVariants } from '@/lib/motion';
+import { LiveCraBlogGuidesFeed } from '@/components/sections/live-cra-blog-guides-feed';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -16,9 +17,24 @@ const copy = {
     seoDescription:
       'Spec sheet and sales sheet for the CRA Conformance Application, plus the CRA primer, live regulatory news, knowledge hub and official European Commission CRA FAQs.',
     headerKicker: 'RESOURCES',
-    headerTitle: 'Collateral and reference',
+    headerTitle: 'Read the law, learn, and get the collateral',
     headerDescription:
-      'Download the spec and sales sheets for the CRA Conformance Application, or dig into the underlying reference: the CRA primer, a live regulatory-news corpus, the knowledge hub and the official European Commission CRA FAQs.',
+      'Start with the law itself — seven EU acts, verbatim — and an honest look at where we fit. Then the guides, the reference, and one-page collateral for the CRA Conformance Application.',
+    moatKicker: 'Read the law & verify',
+    moat: [
+      {
+        name: 'The Library — read the law',
+        body: 'Seven EU acts in full text — CRA, NIS2, AI Act, Machinery, RED, GDPR, Data Act — as amended and character-verified in CI. The same corpus the platform runs on.',
+      },
+      {
+        name: 'Compare',
+        body: 'An honest, structural comparison against IT-GRC suites and firmware scanners — native, partial, or out of scope, with nothing overstated.',
+      },
+      {
+        name: 'Trust center',
+        body: 'How your evidence is secured, where it is hosted, and the auditor access model — the assurances a regulated buyer needs.',
+      },
+    ],
     downloadKicker: 'Download',
     collateral: [
       {
@@ -54,9 +70,24 @@ const copy = {
     seoDescription:
       'Specificatieblad en verkoopblad voor de CRA Conformance-applicatie, plus de CRA-primer, live regelgevingsnieuws, kenniscentrum en officiële Europese Commissie CRA-veelgestelde vragen.',
     headerKicker: 'BRONNEN',
-    headerTitle: 'Materiaal en naslag',
+    headerTitle: 'Lees de wet, leer, en download het materiaal',
     headerDescription:
-      'Download het specificatieblad en het verkoopblad voor de CRA Conformance-applicatie, of verdiep u in de onderliggende naslag: de CRA-primer, een live corpus met regelgevingsnieuws, het kenniscentrum en de officiële CRA-veelgestelde vragen van de Europese Commissie.',
+      'Begin bij de wet zelf — zeven EU-wetten, verbatim — en een eerlijke blik op waar wij passen. Daarna de gidsen, de naslag en het materiaal van één pagina voor de CRA Conformance-applicatie.',
+    moatKicker: 'Lees de wet & verifieer',
+    moat: [
+      {
+        name: 'De Bibliotheek — lees de wet',
+        body: 'Zeven EU-wetten in volledige tekst — CRA, NIS2, AI-verordening, Machinerichtlijn, RED, AVG, Data Act — zoals gewijzigd en karakter-geverifieerd in CI. Hetzelfde corpus waarop het platform draait.',
+      },
+      {
+        name: 'Vergelijk',
+        body: 'Een eerlijke, structurele vergelijking met IT-GRC-suites en firmwarescanners — native, gedeeltelijk of buiten scope, zonder overdrijving.',
+      },
+      {
+        name: 'Trust center',
+        body: 'Hoe uw bewijs wordt beveiligd, waar het wordt gehost en het toegangsmodel voor auditors — de zekerheden die een gereguleerde koper nodig heeft.',
+      },
+    ],
     downloadKicker: 'Download',
     collateral: [
       {
@@ -89,6 +120,13 @@ const copy = {
   },
 } as const;
 
+// Non-translatable, position-indexed: icon component + link target for the moat tier.
+const MOAT_META = [
+  { icon: Library, href: '/wiki' },
+  { icon: GitCompare, href: '/compare' },
+  { icon: ShieldCheck, href: '/trust' },
+];
+
 // Non-translatable, position-indexed: PDF download targets.
 const COLLATERAL_HREFS = [
   '/collateral/OXOT-CRA-Conformance-Spec-Sheet.pdf',
@@ -118,14 +156,44 @@ export default function ResourcesPage() {
   );
 
   return (
-    <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">
-      <PageHeader
-        kicker={t.headerKicker}
-        title={t.headerTitle}
-        icon={Library}
-        description={t.headerDescription}
-      />
+    <div className="w-full">
+      <div className="container mx-auto px-4 md:px-8 pt-12 md:pt-16 pb-12 max-w-6xl">
+        <PageHeader
+          kicker={t.headerKicker}
+          title={t.headerTitle}
+          icon={Library}
+          description={t.headerDescription}
+        />
 
+        {/* Read the law & verify — the moat/authority tier, surfaced first */}
+        <p className="oxot-kicker">{t.moatKicker}</p>
+        <div className="mt-3 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {t.moat.map((m, i) => {
+            const { icon: Icon, href } = MOAT_META[i];
+            return (
+              <motion.div key={m.name} {...entranceVariants(i * 0.08)}>
+                <Link
+                  href={href}
+                  className="group block h-full rounded-2xl border border-border bg-card p-6 shadow-e1 transition-colors hover:border-primary"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <Icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-normal tracking-tight text-foreground group-hover:text-primary">
+                    {m.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{m.body}</p>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Live latest guidance from the CRA blog corpus (full-bleed band) */}
+      <LiveCraBlogGuidesFeed />
+
+      <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">
       {/* Collateral PDFs */}
       <p className="oxot-kicker">{t.downloadKicker}</p>
       <div className="mt-3 grid gap-5 sm:grid-cols-2">
@@ -187,6 +255,7 @@ export default function ResourcesPage() {
         >
           {t.bookDemo} <ArrowRight className="h-4 w-4" />
         </Link>
+      </div>
       </div>
     </div>
   );

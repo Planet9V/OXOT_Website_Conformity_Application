@@ -32,6 +32,7 @@ import CraHomePage from '@/pages/home';
 import DemoPage from '@/pages/demo';
 import PricingPage from '@/pages/pricing';
 import ProductPage from '@/pages/product';
+import SolutionsHubPage from '@/pages/solutions-hub';
 import OperatorsPage from '@/pages/operators';
 import ManufacturersPage from '@/pages/manufacturers';
 import CraTransitPage from '@/pages/cra-transit';
@@ -151,6 +152,9 @@ function PublicRoutes() {
       {/* CRA sales funnel — static routes, no CMS dependency (durable across rebuilds) */}
       <Route path="/product">
         {() => <PublicRoute component={ProductPage} />}
+      </Route>
+      <Route path="/solutions">
+        {() => <PublicRoute component={SolutionsHubPage} />}
       </Route>
       <Route path="/operators">
         {() => <PublicRoute component={OperatorsPage} />}
