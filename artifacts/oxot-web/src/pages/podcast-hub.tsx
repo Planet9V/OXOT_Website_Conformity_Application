@@ -651,7 +651,7 @@ export default function PodcastHubPage() {
                 <div>
                   <h4 className="text-sm font-bold text-foreground">Need help auditing this module for CRA compliance?</h4>
                   <p className="text-xs text-muted-foreground mt-0.5">
-                    Schedule a 45-minute technical portfolio walkthrough with Jim Mckenney.
+                    Schedule a 45-minute technical portfolio walkthrough with Jim McKenney.
                   </p>
                 </div>
                 <Link

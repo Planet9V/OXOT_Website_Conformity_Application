@@ -125,7 +125,10 @@ export default function BlogPostPage() {
         text = parts.slice(2).join('---').trim();
       }
     }
-    return text;
+    // Strip HTML comments (e.g. non-rendering IMAGE-SLOT image placeholders) so
+    // this renderer does not display them as raw literal text.
+    text = text.replace(/<!--[\s\S]*?-->/g, '');
+    return text.trim();
   }, [markdownContent]);
 
   if (loading) {
@@ -234,7 +237,7 @@ export default function BlogPostPage() {
           <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border/40 text-xs text-muted-foreground font-mono">
             <div className="flex items-center gap-1.5">
               <User className="w-3.5 h-3.5 text-primary" />
-              <span>Jim Mckenney (Digital Product Security Consultant)</span>
+              <span>Jim McKenney (Digital Product Security Consultant)</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5" />
