@@ -33,6 +33,7 @@ import conformityPsirtRouter from "./conformityPsirt";
 import { conformityIntelligenceRouter } from "./conformityIntelligence";
 import { auditorRouter } from "./conformityAuditor";
 import { conformitySuppliersRouter } from "./conformitySuppliers";
+import { deliveryManifestRouter } from "./conformityDeliveryManifest";
 import productUsersRouter from "./productUsers";
 
 import regulatoryNewsRouter from "./regulatoryNews";
@@ -94,6 +95,7 @@ router.use(conformityPsirtRouter);
 router.use(conformityIntelligenceRouter);
 router.use(auditorRouter);
 router.use(conformitySuppliersRouter);
+router.use(deliveryManifestRouter);
 router.use(productUsersRouter);
 router.use(newsletterRouter);
 router.use(pagesRouter);

@@ -1661,6 +1661,44 @@ export interface SharedResponsibilityInput {
   updatedBy?: string;
 }
 
+export interface DeliveryManifestVersion {
+  id: number;
+  productId: number;
+  version: number;
+  ipRelease: string;
+  node: string;
+  options: string[];
+  configBaseline: string;
+  changeNote: string;
+  createdBy: string;
+  createdAt: string;
+}
+
+export interface DeliveryManifestAccessState {
+  accessToken: string;
+  accessActive: boolean;
+}
+
+export interface DeliveryManifestList {
+  versions: DeliveryManifestVersion[];
+  accessToken: string;
+  accessActive: boolean;
+}
+
+export interface CreateDeliveryManifestVersionInput {
+  /** @minLength 1 */
+  ipRelease: string;
+  node?: string;
+  options?: string[];
+  configBaseline?: string;
+  changeNote?: string;
+}
+
+export interface DeliveryManifestPublicView {
+  productName: string;
+  versions: DeliveryManifestVersion[];
+}
+
 export type SupplierRequestStatus = typeof SupplierRequestStatus[keyof typeof SupplierRequestStatus];
 
 
@@ -3675,6 +3713,10 @@ regulation?: string;
 theme?: string;
 obligationType?: string;
 q?: string;
+};
+
+export type GetDeliveryManifestPublicParams = {
+token: string;
 };
 
 export type GetSupplierPortalWorkspaceParams = {

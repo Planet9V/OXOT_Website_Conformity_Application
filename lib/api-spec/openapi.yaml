@@ -2574,6 +2574,106 @@ paths:
           $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/delivery-manifest:
+    get:
+      operationId: getDeliveryManifest
+      tags: [conformity]
+      summary: The versioned delivery manifest for one product + its customer token
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: Manifest versions (newest first) and the customer-door token state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryManifestList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    post:
+      operationId: createDeliveryManifestVersion
+      tags: [conformity]
+      summary: Record a new delivery-manifest version (append-only)
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateDeliveryManifestVersionInput"
+      responses:
+        "200":
+          description: The created version
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryManifestVersion"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/delivery-manifest/access:
+    post:
+      operationId: issueDeliveryManifestAccess
+      tags: [conformity]
+      summary: Issue or rotate the customer-facing token for this manifest
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The active token state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryManifestAccessState"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/products/{id}/delivery-manifest/access/revoke:
+    post:
+      operationId: revokeDeliveryManifestAccess
+      tags: [conformity]
+      summary: Revoke the customer-facing token for this manifest
+      parameters:
+        - $ref: "#/components/parameters/IdPath"
+      responses:
+        "200":
+          description: The revoked token state
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryManifestAccessState"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+  /conformity/delivery-manifest/view:
+    get:
+      operationId: getDeliveryManifestPublic
+      tags: [conformity]
+      summary: Public customer view of a delivery manifest (token-authenticated)
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: The product name and its manifest history (newest first)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryManifestPublicView"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
   /conformity/products/{id}/supplier-requests:
     get:
       operationId: listSupplierRequests
@@ -7509,6 +7609,60 @@ components:
             $ref: "#/components/schemas/SharedResponsibilityRow"
         updatedBy: { type: string }
       required: [rows]
+    DeliveryManifestVersion:
+      type: object
+      properties:
+        id: { type: integer }
+        productId: { type: integer }
+        version: { type: integer }
+        ipRelease: { type: string }
+        node: { type: string }
+        options:
+          type: array
+          items: { type: string }
+        configBaseline: { type: string }
+        changeNote: { type: string }
+        createdBy: { type: string }
+        createdAt: { type: string }
+      required:
+        [id, productId, version, ipRelease, node, options, configBaseline,
+         changeNote, createdBy, createdAt]
+    DeliveryManifestAccessState:
+      type: object
+      properties:
+        accessToken: { type: string }
+        accessActive: { type: boolean }
+      required: [accessToken, accessActive]
+    DeliveryManifestList:
+      type: object
+      properties:
+        versions:
+          type: array
+          items:
+            $ref: "#/components/schemas/DeliveryManifestVersion"
+        accessToken: { type: string }
+        accessActive: { type: boolean }
+      required: [versions, accessToken, accessActive]
+    CreateDeliveryManifestVersionInput:
+      type: object
+      properties:
+        ipRelease: { type: string, minLength: 1 }
+        node: { type: string }
+        options:
+          type: array
+          items: { type: string }
+        configBaseline: { type: string }
+        changeNote: { type: string }
+      required: [ipRelease]
+    DeliveryManifestPublicView:
+      type: object
+      properties:
+        productName: { type: string }
+        versions:
+          type: array
+          items:
+            $ref: "#/components/schemas/DeliveryManifestVersion"
+      required: [productName, versions]
     SupplierRequest:
       type: object
       properties:

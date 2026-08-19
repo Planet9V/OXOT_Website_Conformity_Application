@@ -3176,6 +3176,113 @@ export const PutSharedResponsibilityMatrixResponse = zod.object({
 
 
 /**
+ * @summary The versioned delivery manifest for one product + its customer token
+ */
+export const GetDeliveryManifestParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const GetDeliveryManifestResponse = zod.object({
+  "versions": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "version": zod.number(),
+  "ipRelease": zod.string(),
+  "node": zod.string(),
+  "options": zod.array(zod.string()),
+  "configBaseline": zod.string(),
+  "changeNote": zod.string(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+})),
+  "accessToken": zod.string(),
+  "accessActive": zod.boolean()
+})
+
+
+/**
+ * @summary Record a new delivery-manifest version (append-only)
+ */
+export const CreateDeliveryManifestVersionParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+
+
+
+export const CreateDeliveryManifestVersionBody = zod.object({
+  "ipRelease": zod.string().min(1),
+  "node": zod.string().optional(),
+  "options": zod.array(zod.string()).optional(),
+  "configBaseline": zod.string().optional(),
+  "changeNote": zod.string().optional()
+})
+
+export const CreateDeliveryManifestVersionResponse = zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "version": zod.number(),
+  "ipRelease": zod.string(),
+  "node": zod.string(),
+  "options": zod.array(zod.string()),
+  "configBaseline": zod.string(),
+  "changeNote": zod.string(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Issue or rotate the customer-facing token for this manifest
+ */
+export const IssueDeliveryManifestAccessParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const IssueDeliveryManifestAccessResponse = zod.object({
+  "accessToken": zod.string(),
+  "accessActive": zod.boolean()
+})
+
+
+/**
+ * @summary Revoke the customer-facing token for this manifest
+ */
+export const RevokeDeliveryManifestAccessParams = zod.object({
+  "id": zod.coerce.number().describe('Numeric resource identifier.')
+})
+
+export const RevokeDeliveryManifestAccessResponse = zod.object({
+  "accessToken": zod.string(),
+  "accessActive": zod.boolean()
+})
+
+
+/**
+ * @summary Public customer view of a delivery manifest (token-authenticated)
+ */
+export const GetDeliveryManifestPublicQueryParams = zod.object({
+  "token": zod.coerce.string()
+})
+
+export const GetDeliveryManifestPublicResponse = zod.object({
+  "productName": zod.string(),
+  "versions": zod.array(zod.object({
+  "id": zod.number(),
+  "productId": zod.number(),
+  "version": zod.number(),
+  "ipRelease": zod.string(),
+  "node": zod.string(),
+  "options": zod.array(zod.string()),
+  "configBaseline": zod.string(),
+  "changeNote": zod.string(),
+  "createdBy": zod.string(),
+  "createdAt": zod.string()
+}))
+})
+
+
+/**
  * @summary Evidence asks sent to the supplier for this product
  */
 export const ListSupplierRequestsParams = zod.object({

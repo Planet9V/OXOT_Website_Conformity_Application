@@ -48,6 +48,7 @@ import { DeemedManufacturerPanel } from "@/components/product-file/deemed-manufa
 import { RedHandoverPanel } from "@/components/product-file/red-handover-panel";
 import { OperatorProcurementPanel } from "@/components/product-file/operator-procurement-panel";
 import { SharedResponsibilityPanel } from "@/components/product-file/shared-responsibility-panel";
+import { DeliveryManifestPanel } from "@/components/product-file/delivery-manifest-panel";
 import {
   Select,
   SelectContent,
@@ -671,6 +672,10 @@ export default function ProductDetail() {
           (supplier capability vs. customer responsibility) for a component this
           manufacturer supplies upstream (B2). */}
       {orgRole === "manufacturer" && <SharedResponsibilityPanel productId={id} />}
+
+      {/* Component/IP-supplier shape: the versioned delivery manifest + a
+          revocable customer-facing link to its history (B3). */}
+      {orgRole === "manufacturer" && <DeliveryManifestPanel productId={id} />}
 
       <StatutoryFile productId={id} />
 

@@ -51,6 +51,7 @@ export * from "./requirementMappings";
 export * from "./conformityProducts";
 export * from "./conformitySuppliers";
 export * from "./conformitySharedResponsibility";
+export * from "./conformityDeliveryManifest";
 export * from "./conformityProcurementChecks";
 export * from "./conformityAssessments";
 export * from "./conformityAnswers";

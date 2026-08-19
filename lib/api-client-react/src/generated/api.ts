@@ -88,6 +88,7 @@ import type {
   CreateConformityReport200,
   CreateConformityReportInput,
   CreateConversationInput,
+  CreateDeliveryManifestVersionInput,
   CreateFlowInput,
   CreateIncidentInput,
   CreateIncidentSubmissionInput,
@@ -99,6 +100,10 @@ import type {
   DeleteConformityReport200,
   DeleteProductUser200,
   DeleteResult,
+  DeliveryManifestAccessState,
+  DeliveryManifestList,
+  DeliveryManifestPublicView,
+  DeliveryManifestVersion,
   EmailSettingsInput,
   EmailTestInput,
   Error,
@@ -109,6 +114,7 @@ import type {
   GeneratedNewsletter,
   GetAnalyticsOverviewParams,
   GetConformityReport200,
+  GetDeliveryManifestPublicParams,
   GetIntegrationActivityParams,
   GetSocialStatusParams,
   GetSupplierPortalWorkspaceParams,
@@ -9198,6 +9204,381 @@ export const usePutSharedResponsibilityMatrix = <TError = ErrorType<BadRequestRe
       > => {
       return useMutation(getPutSharedResponsibilityMatrixMutationOptions(options));
     }
+
+export const getGetDeliveryManifestUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/delivery-manifest`
+}
+
+/**
+ * @summary The versioned delivery manifest for one product + its customer token
+ */
+export const getDeliveryManifest = async (id: number, options?: RequestInit): Promise<DeliveryManifestList> => {
+
+  return customFetch<DeliveryManifestList>(getGetDeliveryManifestUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDeliveryManifestQueryKey = (id: number,) => {
+    return [
+    `/api/conformity/products/${id}/delivery-manifest`
+    ] as const;
+    }
+
+
+export const getGetDeliveryManifestQueryOptions = <TData = Awaited<ReturnType<typeof getDeliveryManifest>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getDeliveryManifest>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDeliveryManifestQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDeliveryManifest>>> = ({ signal }) => getDeliveryManifest(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDeliveryManifest>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetDeliveryManifestQueryResult = NonNullable<Awaited<ReturnType<typeof getDeliveryManifest>>>
+export type GetDeliveryManifestQueryError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+
+/**
+ * @summary The versioned delivery manifest for one product + its customer token
+ */
+
+export function useGetDeliveryManifest<TData = Awaited<ReturnType<typeof getDeliveryManifest>>, TError = ErrorType<UnauthorizedResponse | NotFoundResponse>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getDeliveryManifest>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetDeliveryManifestQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateDeliveryManifestVersionUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/delivery-manifest`
+}
+
+/**
+ * @summary Record a new delivery-manifest version (append-only)
+ */
+export const createDeliveryManifestVersion = async (id: number,
+    createDeliveryManifestVersionInput: CreateDeliveryManifestVersionInput, options?: RequestInit): Promise<DeliveryManifestVersion> => {
+
+  return customFetch<DeliveryManifestVersion>(getCreateDeliveryManifestVersionUrl(id),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(createDeliveryManifestVersionInput)
+  }
+);}
+
+
+
+
+
+export const getCreateDeliveryManifestVersionMutationOptions = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createDeliveryManifestVersion>>, TError,{id: number;data: BodyType<CreateDeliveryManifestVersionInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createDeliveryManifestVersion>>, TError,{id: number;data: BodyType<CreateDeliveryManifestVersionInput>}, TContext> => {
+
+const mutationKey = ['createDeliveryManifestVersion'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createDeliveryManifestVersion>>, {id: number;data: BodyType<CreateDeliveryManifestVersionInput>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  createDeliveryManifestVersion(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateDeliveryManifestVersionMutationResult = NonNullable<Awaited<ReturnType<typeof createDeliveryManifestVersion>>>
+    export type CreateDeliveryManifestVersionMutationBody = BodyType<CreateDeliveryManifestVersionInput>
+    export type CreateDeliveryManifestVersionMutationError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Record a new delivery-manifest version (append-only)
+ */
+export const useCreateDeliveryManifestVersion = <TError = ErrorType<BadRequestResponse | UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createDeliveryManifestVersion>>, TError,{id: number;data: BodyType<CreateDeliveryManifestVersionInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createDeliveryManifestVersion>>,
+        TError,
+        {id: number;data: BodyType<CreateDeliveryManifestVersionInput>},
+        TContext
+      > => {
+      return useMutation(getCreateDeliveryManifestVersionMutationOptions(options));
+    }
+
+export const getIssueDeliveryManifestAccessUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/delivery-manifest/access`
+}
+
+/**
+ * @summary Issue or rotate the customer-facing token for this manifest
+ */
+export const issueDeliveryManifestAccess = async (id: number, options?: RequestInit): Promise<DeliveryManifestAccessState> => {
+
+  return customFetch<DeliveryManifestAccessState>(getIssueDeliveryManifestAccessUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getIssueDeliveryManifestAccessMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof issueDeliveryManifestAccess>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof issueDeliveryManifestAccess>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['issueDeliveryManifestAccess'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof issueDeliveryManifestAccess>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  issueDeliveryManifestAccess(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type IssueDeliveryManifestAccessMutationResult = NonNullable<Awaited<ReturnType<typeof issueDeliveryManifestAccess>>>
+
+    export type IssueDeliveryManifestAccessMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Issue or rotate the customer-facing token for this manifest
+ */
+export const useIssueDeliveryManifestAccess = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof issueDeliveryManifestAccess>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof issueDeliveryManifestAccess>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getIssueDeliveryManifestAccessMutationOptions(options));
+    }
+
+export const getRevokeDeliveryManifestAccessUrl = (id: number,) => {
+
+
+
+
+  return `/api/conformity/products/${id}/delivery-manifest/access/revoke`
+}
+
+/**
+ * @summary Revoke the customer-facing token for this manifest
+ */
+export const revokeDeliveryManifestAccess = async (id: number, options?: RequestInit): Promise<DeliveryManifestAccessState> => {
+
+  return customFetch<DeliveryManifestAccessState>(getRevokeDeliveryManifestAccessUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getRevokeDeliveryManifestAccessMutationOptions = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof revokeDeliveryManifestAccess>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof revokeDeliveryManifestAccess>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['revokeDeliveryManifestAccess'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof revokeDeliveryManifestAccess>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  revokeDeliveryManifestAccess(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type RevokeDeliveryManifestAccessMutationResult = NonNullable<Awaited<ReturnType<typeof revokeDeliveryManifestAccess>>>
+
+    export type RevokeDeliveryManifestAccessMutationError = ErrorType<UnauthorizedResponse | NotFoundResponse>
+
+    /**
+ * @summary Revoke the customer-facing token for this manifest
+ */
+export const useRevokeDeliveryManifestAccess = <TError = ErrorType<UnauthorizedResponse | NotFoundResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof revokeDeliveryManifestAccess>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof revokeDeliveryManifestAccess>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getRevokeDeliveryManifestAccessMutationOptions(options));
+    }
+
+export const getGetDeliveryManifestPublicUrl = (params: GetDeliveryManifestPublicParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/conformity/delivery-manifest/view?${stringifiedParams}` : `/api/conformity/delivery-manifest/view`
+}
+
+/**
+ * @summary Public customer view of a delivery manifest (token-authenticated)
+ */
+export const getDeliveryManifestPublic = async (params: GetDeliveryManifestPublicParams, options?: RequestInit): Promise<DeliveryManifestPublicView> => {
+
+  return customFetch<DeliveryManifestPublicView>(getGetDeliveryManifestPublicUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetDeliveryManifestPublicQueryKey = (params?: GetDeliveryManifestPublicParams,) => {
+    return [
+    `/api/conformity/delivery-manifest/view`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetDeliveryManifestPublicQueryOptions = <TData = Awaited<ReturnType<typeof getDeliveryManifestPublic>>, TError = ErrorType<UnauthorizedResponse | ForbiddenResponse>>(params: GetDeliveryManifestPublicParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getDeliveryManifestPublic>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetDeliveryManifestPublicQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getDeliveryManifestPublic>>> = ({ signal }) => getDeliveryManifestPublic(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getDeliveryManifestPublic>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetDeliveryManifestPublicQueryResult = NonNullable<Awaited<ReturnType<typeof getDeliveryManifestPublic>>>
+export type GetDeliveryManifestPublicQueryError = ErrorType<UnauthorizedResponse | ForbiddenResponse>
+
+
+/**
+ * @summary Public customer view of a delivery manifest (token-authenticated)
+ */
+
+export function useGetDeliveryManifestPublic<TData = Awaited<ReturnType<typeof getDeliveryManifestPublic>>, TError = ErrorType<UnauthorizedResponse | ForbiddenResponse>>(
+ params: GetDeliveryManifestPublicParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getDeliveryManifestPublic>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetDeliveryManifestPublicQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
 
 export const getListSupplierRequestsUrl = (id: number,) => {
 
