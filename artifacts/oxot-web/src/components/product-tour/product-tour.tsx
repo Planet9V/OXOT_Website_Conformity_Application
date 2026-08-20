@@ -14,8 +14,10 @@ import { useLocale } from '@/providers/locale-provider';
  * ("one more thing") → contact. Every claim maps to a shipped capability.
  * Bilingual (EN/NL); text slides carry a faint OT-diagram texture.
  *
- * Accessibility: pause/play, prev/next, arrow-key + space control, a live
- * region announcing each caption, and honouring prefers-reduced-motion.
+ * Accessibility: pause/play, prev/next, arrow-key control, a focusable
+ * pause/play button (Space does not hijack page scroll), a live region
+ * announcing each caption, and honouring prefers-reduced-motion. Accepts an
+ * optional localized `slides` set and aria `label` for reuse across pages.
  */
 
 export type Slide =
@@ -212,7 +214,8 @@ const SLIDE_MS = 6000;
 
 export function ProductTour({
   slides: slidesProp,
-}: { slides?: Record<'en' | 'nl', Slide[]> } = {}) {
+  label,
+}: { slides?: Record<'en' | 'nl', Slide[]>; label?: string } = {}) {
   const { locale } = useLocale();
   const slides = (slidesProp ?? SLIDES)[locale];
   const reduce = useReducedMotion();
@@ -230,6 +233,15 @@ export function ProductTour({
     },
     [count],
   );
+
+  // Clamp when the slide set changes (e.g. a locale switch to a shorter array),
+  // so slides[index] is always defined.
+  useEffect(() => {
+    if (index >= count && count > 0) {
+      setIndex(0);
+      setProgress(0);
+    }
+  }, [count, index]);
 
   useEffect(() => {
     if (!playing || reduce) return;
@@ -253,18 +265,17 @@ export function ProductTour({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Arrow keys page the tour; Space is intentionally NOT hijacked at the
+      // window level (it must keep scrolling the page). Pause/play is on its
+      // own focusable button and on click.
       if (e.key === 'ArrowRight') go(index + 1);
       else if (e.key === 'ArrowLeft') go(index - 1);
-      else if (e.key === ' ') {
-        e.preventDefault();
-        setPlaying((p) => !p);
-      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [index, go]);
 
-  const slide = slides[index];
+  const slide = slides[Math.min(index, count - 1)] ?? slides[0];
   const fade = useMemo(
     () =>
       reduce
@@ -282,7 +293,12 @@ export function ProductTour({
       className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-2xl border border-border bg-card shadow-e1"
       role="region"
       aria-roledescription="carousel"
-      aria-label="OXOT Conformance Platform product tour"
+      aria-label={
+        label ??
+        (locale === 'nl'
+          ? 'OXOT Conformance Platform productrondleiding'
+          : 'OXOT Conformance Platform product tour')
+      }
     >
       <div className="flex gap-1.5 p-3" aria-hidden="true">
         {slides.map((_, i) => (

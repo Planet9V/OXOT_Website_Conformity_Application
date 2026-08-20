@@ -14,7 +14,7 @@ const copy = {
   en: {
     seoTitle: 'Solutions — OXOT Conformance Platform',
     seoDescription:
-      'Your CRA duty depends on what you do with the product. Find your path — manufacturer, operator, integrator, or a single product in transit.',
+      'Your CRA duty depends on what you do with the product. Find your path — manufacturer, operator, integrator, component & IP supplier, or a single product in transit.',
     headerKicker: 'SOLUTIONS',
     headerTitle: 'Your CRA duty depends on what you do',
     headerDescription:
@@ -60,7 +60,7 @@ const copy = {
   nl: {
     seoTitle: 'Oplossingen — OXOT Conformance Platform',
     seoDescription:
-      'Uw CRA-plicht hangt af van wat u met het product doet. Vind uw pad — fabrikant, exploitant, integrator, of één product in transit.',
+      'Uw CRA-plicht hangt af van wat u met het product doet. Vind uw pad — fabrikant, exploitant, integrator, component- & IP-leverancier, of één product in transit.',
     headerKicker: 'OPLOSSINGEN',
     headerTitle: 'Uw CRA-plicht hangt af van wat u doet',
     headerDescription:

@@ -2,7 +2,6 @@ import { Link } from 'wouter';
 import { ArrowRight, ArrowLeft, FileStack, ClipboardCheck } from 'lucide-react';
 import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
-import { JsonLd } from '@/components/json-ld';
 import { ProductTour, type Slide } from '@/components/product-tour/product-tour';
 import { useLocale } from '@/providers/locale-provider';
 
@@ -133,6 +132,7 @@ const copy = {
     manifestLink: 'Delivery manifest view',
     packageLink: 'Assurance package view',
     back: 'Back to component & IP suppliers',
+    tourAria: 'Component & IP supplier cockpit tour',
     bookDemo: 'Book a demo',
   },
   nl: {
@@ -150,6 +150,7 @@ const copy = {
     manifestLink: 'Leveringsmanifest-weergave',
     packageLink: 'Assurancepakket-weergave',
     back: 'Terug naar component- & IP-leveranciers',
+    tourAria: 'Rondleiding cockpit voor component- & IP-leveranciers',
     bookDemo: 'Demo aanvragen',
   },
 } as const;
@@ -162,18 +163,6 @@ export default function SuppliersTourPage() {
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">
-      <JsonLd
-        id="ld-suppliers-tour-video"
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'VideoObject',
-          name: 'OXOT Conformance Platform — supplier cockpit tour',
-          description:
-            'An auto-advancing walkthrough of the component & IP supplier cockpit, built from live product screenshots.',
-          thumbnailUrl: '/media/suppliers/sup-01-assurance-package.jpg',
-        }}
-      />
-
       <div className="mb-4">
         <Link
           href="/suppliers"
@@ -190,7 +179,7 @@ export default function SuppliersTourPage() {
       </div>
 
       <div className="mt-10">
-        <ProductTour slides={SUPPLIER_SLIDES} />
+        <ProductTour slides={SUPPLIER_SLIDES} label={t.tourAria} />
       </div>
 
       {/* See it live — the real public customer surfaces (token-entry screens). */}

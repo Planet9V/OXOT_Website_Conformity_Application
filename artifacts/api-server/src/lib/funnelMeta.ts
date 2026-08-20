@@ -59,6 +59,26 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
       description:
         "The CRA binds your suppliers; NIS2 Article 21(2)(d) makes supply-chain security your duty. Register your estate, record supplier evidence per device against the CRA’s own Article 13 duties, and chase gaps through a secure supplier door.",
     },
+    solutions: {
+      title: "Solutions — OXOT Conformance Platform",
+      description:
+        "Your CRA duty depends on what you do with the product. Find your path — manufacturer, operator, integrator, component & IP supplier, or a single product in transit.",
+    },
+    suppliers: {
+      title: "For component & IP suppliers — CRA supplier assurance package",
+      description:
+        "You supply the security IP or component, not the finished product — but your customers’ CRA due diligence runs on your evidence. Produce one versioned, customer-facing assurance package: delivery manifest, security case, IP-BOM/SBOM, CVD process, support-period policy, and a shared-responsibility matrix.",
+    },
+    "suppliers/security-ip": {
+      title: "For security IP & silicon suppliers — secure elements, root-of-trust, crypto IP under the CRA",
+      description:
+        "Secure elements, tamper-resistant microcontrollers, root-of-trust and cryptographic IP carry the CRA’s heaviest classifications. Where your block sits in Annex III/IV, and exactly where your responsibility hands off to the integrating manufacturer.",
+    },
+    "suppliers/tour": {
+      title: "The supplier cockpit tour — OXOT Conformance Platform",
+      description:
+        "See the component & IP supplier cockpit in 90 seconds: the supplier assurance package, the shared-responsibility matrix, the versioned delivery manifest, and the revocable customer link your buyers receive.",
+    },
     compare: {
       title: "OXOT vs. IT GRC and firmware scanners — an honest comparison",
       description:
@@ -184,6 +204,26 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
       title: "Voor exploitanten & asset owners — CRA-leveranciersbeheer",
       description:
         "De CRA bindt uw leveranciers; NIS2 artikel 21(2)(d) maakt de beveiliging van de toeleveringsketen uw plicht. Registreer uw installatiebestand, leg leveranciersbewijs per apparaat vast tegen de eigen artikel 13-plichten van de CRA, en vraag het ontbrekende op via een beveiligde leveranciersdeur.",
+    },
+    solutions: {
+      title: "Oplossingen — OXOT Conformance Platform",
+      description:
+        "Uw CRA-plicht hangt af van wat u met het product doet. Vind uw pad — fabrikant, exploitant, integrator, component- & IP-leverancier, of één product in transit.",
+    },
+    suppliers: {
+      title: "Voor component- & IP-leveranciers — CRA-leveranciersassurancepakket",
+      description:
+        "U levert de beveiligings-IP of het component, niet het eindproduct — maar de CRA-due diligence van uw klanten draait op uw bewijs. Lever één versiegebonden, klantgericht assurancepakket: leveringsmanifest, beveiligingsdossier, IP-BOM/SBOM, CVD-proces, ondersteuningsperiodebeleid en een matrix voor gedeelde verantwoordelijkheid.",
+    },
+    "suppliers/security-ip": {
+      title: "Voor beveiligings-IP- & siliciumleveranciers — secure elements, root-of-trust, crypto-IP onder de CRA",
+      description:
+        "Secure elements, sabotagebestendige microcontrollers, root-of-trust en cryptografische IP dragen de zwaarste classificaties van de CRA. Waar uw blok in Bijlage III/IV valt, en precies waar uw verantwoordelijkheid overgaat naar de integrerende fabrikant.",
+    },
+    "suppliers/tour": {
+      title: "De leveranciers-cockpitrondleiding — OXOT Conformance Platform",
+      description:
+        "Bekijk de cockpit voor component- & IP-leveranciers in 90 seconden: het assurancepakket, de matrix voor gedeelde verantwoordelijkheid, het versiegebonden leveringsmanifest en de intrekbare klantlink die uw kopers ontvangen.",
     },
     compare: {
       title: "OXOT versus IT-GRC en firmwarescanners — een eerlijke vergelijking",
