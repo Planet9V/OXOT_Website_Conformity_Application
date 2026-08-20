@@ -26,6 +26,7 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
   en: {
     home: {
       title: "OXOT Conformance Platform — EU Cyber Resilience Act compliance",
+      ogImage: "/media/product/prod-command-center.jpg",
       description:
         "A statutory conformity platform for the EU Cyber Resilience Act. Scope products, run conformity assessments, handle Article 14 vulnerability reporting, and produce technical documentation — with NIS2, the AI Act, RED, the Machinery Regulation, GDPR and the Data Act mapped into the same requirement catalogue.",
       jsonLd: {
@@ -38,6 +39,7 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
     },
     product: {
       title: "The platform — OXOT Conformance Platform",
+      ogImage: "/media/product/prod-dossier.jpg",
       description:
         "The shipped platform: role-aware product files, the eight-step CRA journey, incidents and statutory clocks, the verbatim statutory Library, supplier CRA management for operators, and reports — one record, every regulation.",
       jsonLd: {
@@ -51,31 +53,37 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
     },
     manufacturers: {
       title: "For manufacturers — CRA technical documentation & EU Declaration of Conformity",
+      ogImage: "/media/product/prod-dossier.jpg",
       description:
         "You place the product on the market, so you carry the Cyber Resilience Act. Assemble Annex I evidence, build the Annex VII technical file, self-assess under Module A, and issue the Annex V EU Declaration of Conformity — every duty citing its own article, none of it decided for you.",
     },
     operators: {
       title: "For operators & asset owners — supplier CRA management",
+      ogImage: "/media/product/prod-operator-procurement.jpg",
       description:
         "The CRA binds your suppliers; NIS2 Article 21(2)(d) makes supply-chain security your duty. Register your estate, record supplier evidence per device against the CRA’s own Article 13 duties, and chase gaps through a secure supplier door.",
     },
     solutions: {
       title: "Solutions — OXOT Conformance Platform",
+      ogImage: "/media/product/prod-command-center.jpg",
       description:
         "Your CRA duty depends on what you do with the product. Find your path — manufacturer, operator, integrator, component & IP supplier, or a single product in transit.",
     },
     suppliers: {
       title: "For component & IP suppliers — CRA supplier assurance package",
+      ogImage: "/media/suppliers/sup-01-assurance-package.jpg",
       description:
         "You supply the security IP or component, not the finished product — but your customers’ CRA due diligence runs on your evidence. Produce one versioned, customer-facing assurance package: delivery manifest, security case, IP-BOM/SBOM, CVD process, support-period policy, and a shared-responsibility matrix.",
     },
     "suppliers/security-ip": {
       title: "For security IP & silicon suppliers — secure elements, root-of-trust, crypto IP under the CRA",
+      ogImage: "/media/suppliers/sup-01-assurance-package.jpg",
       description:
         "Secure elements, tamper-resistant microcontrollers, root-of-trust and cryptographic IP carry the CRA’s heaviest classifications. Where your block sits in Annex III/IV, and exactly where your responsibility hands off to the integrating manufacturer.",
     },
     "suppliers/tour": {
       title: "The supplier cockpit tour — OXOT Conformance Platform",
+      ogImage: "/media/suppliers/sup-01-assurance-package.jpg",
       description:
         "See the component & IP supplier cockpit in 90 seconds: the supplier assurance package, the shared-responsibility matrix, the versioned delivery manifest, and the revocable customer link your buyers receive.",
     },
@@ -172,6 +180,7 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
   nl: {
     home: {
       title: "OXOT Conformance Platform — naleving EU Cyber Resilience Act",
+      ogImage: "/media/product/prod-command-center.jpg",
       description:
         "Een wettelijk conformiteitsplatform voor de EU Cyber Resilience Act. Baken producten af, voer conformiteitsbeoordelingen uit, handel kwetsbaarheidsmeldingen onder artikel 14 af, en stel technische documentatie op — met NIS2, de AI-verordening, RED, de Machineverordening, de AVG en de Data Act in dezelfde eisencatalogus.",
       jsonLd: {
@@ -184,6 +193,7 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
     },
     product: {
       title: "Het platform — OXOT Conformance Platform",
+      ogImage: "/media/product/prod-dossier.jpg",
       description:
         "Het geleverde platform: rolbewuste productdossiers, het CRA-traject van acht stappen, incidenten en wettelijke klokken, de woordelijke wettenbibliotheek, CRA-leveranciersbeheer voor exploitanten, en rapporten — één dossier, elke verordening.",
       jsonLd: {
@@ -197,31 +207,37 @@ export const FUNNEL_META: Record<Locale, Record<string, FunnelMeta>> = {
     },
     manufacturers: {
       title: "Voor fabrikanten — CRA technische documentatie & EU-conformiteitsverklaring",
+      ogImage: "/media/product/prod-dossier.jpg",
       description:
         "U brengt het product op de markt, dus u draagt de Cyber Resilience Act. Verzamel Bijlage I-bewijs, stel het technisch dossier van Bijlage VII op, beoordeel zelf onder Module A, en geef de EU-conformiteitsverklaring van Bijlage V uit — elke plicht met eigen artikelverwijzing, niets ervan voor u beslist.",
     },
     operators: {
       title: "Voor exploitanten & asset owners — CRA-leveranciersbeheer",
+      ogImage: "/media/product/prod-operator-procurement.jpg",
       description:
         "De CRA bindt uw leveranciers; NIS2 artikel 21(2)(d) maakt de beveiliging van de toeleveringsketen uw plicht. Registreer uw installatiebestand, leg leveranciersbewijs per apparaat vast tegen de eigen artikel 13-plichten van de CRA, en vraag het ontbrekende op via een beveiligde leveranciersdeur.",
     },
     solutions: {
       title: "Oplossingen — OXOT Conformance Platform",
+      ogImage: "/media/product/prod-command-center.jpg",
       description:
         "Uw CRA-plicht hangt af van wat u met het product doet. Vind uw pad — fabrikant, exploitant, integrator, component- & IP-leverancier, of één product in transit.",
     },
     suppliers: {
       title: "Voor component- & IP-leveranciers — CRA-leveranciersassurancepakket",
+      ogImage: "/media/suppliers/sup-01-assurance-package.jpg",
       description:
         "U levert de beveiligings-IP of het component, niet het eindproduct — maar de CRA-due diligence van uw klanten draait op uw bewijs. Lever één versiegebonden, klantgericht assurancepakket: leveringsmanifest, beveiligingsdossier, IP-BOM/SBOM, CVD-proces, ondersteuningsperiodebeleid en een matrix voor gedeelde verantwoordelijkheid.",
     },
     "suppliers/security-ip": {
       title: "Voor beveiligings-IP- & siliciumleveranciers — secure elements, root-of-trust, crypto-IP onder de CRA",
+      ogImage: "/media/suppliers/sup-01-assurance-package.jpg",
       description:
         "Secure elements, sabotagebestendige microcontrollers, root-of-trust en cryptografische IP dragen de zwaarste classificaties van de CRA. Waar uw blok in Bijlage III/IV valt, en precies waar uw verantwoordelijkheid overgaat naar de integrerende fabrikant.",
     },
     "suppliers/tour": {
       title: "De leveranciers-cockpitrondleiding — OXOT Conformance Platform",
+      ogImage: "/media/suppliers/sup-01-assurance-package.jpg",
       description:
         "Bekijk de cockpit voor component- & IP-leveranciers in 90 seconden: het assurancepakket, de matrix voor gedeelde verantwoordelijkheid, het versiegebonden leveringsmanifest en de intrekbare klantlink die uw kopers ontvangen.",
     },
