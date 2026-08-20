@@ -18,12 +18,15 @@
  */
 import { createHash, randomBytes } from "node:crypto";
 import { hashPassword } from "../lib/teamMembers";
+import { assessDeemedManufacturer, type DeemedManufacturerInput } from "../lib/deemedManufacturer";
 import { and, asc, eq, sql } from "drizzle-orm";
 import {
   db,
   conformityProductsTable,
   conformitySuppliersTable,
   conformityProcurementChecksTable,
+  conformityOperatorChecksTable,
+  craDeemedManufacturerAssessments,
   conformitySupplierDocumentsTable,
   conformityAssessmentsTable,
   conformityAnswersTable,
@@ -1291,4 +1294,230 @@ export async function seedDemo(): Promise<void> {
     }
   }
   console.log(`[seed:demo] embedded ${embedded}/${embedJobs.length} workspace source(s).`);
+
+  // One product per remaining CRA org-role, so every persona cockpit is
+  // demonstrable (authorised rep, distributor, OSS steward, system integrator),
+  // with the verify / deemed-manufacturer panels pre-worked where they apply.
+  await seedDemoRolePersonas();
+}
+
+/**
+ * Seed one complete product for each org-role not already covered by the main
+ * demo (manufacturer + operator), so every persona's cockpit is one click away.
+ * Idempotent by product name. Where a role has a data-driven panel, a worked
+ * state is seeded: the distributor's Article 20 verify gate and a deemed-
+ * manufacturer determination for the distributor (not deemed) and the system
+ * integrator (deemed under Article 22). The importer's verify gate is seeded on
+ * the existing importer product when present.
+ */
+export async function seedDemoRolePersonas(targetDb: any = db): Promise<void> {
+  const ROLE_PRODUCTS = [
+    {
+      name: "Aetherlink Industrial Gateway",
+      description:
+        "A connected industrial gateway placed on the EU market on behalf of a non-EU manufacturer.",
+      manufacturerName: "Aetherlink Systems Inc. (United States)",
+      manufacturerAddress: "500 Technology Sq, Cambridge, MA 02139, USA",
+      authorizedRep: "Meridian Compliance Europe B.V. (Rotterdam, NL)",
+      productType: "hardware_with_software",
+      version: "3.2.0",
+      intendedUse: "Protocol translation and secure remote access for industrial control networks.",
+      supportPeriodStart: "2026-01-15",
+      supportPeriodEnd: "2031-01-15",
+      placedOnMarketDate: "2026-01-15",
+      orgRole: "authorised_representative",
+    },
+    {
+      name: "SmartValve S200 Actuator",
+      description: "A networked valve actuator distributed into the EU market.",
+      manufacturerName: "Hydronic Controls GmbH",
+      manufacturerAddress: "Industriestrasse 12, 70565 Stuttgart, Germany",
+      authorizedRep: "",
+      productType: "hardware_with_software",
+      version: "S200 fw 2.1",
+      intendedUse: "Automated flow control in building HVAC and process systems.",
+      supportPeriodStart: "2025-11-01",
+      supportPeriodEnd: "2030-11-01",
+      placedOnMarketDate: "2025-11-01",
+      orgRole: "distributor",
+    },
+    {
+      name: "libcoap (open-source CoAP library)",
+      description: "An open-source CoAP protocol library stewarded under CRA Article 24.",
+      manufacturerName: "OpenForge Foundation (steward)",
+      manufacturerAddress: "Community project — no single establishment",
+      authorizedRep: "",
+      productType: "software",
+      version: "4.3.4",
+      intendedUse: "Constrained Application Protocol (CoAP) messaging for IoT and edge devices.",
+      supportPeriodStart: "2025-06-01",
+      supportPeriodEnd: "2030-06-01",
+      placedOnMarketDate: "2025-06-01",
+      orgRole: "oss_steward",
+    },
+    {
+      name: "PackLine PLC Control Cabinet",
+      description:
+        "An integrated control cabinet assembled from third-party PLCs, drives and HMIs for a packaging line.",
+      manufacturerName: "Axians Industrial Solutions (integrator)",
+      manufacturerAddress: "Rivium Boulevard 41, 2909 LK Capelle aan den IJssel, NL",
+      authorizedRep: "",
+      productType: "hardware_with_software",
+      version: "Cabinet Rev C",
+      intendedUse: "Line-level control and safety coordination for a high-speed packaging line.",
+      supportPeriodStart: "2026-03-01",
+      supportPeriodEnd: "2031-03-01",
+      placedOnMarketDate: "2026-03-01",
+      orgRole: "system_integrator",
+    },
+  ] as const;
+
+  await targetDb.transaction(async (tx: any) => {
+    const idByName: Record<string, number> = {};
+    for (const p of ROLE_PRODUCTS) {
+      const [existing] = await tx
+        .select()
+        .from(conformityProductsTable)
+        .where(eq(conformityProductsTable.name, p.name));
+      const [row] = existing
+        ? await tx
+            .update(conformityProductsTable)
+            .set(p)
+            .where(eq(conformityProductsTable.id, existing.id))
+            .returning()
+        : await tx.insert(conformityProductsTable).values(p).returning();
+      idByName[p.name] = row!.id;
+    }
+
+    // Distributor Article 20 verify gate — checked, nothing to refrain on.
+    await upsertOperatorCheck(tx, idByName["SmartValve S200 Actuator"]!, "distributor", {
+      ceMarkingPresent: true,
+      upstreamObligationsComplied: true,
+      necessaryDocumentsProvided: true,
+      believesNonConforming: false,
+      significantCybersecurityRisk: false,
+      notes: "Seeded demo: CE mark sighted, DoC and instructions on file; no reason to refrain.",
+    });
+
+    // Distributor deemed-manufacturer determination — just distributes: NOT deemed.
+    await upsertDeemed(tx, idByName["SmartValve S200 Actuator"]!, "distributor", {
+      actorRole: "distributor",
+      placedUnderOwnNameOrTrademark: false,
+      modificationMade: false,
+    });
+
+    // System integrator deemed-manufacturer determination — a substantial
+    // modification made available on the market: deemed under Article 22.
+    await upsertDeemed(tx, idByName["PackLine PLC Control Cabinet"]!, "other_person", {
+      actorRole: "other_person",
+      placedUnderOwnNameOrTrademark: false,
+      modificationMade: true,
+      changeFollowsPlacingOnMarket: true,
+      affectsAnnexIPartICompliance: true,
+      cybersecurityImpactIsProductWide: true,
+      makesAvailableOnMarket: true,
+    });
+
+    // Importer Article 19 verify gate on the existing importer product, if present.
+    const [importerProduct] = await tx
+      .select()
+      .from(conformityProductsTable)
+      .where(eq(conformityProductsTable.orgRole, "importer"));
+    if (importerProduct) {
+      await upsertOperatorCheck(tx, importerProduct.id, "importer", {
+        conformityAssessmentCarriedOut: true,
+        technicalDocumentationDrawnUp: true,
+        ceMarkingPresent: true,
+        euDeclarationAccompanies: true,
+        userInformationPresent: true,
+        userInformationLanguageUnderstood: null,
+        manufacturerIdentificationComplied: true,
+        canProvideProvingDocuments: null,
+        ownContactDetailsAffixed: false,
+        believesNonConforming: false,
+        significantCybersecurityRisk: false,
+        notes: "Seeded demo: manufacturer checks verified; own contact details not yet affixed — action.",
+      });
+    }
+  });
+  console.log("[seed:demo] role personas seeded (authorised rep, distributor, OSS steward, system integrator).");
+}
+
+async function upsertOperatorCheck(
+  tx: any,
+  productId: number,
+  role: string,
+  fields: Record<string, unknown>,
+): Promise<void> {
+  const values = { productId, role, updatedBy: "seed:demo", ...fields };
+  const [existing] = await tx
+    .select()
+    .from(conformityOperatorChecksTable)
+    .where(
+      and(
+        eq(conformityOperatorChecksTable.productId, productId),
+        eq(conformityOperatorChecksTable.role, role),
+      ),
+    );
+  if (existing) {
+    await tx
+      .update(conformityOperatorChecksTable)
+      .set(values)
+      .where(eq(conformityOperatorChecksTable.id, existing.id));
+  } else {
+    await tx.insert(conformityOperatorChecksTable).values(values);
+  }
+}
+
+async function upsertDeemed(
+  tx: any,
+  productId: number,
+  actorRole: string,
+  facts: DeemedManufacturerInput,
+): Promise<void> {
+  const [existing] = await tx
+    .select()
+    .from(craDeemedManufacturerAssessments)
+    .where(eq(craDeemedManufacturerAssessments.productId, productId));
+  if (existing) return; // determinations are an append-only log; don't duplicate on reseed
+  const determination = assessDeemedManufacturer(facts);
+  const assessedBy = "seed:demo";
+  const assessedAt = new Date();
+  const recordHash = createHash("sha256")
+    .update(
+      JSON.stringify({
+        facts,
+        determination: {
+          isSubstantialModification: determination.isSubstantialModification,
+          deemedManufacturer: determination.deemedManufacturer,
+          governingArticle: determination.governingArticle,
+          obligationScope: determination.obligationScope,
+        },
+        assessedBy,
+        assessedAt: assessedAt.toISOString(),
+      }),
+    )
+    .digest("hex");
+  await tx.insert(craDeemedManufacturerAssessments).values({
+    productId,
+    actorRole,
+    placedUnderOwnNameOrTrademark: facts.placedUnderOwnNameOrTrademark,
+    modificationMade: facts.modificationMade,
+    changeFollowsPlacingOnMarket: facts.changeFollowsPlacingOnMarket,
+    affectsAnnexIPartICompliance: facts.affectsAnnexIPartICompliance,
+    modifiesAssessedIntendedPurpose: facts.modifiesAssessedIntendedPurpose,
+    makesAvailableOnMarket: facts.makesAvailableOnMarket,
+    cybersecurityImpactIsProductWide: facts.cybersecurityImpactIsProductWide,
+    isSubstantialModification: determination.isSubstantialModification,
+    deemedManufacturer: determination.deemedManufacturer,
+    governingArticle: determination.governingArticle,
+    trigger: determination.trigger,
+    obligationScope: determination.obligationScope,
+    unanswered: determination.unanswered,
+    citations: determination.citations,
+    message: determination.message,
+    assessedBy,
+    assessedAt,
+    recordHash,
+  });
 }
