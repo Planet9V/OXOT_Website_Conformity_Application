@@ -16,6 +16,7 @@ import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
 import { revealVariants } from '@/lib/motion';
+import { ProductShot } from '@/components/product-shot';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live.
@@ -98,6 +99,7 @@ export default function ManufacturersPage() {
     pageSeo('/manufacturers', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/product/prod-dossier.jpg',
     }),
   );
 
@@ -117,6 +119,24 @@ export default function ManufacturersPage() {
           {t.framingTitle}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.framingBody}</p>
+      </div>
+
+      {/* The real manufacturer surface: the product file you own. */}
+      <div className="mt-8">
+        <ProductShot
+          src="/media/product/prod-dossier.jpg"
+          alt={
+            locale === 'nl'
+              ? 'Het productdossier met de fabrikantenrol: type, klasse, versie en fabrikant op één plek.'
+              : 'The product file with the manufacturer role: type, class, version and manufacturer in one record.'
+          }
+          caption={
+            locale === 'nl'
+              ? 'Het productdossier dat u bezit — de basis van uw technisch dossier volgens Bijlage VII.'
+              : 'The product file you own — the foundation of your Annex VII technical file.'
+          }
+          className="mx-auto max-w-5xl"
+        />
       </div>
 
       {/* The eight-step CRA journey */}

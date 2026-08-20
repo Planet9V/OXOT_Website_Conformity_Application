@@ -18,6 +18,8 @@ import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
 import { revealVariants } from '@/lib/motion';
+import { ProductShot } from '@/components/product-shot';
+import { SupplyChainDiagram } from '@/components/diagrams/supply-chain-diagram';
 import { LiveCraBlogGuidesFeed } from '@/components/sections/live-cra-blog-guides-feed';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
@@ -153,6 +155,7 @@ export default function SuppliersPage() {
     pageSeo('/suppliers', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/suppliers/sup-01-assurance-package.jpg',
     }),
   );
 
@@ -176,12 +179,51 @@ export default function SuppliersPage() {
           </Link>
         </div>
 
+        {/* Where a component/IP supplier sits in the value chain */}
+        <div className="mt-6">
+          <SupplyChainDiagram
+            highlight="supplier"
+            labels={
+              locale === 'nl'
+                ? {
+                    supplier: { title: 'Component- & IP-leverancier', duty: 'Publiceert het assurancebewijs' },
+                    manufacturer: { title: 'Fabrikant / integrator', duty: 'Draagt de CRA · CE-markeert het product' },
+                    operator: { title: 'Exploitant / asset owner', duty: 'Beheert het park (NIS2 21(2)(d))' },
+                  }
+                : undefined
+            }
+            flowLabel={
+              locale === 'nl'
+                ? 'Bewijs stroomt stroomafwaarts — niemand draagt de plicht van een ander over'
+                : undefined
+            }
+          />
+        </div>
+
         {/* The statutory frame */}
         <div className="mt-6 rounded-2xl border border-border bg-card p-6 md:p-8">
           <h2 className="font-display text-xl font-normal tracking-tight text-foreground">
             {t.framingTitle}
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.framingBody}</p>
+        </div>
+
+        {/* The real supplier surface: the composed assurance package. */}
+        <div className="mt-8">
+          <ProductShot
+            src="/media/suppliers/sup-01-assurance-package.jpg"
+            alt={
+              locale === 'nl'
+                ? 'Het leveranciersassurancepaneel met 5/5 volledig: matrix, manifest, CVD, ondersteuningsperiode en SBOM.'
+                : 'The supplier assurance package panel at 5/5 complete: matrix, manifest, CVD, support period and SBOM.'
+            }
+            caption={
+              locale === 'nl'
+                ? 'Het assurancepakket — één bundel voor de due diligence van uw klant, met een volledigheidsuitlezing.'
+                : 'The assurance package — one bundle for your customer’s due diligence, with a completeness readout.'
+            }
+            className="mx-auto max-w-5xl"
+          />
         </div>
 
         {/* The eight-step supplier journey */}

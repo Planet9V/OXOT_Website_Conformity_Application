@@ -14,6 +14,7 @@ import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
 import { revealVariants } from '@/lib/motion';
+import { ProductShot } from '@/components/product-shot';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live.
@@ -88,6 +89,7 @@ export default function OperatorsPage() {
     pageSeo('/operators', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/product/prod-operator-procurement.jpg',
     }),
   );
 
@@ -101,6 +103,24 @@ export default function OperatorsPage() {
           {t.framingTitle}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.framingBody}</p>
+      </div>
+
+      {/* The real operator surface: the per-device procurement file. */}
+      <div className="mt-8">
+        <ProductShot
+          src="/media/product/prod-operator-procurement.jpg"
+          alt={
+            locale === 'nl'
+              ? 'Het inkoopdossier per apparaat: elk CRA-artikel 13-punt op-dossier, niet-geleverd of onbeantwoord.'
+              : 'The per-device procurement file: each CRA Article 13 item on file, not provided, or unanswered.'
+          }
+          caption={
+            locale === 'nl'
+              ? 'Het inkoopdossier — wat elke leverancier daadwerkelijk heeft geleverd, elk punt met zijn CRA-plicht.'
+              : 'The procurement file — what each supplier has actually provided, every item citing its CRA duty.'
+          }
+          className="mx-auto max-w-5xl"
+        />
       </div>
 
       {/* The five steps */}

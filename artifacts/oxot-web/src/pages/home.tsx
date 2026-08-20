@@ -19,6 +19,7 @@ import { LiveRegulatoryNewsFeed } from '@/components/sections/live-regulatory-ne
 import { LiveCraBlogGuidesFeed } from '@/components/sections/live-cra-blog-guides-feed';
 import { useLocale } from '@/providers/locale-provider';
 import { revealVariants } from '@/lib/motion';
+import { ProductShot } from '@/components/product-shot';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -203,6 +204,7 @@ export default function CraHomePage() {
     pageSeo('/', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/product/prod-command-center.jpg',
     }),
   );
 
@@ -246,6 +248,25 @@ export default function CraHomePage() {
             >
               <ClipboardCheck className="h-4 w-4" /> {t.takeCheck}
             </Link>
+          </div>
+
+          {/* Show the product, don't only describe it — the live command center. */}
+          <div className="mt-14 md:mt-16">
+            <ProductShot
+              src="/media/product/prod-command-center.jpg"
+              alt={
+                locale === 'nl'
+                  ? 'Het operationele command center: productbeoordelingen op prioriteit, met wettelijke klokken en verplichtingen per rol.'
+                  : 'The operational command center: product assessments ranked by priority, with statutory clocks and per-role obligations.'
+              }
+              caption={
+                locale === 'nl'
+                  ? 'Het command center — conformiteitsoperaties & triage, live in het product.'
+                  : 'The command center — conformity operations & triage, live in the product.'
+              }
+              priority
+              className="mx-auto max-w-4xl"
+            />
           </div>
         </div>
       </section>

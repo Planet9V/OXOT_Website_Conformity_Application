@@ -100,6 +100,7 @@ export default function SuppliersSecurityIpPage() {
     pageSeo('/suppliers/security-ip', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/suppliers/sup-01-assurance-package.jpg',
     }),
   );
 

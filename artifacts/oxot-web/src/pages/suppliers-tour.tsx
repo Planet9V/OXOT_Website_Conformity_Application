@@ -159,7 +159,13 @@ export default function SuppliersTourPage() {
   const { locale } = useLocale();
   const t = copy[locale];
 
-  useSeo(pageSeo('/suppliers/tour', { title: t.seoTitle, description: t.seoDescription }));
+  useSeo(
+    pageSeo('/suppliers/tour', {
+      title: t.seoTitle,
+      description: t.seoDescription,
+      ogImage: '/media/suppliers/sup-01-assurance-package.jpg',
+    }),
+  );
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 max-w-6xl">

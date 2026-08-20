@@ -6,6 +6,7 @@ import { useSeo } from '@/hooks/use-seo';
 import { pageSeo } from '@/lib/page-seo';
 import { useLocale } from '@/providers/locale-provider';
 import { entranceVariants } from '@/lib/motion';
+import { SupplyChainDiagram } from '@/components/diagrams/supply-chain-diagram';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -122,6 +123,7 @@ export default function SolutionsHubPage() {
     pageSeo('/solutions', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/product/prod-command-center.jpg',
     }),
   );
 
@@ -133,6 +135,26 @@ export default function SolutionsHubPage() {
         icon={Layers}
         description={t.headerDescription}
       />
+
+      {/* The value chain — where each path sits before you pick yours */}
+      <div className="mb-10">
+        <SupplyChainDiagram
+          labels={
+            locale === 'nl'
+              ? {
+                  supplier: { title: 'Component- & IP-leverancier', duty: 'Publiceert het assurancebewijs' },
+                  manufacturer: { title: 'Fabrikant / integrator', duty: 'Draagt de CRA · CE-markeert het product' },
+                  operator: { title: 'Exploitant / asset owner', duty: 'Beheert het park (NIS2 21(2)(d))' },
+                }
+              : undefined
+          }
+          flowLabel={
+            locale === 'nl'
+              ? 'Bewijs stroomt stroomafwaarts — niemand draagt de plicht van een ander over'
+              : undefined
+          }
+        />
+      </div>
 
       {/* Obligation fork — self-select by what you do with the product */}
       <p className="oxot-kicker">{t.forkKicker}</p>

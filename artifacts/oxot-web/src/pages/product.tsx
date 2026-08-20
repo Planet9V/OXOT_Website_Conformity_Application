@@ -18,6 +18,7 @@ import { pageSeo } from '@/lib/page-seo';
 import { JsonLd } from '@/components/json-ld';
 import { useLocale } from '@/providers/locale-provider';
 import { revealVariants } from '@/lib/motion';
+import { ProductShot } from '@/components/product-shot';
 
 // Localised page copy (nl-NL professional register, "u"). Machine-assisted —
 // flag Dutch strings for a native reviewer before go-live. Structure mirrors the
@@ -185,6 +186,7 @@ export default function ProductPage() {
     pageSeo('/product', {
       title: t.seoTitle,
       description: t.seoDescription,
+      ogImage: '/media/product/prod-dossier.jpg',
     }),
   );
 
@@ -208,6 +210,25 @@ export default function ProductPage() {
         icon={Boxes}
         description={t.headerDescription}
       />
+
+      {/* Show the record: one product as a living dossier. */}
+      <div className="mb-14">
+        <ProductShot
+          src="/media/product/prod-dossier.jpg"
+          alt={
+            locale === 'nl'
+              ? 'Een productdossier: rol, type, versie, fabrikant en beoogd gebruik op één plek.'
+              : 'A product dossier: role, type, version, manufacturer and intended use in one record.'
+          }
+          caption={
+            locale === 'nl'
+              ? 'Eén product als levend dossier — rol, klasse en bewijs op één plek.'
+              : 'One product as a living dossier — role, class and evidence in one place.'
+          }
+          priority
+          className="mx-auto max-w-5xl"
+        />
+      </div>
 
       {/* Modules */}
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -252,6 +273,22 @@ export default function ProductPage() {
             <h3 className="font-display text-lg font-normal tracking-tight text-foreground">{t.currencyTitle}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.currencyBody}</p>
           </div>
+        </div>
+        <div className="mt-6">
+          <ProductShot
+            src="/media/product/prod-law.jpg"
+            alt={
+              locale === 'nl'
+                ? 'De wettenbibliotheek: de woordelijke CRA-tekst met index, artikel en kruisverwijzingen.'
+                : 'The statutory Library: the verbatim CRA text with its index, article and cross-references.'
+            }
+            caption={
+              locale === 'nl'
+                ? 'De wet zelf — woordelijk, geactualiseerd, en het zegt u nooit dat u conform bent.'
+                : 'The law itself — verbatim, as amended, and it never tells you you are compliant.'
+            }
+            className="mx-auto max-w-5xl"
+          />
         </div>
       </div>
 
