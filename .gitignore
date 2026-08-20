@@ -65,3 +65,7 @@ coverage/
 # references and typecheck fails with TS6305.
 *.tsbuildinfo
 artifacts_verify/
+
+# Editor workspace files and stray local scratch dirs (not project sources)
+*.code-workspace
+/images/
