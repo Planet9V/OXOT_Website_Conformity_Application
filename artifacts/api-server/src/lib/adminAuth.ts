@@ -82,14 +82,18 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 /** Verify a username/password pair against the configured admin credentials. */
 export function verifyCredentials(username: string, password: string): boolean {
-  const creds = getAdminCredentials();
-  if (!creds) {
+  try {
+    const creds = getAdminCredentials();
+    if (!creds) {
+      return false;
+    }
+    // Evaluate both comparisons unconditionally to avoid short-circuit timing leaks.
+    const usernameOk = timingSafeEqual(username, creds.username);
+    const passwordOk = timingSafeEqual(password, creds.password);
+    return usernameOk && passwordOk;
+  } catch {
     return false;
   }
-  // Evaluate both comparisons unconditionally to avoid short-circuit timing leaks.
-  const usernameOk = timingSafeEqual(username, creds.username);
-  const passwordOk = timingSafeEqual(password, creds.password);
-  return usernameOk && passwordOk;
 }
 
 /** Verify a username/password pair against the demo credentials. */

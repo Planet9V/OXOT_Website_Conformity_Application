@@ -61,10 +61,20 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // configured origin via ALLOWED_ORIGINS. Reflecting any origin with
 // credentials:true (the previous config) let any third-party site make
 // credentialed requests directly to the API, bypassing that same-origin setup.
-const allowedOrigins = (process.env["ALLOWED_ORIGINS"] ?? "")
+const explicitOrigins = (process.env["ALLOWED_ORIGINS"] ?? "")
   .split(",")
   .map((o) => o.trim())
   .filter(Boolean);
+const defaultOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "http://localhost:8088",
+  "http://127.0.0.1:8088",
+  ...(process.env["RAILWAY_PUBLIC_DOMAIN"] ? [`https://${process.env["RAILWAY_PUBLIC_DOMAIN"]}`] : []),
+  ...(process.env["RAILWAY_STATIC_URL"] ? [`https://${process.env["RAILWAY_STATIC_URL"]}`] : []),
+];
+const allowedOrigins = Array.from(new Set([...defaultOrigins, ...explicitOrigins]));
 app.use(
   cors({
     origin: (origin, callback) => {
