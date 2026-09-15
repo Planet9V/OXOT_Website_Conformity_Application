@@ -95,44 +95,44 @@
       "chapter_number": 5,
       "title": "Market Surveillance and EU Enforcement",
       "articles": [
-        { "id": "ART_52", "number": 52, "title": "Market surveillance and control of products entering the Union market", "recitals": [87, 88] },
-        { "id": "ART_53", "number": 53, "title": "Procedure for dealing with products presenting a cybersecurity risk", "recitals": [89, 90] },
-        { "id": "ART_54", "number": 54, "title": "Union safeguard procedure", "recitals": [91] },
-        { "id": "ART_55", "number": 55, "title": "Compliant products presenting a significant cybersecurity risk", "recitals": [92] },
-        { "id": "ART_56", "number": 56, "title": "Formal non-compliance", "recitals": [93] },
-        { "id": "ART_57", "number": 57, "title": "Joint activities of market surveillance authorities", "recitals": [94] },
-        { "id": "ART_58", "number": 58, "title": "Sweeps of products with digital elements", "recitals": [95] },
-        { "id": "ART_59", "number": 59, "title": "Cybersecurity emergency intervention", "recitals": [96] },
-        { "id": "ART_60", "number": 60, "title": "ADCO for the Cyber Resilience Act", "recitals": [97] },
-        { "id": "ART_61", "number": 61, "title": "Penalties", "recitals": [98, 99] },
-        { "id": "ART_62", "number": 62, "title": "Representative actions", "recitals": [100] },
-        { "id": "ART_63", "number": 63, "title": "Evaluation and review", "recitals": [101] }
+        { "id": "ART_52", "number": 52, "title": "Market surveillance and control of products with digital elements in the Union market", "recitals": [87, 88] },
+        { "id": "ART_53", "number": 53, "title": "Access to data and documentation", "recitals": [89, 90] },
+        { "id": "ART_54", "number": 54, "title": "Procedure at national level concerning products with digital elements presenting a significant cybersecurity risk", "recitals": [91] },
+        { "id": "ART_55", "number": 55, "title": "Union safeguard procedure", "recitals": [92] },
+        { "id": "ART_56", "number": 56, "title": "Procedure at Union level concerning products with digital elements presenting a significant cybersecurity risk", "recitals": [93] },
+        { "id": "ART_57", "number": 57, "title": "Compliant products with digital elements which present a significant cybersecurity risk", "recitals": [94] },
+        { "id": "ART_58", "number": 58, "title": "Formal non-compliance", "recitals": [95] },
+        { "id": "ART_59", "number": 59, "title": "Joint activities of market surveillance authorities", "recitals": [96] },
+        { "id": "ART_60", "number": 60, "title": "Sweeps", "recitals": [97] }
       ]
     },
     {
       "chapter_number": 6,
       "title": "Delegated Powers and Committee Procedure",
       "articles": [
-        { "id": "ART_64", "number": 64, "title": "Exercise of the delegation", "recitals": [102, 103] },
-        { "id": "ART_65", "number": 65, "title": "Committee procedure", "recitals": [104] },
-        { "id": "ART_66", "number": 66, "title": "Reporting by the Commission", "recitals": [105] }
+        { "id": "ART_61", "number": 61, "title": "Exercise of the delegation", "recitals": [102, 103] },
+        { "id": "ART_62", "number": 62, "title": "Committee procedure", "recitals": [104] }
       ]
     },
     {
       "chapter_number": 7,
       "title": "Confidentiality and Penalties",
       "articles": [
-        { "id": "ART_67", "number": 67, "title": "Confidentiality", "recitals": [106, 107] },
-        { "id": "ART_68", "number": 68, "title": "Penalties and administrative fines", "recitals": [108, 109, 110] }
+        { "id": "ART_63", "number": 63, "title": "Confidentiality", "recitals": [106, 107] },
+        { "id": "ART_64", "number": 64, "title": "Penalties", "recitals": [108, 109, 110] },
+        { "id": "ART_65", "number": 65, "title": "Representative actions", "recitals": [100] }
       ]
     },
     {
       "chapter_number": 8,
       "title": "Transitional and Final Provisions",
       "articles": [
+        { "id": "ART_66", "number": 66, "title": "Amendment to Regulation (EU) 2019/1020", "recitals": [101] },
+        { "id": "ART_67", "number": 67, "title": "Amendment to Directive (EU) 2020/1828", "recitals": [105] },
+        { "id": "ART_68", "number": 68, "title": "Amendment to Regulation (EU) No 168/2013", "recitals": [105] },
         { "id": "ART_69", "number": 69, "title": "Transitional provisions", "recitals": [111, 112, 113] },
-        { "id": "ART_70", "number": 70, "title": "Transposition and entry into force", "recitals": [114, 115] },
-        { "id": "ART_71", "number": 71, "title": "Application dates and timeline", "recitals": [116, 117, 118, 119, 120] }
+        { "id": "ART_70", "number": 70, "title": "Evaluation and review", "recitals": [114, 115] },
+        { "id": "ART_71", "number": 71, "title": "Entry into force and application", "recitals": [116, 117, 118, 119, 120] }
       ]
     }
   ],

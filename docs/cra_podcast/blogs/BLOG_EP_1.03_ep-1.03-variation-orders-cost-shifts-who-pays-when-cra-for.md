@@ -18,7 +18,7 @@ duration: "14:15"
 audio_url: "https://oxot.ai/audio/cra_podcast/EP_1.03.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-podcast.xml"
 date: "2026-08-14"
-keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "substantial modification", "variation orders", "EPC contracts", "PLC obsolescence", "FAT SAT re-validation", "Article 22", "Industrial OT Security", "CE Marking"]
+keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "substantial modification", "variation orders", "EPC contracts", "PLC obsolescence", "FAT SAT re-validation", "Article 22 deemed manufacturer", "Industrial OT Security", "Article 29 CE Marking"]
 takeaways: ["CRA change-in-law cost-sharing clauses", "FAT/SAT re-validation contingency budgeting", "Who inherits manufacturer obligations after a substantial modification"]
 ---
 
@@ -50,7 +50,7 @@ The Cyber Resilience Act — Regulation (EU) 2024/2847, in force since 10 Decemb
 
 A **substantial modification** is a change to a product with digital elements, *after* it has been placed on the market, that either affects its compliance with the essential cybersecurity requirements or changes the intended purpose for which it was assessed (Article 3(30)). That is the trigger. Cross it, and the product needs a fresh conformity assessment before it can be handed over.
 
-The half of this that most contracts miss is who becomes the manufacturer once that trigger is crossed. The CRA deems an importer or distributor to be the manufacturer when it substantially modifies a product already on the market (Article 21). Article 22 then reaches one step further: any *other* person — explicitly one other than the manufacturer, importer, or distributor — who carries out a substantial modification and makes the product available on the market is likewise deemed the manufacturer. That is the integrator or general contractor who reworks a supplied system and hands it over as a delivered skid. This is not analogy; it is black-letter text written for exactly this actor. The duties that transfer — technical file, conformity assessment, CE marking, and the Article 13 and 14 reporting obligations — attach to the part you modified, or to the whole product if your change affects its cybersecurity as a whole (Article 22(2)).
+The half of this that most contracts miss is who becomes the manufacturer once that trigger is crossed. The CRA deems an importer or distributor to be the manufacturer when it substantially modifies a product already on the market (Article 21). Article 22 then reaches one step further: any *other* person — explicitly one other than the manufacturer, importer, or distributor — who carries out a substantial modification and makes the product available on the market is likewise deemed the manufacturer. That is the integrator or general contractor who reworks a supplied system and hands it over as a delivered skid. This is not analogy; it is black-letter text written for exactly this actor. The duties that transfer — technical file, conformity assessment, CE marking under Article 29 and Article 30, and the Article 13 and 14 reporting obligations — attach to the part you modified, or to the whole product if your change affects its cybersecurity as a whole (Article 22(2)).
 
 > [!IMPORTANT]
 > If your team modifies a supplied product enough to affect its conformity, and then hands the result over as part of the works, you may be the manufacturer of that modified product in the eyes of the CRA — not the OEM whose logo is on the box. That is a liability transfer, not just a cost line.

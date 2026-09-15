@@ -354,6 +354,11 @@ const SOURCE_OF_TRUTH = /^docs\/(cra_sources|cra_statutory_corpus|nis2_statutory
  * codebase is mostly about.
  */
 function actForFile(relPath) {
+  // Podcast files are authored as part of the Cyber Resilience Act briefing series,
+  // even when comparing against NIS2 or other acts in an episode title.
+  if (relPath.startsWith("docs/cra_podcast/")) {
+    return { act: ACTS.cra };
+  }
   const base = relPath.split("/").pop() ?? relPath;
   for (const f of FILE_ACT) {
     if (!f.re.test(base)) continue;

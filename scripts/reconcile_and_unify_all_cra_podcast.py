@@ -99,7 +99,7 @@ Article 21 establishes that any natural or legal person who carries out a 'subst
 
 What is a substantial modification? It is any change that affects the product's cybersecurity compliance, introduces new attack surfaces, or modifies its intended purpose. If your engineers connect a legacy brownfield PLC to a cellular 4G gateway for remote telemetry, or modify the security architecture of an industrial skid, you have just legally stripped the original OEM of their liability and placed it squarely on your own company's balance sheet.
 
-That means your integration firm now owns the 10-year technical file, the mandatory 5-year security patch commitment, the 24-hour ENISA reporting clock, and the €15,000,000 fine exposure under Article 61.""",
+That means your integration firm now owns the 10-year technical file, the mandatory 5-year security patch commitment, the 24-hour ENISA reporting clock, and the €15,000,000 fine exposure under Article 64.""",
         "action_steps": [
             "Implement the 4-Gate Substantial Modification Test on every project engineering change order.",
             "Standardize on safe-harbor network isolation architectures that avoid altering native device threat models.",
@@ -193,7 +193,7 @@ The moment an OEM or software vendor identifies that a vulnerability in their pr
 
 Within 72 hours, a comprehensive notification containing forensic indicators of compromise, vulnerability classifications, and initial mitigation steps must be submitted. Within 14 days of a patch being released, a final closeout report is legally mandated.
 
-If your organization does not have an active Product Security Incident Response Team (PSIRT) with pre-configured legal workflows and API integrations to the ENISA portal, a zero-day discovered on a Friday afternoon will result in a statutory violation by Saturday evening, opening your executive leadership to fines of up to 10 million euros under Article 61.""",
+If your organization does not have an active Product Security Incident Response Team (PSIRT) with pre-configured legal workflows and API integrations to the ENISA portal, a zero-day discovered on a Friday afternoon will result in a statutory violation by Saturday evening, opening your executive leadership to fines of up to 10 million euros under Article 64.""",
         "action_steps": [
             "Establish a formal Product Security Incident Response Team (PSIRT) charter and 24/7 on-call rotation.",
             "Pre-register your organization on the ENISA Single Reporting Platform and national CSIRT notification portals.",
@@ -202,10 +202,10 @@ If your organization does not have an active Product Security Incident Response 
         ]
     },
     46: {
-        "intro": "Today, we are stepping directly into the boardroom and the C-suite to dissect the financial reality of non-compliance: Demystifying Article 61 Administrative Fines and Executive Liability.",
-        "core_argument": """When European regulatory enforcement is discussed in boardrooms, executives often draw comparisons to GDPR fines. But under Article 61 of the Cyber Resilience Act, the financial penalties are structured to hit hardware and industrial companies with unprecedented severity.
+        "intro": "Today, we are stepping directly into the boardroom and the C-suite to dissect the financial reality of non-compliance: Demystifying Article 64 Administrative Fines and Executive Liability.",
+        "core_argument": """When European regulatory enforcement is discussed in boardrooms, executives often draw comparisons to GDPR fines. But under Article 64 of the Cyber Resilience Act, the financial penalties are structured to hit hardware and industrial companies with unprecedented severity.
 
-Let's look at the three statutory fine tiers established in Article 61:
+Let's look at the three statutory fine tiers established in Article 64:
 Tier 1: Non-compliance with Essential Cybersecurity Requirements under Annex I or manufacturer obligations under Article 13 carries administrative fines of up to 15,000,000 euros or 2.5 percent of total worldwide annual turnover for the preceding financial year, whichever is higher.
 Tier 2: Breaches of other statutory obligations—including importer duties, distributor verification, and technical documentation maintenance—carry fines of up to 10,000,000 euros or 2 percent of global turnover.
 Tier 3: Supplying incorrect, incomplete, or misleading information to market surveillance authorities triggers fines of up to 5,000,000 euros or 1 percent of turnover.
@@ -257,7 +257,7 @@ Under European Union product harmonisation legislation, the obligations set fort
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with {statutes}, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover."""
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with {statutes}, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 64 reaching up to 15 million euros or 2.5 percent of global turnover."""
         step_items = f"""Step One: Audit your active product portfolios and contractual scopes governed by {statutes}.
 
 Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.

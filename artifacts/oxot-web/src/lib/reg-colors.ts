@@ -15,6 +15,8 @@ export const REG_HUE: Record<string, string> = {
   dora:      '47  95% 50%',   // Gold
   gpsr:      '355 76% 52%',   // Crimson
   data_act:  '82  68% 44%',   // Lime
+  cbw:       '210 85% 45%',   // Dutch Blue
+  bsig:      '43  85% 45%',   // Federal Gold / Ochre
 };
 
 export function regColor(key: string): string {

@@ -44,6 +44,7 @@ const copy = {
     packageLink: 'Assurance package view',
     framingTitle: 'The statutory frame, stated honestly',
     framingBody:
+      // honesty-ok: quotes the claim precisely to refuse it — explains that a capable supplier does not claim compliance.
       'When you license IP that is integrated downstream, the company that sells the finished product normally remains the CRA manufacturer — not you. But the CRA explicitly treats separately-placed hardware and software components as products with digital elements, and it binds the final-product manufacturer to two duties that reach straight back to your evidence: due diligence over integrated third-party components (Art 13(5)), and setting their own support period — generally at least five years — with the support periods of core components in view (Art 13(8)). A capable supplier does not claim its component makes the finished product “CRA compliant.” It provides the technical evidence, integration guidance, lifecycle transparency, and vulnerability cooperation the customer needs to evaluate and manage the component in their own conformity programme.',
     stepsTitle: 'The supplier assurance journey, per component',
     steps: [

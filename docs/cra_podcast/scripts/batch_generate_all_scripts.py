@@ -94,7 +94,7 @@ EPISODES_METADATA = [
         "title": "Support Periods & EOL: Defining Mandatory Patching Lifecycles",
         "slug": "EP_2.04_Support_Periods_and_EOL",
         "persona": "Product Managers & Engineering Leads",
-        "articles": "Article 13(8), Article 10",
+        "articles": "Article 13(8), Article 13",
         "summary": "Article 13(8) support period obligations. Defining expected product lifetime (minimum 5 years or expected use), security update delivery, and end-of-life disclosure.",
         "outro_variant": "support your products for life, patch without delay."
     },
@@ -105,7 +105,7 @@ EPISODES_METADATA = [
         "title": "Building a Compliant Product CSIRT: Article 14 Clocks & Downstream Supplier Obligations",
         "slug": "EP_2.05_Product_CSIRT_PSIRT_and_Supplier_Obligations",
         "persona": "CISOs, PSIRT Leads & Component Vendors",
-        "articles": "Articles 10(6), 14, 16",
+        "articles": "Articles 13(6), 14, 16",
         "summary": "Building an operational Product CSIRT / PSIRT program for 24h early warnings to ENISA's Single Reporting Platform. How downstream component, chip, and software vendors must provide contractual SBOMs and 24h disclosure SLAs.",
         "outro_variant": "build your PSIRT early, protect your supply chain."
     },
@@ -124,11 +124,11 @@ EPISODES_METADATA = [
         "id": "EP_3.02",
         "season": 3,
         "ep_num": 2,
-        "title": "The €15,000,000 Risk: Article 61 Fines & Executive Liability Explained",
+        "title": "The €15,000,000 Risk: Article 64 Fines & Executive Liability Explained",
         "slug": "EP_3.02_Article_61_Fines_Executive_Liability",
         "persona": "CISOs & Executive Leadership",
-        "articles": "Article 61, Article 62",
-        "summary": "Administrative fines up to €15M or 2.5% global turnover under Article 61. Personal executive liability, market surveillance authority enforcement, and financial risk models.",
+        "articles": "Article 64, Article 65",
+        "summary": "Administrative fines up to €15M or 2.5% global turnover under Article 64. Personal executive liability, market surveillance authority enforcement, and financial risk models.",
         "outro_variant": "quantify your risk early, protect your bottom line."
     },
     {
@@ -138,8 +138,8 @@ EPISODES_METADATA = [
         "title": "CE Marking Mechanics: Technical Documentation & EU Declaration of Conformity",
         "slug": "EP_3.03_CE_Marking_Mechanics",
         "persona": "Quality Assurance & Compliance Engineers",
-        "articles": "Article 25, Article 28, Annex V",
-        "summary": "Elements of the Technical File (Annex V), EU Declaration of Conformity template, 10-year retention rule, and physical/digital CE marking display.",
+        "articles": "Article 28, Article 31, Annex VII",
+        "summary": "Elements of the Technical File (Annex VII), EU Declaration of Conformity template, 10-year retention rule, and physical/digital CE marking display.",
         "outro_variant": "document your conformity, mark with authority."
     },
     {
@@ -161,7 +161,7 @@ EPISODES_METADATA = [
         "slug": "EP_4.01_Harmonised_European_Standards",
         "persona": "Standards Engineers & Regulatory Officers",
         "articles": "Article 27, CEN/CENELEC JTC 13",
-        "summary": "Standardization mandate M/596 to CEN/CENELEC. Presumption of conformity under Article 27 using ETSI EN 303 645, IEC 62443, and ISO/IEC 27001.",
+        "summary": "Standardization mandate M/606 to CEN/CENELEC and ETSI. Presumption of conformity under Article 27 using ETSI EN 303 645, IEC 62443, and ISO/IEC 27001.",
         "outro_variant": "align with standards, presume conformity."
     },
     {
@@ -260,7 +260,7 @@ Let's examine the statutory foundation in {meta['articles']}. The regulation req
 Translating that into engineering terms: {meta['summary']}
 
 [HOST 1 - ONYX]
-Remember, under Article 61, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
+Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.
 
 [HOST 2 - NOVA]
 Here's your 3-step technical action plan for this week:

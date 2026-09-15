@@ -27,7 +27,7 @@
 ### 1.3 Spotify Show Notes
 In this episode of The Cyber Resilience Act Briefing, we break down Article 27, CEN/CENELEC JTC 13 of Regulation (EU) 2024/2847. 
 
-Standardization mandate M/596 to CEN/CENELEC. Presumption of conformity under Article 27 using ETSI EN 303 645, IEC 62443, and ISO/IEC 27001.
+Standardization mandate M/606 to CEN/CENELEC and ETSI. Presumption of conformity under Article 27 using ETSI EN 303 645, IEC 62443, and ISO/IEC 27001.
 
 ⏱️ TIMESTAMPS:
 00:00 - Intro
@@ -53,7 +53,7 @@ And I'm Elena, product security engineer. Today we're diving into Harmonised Eur
 Let's examine the statutory foundation in Article 27, CEN/CENELEC JTC 13. The regulation requires clear evidence of compliance before placing products on the EU market.
 
 [HOST 2 - NOVA]
-Translating that into engineering terms: Standardization mandate M/596 to CEN/CENELEC. Presumption of conformity under Article 27 using ETSI EN 303 645, IEC 62443, and ISO/IEC 27001.
+Translating that into engineering terms: Standardization mandate M/606 to CEN/CENELEC and ETSI. Presumption of conformity under Article 27 using ETSI EN 303 645, IEC 62443, and ISO/IEC 27001.
 
 [HOST 1 - ONYX]
 Remember, under Article 64, administrative penalties reach up to 15 million euros or 2.5% of global turnover for non-compliance with essential security requirements.

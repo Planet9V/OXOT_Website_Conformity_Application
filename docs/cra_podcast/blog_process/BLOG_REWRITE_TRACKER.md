@@ -94,7 +94,7 @@ and its image slots are in `BLOG_IMAGE_MANIFEST.md`.
 - [x] NEWS_02 — The PSIRT mandate: the function, not the acronym (Annex I Part II/13(17))
 - [x] NEWS_03 — Downstream supplier flow-down: what components must deliver (Art 13/13(6)/Annex I Part II)
 - [x] NEWS_04 — CRA meets NIS2: dual incident-reporting clocks (Art 14 vs NIS2 Art 23/Art 16)
-- [x] NEWS_05 — Harmonised standards M/596 status: presumption not yet live (Art 27)
+- [x] NEWS_05 — Harmonised standards M/606 status: presumption not yet live (Art 27)
 
 ## Truth & Consequences (12 investigative edge-case posts) ✅ COMPLETE (grade A− both halves, zero material statutory errors; 12 garbage originals deleted; fixes applied)
 - [x] TC_01 — Edge-to-cloud grey zone / microservices & CE (Art 3(1) remote data processing, Art 3(30) substantial mod)

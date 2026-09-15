@@ -18,7 +18,7 @@ duration: "13:35"
 audio_url: "https://oxot.ai/audio/cra_podcast/TC_06.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-podcast.xml"
 date: "2026-08-14"
-keywords: ["CRA decommissioning", "end-of-life OT handover", "Article 13(8) support period", "Article 13(9) security update availability", "10-year retention CRA", "asset sale documentation transfer", "retiring critical OT", "secondary market industrial equipment", "product line divestiture CRA", "orphaned OT assets"]
+keywords: ["CRA decommissioning", "end-of-life OT handover", "support period lifecycle definition", "Article 13(9) security update 10-year availability", "asset sale documentation transfer", "retiring critical OT", "secondary market industrial equipment", "product line divestiture CRA", "orphaned OT assets"]
 takeaways: ["The CRA's retention and availability duties are anchored to placing-on-market and update-issuance dates, not to whether a unit is still in service, so decommissioning cannot end them", "Security updates issued during the support period must stay available for at least 10 years after issuance, or the remainder of the support period if that is longer, whether or not any unit is still running", "A clean handover carries the documentation and the update entitlement to the buyer; a manufacturer selling a product line transfers the still-running clocks with it as a due-diligence item"]
 ---
 

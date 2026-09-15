@@ -349,19 +349,6 @@ const STATUTORY_DATA: ChapterNode[] = [
         ieccMapping: "Emergency Incident Response",
         nis2Mapping: "NIS2 Art 33",
         aiActMapping: "EU AI Act Art 65"
-      },
-      {
-        id: "ART_61",
-        number: 61,
-        title: "Penalties and administrative fines",
-        chapter: "Chapter V",
-        recitals: [98, 99],
-        officialCitation: "OJ L 2024/2847, Art 61, p. 82",
-        summary: "Administrative fines up to €15,000,000 or 2.5% of global annual turnover for non-compliance with essential requirements.",
-        fullText: "Non-compliance with the essential cybersecurity requirements in Annex I shall be subject to administrative fines of up to 15 000 000 EUR or 2,5 % of total worldwide annual turnover.",
-        ieccMapping: "Regulatory Penalty Enforcement",
-        nis2Mapping: "NIS2 Art 34 Fines",
-        aiActMapping: "EU AI Act Art 99"
       }
     ]
   },
@@ -370,12 +357,12 @@ const STATUTORY_DATA: ChapterNode[] = [
     title: "Chapter VI — Delegated Powers & Committee Procedure",
     articles: [
       {
-        id: "ART_64",
-        number: 64,
+        id: "ART_61",
+        number: 61,
         title: "Exercise of the delegation",
         chapter: "Chapter VI",
         recitals: [102],
-        officialCitation: "OJ L 2024/2847, Art 64, p. 86",
+        officialCitation: "OJ L 2024/2847, Art 61, p. 74",
         summary: "Empowers European Commission to adopt delegated acts specifying important/critical product lists.",
         fullText: "The power to adopt delegated acts is conferred on the Commission subject to the conditions laid down in this Article.",
         ieccMapping: "EU Harmonization Updates",
@@ -389,17 +376,30 @@ const STATUTORY_DATA: ChapterNode[] = [
     title: "Chapter VII — Confidentiality & Penalties",
     articles: [
       {
-        id: "ART_67",
-        number: 67,
+        id: "ART_63",
+        number: 63,
         title: "Confidentiality",
         chapter: "Chapter VII",
         recitals: [106],
-        officialCitation: "OJ L 2024/2847, Art 67, p. 88",
+        officialCitation: "OJ L 2024/2847, Art 63, p. 76",
         summary: "Authorities and notified bodies shall preserve business secrecy and trade confidentiality.",
-        fullText: "All parties shall respect the confidentiality of information and data obtained in carrying out their tasks in order to protect trade secrets and personal data.",
+        fullText: "All parties involved in the application of this Regulation shall respect the confidentiality of information and data obtained in carrying out their tasks and activities in such a manner as to protect trade secrets and personal data.",
         ieccMapping: "ISO 27001 Information Protection",
         nis2Mapping: "NIS2 Art 37",
         aiActMapping: "EU AI Act Art 78"
+      },
+      {
+        id: "ART_64",
+        number: 64,
+        title: "Penalties and administrative fines",
+        chapter: "Chapter VII",
+        recitals: [108, 109, 110],
+        officialCitation: "OJ L 2024/2847, Art 64, pp. 76-78",
+        summary: "Administrative fines up to €15,000,000 or 2.5% of global annual turnover for non-compliance with essential requirements (Annex I) and Articles 13 & 14.",
+        fullText: "Non-compliance with the essential cybersecurity requirements set out in Annex I and the obligations set out in Articles 13 and 14 shall be subject to administrative fines of up to EUR 15 000 000 or, if the offender is an undertaking, up to 2,5 % of its total worldwide annual turnover for the preceding financial year, whichever is higher.",
+        ieccMapping: "Regulatory Penalty Enforcement",
+        nis2Mapping: "NIS2 Art 34 Fines",
+        aiActMapping: "EU AI Act Art 99"
       }
     ]
   },

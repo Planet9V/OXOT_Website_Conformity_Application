@@ -128,3 +128,22 @@ describe("multiple incidents", () => {
     expect(r.findings.every((f) => f.incidentTitle.length > 0)).toBe(true);
   });
 });
+
+describe("SME early warning derogation under Article 64(10)(a)", () => {
+  it("protects micro/small enterprises from early warning overdue status within the 72h notification window", () => {
+    // earlyWarningDueAt was 2026-08-10, notificationDueAt is 2026-08-12. NOW is 2026-08-11T12:00:00Z (between 24h and 72h)
+    const midWindow = new Date("2026-08-11T12:00:00Z");
+    const inc = incident({
+      earlyWarningDueAt: "2026-08-10T00:00:00Z",
+      notificationDueAt: "2026-08-12T00:00:00Z",
+    });
+
+    const standard = assessReportingObligation([inc], [], midWindow);
+    expect(standard.findings.find((f) => f.stage === "early_warning")!.overdue).toBe(true);
+
+    const sme = assessReportingObligation([inc], [], midWindow, { isMicroOrSmallEnterprise: true });
+    const ewFinding = sme.findings.find((f) => f.stage === "early_warning")!;
+    expect(ewFinding.overdue).toBe(false);
+    expect(ewFinding.smeDerogationApplied).toBe(true);
+  });
+});

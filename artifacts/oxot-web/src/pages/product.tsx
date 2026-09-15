@@ -285,6 +285,7 @@ export default function ProductPage() {
             caption={
               locale === 'nl'
                 ? 'De wet zelf — woordelijk, geactualiseerd, en het zegt u nooit dat u conform bent.'
+                // honesty-ok: quotes the claim precisely to refuse it — caption explicitly states the statute never tells you you are compliant.
                 : 'The law itself — verbatim, as amended, and it never tells you you are compliant.'
             }
             className="mx-auto max-w-5xl"

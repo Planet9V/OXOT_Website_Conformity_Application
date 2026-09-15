@@ -1,9 +1,9 @@
-# [CRA News Briefing 05] Harmonised European Standards: CEN/CENELEC Mandate M/596 Progress
+# [CRA News Briefing 05] Harmonised European Standards: CEN/CENELEC Mandate M/606 Progress
 
 > **Format:** 2-Minute Executive News Briefing  
 > **Presenter:** Jim Mckenney (Digital Product Security Consultant)  
 > **Series:** The CRA Briefing — Industry News Stream  
-> **Focus:** Standardization Mandate M/596, Presumption of Conformity, and ETSI EN 303 645 / IEC 62443 Alignment
+> **Focus:** Standardization Mandate M/606 (C(2025) 618), Presumption of Conformity, and ETSI EN 303 645 / IEC 62443 Alignment
 
 ---
 
@@ -12,7 +12,7 @@
 [JIM MCKENNEY]
 Welcome back to The CRA Briefing. I'm Jim Mckenney with an executive news update on European harmonised standards under Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven]. Standard disclaimer: this news briefing provides technical commentary, not formal legal advice.
 
-Our top story covers the ongoing work by CEN and CENELEC under European Commission Standardization Mandate M/596.
+Our top story covers the ongoing work by CEN, CENELEC, and ETSI under European Commission Standardization Mandate M/606.
 
 For hardware OEMs and software developers, harmonised European standards are the holy grail of CRA compliance. Under Article 27, if your product complies with a published harmonised standard referenced in the Official Journal of the European Union, your product gains automatic "presumption of conformity" with Annex I essential requirements.
 

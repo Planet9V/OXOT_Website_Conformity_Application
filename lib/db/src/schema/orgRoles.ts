@@ -139,7 +139,16 @@ export const CANONICAL_ROLES = [
     craArticle: null,
     summary:
       "Owns and operates the equipment in service. Carries NIS2 duties as an essential or important entity and AI Act duties as a deployer; the CRA binds its suppliers, not it.",
-    termFor: { nis2: "essential or important entity", ai_act: "deployer", gdpr: "controller or processor", iec_62443: "asset owner" },
+    termFor: {
+      nis2: "essential or important entity",
+      ai_act: "deployer",
+      gdpr: "controller or processor",
+      iec_62443: "asset owner",
+      cbw: "essentiële of belangrijke entiteit",
+      bsig: "besonders wichtige oder wichtige Einrichtung",
+      dora: "financial entity",
+      cer: "critical entity",
+    },
   },
 ] as const;
 

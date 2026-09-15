@@ -37,7 +37,9 @@ Start with what the CRA actually requires, because most of the market misremembe
 
 The "five years" everyone quotes is a floor, not a ceiling. A manufacturer selling a controller destined for a twenty-five-year process asset is explicitly told to consider that expected in-use time when setting the period. Nothing stops them from declaring ten, fifteen, twenty years — and nothing but commercial pressure makes them. Left to default, many will anchor on the statutory minimum.
 
-Two adjacent obligations matter for planning. Article 13(9) says any security update issued during the support period has to stay *available* for at least ten years after it ships, or the rest of the support period if that's longer — so the fixes you already have don't vanish, even though new ones stop. And Article 13(19) requires the manufacturer to state the support period's **end date**, down to at least the month and year, clearly and at the time of purchase. That last one is the lever you have at the buying table: the expiry date is not a surprise you discover in year six. It is a number you can read on day one and design around.
+Two adjacent obligations matter for planning. Article 13(9) says any security update issued during the support period has to stay *available* for at least ten years after it ships, or the rest of the support period if that's longer — so the fixes you already have don't vanish, even though new ones stop.
+
+Separately, Article 13(19) requires the manufacturer to state the support period's **end date**, down to at least the month and year, clearly and at the time of purchase. That last one is the lever you have at the buying table: the expiry date is not a surprise you discover in year six. It is a number you can read on day one and design around.
 
 ## Where the gap actually opens
 

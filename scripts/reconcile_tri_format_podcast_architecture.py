@@ -131,7 +131,7 @@ Under European Union product harmonisation legislation, the obligations set fort
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with {statutes_str}, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 61 reaching up to 15 million euros or 2.5 percent of global turnover.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with {statutes_str}, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 64 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
@@ -219,7 +219,7 @@ TC_EPISODES = [
         "title": "The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks",
         "statutes": "Article 3(2), Article 21, Annex I Part I §1",
         "myth": "Cloud container updates to an edge gateway are purely IT operations and have nothing to do with physical machine CE marking.",
-        "financial_truth": "A single unauthorized container push altering PLC communications voids the OEM's Declaration of Conformity and exposes the deploying cloud integrator to Article 61 fines up to €15,000,000 or 2.5% of global turnover.",
+        "financial_truth": "A single unauthorized container push altering PLC communications voids the OEM's Declaration of Conformity and exposes the deploying cloud integrator to Article 64 fines up to €15,000,000 or 2.5% of global turnover.",
         "perspectives": "Cloud developers view weekly OTA pushes as agile best practice. Plant engineers view non-deterministic microservice updates as unvetted cyber hazards. European market surveillance treats the container deployer as the new legal Manufacturer under Article 21.",
         "facts": "Under Article 3(2) and Article 21, software updates that alter cybersecurity properties or intended use constitute Substantial Modifications. If an edge container changes how a physical skid responds to commands, the CE mark on that cabinet is legally dead.",
         "inconvenient_truth": "There are no agile shortcuts. If you push containers to edge OT, you must maintain deterministic container signing, Purdue Level 2 isolation, and an immutable Annex VII technical dossier."
@@ -228,7 +228,7 @@ TC_EPISODES = [
         "num": 2,
         "code": "TC_02",
         "title": "The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?",
-        "statutes": "Article 13(8), Article 61, NIS2 Article 21",
+        "statutes": "Article 13(8), Article 64, NIS2 Article 21",
         "myth": "If the automation manufacturer went out of business, the asset owner is legally off the hook for unpatched vulnerabilities.",
         "financial_truth": "Under NIS2 Article 21, critical infrastructure operators face administrative fines up to €10,000,000 or 2% of turnover if they operate systems with known, unmitigated critical zero-days, regardless of whether the OEM is bankrupt or dead.",
         "perspectives": "Asset owners blame the defunct OEM for abandoning support. European regulators state that operational entity security cannot be excused by vendor bankruptcy. Insurers refuse to pay out claims for unshielded orphan hardware.",
@@ -274,7 +274,7 @@ TC_EPISODES = [
         "title": "The Decommissioning & End-of-Life Handover: Legal Liabilities When Retiring Critical OT",
         "statutes": "Article 13(9), Annex VII, Recital 32",
         "myth": "Once an industrial machine is decommissioned or auctioned off, the manufacturer and operator have zero ongoing CRA legal obligations.",
-        "financial_truth": "Article 13(9) legally mandates 10 years of technical dossier and SBOM retention after the last unit was placed on the market. Failure to produce records during an inquiry triggers Article 61 fines.",
+        "financial_truth": "Article 13(9) legally mandates 10 years of technical dossier and SBOM retention after the last unit was placed on the market. Failure to produce records during an inquiry triggers Article 64 fines.",
         "perspectives": "Plant managers view asset retirement as simple scrap removal. Legal and forensic authorities view retired machines as evidence vaults that can expose historical corporate non-compliance during investigations.",
         "facts": "Retiring a product line does not extinguish the 10-year technical file retention rule, nor does it excuse failure to sanitize cryptographic credentials before equipment enters the secondary resale market.",
         "inconvenient_truth": "You cannot shred your compliance files when you shut down a line. End-of-life requires cryptographic key zeroization certificates and immutable 10-year digital archiving."
@@ -338,7 +338,7 @@ TC_EPISODES = [
         "num": 12,
         "code": "TC_12",
         "title": "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies",
-        "statutes": "Article 61, EU Product Liability Directive 2024, Recital 34",
+        "statutes": "Article 64, EU Product Liability Directive 2024, Recital 34",
         "myth": "Corporate Cyber Insurance and Tech E&O policies will cover the costs if a product suffers a major security breach or regulatory fine.",
         "financial_truth": "Insurance syndicates are adding explicit CRA Compliance Conditions Precedent: if forensic investigation proves an OEM failed to maintain an SBOM or missed the 24h ENISA clock, 100% of the claim is denied.",
         "perspectives": "Corporate boards assume insurance provides a financial safety net. Underwriters are using CRA compliance records as strict warranty gates to deny payouts on non-compliant insureds.",

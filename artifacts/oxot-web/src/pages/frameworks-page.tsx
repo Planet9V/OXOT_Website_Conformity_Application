@@ -28,11 +28,11 @@ type Role = {
 
 // Visible role labels live in copy.roles (position-aligned with this array).
 const ROLES: Role[] = [
-  { id: 'operator',  frameworks: ['nis2', 'iec'] },
+  { id: 'operator',  frameworks: ['nis2', 'iec', 'cbw', 'bsig', 'cer'] },
   { id: 'product',   frameworks: ['cra', 'ai-act', 'iec'] },
   { id: 'machinery', frameworks: ['machinery', 'cra', 'iec'] },
   { id: 'ai',        frameworks: ['ai-act', 'cra'] },
-  { id: 'rail',      frameworks: ['nis2', 'iec', 'cra'] },
+  { id: 'rail',      frameworks: ['nis2', 'iec', 'cra', 'cer'] },
 ];
 
 // framework → human label mapping for the role summary
@@ -44,6 +44,10 @@ const FRAMEWORK_LABELS: Record<string, string> = {
   machinery:'Machinery Regulation',
   red:      'Radio Equipment Directive',
   gdpr:     'GDPR',
+  cer:      'CER Directive',
+  dora:     'DORA Regulation',
+  cbw:      'Cyberbeveiligingswet (NL)',
+  bsig:     'BSIG / NIS2UmsuCG (DE)',
 };
 
 // ─── Localised page copy ─────────────────────────────────────────────────────

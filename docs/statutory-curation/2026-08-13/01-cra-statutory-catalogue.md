@@ -45,18 +45,24 @@ This v2 enhanced catalogue provides exhaustive legal text coverage, technical re
 ### Chapter IV: Notification of Conformity Assessment Bodies (Articles 35–51)
 - **Articles 35–51**: Designation of notifying authorities, requirements for notified bodies (impartiality, technical competence, independence), challenge procedures, and operational obligations. [`OJ L 2024/2847, Art 35-51`]
 
-### Chapter V: Market Surveillance & EU Enforcement (Articles 52–63)
+### Chapter V: Market Surveillance & EU Enforcement (Articles 52–60)
 - **Articles 52–60**: Market surveillance procedures under Regulation (EU) 2019/1020, safeguard mechanisms, joint surveillance sweeps, and emergency intervention powers. [`OJ L 2024/2847, Art 52-60`]
-- **Article 64 (Penalties & Fines)**:
-  - Fines up to **€15,000,000 or 2.5% of total global annual turnover** for non-compliance with Annex I essential requirements.
-  - Fines up to **€10,000,000 or 2% of global annual turnover** for non-compliance with economic operator obligations.
-  - Fines up to **€5,000,000 or 1% of global annual turnover** for supplying incorrect, incomplete, or misleading information to authorities. [`OJ L 2024/2847, Art 61`]
-- **Article 62 & 63 (Representative Actions & Review)**: Representative actions under Directive (EU) 2020/1828 and 36-month Commission review. [`OJ L 2024/2847, Art 62-63`]
 
-### Chapters VI–VIII: Final Provisions (Articles 64–71)
-- **Articles 64–68**: Delegated acts, committee procedures, confidentiality protection for trade secrets, and national penalties. [`OJ L 2024/2847, Art 64-68`]
-- **Article 69 (Transitional Provisions)**: Products placed on market before 10 December 2027 exempt unless substantially modified. [`OJ L 2024/2847, Art 69`]
-- **Article 70 & 71 (Application Dates)**: Entry into force on 10 December 2024. Article 14 PSIRT reporting applies on **10 September 2026** (21 months). General CRA requirements apply on **10 December 2027** (36 months). [`OJ L 2024/2847, Art 70-71`]
+### Chapter VI: Delegated Powers & Committee Procedure (Articles 61–62)
+- **Articles 61–62**: Exercise of the delegation conferred on the Commission and committee procedure. [`OJ L 2024/2847, Art 61-62`]
+
+### Chapter VII: Confidentiality & Penalties (Articles 63–65)
+- **Article 63**: Confidentiality of intellectual property, trade secrets, and sensitive security data. [`OJ L 2024/2847, Art 63`]
+- **Article 64 (Penalties & Fines)**:
+  - Fines up to **€15,000,000 or 2.5% of total global annual turnover** for non-compliance with Annex I essential requirements and Articles 13 & 14.
+  - Fines up to **€10,000,000 or 2% of global annual turnover** for non-compliance with economic operator obligations.
+  - Fines up to **€5,000,000 or 1% of global annual turnover** for supplying incorrect, incomplete, or misleading information to authorities. [`OJ L 2024/2847, Art 64`]
+- **Article 65 (Representative Actions)**: Representative actions under Directive (EU) 2020/1828. [`OJ L 2024/2847, Art 65`]
+
+### Chapter VIII: Transitional & Final Provisions (Articles 66–71)
+- **Articles 66–68**: Amendments to Regulation (EU) 2019/1020, Directive (EU) 2020/1828, and Regulation (EU) No 168/2013. [`OJ L 2024/2847, Art 66-68`]
+- **Article 69 (Transitional Provisions)**: Products placed on market before 11 December 2027 exempt unless substantially modified. [`OJ L 2024/2847, Art 69`]
+- **Article 70 & 71 (Application Dates)**: Entry into force on 10 December 2024. Article 14 PSIRT reporting applies on **11 September 2026** (21 months). General CRA requirements apply on **11 December 2027** (36 months). [`OJ L 2024/2847, Art 70-71`]
 
 ---
 

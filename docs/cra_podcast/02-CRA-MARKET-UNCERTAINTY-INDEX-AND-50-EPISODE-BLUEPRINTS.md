@@ -488,7 +488,7 @@ Organized into **8 Thematic Miniseries** addressing every persona, sector, and c
 - **Actionable Takeaways:** Technical file contents checklist; cryptographic hashing of compliance packages; automated archival infrastructure.
 
 #### EP_7.05 (Episode 44): *Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)*
-- **Core Statute:** Article 34, European Commission Standardisation Request M/596.
+- **Core Statute:** Article 34, European Commission Standardisation Request M/606.
 - **Target Persona & Sector:** Standards Engineers, Chief Architects, Regulatory Officers.
 - **The Central Dilemma:** When CEN/CENELEC publishes harmonised European standards, complying with them grants legal "Presumption of Conformity." How to align product development with emerging JTC 13 drafts?
 - **Key Spoken Hook:** *"The golden ticket of European compliance: how harmonised standards turn a subjective regulatory audit into an objective engineering checklist."*

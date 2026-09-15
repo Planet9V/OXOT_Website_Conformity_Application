@@ -18,7 +18,7 @@ duration: "14:15"
 audio_url: "https://oxot.ai/audio/cra_podcast/EP_2.01.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-podcast.xml"
 date: "2026-08-14"
-keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "system integrator", "deemed manufacturer", "substantial modification", "Article 22", "custom SCADA", "edge gateway", "IEC 62443", "Industrial OT Security", "CE Marking"]
+keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "system integrator", "deemed manufacturer", "substantial modification", "Article 22 deemed manufacturer", "custom SCADA", "edge gateway", "IEC 62443", "Industrial OT Security", "Article 29 CE Marking"]
 takeaways: ["The substantial-modification test applied to integration work", "Safe-harbor integration architectures that keep component CE marks valid", "Customer acceptance sign-offs that record intended purpose per component"]
 ---
 
@@ -60,7 +60,7 @@ The pattern is clean once you see it. Screwing certified things together is asse
 
 Here is the detail that turns an academic distinction into a board-level number. Integrators who have read the regulation tend to assume they sit in the *operator* tier — the importer-and-distributor duties, where administrative fines top out at €10 million or 2% of worldwide turnover. That is the wrong shelf.
 
-The moment Article 22 deems you the manufacturer, it drags in the manufacturer's substantive obligations: the full design, documentation, and conformity duties of **Article 13**, and the incident and vulnerability reporting duties of **Article 14** that begin applying on 11 September 2026, ahead of the general 11 December 2027 date for CE marking. Non-compliance with those two articles and the Annex I essential requirements is the *top* penalty band — €15 million or 2.5% of worldwide turnover. You didn't step up one tier by accident. You stepped up to the ceiling.
+The moment Article 22 deems you the manufacturer, it drags in the manufacturer's substantive obligations: the full design, documentation, and conformity duties of **Article 13**, and the incident and vulnerability reporting duties of **Article 14** that begin applying on 11 September 2026, ahead of the general 11 December 2027 date for CE marking under Article 29 and Article 30. Non-compliance with those two articles and the Annex I essential requirements is the *top* penalty band — €15 million or 2.5% of worldwide turnover. You didn't step up one tier by accident. You stepped up to the ceiling.
 
 And the fine is the least of it. The manufacturer owns the vulnerability-handling duty for the supported lifetime of the product — a coordinated disclosure channel, an SBOM you keep current, and a 24-hour clock on actively exploited flaws. That is a standing operational function, not a line you close out at handover. It is also where the money quietly goes: a first-pass CRA gap assessment for a mid-sized industrial firm already lands at €50,000–€150,000, and that is before you have stood up a single reporting channel. The OEM whose logo is on the PLC does not absorb any of this for the *composite* you built. Their conformity covers their box, assessed for their intended purpose. The system you assembled and re-tasked is yours.
 

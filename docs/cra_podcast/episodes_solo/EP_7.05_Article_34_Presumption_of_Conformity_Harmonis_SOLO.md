@@ -5,7 +5,7 @@
 > - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 7: Conformity Assessment, Audits & CE Marking
 > - **Canonical Code:** `EP_7.05` (Global Episode 44)
-> - **Statutory References:** Article 34, Standardisation Request M/596
+> - **Statutory References:** Article 34, Standardisation Request M/606
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** Standards Engineers & Chief Architects
 > - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
@@ -20,7 +20,7 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)
-01:30 - Statutory Architecture & Requirements (Article 34, Standardisation Request M/596)
+01:30 - Statutory Architecture & Requirements (Article 34, Standardisation Request M/606)
 05:15 - Operational Impact & Industry Analysis (Standards Engineers & Chief Architects)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
@@ -40,19 +40,19 @@ Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital pro
 
 Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13).
 
-Let's ground our discussion in the exact statutory text of Article 34, Standardisation Request M/596.
+Let's ground our discussion in the exact statutory text of Article 34, Standardisation Request M/606.
 
-When we examine the operational, commercial, and engineering reality of Standards Engineers & Chief Architects, the central challenge under Article 34, Standardisation Request M/596 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
+When we examine the operational, commercial, and engineering reality of Standards Engineers & Chief Architects, the central challenge under Article 34, Standardisation Request M/606 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Under European Union product harmonisation legislation, the obligations set forth in Article 34, Standardisation Request M/596 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
+Under European Union product harmonisation legislation, the obligations set forth in Article 34, Standardisation Request M/606 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
-If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 34, Standardisation Request M/596, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 64 reaching up to 15 million euros or 2.5 percent of global turnover.
+If an organization fails to align its design practices, technical documentation, software supply-chain tracking, and incident response playbooks with Article 34, Standardisation Request M/606, it faces immediate market access restrictions, mandatory product recalls, and severe administrative penalties under Article 64 reaching up to 15 million euros or 2.5 percent of global turnover.
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step One: Audit your active product portfolios and contractual scopes governed by Article 34, Standardisation Request M/596.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 34, Standardisation Request M/606.
 
 Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 

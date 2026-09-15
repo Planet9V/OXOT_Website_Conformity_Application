@@ -83,12 +83,12 @@ const regulations: InsertRegulation[] = [
       "Regulation (EU) 2023/1230 on machinery, repealing Directive 2006/42/EC",
     jurisdiction: "European Union",
     summary:
-      "Essential health and safety requirements for machinery, now including explicit cybersecurity provisions for safety-related control systems (protection against corruption, reliability of control systems). Requires a technical file, risk assessment, EU Declaration of Conformity, and — for high-risk categories — third-party conformity assessment.",
+      "Essential health and safety requirements for machinery, now including explicit cybersecurity provisions for safety-related control systems (protection against corruption, reliability of control systems). Critical temporal sequencing: applies on 20 January 2027 — nearly 11 months before the CRA (11 December 2027). Control systems protection against accidental or intentional corruption (Annex III 1.1.9) is mandatory for machinery CE marking in early 2027 and serves as an operational prerequisite to later CRA CE marking.",
     inForceDate: "2023-07-19",
     sourceUrl: "https://eur-lex.europa.eu/eli/reg/2023/1230/oj",
     keyDates: [
       { date: "2023-07-19", label: "Machinery Regulation enters into force" },
-      { date: "2027-01-20", label: "Full application — repeals Directive 2006/42/EC" },
+      { date: "2027-01-20", label: "Full application — repeals Directive 2006/42/EC (applies 11 months before CRA; cybersecurity mandatory)" },
     ],
     sortOrder: 3,
   },
@@ -234,6 +234,42 @@ const regulations: InsertRegulation[] = [
     ],
     sortOrder: 11,
   },
+  {
+    key: "cbw",
+    name: "Dutch Cyberbeveiligingswet",
+    shortName: "CBW",
+    fullTitle:
+      "Wet van 2026 tot vaststelling van regels ter implementatie van Richtlijn (EU) 2022/2555 (Cyberbeveiligingswet)",
+    jurisdiction: "Netherlands",
+    summary:
+      "The Dutch national transposition of the NIS2 Directive (Kamerstukken 36 575 / Stb-2026-187). Imposes statutory duty of care (zorgplicht), board liability and governance (bestuursaansprakelijkheid), supply chain risk controls, and mandatory 24h early warning / 72h notification to the CSIRT (NCSC-NL) and the competent supervisory authorities (RDI, DNB, IGJ, ILT).",
+    inForceDate: "2026-07-01",
+    sourceUrl: "https://zoek.officielebekendmakingen.nl/stb-2026-187.html",
+    keyDates: [
+      { date: "2024-06-04", label: "Bill submitted to House of Representatives (Kamerstukken 36 575)" },
+      { date: "2026-04-15", label: "Tweede Kamer approves Cyberbeveiligingswet" },
+      { date: "2026-07-01", label: "Target entry into force (Stb-2026-187)" },
+    ],
+    sortOrder: 12,
+  },
+  {
+    key: "bsig",
+    name: "German BSIG (NIS2UmsuCG)",
+    shortName: "BSIG",
+    fullTitle:
+      "Gesetz über das Bundesamt für Sicherheit in der Informationstechnik (BSI-Gesetz) idF des NIS-2-Umsetzungs- und Cybersicherheitsstärkungsgesetzes",
+    jurisdiction: "Germany",
+    summary:
+      "The German national transposition of NIS2 through the comprehensive reform of the BSI-Act (BSIG / NIS2UmsuCG, BJNR12D0B0025). Designates particularly important (besonders wichtige) and important (wichtige) entities across critical sectors, mandating state-of-the-art risk management (§ 30), strict 24h/72h/1m reporting to BSI (§ 31), mandatory BSI registration (§ 33), and direct personal management liability (§ 38).",
+    inForceDate: "2026-05-01",
+    sourceUrl: "https://www.recht.bund.de/eli/bund/bgbl-1/2026/123",
+    keyDates: [
+      { date: "2024-10-17", label: "EU NIS2 transposition deadline" },
+      { date: "2025-11-06", label: "Bundestag passage of NIS2UmsuCG" },
+      { date: "2026-05-01", label: "German BSIG reform applies" },
+    ],
+    sortOrder: 13,
+  },
 ];
 
 const themes: InsertConformityTheme[] = [
@@ -279,6 +315,17 @@ const productClasses: InsertProductClass[] = [
   { regulationKey: "nis2", key: "essential", name: "Essential entity", description: "Large entities in Annex I high-criticality sectors (energy, transport, banking, water, health, digital infrastructure, public administration, space). Subject to proactive (ex-ante) supervision.", riskLevel: "essential", defaultRouteKey: "ex_ante_supervision", sortOrder: 1 },
   { regulationKey: "nis2", key: "important", name: "Important entity", description: "Medium-sized entities in Annex I sectors and entities in Annex II other critical sectors (postal, waste, chemicals, food, manufacturing, digital providers, research). Subject to ex-post supervision.", riskLevel: "important", defaultRouteKey: "ex_post_supervision", sortOrder: 2 },
   { regulationKey: "nis2", key: "out_of_scope", name: "Out of scope", description: "Micro and small entities not otherwise designated, and entities outside Annex I/II sectors. No direct NIS2 obligations, though supply-chain expectations may still flow down.", riskLevel: "n/a", defaultRouteKey: null, sortOrder: 3 },
+  // DORA
+  { regulationKey: "dora", key: "financial_entity", name: "Financial entity", description: "Credit institutions, payment institutions, electronic money institutions, investment firms, and insurance undertakings directly regulated under DORA.", riskLevel: "critical", defaultRouteKey: null, sortOrder: 1 },
+  { regulationKey: "dora", key: "critical_ict_third_party", name: "Critical ICT third-party provider", description: "Designated cloud, software, and data service providers subject to direct European Supervisory Authority (ESA) oversight.", riskLevel: "critical", defaultRouteKey: null, sortOrder: 2 },
+  // CER
+  { regulationKey: "cer", key: "critical_entity", name: "Critical entity", description: "Entities identified by Member States pursuant to Article 6 providing essential services across 11 critical physical sectors.", riskLevel: "essential", defaultRouteKey: null, sortOrder: 1 },
+  // CBW (Netherlands)
+  { regulationKey: "cbw", key: "essentieel", name: "Essentiële entiteit", description: "Cruciale entiteiten in Annex I sectoren onder direct ex-ante toezicht van de Rijksinspectie Digitale Infrastructuur (RDI).", riskLevel: "essential", defaultRouteKey: "ex_ante_supervision", sortOrder: 1 },
+  { regulationKey: "cbw", key: "belangrijk", name: "Belangrijke entiteit", description: "Entiteiten in overige kritieke sectoren onder reactief ex-post toezicht.", riskLevel: "important", defaultRouteKey: "ex_post_supervision", sortOrder: 2 },
+  // BSIG (Germany)
+  { regulationKey: "bsig", key: "besonders_wichtig", name: "Besonders wichtige Einrichtung", description: "Einrichtungen nach § 28 Abs. 1 BSIG idF NIS2UmsuCG unter proaktiver Aufsicht des BSI.", riskLevel: "essential", defaultRouteKey: "ex_ante_supervision", sortOrder: 1 },
+  { regulationKey: "bsig", key: "wichtig", name: "Wichtige Einrichtung", description: "Einrichtungen nach § 28 Abs. 2 BSIG idF NIS2UmsuCG unter reaktiver Aufsicht des BSI.", riskLevel: "important", defaultRouteKey: "ex_post_supervision", sortOrder: 2 },
 ];
 
 const conformityRoutes: InsertConformityRoute[] = [
@@ -343,7 +390,8 @@ const cra: Req[] = [
   { refCode: "Art 13(6)", themeKey: "vulnerability_handling", title: "Notify the maker of a vulnerable component", description: "Upon identifying a vulnerability in a component, including an open-source component, report the vulnerability to the person or entity manufacturing or maintaining the component, address and remediate it, and where a modification is developed, share the relevant code or documentation with that person or entity.", obligationType: "process", appliesTo: ["manufacturer"] },
   { refCode: "Annex II", themeKey: "technical_documentation", title: "User information and instructions", description: "Provide users with the information and instructions set out in Annex II, including the manufacturer's contact details, the single point of contact for vulnerability reporting, the intended purpose and essential functionalities, the end date of the support period, how security updates are installed, and how the product can be securely commissioned, used and decommissioned. The generated \"User Information & Instructions (Annex II)\" document in the Documents stage compiles these items as an honest completeness checklist.", obligationType: "documentation", appliesTo: ["manufacturer"] },
   { refCode: "Annex VII", themeKey: "technical_documentation", title: "Technical documentation", description: "Draw up technical documentation containing all relevant data and details of the means used to ensure conformity, kept for at least ten years.", obligationType: "documentation", appliesTo: ["manufacturer"] },
-  { refCode: "Art 14", themeKey: "incident_reporting", title: "Report exploited vulnerabilities and severe incidents", description: "Notify an actively exploited vulnerability or a severe incident: an early warning within 24 hours and a notification within 72 hours to the CSIRT and ENISA.", obligationType: "reporting", appliesTo: ["manufacturer"] },
+  { refCode: "Art 14", themeKey: "incident_reporting", title: "Report exploited vulnerabilities and severe incidents", description: "Execute mandatory three-stage notification to the designated CSIRT and ENISA: (1) an early warning within 24 hours of becoming aware, (2) a vulnerability or incident notification within 72 hours with initial sensitivity and severity assessments, and (3) a final report no later than 14 days after a corrective measure/patch is available for vulnerabilities, or within 1 month for incidents.", obligationType: "reporting", appliesTo: ["manufacturer"] },
+  { refCode: "Art 64", themeKey: "incident_reporting", title: "Penalties, administrative fines and statutory exemptions", description: "Non-compliance subject to administrative fines up to €15,000,000 or 2.5% global turnover for essential requirements and Articles 13/14 (Art 64(2)); up to €10,000,000 or 2% for operator obligations (Art 64(3)); and up to €5,000,000 or 1% for misleading information (Art 64(4)). Art. 64(10)(a) exempts micro and small enterprises from administrative fines for failure to meet the 24-hour early warning deadline provided notification occurs within 72 hours; Art. 64(10)(b) exempts open-source software stewards from administrative fines (Corrigendum 32024R2847R(02)).", obligationType: "process", appliesTo: ["manufacturer", "authorised_representative", "importer", "distributor"] },
   { refCode: "Annex V", themeKey: "conformity_declaration", title: "EU Declaration of Conformity", description: "Draw up an EU declaration of conformity stating that the essential requirements have been fulfilled, and affix the CE marking.", obligationType: "documentation", appliesTo: ["manufacturer"] },
   { refCode: "Art 13(8)", themeKey: "post_market", title: "Support period and updates over lifetime", description: "Ensure that vulnerabilities are handled effectively during a defined support period reflecting the expected product lifetime.", obligationType: "process", appliesTo: ["manufacturer"] },
   { refCode: "Art 13(13)", themeKey: "post_market", title: "Keep the technical documentation and EU DoC for ten years", description: "Keep the technical documentation and the EU declaration of conformity at the disposal of the market surveillance authorities for at least 10 years after the product has been placed on the market, or for the support period, whichever is longer.", obligationType: "documentation", appliesTo: ["manufacturer"] },
@@ -574,6 +622,46 @@ const nis2: Req[] = [
   { refCode: "Art 23", themeKey: "incident_reporting", title: "Incident reporting obligations", description: "Entities shall notify significant incidents to the CSIRT or competent authority: an early warning within 24 hours, an incident notification within 72 hours, and a final report within one month.", obligationType: "reporting", appliesTo: ["operator"] },
 ];
 
+const dora: Req[] = [
+  { refCode: "Art 5", themeKey: "risk_management", title: "Governance and organization", description: "The management body shall define, approve, oversee and be accountable for the implementation of all arrangements related to the ICT risk management framework.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 6", themeKey: "risk_management", title: "ICT risk management framework", description: "Establish and maintain a sound, comprehensive and well-documented ICT risk management framework as part of the overall risk management system.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 9", themeKey: "secure_by_design", title: "Protection and prevention", description: "Continuously monitor and control the security and functioning of ICT systems and deploy appropriate ICT security tools, policies and cryptographic protection.", obligationType: "product_requirement", appliesTo: ["operator"] },
+  { refCode: "Art 10", themeKey: "logging_monitoring", title: "Detection of anomalous activities and logging", description: "Equip ICT systems with mechanisms to promptly detect anomalous activities, performance issues and ICT-related incidents, recording comprehensive logs.", obligationType: "product_requirement", appliesTo: ["operator"] },
+  { refCode: "Art 11", themeKey: "resilience", title: "Response and recovery policies", description: "Put in place dedicated and comprehensive ICT business continuity policy and disaster recovery plans to ensure resilience and continuity of critical functions.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 12", themeKey: "resilience", title: "Backup policies and procedures", description: "Develop and implement backup policies and restoration procedures capable of restoring systems with minimum downtime and data loss.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 17", themeKey: "vulnerability_handling", title: "Management of ICT-related incidents", description: "Define, establish and implement an ICT-related incident management process to detect, manage and notify ICT-related incidents.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 19", themeKey: "incident_reporting", title: "Reporting of major ICT-related incidents", description: "Submit initial notification within 4 hours (or before end of business day), intermediate report within 72 hours, and final report within 1 month to the competent authority.", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "Art 24", themeKey: "vulnerability_handling", title: "Digital operational resilience testing", description: "Establish, maintain and review a sound and comprehensive digital operational resilience testing programme, including vulnerability assessments and open source audits.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 26", themeKey: "vulnerability_handling", title: "Threat-led penetration testing (TLPT)", description: "Carry out advanced threat-led penetration testing at least every 3 years covering critical live production services.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 28", themeKey: "sbom_supply_chain", title: "Management of ICT third-party risk", description: "Manage ICT third-party risk as an integral component of ICT risk, maintaining a detailed register of information on all contractual arrangements with ICT third-party providers.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 30", themeKey: "sbom_supply_chain", title: "Key contractual provisions for ICT third parties", description: "Include mandatory contractual clauses in agreements with ICT service providers governing data locations, audit rights, security standards, and termination assistance.", obligationType: "process", appliesTo: ["operator"] },
+];
+
+const cer: Req[] = [
+  { refCode: "Art 12", themeKey: "risk_management", title: "Risk assessment by critical entities", description: "Carry out risk assessments assessing all relevant natural and man-made risks, including sectoral and cross-sectoral dependencies, disruptive events and hybrid threats.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 13", themeKey: "resilience", title: "Technical, security and organisational resilience measures", description: "Take appropriate and proportionate technical, security and organisational measures to ensure resilience, including disaster recovery, physical site security, and supply chain controls.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 14", themeKey: "access_control", title: "Background checks and personnel security", description: "Submit requests for background checks on persons who hold sensitive roles or have direct/remote physical or cyber access to critical entity facilities.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 15", themeKey: "incident_reporting", title: "Notification of disruptive incidents", description: "Notify the competent authority without undue delay of incidents that significantly disrupt or have the potential to significantly disrupt the provision of essential services.", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "Art 16", themeKey: "resilience", title: "Support by competent authorities", description: "Cooperate with competent authorities on receiving incident warnings, risk assessments and guidance to enhance resilience.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 21", themeKey: "technical_documentation", title: "Supervision and enforcement compliance documentation", description: "Keep and present evidence of compliance with resilience measures and risk assessments upon request of the designated supervisory authority.", obligationType: "documentation", appliesTo: ["operator"] },
+];
+
+const cbw: Req[] = [
+  { refCode: "Art 18", themeKey: "risk_management", title: "Bestuursaansprakelijkheid en goedkeuring risicomaatregelen", description: "Het bestuur van een essentiële of belangrijke entiteit moet maatregelen voor risicobeheer inzake cyberbeveiliging goedkeuren, toezien op de uitvoering en aansprakelijk zijn voor niet-naleving.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 19", themeKey: "secure_by_design", title: "Zorgplicht voor netwerk- en informatiesystemen", description: "Passende en evenredige technische en organisatorische maatregelen nemen om de risico's voor de beveiliging van netwerk- en informatiesystemen te beheersen en incidenten te voorkomen.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 20", themeKey: "sbom_supply_chain", title: "Beveiligingsmaatregelen in de toeleveringsketen", description: "Beheersen van beveiligingsrisico's in de toeleveringsketen en relaties met directe leveranciers en dienstverleners, inclusief kwetsbaarheden in componenten.", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "Art 23", themeKey: "incident_reporting", title: "Vroegtijdige waarschuwing binnen 24 uur", description: "Onverwijld en in elk geval binnen 24 uur na kennisneming van een significant incident een vroegtijdige waarschuwing indienen bij het CSIRT (NCSC-NL) en de toezichthouder.", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "Art 24", themeKey: "incident_reporting", title: "Incidentmelding binnen 72 uur en eindverslag", description: "Binnen 72 uur een formele melding van het incident indienen met een eerste beoordeling van de ernst, en binnen één maand een gedetailleerd eindverslag overleggen.", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "Art 26", themeKey: "technical_documentation", title: "Registratieplicht bij de bevoegde autoriteit", description: "Verplichte registratie van entiteitsgegevens, IP-reeksen en sectoractiviteiten bij de Rijksinspectie Digitale Infrastructuur (RDI) of relevante sectorale toezichthouder.", obligationType: "process", appliesTo: ["operator"] },
+];
+
+const bsig: Req[] = [
+  { refCode: "§ 30", themeKey: "risk_management", title: "Risikomanagementmaßnahmen von Einrichtungen", description: "Besonders wichtige und wichtige Einrichtungen müssen geeignete, verhältnismäßige technische und organisatorische Maßnahmen ergreifen, um Störungen der IT-Sicherheit zu vermeiden (§ 30 BSIG).", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "§ 31", themeKey: "incident_reporting", title: "Meldepflichten bei erheblichen Sicherheitsvorfällen", description: "Dreistufige Meldung an das BSI: unverzüglich, spätestens innerhalb von 24 Stunden Erstmeldung; innerhalb von 72 Stunden Folgemeldung; spätestens nach einem Monat Abschlussbericht (§ 31 BSIG).", obligationType: "reporting", appliesTo: ["operator"] },
+  { refCode: "§ 33", themeKey: "technical_documentation", title: "Registrierungspflicht beim BSI", description: "Verpflichtung zur Übermittlung von Stammdaten, Kontaktstellen und IP-Adressbereichen an das Bundesamt für Sicherheit in der Informationstechnik innerhalb von drei Monaten (§ 33 BSIG).", obligationType: "process", appliesTo: ["operator"] },
+  { refCode: "§ 38", themeKey: "risk_management", title: "Pflichten der Geschäftsleitung und persönliche Haftung", description: "Geschäftsleiter müssen die Risikomanagementmaßnahmen überwachen, regelmäßig an Schulungen teilnehmen und haften der Einrichtung persönlich für schuldhafte Pflichtverletzungen (§ 38 BSIG).", obligationType: "process", appliesTo: ["operator"] },
+];
+
 function buildRequirements(): InsertRequirement[] {
   const out: InsertRequirement[] = [];
   const push = (regulationKey: string, list: Req[]) => {
@@ -599,6 +687,10 @@ function buildRequirements(): InsertRequirement[] {
   push("gpsr", gpsr);
   push("iec_62443", iec);
   push("nis2", nis2);
+  push("dora", dora);
+  push("cer", cer);
+  push("cbw", cbw);
+  push("bsig", bsig);
   return out;
 }
 
@@ -715,6 +807,34 @@ const mappingTuples: [string, string, string, string, string, string][] = [
   ["data_act", "Art 3(1)", "cra", "Annex I(2)(m)", "overlaps", "Both bind the product design to user data control: secure accessibility of product data, and secure removal or transfer of data and settings."],
   ["gpsr", "Art 6(1)(g)", "cra", "Annex I(1)", "overlaps", "GPSR safety assessment expressly weighs the cybersecurity features the CRA requires as essential product requirements."],
   ["gpsr", "Art 9", "cra", "Art 13", "overlaps", "Both require a documented pre-market risk analysis feeding the technical documentation."],
+  // DORA (Regulation (EU) 2022/2554) financial sector digital operational resilience
+  ["dora", "Art 6", "cra", "Art 13", "overlaps", "DORA ICT risk-management framework parallels CRA risk assessment throughout lifecycle."],
+  ["dora", "Art 9", "cra", "Annex I(1)", "overlaps", "DORA ICT protection and prevention measures align with CRA secure-by-design obligations."],
+  ["dora", "Art 9", "iec_62443", "4-2 FR4", "overlaps", "DORA cryptographic protection aligns with 62443 data confidentiality."],
+  ["dora", "Art 10", "cra", "Annex I(2)(l)", "equivalent", "DORA anomalous activity detection and logging aligns with CRA security-relevant logging."],
+  ["dora", "Art 11", "cra", "Annex I(2)(h)", "supports", "DORA ICT business continuity supports CRA availability and resilience requirements."],
+  ["dora", "Art 19", "nis2", "Art 23", "overlaps", "DORA major ICT incident reporting to ESAs parallels NIS2 CSIRT notification."],
+  ["dora", "Art 19", "cra", "Art 14", "overlaps", "DORA incident reporting overlaps with CRA exploited-vulnerability and severe-incident reporting."],
+  ["dora", "Art 24", "cra", "Annex I Part II(3)", "supports", "DORA digital resilience testing program supports CRA regular security testing."],
+  ["dora", "Art 28", "cra", "Art 13(5)", "overlaps", "DORA ICT third-party risk management aligns with CRA due diligence on third-party components."],
+  ["dora", "Art 30", "nis2", "Art 21(2)(d)", "equivalent", "DORA key contractual provisions for ICT third parties mirror NIS2 supply chain contractual flow-downs."],
+  // CER (Directive (EU) 2022/2557) physical resilience of critical entities
+  ["cer", "Art 12", "nis2", "Art 21(2)(a)", "overlaps", "CER physical all-hazards risk assessment complements NIS2 network information security risk analysis."],
+  ["cer", "Art 13", "cra", "Annex I(2)(h)", "supports", "CER technical, security and organisational resilience measures support CRA essential function availability."],
+  ["cer", "Art 15", "nis2", "Art 23", "overlaps", "CER incident notification to national authorities parallels NIS2 significant incident notification."],
+  // Dutch Cyberbeveiligingswet (CBW / Stb-2026-187) national transposition
+  ["cbw", "Art 18", "nis2", "Art 20", "equivalent", "Dutch CBW board liability directly transposes NIS2 Article 20 management body governance."],
+  ["cbw", "Art 19", "nis2", "Art 21(2)(a)", "equivalent", "Dutch CBW duty of care (zorgplicht) transposes NIS2 Article 21 technical and organisational measures."],
+  ["cbw", "Art 20", "cra", "Art 13(5)", "overlaps", "Dutch CBW supply chain controls align with CRA component due diligence."],
+  ["cbw", "Art 20", "nis2", "Art 21(2)(d)", "equivalent", "Dutch CBW toeleveringsketen security directly transposes NIS2 supply chain security."],
+  ["cbw", "Art 23", "nis2", "Art 23", "equivalent", "Dutch CBW 24h early warning to NCSC-NL directly transposes NIS2 Art 23(4)(a)."],
+  ["cbw", "Art 24", "cra", "Art 14", "overlaps", "Dutch CBW incident notification parallels CRA Article 14 severe-incident reporting."],
+  // German BSIG reform (NIS2UmsuCG / BJNR12D0B0025) national transposition
+  ["bsig", "§ 30", "nis2", "Art 21(2)(a)", "equivalent", "German BSIG § 30 Risikomanagementmaßnahmen directly transposes NIS2 Article 21."],
+  ["bsig", "§ 30", "cra", "Annex I(1)", "overlaps", "German BSIG IT-Sicherheitsmaßnahmen overlap with CRA secure-by-design baseline."],
+  ["bsig", "§ 31", "nis2", "Art 23", "equivalent", "German BSIG § 31 24h/72h/1m Meldepflichten directly transposes NIS2 Article 23."],
+  ["bsig", "§ 31", "cra", "Art 14", "overlaps", "German BSIG BSI incident notification overlaps with CRA Article 14 incident reporting."],
+  ["bsig", "§ 38", "nis2", "Art 20", "equivalent", "German BSIG § 38 Geschäftsleiterhaftung directly transposes NIS2 Article 20 governance."],
 ];
 
 function buildMappings(): InsertRequirementMapping[] {

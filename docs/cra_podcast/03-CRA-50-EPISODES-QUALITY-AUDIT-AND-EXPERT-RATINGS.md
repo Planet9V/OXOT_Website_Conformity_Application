@@ -341,7 +341,7 @@ Every episode script in [`docs/cra_podcast/episodes_solo/`](file:///Users/jimmck
 #### [EP_7.05: Article 27 Presumption of Conformity: Harmonised Standards (CEN/CENELEC JTC 13)](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_7.05_Article_34_Presumption_of_Conformity_Harmonis_SOLO.md)
 - **Scores:** Statutory Rigor: 9.9/10 | OT Realism: 9.8/10 | Copy Hook: 9.6/10 | Persuasion Psych: 9.6/10
 - **Overall Grade:** **A+ (9.7/10)**
-- **Expert Strengths:** Explains how Standardisation Request M/596 grants automatic legal presumption of conformity.
+- **Expert Strengths:** Explains how Standardisation Request M/606 grants automatic legal presumption of conformity.
 - **Recommendation for Improvement:** Cross-walk IEC 62443-4-2 clauses with the upcoming CEN/CENELEC EN standards.
 
 #### [EP_7.06: CE Nameplate Studio: Physical, Digital & Packaging Marking Rules](file:///Users/jimmcknney/Downloads/OXOT_Website_Conformity_Application/docs/cra_podcast/episodes_solo/EP_7.06_CE_Nameplate_Studio_Physical,_Digital_&_Packa_SOLO.md)

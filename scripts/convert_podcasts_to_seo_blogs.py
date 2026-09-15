@@ -269,7 +269,7 @@ The prevailing myth in plant operations is that existing installations are grand
 | (Article 21)        | declarations and transfer full manufacturer liability to the modifier.       |
 +---------------------+------------------------------------------------------------------------------+
 | Penalty Exposure    | Administrative fines up to €15,000,000 or 2.5% of total worldwide annual     |
-| (Article 61)        | turnover, whichever is higher, plus immediate commercial stop-sales.         |
+| (Article 64)        | turnover, whichever is higher, plus immediate commercial stop-sales.         |
 +---------------------+------------------------------------------------------------------------------+
 ```
 
@@ -301,7 +301,7 @@ graph LR
 1. **Audit Modification Clauses in SI Agreements:** Ensure contracts explicitly define who bears CE re-certification costs if field changes exceed original specification boundaries.
 2. **Quarantine Unmanaged Cloud Connectors:** Disconnect direct internet-facing telemetry taps on legacy controllers that lack hardware root-of-trust authentication.
 3. **Lock Down Field Engineering Tools:** Enforce cryptographic signature verification on all PLC project uploads and configuration downloads.
-4. **Conduct an Article 61 Financial Exposure Simulation:** Calculate your organization's maximum theoretical penalty exposure under EU market turnover rules.
+4. **Conduct an Article 64 Financial Exposure Simulation:** Calculate your organization's maximum theoretical penalty exposure under EU market turnover rules.
 
 ---
 
@@ -398,15 +398,15 @@ truth_episodes = [
     ("TC_01", "The Edge-to-Cloud Grey Zone: When Microservices Void Local Controller CE Marks", ["Article 3(2)", "Article 21"], "Cloud-OT Architects & Plant CISOs"),
     ("TC_02", "The Defunct OEM Dilemma: Who Patches Brownfield OT When the Vendor Goes Bankrupt?", ["Article 13(8)", "NIS2 Article 21"], "Critical Infrastructure Operators"),
     ("TC_03", "Autonomous AI & Neural Weights on the Plant Floor: Harmonizing CRA and the EU AI Act", ["CRA Annex I", "EU AI Act 2024/1689"], "Industrial Robotics Engineers"),
-    ("TC_04", "The €15M Calculation: Dissecting the Math Behind Article 61 Global Turnover Penalties", ["Article 61", "Recital 78"], "Chief Financial Officers & General Counsel"),
+    ("TC_04", "The €15M Calculation: Dissecting the Math Behind Article 64 Global Turnover Penalties", ["Article 64", "Recital 78"], "Chief Financial Officers & General Counsel"),
     ("TC_05", "The Open Source Stewardship Illusion: Navigating Article 24 Non-Commercial Safe Harbors", ["Article 24", "Recital 18"], "Open Source Maintainers & CTOs"),
     ("TC_06", "Maritime OT & Navigational Radar: The Clash Between CRA and the Marine Equipment Directive", ["CRA Article 2", "MED 2014/90/EU"], "Marine Systems Integrators"),
     ("TC_07", "Smart Metering & Grid Substations: Demystifying NIS2 Essential Entities vs CRA Class II Assets", ["CRA Annex III Class II", "NIS2 Annex I"], "Utility Security Directors"),
     ("TC_08", "Battery Energy Storage Systems (BESS): Cyber-Physical Fire Risks & Class II Notified Bodies", ["Annex III Class II", "IEC 61508"], "Grid Battery Developers & Power OEMs"),
     ("TC_09", "The Distributor's Trap: Why Selling Unmarked Spares on European Marketplaces Is Strict Liability", ["Article 18", "Article 19"], "Industrial Supply Distributors"),
-    ("TC_10", "Legacy Protocol Converters: Why Modbus-to-MQTT Gateways Are the Number One CRA Target", ["Annex I Part I", "Article 10"], "SCADA Engineers & System Integrators"),
+    ("TC_10", "Legacy Protocol Converters: Why Modbus-to-MQTT Gateways Are the Number One CRA Target", ["Annex I Part I", "Article 13"], "SCADA Engineers & System Integrators"),
     ("TC_11", "The Port Surveillance Playbook: How Customs Inspects Software Bill of Materials at Antwerp and Rotterdam", ["Article 54", "Article 55"], "Importers & Logistics Directors"),
-    ("TC_12", "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies", ["Article 61", "EU Product Liability Directive"], "Corporate Risk Officers & Legal Counsel")
+    ("TC_12", "The Insurance Underwriting Reckoning: How CRA Breaches Void Tech E&O and Cyber Policies", ["Article 64", "EU Product Liability Directive"], "Corporate Risk Officers & Legal Counsel")
 ]
 
 print("Compiling Truth & Consequences Case Studies (12)...")

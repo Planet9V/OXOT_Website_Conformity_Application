@@ -60,6 +60,7 @@ export interface StageFinding {
   /** Marked done in the workbench but with no submission on the ledger. */
   claimedButUnevidenced: boolean;
   reference: string;
+  smeDerogationApplied?: boolean;
 }
 
 export interface ReportingObligationAssessment {
@@ -87,6 +88,7 @@ export function assessReportingObligation(
   incidents: IncidentForObligation[],
   submissions: SubmissionForObligation[],
   now: Date,
+  options?: { isMicroOrSmallEnterprise?: boolean },
 ): ReportingObligationAssessment {
   if (!incidents.length) {
     return {
@@ -123,11 +125,22 @@ export function assessReportingObligation(
       const key = `${incident.id}::${stage}`;
       const hasSubmission = filed.has(key);
       const dueAt = due[stage];
-      const isOverdue =
+      let isOverdue =
         !hasSubmission &&
         dueAt !== null &&
         new Date(dueAt).getTime() < now.getTime() &&
         !CLOSED.includes(incident.status);
+
+      let smeDerogationApplied = false;
+      // CRA Art. 64(10)(a): micro and small enterprises shall not be subject to administrative fines
+      // for non-compliance with the 24-hour early warning deadline, provided they notify within 72 hours.
+      if (options?.isMicroOrSmallEnterprise && stage === "early_warning" && isOverdue) {
+        const notifDue = due.notification;
+        if (notifDue !== null && now.getTime() <= new Date(notifDue).getTime()) {
+          smeDerogationApplied = true;
+          isOverdue = false;
+        }
+      }
 
       findings.push({
         incidentId: incident.id,
@@ -138,6 +151,7 @@ export function assessReportingObligation(
         overdue: isOverdue,
         claimedButUnevidenced: !hasSubmission && done[stage] !== null,
         reference: referenceFor.get(key) ?? "",
+        smeDerogationApplied,
       });
     }
   }

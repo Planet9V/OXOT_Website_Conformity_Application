@@ -5,7 +5,7 @@
 > - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 8: Executive Liability, Penalties & Future Evolution
 > - **Canonical Code:** `EP_8.01` (Global Episode 46)
-> - **Statutory References:** Article 61, Article 62
+> - **Statutory References:** Article 64, Article 65
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** CEOs, CFOs & Board Members
 > - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
@@ -20,7 +20,7 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines
-01:30 - Statutory Architecture & Requirements (Article 61, Article 62)
+01:30 - Statutory Architecture & Requirements (Article 64, Article 65)
 05:15 - Operational Impact & Industry Analysis (CEOs, CFOs & Board Members)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
@@ -40,11 +40,11 @@ Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital pro
 
 Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: The €15,000,000 Calculation: Demystifying Article 64 Administrative Fines.
 
-Let's ground our discussion in the exact statutory text of Article 61, Article 62.
+Let's ground our discussion in the exact statutory text of Article 64, Article 65.
 
-When we examine the operational, commercial, and engineering reality of CEOs, CFOs & Board Members, the central challenge under Article 61, Article 62 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
+When we examine the operational, commercial, and engineering reality of CEOs, CFOs & Board Members, the central challenge under Article 64, Article 65 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Under European Union product harmonisation legislation, the obligations set forth in Article 61, Article 62 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
+Under European Union product harmonisation legislation, the obligations set forth in Article 64, Article 65 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
@@ -52,7 +52,7 @@ If an organization fails to align its design practices, technical documentation,
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step One: Audit your active product portfolios and contractual scopes governed by Article 61, Article 62.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 64, Article 65.
 
 Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 

@@ -5,7 +5,7 @@
 > - **Style:** Direct, Informative, Technical & Actionable (No FUD)
 > - **Series:** Series 2: The System Integrator & EPC Shield
 > - **Canonical Code:** `EP_2.06` (Global Episode 12)
-> - **Statutory References:** Article 21, Article 61
+> - **Statutory References:** Article 21, Article 64
 > - **Target Audio Duration:** 12–15 Minutes
 > - **Target Persona:** EPC General Counsel & Contract Negotiators
 > - **De-Slop Status:** Audited under `/avoid-ai-writing` (0% AI fluff, 100% engineering & statutory facts)
@@ -20,7 +20,7 @@
 ### 1.2 Spotify Timestamped Chapter Markers
 ```text
 00:00 - Introduction: Drafting the Integrator Safe Harbor Agreement: BAA & Contract Scaffolding
-01:30 - Statutory Architecture & Requirements (Article 21, Article 61)
+01:30 - Statutory Architecture & Requirements (Article 21, Article 64)
 05:15 - Operational Impact & Industry Analysis (EPC General Counsel & Contract Negotiators)
 08:45 - Engineering Mitigation & Supply Chain Governance
 11:30 - 4-Step Actionable Checklist for Engineering Teams
@@ -40,11 +40,11 @@ Welcome back to The Cyber Resilience Act Briefing. I'm Jim Mckenney, digital pro
 
 Today, we're cutting straight through the theoretical legal noise to address an essential dimension of European product security and industrial resilience: Drafting the Integrator Safe Harbor Agreement: BAA & Contract Scaffolding.
 
-Let's ground our discussion in the exact statutory text of Article 21, Article 61.
+Let's ground our discussion in the exact statutory text of Article 21, Article 64.
 
-When we examine the operational, commercial, and engineering reality of EPC General Counsel & Contract Negotiators, the central challenge under Article 21, Article 61 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
+When we examine the operational, commercial, and engineering reality of EPC General Counsel & Contract Negotiators, the central challenge under Article 21, Article 64 is clear: how to translate rigorous statutory requirements into defensible engineering architectures and robust supply-chain agreements.
 
-Under European Union product harmonisation legislation, the obligations set forth in Article 21, Article 61 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
+Under European Union product harmonisation legislation, the obligations set forth in Article 21, Article 64 attach directly to economic operators the moment a product with digital elements is placed on the market or substantially modified.
 
 In industrial automation, critical infrastructure, and software-defined engineering environments, traditional workflows have long operated under the assumption that cybersecurity is purely an operational IT concern. The Cyber Resilience Act completely upends that model by imposing mandatory, lifecycle statutory duties on manufacturers, integrators, importers, and distributors.
 
@@ -52,7 +52,7 @@ If an organization fails to align its design practices, technical documentation,
 
 To ensure your engineering, commercial, and legal operations remain fully protected, here is your four-step action checklist for this week:
 
-Step One: Audit your active product portfolios and contractual scopes governed by Article 21, Article 61.
+Step One: Audit your active product portfolios and contractual scopes governed by Article 21, Article 64.
 
 Step Two: Establish clear contractual risk-allocation boundaries across your supplier and integrator networks.
 

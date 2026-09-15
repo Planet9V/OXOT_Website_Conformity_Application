@@ -16,7 +16,7 @@ If your company develops microcontrollers, software libraries, operating systems
 
 That assumption is creating a massive blind spot across the supply chain.
 
-Under Article 10(6) and Annex I Part II, the equipment manufacturer who affixes the CE mark is legally responsible for the security of every third-party component inside their product. If your software library or RTOS contains an unpatched vulnerability, the OEM faces fines up to 15 million euros or 2.5 percent of global turnover.
+Under Article 13(6) and Annex I Part II, the equipment manufacturer who affixes the CE mark is legally responsible for the security of every third-party component inside their product. If your software library or RTOS contains an unpatched vulnerability, the OEM faces fines up to 15 million euros or 2.5 percent of global turnover.
 
 As a result, major OEMs are pushing mandatory contractual security requirements down to all tier-two and tier-three suppliers. To remain an approved vendor, you will be required to provide:
 

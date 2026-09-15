@@ -126,3 +126,25 @@ describe("Art. 32(5) — the free and open-source carve-out", () => {
     expect(r.availableRoutes).toContain("module_a");
   });
 });
+
+describe("Machinery Regulation (EU) 2023/1230 temporal boundary", () => {
+  it("warns about Machinery Regulation when product is industrial machinery placed on market during the 2027 transition gap", () => {
+    const r = routes({
+      classKey: "default",
+      isIndustrialMachinery: true,
+      placingOnMarketDate: "2027-06-01",
+    });
+    expect(r.temporalWarning).toBeDefined();
+    expect(r.temporalWarning).toMatch(/Machinery Regulation \(EU\) 2023\/1230/);
+    expect(r.temporalWarning).toMatch(/transition gap/);
+  });
+
+  it("does not warn when placing on market is on or after Dec 11, 2027 CRA full application", () => {
+    const r = routes({
+      classKey: "default",
+      isIndustrialMachinery: true,
+      placingOnMarketDate: "2028-01-01",
+    });
+    expect(r.temporalWarning).toBeUndefined();
+  });
+});

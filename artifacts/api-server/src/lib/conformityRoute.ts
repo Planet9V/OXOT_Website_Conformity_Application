@@ -60,6 +60,10 @@ export interface RouteSelectionInput {
   technicalDocumentationPublic?: boolean;
   /** Art. 32(4)(a) / Art. 8(1): a scheme is available for this critical product. */
   art8SchemeAvailable?: boolean;
+  /** Machinery Regulation (EU) 2023/1230 overlap check. */
+  isIndustrialMachinery?: boolean;
+  /** ISO date string for placing on the market. */
+  placingOnMarketDate?: string;
 }
 
 export interface RouteOption {
@@ -75,6 +79,7 @@ export interface RouteSelection {
   availableRoutes: RouteKey[];
   thirdPartyRequired: boolean;
   message: string;
+  temporalWarning?: string;
 }
 
 const ALL: RouteKey[] = ["module_a", "module_b_c", "module_h", "eu_certification_scheme"];
@@ -84,6 +89,7 @@ function build(
   citation: string,
   decide: (key: RouteKey) => { available: boolean; reason: string },
   message: string,
+  temporalWarning?: string,
 ): RouteSelection {
   const options = ALL.map((key) => ({ key, ...decide(key) }));
   const availableRoutes = options.filter((o) => o.available).map((o) => o.key);
@@ -95,6 +101,7 @@ function build(
     // Module A is the only route a manufacturer can complete alone.
     thirdPartyRequired: !availableRoutes.includes("module_a"),
     message,
+    temporalWarning,
   };
 }
 
@@ -106,7 +113,21 @@ export function selectConformityRoutes(input: RouteSelectionInput): RouteSelecti
     isFreeAndOpenSource,
     technicalDocumentationPublic,
     art8SchemeAvailable,
+    isIndustrialMachinery,
+    placingOnMarketDate,
   } = input;
+
+  let temporalWarning: string | undefined;
+  if (isIndustrialMachinery) {
+    const pom = placingOnMarketDate ? new Date(placingOnMarketDate) : null;
+    const isGapPeriod = pom
+      ? pom >= new Date("2027-01-20T00:00:00Z") && pom < new Date("2027-12-11T00:00:00Z")
+      : true;
+    if (isGapPeriod) {
+      temporalWarning =
+        "Machinery Regulation (EU) 2023/1230 Annex III § 1.1.9 (control systems security) applies from 20 January 2027, ahead of the CRA 11 December 2027 date. During this 11-month transition gap, presumption of conformity under future CRA harmonised standards cannot be relied upon.";
+    }
+  }
 
   // Art. 32(5) — the FOSS carve-out, which reaches back to the 32(1) menu even
   // for products in an Annex III category. It only applies with the proviso met.
@@ -127,6 +148,7 @@ export function selectConformityRoutes(input: RouteSelectionInput): RouteSelecti
             : "Article 32(5) opens the full Article 32(1) menu for this product.",
       }),
       "Article 32(5) applies: this is free and open-source software in an Annex III category and its technical documentation is public, so the Article 32(1) procedures are available — including internal control.",
+      temporalWarning,
     );
   }
 
@@ -139,6 +161,7 @@ export function selectConformityRoutes(input: RouteSelectionInput): RouteSelecti
         reason: "Article 32(1): any of the four procedures may be used for a default product.",
       }),
       "Article 32(1): any of the four procedures may be used, including internal control under module A.",
+      temporalWarning,
     );
   }
 
@@ -172,6 +195,7 @@ export function selectConformityRoutes(input: RouteSelectionInput): RouteSelecti
       selfAssessmentOpen
         ? "Internal control is available: a basis under Article 27 has been applied in full."
         : `Internal control is NOT available for this important Class I product. ${why}`,
+      temporalWarning,
     );
   }
 
@@ -198,6 +222,7 @@ export function selectConformityRoutes(input: RouteSelectionInput): RouteSelecti
         return { available: true, reason: "Article 32(3)(a) or (b)." };
       },
       "Article 32(3): an important Class II product requires module B+C, module H, or a European cybersecurity certification scheme at assurance level at least 'substantial'. Internal control is never available.",
+      temporalWarning,
     );
   }
 
@@ -229,5 +254,6 @@ export function selectConformityRoutes(input: RouteSelectionInput): RouteSelecti
     art8SchemeAvailable === true
       ? "Article 32(4)(a): this critical product must use the European cybersecurity certification scheme required under Article 8(1)."
       : "Article 32(4)(b): no scheme is required under Article 8(1), so the Article 32(3) procedures apply — module B+C or module H.",
+    temporalWarning,
   );
 }

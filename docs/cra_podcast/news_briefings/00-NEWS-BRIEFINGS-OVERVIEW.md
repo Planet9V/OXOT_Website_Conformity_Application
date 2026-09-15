@@ -15,7 +15,7 @@
 | **NEWS 02** | *The PSIRT Mandate: Why Every OEM Needs a Product CSIRT Before 2026* | `docs/cra_podcast/news_briefings/NEWS_02_PSIRT_Mandate_for_OEMs.md` | Mandatory PSIRT/CSIRT setup, 24/7 incident response, security.txt, CVSS v4 triage. |
 | **NEWS 03** | *Downstream Supply Chain Impact: What Component & Software Providers Must Deliver* | `docs/cra_podcast/news_briefings/NEWS_03_Downstream_Supplier_CRA_Impact.md` | Component/SDK/RTOS supplier obligations, contractual SBOM flow-downs, 24h disclosure SLAs. |
 | **NEWS 04** | *CRA meets NIS2: Navigating Dual Incident Reporting Clocks* | `docs/cra_podcast/news_briefings/NEWS_04_CRA_meets_NIS2_Dual_Clocks.md` | Distinguishing entity operational security (NIS2) vs product security (CRA). |
-| **NEWS 05** | *Harmonised European Standards: CEN/CENELEC Mandate M/596 Progress* | `docs/cra_podcast/news_briefings/NEWS_05_CEN_CENELEC_Standards_M596.md` | Presumption of conformity under Article 27, ETSI EN 303 645, IEC 62443 alignment. |
+| **NEWS 05** | *Harmonised European Standards: CEN/CENELEC Mandate M/606 Progress* | `docs/cra_podcast/news_briefings/NEWS_05_CEN_CENELEC_Standards_M596.md` | Presumption of conformity under Article 27, ETSI EN 303 645, IEC 62443 alignment. |
 
 ---
 

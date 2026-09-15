@@ -12,7 +12,7 @@
 [JIM MCKENNEY]
 Welcome back to The CRA Briefing. I'm Jim Mckenney with an executive news update on industrial OT compliance and product security engineering under Regulation [pronunciation: EU twenty-twenty-four slash twenty-eight-forty-seven]. Standard disclaimer: this news briefing provides technical commentary, not formal legal advice.
 
-Today's focus is the operational reality of CRA Article 10, paragraph 6: the requirement for every product manufacturer to maintain formal vulnerability handling processes.
+Today's focus is the operational reality of CRA Article 13, paragraph 6: the requirement for every product manufacturer to maintain formal vulnerability handling processes.
 
 In recent industry briefings, regulatory authorities have clarified that compliance with Article 14's 24-hour reporting clock requires a dedicated Product Security Incident Response Team—or PSIRT.
 

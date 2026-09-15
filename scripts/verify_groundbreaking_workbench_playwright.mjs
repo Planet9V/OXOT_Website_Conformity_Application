@@ -49,8 +49,8 @@ async function run() {
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'workbench_ciso_deep_link.png'), fullPage: true });
 
     // 3. Test Interactive Fine Simulator
-    console.log('3. Testing Interactive Article 61 Fine Simulator...');
-    const fineSimulatorHeader = await page.locator('text=Article 61 What-If Fine Simulation Engine').first();
+    console.log('3. Testing Interactive Article 64 Fine Simulator...');
+    const fineSimulatorHeader = await page.locator('text=Article 64 What-If Fine Simulation Engine').first();
     await fineSimulatorHeader.scrollIntoViewIfNeeded();
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'workbench_fine_simulator.png') });

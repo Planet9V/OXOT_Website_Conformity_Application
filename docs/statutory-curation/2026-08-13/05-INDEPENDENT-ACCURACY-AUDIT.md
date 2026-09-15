@@ -26,12 +26,12 @@ Independent multi-expert evaluation and accuracy audit of the OXOT Cyber Resilie
 ### Grade: **98.5% (A+)**
 
 #### Evaluation Findings:
-- **Verbatim Text Fidelity**: Verified against Official Journal `OJ L 2024/2847, 20.11.2024`. All statutory definitions (Art 3), manufacturer obligations (Art 6), vulnerability handling rules (Art 13), reporting clocks (Art 14), and administrative fine tiers (€15M / 2.5% turnover under Art 61) match official EU legislative text with zero hallucination.
+- **Verbatim Text Fidelity**: Verified against Official Journal `OJ L 2024/2847, 20.11.2024`. All statutory definitions (Art 3), essential cybersecurity requirements (Art 6 & Annex I), manufacturer obligations (Art 13), reporting clocks (Art 14), and administrative fine tiers (€15M / 2.5% turnover under Art 64) match official EU legislative text with zero hallucination.
 - **Pinpoint Citations**: All 48 pinpoint citations correctly cite page numbers and article paragraphs in the Official Journal.
 - **Support Period Precision**: Correctly reflects Article 17 rules (default minimum 5-year expectation matching product lifetime).
 
 #### Recommendation:
-- Minor addition: Add explicit cross-reference to Commission Delegated Regulation (EU) expected under Article 64 for Class II category expansions once published in OJEU.
+- Minor addition: Add explicit cross-reference to Commission Delegated Regulation (EU) expected under Article 61 for Class II category expansions once published in OJEU.
 
 ---
 

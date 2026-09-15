@@ -69,3 +69,4 @@ artifacts_verify/
 # Editor workspace files and stray local scratch dirs (not project sources)
 *.code-workspace
 /images/
+.swarm/

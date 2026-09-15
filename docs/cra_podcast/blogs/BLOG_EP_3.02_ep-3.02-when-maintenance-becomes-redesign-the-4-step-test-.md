@@ -18,7 +18,7 @@ duration: "14:15"
 audio_url: "https://oxot.ai/audio/cra_podcast/EP_3.02.mp3"
 rss_feed: "https://oxot.ai/feeds/cra-podcast.xml"
 date: "2026-08-14"
-keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "substantial modification", "Article 3(30)", "brownfield retrofit", "Article 22", "Article 69", "legacy OT", "network segmentation", "CE marking"]
+keywords: ["Cyber Resilience Act", "Regulation (EU) 2024/2847", "substantial modification", "Article 3(30)", "brownfield retrofit", "Article 22 deemed manufacturer", "Article 69", "legacy OT", "network segmentation", "Article 29 CE marking"]
 takeaways: ["The substantial-modification test, as a three-gate decision tree you run on your own retrofit", "Network-segmentation tactics that keep a connectivity upgrade on the maintenance side of Article 3(30)", "The maintenance-log record that proves you ran the test"]
 ---
 

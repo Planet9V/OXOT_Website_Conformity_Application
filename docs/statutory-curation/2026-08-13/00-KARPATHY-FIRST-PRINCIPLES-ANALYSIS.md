@@ -63,7 +63,7 @@ The entire 71-article regulation reduces to 5 fundamental primitives:
 
 1. **Scope Exclusions**: `OJ L 2024/2847, Art 2(2), p. 14` (Excludes medical devices under Reg 2017/745, in-vitro under Reg 2017/746, civil aviation, and motor vehicles).
 2. **Support Period Minimum**: `OJ L 2024/2847, Art 17(1), p. 48` (Declared support period must match expected product lifespan; minimum 5 years unless lifespan explicitly shorter).
-3. **Administrative Fines**: `OJ L 2024/2847, Art 61(1)-(3), p. 82` (€15,000,000 / 2.5% global turnover for essential requirements; €10,000,000 / 2% for operator obligations; €5,000,000 / 1% for misleading reporting).
+3. **Administrative Fines**: `OJ L 2024/2847, Art 64(2)-(4), pp. 76-78` (€15,000,000 / 2.5% global turnover for essential requirements and Arts 13-14; €10,000,000 / 2% for operator obligations; €5,000,000 / 1% for misleading reporting).
 4. **Timeline Dates**: `OJ L 2024/2847, Art 71(1)-(2), p. 94` (Entry into force: Dec 10, 2024. Art 14 reporting applies: Sept 10, 2026. General CRA applies: Dec 10, 2027).
 
 ---

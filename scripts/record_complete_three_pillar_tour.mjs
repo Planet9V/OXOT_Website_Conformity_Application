@@ -89,7 +89,7 @@ async function run() {
     console.log('   Switching to CISO Persona for Fine Simulator...');
     await page.click('button[data-persona="PLANT_CISO"]');
     await page.waitForTimeout(1000);
-    const fineSimulatorEl = page.locator('text=Article 61 What-If Fine Simulation Engine').first();
+    const fineSimulatorEl = page.locator('text=Article 64 What-If Fine Simulation Engine').first();
     await fineSimulatorEl.scrollIntoViewIfNeeded();
     await page.waitForTimeout(1000);
     await page.screenshot({ path: path.join(ARTIFACTS_DIR, 'tour_pillar_2_fine_simulator.png') });
