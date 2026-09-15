@@ -35,6 +35,8 @@ Pick your entry point:
 8. **[How-to recipes](08-how-to.md)** — common tasks: add a funnel page, edit CMS content and capture it as a seed, toggle the daily news generation, add a lead capture source, rebuild after a change.
 9. **[User guide](09-user-guide.md)** — using the public site, the 2-minute readiness check, the workbench, and the admin CMS.
 10. **[Support & updates](10-support-and-updates.md)** — maintenance, updating dependencies, backups, and a troubleshooting catalogue of real issues and their fixes.
+11. **[CRA Supporting Applications Directory](11-cra-supporting-applications.md)** — comprehensive market directory of 18+ commercial web apps (Regulus, CVD Portal, CRA Portal, CRA Evidence, Venvera), open-source toolkits (Eclipse OCCTET, Complaro), and firmware scanners.
+12. **[CRA Conformance Comparison](12-cra-conformance-comparison.md)** — head-to-head architectural analysis comparing OXOT's statutory system of record and island-mode AI against IT GRC, scanners, and Notified Bodies.
 
 ---
 
