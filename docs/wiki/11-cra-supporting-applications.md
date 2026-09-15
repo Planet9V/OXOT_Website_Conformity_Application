@@ -267,13 +267,16 @@ sequenceDiagram
 
 ## 4. Product Security, Binary Scanners & Advisory Services
 
-| Vendor / Firm | Primary Model | Public Pricing | Core Offering | CRA Limitation |
+| Vendor / Firm | Primary Model | Public Pricing | Core Offering | CRA Limitation / Evidence Status |
 |:---|:---|:---|:---|:---|
+| **pi3g** | Embedded Hardware Advisory | Fixed quote / consulting | Hands-on embedded engineering and CRA compliance for Raspberry Pi / ARM IoT. | Service-led hardware consultancy; lacks multi-product compliance automation. |
+| **ONEKEY** | Product Security SaaS | Enterprise subscription | Automated firmware security analysis and compliance mapping for IoT/OT. | Focused on binary vulnerability detection; requires external legal assembly for Annex V DoC. |
+| **ConformOps** | Compliance Workflow | Subscription tier | Workflow management for CE conformity evidence. | Early-stage tool; lacks native binary SBOM ingestion rails. |
 | **Cybellum** | Enterprise Platform | Custom (€40k–€150k+/yr) | "Cyber Digital Twins" of firmware, binary SBOM extraction, CVE scoring. | Telemetry only; does not generate legal Annex V DoC. |
 | **Finite State** | Enterprise SaaS | Custom (€30k–€120k+/yr) | Software supply chain management, binary SCA, EPSS risk prioritization. | US-centric; lacks CE marking statutory file workflow. |
 | **Anchore** | Commercial / Open Source | Free open core (Syft/Grype); Enterprise quote | Container and filesystem SBOM generation and vulnerability scanning. | Software only; no hardware, Purdue level, or CE dossier context. |
 | **RunSafe Security** | Enterprise Control | Custom platform quote | Memory protection (Alkemist) and binary load-time diversification. | Security control only; cannot produce technical documentation. |
-| **TÜV SÜD / Rheinland** | TIC Notified Body | Fixed project (€30k–€100k+/product) | Laboratory penetration testing, Notified Body assessment (Module H). | Manual, point-in-time consulting; high cost and 6–12mo delay. |
+| **TÜV SÜD / Rheinland** | TIC Notified Body | Fixed project (€30k–€100k+/product) | Laboratory penetration testing, Notified Body assessment (Module H). | **Capacity Bottleneck:** As verified by Valyu regulatory tracking ([cyberresilienceact.eu](https://www.cyberresilienceact.eu/news/cra-notified-bodies-rules-apply-11-june-2026.html)), as of late 2026, **no Notified Bodies are formally designated in NANDO yet**. Point-in-time consulting remains backlogged and expensive. |
 | **Secunet** | Professional Services | Time & Materials / Project quote | High-assurance security engineering, DACH critical infrastructure audit. | Bespoke services; no self-serve software platform. |
 | **Doyensec** | Security Advisory | Day rate / Fixed engagement | Application security audits, embedded firmware penetration testing. | Consulting-led; lacks continuous automated compliance monitoring. |
 
